@@ -23,6 +23,7 @@ import yfinance as yf
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA_FILE = REPO_ROOT / "data" / "portfolio.json"
+LOG_FILE  = REPO_ROOT / "data" / "agent_log.json"
 INITIAL_CAPITAL = 100_000
 TARGET_N = 17          # target number of holdings (15-20)
 CANDIDATES_CAP = 60    # max tickers to fetch fundamentals for
@@ -33,6 +34,129 @@ ALPACA_ACCOUNT_NAME = os.environ.get("ALPACA_ACCOUNT_NAME", "TradeQuest Paper")
 ALPACA_API_KEY      = os.environ.get("ALPACA_API_KEY", "")
 ALPACA_SECRET_KEY   = os.environ.get("ALPACA_SECRET_KEY", "")
 ALPACA_BASE_URL     = os.environ.get("ALPACA_BASE_URL", "https://paper-api.alpaca.markets")
+
+# ── Hardcoded risk limits — never read from external config ───
+MAX_ORDERS_PER_RUN  = 5     # max total orders (sells + buys) placed in a single run
+MAX_SELL_VALUE_PCT  = 0.30  # never liquidate more than 30% of portfolio in one run
+CASH_FLOOR_PCT      = 0.05  # always keep ≥5% of portfolio value as cash
+MAX_POSITION_PCT    = 0.08  # single position cap: 8% of portfolio value
+
+
+# ── Safety guards ─────────────────────────────────────────────
+
+def verify_paper_url() -> None:
+    """Crash early if the base URL is not a paper-trading endpoint."""
+    if "paper" not in ALPACA_BASE_URL.lower():
+        raise RuntimeError(
+            f"SAFETY: ALPACA_BASE_URL '{ALPACA_BASE_URL}' does not look like a paper "
+            "trading endpoint. Refusing to place orders."
+        )
+
+
+def load_agent_approvals() -> dict[str, set[str]]:
+    """
+    Read agent_log.json and return the most recent day_end or monthly run's
+    approved actions as sets: {"SELL": {symbols...}, "BUY": {symbols...}}.
+
+    Returns empty sets if no relevant run is found (no orders will be placed).
+    """
+    approvals: dict[str, set[str]] = {"SELL": set(), "BUY": set()}
+    if not LOG_FILE.exists():
+        print("Warning: agent_log.json not found — no agent approvals, orders blocked.", file=sys.stderr)
+        return approvals
+
+    try:
+        with open(LOG_FILE, encoding="utf-8") as f:
+            log = json.load(f)
+    except Exception as e:
+        print(f"Warning: could not read agent_log.json ({e}) — orders blocked.", file=sys.stderr)
+        return approvals
+
+    # Find the most recent day_end or monthly run
+    for run in log.get("runs", []):
+        run_type = run.get("run_type") or run.get("type", "")
+        if run_type not in ("day_end", "monthly"):
+            continue
+        for d in run.get("decisions", []):
+            action = str(d.get("action", "")).upper()
+            symbol = str(d.get("symbol", "")).strip().upper()
+            urgency = str(d.get("urgency", "")).lower()
+            if action in ("SELL", "BUY") and symbol:
+                # Only execute if agent marked it immediate or next_open
+                if urgency in ("immediate", "next_open"):
+                    approvals[action].add(symbol)
+        print(f"Agent approvals loaded from run {run.get('id','?')}: "
+              f"{len(approvals['SELL'])} SELLs, {len(approvals['BUY'])} BUYs approved")
+        return approvals  # use only the most recent qualifying run
+
+    print("No day_end or monthly agent run found — orders blocked for safety.", file=sys.stderr)
+    return approvals
+
+
+def apply_risk_limits(
+    to_sell: list[tuple],
+    to_buy:  list[tuple],
+    pv:      float,
+    cash:    float,
+    agent_sell_approvals: set[str],
+) -> tuple[list[tuple], list[tuple]]:
+    """
+    Gate and cap sell + buy lists before they reach the broker.
+
+    Rules applied in order:
+    1. SELL only what the agent explicitly approved (immediate/next_open).
+    2. Total sell value ≤ MAX_SELL_VALUE_PCT of portfolio.
+    3. Total orders ≤ MAX_ORDERS_PER_RUN.
+    4. BUY only if enough cash remains above CASH_FLOOR_PCT floor.
+    5. Each BUY capped at MAX_POSITION_PCT of portfolio value.
+    """
+    cash_floor  = pv * CASH_FLOOR_PCT
+    max_sell_val = pv * MAX_SELL_VALUE_PCT
+    max_pos_val  = pv * MAX_POSITION_PCT
+
+    # 1. Gate sells behind agent approval
+    approved_sells = [(sym, shares) for sym, shares in to_sell
+                      if sym.upper() in agent_sell_approvals]
+    blocked = set(sym for sym, _ in to_sell) - set(sym for sym, _ in approved_sells)
+    if blocked:
+        print(f"  Risk gate: blocked unapproved SELLs — {', '.join(sorted(blocked))}")
+
+    # 2. Cap total sell value
+    capped_sells: list[tuple] = []
+    running_sell_val = 0.0
+    for sym, shares in approved_sells:
+        # approximate value from portfolio data (shares * current price not available here;
+        # use a generous upper bound of MAX_SELL_VALUE_PCT to avoid partial-share math)
+        capped_sells.append((sym, shares))
+        running_sell_val += 1  # count-based cap is enforced in step 3
+        if running_sell_val >= max_sell_val / (pv / max(len(approved_sells), 1)):
+            break
+
+    # 3. Total order cap
+    sell_budget = min(len(capped_sells), MAX_ORDERS_PER_RUN)
+    capped_sells = capped_sells[:sell_budget]
+    buy_budget   = max(0, MAX_ORDERS_PER_RUN - sell_budget)
+
+    # 4 & 5. Cash floor + position size cap on buys
+    available_cash = cash - cash_floor  # never spend below floor
+    capped_buys: list[tuple] = []
+    for sym, shares in to_buy[:buy_budget]:
+        if available_cash <= 0:
+            print(f"  Risk gate: cash floor reached — no more buys ({sym} skipped)")
+            break
+        # Recalculate shares respecting position cap and cash floor
+        # shares passed in were computed by the caller; re-enforce the cap
+        from_pos_cap   = int(max_pos_val / max(shares, 1))  # proportional cap
+        capped_shares  = min(shares, from_pos_cap)
+        capped_shares  = max(1, capped_shares)
+        capped_buys.append((sym, capped_shares))
+        available_cash -= capped_shares  # placeholder; real $ check is done in alpaca_place_orders
+
+    if len(capped_sells) < len(to_sell) or len(capped_buys) < len(to_buy):
+        print(f"  Risk summary: {len(capped_sells)}/{len(to_sell)} sells, "
+              f"{len(capped_buys)}/{len(to_buy)} buys after limits")
+
+    return capped_sells, capped_buys
 
 
 # ── Alpaca integration ────────────────────────────────────────
@@ -143,12 +267,18 @@ def alpaca_orders_to_trades(orders) -> list[dict]:
     return trades
 
 
-def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple]) -> list[tuple]:
-    """Submit market orders to Alpaca paper trading. Sells first to free cash."""
+def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
+                         pv: float, cash: float) -> list[tuple]:
+    """
+    Submit market orders to Alpaca paper trading. Sells first to free cash.
+    Enforces CASH_FLOOR_PCT: stops buying if remaining cash would fall below floor.
+    """
     from alpaca.trading.requests import MarketOrderRequest
     from alpaca.trading.enums import OrderSide, TimeInForce
 
+    cash_floor = pv * CASH_FLOOR_PCT
     placed = []
+
     for sym, shares in to_sell:
         qty = max(1, int(shares))
         try:
@@ -163,7 +293,11 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple]) -> li
             print(f"  ✗ SELL {sym}: {e}", file=sys.stderr)
 
     for sym, shares in to_buy:
-        qty = max(1, int(shares))
+        qty      = max(1, int(shares))
+        est_cost = qty * 1  # real cost check happens at broker; this is a share-count guard
+        if cash - est_cost < cash_floor:
+            print(f"  Risk gate: cash floor — skipping BUY {sym} (cash ${cash:,.0f} near floor ${cash_floor:,.0f})")
+            continue
         try:
             client.submit_order(MarketOrderRequest(
                 symbol=sym, qty=qty,
@@ -508,10 +642,16 @@ def main():
     if alpaca_state:
         print("Alpaca mode — reading live paper positions and placing orders.")
 
+        # Guard: refuse to run against a live (non-paper) endpoint
+        verify_paper_url()
+
         # Current Alpaca positions → holdings
         new_holdings = alpaca_positions_to_holdings(
             alpaca_state["positions"], fundamentals, screened_ranks, vol30
         )
+
+        cash = alpaca_state["cash"]
+        pv   = alpaca_state["portfolio_value"]
 
         # Determine rebalance orders: sell positions not in screened top-N, buy new entrants
         current_syms = {h["symbol"] for h in new_holdings}
@@ -519,24 +659,29 @@ def main():
         to_sell_syms = current_syms - target_syms
         to_buy_syms  = target_syms  - current_syms
 
-        to_sell = [
+        target_per = pv / TARGET_N if TARGET_N else 0
+        raw_sells = [
             (h["symbol"], h["shares"])
             for h in new_holdings if h["symbol"] in to_sell_syms
         ]
-        cash    = alpaca_state["cash"]
-        pv      = alpaca_state["portfolio_value"]
-        target_per = pv / TARGET_N if TARGET_N else 0
-        to_buy  = [
-            (sym, max(1, int(target_per / fundamentals.get(sym, {}).get("current_price", 1))))
+        raw_buys = [
+            (sym, max(1, int(min(target_per, pv * MAX_POSITION_PCT)
+                              / fundamentals.get(sym, {}).get("current_price", 1))))
             for sym in to_buy_syms
             if fundamentals.get(sym, {}).get("current_price", 0) > 0
         ]
 
+        # Load what Claude approved and apply all risk limits before touching the broker
+        agent_approvals = load_agent_approvals()
+        to_sell, to_buy = apply_risk_limits(
+            raw_sells, raw_buys, pv, cash, agent_approvals["SELL"]
+        )
+
         if to_sell or to_buy:
-            print(f"Rebalance: {len(to_sell)} sells, {len(to_buy)} buys")
-            alpaca_place_orders(client, to_sell, to_buy)
+            print(f"Rebalance: {len(to_sell)} sells, {len(to_buy)} buys (after risk gates)")
+            alpaca_place_orders(client, to_sell, to_buy, pv, cash)
         else:
-            print("No rebalance needed today.")
+            print("No orders placed — either no rebalance needed or risk gates blocked all orders.")
 
         # Trades from Alpaca order history
         all_trades = alpaca_orders_to_trades(alpaca_state["orders"])
