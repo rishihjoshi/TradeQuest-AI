@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r bot/requirements.txt
 
-      - name: Run portfolio updater
+      - name: Step 1 — Portfolio data update + Alpaca sync
         env:
           ALPACA_ACCOUNT_NAME: ${{ secrets.ALPACA_ACCOUNT_NAME }}
           ALPACA_API_KEY:      ${{ secrets.ALPACA_API_KEY }}
@@ -36,14 +36,24 @@ jobs:
           ALPACA_BASE_URL:     ${{ secrets.ALPACA_BASE_URL }}
         run: python bot/update.py
 
-      - name: Commit and push if data changed
+      - name: Step 2 — Day-end agent (Claude decision layer)
+        env:
+          RUN_TYPE:          day_end
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ALPACA_ACCOUNT_NAME: ${{ secrets.ALPACA_ACCOUNT_NAME }}
+          ALPACA_API_KEY:    ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          ALPACA_BASE_URL:   ${{ secrets.ALPACA_BASE_URL }}
+        run: python bot/agent.py
+
+      - name: Commit portfolio data and agent log
         run: |
           git config user.name "TradeQuest Bot"
           git config user.email "actions@github.com"
-          git add data/portfolio.json
+          git add data/portfolio.json data/agent_log.json
           if git diff --staged --quiet; then
-            echo "No changes to portfolio data."
+            echo "No changes."
           else
-            git commit -m "bot: update portfolio $(date +'%Y-%m-%d %H:%M UTC')"
+            git commit -m "agent[day-end]: $(date +'%Y-%m-%d %H:%M UTC')"
             git push
           fi

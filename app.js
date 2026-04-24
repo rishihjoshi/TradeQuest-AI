@@ -1,6 +1,7 @@
 'use strict';
 
-const DATA_URL = './data/portfolio.json';
+const DATA_URL      = './data/portfolio.json';
+const AGENT_LOG_URL = './data/agent_log.json';
 const REFRESH_MS = 5 * 60 * 1000;
 const FETCH_TIMEOUT_MS = 15_000;
 
@@ -36,6 +37,7 @@ function signedHtml(value, formatted) {
 class TradeQuestApp {
   constructor() {
     this.data = null;
+    this.agentLog = null;
     this.chart = null;
   }
 
@@ -48,16 +50,24 @@ class TradeQuestApp {
   }
 
   async load() {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+    const ts = Date.now();
+    const fetchWithTimeout = url => {
+      const ctrl = new AbortController();
+      const t = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS);
+      return fetch(`${url}?_=${ts}`, { signal: ctrl.signal }).finally(() => clearTimeout(t));
+    };
+
     try {
-      const res = await fetch(`${DATA_URL}?_=${Date.now()}`, { signal: controller.signal });
-      clearTimeout(timer);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      this.data = await res.json();
+      const [portfolioRes, agentRes] = await Promise.all([
+        fetchWithTimeout(DATA_URL),
+        fetchWithTimeout(AGENT_LOG_URL),
+      ]);
+      if (!portfolioRes.ok) throw new Error(`Portfolio HTTP ${portfolioRes.status}`);
+      this.data = await portfolioRes.json();
+      // Agent log is optional — degrade gracefully if missing
+      this.agentLog = agentRes.ok ? await agentRes.json() : { runs: [] };
       this.render();
     } catch (err) {
-      clearTimeout(timer);
       this.showError(err.name === 'AbortError' ? 'Request timed out' : err.message);
     }
   }
@@ -69,6 +79,7 @@ class TradeQuestApp {
     this.renderHoldings();
     this.renderTrades();
     this.renderStrategy();
+    this.renderAgentLog();
     $('loadingState').hidden = true;
     $('errorState').hidden = true;
     $('mainContent').hidden = false;
@@ -319,6 +330,70 @@ class TradeQuestApp {
         </div>
       </div>
       <div class="regime-desc">${regimeDesc}</div>`;
+  }
+
+  // ── Agent Log ─────────────────────────────────────────────
+  renderAgentLog() {
+    const log = this.agentLog || { runs: [] };
+    const runs = (log.runs || []).slice().reverse(); // newest first
+
+    $('agentRunCount').textContent = runs.length;
+
+    if (log.last_run) {
+      const d = new Date(log.last_run);
+      const typeLabel = { day_start: 'Day Start', day_end: 'Day End', monthly: 'Monthly' };
+      $('agentLastRun').textContent =
+        `Last: ${typeLabel[log.last_type] || log.last_type} · ${fmtDate(log.last_run)}`;
+    } else {
+      $('agentLastRun').textContent = 'No runs yet';
+    }
+
+    if (!runs.length) return;
+
+    const ACTION_COLORS = { SELL: 'SELL', BUY: 'BUY', HOLD: 'HOLD', WATCH: 'WATCH' };
+
+    const html = runs.map(run => {
+      const typeLabel = { day_start: 'Day Start', day_end: 'Day End', monthly: 'Monthly' };
+      const runType   = sanitize(run.run_type || '');
+      const regime    = sanitize(run.regime   || 'unknown');
+      const conf      = Number.isFinite(run.regime_confidence)
+        ? `${(run.regime_confidence * 100).toFixed(0)}% conf` : '';
+      const summary   = sanitize(run.summary  || '');
+      const ts        = fmtDate(run.timestamp || '');
+
+      // Flags
+      const flags = (run.flags || []).slice(0, 6).map(f =>
+        `<span class="flag-chip">${sanitize(f.symbol || '')}: ${sanitize(f.flag || '')}</span>`
+      ).join('');
+
+      // Decisions
+      const decisions = (run.decisions || []).slice(0, 8).map(d => {
+        const action = sanitize(String(d.action || '').toUpperCase());
+        const cls    = ACTION_COLORS[action] || 'HOLD';
+        const sym    = sanitize(d.symbol || '');
+        const reason = sanitize(d.reason || '');
+        return `<span class="decision-chip ${cls}" title="${reason}">${action} ${sym}</span>`;
+      }).join('');
+
+      // Cash action
+      const cashHtml = run.cash_action
+        ? `<span class="decision-chip ${sanitize(run.cash_action)}" style="font-size:0.65rem">
+             CASH: ${sanitize(run.cash_action)}</span>` : '';
+
+      return `
+        <div class="agent-run">
+          <div class="agent-run-header">
+            <span class="run-type-badge ${runType}">${sanitize(typeLabel[run.run_type] || runType)}</span>
+            <span class="run-regime ${regime}">${regime}${conf ? ` · ${conf}` : ''}</span>
+            <span class="run-time">${ts}</span>
+          </div>
+          ${summary ? `<div class="run-summary">${summary}</div>` : ''}
+          ${flags    ? `<div class="run-flags">${flags}</div>`    : ''}
+          ${(decisions || cashHtml) ? `<div class="run-decisions">${decisions}${cashHtml}</div>` : ''}
+        </div>`;
+    }).join('');
+
+    $('agentRunList').innerHTML = html;
   }
 
   // ── Error ─────────────────────────────────────────────────
