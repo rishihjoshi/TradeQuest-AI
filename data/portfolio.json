@@ -1,0 +1,457 @@
+{
+  "meta": {
+    "strategy": "TradeQuest AI Momentum Strategy v2.0",
+    "universe": "S&P 500",
+    "initial_capital": 100000,
+    "last_rebalance": "2026-04-01",
+    "next_rebalance": "2026-05-01",
+    "market_regime": "bull",
+    "regime_confidence": 0.78,
+    "regime_indicators": {
+      "vix": 16.4,
+      "ma200_trend": "positive",
+      "breadth_pct": 0.64,
+      "description": "Strong uptrend. VIX below 20, 64% of S&P 500 above 200-day MA."
+    },
+    "equity_exposure": 0.95,
+    "cash_target": 0.05
+  },
+  "summary": {
+    "portfolio_value": 116432.40,
+    "cash": 4819.60,
+    "cash_pct": 4.14,
+    "invested": 111612.80,
+    "total_pnl": 16432.40,
+    "total_pnl_pct": 16.43,
+    "realized_pnl": 4200.00,
+    "unrealized_pnl": 12232.40,
+    "win_rate": 0.723,
+    "total_trades": 47,
+    "winning_trades": 34,
+    "losing_trades": 13,
+    "avg_win_pct": 4.8,
+    "avg_loss_pct": -2.1,
+    "sharpe_ratio": 1.84,
+    "max_drawdown_pct": -8.2,
+    "last_updated": "2026-04-23T16:00:00Z"
+  },
+  "filter_status": {
+    "momentum": {
+      "label": "Momentum",
+      "description": "Top 30% by 6M & 12M return",
+      "passing": 17,
+      "total": 17,
+      "threshold": "Top 30%"
+    },
+    "quality": {
+      "label": "Quality",
+      "description": "EPS growth >10%, Revenue >8%",
+      "passing": 17,
+      "total": 17,
+      "threshold": "EPS >10% & Rev >8%"
+    },
+    "valuation": {
+      "label": "Valuation",
+      "description": "Forward P/E <40 or top 70% cheapest by sector",
+      "passing": 15,
+      "total": 17,
+      "threshold": "Fwd P/E <40"
+    },
+    "risk": {
+      "label": "Risk",
+      "description": "Volatility below top 10% threshold",
+      "passing": 17,
+      "total": 17,
+      "threshold": "Vol < 90th pct"
+    }
+  },
+  "equity_curve": [
+    { "date": "Jan 1", "value": 100000 },
+    { "date": "Jan 7", "value": 101500 },
+    { "date": "Jan 14", "value": 103200 },
+    { "date": "Jan 21", "value": 102800 },
+    { "date": "Jan 28", "value": 104100 },
+    { "date": "Feb 4", "value": 106500 },
+    { "date": "Feb 11", "value": 105200 },
+    { "date": "Feb 18", "value": 107800 },
+    { "date": "Feb 25", "value": 109200 },
+    { "date": "Mar 4", "value": 110500 },
+    { "date": "Mar 11", "value": 108900 },
+    { "date": "Mar 18", "value": 111200 },
+    { "date": "Mar 25", "value": 113800 },
+    { "date": "Apr 1", "value": 114200 },
+    { "date": "Apr 8", "value": 112800 },
+    { "date": "Apr 15", "value": 115100 },
+    { "date": "Apr 23", "value": 116432 }
+  ],
+  "holdings": [
+    {
+      "symbol": "NVDA", "name": "NVIDIA Corporation", "sector": "Technology",
+      "shares": 7, "avg_cost": 790.00, "current_price": 934.20,
+      "market_value": 6539.40, "weight": 0.0586,
+      "pnl": 1009.40, "pnl_pct": 18.25,
+      "momentum_6m": 0.42, "momentum_12m": 0.85, "momentum_rank": 1,
+      "eps_growth": 82.0, "revenue_growth": 122.0,
+      "forward_pe": 35.2, "volatility_30d": 0.38,
+      "entry_date": "2026-01-02", "ma_50d": 887.30, "status": "above_ma"
+    },
+    {
+      "symbol": "META", "name": "Meta Platforms", "sector": "Communication",
+      "shares": 13, "avg_cost": 448.20, "current_price": 512.80,
+      "market_value": 6666.40, "weight": 0.0597,
+      "pnl": 839.80, "pnl_pct": 14.41,
+      "momentum_6m": 0.38, "momentum_12m": 0.72, "momentum_rank": 2,
+      "eps_growth": 48.0, "revenue_growth": 22.0,
+      "forward_pe": 28.4, "volatility_30d": 0.28,
+      "entry_date": "2026-01-02", "ma_50d": 488.60, "status": "above_ma"
+    },
+    {
+      "symbol": "GEV", "name": "GE Vernova", "sector": "Industrials",
+      "shares": 35, "avg_cost": 148.60, "current_price": 186.30,
+      "market_value": 6520.50, "weight": 0.0584,
+      "pnl": 1319.50, "pnl_pct": 25.37,
+      "momentum_6m": 0.52, "momentum_12m": 1.12, "momentum_rank": 3,
+      "eps_growth": 92.0, "revenue_growth": 48.0,
+      "forward_pe": 32.8, "volatility_30d": 0.42,
+      "entry_date": "2026-04-01", "ma_50d": 162.40, "status": "above_ma"
+    },
+    {
+      "symbol": "CRWD", "name": "CrowdStrike Holdings", "sector": "Technology",
+      "shares": 27, "avg_cost": 218.40, "current_price": 248.60,
+      "market_value": 6712.20, "weight": 0.0601,
+      "pnl": 815.40, "pnl_pct": 13.83,
+      "momentum_6m": 0.35, "momentum_12m": 0.68, "momentum_rank": 4,
+      "eps_growth": 35.0, "revenue_growth": 28.0,
+      "forward_pe": 38.4, "volatility_30d": 0.35,
+      "entry_date": "2026-04-01", "ma_50d": 232.80, "status": "above_ma"
+    },
+    {
+      "symbol": "AVGO", "name": "Broadcom Inc.", "sector": "Technology",
+      "shares": 6, "avg_cost": 892.50, "current_price": 1048.60,
+      "market_value": 6291.60, "weight": 0.0564,
+      "pnl": 936.60, "pnl_pct": 17.49,
+      "momentum_6m": 0.34, "momentum_12m": 0.62, "momentum_rank": 5,
+      "eps_growth": 28.0, "revenue_growth": 42.0,
+      "forward_pe": 26.8, "volatility_30d": 0.30,
+      "entry_date": "2026-01-02", "ma_50d": 996.40, "status": "above_ma"
+    },
+    {
+      "symbol": "AMZN", "name": "Amazon.com", "sector": "Consumer Disc.",
+      "shares": 29, "avg_cost": 196.40, "current_price": 228.60,
+      "market_value": 6629.40, "weight": 0.0594,
+      "pnl": 933.80, "pnl_pct": 16.40,
+      "momentum_6m": 0.31, "momentum_12m": 0.58, "momentum_rank": 6,
+      "eps_growth": 62.0, "revenue_growth": 18.0,
+      "forward_pe": 38.6, "volatility_30d": 0.26,
+      "entry_date": "2026-01-02", "ma_50d": 214.80, "status": "above_ma"
+    },
+    {
+      "symbol": "TSM", "name": "Taiwan Semiconductor", "sector": "Technology",
+      "shares": 38, "avg_cost": 148.20, "current_price": 172.40,
+      "market_value": 6551.20, "weight": 0.0587,
+      "pnl": 919.60, "pnl_pct": 16.33,
+      "momentum_6m": 0.29, "momentum_12m": 0.55, "momentum_rank": 7,
+      "eps_growth": 42.0, "revenue_growth": 34.0,
+      "forward_pe": 22.4, "volatility_30d": 0.28,
+      "entry_date": "2026-03-01", "ma_50d": 162.30, "status": "above_ma"
+    },
+    {
+      "symbol": "GOOGL", "name": "Alphabet Inc.", "sector": "Communication",
+      "shares": 37, "avg_cost": 154.80, "current_price": 178.50,
+      "market_value": 6604.50, "weight": 0.0592,
+      "pnl": 876.90, "pnl_pct": 15.31,
+      "momentum_6m": 0.28, "momentum_12m": 0.52, "momentum_rank": 8,
+      "eps_growth": 38.0, "revenue_growth": 15.0,
+      "forward_pe": 24.2, "volatility_30d": 0.22,
+      "entry_date": "2026-01-02", "ma_50d": 168.90, "status": "above_ma"
+    },
+    {
+      "symbol": "ORCL", "name": "Oracle Corporation", "sector": "Technology",
+      "shares": 33, "avg_cost": 172.40, "current_price": 198.20,
+      "market_value": 6540.60, "weight": 0.0586,
+      "pnl": 851.40, "pnl_pct": 14.96,
+      "momentum_6m": 0.26, "momentum_12m": 0.48, "momentum_rank": 9,
+      "eps_growth": 22.0, "revenue_growth": 18.0,
+      "forward_pe": 26.8, "volatility_30d": 0.24,
+      "entry_date": "2026-01-02", "ma_50d": 186.40, "status": "above_ma"
+    },
+    {
+      "symbol": "MSFT", "name": "Microsoft Corporation", "sector": "Technology",
+      "shares": 16, "avg_cost": 395.30, "current_price": 422.30,
+      "market_value": 6756.80, "weight": 0.0606,
+      "pnl": 432.00, "pnl_pct": 6.83,
+      "momentum_6m": 0.22, "momentum_12m": 0.42, "momentum_rank": 10,
+      "eps_growth": 18.0, "revenue_growth": 16.0,
+      "forward_pe": 30.4, "volatility_30d": 0.18,
+      "entry_date": "2026-01-02", "ma_50d": 408.20, "status": "above_ma"
+    },
+    {
+      "symbol": "PANW", "name": "Palo Alto Networks", "sector": "Technology",
+      "shares": 30, "avg_cost": 194.20, "current_price": 216.80,
+      "market_value": 6504.00, "weight": 0.0583,
+      "pnl": 678.00, "pnl_pct": 11.63,
+      "momentum_6m": 0.22, "momentum_12m": 0.40, "momentum_rank": 11,
+      "eps_growth": 28.0, "revenue_growth": 22.0,
+      "forward_pe": 34.6, "volatility_30d": 0.28,
+      "entry_date": "2026-03-01", "ma_50d": 204.60, "status": "above_ma"
+    },
+    {
+      "symbol": "NOW", "name": "ServiceNow Inc.", "sector": "Technology",
+      "shares": 8, "avg_cost": 698.30, "current_price": 786.40,
+      "market_value": 6291.20, "weight": 0.0564,
+      "pnl": 704.80, "pnl_pct": 12.62,
+      "momentum_6m": 0.21, "momentum_12m": 0.38, "momentum_rank": 12,
+      "eps_growth": 24.0, "revenue_growth": 21.0,
+      "forward_pe": 36.8, "volatility_30d": 0.26,
+      "entry_date": "2026-01-02", "ma_50d": 748.60, "status": "above_ma"
+    },
+    {
+      "symbol": "CDNS", "name": "Cadence Design Systems", "sector": "Technology",
+      "shares": 22, "avg_cost": 278.50, "current_price": 302.60,
+      "market_value": 6657.20, "weight": 0.0596,
+      "pnl": 530.20, "pnl_pct": 8.65,
+      "momentum_6m": 0.20, "momentum_12m": 0.36, "momentum_rank": 13,
+      "eps_growth": 16.0, "revenue_growth": 14.0,
+      "forward_pe": 32.4, "volatility_30d": 0.22,
+      "entry_date": "2026-01-02", "ma_50d": 290.40, "status": "above_ma"
+    },
+    {
+      "symbol": "LLY", "name": "Eli Lilly and Company", "sector": "Healthcare",
+      "shares": 8, "avg_cost": 758.20, "current_price": 812.50,
+      "market_value": 6500.00, "weight": 0.0583,
+      "pnl": 434.40, "pnl_pct": 7.16,
+      "momentum_6m": 0.18, "momentum_12m": 0.34, "momentum_rank": 14,
+      "eps_growth": 88.0, "revenue_growth": 52.0,
+      "forward_pe": 28.6, "volatility_30d": 0.24,
+      "entry_date": "2026-01-02", "ma_50d": 782.60, "status": "above_ma"
+    },
+    {
+      "symbol": "COST", "name": "Costco Wholesale", "sector": "Consumer Staples",
+      "shares": 7, "avg_cost": 888.40, "current_price": 946.20,
+      "market_value": 6623.40, "weight": 0.0594,
+      "pnl": 404.60, "pnl_pct": 6.51,
+      "momentum_6m": 0.18, "momentum_12m": 0.30, "momentum_rank": 15,
+      "eps_growth": 14.0, "revenue_growth": 9.0,
+      "forward_pe": 48.2, "volatility_30d": 0.14,
+      "entry_date": "2026-01-02", "ma_50d": 920.30, "status": "above_ma"
+    },
+    {
+      "symbol": "UNH", "name": "UnitedHealth Group", "sector": "Healthcare",
+      "shares": 12, "avg_cost": 528.40, "current_price": 548.40,
+      "market_value": 6580.80, "weight": 0.0590,
+      "pnl": 240.00, "pnl_pct": 3.79,
+      "momentum_6m": 0.16, "momentum_12m": 0.28, "momentum_rank": 16,
+      "eps_growth": 12.0, "revenue_growth": 11.0,
+      "forward_pe": 19.8, "volatility_30d": 0.18,
+      "entry_date": "2026-01-02", "ma_50d": 538.20, "status": "above_ma"
+    },
+    {
+      "symbol": "HD", "name": "Home Depot Inc.", "sector": "Consumer Disc.",
+      "shares": 17, "avg_cost": 372.80, "current_price": 390.80,
+      "market_value": 6643.60, "weight": 0.0595,
+      "pnl": 306.00, "pnl_pct": 4.83,
+      "momentum_6m": 0.15, "momentum_12m": 0.26, "momentum_rank": 17,
+      "eps_growth": 10.0, "revenue_growth": 8.0,
+      "forward_pe": 24.6, "volatility_30d": 0.16,
+      "entry_date": "2026-01-02", "ma_50d": 380.40, "status": "above_ma"
+    }
+  ],
+  "trades": [
+    {
+      "id": "T047", "date": "2026-04-01", "action": "BUY",
+      "symbol": "CRWD", "name": "CrowdStrike Holdings",
+      "shares": 27, "price": 218.40, "value": 5896.80,
+      "pnl": null, "pnl_pct": null,
+      "reason": "Entered top 30% momentum — Apr rebalance", "type": "rebalance"
+    },
+    {
+      "id": "T046", "date": "2026-04-01", "action": "BUY",
+      "symbol": "GEV", "name": "GE Vernova",
+      "shares": 35, "price": 148.60, "value": 5201.00,
+      "pnl": null, "pnl_pct": null,
+      "reason": "Entered top 30% momentum — Apr rebalance", "type": "rebalance"
+    },
+    {
+      "id": "T045", "date": "2026-04-01", "action": "SELL",
+      "symbol": "INTC", "name": "Intel Corporation",
+      "shares": 52, "price": 24.80, "value": 1289.60,
+      "pnl": -582.40, "pnl_pct": -31.1,
+      "reason": "Price below 50-day MA — stop rule triggered", "type": "stop"
+    },
+    {
+      "id": "T044", "date": "2026-04-01", "action": "SELL",
+      "symbol": "TSLA", "name": "Tesla Inc.",
+      "shares": 28, "price": 182.40, "value": 5107.20,
+      "pnl": -397.60, "pnl_pct": -7.2,
+      "reason": "Momentum rank dropped below top 40%", "type": "rebalance"
+    },
+    {
+      "id": "T043", "date": "2026-03-01", "action": "BUY",
+      "symbol": "PANW", "name": "Palo Alto Networks",
+      "shares": 30, "price": 194.20, "value": 5826.00,
+      "pnl": null, "pnl_pct": null,
+      "reason": "Entered top 30% momentum — Mar rebalance", "type": "rebalance"
+    },
+    {
+      "id": "T042", "date": "2026-03-01", "action": "BUY",
+      "symbol": "TSM", "name": "Taiwan Semiconductor",
+      "shares": 38, "price": 148.20, "value": 5631.60,
+      "pnl": null, "pnl_pct": null,
+      "reason": "Entered top 30% momentum — Mar rebalance", "type": "rebalance"
+    },
+    {
+      "id": "T041", "date": "2026-03-01", "action": "SELL",
+      "symbol": "BA", "name": "Boeing Company",
+      "shares": 22, "price": 182.60, "value": 4017.20,
+      "pnl": -503.80, "pnl_pct": -11.1,
+      "reason": "Price below 50-day MA — stop rule triggered", "type": "stop"
+    },
+    {
+      "id": "T040", "date": "2026-03-01", "action": "SELL",
+      "symbol": "NFLX", "name": "Netflix Inc.",
+      "shares": 8, "price": 612.40, "value": 4899.20,
+      "pnl": 400.80, "pnl_pct": 8.9,
+      "reason": "Momentum rank dropped below top 40%", "type": "rebalance"
+    },
+    {
+      "id": "T039", "date": "2026-02-03", "action": "SELL",
+      "symbol": "AMD", "name": "Advanced Micro Devices",
+      "shares": 28, "price": 182.40, "value": 5107.20,
+      "pnl": 854.40, "pnl_pct": 20.1,
+      "reason": "Momentum rank dropped below top 40%", "type": "rebalance"
+    },
+    {
+      "id": "T038", "date": "2026-02-03", "action": "BUY",
+      "symbol": "AVGO", "name": "Broadcom Inc.",
+      "shares": 2, "price": 918.40, "value": 1836.80,
+      "pnl": null, "pnl_pct": null,
+      "reason": "Weight rebalance — increased allocation", "type": "rebalance"
+    },
+    {
+      "id": "T029", "date": "2026-01-02", "action": "BUY",
+      "symbol": "AMD", "name": "Advanced Micro Devices",
+      "shares": 28, "price": 151.60, "value": 4244.80,
+      "pnl": null, "pnl_pct": null,
+      "reason": "Initial portfolio — momentum screen", "type": "initial"
+    },
+    {
+      "id": "T028", "date": "2026-01-02", "action": "BUY",
+      "symbol": "INTC", "name": "Intel Corporation",
+      "shares": 52, "price": 36.00, "value": 1872.00,
+      "pnl": null, "pnl_pct": null,
+      "reason": "Initial portfolio — momentum screen", "type": "initial"
+    },
+    {
+      "id": "T027", "date": "2026-01-02", "action": "BUY",
+      "symbol": "TSLA", "name": "Tesla Inc.",
+      "shares": 28, "price": 196.60, "value": 5504.80,
+      "pnl": null, "pnl_pct": null,
+      "reason": "Initial portfolio — momentum screen", "type": "initial"
+    },
+    {
+      "id": "T026", "date": "2026-01-02", "action": "BUY",
+      "symbol": "NFLX", "name": "Netflix Inc.",
+      "shares": 8, "price": 562.30, "value": 4498.40,
+      "pnl": null, "pnl_pct": null,
+      "reason": "Initial portfolio — momentum screen", "type": "initial"
+    },
+    {
+      "id": "T025", "date": "2026-01-02", "action": "BUY",
+      "symbol": "BA", "name": "Boeing Company",
+      "shares": 22, "price": 205.50, "value": 4521.00,
+      "pnl": null, "pnl_pct": null,
+      "reason": "Initial portfolio — momentum screen", "type": "initial"
+    },
+    {
+      "id": "T024", "date": "2026-01-02", "action": "BUY",
+      "symbol": "HD", "name": "Home Depot Inc.",
+      "shares": 17, "price": 372.80, "value": 6337.60,
+      "pnl": null, "pnl_pct": null,
+      "reason": "Initial portfolio — momentum screen", "type": "initial"
+    },
+    {
+      "id": "T023", "date": "2026-01-02", "action": "BUY",
+      "symbol": "UNH", "name": "UnitedHealth Group",
+      "shares": 12, "price": 528.40, "value": 6340.80,
+      "pnl": null, "pnl_pct": null,
+      "reason": "Initial portfolio — momentum screen", "type": "initial"
+    },
+    {
+      "id": "T022", "date": "2026-01-02", "action": "BUY",
+      "symbol": "CDNS", "name": "Cadence Design Systems",
+      "shares": 22, "price": 278.50, "value": 6127.00,
+      "pnl": null, "pnl_pct": null,
+      "reason": "Initial portfolio — momentum screen", "type": "initial"
+    },
+    {
+      "id": "T021", "date": "2026-01-02", "action": "BUY",
+      "symbol": "COST", "name": "Costco Wholesale",
+      "shares": 7, "price": 888.40, "value": 6218.80,
+      "pnl": null, "pnl_pct": null,
+      "reason": "Initial portfolio — momentum screen", "type": "initial"
+    },
+    {
+      "id": "T020", "date": "2026-01-02", "action": "BUY",
+      "symbol": "NOW", "name": "ServiceNow Inc.",
+      "shares": 8, "price": 698.30, "value": 5586.40,
+      "pnl": null, "pnl_pct": null,
+      "reason": "Initial portfolio — momentum screen", "type": "initial"
+    },
+    {
+      "id": "T019", "date": "2026-01-02", "action": "BUY",
+      "symbol": "ORCL", "name": "Oracle Corporation",
+      "shares": 33, "price": 172.40, "value": 5689.20,
+      "pnl": null, "pnl_pct": null,
+      "reason": "Initial portfolio — momentum screen", "type": "initial"
+    },
+    {
+      "id": "T018", "date": "2026-01-02", "action": "BUY",
+      "symbol": "LLY", "name": "Eli Lilly and Company",
+      "shares": 8, "price": 758.20, "value": 6065.60,
+      "pnl": null, "pnl_pct": null,
+      "reason": "Initial portfolio — momentum screen", "type": "initial"
+    },
+    {
+      "id": "T017", "date": "2026-01-02", "action": "BUY",
+      "symbol": "AVGO", "name": "Broadcom Inc.",
+      "shares": 4, "price": 892.50, "value": 3570.00,
+      "pnl": null, "pnl_pct": null,
+      "reason": "Initial portfolio — momentum screen", "type": "initial"
+    },
+    {
+      "id": "T016", "date": "2026-01-02", "action": "BUY",
+      "symbol": "GOOGL", "name": "Alphabet Inc.",
+      "shares": 37, "price": 154.80, "value": 5727.60,
+      "pnl": null, "pnl_pct": null,
+      "reason": "Initial portfolio — momentum screen", "type": "initial"
+    },
+    {
+      "id": "T015", "date": "2026-01-02", "action": "BUY",
+      "symbol": "AMZN", "name": "Amazon.com",
+      "shares": 29, "price": 196.40, "value": 5695.60,
+      "pnl": null, "pnl_pct": null,
+      "reason": "Initial portfolio — momentum screen", "type": "initial"
+    },
+    {
+      "id": "T014", "date": "2026-01-02", "action": "BUY",
+      "symbol": "MSFT", "name": "Microsoft Corporation",
+      "shares": 16, "price": 395.30, "value": 6324.80,
+      "pnl": null, "pnl_pct": null,
+      "reason": "Initial portfolio — momentum screen", "type": "initial"
+    },
+    {
+      "id": "T013", "date": "2026-01-02", "action": "BUY",
+      "symbol": "META", "name": "Meta Platforms",
+      "shares": 13, "price": 448.20, "value": 5826.60,
+      "pnl": null, "pnl_pct": null,
+      "reason": "Initial portfolio — momentum screen", "type": "initial"
+    },
+    {
+      "id": "T012", "date": "2026-01-02", "action": "BUY",
+      "symbol": "NVDA", "name": "NVIDIA Corporation",
+      "shares": 7, "price": 790.00, "value": 5530.00,
+      "pnl": null, "pnl_pct": null,
+      "reason": "Initial portfolio — momentum screen", "type": "initial"
+    }
+  ]
+}

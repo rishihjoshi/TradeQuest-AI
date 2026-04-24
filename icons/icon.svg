@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="80" fill="#0B0B0B"/>
+  <polyline points="64,360 148,260 232,300 316,172 400,132"
+    stroke="#D4AF37" stroke-width="22" fill="none"
+    stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="400" cy="132" r="18" fill="#22FF88"/>
+  <circle cx="148" cy="260" r="10" fill="#D4AF37" opacity="0.6"/>
+  <circle cx="316" cy="172" r="10" fill="#D4AF37" opacity="0.6"/>
+  <text x="256" y="468" font-family="system-ui, -apple-system, sans-serif"
+    font-size="72" font-weight="700" text-anchor="middle"
+    letter-spacing="-2" fill="#D4AF37">TQ</text>
+</svg>
