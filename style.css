@@ -31,16 +31,17 @@ body {
 
 /* ── Layout ────────────────────────────────────────────────── */
 #app {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 }
 
 .main {
-  padding: var(--gap) max(var(--gap), calc((100vw - 1400px) / 2));
+  flex: 1;                    /* fills remaining viewport height */
+  padding: 0;                 /* tab panels own their own padding */
   display: flex;
   flex-direction: column;
-  gap: var(--gap);
+  gap: 0;
 }
 
 /* ── Header ────────────────────────────────────────────────── */
@@ -286,7 +287,8 @@ body {
 
 /* ── Tables ────────────────────────────────────────────────── */
 .table-wrapper {
-  overflow: auto;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* smooth momentum scroll on iOS */
   flex: 1;
 }
 
@@ -688,14 +690,44 @@ body {
 }
 
 @media (max-width: 640px) {
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .header { padding: 10px var(--gap); }
-  .main { padding: var(--gap); }
-  .footer { flex-direction: column; align-items: flex-start; gap: 4px; }
+  :root { --gap: 12px; }
+  .stats-grid    { grid-template-columns: repeat(2, 1fr); }
+  .header        { padding: 10px var(--gap); }
+  .footer        { flex-direction: column; align-items: flex-start; gap: 4px; }
+
+  /* Tab panel padding reduced on mobile */
+  .tab-panel.active { padding: var(--gap); padding-bottom: calc(var(--gap) * 2); }
+
+  /* Tables — horizontal scroll rather than overflow/cramp */
+  .data-table { font-size: 0.72rem; }
+  .data-table th, .data-table td { padding: 8px 6px; white-space: nowrap; }
+
+  /* Trade log: hide Shares, Price, Value columns — keep Date/Action/Symbol/Reason */
+  #tradesTbody tr td:nth-child(4),
+  #tradesTbody tr td:nth-child(5),
+  #tradesTbody tr td:nth-child(6),
+  table:has(#tradesTbody) thead th:nth-child(4),
+  table:has(#tradesTbody) thead th:nth-child(5),
+  table:has(#tradesTbody) thead th:nth-child(6) { display: none; }
+
+  /* Holdings: hide momentum bar and rank columns */
+  #holdingsTbody tr td:nth-child(4),
+  #holdingsTbody tr td:nth-child(5),
+  table:has(#holdingsTbody) thead th:nth-child(4),
+  table:has(#holdingsTbody) thead th:nth-child(5) { display: none; }
+
+  /* Strategy card: tighten up */
+  .strategy-card { font-size: 0.78rem; }
+  .sell-rules ul { padding-left: 14px; }
+
+  /* Agent summary bar: 2-up grid */
+  .agent-summary-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .agent-summary-stat:last-child { grid-column: 1 / -1; }
 }
 
 @media (max-width: 380px) {
   .stats-grid { grid-template-columns: 1fr; }
+  .agent-summary-bar { grid-template-columns: 1fr; }
 }
 
 /* ── Tab Navigation ─────────────────────────────────────────── */
@@ -733,12 +765,21 @@ body {
 .tab:hover:not(.active) { color: var(--text); }
 .tab.active             { color: var(--gold); border-bottom-color: var(--gold); }
 
-.tab-panel              { display: none; }
-.tab-panel.active       { display: block; }
+.tab-panel { display: none; }
+
+/* Active panel behaves like the old .main — flex column with gap and padding */
+.tab-panel.active {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  padding: var(--gap) max(var(--gap), calc((100vw - 1400px) / 2));
+  padding-bottom: calc(var(--gap) * 2);
+}
 
 /* ── Agent Panel (Tab 2) ────────────────────────────────────── */
 .agent-panel {
-  padding: var(--gap) max(var(--gap), calc((100vw - 1400px) / 2));
+  padding: 0;   /* padding comes from .tab-panel.active */
+  width: 100%;
 }
 
 .agent-summary-bar {
