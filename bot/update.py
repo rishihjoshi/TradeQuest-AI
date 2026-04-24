@@ -8,12 +8,14 @@ Run directly or via GitHub Actions on a schedule.
 
 import json
 import math
+import os
 import sys
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
+import requests
 import yfinance as yf
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -22,11 +24,22 @@ INITIAL_CAPITAL = 100_000
 TARGET_N = 17          # target number of holdings (15-20)
 CANDIDATES_CAP = 60    # max tickers to fetch fundamentals for
 
+# Alpaca credentials — injected via GitHub Actions secrets, never hardcoded
+ALPACA_API_KEY    = os.environ.get("ALPACA_API_KEY", "")
+ALPACA_SECRET_KEY = os.environ.get("ALPACA_SECRET_KEY", "")
+ALPACA_BASE_URL   = os.environ.get("ALPACA_BASE_URL", "https://paper-api.alpaca.markets")
+
 
 # ── Universe ─────────────────────────────────────────────────
 def get_sp500_tickers() -> list[str]:
     try:
-        table = pd.read_html("https://en.wikipedia.org/wiki/List_of_S%26P_500_companies")[0]
+        resp = requests.get(
+            "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies",
+            timeout=30,
+            headers={"User-Agent": "TradeQuestBot/2.0 (paper-trading; github-actions)"},
+        )
+        resp.raise_for_status()
+        table = pd.read_html(resp.text)[0]
         return table["Symbol"].str.replace(".", "-", regex=False).tolist()
     except Exception as e:
         print(f"Warning: could not fetch S&P 500 list ({e}). Using fallback.", file=sys.stderr)
@@ -299,7 +312,8 @@ def main():
     # 3. Screen
     vol_90th   = float(vol30.quantile(0.90))
     mom_score  = (mom6.rank(pct=True) + mom12.rank(pct=True)) / 2
-    candidates = (mom_score[mom_score > 0.70 & (vol30 < vol_90th)]
+    # Parentheses are required: & has higher precedence than >
+    candidates = (mom_score[(mom_score > 0.70) & (vol30 < vol_90th)]
                   .sort_values(ascending=False)
                   .index.tolist()[:CANDIDATES_CAP])
 

@@ -2,6 +2,7 @@
 
 const DATA_URL = './data/portfolio.json';
 const REFRESH_MS = 5 * 60 * 1000;
+const FETCH_TIMEOUT_MS = 15_000;
 
 // ── Helpers ──────────────────────────────────────────────────
 const $ = id => document.getElementById(id);
@@ -10,12 +11,24 @@ const fmtK = v => '$' + (Math.abs(v) / 1000).toFixed(1) + 'k';
 const fmtPct = (v, sign = true) => (sign && v > 0 ? '+' : '') + v.toFixed(2) + '%';
 const fmtDate = s => {
   const d = new Date(s);
-  return isNaN(d) ? s : d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: '2-digit' });
+  // isNaN check protects against non-date strings being passed through unsanitized
+  return isNaN(d) ? sanitize(String(s)) : d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: '2-digit' });
 };
+
+// Escapes untrusted strings before inserting via innerHTML
+function sanitize(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;');
+}
 
 function colorClass(v) { return v > 0 ? 'profit-cell' : v < 0 ? 'loss-cell' : 'muted-cell'; }
 function signedHtml(value, formatted) {
   const cls = colorClass(value);
+  // formatted is produced by fmt*/fmtPct which only emit digits, $, +, -, %, . — no sanitization needed
   return `<span class="${cls}">${formatted}</span>`;
 }
 
@@ -35,13 +48,17 @@ class TradeQuestApp {
   }
 
   async load() {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
     try {
-      const res = await fetch(`${DATA_URL}?_=${Date.now()}`);
+      const res = await fetch(`${DATA_URL}?_=${Date.now()}`, { signal: controller.signal });
+      clearTimeout(timer);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       this.data = await res.json();
       this.render();
     } catch (err) {
-      this.showError(err.message);
+      clearTimeout(timer);
+      this.showError(err.name === 'AbortError' ? 'Request timed out' : err.message);
     }
   }
 
@@ -187,11 +204,14 @@ class TradeQuestApp {
     const rows = holdings.map(h => {
       const momPct = Math.min(100, (h.momentum_6m / maxMom) * 100);
       const rankCls = h.momentum_rank <= 5 ? 'top5' : '';
+      const sym    = sanitize(h.symbol);
+      const sector = sanitize(h.sector);
+      const rank   = Number.isFinite(h.momentum_rank) ? h.momentum_rank : '—';
       return `
         <tr>
           <td>
-            <span class="sym">${h.symbol}</span>
-            <span class="sector-tag">${h.sector}</span>
+            <span class="sym">${sym}</span>
+            <span class="sector-tag">${sector}</span>
           </td>
           <td>${fmt$(h.market_value)}</td>
           <td class="${colorClass(h.pnl_pct)}">${fmtPct(h.pnl_pct)}</td>
@@ -205,7 +225,7 @@ class TradeQuestApp {
               </span>
             </div>
           </td>
-          <td><span class="rank-num ${rankCls}">${h.momentum_rank}</span></td>
+          <td><span class="rank-num ${rankCls}">${rank}</span></td>
         </tr>`;
     }).join('');
 
@@ -222,15 +242,21 @@ class TradeQuestApp {
       const pnlHtml = t.pnl !== null
         ? `<span class="${colorClass(t.pnl)}">${t.pnl >= 0 ? '+' : ''}${fmt$(t.pnl)}</span>`
         : `<span class="muted-cell">—</span>`;
+      // action is always BUY/SELL from our own bot — sanitize defensively
+      const action = sanitize(t.action).toUpperCase();
+      const actionCls = action === 'BUY' ? 'buy' : action === 'SELL' ? 'sell' : 'buy';
+      const sym    = sanitize(t.symbol);
+      const reason = sanitize(t.reason);
+      const shares = Number.isFinite(t.shares) ? t.shares : '—';
       return `
         <tr>
           <td class="muted-cell">${fmtDate(t.date)}</td>
-          <td><span class="action-badge action-${t.action.toLowerCase()}">${t.action}</span></td>
-          <td><span class="sym">${t.symbol}</span></td>
-          <td class="muted-cell">${t.shares}</td>
+          <td><span class="action-badge action-${actionCls}">${action}</span></td>
+          <td><span class="sym">${sym}</span></td>
+          <td class="muted-cell">${shares}</td>
           <td class="muted-cell">${fmt$(t.price)}</td>
           <td>${fmt$(t.value)}</td>
-          <td class="reason-cell" title="${t.reason}">${t.reason}</td>
+          <td class="reason-cell" title="${reason}">${reason}</td>
         </tr>`;
     }).join('');
 
@@ -244,18 +270,23 @@ class TradeQuestApp {
     const filters = $('strategyFilters');
     filters.innerHTML = Object.values(filter_status).map(f => {
       const ratio = f.passing / f.total;
+      // statusCls is derived from a computed ratio — not from JSON text
       const statusCls = ratio === 1 ? 'pass' : ratio >= 0.8 ? 'warn' : 'fail';
       const icon = ratio === 1 ? '✓' : ratio >= 0.8 ? '!' : '✗';
+      const label = sanitize(f.label);
+      const desc  = sanitize(f.description);
+      const pNum  = Number.isFinite(f.passing) ? f.passing : 0;
+      const tNum  = Number.isFinite(f.total)   ? f.total   : 0;
       return `
         <div class="filter-row">
           <div class="filter-top">
             <div class="filter-label">
               <div class="filter-icon ${statusCls}">${icon}</div>
-              ${f.label}
+              ${label}
             </div>
-            <span class="filter-count">${f.passing}/${f.total}</span>
+            <span class="filter-count">${pNum}/${tNum}</span>
           </div>
-          <div class="filter-desc">${f.description}</div>
+          <div class="filter-desc">${desc}</div>
           <div class="filter-bar-track">
             <div class="filter-bar-fill ${statusCls}"
               style="width:${(ratio * 100).toFixed(0)}%"></div>
@@ -264,26 +295,30 @@ class TradeQuestApp {
     }).join('');
 
     const ri = meta.regime_indicators;
+    // Numeric values coerced with toFixed — no sanitization needed
+    // Text fields (description, ma200_trend) are sanitized
+    const regimeDesc  = sanitize(ri.description);
+    const trendLabel  = sanitize(ri.ma200_trend);
     $('regimeDetail').innerHTML = `
       <div class="regime-grid">
         <div class="regime-stat">
           <span class="regime-stat-label">VIX</span>
-          <span class="regime-stat-value">${ri.vix}</span>
+          <span class="regime-stat-value">${Number(ri.vix).toFixed(1)}</span>
         </div>
         <div class="regime-stat">
           <span class="regime-stat-label">Breadth</span>
-          <span class="regime-stat-value">${(meta.regime_indicators.breadth_pct * 100).toFixed(0)}% above 200-MA</span>
+          <span class="regime-stat-value">${(Number(ri.breadth_pct) * 100).toFixed(0)}% above 200-MA</span>
         </div>
         <div class="regime-stat">
           <span class="regime-stat-label">Trend</span>
-          <span class="regime-stat-value" style="text-transform:capitalize">${ri.ma200_trend}</span>
+          <span class="regime-stat-value" style="text-transform:capitalize">${trendLabel}</span>
         </div>
         <div class="regime-stat">
           <span class="regime-stat-label">Equity exposure</span>
-          <span class="regime-stat-value">${(meta.equity_exposure * 100).toFixed(0)}%</span>
+          <span class="regime-stat-value">${(Number(meta.equity_exposure) * 100).toFixed(0)}%</span>
         </div>
       </div>
-      <div class="regime-desc">${ri.description}</div>`;
+      <div class="regime-desc">${regimeDesc}</div>`;
   }
 
   // ── Error ─────────────────────────────────────────────────
@@ -295,7 +330,7 @@ class TradeQuestApp {
     el.innerHTML = `
       <div class="error-icon">⚠</div>
       <p>Failed to load portfolio data</p>
-      <p style="color:var(--muted);font-size:0.72rem;margin-top:4px">${msg}</p>
+      <p style="color:var(--muted);font-size:0.72rem;margin-top:4px">${sanitize(msg)}</p>
       <button onclick="app.load()" style="
         margin-top:14px;padding:7px 18px;
         background:var(--surface);border:1px solid var(--border);

@@ -10,14 +10,16 @@ jobs:
   update:
     runs-on: ubuntu-latest
     permissions:
-      contents: write   # needed to push the updated JSON
+      contents: write   # scoped to this repo only; no other permissions granted
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        # Pinned to commit SHA for supply-chain safety (v4.2.2)
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        # Pinned to commit SHA for supply-chain safety (v5.3.0)
+        uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b
         with:
           python-version: '3.12'
           cache: pip
@@ -27,6 +29,12 @@ jobs:
         run: pip install -r bot/requirements.txt
 
       - name: Run portfolio updater
+        env:
+          # Alpaca paper-trading credentials — set these in:
+          # GitHub → Settings → Secrets and variables → Actions → New repository secret
+          ALPACA_API_KEY:    ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          ALPACA_BASE_URL:   ${{ secrets.ALPACA_BASE_URL }}
         run: python bot/update.py
 
       - name: Commit and push if data changed
