@@ -555,6 +555,116 @@ body {
   flex-wrap: wrap;
 }
 
+/* ── Agent Log ─────────────────────────────────────────────── */
+.agent-log-card { grid-column: 1 / -1; }
+
+.agent-run-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+  overflow: auto;
+  max-height: 480px;
+}
+
+.agent-run {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: background 0.15s;
+}
+
+.agent-run:last-child { border-bottom: none; }
+.agent-run:hover { background: var(--surface2); }
+
+.agent-run-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.run-type-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+.run-type-badge.day_start  { background: rgba(59,130,246,0.12); color: #60A5FA; border: 1px solid rgba(59,130,246,0.3); }
+.run-type-badge.day_end    { background: var(--gold-dim);        color: var(--gold);  border: 1px solid rgba(212,175,55,0.3); }
+.run-type-badge.monthly    { background: rgba(167,139,250,0.12); color: #A78BFA; border: 1px solid rgba(167,139,250,0.3); }
+
+.run-time { font-size: 0.72rem; color: var(--muted); }
+.run-summary { font-size: 0.8rem; color: var(--text); font-weight: 500; flex: 1; }
+
+.run-regime {
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.run-regime.bull     { color: var(--profit); background: var(--profit-bg); }
+.run-regime.bear     { color: var(--loss);   background: var(--loss-bg); }
+.run-regime.sideways { color: var(--gold);   background: var(--gold-dim); }
+.run-regime.unknown  { color: var(--muted);  background: var(--surface2); }
+
+.run-assessment {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.run-flags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.flag-chip {
+  font-size: 0.68rem;
+  background: rgba(255,77,77,0.1);
+  color: var(--loss);
+  border: 1px solid rgba(255,77,77,0.25);
+  border-radius: 3px;
+  padding: 2px 7px;
+}
+
+.run-decisions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.decision-chip {
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.decision-chip.SELL  { background: var(--loss-bg);   color: var(--loss);   border: 1px solid rgba(255,77,77,0.3); }
+.decision-chip.BUY   { background: var(--profit-bg); color: var(--profit); border: 1px solid rgba(34,255,136,0.3); }
+.decision-chip.HOLD  { background: var(--surface2);  color: var(--muted);  border: 1px solid var(--border); }
+.decision-chip.WATCH { background: var(--gold-dim);  color: var(--gold);   border: 1px solid rgba(212,175,55,0.3); }
+
+.agent-empty {
+  padding: 40px 18px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
 /* ── Animations ────────────────────────────────────────────── */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }
