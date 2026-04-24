@@ -3,3 +3,4 @@ pandas>=2.2
 numpy>=1.26
 lxml>=5.0
 requests>=2.32
+alpaca-py>=0.29

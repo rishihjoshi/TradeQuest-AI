@@ -30,11 +30,10 @@ jobs:
 
       - name: Run portfolio updater
         env:
-          # Alpaca paper-trading credentials — set these in:
-          # GitHub → Settings → Secrets and variables → Actions → New repository secret
-          ALPACA_API_KEY:    ${{ secrets.ALPACA_API_KEY }}
-          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
-          ALPACA_BASE_URL:   ${{ secrets.ALPACA_BASE_URL }}
+          ALPACA_ACCOUNT_NAME: ${{ secrets.ALPACA_ACCOUNT_NAME }}
+          ALPACA_API_KEY:      ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY:   ${{ secrets.ALPACA_SECRET_KEY }}
+          ALPACA_BASE_URL:     ${{ secrets.ALPACA_BASE_URL }}
         run: python bot/update.py
 
       - name: Commit and push if data changed

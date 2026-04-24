@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """TradeQuest AI — portfolio updater bot.
 
-Fetches S&P 500 data from Yahoo Finance, screens using the momentum strategy,
-reconciles against the current portfolio, and writes data/portfolio.json.
-Run directly or via GitHub Actions on a schedule.
+Two modes:
+  Alpaca mode  — Alpaca credentials present: reads real paper-trading positions
+                 and account data, places real paper orders on rebalance days.
+  Simulation   — No credentials: simulates portfolio from yfinance data.
+
+Market data always comes from Yahoo Finance (yfinance).
 """
 
 import json
@@ -24,10 +27,155 @@ INITIAL_CAPITAL = 100_000
 TARGET_N = 17          # target number of holdings (15-20)
 CANDIDATES_CAP = 60    # max tickers to fetch fundamentals for
 
-# Alpaca credentials — injected via GitHub Actions secrets, never hardcoded
-ALPACA_API_KEY    = os.environ.get("ALPACA_API_KEY", "")
-ALPACA_SECRET_KEY = os.environ.get("ALPACA_SECRET_KEY", "")
-ALPACA_BASE_URL   = os.environ.get("ALPACA_BASE_URL", "https://paper-api.alpaca.markets")
+# Alpaca credentials — read from env vars injected by GitHub Actions secrets
+# Never hardcode these values here
+ALPACA_ACCOUNT_NAME = os.environ.get("ALPACA_ACCOUNT_NAME", "TradeQuest Paper")
+ALPACA_API_KEY      = os.environ.get("ALPACA_API_KEY", "")
+ALPACA_SECRET_KEY   = os.environ.get("ALPACA_SECRET_KEY", "")
+ALPACA_BASE_URL     = os.environ.get("ALPACA_BASE_URL", "https://paper-api.alpaca.markets")
+
+
+# ── Alpaca integration ────────────────────────────────────────
+
+def _alpaca_client():
+    """Return a TradingClient or None if credentials are missing."""
+    if not ALPACA_API_KEY or not ALPACA_SECRET_KEY:
+        print("No Alpaca credentials — running in simulation mode.")
+        return None
+    try:
+        from alpaca.trading.client import TradingClient
+        client = TradingClient(ALPACA_API_KEY, ALPACA_SECRET_KEY, paper=True)
+        print(f"Alpaca connected — account: {ALPACA_ACCOUNT_NAME}")
+        return client
+    except Exception as e:
+        print(f"Warning: Alpaca connection failed ({e}). Falling back to simulation.", file=sys.stderr)
+        return None
+
+
+def alpaca_read_state(client) -> dict | None:
+    """Fetch account summary, open positions, and recent closed orders."""
+    try:
+        from alpaca.trading.requests import GetOrdersRequest
+        from alpaca.trading.enums import QueryOrderStatus
+
+        account   = client.get_account()
+        positions = client.get_all_positions()
+        orders    = client.get_orders(GetOrdersRequest(
+            status=QueryOrderStatus.CLOSED, limit=50
+        ))
+        return {
+            "portfolio_value": float(account.portfolio_value),
+            "cash":            float(account.cash),
+            "positions":       positions,
+            "orders":          orders,
+        }
+    except Exception as e:
+        print(f"Warning: Alpaca state fetch failed ({e}).", file=sys.stderr)
+        return None
+
+
+def alpaca_positions_to_holdings(positions, fundamentals: dict,
+                                  screened_ranks: dict, vol30: "pd.Series") -> list[dict]:
+    """Map Alpaca Position objects → portfolio.json holdings format."""
+    holdings = []
+    for pos in positions:
+        sym      = pos.symbol
+        fi       = fundamentals.get(sym, {})
+        price    = float(pos.current_price   or 0)
+        avg_cost = float(pos.avg_entry_price or 0)
+        shares   = float(pos.qty             or 0)
+        mv       = float(pos.market_value    or 0)
+        upnl     = float(pos.unrealized_pl   or 0)
+        upnl_pct = float(pos.unrealized_plpc or 0) * 100
+        ma50     = fi.get("ma_50d", 0)
+        rank_info = screened_ranks.get(sym, {})
+
+        holdings.append({
+            "symbol":         sym,
+            "name":           fi.get("name", sym),
+            "sector":         fi.get("sector", "Unknown"),
+            "shares":         shares,
+            "avg_cost":       round(avg_cost, 2),
+            "current_price":  round(price, 2),
+            "market_value":   round(mv, 2),
+            "weight":         0,   # recalculated below in reconcile/main
+            "pnl":            round(upnl, 2),
+            "pnl_pct":        round(upnl_pct, 2),
+            "eps_growth":     fi.get("eps_growth", 0),
+            "revenue_growth": fi.get("revenue_growth", 0),
+            "forward_pe":     fi.get("forward_pe", 0),
+            "volatility_30d": round(float(vol30.get(sym, 0)), 4),
+            "entry_date":     datetime.now().strftime("%Y-%m-%d"),
+            "ma_50d":         ma50,
+            "status":         "above_ma" if price > ma50 else "below_ma",
+            "momentum_rank":  rank_info.get("rank", 0),
+            "momentum_6m":    round(rank_info.get("mom_6m", 0), 4),
+            "momentum_12m":   round(rank_info.get("mom_12m", 0), 4),
+        })
+    return holdings
+
+
+def alpaca_orders_to_trades(orders) -> list[dict]:
+    """Map Alpaca Order objects → portfolio.json trades format."""
+    trades = []
+    for o in orders:
+        filled_qty = float(o.filled_qty or 0)
+        if filled_qty == 0:
+            continue
+        fill_price = float(o.filled_avg_price or 0)
+        filled_at  = o.filled_at
+        date_str   = filled_at.strftime("%Y-%m-%d") if filled_at else str(o.created_at)[:10]
+        action     = "BUY" if str(o.side).endswith("buy") else "SELL"
+        trades.append({
+            "id":       f"ALP-{str(o.id)[:8].upper()}",
+            "date":     date_str,
+            "action":   action,
+            "symbol":   o.symbol,
+            "name":     o.symbol,
+            "shares":   filled_qty,
+            "price":    round(fill_price, 2),
+            "value":    round(filled_qty * fill_price, 2),
+            "pnl":      None,
+            "pnl_pct":  None,
+            "reason":   "Alpaca paper trade — momentum rebalance",
+            "type":     "market",
+        })
+    return trades
+
+
+def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple]) -> list[tuple]:
+    """Submit market orders to Alpaca paper trading. Sells first to free cash."""
+    from alpaca.trading.requests import MarketOrderRequest
+    from alpaca.trading.enums import OrderSide, TimeInForce
+
+    placed = []
+    for sym, shares in to_sell:
+        qty = max(1, int(shares))
+        try:
+            client.submit_order(MarketOrderRequest(
+                symbol=sym, qty=qty,
+                side=OrderSide.SELL,
+                time_in_force=TimeInForce.DAY,
+            ))
+            print(f"  ↓ SELL {qty:>5} {sym}")
+            placed.append(("SELL", sym, qty))
+        except Exception as e:
+            print(f"  ✗ SELL {sym}: {e}", file=sys.stderr)
+
+    for sym, shares in to_buy:
+        qty = max(1, int(shares))
+        try:
+            client.submit_order(MarketOrderRequest(
+                symbol=sym, qty=qty,
+                side=OrderSide.BUY,
+                time_in_force=TimeInForce.DAY,
+            ))
+            print(f"  ↑ BUY  {qty:>5} {sym}")
+            placed.append(("BUY", sym, qty))
+        except Exception as e:
+            print(f"  ✗ BUY  {sym}: {e}", file=sys.stderr)
+
+    return placed
 
 
 # ── Universe ─────────────────────────────────────────────────
@@ -340,64 +488,129 @@ def main():
 
     print(f"Screened: {len(screened)} pass all filters. Targeting {TARGET_N}.")
 
+    # Build a rank lookup so Alpaca positions can be annotated with momentum scores
+    screened_ranks = {
+        s["symbol"]: {
+            "rank":    s["momentum_rank"],
+            "mom_6m":  s.get("momentum_6m", 0),
+            "mom_12m": s.get("momentum_12m", 0),
+        }
+        for s in screened
+    }
+
     # 4. Regime
     regime_info = detect_regime(spy)
 
-    # 5. Reconcile portfolio
-    current_pv = sum(
-        h["shares"] * (fundamentals.get(h["symbol"], {}).get("current_price") or h.get("current_price", h["avg_cost"]))
-        for h in existing_holdings
-    ) + cash
+    # ── 5a. Alpaca mode (real paper-trading account) ───────────
+    client      = _alpaca_client()
+    alpaca_state = alpaca_read_state(client) if client else None
 
-    new_holdings, new_trades, cash = reconcile(
-        screened, fundamentals, existing_holdings, cash, current_pv
-    )
+    if alpaca_state:
+        print("Alpaca mode — reading live paper positions and placing orders.")
 
-    # Assign IDs and prepend new trades
-    base = len(existing_trades)
-    for i, t in enumerate(new_trades):
-        t["id"] = f"T{base + len(new_trades) - i:03d}"
-    all_trades = new_trades + existing_trades
+        # Current Alpaca positions → holdings
+        new_holdings = alpaca_positions_to_holdings(
+            alpaca_state["positions"], fundamentals, screened_ranks, vol30
+        )
 
-    # 6. Summary + equity curve
-    pv      = sum(h["market_value"] for h in new_holdings) + cash
-    summary = compute_summary(new_holdings, cash, data.get("summary"), all_trades)
-    curve   = update_equity_curve(data.get("equity_curve", []), pv)
+        # Determine rebalance orders: sell positions not in screened top-N, buy new entrants
+        current_syms = {h["symbol"] for h in new_holdings}
+        target_syms  = {s["symbol"] for s in screened[:TARGET_N]}
+        to_sell_syms = current_syms - target_syms
+        to_buy_syms  = target_syms  - current_syms
 
-    # 7. Filter status
+        to_sell = [
+            (h["symbol"], h["shares"])
+            for h in new_holdings if h["symbol"] in to_sell_syms
+        ]
+        cash    = alpaca_state["cash"]
+        pv      = alpaca_state["portfolio_value"]
+        target_per = pv / TARGET_N if TARGET_N else 0
+        to_buy  = [
+            (sym, max(1, int(target_per / fundamentals.get(sym, {}).get("current_price", 1))))
+            for sym in to_buy_syms
+            if fundamentals.get(sym, {}).get("current_price", 0) > 0
+        ]
+
+        if to_sell or to_buy:
+            print(f"Rebalance: {len(to_sell)} sells, {len(to_buy)} buys")
+            alpaca_place_orders(client, to_sell, to_buy)
+        else:
+            print("No rebalance needed today.")
+
+        # Trades from Alpaca order history
+        all_trades = alpaca_orders_to_trades(alpaca_state["orders"])
+
+        # Recalculate weights on current holdings
+        total_mv = sum(h["market_value"] for h in new_holdings)
+        denom    = total_mv + cash or 1
+        for h in new_holdings:
+            h["weight"] = round(h["market_value"] / denom, 4)
+
+        summary = compute_summary(new_holdings, cash, data.get("summary"), all_trades)
+
+    # ── 5b. Simulation mode (no Alpaca credentials) ────────────
+    else:
+        print("Simulation mode — estimating portfolio from yfinance data.")
+
+        current_pv = sum(
+            h["shares"] * (fundamentals.get(h["symbol"], {}).get("current_price")
+                           or h.get("current_price", h["avg_cost"]))
+            for h in existing_holdings
+        ) + cash
+
+        new_holdings, new_trades, cash = reconcile(
+            screened, fundamentals, existing_holdings, cash, current_pv
+        )
+
+        base = len(existing_trades)
+        for i, t in enumerate(new_trades):
+            t["id"] = f"T{base + len(new_trades) - i:03d}"
+        all_trades = new_trades + existing_trades
+
+        pv      = sum(h["market_value"] for h in new_holdings) + cash
+        summary = compute_summary(new_holdings, cash, data.get("summary"), all_trades)
+
+    # ── 6. Equity curve ────────────────────────────────────────
+    curve = update_equity_curve(data.get("equity_curve", []), pv)
+
+    # ── 7. Filter status ───────────────────────────────────────
     nh = len(new_holdings)
     filter_status = {
-        "momentum":   {"label": "Momentum",  "description": "Top 30% by 6M & 12M return",              "passing": nh, "total": nh, "threshold": "Top 30%"},
-        "quality":    {"label": "Quality",   "description": "EPS growth >10%, Revenue growth >8%",      "passing": min(quality_pass, nh), "total": nh, "threshold": "EPS >10% & Rev >8%"},
-        "valuation":  {"label": "Valuation", "description": "Forward P/E <40 or top 70% by sector",     "passing": min(valuation_pass, nh), "total": nh, "threshold": "Fwd P/E <40"},
-        "risk":       {"label": "Risk",      "description": "Volatility below 90th percentile",          "passing": nh, "total": nh, "threshold": "Vol < 90th pct"},
+        "momentum":  {"label": "Momentum",  "description": "Top 30% by 6M & 12M return",         "passing": nh, "total": nh, "threshold": "Top 30%"},
+        "quality":   {"label": "Quality",   "description": "EPS growth >10%, Revenue growth >8%", "passing": min(quality_pass, nh), "total": nh, "threshold": "EPS >10% & Rev >8%"},
+        "valuation": {"label": "Valuation", "description": "Forward P/E <40 or top 70% by sector","passing": min(valuation_pass, nh), "total": nh, "threshold": "Fwd P/E <40"},
+        "risk":      {"label": "Risk",      "description": "Volatility below 90th percentile",    "passing": nh, "total": nh, "threshold": "Vol < 90th pct"},
     }
 
-    # 8. Write
+    # ── 8. Write portfolio.json ────────────────────────────────
     today      = datetime.now().strftime("%Y-%m-%d")
     next_month = (datetime.now().replace(day=1) + timedelta(days=32)).replace(day=1).strftime("%Y-%m-%d")
     output = {
         "meta": {
             **data.get("meta", {}),
-            "strategy": "TradeQuest AI Momentum Strategy v2.0",
-            "universe": "S&P 500",
+            "strategy":       "TradeQuest AI Momentum Strategy v2.0",
+            "universe":       "S&P 500",
+            "account_name":   ALPACA_ACCOUNT_NAME,
+            "mode":           "alpaca" if alpaca_state else "simulation",
             "initial_capital": INITIAL_CAPITAL,
             "last_rebalance": today,
             "next_rebalance": next_month,
             **regime_info,
         },
-        "summary":      summary,
+        "summary":       summary,
         "filter_status": filter_status,
-        "equity_curve": curve,
-        "holdings":     new_holdings,
-        "trades":       all_trades[:50],
+        "equity_curve":  curve,
+        "holdings":      new_holdings,
+        "trades":        all_trades[:50],
     }
 
     DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
     with open(DATA_FILE, "w") as f:
         json.dump(output, f, indent=2)
 
-    print(f"Done. Value: ${pv:,.2f} | Holdings: {len(new_holdings)} | Cash: ${cash:,.2f}")
+    mode_label = f"Alpaca ({ALPACA_ACCOUNT_NAME})" if alpaca_state else "Simulation"
+    print(f"Done [{mode_label}]. Value: ${pv:,.2f} | Holdings: {nh} | Cash: ${cash:,.2f}")
 
 
 if __name__ == "__main__":
