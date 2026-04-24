@@ -572,11 +572,16 @@ body {
 .agent-run {
   padding: 14px 18px;
   border-bottom: 1px solid var(--border);
+  border-left: 3px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 8px;
   transition: background 0.15s;
 }
+
+.agent-run.type-day_start { border-left-color: #60A5FA; }
+.agent-run.type-day_end   { border-left-color: var(--gold); }
+.agent-run.type-monthly   { border-left-color: #A78BFA; }
 
 .agent-run:last-child { border-bottom: none; }
 .agent-run:hover { background: var(--surface2); }
@@ -663,6 +668,54 @@ body {
 .agent-empty {
   padding: 40px 18px;
   text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+/* New agent classes */
+.run-headline {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.run-assess {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.55;
+}
+
+.run-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.agent-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 48px 24px;
+  gap: 12px;
+}
+
+.agent-empty-icon  { font-size: 2.5rem; }
+.agent-empty-title { font-size: 1rem; font-weight: 700; color: var(--text); }
+.agent-empty-body  {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 380px;
+}
+.agent-empty-body ul { text-align: left; padding-left: 16px; }
+
+.empty-cell {
+  text-align: center;
+  padding: 32px !important;
   color: var(--muted);
   font-size: 0.8rem;
 }

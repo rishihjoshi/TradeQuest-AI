@@ -137,18 +137,24 @@ class TradeQuestApp {
     const pnlEl = $('totalPnl');
     pnlEl.textContent = (s.total_pnl >= 0 ? '+' : '-') + fmt$(s.total_pnl);
     pnlEl.className = `stat-value ${s.total_pnl >= 0 ? 'profit' : 'loss'}`;
-    $('pnlBreakdown').innerHTML =
-      `<span class="profit-cell">+${fmt$(s.unrealized_pnl)} unrealized</span>`;
+    const unrealLabel = s.total_trades === 0
+      ? '<span class="muted-cell">Awaiting first rebalance</span>'
+      : `<span class="profit-cell">+${fmt$(s.unrealized_pnl)} unrealized</span>`;
+    $('pnlBreakdown').innerHTML = unrealLabel;
 
-    $('winRate').textContent = (s.win_rate * 100).toFixed(1) + '%';
-    $('winLossCount').textContent = `${s.winning_trades}W / ${s.losing_trades}L of ${s.total_trades}`;
+    const winRateNum = Number.isFinite(s.win_rate) ? s.win_rate : 0;
+    $('winRate').textContent = s.total_trades === 0 ? '—' : (winRateNum * 100).toFixed(1) + '%';
+    $('winLossCount').textContent = s.total_trades === 0
+      ? 'No trades yet'
+      : `${s.winning_trades}W / ${s.losing_trades}L of ${s.total_trades}`;
 
-    $('sharpeRatio').textContent = s.sharpe_ratio.toFixed(2);
+    const sharpe = Number.isFinite(s.sharpe_ratio) ? s.sharpe_ratio : 0;
+    $('sharpeRatio').textContent = s.total_trades === 0 ? '—' : sharpe.toFixed(2);
 
     const ddEl = $('maxDrawdown');
-    ddEl.textContent = fmtPct(s.max_drawdown_pct, false);
+    ddEl.textContent = s.total_trades === 0 ? '—' : fmtPct(s.max_drawdown_pct, false);
     ddEl.className = 'stat-value loss';
-    $('cashPct').textContent = `Cash: ${fmt$(s.cash)} (${s.cash_pct.toFixed(1)}%)`;
+    $('cashPct').textContent = `Cash: ${fmt$(s.cash)} (${(Number.isFinite(s.cash_pct) ? s.cash_pct : 0).toFixed(1)}%)`;
   }
 
   // ── Equity Chart ──────────────────────────────────────────
@@ -156,9 +162,18 @@ class TradeQuestApp {
     const { equity_curve, summary } = this.data;
     const ctx = $('equityChart').getContext('2d');
 
-    const returnPct = ((summary.portfolio_value - this.data.meta.initial_capital)
-      / this.data.meta.initial_capital * 100);
+    const returnPct = this.data.meta.initial_capital > 0
+      ? ((summary.portfolio_value - this.data.meta.initial_capital) / this.data.meta.initial_capital * 100)
+      : 0;
     const chartReturn = $('equityReturn');
+
+    if (!equity_curve || equity_curve.length < 2) {
+      chartReturn.textContent = 'Awaiting data';
+      chartReturn.className = 'chart-return card-meta muted-cell';
+      if (this.chart) { this.chart.destroy(); this.chart = null; }
+      return;
+    }
+
     chartReturn.textContent = fmtPct(returnPct) + ' since inception';
     chartReturn.className = `chart-return ${returnPct >= 0 ? 'profit-cell' : 'loss-cell'}`;
 
@@ -232,9 +247,15 @@ class TradeQuestApp {
   // ── Holdings ──────────────────────────────────────────────
   renderHoldings() {
     const { holdings } = this.data;
-    $('holdingsCount').textContent = holdings.length;
+    $('holdingsCount').textContent = holdings.length || 0;
 
-    const maxMom = Math.max(...holdings.map(h => h.momentum_6m));
+    if (!holdings.length) {
+      $('holdingsTbody').innerHTML =
+        `<tr><td colspan="5" class="empty-cell">No positions yet — first rebalance runs May 1</td></tr>`;
+      return;
+    }
+
+    const maxMom = Math.max(...holdings.map(h => h.momentum_6m)) || 1;
 
     const rows = holdings.map(h => {
       const momPct = Math.min(100, (h.momentum_6m / maxMom) * 100);
@@ -270,7 +291,13 @@ class TradeQuestApp {
   // ── Trades ────────────────────────────────────────────────
   renderTrades() {
     const { trades, summary } = this.data;
-    $('totalTradesCount').textContent = `${summary.total_trades} total`;
+    $('totalTradesCount').textContent = `${summary.total_trades || 0} total`;
+
+    if (!trades || !trades.length) {
+      $('tradesTbody').innerHTML =
+        `<tr><td colspan="7" class="empty-cell">No trades recorded yet</td></tr>`;
+      return;
+    }
 
     const recent = trades.slice(0, 15);
     const rows = recent.map(t => {
@@ -304,7 +331,7 @@ class TradeQuestApp {
 
     const filters = $('strategyFilters');
     filters.innerHTML = Object.values(filter_status).map(f => {
-      const ratio = f.passing / f.total;
+      const ratio = f.total > 0 ? f.passing / f.total : 0;
       // statusCls is derived from a computed ratio — not from JSON text
       const statusCls = ratio === 1 ? 'pass' : ratio >= 0.8 ? 'warn' : 'fail';
       const icon = ratio === 1 ? '✓' : ratio >= 0.8 ? '!' : '✗';
@@ -371,27 +398,43 @@ class TradeQuestApp {
       $('agentLastRun').textContent = 'No runs yet';
     }
 
-    if (!runs.length) return;
+    const list = $('agentRunList');
+
+    if (!runs.length) {
+      list.innerHTML = `
+        <div class="agent-empty-state">
+          <div class="agent-empty-icon">&#x23F1;</div>
+          <div class="agent-empty-title">Awaiting first agent run</div>
+          <div class="agent-empty-body">
+            The Claude AI agent runs automatically:
+            <ul>
+              <li><strong>9:00 AM ET</strong> Mon&ndash;Fri &mdash; pre-market flag check</li>
+              <li><strong>4:30 PM ET</strong> Mon&ndash;Fri &mdash; post-close sell/hold decisions</li>
+              <li><strong>4:30 PM ET</strong> 1st of month &mdash; full portfolio rebalance</li>
+            </ul>
+            Tap <strong>&#x25B6; Run workflow</strong> above to trigger immediately.
+          </div>
+        </div>`;
+      return;
+    }
+
+    const TYPE_LABEL = { day_start: 'Day Start', day_end: 'Day End', monthly: 'Monthly' };
 
     const html = runs.map(run => {
-      const TYPE_LABEL = { day_start: 'Day Start', day_end: 'Day End', monthly: 'Monthly' };
-      // agent.py writes field as "type", not "run_type"
       const rawType = run.type || run.run_type || '';
       const runType = sanitize(rawType);
       const regime  = sanitize(run.regime || 'unknown');
       const conf    = Number.isFinite(run.regime_confidence)
-        ? ` · ${(run.regime_confidence * 100).toFixed(0)}% conf` : '';
-      const summary = sanitize(run.summary     || '');
-      const assess  = sanitize(run.assessment  || '');
-      const ts      = fmtDate(run.timestamp    || '');
+        ? ` · ${(run.regime_confidence * 100).toFixed(0)}%` : '';
+      const headline = sanitize(run.summary    || '');
+      const assess   = sanitize(run.assessment || '');
+      const ts       = fmtDate(run.timestamp   || '');
 
-      // All flags — no slice limit in Tab 2
       const flags = (run.flags || []).map(f => {
         const text = typeof f === 'string' ? f : `${f.symbol || ''}: ${f.flag || ''}`;
         return `<span class="flag-chip">${sanitize(text)}</span>`;
       }).join('');
 
-      // All decisions
       const decisions = (run.decisions || []).map(d => {
         const action = sanitize(String(d.action || '').toUpperCase());
         const sym    = sanitize(d.symbol || '');
@@ -401,25 +444,25 @@ class TradeQuestApp {
       }).join('');
 
       const cashHtml = run.cash_action
-        ? `<span class="decision-chip WATCH" style="font-size:0.65rem">CASH: ${sanitize(run.cash_action)}</span>`
+        ? `<span class="decision-chip WATCH">CASH ${sanitize(run.cash_action).toUpperCase()}</span>`
         : '';
 
+      const chipsRow = flags + decisions + cashHtml;
+
       return `
-        <div class="agent-run">
+        <div class="agent-run type-${runType}">
           <div class="agent-run-header">
             <span class="run-type-badge ${runType}">${sanitize(TYPE_LABEL[rawType] || rawType)}</span>
             <span class="run-regime ${regime}">${regime}${conf}</span>
             <span class="run-time">${ts}</span>
           </div>
-          ${assess  ? `<div class="run-assessment">${assess}</div>`  : ''}
-          ${summary ? `<div class="run-summary">${summary}</div>`    : ''}
-          ${flags   ? `<div class="run-flags">${flags}</div>`        : ''}
-          ${(decisions || cashHtml)
-              ? `<div class="run-decisions">${decisions}${cashHtml}</div>` : ''}
+          ${headline ? `<p class="run-headline">${headline}</p>` : ''}
+          ${assess   ? `<p class="run-assess">${assess}</p>`    : ''}
+          ${chipsRow ? `<div class="run-chips-row">${chipsRow}</div>` : ''}
         </div>`;
     }).join('');
 
-    $('agentRunList').innerHTML = html;
+    list.innerHTML = html;
   }
 
   // ── Error ─────────────────────────────────────────────────
