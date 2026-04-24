@@ -7,9 +7,9 @@ const FETCH_TIMEOUT_MS = 15_000;
 
 // ── Helpers ──────────────────────────────────────────────────
 const $ = id => document.getElementById(id);
-const fmt$ = v => '$' + Math.abs(v).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-const fmtK = v => '$' + (Math.abs(v) / 1000).toFixed(1) + 'k';
-const fmtPct = (v, sign = true) => (sign && v > 0 ? '+' : '') + v.toFixed(2) + '%';
+const fmt$ = v => '$' + Math.abs(+v || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const fmtK = v => '$' + (Math.abs(+v || 0) / 1000).toFixed(1) + 'k';
+const fmtPct = (v, sign = true) => { const n = Number.isFinite(+v) ? +v : 0; return (sign && n > 0 ? '+' : '') + n.toFixed(2) + '%'; };
 const fmtDate = s => {
   const d = new Date(s);
   // isNaN check protects against non-date strings being passed through unsanitized
@@ -45,8 +45,22 @@ class TradeQuestApp {
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('./sw.js').catch(() => {});
     }
+    this.setupTabs();
     await this.load();
     setInterval(() => this.load(), REFRESH_MS);
+  }
+
+  setupTabs() {
+    document.querySelectorAll('.tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.tab;
+        document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        const panel = document.getElementById(`panel-${target}`);
+        if (panel) panel.classList.add('active');
+      });
+    });
   }
 
   async load() {
@@ -73,16 +87,26 @@ class TradeQuestApp {
   }
 
   render() {
-    this.renderHeader();
-    this.renderStats();
-    this.renderEquityChart();
-    this.renderHoldings();
-    this.renderTrades();
-    this.renderStrategy();
-    this.renderAgentLog();
+    try {
+      this.renderHeader();
+      this.renderStats();
+      this.renderEquityChart();
+      this.renderHoldings();
+      this.renderTrades();
+      this.renderStrategy();
+    } catch (err) {
+      // Portfolio render failed — show error instead of eternal spinner
+      console.error('Render error:', err);
+      this.showError(err.message || 'Failed to render portfolio data');
+      return;
+    }
+    // Agent log is non-critical — errors here don't block the portfolio tab
+    try { this.renderAgentLog(); } catch (e) { console.warn('Agent log render:', e); }
+
     $('loadingState').hidden = true;
-    $('errorState').hidden = true;
-    $('mainContent').hidden = false;
+    $('errorState').hidden   = true;
+    $('mainContent').hidden  = false;
+    $('tabBar').hidden       = false;
   }
 
   // ── Header ────────────────────────────────────────────────
@@ -337,59 +361,61 @@ class TradeQuestApp {
     const log = this.agentLog || { runs: [] };
     const runs = (log.runs || []).slice().reverse(); // newest first
 
-    $('agentRunCount').textContent = runs.length;
+    $('agentRunCount').textContent = runs.length || '0';
 
     if (log.last_run) {
-      const d = new Date(log.last_run);
-      const typeLabel = { day_start: 'Day Start', day_end: 'Day End', monthly: 'Monthly' };
+      const TYPE_LABEL = { day_start: 'Day Start', day_end: 'Day End', monthly: 'Monthly' };
       $('agentLastRun').textContent =
-        `Last: ${typeLabel[log.last_type] || log.last_type} · ${fmtDate(log.last_run)}`;
+        `${TYPE_LABEL[log.last_type] || log.last_type || '—'} · ${fmtDate(log.last_run)}`;
     } else {
       $('agentLastRun').textContent = 'No runs yet';
     }
 
     if (!runs.length) return;
 
-    const ACTION_COLORS = { SELL: 'SELL', BUY: 'BUY', HOLD: 'HOLD', WATCH: 'WATCH' };
-
     const html = runs.map(run => {
-      const typeLabel = { day_start: 'Day Start', day_end: 'Day End', monthly: 'Monthly' };
-      const runType   = sanitize(run.run_type || '');
-      const regime    = sanitize(run.regime   || 'unknown');
-      const conf      = Number.isFinite(run.regime_confidence)
-        ? `${(run.regime_confidence * 100).toFixed(0)}% conf` : '';
-      const summary   = sanitize(run.summary  || '');
-      const ts        = fmtDate(run.timestamp || '');
+      const TYPE_LABEL = { day_start: 'Day Start', day_end: 'Day End', monthly: 'Monthly' };
+      // agent.py writes field as "type", not "run_type"
+      const rawType = run.type || run.run_type || '';
+      const runType = sanitize(rawType);
+      const regime  = sanitize(run.regime || 'unknown');
+      const conf    = Number.isFinite(run.regime_confidence)
+        ? ` · ${(run.regime_confidence * 100).toFixed(0)}% conf` : '';
+      const summary = sanitize(run.summary     || '');
+      const assess  = sanitize(run.assessment  || '');
+      const ts      = fmtDate(run.timestamp    || '');
 
-      // Flags
-      const flags = (run.flags || []).slice(0, 6).map(f =>
-        `<span class="flag-chip">${sanitize(f.symbol || '')}: ${sanitize(f.flag || '')}</span>`
-      ).join('');
-
-      // Decisions
-      const decisions = (run.decisions || []).slice(0, 8).map(d => {
-        const action = sanitize(String(d.action || '').toUpperCase());
-        const cls    = ACTION_COLORS[action] || 'HOLD';
-        const sym    = sanitize(d.symbol || '');
-        const reason = sanitize(d.reason || '');
-        return `<span class="decision-chip ${cls}" title="${reason}">${action} ${sym}</span>`;
+      // All flags — no slice limit in Tab 2
+      const flags = (run.flags || []).map(f => {
+        const text = typeof f === 'string' ? f : `${f.symbol || ''}: ${f.flag || ''}`;
+        return `<span class="flag-chip">${sanitize(text)}</span>`;
       }).join('');
 
-      // Cash action
+      // All decisions
+      const decisions = (run.decisions || []).map(d => {
+        const action = sanitize(String(d.action || '').toUpperCase());
+        const sym    = sanitize(d.symbol || '');
+        const reason = sanitize(d.reason || '');
+        const cls    = ['SELL','BUY','HOLD','WATCH'].includes(action) ? action : 'HOLD';
+        return `<span class="decision-chip ${cls}" title="${reason}">${action}${sym ? ' ' + sym : ''}</span>`;
+      }).join('');
+
       const cashHtml = run.cash_action
-        ? `<span class="decision-chip ${sanitize(run.cash_action)}" style="font-size:0.65rem">
-             CASH: ${sanitize(run.cash_action)}</span>` : '';
+        ? `<span class="decision-chip WATCH" style="font-size:0.65rem">CASH: ${sanitize(run.cash_action)}</span>`
+        : '';
 
       return `
         <div class="agent-run">
           <div class="agent-run-header">
-            <span class="run-type-badge ${runType}">${sanitize(typeLabel[run.run_type] || runType)}</span>
-            <span class="run-regime ${regime}">${regime}${conf ? ` · ${conf}` : ''}</span>
+            <span class="run-type-badge ${runType}">${sanitize(TYPE_LABEL[rawType] || rawType)}</span>
+            <span class="run-regime ${regime}">${regime}${conf}</span>
             <span class="run-time">${ts}</span>
           </div>
-          ${summary ? `<div class="run-summary">${summary}</div>` : ''}
-          ${flags    ? `<div class="run-flags">${flags}</div>`    : ''}
-          ${(decisions || cashHtml) ? `<div class="run-decisions">${decisions}${cashHtml}</div>` : ''}
+          ${assess  ? `<div class="run-assessment">${assess}</div>`  : ''}
+          ${summary ? `<div class="run-summary">${summary}</div>`    : ''}
+          ${flags   ? `<div class="run-flags">${flags}</div>`        : ''}
+          ${(decisions || cashHtml)
+              ? `<div class="run-decisions">${decisions}${cashHtml}</div>` : ''}
         </div>`;
     }).join('');
 

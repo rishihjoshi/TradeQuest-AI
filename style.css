@@ -697,3 +697,101 @@ body {
 @media (max-width: 380px) {
   .stats-grid { grid-template-columns: 1fr; }
 }
+
+/* ── Tab Navigation ─────────────────────────────────────────── */
+.tab-bar {
+  display: flex;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 max(var(--gap), calc((100vw - 1400px) / 2));
+  position: sticky;
+  top: 52px;          /* sits flush below the header */
+  z-index: 90;
+}
+
+.tab {
+  flex: 1;
+  max-width: 180px;
+  padding: 11px 0;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.tab:hover:not(.active) { color: var(--text); }
+.tab.active             { color: var(--gold); border-bottom-color: var(--gold); }
+
+.tab-panel              { display: none; }
+.tab-panel.active       { display: block; }
+
+/* ── Agent Panel (Tab 2) ────────────────────────────────────── */
+.agent-panel {
+  padding: var(--gap) max(var(--gap), calc((100vw - 1400px) / 2));
+}
+
+.agent-summary-bar {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  padding: 14px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: var(--gap);
+  flex-wrap: wrap;
+}
+
+.agent-summary-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.agent-summary-label {
+  font-size: 0.62rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.agent-summary-value {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.agent-sync-link {
+  font-size: 0.73rem;
+  font-weight: 600;
+  color: var(--gold);
+  text-decoration: none;
+  padding: 5px 12px;
+  border: 1px solid rgba(212,175,55,0.35);
+  border-radius: 5px;
+  background: var(--gold-dim);
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.agent-sync-link:hover { background: rgba(212,175,55,0.22); }
+
+/* Agent panel run list has no max-height — Tab 2 scrolls naturally */
+#panel-agent .agent-run-list { max-height: none; }
+
+@media (max-width: 640px) {
+  .tab-bar { top: 48px; padding: 0 var(--gap); }
+  .tab     { font-size: 0.68rem; padding: 10px 0; }
+  .agent-panel { padding: var(--gap); }
+  .agent-summary-bar { gap: 14px; }
+}

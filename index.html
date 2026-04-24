@@ -60,8 +60,17 @@
   <!-- ── Error ──────────────────────────────────────────── -->
   <div id="errorState" class="error-state" hidden></div>
 
+  <!-- ── Tab Bar ───────────────────────────────────────── -->
+  <nav class="tab-bar" id="tabBar" hidden>
+    <button class="tab active" data-tab="portfolio">◆ Portfolio</button>
+    <button class="tab" data-tab="agent">⚡ Agent</button>
+  </nav>
+
   <!-- ── Main ───────────────────────────────────────────── -->
   <main id="mainContent" class="main" hidden>
+
+    <!-- ── Tab 1: Portfolio ──────────────────────────────── -->
+    <div class="tab-panel active" id="panel-portfolio">
 
     <!-- Stat Cards -->
     <div class="stats-grid">
@@ -175,16 +184,42 @@
 
     </div>
 
-    <!-- Row 3: Agent Log -->
-    <div class="card agent-log-card">
-      <div class="card-header">
-        <h2>Agent Decisions <span class="badge" id="agentRunCount">—</span></h2>
-        <span class="card-meta" id="agentLastRun">Loading…</span>
+    </div><!-- end panel-portfolio -->
+
+    <!-- ── Tab 2: Agent ──────────────────────────────────── -->
+    <div class="tab-panel" id="panel-agent">
+      <div class="agent-panel">
+
+        <div class="agent-summary-bar">
+          <div class="agent-summary-stat">
+            <span class="agent-summary-label">Total Runs</span>
+            <span class="agent-summary-value" id="agentRunCount">—</span>
+          </div>
+          <div class="agent-summary-stat">
+            <span class="agent-summary-label">Last Run</span>
+            <span class="agent-summary-value" id="agentLastRun">—</span>
+          </div>
+          <div class="agent-summary-stat">
+            <span class="agent-summary-label">Model</span>
+            <span class="agent-summary-value">Claude Sonnet 4.6</span>
+          </div>
+          <div class="agent-summary-stat" style="margin-left:auto">
+            <span class="agent-summary-label">Pull latest data</span>
+            <a class="agent-sync-link"
+               href="https://github.com/rishihjoshi/TradeQuest-AI/actions/workflows/update.yml"
+               target="_blank" rel="noopener noreferrer">▶ Run workflow</a>
+          </div>
+        </div>
+
+        <div id="agentRunList" class="agent-run-list">
+          <p class="muted-cell" style="padding:40px;text-align:center;font-size:0.8rem;line-height:1.8">
+            No agent runs yet.<br>
+            Trigger the workflow above or wait for the 4:30 PM ET daily schedule.
+          </p>
+        </div>
+
       </div>
-      <div id="agentRunList" class="agent-run-list">
-        <p class="muted-cell" style="padding:16px;text-align:center;font-size:0.8rem">No agent runs yet.</p>
-      </div>
-    </div>
+    </div><!-- end panel-agent -->
 
   </main>
 
