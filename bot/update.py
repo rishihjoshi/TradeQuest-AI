@@ -1,0 +1,390 @@
+#!/usr/bin/env python3
+"""TradeQuest AI — portfolio updater bot.
+
+Fetches S&P 500 data from Yahoo Finance, screens using the momentum strategy,
+reconciles against the current portfolio, and writes data/portfolio.json.
+Run directly or via GitHub Actions on a schedule.
+"""
+
+import json
+import math
+import sys
+from datetime import datetime, timezone, timedelta
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+import yfinance as yf
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+DATA_FILE = REPO_ROOT / "data" / "portfolio.json"
+INITIAL_CAPITAL = 100_000
+TARGET_N = 17          # target number of holdings (15-20)
+CANDIDATES_CAP = 60    # max tickers to fetch fundamentals for
+
+
+# ── Universe ─────────────────────────────────────────────────
+def get_sp500_tickers() -> list[str]:
+    try:
+        table = pd.read_html("https://en.wikipedia.org/wiki/List_of_S%26P_500_companies")[0]
+        return table["Symbol"].str.replace(".", "-", regex=False).tolist()
+    except Exception as e:
+        print(f"Warning: could not fetch S&P 500 list ({e}). Using fallback.", file=sys.stderr)
+        return [
+            "NVDA", "MSFT", "AAPL", "AMZN", "GOOGL", "META", "AVGO", "TSLA",
+            "LLY", "JPM", "UNH", "XOM", "V", "MA", "COST", "HD", "PG",
+            "ORCL", "JNJ", "ABBV", "CRM", "AMD", "MRK", "NFLX", "NOW",
+            "PANW", "CRWD", "TSM", "CDNS", "GEV", "PLTR", "ARM", "ANET",
+        ]
+
+
+# ── Price data ────────────────────────────────────────────────
+def fetch_prices(tickers: list[str], period: str = "13mo") -> pd.DataFrame:
+    print(f"Downloading price data for {len(tickers)} tickers…")
+    raw = yf.download(tickers, period=period, auto_adjust=True,
+                      progress=False, group_by="ticker", threads=True)
+    if len(tickers) == 1:
+        return pd.DataFrame({tickers[0]: raw["Close"]})
+    close = raw["Close"] if isinstance(raw.columns, pd.MultiIndex) else raw[["Close"]].rename(columns={"Close": tickers[0]})
+    return close.dropna(axis=1, how="all")
+
+
+def calc_momentum(prices: pd.DataFrame):
+    n = len(prices)
+    d6  = min(126, n - 2)
+    d12 = min(252, n - 2)
+    mom6  = (prices.iloc[-1] / prices.iloc[-d6  - 1] - 1).rename("mom_6m")
+    mom12 = (prices.iloc[-1] / prices.iloc[-d12 - 1] - 1).rename("mom_12m")
+    return mom6, mom12
+
+
+def calc_vol(prices: pd.DataFrame, window: int = 30) -> pd.Series:
+    return (prices.pct_change().tail(window).std() * math.sqrt(252)).rename("vol_30d")
+
+
+# ── Regime detection ──────────────────────────────────────────
+def detect_regime(spy: pd.Series) -> dict:
+    price   = float(spy.iloc[-1])
+    ma200   = float(spy.tail(200).mean())
+    vol     = float(spy.pct_change().tail(30).std() * math.sqrt(252))
+    vix_est = round(vol * 100, 1)
+    above   = price > ma200
+
+    if above and vol < 0.20:
+        regime, exposure = "bull", 0.95
+        desc = f"Strong uptrend. SPY above 200-MA, realized vol ~{vix_est:.0f}."
+    elif not above or vol > 0.28:
+        regime, exposure = "bear", 0.50
+        desc = f"Downtrend or elevated vol (~{vix_est:.0f}). Reducing to 50% equity."
+    else:
+        regime, exposure = "sideways", 0.75
+        desc = f"Range-bound market. Neutral allocation, vol ~{vix_est:.0f}."
+
+    confidence = round(min(0.95, 0.60 + abs(price / ma200 - 1) * 3), 2)
+    breadth    = round(0.62 if above else 0.38, 2)
+
+    return {
+        "market_regime": regime,
+        "regime_confidence": confidence,
+        "regime_indicators": {
+            "vix": vix_est,
+            "ma200_trend": "positive" if above else "negative",
+            "breadth_pct": breadth,
+            "description": desc,
+        },
+        "equity_exposure": exposure,
+        "cash_target": round(1 - exposure, 2),
+    }
+
+
+# ── Fundamentals ──────────────────────────────────────────────
+def fetch_fundamentals(symbols: list[str]) -> dict:
+    print(f"Fetching fundamentals for {len(symbols)} candidates…")
+    out = {}
+    for sym in symbols:
+        try:
+            info = yf.Ticker(sym).info
+            out[sym] = {
+                "name":             info.get("longName") or info.get("shortName", sym),
+                "sector":           info.get("sector", "Unknown"),
+                "eps_growth":       round((info.get("earningsGrowth")  or 0) * 100, 1),
+                "revenue_growth":   round((info.get("revenueGrowth")   or 0) * 100, 1),
+                "forward_pe":       round(info.get("forwardPE") or 999, 1),
+                "ma_50d":           round(info.get("fiftyDayAverage")  or 0, 2),
+                "current_price":    round(info.get("currentPrice") or info.get("regularMarketPrice") or 0, 2),
+            }
+        except Exception as e:
+            print(f"  {sym}: {e}", file=sys.stderr)
+    return out
+
+
+# ── Portfolio reconciliation ──────────────────────────────────
+def reconcile(screened: list[dict], fundamentals: dict,
+              existing: list[dict], cash: float,
+              total_value: float) -> tuple[list[dict], list[dict], float]:
+    today    = datetime.now().strftime("%Y-%m-%d")
+    old      = {h["symbol"]: h for h in existing}
+    new_syms = [s["symbol"] for s in screened[:TARGET_N]]
+    to_sell  = set(old) - set(new_syms)
+    to_buy   = set(new_syms) - set(old)
+    trades   = []
+
+    # Sell exits
+    for sym in to_sell:
+        h     = old[sym]
+        price = fundamentals.get(sym, {}).get("current_price") or h.get("current_price", h["avg_cost"])
+        pnl   = (price - h["avg_cost"]) * h["shares"]
+        cash += h["shares"] * price
+        ma50  = fundamentals.get(sym, {}).get("ma_50d", 0)
+        reason = ("Price below 50-day MA — stop triggered"
+                  if ma50 and price < ma50
+                  else "Momentum rank dropped below top 40%")
+        trades.append({
+            "id": None, "date": today, "action": "SELL",
+            "symbol": sym, "name": h["name"],
+            "shares": h["shares"], "price": round(price, 2),
+            "value": round(h["shares"] * price, 2),
+            "pnl": round(pnl, 2),
+            "pnl_pct": round((price / h["avg_cost"] - 1) * 100, 2),
+            "reason": reason,
+            "type": "stop" if "stop" in reason else "rebalance",
+        })
+
+    # Buy entries
+    target_per = total_value / len(new_syms) if new_syms else 0
+    for sym in to_buy:
+        fi    = fundamentals.get(sym, {})
+        price = fi.get("current_price", 0)
+        if price <= 0 or cash < price:
+            continue
+        shares = max(1, int(min(target_per, cash) / price))
+        cost   = shares * price
+        cash  -= cost
+        trades.append({
+            "id": None, "date": today, "action": "BUY",
+            "symbol": sym, "name": fi.get("name", sym),
+            "shares": shares, "price": round(price, 2),
+            "value": round(cost, 2),
+            "pnl": None, "pnl_pct": None,
+            "reason": "Entered top 30% momentum — monthly rebalance",
+            "type": "rebalance",
+        })
+
+    # Build final holdings
+    buy_map = {t["symbol"]: t for t in trades if t["action"] == "BUY"}
+    holdings = []
+    for item in screened[:TARGET_N]:
+        sym = item["symbol"]
+        fi  = fundamentals.get(sym, {})
+        price = fi.get("current_price") or item.get("current_price", 0)
+
+        if sym in old:
+            h = {**old[sym]}
+            h.update({
+                "current_price": round(price, 2),
+                "market_value":  round(h["shares"] * price, 2),
+                "pnl":           round((price - h["avg_cost"]) * h["shares"], 2),
+                "pnl_pct":       round((price / h["avg_cost"] - 1) * 100, 2),
+                "ma_50d":        fi.get("ma_50d", h.get("ma_50d", 0)),
+                "status":        "above_ma" if price > fi.get("ma_50d", 0) else "below_ma",
+            })
+        else:
+            bt = buy_map.get(sym)
+            shares = bt["shares"] if bt else max(1, int(target_per / price)) if price else 0
+            h = {
+                "symbol": sym, "name": fi.get("name", sym), "sector": fi.get("sector", "Unknown"),
+                "shares": shares, "avg_cost": round(price, 2), "current_price": round(price, 2),
+                "market_value": round(shares * price, 2), "weight": 0,
+                "pnl": 0.0, "pnl_pct": 0.0,
+                "eps_growth": fi.get("eps_growth", 0), "revenue_growth": fi.get("revenue_growth", 0),
+                "forward_pe":  fi.get("forward_pe", 0), "volatility_30d": round(item.get("vol_30d", 0), 4),
+                "entry_date": today, "ma_50d": fi.get("ma_50d", 0),
+                "status": "above_ma" if price > fi.get("ma_50d", 0) else "below_ma",
+            }
+
+        h["momentum_rank"]  = item["momentum_rank"]
+        h["momentum_6m"]    = round(item.get("momentum_6m", 0), 4)
+        h["momentum_12m"]   = round(item.get("momentum_12m", 0), 4)
+        for key in ("eps_growth", "revenue_growth", "forward_pe"):
+            if fi.get(key):
+                h[key] = fi[key]
+        holdings.append(h)
+
+    # Recalculate weights
+    total_invested = sum(h["market_value"] for h in holdings)
+    denom = total_invested + cash or 1
+    for h in holdings:
+        h["weight"] = round(h["market_value"] / denom, 4)
+
+    return holdings, trades, cash
+
+
+# ── Summary ───────────────────────────────────────────────────
+def compute_summary(holdings, cash, existing_summary, all_trades) -> dict:
+    invested  = sum(h["market_value"] for h in holdings)
+    pv        = invested + cash
+    initial   = (existing_summary or {}).get("initial_capital", INITIAL_CAPITAL)
+
+    unrealized = sum(h["pnl"] for h in holdings)
+    realized   = sum(t["pnl"] for t in all_trades
+                     if t["action"] == "SELL" and t.get("pnl") is not None)
+    sells      = [t for t in all_trades if t["action"] == "SELL" and t.get("pnl") is not None]
+    wins       = [t for t in sells if t["pnl"] > 0]
+    losses     = [t for t in sells if t["pnl"] < 0]
+
+    prev = existing_summary or {}
+    return {
+        "portfolio_value":  round(pv, 2),
+        "cash":             round(cash, 2),
+        "cash_pct":         round(cash / pv * 100, 2) if pv else 0,
+        "invested":         round(invested, 2),
+        "total_pnl":        round(unrealized + realized, 2),
+        "total_pnl_pct":    round((unrealized + realized) / initial * 100, 2) if initial else 0,
+        "realized_pnl":     round(realized, 2),
+        "unrealized_pnl":   round(unrealized, 2),
+        "win_rate":         round(len(wins) / len(sells), 3) if sells else prev.get("win_rate", 0),
+        "total_trades":     len(all_trades),
+        "winning_trades":   len(wins),
+        "losing_trades":    len(losses),
+        "avg_win_pct":      round(sum(t["pnl_pct"] for t in wins)  / len(wins),   1) if wins   else prev.get("avg_win_pct", 0),
+        "avg_loss_pct":     round(sum(t["pnl_pct"] for t in losses) / len(losses), 1) if losses else prev.get("avg_loss_pct", 0),
+        "sharpe_ratio":     prev.get("sharpe_ratio", 0),    # updated separately if equity curve is long enough
+        "max_drawdown_pct": prev.get("max_drawdown_pct", 0),
+        "last_updated":     datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+    }
+
+
+def update_equity_curve(curve: list, pv: float) -> list:
+    label = datetime.now().strftime("%b %-d")
+    if curve and curve[-1]["date"] == label:
+        curve[-1]["value"] = round(pv)
+    else:
+        curve.append({"date": label, "value": round(pv)})
+    return curve[-90:]   # keep ~3 months of daily points
+
+
+# ── Main ──────────────────────────────────────────────────────
+def main():
+    # Load existing state
+    if DATA_FILE.exists():
+        with open(DATA_FILE) as f:
+            data = json.load(f)
+    else:
+        print("No existing portfolio.json — starting fresh.")
+        data = {
+            "meta":         {"initial_capital": INITIAL_CAPITAL},
+            "summary":      {"initial_capital": INITIAL_CAPITAL, "cash": INITIAL_CAPITAL, "portfolio_value": INITIAL_CAPITAL},
+            "filter_status": {},
+            "equity_curve": [],
+            "holdings":     [],
+            "trades":       [],
+        }
+
+    existing_holdings = data.get("holdings", [])
+    existing_trades   = data.get("trades", [])
+    cash              = data["summary"].get("cash", float(INITIAL_CAPITAL))
+
+    # 1. Universe + prices
+    tickers = get_sp500_tickers()
+    prices  = fetch_prices(tickers)
+    available = list(prices.columns)
+    print(f"Price data: {len(available)} tickers.")
+
+    spy = prices.get("SPY") or yf.download("SPY", period="13mo", auto_adjust=True, progress=False)["Close"].squeeze()
+
+    # 2. Signals
+    mom6, mom12 = calc_momentum(prices)
+    vol30       = calc_vol(prices)
+
+    # 3. Screen
+    vol_90th   = float(vol30.quantile(0.90))
+    mom_score  = (mom6.rank(pct=True) + mom12.rank(pct=True)) / 2
+    candidates = (mom_score[mom_score > 0.70 & (vol30 < vol_90th)]
+                  .sort_values(ascending=False)
+                  .index.tolist()[:CANDIDATES_CAP])
+
+    fundamentals = fetch_fundamentals(candidates)
+
+    quality_pass = valuation_pass = 0
+    screened = []
+    for sym in candidates:
+        fi = fundamentals.get(sym, {})
+        eg, rg, fpe = fi.get("eps_growth", 0), fi.get("revenue_growth", 0), fi.get("forward_pe", 999)
+        q_ok = eg > 10 and rg > 8
+        v_ok = fpe < 40 or fpe == 999
+        if q_ok: quality_pass += 1
+        if v_ok: valuation_pass += 1
+        if q_ok and v_ok:
+            screened.append({
+                "symbol":       sym,
+                "momentum_rank": len(screened) + 1,
+                "momentum_6m":  round(float(mom6.get(sym, 0)), 4),
+                "momentum_12m": round(float(mom12.get(sym, 0)), 4),
+                "vol_30d":      round(float(vol30.get(sym, 0)), 4),
+                "current_price": fi.get("current_price", 0),
+            })
+
+    print(f"Screened: {len(screened)} pass all filters. Targeting {TARGET_N}.")
+
+    # 4. Regime
+    regime_info = detect_regime(spy)
+
+    # 5. Reconcile portfolio
+    current_pv = sum(
+        h["shares"] * (fundamentals.get(h["symbol"], {}).get("current_price") or h.get("current_price", h["avg_cost"]))
+        for h in existing_holdings
+    ) + cash
+
+    new_holdings, new_trades, cash = reconcile(
+        screened, fundamentals, existing_holdings, cash, current_pv
+    )
+
+    # Assign IDs and prepend new trades
+    base = len(existing_trades)
+    for i, t in enumerate(new_trades):
+        t["id"] = f"T{base + len(new_trades) - i:03d}"
+    all_trades = new_trades + existing_trades
+
+    # 6. Summary + equity curve
+    pv      = sum(h["market_value"] for h in new_holdings) + cash
+    summary = compute_summary(new_holdings, cash, data.get("summary"), all_trades)
+    curve   = update_equity_curve(data.get("equity_curve", []), pv)
+
+    # 7. Filter status
+    nh = len(new_holdings)
+    filter_status = {
+        "momentum":   {"label": "Momentum",  "description": "Top 30% by 6M & 12M return",              "passing": nh, "total": nh, "threshold": "Top 30%"},
+        "quality":    {"label": "Quality",   "description": "EPS growth >10%, Revenue growth >8%",      "passing": min(quality_pass, nh), "total": nh, "threshold": "EPS >10% & Rev >8%"},
+        "valuation":  {"label": "Valuation", "description": "Forward P/E <40 or top 70% by sector",     "passing": min(valuation_pass, nh), "total": nh, "threshold": "Fwd P/E <40"},
+        "risk":       {"label": "Risk",      "description": "Volatility below 90th percentile",          "passing": nh, "total": nh, "threshold": "Vol < 90th pct"},
+    }
+
+    # 8. Write
+    today      = datetime.now().strftime("%Y-%m-%d")
+    next_month = (datetime.now().replace(day=1) + timedelta(days=32)).replace(day=1).strftime("%Y-%m-%d")
+    output = {
+        "meta": {
+            **data.get("meta", {}),
+            "strategy": "TradeQuest AI Momentum Strategy v2.0",
+            "universe": "S&P 500",
+            "initial_capital": INITIAL_CAPITAL,
+            "last_rebalance": today,
+            "next_rebalance": next_month,
+            **regime_info,
+        },
+        "summary":      summary,
+        "filter_status": filter_status,
+        "equity_curve": curve,
+        "holdings":     new_holdings,
+        "trades":       all_trades[:50],
+    }
+
+    DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
+    with open(DATA_FILE, "w") as f:
+        json.dump(output, f, indent=2)
+
+    print(f"Done. Value: ${pv:,.2f} | Holdings: {len(new_holdings)} | Cash: ${cash:,.2f}")
+
+
+if __name__ == "__main__":
+    main()
