@@ -1,4 +1,4 @@
-const CACHE = 'tradequest-v3';
+const CACHE = 'tradequest-v4';
 const SHELL = ['./index.html', './style.css', './app.js', './manifest.json', './icons/icon.svg'];
 
 self.addEventListener('install', e => {

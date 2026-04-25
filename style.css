@@ -19,6 +19,11 @@
 /* ── Reset ─────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Ensure [hidden] always wins over CSS display rules (author stylesheet
+   overrides UA stylesheet, so display:flex on .main/.loading-state would
+   keep elements visible even when JS sets el.hidden = true) */
+[hidden] { display: none !important; }
+
 html { font-size: 14px; scroll-behavior: smooth; }
 
 body {
