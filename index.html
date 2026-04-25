@@ -68,6 +68,7 @@
   <nav class="tab-bar" id="tabBar" hidden>
     <button class="tab active" data-tab="portfolio">◆ Portfolio</button>
     <button class="tab" data-tab="agent">⚡ Agent</button>
+    <button class="tab" data-tab="news">&#x1F4F0; News</button>
   </nav>
 
   <!-- ── Main ───────────────────────────────────────────── -->
@@ -245,6 +246,49 @@
 
       </div>
     </div><!-- end panel-agent -->
+
+    <!-- ── Tab 3: News ─────────────────────────────────────── -->
+    <div class="tab-panel" id="panel-news">
+      <div class="news-panel">
+
+        <!-- Sentiment summary bar -->
+        <div class="news-sentiment-bar" id="newsSentimentBar">
+          <div class="sentiment-stat">
+            <span class="sentiment-count bull-count" id="newsBullCount">—</span>
+            <span class="sentiment-label">Bullish</span>
+          </div>
+          <div class="sentiment-stat">
+            <span class="sentiment-count bear-count" id="newsBearCount">—</span>
+            <span class="sentiment-label">Bearish</span>
+          </div>
+          <div class="sentiment-stat">
+            <span class="sentiment-count neutral-count" id="newsNeutralCount">—</span>
+            <span class="sentiment-label">Neutral</span>
+          </div>
+          <span class="news-updated muted-cell" id="newsGeneratedAt">—</span>
+        </div>
+
+        <!-- Filter bar -->
+        <div class="news-filter-bar">
+          <div class="news-filter-group">
+            <button class="news-filter-btn active" data-sentiment="ALL">All</button>
+            <button class="news-filter-btn bull" data-sentiment="bull">Bull</button>
+            <button class="news-filter-btn bear" data-sentiment="bear">Bear</button>
+            <button class="news-filter-btn neutral" data-sentiment="neutral">Neutral</button>
+          </div>
+          <div class="news-ticker-chips" id="newsTickerChips"></div>
+        </div>
+
+        <!-- Article feed -->
+        <div id="newsArticleFeed" class="news-article-feed"></div>
+
+        <!-- Load more -->
+        <div id="newsLoadMore" class="news-load-more" hidden>
+          <button id="newsLoadMoreBtn" class="load-more-btn">Load more articles</button>
+        </div>
+
+      </div>
+    </div><!-- end panel-news -->
 
   </main>
 

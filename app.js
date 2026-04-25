@@ -3,9 +3,12 @@
 // ── Constants ─────────────────────────────────────────────────
 const DATA_URL           = './data/portfolio.json';
 const AGENT_LOG_URL      = './data/agent_log.json';
+const NEWS_URL           = './data/news.json';
 const MARKET_REFRESH_MS  = 30_000;        // 30 s during market hours
 const DEFAULT_REFRESH_MS = 5 * 60_000;    // 5 min otherwise
 const FETCH_TIMEOUT_MS   = 15_000;
+const NEWS_TTL_MS        = 5 * 60_000;    // 5-min memory cache for news tab
+const NEWS_PAGE_SIZE     = 25;
 const LS_AGENT_KEY       = 'tq_agent_runs';
 const MAX_AGENT_HISTORY  = 10;
 
@@ -204,15 +207,32 @@ function buildSectorDonut(holdings) {
   return `<svg width="52" height="52" viewBox="0 0 52 52">${segs}</svg>`;
 }
 
+// ── Time-ago helper ───────────────────────────────────────────
+// Returns "just now", "5m ago", "2h ago", "3d ago" from an ISO string.
+function timeAgo(isoStr) {
+  if (!isoStr) return '—';
+  const diff = Math.floor((Date.now() - new Date(isoStr).getTime()) / 1000);
+  if (diff < 60)        return 'just now';
+  if (diff < 3600)      return `${Math.floor(diff / 60)}m ago`;
+  if (diff < 86400)     return `${Math.floor(diff / 3600)}h ago`;
+  return `${Math.floor(diff / 86400)}d ago`;
+}
+
 // ── App ───────────────────────────────────────────────────────
 class TradeQuestApp {
   constructor() {
-    this.data         = null;
-    this.agentLog     = null;
-    this.chart        = null;
-    this.tradeFilter  = 'ALL';   // 'ALL' | 'BUY' | 'SELL'
-    this.tradeSort    = 'date';  // 'date' | 'pnl'
-    this.refreshTimer = null;
+    this.data              = null;
+    this.agentLog          = null;
+    this.newsData          = null;
+    this.newsFetchedAt     = 0;
+    this.newsFilter        = 'ALL';   // 'ALL' | 'bull' | 'bear' | 'neutral'
+    this.newsTickerFilter  = null;    // null = no ticker filter
+    this.newsDisplayLimit  = NEWS_PAGE_SIZE;
+    this.chart             = null;
+    this.tradeFilter       = 'ALL';   // 'ALL' | 'BUY' | 'SELL'
+    this.tradeSort         = 'date';  // 'date' | 'pnl'
+    this.refreshTimer      = null;
+    this.timeAgoTimer      = null;
   }
 
   async init() {
@@ -222,8 +242,11 @@ class TradeQuestApp {
     this.setupTabs();
     this.setupTradeControls();
     this.setupAgentHistoryUI();
+    this.setupNewsControls();
     await this.load();
     this.scheduleRefresh();
+    // Update time-ago strings every 60 s
+    this.timeAgoTimer = setInterval(() => this.refreshTimeAgoLabels(), 60_000);
   }
 
   // ── Adaptive refresh (market-hours aware) ─────────────────
@@ -264,6 +287,8 @@ class TradeQuestApp {
         btn.classList.add('active');
         const panel = $(`panel-${target}`);
         if (panel) panel.classList.add('active');
+        // Lazy-load news on first focus, then respect TTL
+        if (target === 'news') this.loadNewsIfStale();
       });
     });
   }
@@ -285,6 +310,27 @@ class TradeQuestApp {
         if (this.data) this.renderTrades();
       });
     });
+  }
+
+  setupNewsControls() {
+    // Sentiment filter buttons
+    document.querySelectorAll('.news-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.news-filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        this.newsFilter       = btn.dataset.sentiment;
+        this.newsDisplayLimit = NEWS_PAGE_SIZE;
+        this.renderNews();
+      });
+    });
+    // Load More button
+    const lmBtn = $('newsLoadMoreBtn');
+    if (lmBtn) {
+      lmBtn.addEventListener('click', () => {
+        this.newsDisplayLimit += NEWS_PAGE_SIZE;
+        this.renderNews();
+      });
+    }
   }
 
   setupAgentHistoryUI() {
@@ -949,6 +995,136 @@ class TradeQuestApp {
 
     modal.hidden = false;
     requestAnimationFrame(() => qtyInput?.focus());
+  }
+
+  // ── News — lazy fetch with 5-min memory TTL ───────────────
+  async loadNewsIfStale() {
+    const age = Date.now() - this.newsFetchedAt;
+    if (this.newsData && age < NEWS_TTL_MS) {
+      this.renderNews();
+      return;
+    }
+    this.renderNewsSkeletons();
+    try {
+      const ctrl = new AbortController();
+      const t    = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS);
+      const res  = await fetch(`${NEWS_URL}?_=${Date.now()}`, { signal: ctrl.signal })
+                     .finally(() => clearTimeout(t));
+      if (!res.ok) throw new Error(`News HTTP ${res.status}`);
+      this.newsData      = await res.json();
+      this.newsFetchedAt = Date.now();
+    } catch (err) {
+      $('newsArticleFeed').innerHTML =
+        `<div class="news-error">Could not load news — ${sanitize(err.message)}</div>`;
+      return;
+    }
+    this.renderNews();
+  }
+
+  renderNewsSkeletons(n = 5) {
+    const feed = $('newsArticleFeed');
+    if (!feed) return;
+    feed.innerHTML = Array.from({ length: n }, () => `
+      <div class="news-article-card skeleton">
+        <div class="sk-line sk-badge"></div>
+        <div class="sk-line sk-headline"></div>
+        <div class="sk-line sk-body"></div>
+        <div class="sk-line sk-meta"></div>
+      </div>`).join('');
+  }
+
+  renderNews() {
+    const feed = $('newsArticleFeed');
+    if (!feed) return;
+
+    const data     = this.newsData;
+    const articles = data?.articles ?? [];
+
+    // Update sentiment summary bar
+    const bull    = articles.filter(a => a.sentiment === 'bull').length;
+    const bear    = articles.filter(a => a.sentiment === 'bear').length;
+    const neutral = articles.filter(a => a.sentiment === 'neutral').length;
+    const genAt   = data?.generated_at ? timeAgo(data.generated_at) : '—';
+    if ($('newsBullCount'))     $('newsBullCount').textContent    = bull;
+    if ($('newsBearCount'))     $('newsBearCount').textContent    = bear;
+    if ($('newsNeutralCount'))  $('newsNeutralCount').textContent = neutral;
+    if ($('newsGeneratedAt'))   $('newsGeneratedAt').textContent  = `Updated ${genAt}`;
+
+    // Build ticker chip list from articles (symbols present in filtered view)
+    const allSymbols = [...new Set(articles.flatMap(a => a.symbols || []))].sort();
+    const chipsEl    = $('newsTickerChips');
+    if (chipsEl) {
+      chipsEl.innerHTML = allSymbols.map(sym => {
+        const s     = sanitize(sym);
+        const active = this.newsTickerFilter === sym ? ' active' : '';
+        return `<button class="ticker-chip${active}" data-sym="${s}">${s}</button>`;
+      }).join('');
+      chipsEl.querySelectorAll('.ticker-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          const sym = chip.dataset.sym;
+          this.newsTickerFilter = this.newsTickerFilter === sym ? null : sym;
+          this.newsDisplayLimit = NEWS_PAGE_SIZE;
+          this.renderNews();
+        });
+      });
+    }
+
+    // Filter: sentiment + ticker
+    let filtered = articles;
+    if (this.newsFilter !== 'ALL') {
+      filtered = filtered.filter(a => a.sentiment === this.newsFilter);
+    }
+    if (this.newsTickerFilter) {
+      filtered = filtered.filter(a => (a.symbols || []).includes(this.newsTickerFilter));
+    }
+
+    if (!filtered.length) {
+      feed.innerHTML = `<div class="news-empty">No articles match the current filter.</div>`;
+      $('newsLoadMore').hidden = true;
+      return;
+    }
+
+    const page     = filtered.slice(0, this.newsDisplayLimit);
+    const hasMore  = filtered.length > this.newsDisplayLimit;
+
+    feed.innerHTML = page.map(a => {
+      const sent    = a.sentiment || 'neutral';
+      const sentLbl = sent === 'bull' ? 'Bullish' : sent === 'bear' ? 'Bearish' : 'Neutral';
+      const conf    = Number.isFinite(a.confidence) ? ` ${Math.round(a.confidence * 100)}%` : '';
+      const tickers = (a.symbols || []).slice(0, 5).map(s => `<span class="article-ticker">${sanitize(s)}</span>`).join('');
+      const url     = a.url ? `href="${sanitize(a.url)}" target="_blank" rel="noopener noreferrer"` : '';
+      const ago     = timeAgo(a.created_at);
+      const src     = a.source ? sanitize(a.source) : '';
+      const author  = a.author ? ` · ${sanitize(a.author)}` : '';
+      return `
+        <div class="news-article-card" data-ts="${sanitize(a.created_at || '')}">
+          <div class="article-header">
+            <span class="sentiment-badge ${sent}">${sentLbl}${conf}</span>
+            ${tickers}
+            <span class="article-meta muted-cell">${src}${author}</span>
+          </div>
+          <a class="article-headline" ${url}>${sanitize(a.headline)}</a>
+          ${a.summary ? `<p class="article-summary muted-cell">${sanitize(a.summary)}</p>` : ''}
+          ${a.reason  ? `<p class="article-reason">${sanitize(a.reason)}</p>` : ''}
+          <div class="article-footer">
+            <span class="article-time muted-cell" data-ts="${sanitize(a.created_at || '')}">${ago}</span>
+            ${url ? `<a class="article-link" ${url}>Read ↗</a>` : ''}
+          </div>
+        </div>`;
+    }).join('');
+
+    const lm = $('newsLoadMore');
+    if (lm) lm.hidden = !hasMore;
+  }
+
+  // Refresh only the time-ago labels without a full re-render
+  refreshTimeAgoLabels() {
+    document.querySelectorAll('.article-time[data-ts]').forEach(el => {
+      if (el.dataset.ts) el.textContent = timeAgo(el.dataset.ts);
+    });
+    if ($('newsGeneratedAt') && this.newsData?.generated_at) {
+      $('newsGeneratedAt').textContent = `Updated ${timeAgo(this.newsData.generated_at)}`;
+    }
   }
 
   // ── Error ─────────────────────────────────────────────────
