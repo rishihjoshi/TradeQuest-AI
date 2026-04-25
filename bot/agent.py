@@ -159,7 +159,7 @@ def run_agent(run_type: str, portfolio: dict, strategy: str) -> tuple[dict, dict
 
     message = client.messages.create(
         model=MODEL,
-        max_tokens=1800,
+        max_tokens=4000,  # 1800 was too short — 17-position portfolios need ~2500-3000 tokens
         system=[
             {
                 # Strategy doc is static — cache it (5-min TTL, saves ~2k tokens/run)

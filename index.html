@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#D4AF37">
-  <!-- CSP: scripts only from self + jsdelivr (Chart.js); styles allow unsafe-inline for dynamic width attrs -->
+  <!-- CSP: scripts only from self + jsdelivr (Chart.js); no Alpaca API calls from browser -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'none';
     script-src 'self' https://cdn.jsdelivr.net;
@@ -41,6 +41,10 @@
       </div>
       <span class="paper-badge">Paper Trading</span>
       <span class="last-updated" id="lastUpdated">Loading…</span>
+      <span class="live-indicator">
+        <span class="live-dot" id="liveIndicator" title=""></span>
+        <span class="live-label" id="liveLabel">—</span>
+      </span>
     </div>
     <div class="header-right">
       <div class="regime-badge bull" id="regimeBadge">
@@ -114,25 +118,13 @@
         </div>
       </div>
 
+      <!-- Holdings — position cards (replaces old table) -->
       <div class="card">
         <div class="card-header">
           <h2>Holdings <span class="badge" id="holdingsCount">—</span></h2>
           <span class="card-meta">Equal weight · ranked by momentum</span>
         </div>
-        <div class="table-wrapper">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Symbol</th>
-                <th>Value</th>
-                <th>P&amp;L</th>
-                <th>6M Mom</th>
-                <th>#</th>
-              </tr>
-            </thead>
-            <tbody id="holdingsTbody"></tbody>
-          </table>
-        </div>
+        <div id="positionsGrid" class="positions-grid"></div>
       </div>
 
     </div>
@@ -144,6 +136,19 @@
         <div class="card-header">
           <h2>Trade Log</h2>
           <span class="card-meta" id="totalTradesCount">—</span>
+        </div>
+        <!-- Filter + Sort controls -->
+        <div class="trade-controls">
+          <div class="trade-filter-group">
+            <button class="trade-filter-btn active" data-filter="ALL">All</button>
+            <button class="trade-filter-btn" data-filter="BUY">Buy</button>
+            <button class="trade-filter-btn" data-filter="SELL">Sell</button>
+          </div>
+          <div class="trade-sort-group">
+            <span class="sort-label">Sort:</span>
+            <button class="trade-sort-btn active" data-sort="date">Date</button>
+            <button class="trade-sort-btn" data-sort="pnl">P&amp;L</button>
+          </div>
         </div>
         <div class="table-wrapper">
           <table class="data-table">
@@ -190,6 +195,7 @@
     <div class="tab-panel" id="panel-agent">
       <div class="agent-panel">
 
+        <!-- Summary bar -->
         <div class="agent-summary-bar">
           <div class="agent-summary-stat">
             <span class="agent-summary-label">Total Runs</span>
@@ -211,11 +217,30 @@
           </div>
         </div>
 
+        <!-- Agent run list -->
         <div id="agentRunList" class="agent-run-list">
           <p class="muted-cell" style="padding:40px;text-align:center;font-size:0.8rem;line-height:1.8">
             No agent runs yet.<br>
             Trigger the workflow above or wait for the 4:30 PM ET daily schedule.
           </p>
+        </div>
+
+        <!-- Momentum Heatmap -->
+        <div class="card heatmap-card">
+          <div class="card-header">
+            <h2>Momentum Heatmap</h2>
+            <span class="card-meta">Rank 1–6 green · 7–11 yellow · 12+ red · tap to jump</span>
+          </div>
+          <div id="momentumHeatmap" class="momentum-heatmap"></div>
+        </div>
+
+        <!-- Browser-local run history timeline -->
+        <div class="card timeline-card">
+          <div class="card-header">
+            <h2>Run History <span class="badge">This Browser</span></h2>
+            <button id="clearAgentHistory" class="clear-history-btn">Clear</button>
+          </div>
+          <div id="agentTimeline" class="agent-timeline"></div>
         </div>
 
       </div>
@@ -228,6 +253,9 @@
     <span>TradeQuest AI — Paper Trading Only · No real money</span>
     <span>Universe: S&amp;P 500 · 15–20 positions · Monthly rebalance · Equal weight</span>
   </footer>
+
+  <!-- ── Order Modal ────────────────────────────────────── -->
+  <div id="orderModal" hidden></div>
 
 </div>
 
