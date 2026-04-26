@@ -293,88 +293,115 @@ body {
 .chart-container { position: relative; flex: 1; padding: 12px 16px 14px; min-height: 220px; }
 .chart-return  { font-size: 0.75rem; font-weight: 600; }
 
-/* ── Position cards (Task 2A) ──────────────────────────────── */
+/* ── Position cards — Robinhood style ──────────────────────── */
 .positions-grid {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  max-height: 440px;
+  max-height: 520px;
 }
 
 .pos-empty {
-  padding: 32px 18px;
+  padding: 36px 18px;
   text-align: center;
   color: var(--muted);
   font-size: 0.8rem;
 }
 
 .pos-card {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
   cursor: pointer;
   transition: background 0.15s;
   outline: none;
 }
 
-.pos-card:last-child { border-bottom: none; }
+.pos-card:last-child  { border-bottom: none; }
 .pos-card:hover,
-.pos-card:focus-visible { background: var(--surface2); }
-.pos-card.highlight   { background: rgba(212,175,55,0.06); }
+.pos-card:focus-visible { background: rgba(255,255,255,0.03); }
+.pos-card.highlight   { background: rgba(212,175,55,0.05); }
+.pos-card.expanded    { background: rgba(255,255,255,0.02); }
 
+/* Main row: identity | sparkline | values */
 .pos-main {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
+  gap: 12px;
+  padding: 14px 16px;
 }
 
-.pos-sym-block {
-  min-width: 60px;
-  flex-shrink: 0;
+/* Left: symbol + shares info */
+.pos-identity {
+  flex: 1;
+  min-width: 0;
 }
 
 .pos-sym {
   display: block;
   font-weight: 700;
-  font-size: 0.82rem;
-  color: var(--gold);
-  letter-spacing: 0.02em;
+  font-size: 1rem;
+  color: var(--text);
+  letter-spacing: 0.01em;
+  line-height: 1.2;
 }
 
-.pos-sector {
+.pos-meta {
   display: block;
-  font-size: 0.62rem;
+  font-size: 0.68rem;
   color: var(--muted);
-  margin-top: 1px;
+  margin-top: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
+/* Middle: sparkline */
 .pos-sparkline {
-  width: 72px;
-  height: 28px;
+  width: 64px;
+  height: 32px;
   flex-shrink: 0;
   display: block;
 }
 
-.pos-price-block { flex: 1; min-width: 70px; }
+/* Right: equity value + return */
+.pos-values {
+  text-align: right;
+  flex-shrink: 0;
+  min-width: 90px;
+}
 
-.pos-price {
-  font-size: 0.82rem;
+.pos-equity {
+  display: block;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--text);
+  line-height: 1.2;
 }
 
-.pos-mv { font-size: 0.68rem; margin-top: 1px; }
-
-.pos-pnl-block {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  min-width: 68px;
+.pos-return {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin-top: 3px;
+  white-space: nowrap;
 }
 
-.pos-pnl-pct { font-size: 0.8rem; font-weight: 700; }
-.pos-pnl-abs { font-size: 0.68rem; margin-top: 1px; }
+.pos-return-pct {
+  opacity: 0.75;
+  font-weight: 500;
+}
 
-/* ── Position expanded detail (Task 2B) ───────────────────── */
+/* Sector chip in expanded footer */
+.pos-sector-chip {
+  font-size: 0.62rem;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  letter-spacing: 0.03em;
+}
+
+/* ── Position expanded detail ──────────────────────────────── */
 .pos-detail {
   border-top: 1px solid var(--border);
   padding: 12px 14px;
@@ -1203,7 +1230,8 @@ body {
   .tab-panel.active { padding: var(--gap); padding-bottom: calc(var(--gap) * 2); }
 
   /* Position cards: tighter on mobile */
-  .pos-sparkline { width: 52px; }
+  .pos-sparkline { width: 48px; height: 28px; }
+  .pos-meta      { display: none; }
   .pos-detail-grid { grid-template-columns: repeat(2, 1fr); }
 
   /* Trade log */

@@ -529,6 +529,7 @@ def compute_summary(holdings, cash, existing_summary, all_trades) -> dict:
 
     prev = existing_summary or {}
     return {
+        "initial_capital":  initial,   # preserve across runs
         "portfolio_value":  round(pv, 2),
         "cash":             round(cash, 2),
         "cash_pct":         round(cash / pv * 100, 2) if pv else 0,
@@ -738,7 +739,7 @@ def main():
             "universe":       "S&P 500",
             "account_name":   ALPACA_ACCOUNT_NAME,
             "mode":           "alpaca" if alpaca_state else "simulation",
-            "initial_capital": INITIAL_CAPITAL,
+            "initial_capital": data.get("meta", {}).get("initial_capital", INITIAL_CAPITAL),
             "last_rebalance": today,
             "next_rebalance": next_month,
             **regime_info,

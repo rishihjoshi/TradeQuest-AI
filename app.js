@@ -535,43 +535,45 @@ class TradeQuestApp {
 
     grid.innerHTML = holdings.map((h, idx) => {
       const sym     = sanitize(h.symbol);
+      const name    = sanitize(h.name || h.sector || '');
       const sector  = sanitize(h.sector || '');
+      const shares  = Number.isFinite(h.shares) ? h.shares : 0;
       const rank    = Number.isFinite(h.momentum_rank) ? h.momentum_rank : '—';
       const rankCls = h.momentum_rank <= 5 ? 'top5' : h.momentum_rank <= 10 ? 'mid' : '';
-      const pnlCls  = colorClass(h.pnl_pct);
+      const pnl     = h.pnl || 0;
+      const pnlCls  = colorClass(pnl);
+      const pnlSign = pnl >= 0 ? '+' : '−';
+      const pnlAbs  = fmt$(Math.abs(pnl));
       const maCls   = h.status === 'above_ma' ? 'profit-cell' : 'loss-cell';
       const maText  = h.status === 'above_ma' ? '▲ Above MA50' : '▼ Below MA50';
+      const shareLabel = `${shares} ${shares === 1 ? 'share' : 'shares'} · avg ${fmt$(h.avg_cost)}`;
       return `
         <div class="pos-card" data-idx="${idx}" role="button" tabindex="0" aria-expanded="false">
           <div class="pos-main">
-            <div class="pos-sym-block">
+            <div class="pos-identity">
               <span class="pos-sym">${sym}</span>
-              <span class="pos-sector">${sector}</span>
+              <span class="pos-meta">${shareLabel}</span>
             </div>
-            <canvas class="pos-sparkline" data-idx="${idx}" width="72" height="28"></canvas>
-            <div class="pos-price-block">
-              <div class="pos-price">${fmt$(h.current_price || h.avg_cost)}</div>
-              <div class="pos-mv muted-cell">${fmt$(h.market_value)}</div>
+            <canvas class="pos-sparkline" data-idx="${idx}" width="64" height="32"></canvas>
+            <div class="pos-values">
+              <span class="pos-equity">${fmt$(h.market_value)}</span>
+              <span class="pos-return ${pnlCls}">${pnlSign}${pnlAbs} <span class="pos-return-pct">(${fmtPct(h.pnl_pct)})</span></span>
             </div>
-            <div class="pos-pnl-block">
-              <span class="pos-pnl-pct ${pnlCls}">${fmtPct(h.pnl_pct)}</span>
-              <span class="pos-pnl-abs ${pnlCls}">${h.pnl >= 0 ? '+' : ''}${fmt$(h.pnl)}</span>
-            </div>
-            <span class="rank-num ${rankCls}">${rank}</span>
           </div>
           <div class="pos-detail" id="pos-detail-${idx}" hidden>
             <div class="pos-detail-grid">
-              <div class="pos-stat"><span class="pos-stat-label">Shares</span><span>${h.shares}</span></div>
+              <div class="pos-stat"><span class="pos-stat-label">Current Price</span><span>${fmt$(h.current_price || h.avg_cost)}</span></div>
               <div class="pos-stat"><span class="pos-stat-label">Avg Cost</span><span>${fmt$(h.avg_cost)}</span></div>
               <div class="pos-stat"><span class="pos-stat-label">MA50 Status</span><span class="${maCls}" style="font-size:0.7rem">${maText}</span></div>
-              <div class="pos-stat"><span class="pos-stat-label">6M Mom</span><span>${fmtPct((h.momentum_6m || 0) * 100, false)}</span></div>
-              <div class="pos-stat"><span class="pos-stat-label">EPS Growth</span><span>${h.eps_growth != null ? '+' + h.eps_growth + '%' : '—'}</span></div>
-              <div class="pos-stat"><span class="pos-stat-label">Rev Growth</span><span>${h.revenue_growth != null ? '+' + h.revenue_growth + '%' : '—'}</span></div>
+              <div class="pos-stat"><span class="pos-stat-label">Rank</span><span class="rank-num ${rankCls}" style="font-size:0.72rem;width:auto;height:auto;padding:1px 7px;border-radius:3px">${rank}</span></div>
+              <div class="pos-stat"><span class="pos-stat-label">6M Momentum</span><span>${fmtPct((h.momentum_6m || 0) * 100, false)}</span></div>
+              <div class="pos-stat"><span class="pos-stat-label">EPS Growth</span><span>${h.eps_growth != null ? h.eps_growth + '%' : '—'}</span></div>
               <div class="pos-stat"><span class="pos-stat-label">Fwd P/E</span><span>${h.forward_pe != null ? Number(h.forward_pe).toFixed(1) : '—'}</span></div>
               <div class="pos-stat"><span class="pos-stat-label">30d Vol</span><span>${h.volatility_30d != null ? (h.volatility_30d * 100).toFixed(0) + '%' : '—'}</span></div>
             </div>
             <div class="pos-detail-footer">
               <span class="muted-cell" style="font-size:0.7rem">Entry ${fmtDate(h.entry_date || '')}</span>
+              <span class="pos-sector-chip">${sector}</span>
               <button class="pos-trade-btn" onclick="event.stopPropagation();app.showOrderModal(${idx})">Paper Trade</button>
             </div>
           </div>
