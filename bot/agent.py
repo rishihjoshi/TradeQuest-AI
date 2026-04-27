@@ -145,6 +145,52 @@ def load_enrichment() -> dict:
         return json.load(f)
 
 
+def _safe(text: str | None, max_len: int = 100) -> str:
+    """Truncate external API text; strips newlines to prevent prompt injection."""
+    return (str(text) if text is not None else "")[:max_len].replace("\n", " ").replace("\r", " ")
+
+
+def build_enrichment_section(enrichment: dict) -> str:
+    """Build the Upcoming Catalysts section injected into the agent prompt."""
+    if not enrichment:
+        return ""
+
+    earnings = enrichment.get("earnings_this_week", [])
+    macro    = enrichment.get("macro_events_14d", [])
+    breadth  = enrichment.get("market_breadth")
+
+    if not earnings and not macro and not breadth:
+        return ""
+
+    lines = ["## Upcoming Market Catalysts\n"]
+
+    if earnings:
+        lines.append("### Earnings This Week (your holdings)")
+        for e in earnings:
+            eps = f", EPS est: {_safe(e['eps_estimate'])}" if e.get("eps_estimate") else ""
+            lines.append(f"- **{_safe(e['symbol'], 10)}** — {_safe(e['date'], 10)} {_safe(e['timing'], 3)}{eps}")
+        lines.append("")
+
+    if macro:
+        lines.append("### High-Impact Macro Events (next 14 days)")
+        for m in macro:
+            prev = f", prev: {_safe(m['previous'], 20)}" if m.get("previous") else ""
+            est  = f", est: {_safe(m['estimate'], 20)}"  if m.get("estimate")  else ""
+            lines.append(f"- **{_safe(m['date'], 10)}** {_safe(m['event'])}{prev}{est}")
+        lines.append("")
+
+    if breadth:
+        trend = "above — bullish breadth trend" if breadth.get("trend_above_200ma") else "below — bearish breadth trend"
+        lines.append("### Market Breadth Signal")
+        lines.append(f"- % S&P 500 stocks above 200-day MA: **{_safe(breadth['pct_above_200ma'], 10)}**")
+        lines.append(f"- Breadth 8MA vs 200MA: {trend}")
+        lines.append(f"- Interpretation: {_safe(breadth['interpretation'], 80)}")
+        lines.append(f"- Data as of: {_safe(breadth['date'], 10)}")
+        lines.append("")
+
+    return "\n".join(lines) + "\n"
+
+
 # ── Agent call ────────────────────────────────────────────────
 
 def run_agent(run_type: str, portfolio: dict, strategy: str, enrichment: dict) -> tuple[dict, dict]:
@@ -165,40 +211,7 @@ def run_agent(run_type: str, portfolio: dict, strategy: str, enrichment: dict) -
         if k not in ("equity_curve",)
     }
 
-    # Build the enrichment section (only if data is present)
-    enrichment_section = ""
-    if enrichment:
-        earnings = enrichment.get("earnings_this_week", [])
-        macro    = enrichment.get("macro_events_14d", [])
-        breadth  = enrichment.get("market_breadth")
-
-        lines = ["## Upcoming Market Catalysts\n"]
-
-        if earnings:
-            lines.append("### Earnings This Week (your holdings)")
-            for e in earnings:
-                eps = f", EPS est: {e['eps_estimate']}" if e.get("eps_estimate") else ""
-                lines.append(f"- **{e['symbol']}** — {e['date']} {e['timing']}{eps}")
-            lines.append("")
-
-        if macro:
-            lines.append("### High-Impact Macro Events (next 14 days)")
-            for m in macro:
-                prev = f", prev: {m['previous']}" if m.get("previous") else ""
-                est  = f", est: {m['estimate']}"  if m.get("estimate")  else ""
-                lines.append(f"- **{m['date']}** {m['event']}{prev}{est}")
-            lines.append("")
-
-        if breadth:
-            lines.append("### Market Breadth Signal")
-            lines.append(f"- % S&P 500 stocks above 200-day MA: **{breadth['pct_above_200ma']}**")
-            lines.append(f"- Breadth 8MA vs 200MA: {'above — bullish breadth trend' if breadth['trend_above_200ma'] else 'below — bearish breadth trend'}")
-            lines.append(f"- Interpretation: {breadth['interpretation']}")
-            lines.append(f"- Data as of: {breadth['date']}")
-            lines.append("")
-
-        if len(lines) > 1:
-            enrichment_section = "\n".join(lines) + "\n"
+    enrichment_section = build_enrichment_section(enrichment)
 
     message = client.messages.create(
         model=MODEL,
