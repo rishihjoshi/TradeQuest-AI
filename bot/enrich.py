@@ -56,9 +56,9 @@ MAX_MACRO_EVENTS    = 7
 PROMPT_FIELD_MAX    = 100  # chars; prevents prompt-injection via FMP event names
 
 
-def _safe(text: str | None) -> str:
+def _safe(text: str | None, max_len: int = PROMPT_FIELD_MAX) -> str:
     """Truncate and strip newlines from external API text before use in prompts."""
-    return (text or "")[:PROMPT_FIELD_MAX].replace("\n", " ").replace("\r", " ")
+    return (text or "")[:max_len].replace("\n", " ").replace("\r", " ")
 
 
 def load_holding_symbols() -> list[str]:
