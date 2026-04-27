@@ -31,6 +31,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r bot/requirements.txt
 
+      - name: Fetch calendar enrichment (earnings + macro + breadth)
+        env:
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+        run: python bot/enrich.py
+
       - name: Run pre-market agent
         env:
           RUN_TYPE:            ${{ github.event.inputs.run_type || 'day_start' }}
@@ -45,7 +50,7 @@ jobs:
         run: |
           git config user.name "TradeQuest Bot"
           git config user.email "actions@github.com"
-          git add data/agent_log.json
+          git add data/agent_log.json data/enrichment.json
           if git diff --staged --quiet; then
             echo "No log changes."
           else

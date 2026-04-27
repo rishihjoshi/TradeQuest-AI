@@ -151,6 +151,28 @@ Claude AI agent runs at three scheduled times. Each run reads this strategy file
 
 ---
 
+## Market Breadth Context
+
+When enrichment data is provided, use the breadth signal to calibrate regime_confidence:
+
+| Breadth (% S&P above 200-MA) | Implication |
+|---|---|
+| > 60% | Broad participation — supports bull regime; use full confidence |
+| 40–60% | Narrowing rally — treat regime classification with caution; consider sideways even if SPY is above 200-MA |
+| < 40% | Thin participation — strong bias toward sideways or bear regardless of SPY trend |
+
+A market where SPY is above its 200-day MA but breadth is below 40% is a **narrow (late-cycle) bull** — maintain higher cash than the regime alone would suggest.
+
+The breadth 8MA crossing below the 200MA is an early warning of deterioration, not an immediate sell signal, but should reduce regime_confidence.
+
+## Upcoming Earnings Awareness
+
+When enrichment data includes earnings announcements for current holdings:
+- A holding with earnings **within 3 days**: flag it with `WATCH` if not already a sell signal; note the earnings date in the reason
+- A holding with earnings **within 1 day (BMO tomorrow or AMC today)**: consider `WATCH` with urgency `next_open` unless a sell rule is already triggered
+- Do **not** sell solely because of an upcoming earnings — but do factor earnings risk into confidence levels
+- If already planning to SELL based on a rule, prefer executing **before** earnings, not after
+
 ## Known Limitations & Honest Caveats
 
 1. **Earnings gap risk** — Momentum stocks holding into earnings can gap 10–20% overnight in either direction. Mitigated by quality filter (earnings growers rarely miss badly), not fully eliminated.

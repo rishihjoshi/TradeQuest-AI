@@ -36,7 +36,12 @@ jobs:
           ALPACA_BASE_URL:     ${{ secrets.ALPACA_BASE_URL }}
         run: python bot/update.py
 
-      - name: Step 2 — Day-end agent (Claude decision layer)
+      - name: Step 2 — Fetch calendar enrichment (earnings + macro + breadth)
+        env:
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+        run: python bot/enrich.py
+
+      - name: Step 3 — Day-end agent (Claude decision layer)
         env:
           RUN_TYPE:          day_end
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -50,7 +55,7 @@ jobs:
         run: |
           git config user.name "TradeQuest Bot"
           git config user.email "actions@github.com"
-          git add data/portfolio.json data/agent_log.json
+          git add data/portfolio.json data/agent_log.json data/enrichment.json
           if git diff --staged --quiet; then
             echo "No changes."
           else

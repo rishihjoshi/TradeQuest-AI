@@ -23,12 +23,13 @@ from pathlib import Path
 
 import anthropic
 
-REPO_ROOT     = Path(__file__).resolve().parent.parent
-DATA_FILE     = REPO_ROOT / "data" / "portfolio.json"
-LOG_FILE      = REPO_ROOT / "data" / "agent_log.json"
-STRATEGY_FILE = REPO_ROOT / "STRATEGY.md"
-RUN_TYPE      = os.environ.get("RUN_TYPE", "day_end")
-MODEL         = "claude-sonnet-4-6"
+REPO_ROOT        = Path(__file__).resolve().parent.parent
+DATA_FILE        = REPO_ROOT / "data" / "portfolio.json"
+LOG_FILE         = REPO_ROOT / "data" / "agent_log.json"
+STRATEGY_FILE    = REPO_ROOT / "STRATEGY.md"
+ENRICHMENT_FILE  = REPO_ROOT / "data" / "enrichment.json"
+RUN_TYPE         = os.environ.get("RUN_TYPE", "day_end")
+MODEL            = "claude-sonnet-4-6"
 
 # ── Task prompts per run type ─────────────────────────────────
 
@@ -137,11 +138,18 @@ def load_log() -> dict:
         return json.load(f)
 
 
+def load_enrichment() -> dict:
+    if not ENRICHMENT_FILE.exists():
+        return {}
+    with open(ENRICHMENT_FILE, encoding="utf-8") as f:
+        return json.load(f)
+
+
 # ── Agent call ────────────────────────────────────────────────
 
-def run_agent(run_type: str, portfolio: dict, strategy: str) -> tuple[dict, dict]:
+def run_agent(run_type: str, portfolio: dict, strategy: str, enrichment: dict) -> tuple[dict, dict]:
     """
-    Call Claude with prompt-cached strategy + portfolio state.
+    Call Claude with prompt-cached strategy + portfolio state + enrichment context.
     Returns (parsed_result, usage_info).
     """
     api_key = os.environ.get("ANTHROPIC_API_KEY", "")
@@ -156,6 +164,41 @@ def run_agent(run_type: str, portfolio: dict, strategy: str) -> tuple[dict, dict
         k: v for k, v in portfolio.items()
         if k not in ("equity_curve",)
     }
+
+    # Build the enrichment section (only if data is present)
+    enrichment_section = ""
+    if enrichment:
+        earnings = enrichment.get("earnings_this_week", [])
+        macro    = enrichment.get("macro_events_14d", [])
+        breadth  = enrichment.get("market_breadth")
+
+        lines = ["## Upcoming Market Catalysts\n"]
+
+        if earnings:
+            lines.append("### Earnings This Week (your holdings)")
+            for e in earnings:
+                eps = f", EPS est: {e['eps_estimate']}" if e.get("eps_estimate") else ""
+                lines.append(f"- **{e['symbol']}** — {e['date']} {e['timing']}{eps}")
+            lines.append("")
+
+        if macro:
+            lines.append("### High-Impact Macro Events (next 14 days)")
+            for m in macro:
+                prev = f", prev: {m['previous']}" if m.get("previous") else ""
+                est  = f", est: {m['estimate']}"  if m.get("estimate")  else ""
+                lines.append(f"- **{m['date']}** {m['event']}{prev}{est}")
+            lines.append("")
+
+        if breadth:
+            lines.append("### Market Breadth Signal")
+            lines.append(f"- % S&P 500 stocks above 200-day MA: **{breadth['pct_above_200ma']}**")
+            lines.append(f"- Breadth 8MA vs 200MA: {'above — bullish breadth trend' if breadth['trend_above_200ma'] else 'below — bearish breadth trend'}")
+            lines.append(f"- Interpretation: {breadth['interpretation']}")
+            lines.append(f"- Data as of: {breadth['date']}")
+            lines.append("")
+
+        if len(lines) > 1:
+            enrichment_section = "\n".join(lines) + "\n"
 
     message = client.messages.create(
         model=MODEL,
@@ -177,6 +220,7 @@ def run_agent(run_type: str, portfolio: dict, strategy: str) -> tuple[dict, dict
                 "role": "user",
                 "content": (
                     f"{task}\n\n"
+                    f"{enrichment_section}"
                     f"## Current Portfolio State\n"
                     f"```json\n{json.dumps(portfolio_slim, indent=2)}\n```\n\n"
                     f"{RESPONSE_SCHEMA}"
@@ -249,14 +293,22 @@ def main():
     run_type = RUN_TYPE
     print(f"TradeQuest Agent — {run_type.upper()} | {datetime.now().strftime('%Y-%m-%d %H:%M')} UTC")
 
-    strategy  = load_strategy()
-    portfolio = load_portfolio()
-    log       = load_log()
+    strategy   = load_strategy()
+    portfolio  = load_portfolio()
+    log        = load_log()
+    enrichment = load_enrichment()
 
     if not portfolio:
         print("Warning: portfolio.json not found — agent running with empty state.", file=sys.stderr)
+    if enrichment:
+        earnings_count = len(enrichment.get("earnings_this_week", []))
+        macro_count    = len(enrichment.get("macro_events_14d", []))
+        breadth_pct    = enrichment.get("market_breadth", {}).get("pct_above_200ma", "N/A")
+        print(f"Enrichment : {earnings_count} earnings | {macro_count} macro events | breadth {breadth_pct}")
+    else:
+        print("Enrichment : none (run bot/enrich.py first for calendar context)")
 
-    result, usage = run_agent(run_type, portfolio, strategy)
+    result, usage = run_agent(run_type, portfolio, strategy, enrichment)
     entry = write_log(log, run_type, result, usage)
 
     # Console summary
