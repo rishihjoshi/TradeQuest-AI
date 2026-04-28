@@ -56,13 +56,24 @@ The portfolio data has been updated with today's closing prices. Make definitive
    - Momentum rank > 40% of universe → SELL
    - Price < 50-day MA → SELL
    - EPS growth deteriorating → WATCH/SELL
-   - Position up >40% in <90 days → consider profit taking
+   - Position up >60% in <60 days → consider profit taking (parabolic blow-off only)
 2. For each flagged position, state the specific rule triggered
 3. For HOLDs, briefly confirm the thesis still holds
 4. Assess portfolio overall performance vs the strategy objectives
 5. Note any regime changes that would affect cash allocation
 
 Be decisive. Any clear sell-rule trigger should result in a SELL decision.
+
+## Friday Close Addition
+If today is Friday, include a `weekly_summary` object in your JSON response alongside
+the standard fields:
+{
+  "weekly_summary": {
+    "week_assessment": "<1-sentence portfolio health vs SPY this week>",
+    "key_trades": ["<TICKER>", ...],
+    "next_week_watch": ["<TICKER>", "<TICKER>"]
+  }
+}
 """
 
 TASK_MONTHLY = """
@@ -191,9 +202,42 @@ def build_enrichment_section(enrichment: dict) -> str:
     return "\n".join(lines) + "\n"
 
 
+def build_history_section(recent_history: list) -> str:
+    """Summarise the last agent run so Claude has day-over-day continuity."""
+    if not recent_history:
+        return ""
+    entry = recent_history[0]
+    lines = [
+        f"## Previous Run ({entry.get('type', '?')}, "
+        f"{entry.get('timestamp', '')[:10]})\n"
+    ]
+    lines.append(
+        f"Regime: {entry.get('regime', '?')} "
+        f"({entry.get('regime_confidence', 0):.0%} confidence)"
+    )
+    flags = entry.get("flags", [])
+    if flags:
+        lines.append(f"Flags carried forward: {'; '.join(flags[:4])}")
+    decisions = entry.get("decisions", [])
+    sells   = [d["symbol"] for d in decisions if d.get("action") == "SELL"]
+    watches = [d["symbol"] for d in decisions if d.get("action") == "WATCH"]
+    if sells:
+        lines.append(f"Sold last run: {', '.join(sells)}")
+    if watches:
+        lines.append(f"Watching from last run: {', '.join(watches)}")
+    lines.append(f"Summary: {entry.get('summary', '')}")
+    return "\n".join(lines) + "\n\n"
+
+
 # ── Agent call ────────────────────────────────────────────────
 
-def run_agent(run_type: str, portfolio: dict, strategy: str, enrichment: dict) -> tuple[dict, dict]:
+def run_agent(
+    run_type: str,
+    portfolio: dict,
+    strategy: str,
+    enrichment: dict,
+    recent_history: list | None = None,
+) -> tuple[dict, dict]:
     """
     Call Claude with prompt-cached strategy + portfolio state + enrichment context.
     Returns (parsed_result, usage_info).
@@ -212,10 +256,11 @@ def run_agent(run_type: str, portfolio: dict, strategy: str, enrichment: dict) -
     }
 
     enrichment_section = build_enrichment_section(enrichment)
+    history_section    = build_history_section(recent_history or [])
 
     message = client.messages.create(
         model=MODEL,
-        max_tokens=4000,  # 1800 was too short — 17-position portfolios need ~2500-3000 tokens
+        max_tokens=2500,
         system=[
             {
                 # Strategy doc is static — cache it (5-min TTL, saves ~2k tokens/run)
@@ -234,6 +279,7 @@ def run_agent(run_type: str, portfolio: dict, strategy: str, enrichment: dict) -
                 "content": (
                     f"{task}\n\n"
                     f"{enrichment_section}"
+                    f"{history_section}"
                     f"## Current Portfolio State\n"
                     f"```json\n{json.dumps(portfolio_slim, indent=2)}\n```\n\n"
                     f"{RESPONSE_SCHEMA}"
@@ -306,10 +352,11 @@ def main():
     run_type = RUN_TYPE
     print(f"TradeQuest Agent — {run_type.upper()} | {datetime.now().strftime('%Y-%m-%d %H:%M')} UTC")
 
-    strategy   = load_strategy()
-    portfolio  = load_portfolio()
-    log        = load_log()
-    enrichment = load_enrichment()
+    strategy       = load_strategy()
+    portfolio      = load_portfolio()
+    log            = load_log()
+    enrichment     = load_enrichment()
+    recent_history = log.get("runs", [])[:1]   # last 1 run for continuity
 
     if not portfolio:
         print("Warning: portfolio.json not found — agent running with empty state.", file=sys.stderr)
@@ -320,8 +367,11 @@ def main():
         print(f"Enrichment : {earnings_count} earnings | {macro_count} macro events | breadth {breadth_pct}")
     else:
         print("Enrichment : none (run bot/enrich.py first for calendar context)")
+    if recent_history:
+        print(f"History    : last run was {recent_history[0].get('type','?')} "
+              f"({recent_history[0].get('timestamp','')[:10]})")
 
-    result, usage = run_agent(run_type, portfolio, strategy, enrichment)
+    result, usage = run_agent(run_type, portfolio, strategy, enrichment, recent_history)
     entry = write_log(log, run_type, result, usage)
 
     # Console summary

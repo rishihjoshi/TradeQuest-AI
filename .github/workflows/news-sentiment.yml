@@ -2,8 +2,9 @@ name: News Sentiment Analysis
 
 on:
   schedule:
-    # 9:30 AM ET = 13:30 UTC (EDT, UTC-4). Runs after market open each weekday.
-    - cron: '30 13 * * 1-5'
+    # 9:30 AM ET = 13:30 UTC (EDT, UTC-4). Monday + Thursday only (2x/week).
+    - cron: '30 13 * * 1'
+    - cron: '30 13 * * 4'
   workflow_dispatch:
 
 jobs:

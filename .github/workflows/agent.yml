@@ -1,18 +1,18 @@
-name: Monthly Rebalance — Full Rescreen + Agent
+name: TradeQuest Agent
 
 on:
   schedule:
-    # 1st of every month at 4:30 PM ET (21:30 UTC)
-    - cron: '30 21 1 * *'
+    # 4:30 PM ET (21:30 UTC, EDT). Covers day_end Mon–Fri and monthly on the 1st.
+    - cron: '30 21 * * 1-5'
   workflow_dispatch:
     inputs:
       run_type:
-        description: 'Run type override'
+        description: 'Run type override: day_end | monthly'
         required: false
-        default: 'monthly'
+        default: ''
 
 jobs:
-  monthly-rebalance:
+  agent:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -31,7 +31,18 @@ jobs:
       - name: Install dependencies
         run: pip install -r bot/requirements.txt
 
-      - name: Step 1 — Full S&P 500 re-screen + Alpaca data update
+      - name: Detect run type
+        run: |
+          OVERRIDE="${{ github.event.inputs.run_type }}"
+          if [ -n "$OVERRIDE" ]; then
+            echo "RUN_TYPE=$OVERRIDE" >> $GITHUB_ENV
+          elif [ "$(date -u +%d)" = "01" ]; then
+            echo "RUN_TYPE=monthly" >> $GITHUB_ENV
+          else
+            echo "RUN_TYPE=day_end" >> $GITHUB_ENV
+          fi
+
+      - name: Update portfolio
         env:
           ALPACA_ACCOUNT_NAME: ${{ secrets.ALPACA_ACCOUNT_NAME }}
           ALPACA_API_KEY:      ${{ secrets.ALPACA_API_KEY }}
@@ -39,9 +50,14 @@ jobs:
           ALPACA_BASE_URL:     ${{ secrets.ALPACA_BASE_URL }}
         run: python bot/update.py
 
-      - name: Step 2 — Monthly rebalance agent (Claude decision layer)
+      - name: Fetch enrichment
         env:
-          RUN_TYPE:            ${{ github.event.inputs.run_type || 'monthly' }}
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+        run: python bot/enrich.py
+
+      - name: Run agent
+        env:
+          RUN_TYPE:            ${{ env.RUN_TYPE }}
           ANTHROPIC_API_KEY:   ${{ secrets.ANTHROPIC_API_KEY }}
           ALPACA_ACCOUNT_NAME: ${{ secrets.ALPACA_ACCOUNT_NAME }}
           ALPACA_API_KEY:      ${{ secrets.ALPACA_API_KEY }}
@@ -49,14 +65,14 @@ jobs:
           ALPACA_BASE_URL:     ${{ secrets.ALPACA_BASE_URL }}
         run: python bot/agent.py
 
-      - name: Commit updated data and agent log
+      - name: Commit results
         run: |
           git config user.name "TradeQuest Bot"
           git config user.email "actions@github.com"
-          git add data/portfolio.json data/agent_log.json
+          git add data/portfolio.json data/agent_log.json data/enrichment.json
           if git diff --staged --quiet; then
-            echo "No changes after monthly rebalance."
+            echo "No changes to commit."
           else
-            git commit -m "agent[monthly]: rebalance $(date +'%Y-%m-%d')"
-            git push
+            git commit -m "agent[${{ env.RUN_TYPE }}]: $(date -u +'%Y-%m-%d %H:%M')"
+            git push -u origin HEAD
           fi

@@ -76,7 +76,7 @@ A position is **exited** when **any** of these trigger:
 | Momentum decay | Rank drops below **top 40%** | Exit before full reversal, not after |
 | Trend break | Price < **50-day MA** | Confirms momentum has ended |
 | Quality deterioration | EPS growth < 5% for 2 consecutive quarters | Fundamental basis for holding is gone |
-| Profit taking | Position up > 40% in < 90 days | Mean reversion risk after parabolic move |
+| Profit taking | Position up > 60% in < 60 days | Parabolic blow-off only — normal momentum continuation must not be cut |
 
 **Key improvement over v1**: v1 sold only when rank dropped below 40% OR price < 50-day MA. v2 adds quality deterioration and profit-taking rules, which independently caught real failures (e.g., high-momentum stocks that reported earnings misses).
 
@@ -108,25 +108,20 @@ Regime change triggers rebalancing of the cash buffer within 3 trading days.
 
 ## Agentic AI Layer
 
-Claude AI agent runs at three scheduled times. Each run reads this strategy file and the current portfolio state, reasons about the situation, and logs structured decisions.
+Claude AI agent runs on two scheduled routines. Each run reads this strategy file, the
+current portfolio state, and the previous run's log (for continuity), then writes
+structured decisions to `data/agent_log.json`.
 
-### Day Start (9:00 AM ET — pre-market)
-**Purpose:** Early warning system, no trades placed.
-- Check overnight gaps in holdings (futures, pre-market prices if available)
-- Flag any positions approaching sell-rule triggers
-- Assess regime signals for the day ahead
-- Surface any macro/earnings risk for the day
-- Output: flags + assessment → written to `data/agent_log.json`
-
-### Day End (4:30 PM ET — post-close)
+### Day End (4:30 PM ET — post-close, Mon–Fri)
 **Purpose:** Daily close prices → run sell rules → place Alpaca paper trades if needed.
 - Update portfolio with closing prices (via `bot/update.py`)
 - Check all four sell rules against updated prices
 - Make HOLD / SELL decisions for positions
 - Place actual Alpaca paper trading orders for any sells
+- On Fridays: append a `weekly_summary` (week return vs SPY, key trades, Monday watchlist)
 - Output: decisions + trades → written to `data/agent_log.json`
 
-### Monthly Rebalance (1st of month)
+### Monthly Rebalance (1st of month, 4:30 PM ET)
 **Purpose:** Full re-screening and portfolio reconstruction.
 - Re-screen all 500 S&P stocks against all four filters
 - Rank new candidates by momentum score
@@ -210,7 +205,7 @@ FOR EACH holding:
   IF momentum_rank > 40%  → SELL (rule 1)
   IF price < ma_50d       → SELL (rule 2)
   IF eps_growth < 5% x2   → SELL (rule 3)
-  IF pnl_pct > 40% in <90d → SELL (rule 4)
+  IF pnl_pct > 60% in <60d → SELL (rule 4, parabolic blow-off only)
   ELSE                    → HOLD
 
 FOR monthly rebalance:
