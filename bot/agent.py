@@ -23,12 +23,13 @@ from pathlib import Path
 
 import anthropic
 
-REPO_ROOT     = Path(__file__).resolve().parent.parent
-DATA_FILE     = REPO_ROOT / "data" / "portfolio.json"
-LOG_FILE      = REPO_ROOT / "data" / "agent_log.json"
-STRATEGY_FILE = REPO_ROOT / "STRATEGY.md"
-RUN_TYPE      = os.environ.get("RUN_TYPE", "day_end")
-MODEL         = "claude-sonnet-4-6"
+REPO_ROOT        = Path(__file__).resolve().parent.parent
+DATA_FILE        = REPO_ROOT / "data" / "portfolio.json"
+LOG_FILE         = REPO_ROOT / "data" / "agent_log.json"
+STRATEGY_FILE    = REPO_ROOT / "STRATEGY.md"
+ENRICHMENT_FILE  = REPO_ROOT / "data" / "enrichment.json"
+RUN_TYPE         = os.environ.get("RUN_TYPE", "day_end")
+MODEL            = "claude-sonnet-4-6"
 
 # ── Task prompts per run type ─────────────────────────────────
 
@@ -55,13 +56,24 @@ The portfolio data has been updated with today's closing prices. Make definitive
    - Momentum rank > 40% of universe → SELL
    - Price < 50-day MA → SELL
    - EPS growth deteriorating → WATCH/SELL
-   - Position up >40% in <90 days → consider profit taking
+   - Position up >60% in <60 days → consider profit taking (parabolic blow-off only)
 2. For each flagged position, state the specific rule triggered
 3. For HOLDs, briefly confirm the thesis still holds
 4. Assess portfolio overall performance vs the strategy objectives
 5. Note any regime changes that would affect cash allocation
 
 Be decisive. Any clear sell-rule trigger should result in a SELL decision.
+
+## Friday Close Addition
+If today is Friday, include a `weekly_summary` object in your JSON response alongside
+the standard fields:
+{
+  "weekly_summary": {
+    "week_assessment": "<1-sentence portfolio health vs SPY this week>",
+    "key_trades": ["<TICKER>", ...],
+    "next_week_watch": ["<TICKER>", "<TICKER>"]
+  }
+}
 """
 
 TASK_MONTHLY = """
@@ -137,11 +149,97 @@ def load_log() -> dict:
         return json.load(f)
 
 
+def load_enrichment() -> dict:
+    if not ENRICHMENT_FILE.exists():
+        return {}
+    with open(ENRICHMENT_FILE, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _safe(text: str | None, max_len: int = 100) -> str:
+    """Truncate external API text; strips newlines to prevent prompt injection."""
+    return (str(text) if text is not None else "")[:max_len].replace("\n", " ").replace("\r", " ")
+
+
+def build_enrichment_section(enrichment: dict) -> str:
+    """Build the Upcoming Catalysts section injected into the agent prompt."""
+    if not enrichment:
+        return ""
+
+    earnings = enrichment.get("earnings_this_week", [])
+    macro    = enrichment.get("macro_events_14d", [])
+    breadth  = enrichment.get("market_breadth")
+
+    if not earnings and not macro and not breadth:
+        return ""
+
+    lines = ["## Upcoming Market Catalysts\n"]
+
+    if earnings:
+        lines.append("### Earnings This Week (your holdings)")
+        for e in earnings:
+            eps = f", EPS est: {_safe(e['eps_estimate'])}" if e.get("eps_estimate") else ""
+            lines.append(f"- **{_safe(e['symbol'], 10)}** — {_safe(e['date'], 10)} {_safe(e['timing'], 3)}{eps}")
+        lines.append("")
+
+    if macro:
+        lines.append("### High-Impact Macro Events (next 14 days)")
+        for m in macro:
+            prev = f", prev: {_safe(m['previous'], 20)}" if m.get("previous") else ""
+            est  = f", est: {_safe(m['estimate'], 20)}"  if m.get("estimate")  else ""
+            lines.append(f"- **{_safe(m['date'], 10)}** {_safe(m['event'])}{prev}{est}")
+        lines.append("")
+
+    if breadth:
+        trend = "above — bullish breadth trend" if breadth.get("trend_above_200ma") else "below — bearish breadth trend"
+        lines.append("### Market Breadth Signal")
+        lines.append(f"- % S&P 500 stocks above 200-day MA: **{_safe(breadth['pct_above_200ma'], 10)}**")
+        lines.append(f"- Breadth 8MA vs 200MA: {trend}")
+        lines.append(f"- Interpretation: {_safe(breadth['interpretation'], 80)}")
+        lines.append(f"- Data as of: {_safe(breadth['date'], 10)}")
+        lines.append("")
+
+    return "\n".join(lines) + "\n"
+
+
+def build_history_section(recent_history: list) -> str:
+    """Summarise the last agent run so Claude has day-over-day continuity."""
+    if not recent_history:
+        return ""
+    entry = recent_history[0]
+    lines = [
+        f"## Previous Run ({entry.get('type', '?')}, "
+        f"{entry.get('timestamp', '')[:10]})\n"
+    ]
+    lines.append(
+        f"Regime: {entry.get('regime', '?')} "
+        f"({entry.get('regime_confidence', 0):.0%} confidence)"
+    )
+    flags = entry.get("flags", [])
+    if flags:
+        lines.append(f"Flags carried forward: {'; '.join(flags[:4])}")
+    decisions = entry.get("decisions", [])
+    sells   = [d["symbol"] for d in decisions if d.get("action") == "SELL"]
+    watches = [d["symbol"] for d in decisions if d.get("action") == "WATCH"]
+    if sells:
+        lines.append(f"Sold last run: {', '.join(sells)}")
+    if watches:
+        lines.append(f"Watching from last run: {', '.join(watches)}")
+    lines.append(f"Summary: {entry.get('summary', '')}")
+    return "\n".join(lines) + "\n\n"
+
+
 # ── Agent call ────────────────────────────────────────────────
 
-def run_agent(run_type: str, portfolio: dict, strategy: str) -> tuple[dict, dict]:
+def run_agent(
+    run_type: str,
+    portfolio: dict,
+    strategy: str,
+    enrichment: dict,
+    recent_history: list | None = None,
+) -> tuple[dict, dict]:
     """
-    Call Claude with prompt-cached strategy + portfolio state.
+    Call Claude with prompt-cached strategy + portfolio state + enrichment context.
     Returns (parsed_result, usage_info).
     """
     api_key = os.environ.get("ANTHROPIC_API_KEY", "")
@@ -157,9 +255,12 @@ def run_agent(run_type: str, portfolio: dict, strategy: str) -> tuple[dict, dict
         if k not in ("equity_curve",)
     }
 
+    enrichment_section = build_enrichment_section(enrichment)
+    history_section    = build_history_section(recent_history or [])
+
     message = client.messages.create(
         model=MODEL,
-        max_tokens=4000,  # 1800 was too short — 17-position portfolios need ~2500-3000 tokens
+        max_tokens=2500,
         system=[
             {
                 # Strategy doc is static — cache it (5-min TTL, saves ~2k tokens/run)
@@ -177,6 +278,8 @@ def run_agent(run_type: str, portfolio: dict, strategy: str) -> tuple[dict, dict
                 "role": "user",
                 "content": (
                     f"{task}\n\n"
+                    f"{enrichment_section}"
+                    f"{history_section}"
                     f"## Current Portfolio State\n"
                     f"```json\n{json.dumps(portfolio_slim, indent=2)}\n```\n\n"
                     f"{RESPONSE_SCHEMA}"
@@ -249,14 +352,26 @@ def main():
     run_type = RUN_TYPE
     print(f"TradeQuest Agent — {run_type.upper()} | {datetime.now().strftime('%Y-%m-%d %H:%M')} UTC")
 
-    strategy  = load_strategy()
-    portfolio = load_portfolio()
-    log       = load_log()
+    strategy       = load_strategy()
+    portfolio      = load_portfolio()
+    log            = load_log()
+    enrichment     = load_enrichment()
+    recent_history = log.get("runs", [])[:1]   # last 1 run for continuity
 
     if not portfolio:
         print("Warning: portfolio.json not found — agent running with empty state.", file=sys.stderr)
+    if enrichment:
+        earnings_count = len(enrichment.get("earnings_this_week", []))
+        macro_count    = len(enrichment.get("macro_events_14d", []))
+        breadth_pct    = enrichment.get("market_breadth", {}).get("pct_above_200ma", "N/A")
+        print(f"Enrichment : {earnings_count} earnings | {macro_count} macro events | breadth {breadth_pct}")
+    else:
+        print("Enrichment : none (run bot/enrich.py first for calendar context)")
+    if recent_history:
+        print(f"History    : last run was {recent_history[0].get('type','?')} "
+              f"({recent_history[0].get('timestamp','')[:10]})")
 
-    result, usage = run_agent(run_type, portfolio, strategy)
+    result, usage = run_agent(run_type, portfolio, strategy, enrichment, recent_history)
     entry = write_log(log, run_type, result, usage)
 
     # Console summary

@@ -76,7 +76,7 @@ A position is **exited** when **any** of these trigger:
 | Momentum decay | Rank drops below **top 40%** | Exit before full reversal, not after |
 | Trend break | Price < **50-day MA** | Confirms momentum has ended |
 | Quality deterioration | EPS growth < 5% for 2 consecutive quarters | Fundamental basis for holding is gone |
-| Profit taking | Position up > 40% in < 90 days | Mean reversion risk after parabolic move |
+| Profit taking | Position up > 60% in < 60 days | Parabolic blow-off only — normal momentum continuation must not be cut |
 
 **Key improvement over v1**: v1 sold only when rank dropped below 40% OR price < 50-day MA. v2 adds quality deterioration and profit-taking rules, which independently caught real failures (e.g., high-momentum stocks that reported earnings misses).
 
@@ -108,25 +108,20 @@ Regime change triggers rebalancing of the cash buffer within 3 trading days.
 
 ## Agentic AI Layer
 
-Claude AI agent runs at three scheduled times. Each run reads this strategy file and the current portfolio state, reasons about the situation, and logs structured decisions.
+Claude AI agent runs on two scheduled routines. Each run reads this strategy file, the
+current portfolio state, and the previous run's log (for continuity), then writes
+structured decisions to `data/agent_log.json`.
 
-### Day Start (9:00 AM ET — pre-market)
-**Purpose:** Early warning system, no trades placed.
-- Check overnight gaps in holdings (futures, pre-market prices if available)
-- Flag any positions approaching sell-rule triggers
-- Assess regime signals for the day ahead
-- Surface any macro/earnings risk for the day
-- Output: flags + assessment → written to `data/agent_log.json`
-
-### Day End (4:30 PM ET — post-close)
+### Day End (4:30 PM ET — post-close, Mon–Fri)
 **Purpose:** Daily close prices → run sell rules → place Alpaca paper trades if needed.
 - Update portfolio with closing prices (via `bot/update.py`)
 - Check all four sell rules against updated prices
 - Make HOLD / SELL decisions for positions
 - Place actual Alpaca paper trading orders for any sells
+- On Fridays: append a `weekly_summary` (week return vs SPY, key trades, Monday watchlist)
 - Output: decisions + trades → written to `data/agent_log.json`
 
-### Monthly Rebalance (1st of month)
+### Monthly Rebalance (1st of month, 4:30 PM ET)
 **Purpose:** Full re-screening and portfolio reconstruction.
 - Re-screen all 500 S&P stocks against all four filters
 - Rank new candidates by momentum score
@@ -150,6 +145,28 @@ Claude AI agent runs at three scheduled times. Each run reads this strategy file
 | XSS vulnerabilities in dashboard | Fixed: sanitize() on all innerHTML, CSP header, SRI on CDN |
 
 ---
+
+## Market Breadth Context
+
+When enrichment data is provided, use the breadth signal to calibrate regime_confidence:
+
+| Breadth (% S&P above 200-MA) | Implication |
+|---|---|
+| > 60% | Broad participation — supports bull regime; use full confidence |
+| 40–60% | Narrowing rally — treat regime classification with caution; consider sideways even if SPY is above 200-MA |
+| < 40% | Thin participation — strong bias toward sideways or bear regardless of SPY trend |
+
+A market where SPY is above its 200-day MA but breadth is below 40% is a **narrow (late-cycle) bull** — maintain higher cash than the regime alone would suggest.
+
+The breadth 8MA crossing below the 200MA is an early warning of deterioration, not an immediate sell signal, but should reduce regime_confidence.
+
+## Upcoming Earnings Awareness
+
+When enrichment data includes earnings announcements for current holdings:
+- A holding with earnings **within 3 days**: flag it with `WATCH` if not already a sell signal; note the earnings date in the reason
+- A holding with earnings **within 1 day (BMO tomorrow or AMC today)**: consider `WATCH` with urgency `next_open` unless a sell rule is already triggered
+- Do **not** sell solely because of an upcoming earnings — but do factor earnings risk into confidence levels
+- If already planning to SELL based on a rule, prefer executing **before** earnings, not after
 
 ## Known Limitations & Honest Caveats
 
@@ -188,7 +205,7 @@ FOR EACH holding:
   IF momentum_rank > 40%  → SELL (rule 1)
   IF price < ma_50d       → SELL (rule 2)
   IF eps_growth < 5% x2   → SELL (rule 3)
-  IF pnl_pct > 40% in <90d → SELL (rule 4)
+  IF pnl_pct > 60% in <60d → SELL (rule 4, parabolic blow-off only)
   ELSE                    → HOLD
 
 FOR monthly rebalance:

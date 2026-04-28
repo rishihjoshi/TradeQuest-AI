@@ -4,6 +4,8 @@
 const DATA_URL           = './data/portfolio.json';
 const AGENT_LOG_URL      = './data/agent_log.json';
 const NEWS_URL           = './data/news.json';
+const ENRICHMENT_URL     = './data/enrichment.json';
+const TIMING_ABBREV      = { 'Before Market Open': 'BMO', 'After Market Close': 'AMC', 'During Hours': 'TAS', 'BMO': 'BMO', 'AMC': 'AMC', 'TAS': 'TAS' };
 const MARKET_REFRESH_MS  = 30_000;        // 30 s during market hours
 const DEFAULT_REFRESH_MS = 5 * 60_000;    // 5 min otherwise
 const FETCH_TIMEOUT_MS   = 15_000;
@@ -355,13 +357,17 @@ class TradeQuestApp {
       return fetch(`${url}?_=${ts}`, { signal: ctrl.signal }).finally(() => clearTimeout(t));
     };
     try {
-      const [portfolioRes, agentRes] = await Promise.all([
-        fetchWithTimeout(DATA_URL),
-        fetchWithTimeout(AGENT_LOG_URL),
-      ]);
+      // Enrichment changes once daily — skip refetch if we already have today's data
+      const today         = new Date().toISOString().slice(0, 10);
+      const needsEnrich   = !this.enrichment || this.enrichment.generated_at !== today;
+      const fetches       = [fetchWithTimeout(DATA_URL), fetchWithTimeout(AGENT_LOG_URL)];
+      if (needsEnrich) fetches.push(fetchWithTimeout(ENRICHMENT_URL));
+
+      const [portfolioRes, agentRes, enrichRes] = await Promise.all(fetches);
       if (!portfolioRes.ok) throw new Error(`Portfolio HTTP ${portfolioRes.status}`);
       this.data     = await portfolioRes.json();
       this.agentLog = agentRes.ok ? await agentRes.json() : { runs: [] };
+      if (needsEnrich) this.enrichment = enrichRes?.ok ? await enrichRes.json() : null;
       this.render();
     } catch (err) {
       this.showError(err.name === 'AbortError' ? 'Request timed out' : err.message);
@@ -372,6 +378,7 @@ class TradeQuestApp {
     try {
       this.renderHeader();
       this.renderStats();
+      this.renderCatalysts();
       this.renderEquityChart();
       this.renderHoldings();
       this.renderTrades();
@@ -442,6 +449,42 @@ class TradeQuestApp {
 
     $('cashPct').textContent =
       `Cash: ${fmt$(s.cash)} (${(Number.isFinite(s.cash_pct) ? s.cash_pct : 0).toFixed(1)}%)`;
+  }
+
+  // ── Upcoming Catalysts Banner ─────────────────────────────
+  renderCatalysts() {
+    const el = $('catalystsBanner');
+    if (!el) return;
+
+    const e = this.enrichment;
+    if (!e) { el.hidden = true; return; }
+
+    const earnings = (e.earnings_this_week || []);
+    const macro    = (e.macro_events_14d   || []);
+    const breadth  = e.market_breadth;
+
+    if (!earnings.length && !macro.length && !breadth) { el.hidden = true; return; }
+
+    const chips = [];
+
+    earnings.forEach(ev => {
+      const abbrev = TIMING_ABBREV[ev.timing] || ev.timing;
+      const label  = sanitize(`${ev.symbol} earnings ${ev.date} (${abbrev})`);
+      chips.push(`<span class="catalyst-chip earnings">${label}</span>`);
+    });
+
+    macro.forEach(ev => {
+      chips.push(`<span class="catalyst-chip macro">${sanitize(`${ev.date} ${ev.event}`)}</span>`);
+    });
+
+    if (breadth) {
+      const raw = breadth.breadth_raw;
+      const cls = raw > 0.60 ? 'breadth-healthy' : raw < 0.40 ? 'breadth-weak' : 'breadth-neutral';
+      chips.push(`<span class="catalyst-chip ${cls}">${sanitize(`Breadth ${breadth.pct_above_200ma} above 200MA`)}</span>`);
+    }
+
+    el.innerHTML = `<span class="catalysts-label">Catalysts</span>${chips.join('')}`;
+    el.hidden = false;
   }
 
   // ── Equity Chart ──────────────────────────────────────────
