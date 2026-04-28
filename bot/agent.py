@@ -363,7 +363,7 @@ def main():
     if enrichment:
         earnings_count = len(enrichment.get("earnings_this_week", []))
         macro_count    = len(enrichment.get("macro_events_14d", []))
-        breadth_pct    = enrichment.get("market_breadth", {}).get("pct_above_200ma", "N/A")
+        breadth_pct    = (enrichment.get("market_breadth") or {}).get("pct_above_200ma", "N/A")
         print(f"Enrichment : {earnings_count} earnings | {macro_count} macro events | breadth {breadth_pct}")
     else:
         print("Enrichment : none (run bot/enrich.py first for calendar context)")

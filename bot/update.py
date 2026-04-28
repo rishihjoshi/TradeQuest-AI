@@ -9,6 +9,7 @@ Two modes:
 Market data always comes from Yahoo Finance (yfinance).
 """
 
+import io
 import json
 import math
 import os
@@ -321,7 +322,7 @@ def get_sp500_tickers() -> list[str]:
             headers={"User-Agent": "TradeQuestBot/2.0 (paper-trading; github-actions)"},
         )
         resp.raise_for_status()
-        table = pd.read_html(resp.text)[0]
+        table = pd.read_html(io.StringIO(resp.text))[0]
         return table["Symbol"].str.replace(".", "-", regex=False).tolist()
     except Exception as e:
         print(f"Warning: could not fetch S&P 500 list ({e}). Using fallback.", file=sys.stderr)
@@ -337,7 +338,8 @@ def get_sp500_tickers() -> list[str]:
 def fetch_prices(tickers: list[str], period: str = "13mo") -> pd.DataFrame:
     print(f"Downloading price data for {len(tickers)} tickers…")
     raw = yf.download(tickers, period=period, auto_adjust=True,
-                      progress=False, group_by="ticker", threads=True)
+                      progress=False, threads=True)
+    # yfinance 1.x: single-ticker → flat columns; multi-ticker → MultiIndex (Price, Ticker)
     if len(tickers) == 1:
         return pd.DataFrame({tickers[0]: raw["Close"]})
     close = raw["Close"] if isinstance(raw.columns, pd.MultiIndex) else raw[["Close"]].rename(columns={"Close": tickers[0]})
