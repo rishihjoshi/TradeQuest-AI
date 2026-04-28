@@ -1,7 +1,83 @@
 {
-  "last_run": "2026-04-28T19:21:34Z",
+  "last_run": "2026-04-28T22:32:49Z",
   "last_type": "day_end",
   "runs": [
+    {
+      "id": "RUN-20260428-2232",
+      "timestamp": "2026-04-28T22:32:49Z",
+      "type": "day_end",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is effectively a 2-stock book (TSLA at 38.2% and cash at 35.9%) with five other small positions entered 2026-04-28 that the trade log shows were simultaneously sold on the same date \u2014 creating a confusing state where holdings appear on the books but corresponding sell orders were also placed. The critical structural problem remains TSLA: 38.2% weight (5x the 8% max), ~44.6% 30-day volatility (almost certainly above the 90th percentile Risk Filter threshold), zero reported EPS/revenue growth data (first confirmed quarter below 5% on watch for Rule 3), and data gaps for MA50 and momentum rank preventing full rule verification. AAPL earnings tomorrow (2026-04-30 TAS) add binary gap risk to an already data-deficient position. Market breadth at 57% with 8MA below 200MA signals narrowing participation \u2014 regime confidence should be reduced from 0.80.",
+      "regime": "sideways",
+      "regime_confidence": 0.58,
+      "flags": [
+        "TSLA: CRITICAL \u2014 Position weight 38.2% is 4.8x the 8% maximum cap; Risk Filter (Rule 4) triggered by 44.6% 30-day volatility (top 10% of universe almost certain); EPS growth reported 0% = first confirmed quarter below 5% threshold, second quarter watch active; Forward P/E data unavailable (prior data showed 82.1x, failing absolute valuation guard rail); MA50 data missing \u2014 cannot confirm trend_break but prior flags suggest elevated risk; SELL or aggressive trim required at 2026-05-01 rebalance \u2014 this is the single largest portfolio risk",
+        "AAPL: Earnings 2026-04-30 BMO/TAS \u2014 binary gap risk tomorrow; EPS growth and momentum rank both reporting 0 (data gap); MA50 missing; position entered 2026-04-28 but sell order also placed 2026-04-28 per trade log \u2014 portfolio state inconsistency requires reconciliation",
+        "PORTFOLIO STRUCTURE: Trade log shows ADI, GOOG, NTRS, BK, CFG all sold 2026-04-28 at entry prices, yet these holdings still appear in current portfolio \u2014 likely a settlement/reconciliation lag or data error; true invested equity may be lower than reported",
+        "BREADTH: 57% of S&P above 200MA with 8MA below 200MA \u2014 narrowing rally signal; reduces regime confidence; strategy document calls for treating as SIDEWAYS caution even if SPY above 200MA",
+        "CASH: Reported at 35.9% but target for bull is 5%, sideways is 25% \u2014 even under sideways regime cash is above target, suggesting rebalance is not fully deployed; this is partially protective given TSLA concentration risk"
+      ],
+      "decisions": [
+        {
+          "action": "SELL",
+          "symbol": "TSLA",
+          "reason": "Multiple simultaneous rule triggers: (1) Risk Filter \u2014 44.6% 30-day annualized volatility almost certainly places TSLA above the 90th percentile of S&P 500 universe, triggering mandatory exclusion; (2) Quality deterioration \u2014 EPS growth reported 0% for current period, first confirmed quarter below 5% threshold, second quarter on active watch; (3) Concentration \u2014 38.2% weight is a structural violation of the 8% max position size cap; (4) Valuation \u2014 prior run confirmed forward P/E of 82.1x which fails the absolute guard rail and sector-relative check for consumer discretionary; (5) Data gaps (MA50 = 0, momentum rank = 0) prevent confirming trend and momentum health, and under strategy rules data-deficient positions should be treated conservatively. Recommend full exit at 2026-05-01 rebalance open, not waiting for further deterioration.",
+          "rule_triggered": "quality_drop",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "AAPL",
+          "reason": "Earnings 2026-04-30 TAS creates binary gap risk that must be flagged with urgency. Per strategy: holding with earnings within 1 day should be flagged WATCH with urgency next_open. EPS growth and momentum rank both report 0 (data gaps) \u2014 cannot confirm momentum filter compliance. Position is -1.08% from entry. Trade log also shows a sell order placed 2026-04-28 for AAPL at entry price \u2014 portfolio state inconsistency must be reconciled. If AAPL is genuinely still held, the earnings gap risk and data gaps together warrant elevated caution. No sell rule definitively triggered by data alone, but earnings risk is the primary flag.",
+          "rule_triggered": "null",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "ADI",
+          "reason": "Fundamental data is strong: EPS growth 116.7%, revenue growth 30.4%, forward P/E 29.2 (well under 40), price above 50-day MA (392.10 vs 339.02). Momentum rank 4 is in top 30% of universe (ranks 1-15 in this screened set). Volatility at 37.8% is elevated and may approach 90th percentile \u2014 flag for verification at rebalance screening. Trade log shows a sell at entry price on 2026-04-28 \u2014 if this position is actually liquidated, no further action needed; if still held, HOLD thesis is intact subject to volatility verification.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "GOOG",
+          "reason": "Strong fundamentals: EPS growth 31.1%, revenue growth 18.0%, forward P/E 25.7, price well above 50-day MA (347.10 vs 309.35). Momentum rank 8 within screened universe. Volatility 31.4% \u2014 elevated, needs 90th percentile verification. Trade log shows sold 2026-04-28 \u2014 portfolio state may be stale. If still held, momentum thesis intact and no sell rule triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "BK",
+          "reason": "EPS growth 41.8%, revenue growth 13.4%, forward P/E 13.9, price above 50-day MA (133.54 vs 121.95). Momentum rank 15 \u2014 near the boundary of top 30% in a 500-stock universe (top 30% = ranks 1-150); within this screened cohort of 7 it is the lowest-ranked. Trade log shows sold 2026-04-28. Monitor momentum rank at rebalance.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "CFG",
+          "reason": "EPS growth 46.8%, revenue growth 13.8%, forward P/E 10.2, price above 50-day MA (64.99 vs 61.37). Momentum rank 13. Financials exposure is diversified. Trade log shows sold 2026-04-28 \u2014 portfolio state reconciliation needed.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "NTRS",
+          "reason": "EPS growth 42.6%, revenue growth 13.9%, forward P/E 14.2, price well above 50-day MA (166.90 vs 146.15). Momentum rank 9. Volatility 31.6% \u2014 elevated, verify against 90th percentile. Trade log shows sold 2026-04-28.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "maintain",
+      "cash_rationale": "Cash at 35.9% is above both bull (5%) and sideways (25%) targets, but given: (1) TSLA must be sold at next rebalance, which will raise cash further before redeployment; (2) breadth narrowing to 57% with bearish 8MA trend reduces regime confidence and argues for sideways-level cash (25%); (3) portfolio state inconsistency between holdings and trade log means true invested amount is uncertain. Maintaining current cash level is appropriate until 2026-05-01 rebalance when full re-screening will establish clean positions. Do not add equity exposure before rebalance given TSLA concentration risk and earnings overhang.",
+      "summary": "Day-end review 2026-04-29: TSLA flagged SELL (volatility Risk Filter, quality deterioration, 5x concentration breach) for execution at 2026-05-01 rebalance open; AAPL flagged WATCH ahead of earnings tomorrow; regime downgraded to SIDEWAYS (confidence 58%) on narrowing breadth; portfolio state reconciliation required between holdings and same-day sell orders.",
+      "usage": {
+        "input_tokens": 4752,
+        "output_tokens": 2390,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 2804
+      }
+    },
     {
       "id": "RUN-20260428-1921",
       "timestamp": "2026-04-28T19:21:34Z",
