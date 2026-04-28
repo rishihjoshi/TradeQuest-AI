@@ -1,7 +1,49 @@
 {
-  "last_run": "2026-04-27T15:50:24Z",
+  "last_run": "2026-04-28T16:08:27Z",
   "last_type": "day_start",
   "runs": [
+    {
+      "id": "RUN-20260428-1608",
+      "timestamp": "2026-04-28T16:08:27Z",
+      "type": "day_start",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is in early-stage deployment with only 2 of a target 15\u201320 positions filled, leaving cash at 59.1% versus the bull-regime target of 5%. TSLA dominates at 38.1% weight (well above the 8% max position size cap) while AAPL is severely underweight at 2.7%. Market regime is confirmed bull with VIX at 18.2, positive 200-day MA trend, and 63% breadth \u2014 all three signals aligned.",
+      "regime": "bull",
+      "regime_confidence": 0.78,
+      "flags": [
+        "TSLA: Position weight at 38.1% dramatically exceeds the 8% maximum position size rule \u2014 highest urgency concentration risk requiring correction at next rebalance on 2026-05-01",
+        "TSLA: Forward P/E of 82.1 fails the valuation guard rail (Fwd P/E < 40); passes only if confirmed within top 70% cheapest by sector (Consumer Discretionary) \u2014 valuation data should be verified before next rebalance",
+        "TSLA: EPS growth reported as 0% \u2014 if this persists for a second consecutive quarter it will trigger quality deterioration sell rule (Rule 3: EPS growth < 5% x2 quarters); monitor closely",
+        "AAPL: Revenue growth of 4% is below the 8% quality filter threshold \u2014 currently passing 1 of 2 quality criteria only; watch for further deterioration",
+        "PORTFOLIO: Cash at 59.1% is drastically above the 5% bull-regime target \u2014 the portfolio is significantly under-deployed and not aligned with the current bull allocation mandate",
+        "PORTFOLIO: Only 2 positions held versus target of 15\u201320 \u2014 portfolio is structurally incomplete and under-diversified, amplifying single-name risk on TSLA"
+      ],
+      "decisions": [
+        {
+          "action": "WATCH",
+          "symbol": "TSLA",
+          "reason": "Momentum rank #1, price well above 50-day MA ($376.30 vs MA50 $248.50), PnL +0.52% well below profit-take threshold of +40%. No sell rule triggered. However, forward P/E of 82.1 is a valuation flag and EPS growth of 0% is approaching quality deterioration trigger. Hold for now but flag for rebalance size correction.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "AAPL",
+          "reason": "Momentum rank #2, price marginally below cost ($271.06 vs avg cost $272.61, -0.57%) but well above 50-day MA ($271.06 vs MA50 $215.30). Revenue growth of 4% fails quality filter threshold of 8% \u2014 single criterion failure. No sell rule technically triggered yet. Monitor revenue trend; if next data refresh still shows <8% revenue growth this should be escalated at rebalance.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "decrease",
+      "cash_rationale": "Cash at 59.1% is far above the bull-regime target of 5%. The portfolio needs significant additional capital deployment across 13\u201318 new positions to align with strategy mandates. This should be addressed at the upcoming monthly rebalance on 2026-05-01. No trades should be placed pre-market today (Day Start run \u2014 flag only), but the monthly rebalance in 5 days must prioritize aggressive cash deployment into screened momentum candidates.",
+      "summary": "Pre-market check: bull regime confirmed (VIX 18.2, breadth 63%), no immediate sell rules triggered, but portfolio is critically under-deployed at 59% cash with TSLA overweight at 38% \u2014 full rebalance urgently needed on 2026-05-01.",
+      "usage": {
+        "input_tokens": 2193,
+        "output_tokens": 961,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 2477
+      }
+    },
     {
       "id": "RUN-20260427-1550",
       "timestamp": "2026-04-27T15:50:24Z",
