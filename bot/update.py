@@ -14,6 +14,7 @@ import json
 import math
 import os
 import sys
+import time
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
@@ -184,21 +185,20 @@ def _alpaca_client():
 
 
 def alpaca_read_state(client) -> dict | None:
-    """Fetch account summary, open positions, and recent closed orders."""
+    """Fetch account summary, open positions, closed orders, and pending open orders."""
     try:
         from alpaca.trading.requests import GetOrdersRequest
         from alpaca.trading.enums import QueryOrderStatus
 
-        account   = client.get_account()
-        positions = client.get_all_positions()
-        orders    = client.get_orders(GetOrdersRequest(
-            status=QueryOrderStatus.CLOSED, limit=50
-        ))
+        account        = client.get_account()
+        positions      = client.get_all_positions()
+        orders_closed  = client.get_orders(GetOrdersRequest(status=QueryOrderStatus.CLOSED, limit=50))
+        orders_open    = client.get_orders(GetOrdersRequest(status=QueryOrderStatus.OPEN,   limit=20))
         return {
             "portfolio_value": float(account.portfolio_value),
             "cash":            float(account.cash),
             "positions":       positions,
-            "orders":          orders,
+            "orders":          list(orders_closed) + list(orders_open),
         }
     except Exception as e:
         print(f"Warning: Alpaca state fetch failed ({e}).", file=sys.stderr)
@@ -247,30 +247,53 @@ def alpaca_positions_to_holdings(positions, fundamentals: dict,
 
 
 def alpaca_orders_to_trades(orders) -> list[dict]:
-    """Map Alpaca Order objects → portfolio.json trades format."""
+    """Map Alpaca Order objects → portfolio.json trades format.
+
+    Includes both filled orders and pending (accepted/open) orders.
+    Pending orders show price=0 and reason='Pending — awaiting market open'.
+    """
     trades = []
     for o in orders:
         filled_qty = float(o.filled_qty or 0)
-        if filled_qty == 0:
-            continue
         fill_price = float(o.filled_avg_price or 0)
         filled_at  = o.filled_at
-        date_str   = filled_at.strftime("%Y-%m-%d") if filled_at else str(o.created_at)[:10]
-        action     = "BUY" if str(o.side).endswith("buy") else "SELL"
-        trades.append({
-            "id":       f"ALP-{str(o.id)[:8].upper()}",
-            "date":     date_str,
-            "action":   action,
-            "symbol":   o.symbol,
-            "name":     o.symbol,
-            "shares":   filled_qty,
-            "price":    round(fill_price, 2),
-            "value":    round(filled_qty * fill_price, 2),
-            "pnl":      None,
-            "pnl_pct":  None,
-            "reason":   "Alpaca paper trade — momentum rebalance",
-            "type":     "market",
-        })
+        created_at = getattr(o, "created_at", None)
+        date_str   = (filled_at.strftime("%Y-%m-%d") if filled_at
+                      else (str(created_at)[:10] if created_at else ""))
+        action     = "BUY" if o.side.value == "buy" else "SELL"
+
+        if filled_qty > 0:
+            trades.append({
+                "id":       f"ALP-{str(o.id)[:8].upper()}",
+                "date":     date_str,
+                "action":   action,
+                "symbol":   o.symbol,
+                "name":     o.symbol,
+                "shares":   filled_qty,
+                "price":    round(fill_price, 2),
+                "value":    round(filled_qty * fill_price, 2),
+                "pnl":      None,
+                "pnl_pct":  None,
+                "reason":   "Alpaca paper trade — momentum rebalance",
+                "type":     "market",
+            })
+        else:
+            qty = float(o.qty or 0)
+            if qty > 0:
+                trades.append({
+                    "id":       f"ALP-{str(o.id)[:8].upper()}",
+                    "date":     date_str,
+                    "action":   action,
+                    "symbol":   o.symbol,
+                    "name":     o.symbol,
+                    "shares":   qty,
+                    "price":    0.0,
+                    "value":    0.0,
+                    "pnl":      None,
+                    "pnl_pct":  None,
+                    "reason":   "Pending — awaiting market open",
+                    "type":     "market",
+                })
     return trades
 
 
@@ -694,11 +717,22 @@ def main():
         if to_sell or to_buy:
             print(f"Rebalance: {len(to_sell)} sells, {len(to_buy)} buys (after risk gates)")
             alpaca_place_orders(client, to_sell, to_buy, pv, cash)
+            # Brief pause then re-fetch: during-hours fills settle in <1s;
+            # after-hours orders appear as pending in the open-orders list.
+            time.sleep(3)
+            refreshed = alpaca_read_state(client)
+            if refreshed:
+                new_holdings = alpaca_positions_to_holdings(
+                    refreshed["positions"], fundamentals, screened_ranks, vol30
+                )
+                cash = refreshed["cash"]
+                pv   = refreshed["portfolio_value"]
+                all_trades = alpaca_orders_to_trades(refreshed["orders"])
+            else:
+                all_trades = alpaca_orders_to_trades(alpaca_state["orders"])
         else:
             print("No orders placed — either no rebalance needed or risk gates blocked all orders.")
-
-        # Trades from Alpaca order history
-        all_trades = alpaca_orders_to_trades(alpaca_state["orders"])
+            all_trades = alpaca_orders_to_trades(alpaca_state["orders"])
 
         # Recalculate weights on current holdings
         total_mv = sum(h["market_value"] for h in new_holdings)
