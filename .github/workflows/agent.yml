@@ -2,7 +2,7 @@ name: TradeQuest Agent
 
 on:
   schedule:
-    # 4:30 PM ET (21:30 UTC, EDT). Covers day_end Mon–Fri and monthly on the 1st.
+    # 5:30 PM ET / 4:30 PM CT (21:30 UTC). Covers day_end Mon–Fri and monthly on the 1st.
     - cron: '30 21 * * 1-5'
   workflow_dispatch:
     inputs:

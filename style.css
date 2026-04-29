@@ -685,12 +685,11 @@ body {
 }
 
 .agent-run {
-  padding: 14px 18px;
+  padding: 0;
   border-bottom: 1px solid var(--border);
   border-left: 3px solid var(--border);
   display: flex;
   flex-direction: column;
-  gap: 8px;
   transition: background 0.15s;
 }
 
@@ -706,8 +705,14 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  padding: 12px 18px;
+  cursor: pointer;
+  user-select: none;
+  min-width: 0;
 }
+.agent-run-header:hover { background: var(--surface2); }
+.agent-run-header:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
 
 .run-type-badge {
   font-size: 0.62rem;
@@ -755,6 +760,54 @@ body {
   font-size: 0.65rem;
   color: var(--muted);
   font-variant-numeric: tabular-nums;
+}
+
+/* Collapsible run body */
+.run-body {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 18px;
+}
+.agent-run.expanded .run-body {
+  max-height: 4000px;
+  padding: 0 18px 14px;
+}
+
+/* Expand/collapse chevron */
+.run-expand-icon {
+  font-size: 0.55rem;
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+  margin-left: 2px;
+}
+.agent-run.expanded .run-expand-icon { transform: rotate(180deg); }
+
+/* Preview chips shown in collapsed header */
+.run-preview-chips {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  align-items: center;
+}
+.agent-run.expanded .run-preview-chips { display: none; }
+
+/* Small chip variant for header preview */
+.decision-chip.chip-sm {
+  font-size: 0.58rem;
+  padding: 1px 5px;
+}
+.chip-more {
+  font-size: 0.62rem;
+  color: var(--muted);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* Flag chips — severity-classified */

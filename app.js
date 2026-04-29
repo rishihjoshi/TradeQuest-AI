@@ -781,12 +781,10 @@ class TradeQuestApp {
   // ── Agent Log (Task 1 — parse fix + beautiful UI) ─────────
   renderAgentLog() {
     const log     = this.agentLog || { runs: [] };
-    const rawRuns = (log.runs || []).slice().reverse(); // newest first
+    const rawRuns = (log.runs || []).slice(); // newest first — agent.py prepends with insert(0, entry)
 
-    // Save non-sensitive metadata to localStorage before recovery
     rawRuns.slice(0, 5).forEach(run => AgentHistory.save(run));
 
-    // Attempt to recover parse-failed runs
     const runs = rawRuns.map(tryRecoverRun);
 
     $('agentRunCount').textContent = runs.length || '0';
@@ -807,9 +805,8 @@ class TradeQuestApp {
           <div class="agent-empty-body">
             The Claude AI agent runs automatically:
             <ul>
-              <li><strong>9:00 AM ET</strong> Mon&ndash;Fri &mdash; pre-market flag check</li>
-              <li><strong>4:30 PM ET</strong> Mon&ndash;Fri &mdash; post-close sell/hold decisions</li>
-              <li><strong>4:30 PM ET</strong> 1st of month &mdash; full portfolio rebalance</li>
+              <li><strong>5:30 PM ET / 4:30 PM CT</strong> Mon&ndash;Fri &mdash; post-close decisions</li>
+              <li><strong>5:30 PM ET / 4:30 PM CT</strong> 1st of month &mdash; full rebalance</li>
             </ul>
             Tap <strong>&#x25B6; Run workflow</strong> above to trigger immediately.
           </div>
@@ -818,41 +815,56 @@ class TradeQuestApp {
     }
 
     const TYPE_LABEL = { day_start: 'Day Start', day_end: 'Day End', monthly: 'Monthly' };
+    const tok = n => Number.isFinite(+n) ? String(+n) : '?';
 
-    list.innerHTML = runs.map(run => {
+    list.innerHTML = runs.map((run, idx) => {
       const rawType  = run.type || run.run_type || '';
       const runType  = sanitize(rawType);
-      const regime   = sanitize(run.regime || 'unknown');
+      const regimeRaw = ['bull', 'bear', 'sideways'].includes(run.regime) ? run.regime : 'sideways';
+      const regime   = sanitize(regimeRaw);
       const conf     = Number.isFinite(run.regime_confidence)
         ? ` · ${(run.regime_confidence * 100).toFixed(0)}%` : '';
       const headline = sanitize(run.summary    || '');
       const assess   = sanitize(run.assessment || '');
       const ts       = fmtDate(run.timestamp   || '');
+      const runId    = sanitize(run.id || ts);
+      const isExpanded = idx === 0;
 
-      // Complete parse failure — styled error card with copy button
       if (run._parseFailed) {
-        const rawContent = String(run.assessment || '');
         return `
-          <div class="agent-run type-${runType} run-parse-error">
-            <div class="agent-run-header">
+          <div class="agent-run type-${runType} run-parse-error${isExpanded ? ' expanded' : ''}" data-run-id="${runId}">
+            <div class="agent-run-header" role="button" tabindex="0" aria-expanded="${isExpanded}">
               <span class="run-type-badge ${runType}">${sanitize(TYPE_LABEL[rawType] || rawType)}</span>
               <span class="run-time">${ts}</span>
               <span class="parse-fail-badge">Parse Error</span>
+              <span class="run-expand-icon" aria-hidden="true">&#9660;</span>
             </div>
-            <p class="run-assess">Claude&apos;s response could not be parsed. The raw text is stored in agent_log.json. This is likely a token-length issue — the agent.py max_tokens has been increased to 4000 to prevent recurrence.</p>
-            <button class="copy-raw-btn" data-run-id="${sanitize(run.id || ts)}">Copy raw response</button>
+            <div class="run-body">
+              <p class="run-assess">Claude&apos;s response could not be parsed. The raw text is stored in agent_log.json.</p>
+              <button class="copy-raw-btn" data-run-id="${runId}">Copy raw response</button>
+            </div>
           </div>`;
       }
 
-      // Flag chips with severity classification
+      // Header preview: first 3 decisions (hidden when expanded)
+      const previewDecisions = (run.decisions || []).slice(0, 3).map(d => {
+        const action = sanitize(String(d.action || '').toUpperCase());
+        const sym    = sanitize(d.symbol || '');
+        const cls    = ['SELL', 'BUY', 'HOLD', 'WATCH'].includes(action) ? action : 'HOLD';
+        return `<span class="decision-chip ${cls} chip-sm">${action}${sym ? ' ' + sym : ''}</span>`;
+      }).join('');
+      const moreCount = Math.max(0, (run.decisions || []).length - 3);
+      const moreChip  = moreCount > 0 ? `<span class="chip-more">+${moreCount} more</span>` : '';
+
+      // Body: full flags
       const flagsHtml = (run.flags || []).map(f => {
         const text = typeof f === 'string' ? f : `${f.symbol || ''}: ${f.flag || ''}`;
         const tier = classifyFlag(text);
-        const disp = sanitize(text.length > 70 ? text.slice(0, 70) + '…' : text);
+        const disp = sanitize(text.length > 80 ? text.slice(0, 80) + '…' : text);
         return `<span class="flag-chip ${tier}" title="${sanitize(text)}">${disp}</span>`;
       }).join('');
 
-      // Decision chips
+      // Body: full decisions
       const decisionsHtml = (run.decisions || []).map(d => {
         const action  = sanitize(String(d.action || '').toUpperCase());
         const sym     = sanitize(d.symbol || '');
@@ -872,28 +884,46 @@ class TradeQuestApp {
         ? `<span class="recovered-badge" title="JSON recovered from raw stored text">✓ recovered</span>` : '';
 
       const tokenMeta = run.usage?.input_tokens
-        ? `<span class="run-token-meta">${run.usage.input_tokens}in / ${run.usage.output_tokens}out${run.usage.cache_read_tokens ? ' · ' + run.usage.cache_read_tokens + ' cached' : ''}</span>`
+        ? `<span class="run-token-meta">${tok(run.usage.input_tokens)}in / ${tok(run.usage.output_tokens)}out${run.usage.cache_read_tokens ? ' · ' + tok(run.usage.cache_read_tokens) + ' cached' : ''}</span>`
         : '';
 
       return `
-        <div class="agent-run type-${runType}">
-          <div class="agent-run-header">
+        <div class="agent-run type-${runType}${isExpanded ? ' expanded' : ''}" data-run-id="${runId}">
+          <div class="agent-run-header" role="button" tabindex="0" aria-expanded="${isExpanded}">
             <span class="run-type-badge ${runType}">${sanitize(TYPE_LABEL[rawType] || rawType)}</span>
             <span class="run-regime ${regime}">${regime}${conf}</span>
+            <div class="run-preview-chips">${previewDecisions}${moreChip}</div>
             <span class="run-time">${ts}</span>
             ${recoveredBadge}
+            <span class="run-expand-icon" aria-hidden="true">&#9660;</span>
           </div>
-          ${headline ? `<p class="run-headline">${headline}</p>` : ''}
-          ${assess   ? `<p class="run-assess">${assess}</p>`    : ''}
-          ${chipsRow ? `<div class="run-chips-row">${chipsRow}</div>` : ''}
-          ${run.cash_rationale ? `<p class="run-cash-note muted-cell">${sanitize(run.cash_rationale)}</p>` : ''}
-          ${tokenMeta ? `<div class="run-meta">${tokenMeta}</div>` : ''}
+          <div class="run-body">
+            ${headline ? `<p class="run-headline">${headline}</p>` : ''}
+            ${assess   ? `<p class="run-assess">${assess}</p>`    : ''}
+            ${chipsRow ? `<div class="run-chips-row">${chipsRow}</div>` : ''}
+            ${run.cash_rationale ? `<p class="run-cash-note muted-cell">${sanitize(run.cash_rationale)}</p>` : ''}
+            ${tokenMeta ? `<div class="run-meta">${tokenMeta}</div>` : ''}
+          </div>
         </div>`;
     }).join('');
 
-    // Wire copy buttons (avoids inline onclick in template)
+    // Expand / collapse on header click or keyboard
+    list.querySelectorAll('.agent-run-header').forEach(header => {
+      const toggle = () => {
+        const card = header.closest('.agent-run');
+        const expanded = card.classList.toggle('expanded');
+        header.setAttribute('aria-expanded', expanded);
+      };
+      header.addEventListener('click', toggle);
+      header.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+      });
+    });
+
+    // Copy-raw buttons on parse-error cards (stop propagation so header toggle doesn't fire)
     list.querySelectorAll('.copy-raw-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
         const runId = btn.dataset.runId;
         const run   = rawRuns.find(r => r.id === runId || fmtDate(r.timestamp) === runId);
         const text  = run?.assessment || 'No raw content available';
