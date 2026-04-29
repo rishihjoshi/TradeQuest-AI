@@ -1125,14 +1125,33 @@ class TradeQuestApp {
     if ($('newsNeutralCount'))  $('newsNeutralCount').textContent = neutral;
     if ($('newsGeneratedAt'))   $('newsGeneratedAt').textContent  = `Updated ${genAt}`;
 
-    // Build ticker chip list from articles (symbols present in filtered view)
-    const allSymbols = [...new Set(articles.flatMap(a => a.symbols || []))].sort();
+    // Compute dominant sentiment per ticker across ALL articles (for chip coloring)
+    const sentBySymbol = {};
+    articles.forEach(a => {
+      (a.symbols || []).forEach(sym => {
+        if (!sentBySymbol[sym]) sentBySymbol[sym] = { bull: 0, bear: 0, neutral: 0 };
+        sentBySymbol[sym][a.sentiment] = (sentBySymbol[sym][a.sentiment] || 0) + 1;
+      });
+    });
+    const dominantSent = sym => {
+      const c = sentBySymbol[sym] || {};
+      if ((c.bull || 0) >= (c.bear || 0) && (c.bull || 0) >= (c.neutral || 0)) return 'bull';
+      if ((c.bear || 0) >= (c.neutral || 0)) return 'bear';
+      return 'neutral';
+    };
+
+    // Chip list: when a sentiment filter is active, only show tickers in that filtered set
+    const chipSource = this.newsFilter !== 'ALL'
+      ? articles.filter(a => a.sentiment === this.newsFilter)
+      : articles;
+    const allSymbols = [...new Set(chipSource.flatMap(a => a.symbols || []))].sort();
     const chipsEl    = $('newsTickerChips');
     if (chipsEl) {
       chipsEl.innerHTML = allSymbols.map(sym => {
-        const s     = sanitize(sym);
+        const s      = sanitize(sym);
+        const sent   = dominantSent(sym);
         const active = this.newsTickerFilter === sym ? ' active' : '';
-        return `<button class="ticker-chip${active}" data-sym="${s}">${s}</button>`;
+        return `<button class="ticker-chip ${sent}${active}" data-sym="${s}">${s}</button>`;
       }).join('');
       chipsEl.querySelectorAll('.ticker-chip').forEach(chip => {
         chip.addEventListener('click', () => {

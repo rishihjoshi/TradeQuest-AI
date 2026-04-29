@@ -1421,6 +1421,15 @@ body {
 .ticker-chip:hover  { color: var(--text); border-color: rgba(255,255,255,0.2); }
 .ticker-chip.active { color: var(--gold); border-color: rgba(212,175,55,0.4); background: var(--gold-dim); }
 
+/* Sentiment-tinted ticker chips */
+.ticker-chip.bull    { color: var(--profit); border-color: rgba(34,255,136,0.25); }
+.ticker-chip.bear    { color: var(--loss);   border-color: rgba(255,77,77,0.25); }
+.ticker-chip.neutral { color: var(--muted);  border-color: var(--border); }
+.ticker-chip.bull:hover { border-color: rgba(34,255,136,0.5); background: var(--profit-bg); }
+.ticker-chip.bear:hover { border-color: rgba(255,77,77,0.5);  background: var(--loss-bg); }
+.ticker-chip.bull.active { color: var(--profit); border-color: var(--profit); background: var(--profit-bg); }
+.ticker-chip.bear.active { color: var(--loss);   border-color: var(--loss);   background: var(--loss-bg); }
+
 /* Article Feed */
 .news-article-feed {
   display: flex;
