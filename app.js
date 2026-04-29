@@ -408,7 +408,7 @@ class TradeQuestApp {
     const dateStr = updated.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
     $('lastUpdated').textContent = `Updated ${dateStr} ${timeStr}`;
 
-    const regime = meta.market_regime;
+    const regime = ['bull', 'bear', 'sideways'].includes(meta.market_regime) ? meta.market_regime : 'sideways';
     const badge  = $('regimeBadge');
     badge.className = `regime-badge ${regime}`;
     badge.querySelector('#regimeLabel').textContent =
@@ -1137,7 +1137,8 @@ class TradeQuestApp {
       const sentLbl = sent === 'bull' ? 'Bullish' : sent === 'bear' ? 'Bearish' : 'Neutral';
       const conf    = Number.isFinite(a.confidence) ? ` ${Math.round(a.confidence * 100)}%` : '';
       const tickers = (a.symbols || []).slice(0, 5).map(s => `<span class="article-ticker">${sanitize(s)}</span>`).join('');
-      const url     = a.url ? `href="${sanitize(a.url)}" target="_blank" rel="noopener noreferrer"` : '';
+      const safeUrl = a.url && /^https?:\/\//i.test(a.url) ? sanitize(a.url) : '';
+      const url     = safeUrl ? `href="${safeUrl}" target="_blank" rel="noopener noreferrer"` : '';
       const ago     = timeAgo(a.created_at);
       const src     = a.source ? sanitize(a.source) : '';
       const author  = a.author ? ` · ${sanitize(a.author)}` : '';

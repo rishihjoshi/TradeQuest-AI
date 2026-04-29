@@ -100,18 +100,20 @@ def apply_risk_limits(
     pv:      float,
     cash:    float,
     agent_sell_approvals: set[str],
+    prices:  dict[str, float] | None = None,
 ) -> tuple[list[tuple], list[tuple]]:
     """
     Gate and cap sell + buy lists before they reach the broker.
 
     Rules applied in order:
     1. SELL only what the agent explicitly approved (immediate/next_open).
-    2. Total sell value ≤ MAX_SELL_VALUE_PCT of portfolio.
+    2. Total sell value ≤ MAX_SELL_VALUE_PCT of portfolio (dollar-accurate).
     3. Total orders ≤ MAX_ORDERS_PER_RUN.
     4. BUY only if enough cash remains above CASH_FLOOR_PCT floor.
-    5. Each BUY capped at MAX_POSITION_PCT of portfolio value.
+    5. Each BUY capped at MAX_POSITION_PCT of portfolio value (dollar-accurate).
     """
-    cash_floor  = pv * CASH_FLOOR_PCT
+    prices       = prices or {}
+    cash_floor   = pv * CASH_FLOOR_PCT
     max_sell_val = pv * MAX_SELL_VALUE_PCT
     max_pos_val  = pv * MAX_POSITION_PCT
 
@@ -122,36 +124,40 @@ def apply_risk_limits(
     if blocked:
         print(f"  Risk gate: blocked unapproved SELLs — {', '.join(sorted(blocked))}")
 
-    # 2. Cap total sell value
+    # 2. Cap total sell value in dollars
     capped_sells: list[tuple] = []
     running_sell_val = 0.0
     for sym, shares in approved_sells:
-        # approximate value from portfolio data (shares * current price not available here;
-        # use a generous upper bound of MAX_SELL_VALUE_PCT to avoid partial-share math)
-        capped_sells.append((sym, shares))
-        running_sell_val += 1  # count-based cap is enforced in step 3
-        if running_sell_val >= max_sell_val / (pv / max(len(approved_sells), 1)):
+        price = prices.get(sym.upper(), 0.0)
+        order_val = shares * price if price > 0 else 0.0
+        if running_sell_val + order_val > max_sell_val and capped_sells:
+            print(f"  Risk gate: sell cap ${max_sell_val:,.0f} reached — {sym} skipped")
             break
+        capped_sells.append((sym, shares))
+        running_sell_val += order_val
 
     # 3. Total order cap
     sell_budget = min(len(capped_sells), MAX_ORDERS_PER_RUN)
     capped_sells = capped_sells[:sell_budget]
     buy_budget   = max(0, MAX_ORDERS_PER_RUN - sell_budget)
 
-    # 4 & 5. Cash floor + position size cap on buys
+    # 4 & 5. Cash floor + position size cap on buys (dollar-accurate)
     available_cash = cash - cash_floor  # never spend below floor
     capped_buys: list[tuple] = []
     for sym, shares in to_buy[:buy_budget]:
         if available_cash <= 0:
             print(f"  Risk gate: cash floor reached — no more buys ({sym} skipped)")
             break
-        # Recalculate shares respecting position cap and cash floor
-        # shares passed in were computed by the caller; re-enforce the cap
-        from_pos_cap   = int(max_pos_val / max(shares, 1))  # proportional cap
-        capped_shares  = min(shares, from_pos_cap)
-        capped_shares  = max(1, capped_shares)
+        price = prices.get(sym.upper(), 0.0)
+        # Cap shares so the position value stays within MAX_POSITION_PCT
+        max_shares = int(max_pos_val / price) if price > 0 else shares
+        capped_shares = max(1, min(shares, max_shares))
+        order_cost = capped_shares * price if price > 0 else 0.0
+        if order_cost > available_cash and price > 0:
+            # Reduce to what cash allows
+            capped_shares = max(1, int(available_cash / price))
         capped_buys.append((sym, capped_shares))
-        available_cash -= capped_shares  # placeholder; real $ check is done in alpaca_place_orders
+        available_cash -= capped_shares * price if price > 0 else 0.0
 
     if len(capped_sells) < len(to_sell) or len(capped_buys) < len(to_buy):
         print(f"  Risk summary: {len(capped_sells)}/{len(to_sell)} sells, "
@@ -676,8 +682,13 @@ def main():
 
         # Load what Claude approved and apply all risk limits before touching the broker
         agent_approvals = load_agent_approvals()
+        prices = {h["symbol"]: h.get("current_price", 0.0) for h in new_holdings}
+        prices.update({
+            sym: fundamentals.get(sym, {}).get("current_price", 0.0)
+            for sym in to_buy_syms
+        })
         to_sell, to_buy = apply_risk_limits(
-            raw_sells, raw_buys, pv, cash, agent_approvals["SELL"]
+            raw_sells, raw_buys, pv, cash, agent_approvals["SELL"], prices
         )
 
         if to_sell or to_buy:
@@ -739,7 +750,7 @@ def main():
             **data.get("meta", {}),
             "strategy":       "TradeQuest AI Momentum Strategy v2.0",
             "universe":       "S&P 500",
-            "account_name":   ALPACA_ACCOUNT_NAME,
+            "account_name":   "TradeQuest Paper",
             "mode":           "alpaca" if alpaca_state else "simulation",
             "initial_capital": data.get("meta", {}).get("initial_capital", INITIAL_CAPITAL),
             "last_rebalance": today,

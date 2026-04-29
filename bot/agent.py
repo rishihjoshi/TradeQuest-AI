@@ -157,8 +157,12 @@ def load_enrichment() -> dict:
 
 
 def _safe(text: str | None, max_len: int = 100) -> str:
-    """Truncate external API text; strips newlines to prevent prompt injection."""
-    return (str(text) if text is not None else "")[:max_len].replace("\n", " ").replace("\r", " ")
+    """Truncate external API text; strips newlines and Markdown chars to prevent prompt injection."""
+    cleaned = (str(text) if text is not None else "")[:max_len]
+    cleaned = cleaned.replace("\n", " ").replace("\r", " ")
+    for ch in ("#", "*", "`", "\\"):
+        cleaned = cleaned.replace(ch, "")
+    return cleaned
 
 
 def build_enrichment_section(enrichment: dict) -> str:
@@ -212,20 +216,20 @@ def build_history_section(recent_history: list) -> str:
         f"{entry.get('timestamp', '')[:10]})\n"
     ]
     lines.append(
-        f"Regime: {entry.get('regime', '?')} "
+        f"Regime: {_safe(entry.get('regime', '?'), 20)} "
         f"({entry.get('regime_confidence', 0):.0%} confidence)"
     )
     flags = entry.get("flags", [])
     if flags:
-        lines.append(f"Flags carried forward: {'; '.join(flags[:4])}")
+        lines.append(f"Flags carried forward: {'; '.join(_safe(str(f), 80) for f in flags[:4])}")
     decisions = entry.get("decisions", [])
     sells   = [d["symbol"] for d in decisions if d.get("action") == "SELL"]
     watches = [d["symbol"] for d in decisions if d.get("action") == "WATCH"]
     if sells:
-        lines.append(f"Sold last run: {', '.join(sells)}")
+        lines.append(f"Sold last run: {', '.join(_safe(s, 10) for s in sells)}")
     if watches:
-        lines.append(f"Watching from last run: {', '.join(watches)}")
-    lines.append(f"Summary: {entry.get('summary', '')}")
+        lines.append(f"Watching from last run: {', '.join(_safe(s, 10) for s in watches)}")
+    lines.append(f"Summary: {_safe(entry.get('summary', ''), 150)}")
     return "\n".join(lines) + "\n\n"
 
 

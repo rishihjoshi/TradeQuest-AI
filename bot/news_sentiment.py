@@ -39,6 +39,15 @@ Reply ONLY with valid JSON, no other text:
 {{"sentiment": "bull|bear|neutral", "confidence": 0.0, "reason": "one sentence max 120 chars"}}"""
 
 
+def _safe(text: str | None, max_len: int = 400) -> str:
+    """Sanitise external news text before prompt injection — strips control and Markdown chars."""
+    cleaned = (str(text) if text is not None else "")[:max_len]
+    cleaned = cleaned.replace("\n", " ").replace("\r", " ")
+    for ch in ("#", "*", "`", "\\"):
+        cleaned = cleaned.replace(ch, "")
+    return cleaned
+
+
 def get_holdings() -> list[str]:
     if not DATA_FILE.exists():
         return []
@@ -80,8 +89,8 @@ def analyze_sentiment(client: anthropic.Anthropic, headline: str, summary: str) 
             messages=[{
                 "role": "user",
                 "content": SENTIMENT_PROMPT.format(
-                    headline=headline[:200],
-                    summary=(summary or "")[:400],
+                    headline=_safe(headline, 200),
+                    summary=_safe(summary, 400),
                 ),
             }],
         )
@@ -131,8 +140,8 @@ def main():
 
         articles.append({
             "id":         str(art.get("id", i)),
-            "headline":   headline,
-            "summary":    (summary or "")[:500],
+            "headline":   _safe(headline, 200),
+            "summary":    _safe(summary, 500),
             "url":        art.get("url",        ""),
             "author":     art.get("author",     ""),
             "source":     art.get("source",     ""),

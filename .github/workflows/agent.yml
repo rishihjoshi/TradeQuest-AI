@@ -34,7 +34,8 @@ jobs:
       - name: Detect run type
         run: |
           OVERRIDE="${{ github.event.inputs.run_type }}"
-          if [ -n "$OVERRIDE" ]; then
+          # Allowlist validation — reject any value that isn't an expected run type
+          if [[ "$OVERRIDE" =~ ^(day_end|monthly)$ ]]; then
             echo "RUN_TYPE=$OVERRIDE" >> $GITHUB_ENV
           elif [ "$(date -u +%d)" = "01" ]; then
             echo "RUN_TYPE=monthly" >> $GITHUB_ENV
