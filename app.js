@@ -1125,9 +1125,14 @@ class TradeQuestApp {
     if ($('newsNeutralCount'))  $('newsNeutralCount').textContent = neutral;
     if ($('newsGeneratedAt'))   $('newsGeneratedAt').textContent  = `Updated ${genAt}`;
 
-    // Compute dominant sentiment per ticker across ALL articles (for chip coloring)
+    // Chip list: when a sentiment filter is active, only show tickers in that filtered set
+    const chipSource = this.newsFilter !== 'ALL'
+      ? articles.filter(a => a.sentiment === this.newsFilter)
+      : articles;
+
+    // Compute dominant sentiment per ticker from chipSource (matches the active filter view)
     const sentBySymbol = {};
-    articles.forEach(a => {
+    chipSource.forEach(a => {
       (a.symbols || []).forEach(sym => {
         if (!sentBySymbol[sym]) sentBySymbol[sym] = { bull: 0, bear: 0, neutral: 0 };
         sentBySymbol[sym][a.sentiment] = (sentBySymbol[sym][a.sentiment] || 0) + 1;
@@ -1139,11 +1144,6 @@ class TradeQuestApp {
       if ((c.bear || 0) >= (c.neutral || 0)) return 'bear';
       return 'neutral';
     };
-
-    // Chip list: when a sentiment filter is active, only show tickers in that filtered set
-    const chipSource = this.newsFilter !== 'ALL'
-      ? articles.filter(a => a.sentiment === this.newsFilter)
-      : articles;
     const allSymbols = [...new Set(chipSource.flatMap(a => a.symbols || []))].sort();
     const chipsEl    = $('newsTickerChips');
     if (chipsEl) {

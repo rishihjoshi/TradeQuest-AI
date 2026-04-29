@@ -212,8 +212,8 @@ def build_history_section(recent_history: list) -> str:
         return ""
     entry = recent_history[0]
     lines = [
-        f"## Previous Run ({entry.get('type', '?')}, "
-        f"{entry.get('timestamp', '')[:10]})\n"
+        f"## Previous Run ({_safe(entry.get('type', '?'), 20)}, "
+        f"{_safe(entry.get('timestamp', '')[:10], 10)})\n"
     ]
     lines.append(
         f"Regime: {_safe(entry.get('regime', '?'), 20)} "

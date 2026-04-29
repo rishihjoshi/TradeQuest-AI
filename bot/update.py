@@ -131,7 +131,7 @@ def apply_risk_limits(
     for sym, shares in approved_sells:
         price = prices.get(sym.upper(), 0.0)
         order_val = shares * price if price > 0 else 0.0
-        if running_sell_val + order_val > max_sell_val and capped_sells:
+        if running_sell_val + order_val > max_sell_val:
             print(f"  Risk gate: sell cap ${max_sell_val:,.0f} reached — {sym} skipped")
             break
         capped_sells.append((sym, shares))
