@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-28",
+  "generated_at": "2026-04-29",
   "earnings_this_week": [
     {
       "symbol": "AAPL",
@@ -10,11 +10,11 @@
   ],
   "macro_events_14d": [],
   "market_breadth": {
-    "date": "2026-04-27",
-    "breadth_raw": 0.5697,
-    "breadth_8ma": 0.5758,
-    "breadth_200ma": 0.6024,
-    "pct_above_200ma": "57.0%",
+    "date": "2026-04-28",
+    "breadth_raw": 0.5777,
+    "breadth_8ma": 0.5762,
+    "breadth_200ma": 0.6022,
+    "pct_above_200ma": "57.8%",
     "trend_above_200ma": false,
     "interpretation": "NARROWING \u2014 selective rally, treat regime with caution"
   }
