@@ -662,7 +662,8 @@ def compute_summary(holdings, cash, existing_summary, all_trades) -> dict:
 
 
 def update_equity_curve(curve: list, pv: float) -> list:
-    label = datetime.now().strftime("%b %-d")
+    _now  = datetime.now()
+    label = f"{_now.strftime('%b')} {_now.day}"
     if curve and curve[-1]["date"] == label:
         curve[-1]["value"] = round(pv)
     else:
