@@ -264,7 +264,7 @@ def run_agent(
 
     message = client.messages.create(
         model=MODEL,
-        max_tokens=2500,
+        max_tokens=8000,  # 4000 was still risky — monthly rebalance with 20 positions needs ~4-6k tokens
         system=[
             {
                 # Strategy doc is static — cache it (5-min TTL, saves ~2k tokens/run)
@@ -299,21 +299,41 @@ def run_agent(
         "cache_write_tokens": getattr(message.usage, "cache_creation_input_tokens", 0),
     }
 
-    raw = message.content[0].text.strip()
+    raw         = message.content[0].text.strip()
+    stop_reason = message.stop_reason
+
+    # Explicit truncation guard — max_tokens hit means JSON is incomplete
+    if stop_reason == "max_tokens":
+        print(
+            f"WARNING: Response truncated at token limit — increase max_tokens. "
+            f"output_tokens={message.usage.output_tokens}",
+            file=sys.stderr,
+        )
+
     try:
-        start  = raw.find("{")
-        end    = raw.rfind("}") + 1
-        result = json.loads(raw[start:end])
+        # decoder.raw_decode walks forward from the first '{' and stops at the
+        # exact matching '}' — handles nested objects correctly and never
+        # breaks on trailing text or a truncated response (unlike rfind('}'))
+        decoder = json.JSONDecoder()
+        start   = raw.find("{")
+        if start == -1:
+            raise ValueError("No JSON object found in Claude's response")
+        result, _ = decoder.raw_decode(raw, start)
     except Exception as e:
-        print(f"Warning: could not parse agent JSON response ({e}). Storing raw.", file=sys.stderr)
+        print(
+            f"Warning: could not parse agent JSON response "
+            f"(stop_reason={stop_reason}, error={e}). Storing raw.",
+            file=sys.stderr,
+        )
         result = {
-            "assessment":  raw,
-            "regime":      "unknown",
-            "flags":       [],
-            "decisions":   [],
-            "cash_action": "maintain",
-            "cash_rationale": "",
-            "summary":     f"Agent ran ({run_type}) — response parse failed",
+            "assessment":        raw,
+            "regime":            "unknown",
+            "regime_confidence": 0,
+            "flags":             [],
+            "decisions":         [],
+            "cash_action":       "maintain",
+            "cash_rationale":    "",
+            "summary":           f"Agent ran ({run_type}) — response parse failed",
         }
 
     return result, usage
