@@ -233,6 +233,7 @@ class TradeQuestApp {
     this.newsDisplayLimit  = NEWS_PAGE_SIZE;
     this.chart             = null;
     this.symbolChart       = null;
+    this._symbolsCache     = null;   // loaded once from data/symbols.json
     this.tradeFilter       = 'ALL';   // 'ALL' | 'BUY' | 'SELL'
     this.tradeSort         = 'date';  // 'date' | 'pnl'
     this.refreshTimer      = null;
@@ -1040,15 +1041,23 @@ class TradeQuestApp {
     ).join('');
 
     try {
-      const res  = await fetch(`${API_BASE}/api/search?q=${encodeURIComponent(q)}`);
-      const data = await res.json();
+      // Load S&P 500 universe once from static file, cache in memory
+      if (!this._symbolsCache) {
+        const res = await fetch('./data/symbols.json');
+        if (!res.ok) throw new Error('symbols.json not found');
+        this._symbolsCache = await res.json();
+      }
+      const uq = q.toUpperCase();
+      const matches = this._symbolsCache
+        .filter(s => s.symbol.includes(uq) || (s.name || '').toUpperCase().includes(uq))
+        .slice(0, 10)
+        .map(s => ({ symbol: s.symbol, name: s.name, exchange: s.sector || '' }));
 
-      if (!res.ok) throw new Error(data.error || 'Search failed');
-      if (!data.length) {
+      if (!matches.length) {
         results.innerHTML = `<p class="search-empty">No results for "${sanitize(q)}"</p>`;
         return;
       }
-      this.renderSearchResults(data);
+      this.renderSearchResults(matches);
     } catch (e) {
       results.innerHTML = `<p class="search-error">Search unavailable: ${sanitize(e.message)}</p>`;
     }
@@ -1132,59 +1141,60 @@ class TradeQuestApp {
   }
 
   async loadSymbolQuote(sym) {
-    try {
-      const res  = await fetch(`${API_BASE}/api/quote?symbols=${encodeURIComponent(sym)}`);
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Quote failed');
+    // Use portfolio holdings data — no live API call needed
+    const holding = (this.data?.holdings || []).find(h => h.symbol === sym);
 
-      const q = data[sym];
-      if (!q) return;
+    $('symbolPriceSkeleton').hidden = true;
+    $('symbolPriceBlock').hidden    = false;
 
-      // Cache current price for trade ticket pre-fill
-      this.tradeState.currentPrice = q.price;
-
-      // Populate price hero
-      $('symbolPriceSkeleton').hidden = true;
-      $('symbolPriceBlock').hidden    = false;
-
+    if (!holding) {
       const lastEl = $('symbolLastPrice');
-      if (lastEl) lastEl.textContent = fmt$(q.price);
-
+      if (lastEl) lastEl.textContent = '—';
       const chgEl = $('symbolChange');
       if (chgEl) {
-        const sign = q.change >= 0 ? '+' : '';
-        chgEl.textContent = `${sign}${fmt$(q.change)} (${sign}${fmtPct(q.changePct)})`;
-        chgEl.className   = `symbol-change-badge ${q.change >= 0 ? 'profit' : 'loss'}`;
+        chgEl.textContent = 'Quote only available for current portfolio holdings';
+        chgEl.className   = 'symbol-change-badge';
       }
-
       const baEl = $('symbolBidAsk');
-      if (baEl && q.bid && q.ask) {
-        baEl.textContent = `Bid ${fmt$(q.bid)}  ·  Ask ${fmt$(q.ask)}`;
-      }
-
+      if (baEl) baEl.textContent = '';
       const msEl = $('symbolMarketStatus');
       if (msEl) {
-        const live = isMarketHours();
-        msEl.textContent = live ? '● Market Open · 15-min delayed (IEX)' : '○ Market Closed';
-        msEl.className   = `symbol-market-status ${live ? 'open' : 'closed'}`;
+        msEl.textContent = 'Not in current portfolio';
+        msEl.className   = 'symbol-market-status closed';
       }
-
-      // Populate stat grid
-      const setS = (id, val) => { const el = $(id); if (el) el.textContent = val; };
-      setS('statOpen',   fmt$(q.open));
-      setS('statHigh',   fmt$(q.high));
-      setS('statLow',    fmt$(q.low));
-      setS('statVolume', q.volume ? q.volume.toLocaleString() : '—');
-      setS('statBid',    q.bid ? fmt$(q.bid) : '—');
-      setS('statAsk',    q.ask ? fmt$(q.ask) : '—');
-
-      // Update symbol screen name if not already set from search
-      if ($('symbolScreenName').textContent === sym) {
-        $('symbolScreenName').textContent = sym;
-      }
-    } catch (e) {
-      console.warn('[TQ] Quote error:', e.message);
+      return;
     }
+
+    // Cache current price for trade ticket pre-fill
+    this.tradeState.currentPrice = holding.current_price || 0;
+
+    const lastEl = $('symbolLastPrice');
+    if (lastEl) lastEl.textContent = fmt$(holding.current_price);
+
+    const chgEl = $('symbolChange');
+    if (chgEl) {
+      const sign = (holding.pnl_pct || 0) >= 0 ? '+' : '';
+      chgEl.textContent = `${sign}${fmtPct(holding.pnl_pct)} unrealized`;
+      chgEl.className   = `symbol-change-badge ${(holding.pnl || 0) >= 0 ? 'profit' : 'loss'}`;
+    }
+
+    const baEl = $('symbolBidAsk');
+    if (baEl) baEl.textContent = '';
+
+    const msEl = $('symbolMarketStatus');
+    if (msEl) {
+      msEl.textContent = 'Prices as of last bot run · Updated via GitHub Actions';
+      msEl.className   = 'symbol-market-status closed';
+    }
+
+    // Populate stat grid
+    const setS = (id, val) => { const el = $(id); if (el) el.textContent = val; };
+    setS('statOpen',   fmt$(holding.avg_cost));
+    setS('statHigh',   '—');
+    setS('statLow',    '—');
+    setS('statVolume', '—');
+    setS('statBid',    '—');
+    setS('statAsk',    '—');
   }
 
   async loadSymbolBars(sym, timeframe) {
@@ -1194,9 +1204,16 @@ class TradeQuestApp {
     if (canvas) canvas.hidden = true;
 
     try {
-      const res  = await fetch(`${API_BASE}/api/bars?symbol=${encodeURIComponent(sym)}&timeframe=${timeframe}`);
-      const bars = await res.json();
-      if (!res.ok) throw new Error(bars.error || 'Bars failed');
+      // Load pre-generated bars from static file (available for current holdings only)
+      const res     = await fetch(`./data/bars/${encodeURIComponent(sym)}.json`);
+      if (!res.ok) throw new Error('No chart data for this symbol');
+      const allBars = await res.json();
+
+      // Slice client-side by timeframe
+      const tfLimit = { '1D': 1, '1W': 7, '1M': 30, '3M': 90, '1Y': 365,
+                        '5Y': allBars.length, 'MAX': allBars.length };
+      const limit = tfLimit[timeframe] ?? allBars.length;
+      const bars  = allBars.slice(-limit);
 
       if (this.symbolChart) { this.symbolChart.destroy(); this.symbolChart = null; }
 
@@ -1352,20 +1369,12 @@ class TradeQuestApp {
     this._showTradeStep(1);
     $('tradeModal').hidden = false;
 
-    // Fetch live price + buying power in parallel (non-blocking)
-    const fetchPrice = currentPrice
-      ? Promise.resolve()
-      : fetch(`${API_BASE}/api/quote?symbols=${encodeURIComponent(symbol)}`)
-          .then(r => r.json())
-          .then(d => { if (d[symbol]) this.tradeState.currentPrice = d[symbol].price; })
-          .catch(() => {});
-
-    const fetchAccount = fetch(`${API_BASE}/api/account`)
-      .then(r => r.json())
-      .then(d => { this.tradeState.buyingPower = d.buyingPower || 0; })
-      .catch(() => { this.tradeState.buyingPower = this.data?.summary?.cash || 0; });
-
-    await Promise.all([fetchPrice, fetchAccount]);
+    // Use portfolio data directly — no live API calls needed
+    if (!currentPrice && this.data?.holdings) {
+      const h = this.data.holdings.find(hh => hh.symbol === symbol);
+      if (h) this.tradeState.currentPrice = h.current_price || 0;
+    }
+    this.tradeState.buyingPower = this.data?.summary?.cash || 0;
     this.updateTradePreview();
     requestAnimationFrame(() => $('tradeQty')?.focus());
   }
@@ -1436,39 +1445,31 @@ class TradeQuestApp {
     const btn    = $('tradeSubmitBtn');
     const result = $('tradeSubmitResult');
 
-    if (btn) { btn.disabled = true; btn.textContent = 'Submitting…'; }
+    const typeLabel = ts.type === 'market' ? 'Market'
+                    : ts.type === 'limit'  ? `Limit @ ${fmt$(lp)}`
+                    : `Stop @ ${fmt$(sp)}`;
 
-    const body = {
-      symbol:         ts.symbol,
-      qty,
-      side:           ts.side,
-      type:           ts.type,
-      time_in_force:  ts.tif,
-    };
-    if (ts.type === 'limit') body.limit_price = lp;
-    if (ts.type === 'stop')  body.stop_price  = sp;
+    const ghUrl = 'https://github.com/rishihjoshi/TradeQuest-AI/actions/workflows/update.yml';
 
-    try {
-      const res  = await fetch(`${API_BASE}/api/orders`, {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify(body),
-      });
-      const data = await res.json();
-
-      if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
-
-      if (result) {
-        result.hidden = false;
-        result.innerHTML = `<span class="submit-success">✓ Order submitted — ID ${sanitize(data.id || '')}</span>`;
-      }
-      if (btn) { btn.textContent = 'Done'; btn.onclick = () => { this.closeTradeTicket(); this.loadOrdersIfStale(); }; }
-    } catch (e) {
-      if (result) {
-        result.hidden = false;
-        result.innerHTML = `<span class="submit-error">✗ ${sanitize(e.message)}</span>`;
-      }
-      if (btn) { btn.disabled = false; btn.textContent = 'Submit Order'; }
+    if (result) {
+      result.hidden = false;
+      result.innerHTML = `
+        <div class="submit-gh-instructions">
+          <div class="submit-success">✓ Order ready — trigger via GitHub Actions</div>
+          <div class="submit-order-params">
+            <div><strong>Symbol:</strong> ${sanitize(ts.symbol)}</div>
+            <div><strong>Side:</strong> ${sanitize(ts.side)}</div>
+            <div><strong>Qty:</strong> ${sanitize(String(qty))}</div>
+            <div><strong>Type:</strong> ${sanitize(typeLabel)}</div>
+            <div><strong>TIF:</strong> ${ts.tif.toUpperCase()}</div>
+          </div>
+          <a class="gh-actions-link" href="${ghUrl}" target="_blank" rel="noopener">Open GitHub Actions ↗</a>
+          <p class="submit-note muted-cell">Click "Run workflow", enter the values above, and hit Run. Order fills within ~60s.</p>
+        </div>`;
+    }
+    if (btn) {
+      btn.textContent = 'Done';
+      btn.onclick = () => this.closeTradeTicket();
     }
   }
 
@@ -1483,22 +1484,25 @@ class TradeQuestApp {
 
   // ── Orders Tab ────────────────────────────────────────────
   async loadOrdersIfStale() {
-    this.renderOrderSkeletons('openOrdersList', 5);
-    this.renderOrderSkeletons('closedOrdersList', 3);
-
-    try {
-      const [openRes, closedRes] = await Promise.all([
-        fetch(`${API_BASE}/api/orders?status=open`),
-        fetch(`${API_BASE}/api/orders?status=closed`),
-      ]);
-      const [openData, closedData] = await Promise.all([
-        openRes.ok   ? openRes.json()   : [],
-        closedRes.ok ? closedRes.json() : [],
-      ]);
-      this.ordersData = { open: openData, closed: closedData };
-    } catch (e) {
-      this.ordersData = { open: [], closed: [] };
-    }
+    // Open orders: always empty — no live connection without a backend
+    // Order history: sourced from portfolio.json trades (already in memory)
+    const trades = this.data?.trades || [];
+    const closed = trades.map(t => ({
+      id:             t.id || '',
+      symbol:         t.symbol || '',
+      side:           (t.action || 'BUY').toLowerCase(),
+      type:           t.type || 'market',
+      qty:            String(t.shares || ''),
+      filledQty:      String(t.shares || ''),
+      limitPrice:     null,
+      stopPrice:      null,
+      status:         'filled',
+      tif:            'day',
+      submittedAt:    t.date ? t.date + 'T16:00:00Z' : null,
+      filledAt:       t.date ? t.date + 'T16:00:00Z' : null,
+      filledAvgPrice: t.price || null,
+    }));
+    this.ordersData = { open: [], closed };
 
     this.renderOrders();
 
@@ -1639,29 +1643,15 @@ class TradeQuestApp {
   }
 
   async cancelOrder(orderId, btn) {
-    if (!orderId) return;
-    if (btn) { btn.disabled = true; btn.textContent = 'Cancelling…'; }
-
-    try {
-      const res  = await fetch(`${API_BASE}/api/orders?id=${encodeURIComponent(orderId)}`, { method: 'DELETE' });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Cancel failed');
-
-      // Remove from DOM immediately, then refresh
-      const card = document.querySelector(`.order-card[data-order-id="${CSS.escape(orderId)}"]`);
-      if (card) card.remove();
-
-      const countEl = $('openOrdersCount');
-      if (countEl) {
-        const current = parseInt(countEl.textContent || '0', 10);
-        if (current > 1) countEl.textContent = current - 1; else countEl.textContent = '';
-      }
-
-      // Refresh orders list after short delay
-      setTimeout(() => this.loadOrdersIfStale(), 800);
-    } catch (e) {
-      if (btn) { btn.disabled = false; btn.textContent = 'Cancel'; }
-      console.warn('[TQ] Cancel order error:', e.message);
+    // No live cancel capability without a backend
+    if (btn) { btn.disabled = true; btn.textContent = 'N/A'; }
+    const card = document.querySelector(`.order-card[data-order-id="${CSS.escape(orderId)}"]`);
+    if (card) {
+      const note = document.createElement('div');
+      note.className = 'muted-cell';
+      note.style.fontSize = '0.75rem';
+      note.textContent = 'To cancel open orders, visit Alpaca paper trading dashboard';
+      card.appendChild(note);
     }
   }
 

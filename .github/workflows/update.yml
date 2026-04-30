@@ -1,0 +1,101 @@
+name: Update Portfolio Data
+
+on:
+  schedule:
+    # 4:30 PM ET (21:30 UTC) every weekday — 30 min after NYSE close
+    - cron: '30 21 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      order_symbol:
+        description: 'Symbol (e.g. AAPL)'
+        required: false
+        default: ''
+      order_qty:
+        description: 'Quantity (shares, integer)'
+        required: false
+        default: ''
+      order_side:
+        description: 'Side'
+        required: false
+        default: 'buy'
+        type: choice
+        options: [buy, sell]
+      order_type:
+        description: 'Order type'
+        required: false
+        default: 'market'
+        type: choice
+        options: [market, limit, stop]
+      order_limit_price:
+        description: 'Limit price (limit orders only)'
+        required: false
+        default: ''
+      order_stop_price:
+        description: 'Stop price (stop orders only)'
+        required: false
+        default: ''
+      order_tif:
+        description: 'Time in force'
+        required: false
+        default: 'day'
+        type: choice
+        options: [day, gtc]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # scoped to this repo only; no other permissions granted
+
+    steps:
+      - name: Checkout repo
+        # Pinned to commit SHA for supply-chain safety (v4.2.2)
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Set up Python
+        # Pinned to commit SHA for supply-chain safety (v5.3.0)
+        uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: bot/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r bot/requirements.txt
+
+      - name: Step 1 — Portfolio data update + Alpaca sync
+        env:
+          ALPACA_ACCOUNT_NAME: ${{ secrets.ALPACA_ACCOUNT_NAME }}
+          ALPACA_API_KEY:      ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY:   ${{ secrets.ALPACA_SECRET_KEY }}
+          ALPACA_BASE_URL:     ${{ secrets.ALPACA_BASE_URL }}
+          ORDER_SYMBOL:        ${{ github.event.inputs.order_symbol }}
+          ORDER_QTY:           ${{ github.event.inputs.order_qty }}
+          ORDER_SIDE:          ${{ github.event.inputs.order_side }}
+          ORDER_TYPE:          ${{ github.event.inputs.order_type }}
+          ORDER_LIMIT_PRICE:   ${{ github.event.inputs.order_limit_price }}
+          ORDER_STOP_PRICE:    ${{ github.event.inputs.order_stop_price }}
+          ORDER_TIF:           ${{ github.event.inputs.order_tif }}
+        run: python bot/update.py
+
+      - name: Step 2 — Day-end agent (Claude decision layer)
+        env:
+          RUN_TYPE:          day_end
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ALPACA_ACCOUNT_NAME: ${{ secrets.ALPACA_ACCOUNT_NAME }}
+          ALPACA_API_KEY:    ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          ALPACA_BASE_URL:   ${{ secrets.ALPACA_BASE_URL }}
+        run: python bot/agent.py
+
+      - name: Commit portfolio data and agent log
+        run: |
+          git config user.name "TradeQuest Bot"
+          git config user.email "actions@github.com"
+          git add data/portfolio.json data/agent_log.json data/symbols.json data/bars/
+          if git diff --staged --quiet; then
+            echo "No changes."
+          else
+            git commit -m "agent[day-end]: $(date +'%Y-%m-%d %H:%M UTC')"
+            git push
+          fi

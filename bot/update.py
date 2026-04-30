@@ -343,7 +343,8 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
 
 
 # ── Universe ─────────────────────────────────────────────────
-def get_sp500_tickers() -> list[str]:
+def get_sp500_universe() -> list[dict]:
+    """Return S&P 500 list as [{symbol, name, sector}]. Falls back to tickers-only list."""
     try:
         resp = requests.get(
             "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies",
@@ -352,15 +353,94 @@ def get_sp500_tickers() -> list[str]:
         )
         resp.raise_for_status()
         table = pd.read_html(io.StringIO(resp.text))[0]
-        return table["Symbol"].str.replace(".", "-", regex=False).tolist()
+        return [
+            {
+                "symbol": str(row["Symbol"]).replace(".", "-"),
+                "name":   str(row.get("Security", row["Symbol"])),
+                "sector": str(row.get("GICS Sector", "Unknown")),
+            }
+            for _, row in table.iterrows()
+        ]
     except Exception as e:
         print(f"Warning: could not fetch S&P 500 list ({e}). Using fallback.", file=sys.stderr)
-        return [
+        return [{"symbol": s, "name": s, "sector": "Unknown"} for s in [
             "NVDA", "MSFT", "AAPL", "AMZN", "GOOGL", "META", "AVGO", "TSLA",
             "LLY", "JPM", "UNH", "XOM", "V", "MA", "COST", "HD", "PG",
             "ORCL", "JNJ", "ABBV", "CRM", "AMD", "MRK", "NFLX", "NOW",
             "PANW", "CRWD", "TSM", "CDNS", "GEV", "PLTR", "ARM", "ANET",
+        ]]
+
+
+def write_symbols_json(universe: list[dict], data_dir: Path) -> None:
+    """Write data/symbols.json — [{symbol, name, sector}] for client-side search."""
+    out_path = data_dir / "symbols.json"
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(out_path, "w") as f:
+        json.dump(universe, f, separators=(",", ":"))
+    print(f"Wrote {out_path} ({len(universe)} symbols)")
+
+
+def write_holdings_bars(holdings: list[dict], prices: pd.DataFrame, data_dir: Path) -> None:
+    """Write data/bars/{SYMBOL}.json for each current holding (1Y of daily closes)."""
+    bars_dir = data_dir / "bars"
+    bars_dir.mkdir(parents=True, exist_ok=True)
+    written = []
+    for h in holdings:
+        sym = h["symbol"]
+        if sym not in prices.columns:
+            continue
+        series = prices[sym].dropna().tail(365)
+        bars = [
+            {"t": ts.strftime("%Y-%m-%d"), "c": round(float(v), 2)}
+            for ts, v in series.items()
         ]
+        out_path = bars_dir / f"{sym}.json"
+        with open(out_path, "w") as f:
+            json.dump(bars, f, separators=(",", ":"))
+        written.append(sym)
+    if written:
+        print(f"Wrote bars for {len(written)} holdings: {', '.join(written)}")
+
+
+def handle_manual_order(client) -> None:
+    """If ORDER_SYMBOL env var is set, place a single paper order via Alpaca."""
+    sym = os.environ.get("ORDER_SYMBOL", "").strip().upper()
+    if not sym or not client:
+        return
+
+    from alpaca.trading.requests import MarketOrderRequest, LimitOrderRequest, StopOrderRequest
+    from alpaca.trading.enums import OrderSide, TimeInForce
+
+    qty_str  = os.environ.get("ORDER_QTY",          "").strip()
+    side_str = os.environ.get("ORDER_SIDE",   "buy").strip().lower()
+    type_str = os.environ.get("ORDER_TYPE",  "market").strip().lower()
+    tif_str  = os.environ.get("ORDER_TIF",    "day").strip().lower()
+    lp_str   = os.environ.get("ORDER_LIMIT_PRICE",   "").strip()
+    sp_str   = os.environ.get("ORDER_STOP_PRICE",    "").strip()
+
+    qty = int(qty_str) if qty_str.isdigit() and int(qty_str) > 0 else 0
+    if not qty:
+        print("handle_manual_order: ORDER_QTY missing or invalid — skipping.", file=sys.stderr)
+        return
+
+    side = OrderSide.BUY  if side_str == "buy"  else OrderSide.SELL
+    tif  = TimeInForce.DAY if tif_str == "day"  else TimeInForce.GTC
+
+    try:
+        verify_paper_url()
+        if type_str == "limit" and lp_str:
+            req = LimitOrderRequest(symbol=sym, qty=qty, side=side,
+                                    time_in_force=tif, limit_price=float(lp_str))
+        elif type_str == "stop" and sp_str:
+            req = StopOrderRequest(symbol=sym, qty=qty, side=side,
+                                   time_in_force=tif, stop_price=float(sp_str))
+        else:
+            req = MarketOrderRequest(symbol=sym, qty=qty, side=side, time_in_force=tif)
+
+        order = client.submit_order(req)
+        print(f"Manual order placed: {side_str.upper()} {qty} {sym} ({type_str}) → id={order.id}")
+    except Exception as e:
+        print(f"handle_manual_order error: {e}", file=sys.stderr)
 
 
 # ── Price data ────────────────────────────────────────────────
@@ -612,7 +692,8 @@ def main():
     cash              = data["summary"].get("cash", float(INITIAL_CAPITAL))
 
     # 1. Universe + prices
-    tickers = get_sp500_tickers()
+    universe = get_sp500_universe()
+    tickers  = [u["symbol"] for u in universe]
     prices  = fetch_prices(tickers)
     available = list(prices.columns)
     print(f"Price data: {len(available)} tickers.")
@@ -732,7 +813,12 @@ def main():
                 all_trades = alpaca_orders_to_trades(alpaca_state["orders"])
         else:
             print("No orders placed — either no rebalance needed or risk gates blocked all orders.")
-            all_trades = alpaca_orders_to_trades(alpaca_state["orders"])
+
+        # Handle manual order triggered via workflow_dispatch inputs
+        handle_manual_order(client)
+
+        # Trades from Alpaca order history
+        all_trades = alpaca_orders_to_trades(alpaca_state["orders"])
 
         # Recalculate weights on current holdings
         total_mv = sum(h["market_value"] for h in new_holdings)
@@ -804,6 +890,11 @@ def main():
 
     mode_label = f"Alpaca ({ALPACA_ACCOUNT_NAME})" if alpaca_state else "Simulation"
     print(f"Done [{mode_label}]. Value: ${pv:,.2f} | Holdings: {nh} | Cash: ${cash:,.2f}")
+
+    # ── 9. Write static data files for PWA ─────────────────────
+    data_dir = REPO_ROOT / "data"
+    write_symbols_json(universe, data_dir)
+    write_holdings_bars(new_holdings, prices, data_dir)
 
 
 if __name__ == "__main__":
