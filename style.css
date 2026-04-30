@@ -2014,3 +2014,13 @@ a.article-headline[href=""] { pointer-events: none; }
   .orders-filter-bar { gap: 8px; }
   .review-detail-grid { gap: 4px 10px; font-size: 0.78rem; }
 }
+
+/* ── GitHub Actions order submission card ────────────────── */
+.submit-gh-instructions { display: flex; flex-direction: column; gap: .75rem; padding: .5rem 0; }
+.submit-order-params    { background: var(--card-bg, #1A1A1A); border-radius: .5rem; padding: .75rem;
+                          display: grid; grid-template-columns: 1fr; gap: .25rem; font-size: .85rem; }
+.gh-actions-link        { display: inline-block; padding: .5rem 1rem; background: var(--gold, #D4AF37);
+                          color: #000; border-radius: .5rem; font-weight: 600; text-decoration: none;
+                          align-self: flex-start; font-size: .85rem; }
+.gh-actions-link:hover  { opacity: .85; }
+.submit-note            { font-size: .75rem; margin: 0; }
