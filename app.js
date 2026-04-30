@@ -13,6 +13,7 @@ const NEWS_TTL_MS        = 5 * 60_000;    // 5-min memory cache for news tab
 const NEWS_PAGE_SIZE     = 25;
 const LS_AGENT_KEY       = 'tq_agent_runs';
 const MAX_AGENT_HISTORY  = 10;
+const SEARCH_DEBOUNCE_MS = 300;
 
 // ── Helpers ───────────────────────────────────────────────────
 const $ = id => document.getElementById(id);
@@ -231,10 +232,23 @@ class TradeQuestApp {
     this.newsTickerFilter  = null;    // null = no ticker filter
     this.newsDisplayLimit  = NEWS_PAGE_SIZE;
     this.chart             = null;
+    this.symbolChart       = null;
     this.tradeFilter       = 'ALL';   // 'ALL' | 'BUY' | 'SELL'
     this.tradeSort         = 'date';  // 'date' | 'pnl'
     this.refreshTimer      = null;
     this.timeAgoTimer      = null;
+    this.searchDebounce    = null;
+    this.symbolScreenSym   = null;
+    // Trade ticket state
+    this.tradeState = {
+      symbol: '', name: '', side: 'buy', type: 'market',
+      qty: 0, limitPrice: null, stopPrice: null, tif: 'day',
+      currentPrice: 0, buyingPower: 0,
+    };
+    // Orders tab state
+    this.ordersData      = { open: null, closed: null };
+    this.ordersFilter    = 'open';
+    this.ordersSymFilter = '';
   }
 
   async init() {
@@ -245,6 +259,8 @@ class TradeQuestApp {
     this.setupTradeControls();
     this.setupAgentHistoryUI();
     this.setupNewsControls();
+    this.setupSearch();
+    this.setupTradeTicketListeners();
     await this.load();
     this.scheduleRefresh();
     // Update time-ago strings every 60 s
@@ -290,7 +306,8 @@ class TradeQuestApp {
         const panel = $(`panel-${target}`);
         if (panel) panel.classList.add('active');
         // Lazy-load news on first focus, then respect TTL
-        if (target === 'news') this.loadNewsIfStale();
+        if (target === 'news')   this.loadNewsIfStale();
+        if (target === 'orders') this.loadOrdersIfStale();
       });
     });
   }
@@ -617,7 +634,8 @@ class TradeQuestApp {
             <div class="pos-detail-footer">
               <span class="muted-cell" style="font-size:0.7rem">Entry ${fmtDate(h.entry_date || '')}</span>
               <span class="pos-sector-chip">${sector}</span>
-              <button class="pos-trade-btn" onclick="event.stopPropagation();app.showOrderModal(${idx})">Paper Trade</button>
+              <button class="pos-trade-btn" onclick="event.stopPropagation();app.showTradeTicket({symbol:'${sym}',name:'${sanitize(h.name||h.sector||'')}',side:'buy',currentPrice:${h.current_price||h.avg_cost||0}})">Trade</button>
+              <button class="pos-close-btn" onclick="event.stopPropagation();app.showTradeTicket({symbol:'${sym}',name:'${sanitize(h.name||h.sector||'')}',side:'sell',qty:${shares},currentPrice:${h.current_price||h.avg_cost||0}})">Close Position</button>
             </div>
           </div>
         </div>`;
@@ -970,106 +988,694 @@ class TradeQuestApp {
     }).join('');
   }
 
-  // ── Order Modal (Task 2C — paper trade with validation) ───
-  // Security: validation only. Submit opens GitHub Actions page —
-  // NO direct Alpaca API call from browser (credentials stay server-side).
-  showOrderModal(idx) {
-    const holding = this.data?.holdings?.[idx];
-    if (!holding) return;
+  // ── Search ────────────────────────────────────────────────
+  setupSearch() {
+    $('searchBtn')?.addEventListener('click',  () => this.openSearch());
+    $('searchClose')?.addEventListener('click', () => this.closeSearch());
+    $('searchBackdrop')?.addEventListener('click', () => this.closeSearch());
 
-    const cash    = this.data?.summary?.cash || 0;
-    const price   = holding.current_price || holding.avg_cost || 1;
-    const maxQty  = Math.floor(cash / price);
-    const sym     = sanitize(holding.symbol);
-    const modal   = $('orderModal');
-    if (!modal) return;
+    const input = $('searchInput');
+    if (input) {
+      input.addEventListener('input', () => {
+        clearTimeout(this.searchDebounce);
+        this.searchDebounce = setTimeout(() => this.runSearch(input.value.trim()), SEARCH_DEBOUNCE_MS);
+      });
+    }
 
-    modal.innerHTML = `
-      <div class="modal-backdrop" role="presentation"></div>
-      <div class="modal-panel" role="dialog" aria-modal="true" aria-label="Paper Trade ${sym}">
-        <div class="modal-header">
-          <div>
-            <h2 class="modal-title">Paper Trade</h2>
-            <p class="modal-subtitle">${sym} · ${sanitize(holding.name || holding.sector || '')}</p>
-          </div>
-          <button class="modal-close" aria-label="Close">&#x2715;</button>
-        </div>
-        <div class="modal-body">
-          <div class="modal-stats-row">
-            <div class="modal-stat-item">
-              <span class="modal-stat-label">Current Price</span>
-              <span class="modal-stat-val">${fmt$(price)}</span>
-            </div>
-            <div class="modal-stat-item">
-              <span class="modal-stat-label">Available Cash</span>
-              <span class="modal-stat-val">${fmt$(cash)}</span>
-            </div>
-            <div class="modal-stat-item">
-              <span class="modal-stat-label">Max Shares</span>
-              <span class="modal-stat-val">${maxQty > 0 ? maxQty : '—'}</span>
-            </div>
-          </div>
-          <div class="modal-field">
-            <label class="modal-label" for="orderQty">Number of shares</label>
-            <input type="number" id="orderQty" class="modal-input"
-                   min="1" max="${maxQty}" step="1" placeholder="0"
-                   autocomplete="off">
-            <div class="modal-order-total" id="orderTotal">Enter a quantity above</div>
-          </div>
-          <div id="orderValidation" class="modal-validation" hidden></div>
-          <div class="modal-paper-info">
-            <span class="modal-info-icon">ℹ</span>
-            <span>Paper trading only — no real money. Orders are queued for the next GitHub Actions workflow run and executed via the Alpaca paper API.</span>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button class="modal-cancel-btn" id="modalCancelBtn">Cancel</button>
-          <a class="modal-submit-btn"
-             href="https://github.com/rishihjoshi/TradeQuest-AI/actions/workflows/update.yml"
-             target="_blank" rel="noopener noreferrer">
-            Open Workflow ↗
-          </a>
-        </div>
-      </div>`;
-
-    // Live validation
-    const qtyInput  = $('orderQty');
-    const totalEl   = $('orderTotal');
-    const validEl   = $('orderValidation');
-
-    const validate = () => {
-      const raw = qtyInput.value.trim();
-      const qty = parseInt(raw, 10);
-      validEl.hidden = true;
-
-      if (!raw || isNaN(qty)) { totalEl.textContent = 'Enter a quantity above'; return; }
-
-      // Validation rules: integer > 0, ≤ floor(cash / price), price bounds auto-satisfied (market order)
-      if (qty <= 0 || !Number.isInteger(qty)) {
-        validEl.hidden = false; validEl.textContent = 'Must be a positive whole number'; return;
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        if (!$('searchOverlay')?.hidden) { this.closeSearch(); return; }
+        if (!$('symbolScreen')?.hidden)  { this.closeSymbolScreen(); return; }
+        if (!$('tradeModal')?.hidden)    { this.closeTradeTicket(); }
       }
-      if (qty > maxQty) {
-        validEl.hidden = false;
-        validEl.textContent = `Exceeds available cash — max ${maxQty} shares at ${fmt$(price)}`;
+    });
+  }
+
+  openSearch() {
+    const overlay = $('searchOverlay');
+    if (!overlay) return;
+    overlay.hidden = false;
+    $('searchResults').innerHTML = '';
+    requestAnimationFrame(() => $('searchInput')?.focus());
+  }
+
+  closeSearch() {
+    const overlay = $('searchOverlay');
+    if (!overlay) return;
+    overlay.hidden = true;
+    if ($('searchInput')) $('searchInput').value = '';
+  }
+
+  async runSearch(q) {
+    const results = $('searchResults');
+    if (!results) return;
+
+    if (!q) {
+      results.innerHTML = '<p class="search-hint">Type a symbol or company name…</p>';
+      return;
+    }
+
+    results.innerHTML = Array.from({ length: 4 }, () =>
+      '<div class="search-result-skeleton"><div class="sk-block sk-sym-sm"></div><div class="sk-block sk-name-sm"></div></div>'
+    ).join('');
+
+    try {
+      const res  = await fetch(`${API_BASE}/api/search?q=${encodeURIComponent(q)}`);
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error || 'Search failed');
+      if (!data.length) {
+        results.innerHTML = `<p class="search-empty">No results for "${sanitize(q)}"</p>`;
         return;
       }
-      const total = qty * price;
-      totalEl.textContent = `≈ ${fmt$(total)} (${((total / (cash || 1)) * 100).toFixed(1)}% of cash)`;
-    };
+      this.renderSearchResults(data);
+    } catch (e) {
+      results.innerHTML = `<p class="search-error">Search unavailable: ${sanitize(e.message)}</p>`;
+    }
+  }
 
-    qtyInput.addEventListener('input', validate);
+  renderSearchResults(items) {
+    const results = $('searchResults');
+    if (!results) return;
+    results.innerHTML = items.map(item => `
+      <button class="search-result-item" data-symbol="${sanitize(item.symbol)}">
+        <span class="search-result-sym">${sanitize(item.symbol)}</span>
+        <span class="search-result-name">${sanitize(item.name)}</span>
+        <span class="search-result-exch muted-cell">${sanitize(item.exchange)}</span>
+      </button>`).join('');
 
-    // Close handlers
-    const close = () => { modal.hidden = true; modal.innerHTML = ''; };
-    modal.querySelector('.modal-backdrop').addEventListener('click', close);
-    modal.querySelector('.modal-close').addEventListener('click', close);
-    $('modalCancelBtn').addEventListener('click', close);
-    document.addEventListener('keydown', function esc(e) {
-      if (e.key === 'Escape') { close(); document.removeEventListener('keydown', esc); }
+    results.querySelectorAll('.search-result-item').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const sym  = btn.dataset.symbol;
+        const name = btn.querySelector('.search-result-name')?.textContent || '';
+        this.closeSearch();
+        this.openSymbolScreen(sym, name);
+      });
+    });
+  }
+
+  // ── Symbol Screen ─────────────────────────────────────────
+  openSymbolScreen(sym, name = '') {
+    this.symbolScreenSym = sym;
+    $('symbolScreenSym').textContent  = sym;
+    $('symbolScreenName').textContent = name || sym;
+    $('symbolScreen').hidden          = false;
+    $('mainContent').hidden           = true;
+    $('tabBar').hidden                = true;
+
+    // Reset price block to skeleton state
+    $('symbolPriceSkeleton').hidden = false;
+    $('symbolPriceBlock').hidden    = true;
+    $('symbolBidAsk').textContent   = '';
+    $('symbolMarketStatus').textContent = '';
+    ['statOpen','statHigh','statLow','statVolume','statBid','statAsk']
+      .forEach(id => { const el = $(id); if (el) el.textContent = '—'; });
+
+    // Show chart skeleton
+    $('symbolChartSkeleton').hidden = false;
+    const canvas = $('symbolChart');
+    if (canvas) canvas.hidden = true;
+
+    // Wire back button and trade button
+    $('symbolBackBtn').onclick  = () => this.closeSymbolScreen();
+    $('symbolTradeBtn').onclick = () => this.showTradeTicket({
+      symbol: sym, name: $('symbolScreenName').textContent,
+      side: 'buy', currentPrice: this.tradeState.currentPrice || 0,
     });
 
-    modal.hidden = false;
-    requestAnimationFrame(() => qtyInput?.focus());
+    // Wire timeframe buttons
+    this.setupTimeframeBtns(sym);
+
+    // Load quote + 1Y bars in parallel
+    Promise.all([
+      this.loadSymbolQuote(sym),
+      this.loadSymbolBars(sym, '1Y'),
+    ]).catch(() => {});
+  }
+
+  closeSymbolScreen() {
+    $('symbolScreen').hidden = true;
+    $('mainContent').hidden  = false;
+    $('tabBar').hidden       = false;
+    this.symbolScreenSym     = null;
+    if (this.symbolChart) { this.symbolChart.destroy(); this.symbolChart = null; }
+  }
+
+  setupTimeframeBtns(sym) {
+    document.querySelectorAll('.tf-btn').forEach(btn => {
+      btn.onclick = () => {
+        document.querySelectorAll('.tf-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        this.loadSymbolBars(sym, btn.dataset.tf);
+      };
+    });
+  }
+
+  async loadSymbolQuote(sym) {
+    try {
+      const res  = await fetch(`${API_BASE}/api/quote?symbols=${encodeURIComponent(sym)}`);
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Quote failed');
+
+      const q = data[sym];
+      if (!q) return;
+
+      // Cache current price for trade ticket pre-fill
+      this.tradeState.currentPrice = q.price;
+
+      // Populate price hero
+      $('symbolPriceSkeleton').hidden = true;
+      $('symbolPriceBlock').hidden    = false;
+
+      const lastEl = $('symbolLastPrice');
+      if (lastEl) lastEl.textContent = fmt$(q.price);
+
+      const chgEl = $('symbolChange');
+      if (chgEl) {
+        const sign = q.change >= 0 ? '+' : '';
+        chgEl.textContent = `${sign}${fmt$(q.change)} (${sign}${fmtPct(q.changePct)})`;
+        chgEl.className   = `symbol-change-badge ${q.change >= 0 ? 'profit' : 'loss'}`;
+      }
+
+      const baEl = $('symbolBidAsk');
+      if (baEl && q.bid && q.ask) {
+        baEl.textContent = `Bid ${fmt$(q.bid)}  ·  Ask ${fmt$(q.ask)}`;
+      }
+
+      const msEl = $('symbolMarketStatus');
+      if (msEl) {
+        const live = isMarketHours();
+        msEl.textContent = live ? '● Market Open · 15-min delayed (IEX)' : '○ Market Closed';
+        msEl.className   = `symbol-market-status ${live ? 'open' : 'closed'}`;
+      }
+
+      // Populate stat grid
+      const setS = (id, val) => { const el = $(id); if (el) el.textContent = val; };
+      setS('statOpen',   fmt$(q.open));
+      setS('statHigh',   fmt$(q.high));
+      setS('statLow',    fmt$(q.low));
+      setS('statVolume', q.volume ? q.volume.toLocaleString() : '—');
+      setS('statBid',    q.bid ? fmt$(q.bid) : '—');
+      setS('statAsk',    q.ask ? fmt$(q.ask) : '—');
+
+      // Update symbol screen name if not already set from search
+      if ($('symbolScreenName').textContent === sym) {
+        $('symbolScreenName').textContent = sym;
+      }
+    } catch (e) {
+      console.warn('[TQ] Quote error:', e.message);
+    }
+  }
+
+  async loadSymbolBars(sym, timeframe) {
+    const skelEl  = $('symbolChartSkeleton');
+    const canvas  = $('symbolChart');
+    if (skelEl) skelEl.hidden = false;
+    if (canvas) canvas.hidden = true;
+
+    try {
+      const res  = await fetch(`${API_BASE}/api/bars?symbol=${encodeURIComponent(sym)}&timeframe=${timeframe}`);
+      const bars = await res.json();
+      if (!res.ok) throw new Error(bars.error || 'Bars failed');
+
+      if (this.symbolChart) { this.symbolChart.destroy(); this.symbolChart = null; }
+
+      if (skelEl) skelEl.hidden = true;
+      if (canvas) canvas.hidden = false;
+
+      const ctx      = canvas.getContext('2d');
+      const gradient = ctx.createLinearGradient(0, 0, 0, 220);
+      gradient.addColorStop(0, 'rgba(212,175,55,0.18)');
+      gradient.addColorStop(1, 'rgba(212,175,55,0)');
+
+      const labels = bars.map(b => {
+        const d = new Date(b.t);
+        if (timeframe === '1D' || timeframe === '1W' || timeframe === '1M') {
+          return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        }
+        return d.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
+      });
+
+      this.symbolChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [{
+            data:              bars.map(b => b.c),
+            borderColor:       '#D4AF37',
+            borderWidth:       1.8,
+            backgroundColor:   gradient,
+            fill:              true,
+            tension:           0.3,
+            pointRadius:       0,
+            pointHoverRadius:  4,
+            pointHoverBackgroundColor: '#D4AF37',
+          }],
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: '#1A1A1A', borderColor: '#2A2A2A', borderWidth: 1,
+              titleColor: '#808080', bodyColor: '#EAEAEA', padding: 10,
+              callbacks: { label: c => `  ${fmt$(c.raw)}` },
+            },
+          },
+          scales: {
+            x: {
+              grid:   { color: 'rgba(255,255,255,0.03)' },
+              ticks:  { color: '#555', maxTicksLimit: 7, font: { size: 10 } },
+              border: { color: '#1E1E1E' },
+            },
+            y: {
+              position: 'right',
+              grid:   { color: 'rgba(255,255,255,0.03)' },
+              ticks:  { color: '#555', font: { size: 10 }, callback: v => '$' + v.toFixed(0) },
+              border: { color: '#1E1E1E' },
+            },
+          },
+        },
+      });
+    } catch (e) {
+      if (skelEl) skelEl.hidden = true;
+      if (canvas) { canvas.hidden = false; }
+      console.warn('[TQ] Bars error:', e.message);
+    }
+  }
+
+  // ── Trade Ticket ──────────────────────────────────────────
+  setupTradeTicketListeners() {
+    // Side toggle
+    $('tradeSideBuy')?.addEventListener('click',  () => this._setTradeSide('buy'));
+    $('tradeSideSell')?.addEventListener('click', () => this._setTradeSide('sell'));
+
+    // Order type
+    document.querySelectorAll('.type-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        this.tradeState.type = btn.dataset.type;
+        $('tradeFieldLimitPrice').hidden = this.tradeState.type !== 'limit';
+        $('tradeFieldStopPrice').hidden  = this.tradeState.type !== 'stop';
+        this.updateTradePreview();
+      });
+    });
+
+    // TIF
+    document.querySelectorAll('.tif-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tif-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        this.tradeState.tif = btn.dataset.tif;
+      });
+    });
+
+    // Inputs
+    $('tradeQty')?.addEventListener('input', () => this.updateTradePreview());
+    $('tradeLimitPrice')?.addEventListener('input', () => this.updateTradePreview());
+    $('tradeStopPrice')?.addEventListener('input', () => this.updateTradePreview());
+
+    // Navigation
+    $('tradeReviewBtn')?.addEventListener('click',  () => this.reviewOrder());
+    $('tradeSubmitBtn')?.addEventListener('click',  () => this.submitOrder());
+    $('tradeBackBtn')?.addEventListener('click',    () => this._showTradeStep(1));
+
+    // Close buttons
+    ['tradeClose','tradeClose2','tradeCancelBtn','tradeReviewCancelBtn'].forEach(id => {
+      $(id)?.addEventListener('click', () => this.closeTradeTicket());
+    });
+    $('tradeModalBackdrop')?.addEventListener('click', () => this.closeTradeTicket());
+  }
+
+  _setTradeSide(side) {
+    this.tradeState.side = side;
+    $('tradeSideBuy').classList.toggle('active',  side === 'buy');
+    $('tradeSideSell').classList.toggle('active', side === 'sell');
+    this.updateTradePreview();
+  }
+
+  _showTradeStep(n) {
+    $('tradeStep1').hidden = n !== 1;
+    $('tradeStep2').hidden = n !== 2;
+  }
+
+  async showTradeTicket({ symbol, name = '', side = 'buy', qty = null, currentPrice = null }) {
+    this.tradeState.symbol       = symbol;
+    this.tradeState.name         = name;
+    this.tradeState.side         = side;
+    this.tradeState.type         = 'market';
+    this.tradeState.tif          = 'day';
+    this.tradeState.limitPrice   = null;
+    this.tradeState.stopPrice    = null;
+    this.tradeState.currentPrice = currentPrice || 0;
+    this.tradeState.buyingPower  = 0;
+
+    // Reset form UI
+    $('tradeSym').textContent  = symbol;
+    $('tradeName').textContent = name || symbol;
+    $('tradeQty').value        = qty !== null ? qty : '';
+    $('tradeLimitPrice').value = '';
+    $('tradeStopPrice').value  = '';
+    $('tradeFieldLimitPrice').hidden = true;
+    $('tradeFieldStopPrice').hidden  = true;
+    $('tradeValidation').hidden      = true;
+    $('tradeSubmitResult').hidden    = true;
+
+    document.querySelectorAll('.type-btn').forEach(b =>
+      b.classList.toggle('active', b.dataset.type === 'market'));
+    document.querySelectorAll('.tif-btn').forEach(b =>
+      b.classList.toggle('active', b.dataset.tif === 'day'));
+
+    this._setTradeSide(side);
+    this._showTradeStep(1);
+    $('tradeModal').hidden = false;
+
+    // Fetch live price + buying power in parallel (non-blocking)
+    const fetchPrice = currentPrice
+      ? Promise.resolve()
+      : fetch(`${API_BASE}/api/quote?symbols=${encodeURIComponent(symbol)}`)
+          .then(r => r.json())
+          .then(d => { if (d[symbol]) this.tradeState.currentPrice = d[symbol].price; })
+          .catch(() => {});
+
+    const fetchAccount = fetch(`${API_BASE}/api/account`)
+      .then(r => r.json())
+      .then(d => { this.tradeState.buyingPower = d.buyingPower || 0; })
+      .catch(() => { this.tradeState.buyingPower = this.data?.summary?.cash || 0; });
+
+    await Promise.all([fetchPrice, fetchAccount]);
+    this.updateTradePreview();
+    requestAnimationFrame(() => $('tradeQty')?.focus());
+  }
+
+  updateTradePreview() {
+    const ts     = this.tradeState;
+    const qty    = parseInt($('tradeQty')?.value || '0', 10);
+    const lp     = parseFloat($('tradeLimitPrice')?.value || '0');
+    const sp     = parseFloat($('tradeStopPrice')?.value || '0');
+    const price  = ts.type === 'limit' ? lp : ts.type === 'stop' ? sp : ts.currentPrice;
+    const bp     = ts.buyingPower;
+    const validEl = $('tradeValidation');
+    const revBtn  = $('tradeReviewBtn');
+
+    let err = '';
+    if (!qty || qty <= 0 || !Number.isInteger(qty))   err = 'Shares must be a positive whole number.';
+    else if (ts.type === 'limit' && (!lp || lp <= 0)) err = 'Limit price is required.';
+    else if (ts.type === 'stop'  && (!sp || sp <= 0)) err = 'Stop price is required.';
+    else if (ts.side === 'buy' && bp > 0 && qty * price > bp)
+      err = `Exceeds buying power. Max ≈ ${Math.floor(bp / (price || 1))} shares.`;
+
+    if (validEl) { validEl.textContent = err; validEl.hidden = !err; }
+    if (revBtn)  revBtn.disabled = !!err;
+
+    // Update preview rows
+    const estCost = qty && price ? qty * price : 0;
+    const bpAfter = ts.side === 'buy' ? bp - estCost : bp + estCost;
+
+    const setP = (id, val) => { const el = $(id); if (el) el.textContent = val; };
+    setP('previewCost',    estCost ? `${ts.side === 'sell' ? '+' : '-'}${fmt$(estCost)}` : '—');
+    setP('previewBP',      bp  ? fmt$(bp)     : '—');
+    setP('previewBPAfter', bp  ? fmt$(bpAfter) : '—');
+  }
+
+  reviewOrder() {
+    const ts      = this.tradeState;
+    const qty     = parseInt($('tradeQty')?.value || '0', 10);
+    const lp      = parseFloat($('tradeLimitPrice')?.value || '0');
+    const sp      = parseFloat($('tradeStopPrice')?.value || '0');
+    const price   = ts.type === 'limit' ? lp : ts.type === 'stop' ? sp : ts.currentPrice;
+    const estCost = qty * price;
+
+    const typeLabel = ts.type === 'market' ? 'Market'
+                    : ts.type === 'limit'  ? `Limit @ ${fmt$(lp)}`
+                    : `Stop @ ${fmt$(sp)}`;
+
+    $('tradeReviewSummary').innerHTML = `
+      <div class="review-line">
+        <strong>${ts.side === 'buy' ? 'BUY' : 'SELL'}</strong>
+        ${sanitize(String(qty))} shares of <strong>${sanitize(ts.symbol)}</strong>
+      </div>
+      <div class="review-detail-grid">
+        <span class="muted-cell">Order type</span><span>${sanitize(typeLabel)}</span>
+        <span class="muted-cell">Time in force</span><span>${ts.tif.toUpperCase()}</span>
+        <span class="muted-cell">${ts.side === 'buy' ? 'Est. cost' : 'Est. proceeds'}</span>
+        <span>${estCost ? fmt$(estCost) : 'Market price'}</span>
+      </div>`;
+
+    this._showTradeStep(2);
+    $('tradeSubmitResult').hidden = true;
+  }
+
+  async submitOrder() {
+    const ts     = this.tradeState;
+    const qty    = parseInt($('tradeQty')?.value || '0', 10);
+    const lp     = parseFloat($('tradeLimitPrice')?.value || '0');
+    const sp     = parseFloat($('tradeStopPrice')?.value || '0');
+    const btn    = $('tradeSubmitBtn');
+    const result = $('tradeSubmitResult');
+
+    if (btn) { btn.disabled = true; btn.textContent = 'Submitting…'; }
+
+    const body = {
+      symbol:         ts.symbol,
+      qty,
+      side:           ts.side,
+      type:           ts.type,
+      time_in_force:  ts.tif,
+    };
+    if (ts.type === 'limit') body.limit_price = lp;
+    if (ts.type === 'stop')  body.stop_price  = sp;
+
+    try {
+      const res  = await fetch(`${API_BASE}/api/orders`, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(body),
+      });
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+
+      if (result) {
+        result.hidden = false;
+        result.innerHTML = `<span class="submit-success">✓ Order submitted — ID ${sanitize(data.id || '')}</span>`;
+      }
+      if (btn) { btn.textContent = 'Done'; btn.onclick = () => { this.closeTradeTicket(); this.loadOrdersIfStale(); }; }
+    } catch (e) {
+      if (result) {
+        result.hidden = false;
+        result.innerHTML = `<span class="submit-error">✗ ${sanitize(e.message)}</span>`;
+      }
+      if (btn) { btn.disabled = false; btn.textContent = 'Submit Order'; }
+    }
+  }
+
+  closeTradeTicket() {
+    const modal = $('tradeModal');
+    if (modal) modal.hidden = true;
+    this._showTradeStep(1);
+    $('tradeSubmitResult').hidden = true;
+    const btn = $('tradeSubmitBtn');
+    if (btn) { btn.disabled = false; btn.textContent = 'Submit Order'; btn.onclick = null; }
+  }
+
+  // ── Orders Tab ────────────────────────────────────────────
+  async loadOrdersIfStale() {
+    this.renderOrderSkeletons('openOrdersList', 5);
+    this.renderOrderSkeletons('closedOrdersList', 3);
+
+    try {
+      const [openRes, closedRes] = await Promise.all([
+        fetch(`${API_BASE}/api/orders?status=open`),
+        fetch(`${API_BASE}/api/orders?status=closed`),
+      ]);
+      const [openData, closedData] = await Promise.all([
+        openRes.ok   ? openRes.json()   : [],
+        closedRes.ok ? closedRes.json() : [],
+      ]);
+      this.ordersData = { open: openData, closed: closedData };
+    } catch (e) {
+      this.ordersData = { open: [], closed: [] };
+    }
+
+    this.renderOrders();
+
+    // Wire filter buttons
+    document.querySelectorAll('.orders-filter-btn').forEach(btn => {
+      btn.onclick = () => {
+        document.querySelectorAll('.orders-filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        this.ordersFilter = btn.dataset.status;
+        this.renderOrders();
+      };
+    });
+
+    // Wire symbol filter
+    const symInput = $('ordersSymbolInput');
+    if (symInput) {
+      symInput.addEventListener('input', () => {
+        this.ordersSymFilter = symInput.value.trim().toUpperCase();
+        this.renderOrders();
+      });
+    }
+  }
+
+  renderOrders() {
+    const { open, closed } = this.ordersData;
+
+    const openSec   = $('openOrdersSection');
+    const closedSec = $('closedOrdersSection');
+
+    if (this.ordersFilter === 'open') {
+      if (openSec)   openSec.hidden   = false;
+      if (closedSec) closedSec.hidden = true;
+    } else {
+      if (openSec)   openSec.hidden   = true;
+      if (closedSec) closedSec.hidden = false;
+    }
+
+    const sym = this.ordersSymFilter;
+
+    const filterFn = o => !sym || (o.symbol || '').toUpperCase().includes(sym);
+
+    const openFiltered   = (open   || []).filter(filterFn);
+    const closedFiltered = (closed || []).filter(filterFn);
+
+    const countEl = $('openOrdersCount');
+    if (countEl) countEl.textContent = openFiltered.length || '';
+
+    this._renderOrderList('openOrdersList',   openFiltered,   true);
+    this._renderOrderList('closedOrdersList',  closedFiltered, false);
+
+    // Activity feed — merged timeline
+    const all = [...(open || []), ...(closed || [])]
+      .filter(filterFn)
+      .sort((a, b) => new Date(b.submittedAt) - new Date(a.submittedAt));
+    this._renderActivityFeed(all);
+  }
+
+  _renderOrderList(containerId, orders, showCancel) {
+    const el = $(containerId);
+    if (!el) return;
+
+    if (!orders.length) {
+      el.innerHTML = `<div class="orders-empty muted-cell">${showCancel ? 'No open orders' : 'No order history'}</div>`;
+      return;
+    }
+
+    el.innerHTML = orders.map(o => {
+      const sym      = sanitize(o.symbol || '');
+      const side     = sanitize(o.side   || '');
+      const type     = sanitize(o.type   || '');
+      const qty      = sanitize(o.qty    || '');
+      const filled   = sanitize(o.filledQty || '0');
+      const status   = sanitize(o.status || '');
+      const lp       = o.limitPrice ? fmt$(o.limitPrice) : '';
+      const sp       = o.stopPrice  ? fmt$(o.stopPrice)  : '';
+      const priceStr = lp ? `@ ${lp}` : sp ? `stop ${sp}` : 'market';
+      const when     = timeAgo(o.submittedAt);
+      const fillInfo = o.filledAvgPrice
+        ? `<span class="muted-cell">Filled ${fmt$(o.filledAvgPrice)} × ${filled}</span>` : '';
+      const cancelBtn = showCancel
+        ? `<button class="order-cancel-btn" data-cancel-order="${sanitize(o.id)}">Cancel</button>` : '';
+
+      return `
+        <div class="order-card" data-order-id="${sanitize(o.id)}">
+          <div class="order-card-main">
+            <span class="order-side-badge ${side}">${side.toUpperCase()}</span>
+            <span class="order-sym">${sym}</span>
+            <span class="order-qty">${qty} sh</span>
+            <span class="order-type muted-cell">${type} ${priceStr}</span>
+          </div>
+          <div class="order-card-meta">
+            <span class="order-status-badge status-${status}">${status}</span>
+            ${fillInfo}
+            <span class="muted-cell order-when">${when}</span>
+            ${cancelBtn}
+          </div>
+        </div>`;
+    }).join('');
+
+    // Wire cancel buttons via event delegation
+    el.querySelectorAll('[data-cancel-order]').forEach(btn => {
+      btn.addEventListener('click', () => this.cancelOrder(btn.dataset.cancelOrder, btn));
+    });
+  }
+
+  _renderActivityFeed(orders) {
+    const feed = $('activityFeed');
+    if (!feed) return;
+
+    if (!orders.length) {
+      feed.innerHTML = `<div class="muted-cell activity-empty">No activity yet.</div>`;
+      return;
+    }
+
+    const dotColor = s => {
+      if (s === 'filled')   return 'dot-green';
+      if (['canceled','cancelled','rejected','expired'].includes(s)) return 'dot-red';
+      return 'dot-gold';
+    };
+
+    feed.innerHTML = orders.map(o => {
+      const s   = sanitize(o.status || '');
+      const sym = sanitize(o.symbol || '');
+      const side = sanitize(o.side  || '');
+      const qty  = sanitize(o.qty   || '');
+      return `
+        <div class="activity-entry">
+          <div class="activity-dot ${dotColor(o.status)}"></div>
+          <div class="activity-body">
+            <span class="order-side-badge ${side} small">${side.toUpperCase()}</span>
+            <span class="activity-sym">${sym}</span>
+            <span class="muted-cell activity-qty">${qty} sh</span>
+            <span class="order-status-badge status-${s}">${s}</span>
+            <span class="muted-cell activity-when">${timeAgo(o.submittedAt)}</span>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  async cancelOrder(orderId, btn) {
+    if (!orderId) return;
+    if (btn) { btn.disabled = true; btn.textContent = 'Cancelling…'; }
+
+    try {
+      const res  = await fetch(`${API_BASE}/api/orders?id=${encodeURIComponent(orderId)}`, { method: 'DELETE' });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Cancel failed');
+
+      // Remove from DOM immediately, then refresh
+      const card = document.querySelector(`.order-card[data-order-id="${CSS.escape(orderId)}"]`);
+      if (card) card.remove();
+
+      const countEl = $('openOrdersCount');
+      if (countEl) {
+        const current = parseInt(countEl.textContent || '0', 10);
+        if (current > 1) countEl.textContent = current - 1; else countEl.textContent = '';
+      }
+
+      // Refresh orders list after short delay
+      setTimeout(() => this.loadOrdersIfStale(), 800);
+    } catch (e) {
+      if (btn) { btn.disabled = false; btn.textContent = 'Cancel'; }
+      console.warn('[TQ] Cancel order error:', e.message);
+    }
+  }
+
+  renderOrderSkeletons(containerId, n = 5) {
+    const el = $(containerId);
+    if (!el) return;
+    el.innerHTML = Array.from({ length: n }, () => `
+      <div class="order-card order-card-skeleton">
+        <div class="order-card-main">
+          <div class="sk-block sk-badge-sm"></div>
+          <div class="sk-block sk-sym-sm"></div>
+          <div class="sk-block sk-name-sm"></div>
+        </div>
+      </div>`).join('');
   }
 
   // ── News — lazy fetch with 5-min memory TTL ───────────────

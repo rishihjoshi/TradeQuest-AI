@@ -1,4 +1,4 @@
-const CACHE = 'tradequest-v6';
+const CACHE = 'tradequest-v7';
 const SHELL = ['./index.html', './style.css', './app.js', './manifest.json', './icons/icon.svg'];
 
 self.addEventListener('install', e => {
@@ -17,6 +17,13 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
+
+  // API routes must never be cached — always network-only
+  if (url.pathname.startsWith('/api/')) {
+    e.respondWith(fetch(e.request));
+    return;
+  }
+
   if (url.pathname.includes('/data/')) {
     e.respondWith(
       fetch(e.request).then(r => {

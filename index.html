@@ -52,6 +52,10 @@
         <span id="regimeLabel">Loading…</span>
       </div>
       <span class="next-rebalance" id="nextRebalance"></span>
+      <button class="search-btn" id="searchBtn" aria-label="Search symbols">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Search
+      </button>
     </div>
   </header>
 
@@ -69,6 +73,7 @@
     <button class="tab active" data-tab="portfolio">◆ Portfolio</button>
     <button class="tab" data-tab="agent">⚡ Agent</button>
     <button class="tab" data-tab="news">&#x1F4F0; News</button>
+    <button class="tab" data-tab="orders">&#x1F4CB; Orders</button>
   </nav>
 
   <!-- ── Main ───────────────────────────────────────────── -->
@@ -293,6 +298,41 @@
       </div>
     </div><!-- end panel-news -->
 
+    <!-- ── Tab 4: Orders ──────────────────────────────────── -->
+    <div class="tab-panel" id="panel-orders">
+      <div class="orders-panel">
+
+        <!-- Filter bar -->
+        <div class="orders-filter-bar">
+          <div class="orders-status-group">
+            <button class="orders-filter-btn active" data-status="open">Open</button>
+            <button class="orders-filter-btn" data-status="closed">History</button>
+          </div>
+          <input type="text" id="ordersSymbolInput" class="orders-sym-input" placeholder="Filter by symbol…" autocomplete="off">
+        </div>
+
+        <!-- Open orders -->
+        <div id="openOrdersSection">
+          <div class="orders-section-header">
+            Open Orders
+            <span class="badge" id="openOrdersCount"></span>
+          </div>
+          <div id="openOrdersList" class="orders-list"></div>
+        </div>
+
+        <!-- Closed orders -->
+        <div id="closedOrdersSection" hidden>
+          <div class="orders-section-header">Order History</div>
+          <div id="closedOrdersList" class="orders-list"></div>
+        </div>
+
+        <!-- Activity feed -->
+        <div class="orders-section-header" style="margin-top:2rem">Activity Feed</div>
+        <div id="activityFeed" class="activity-feed"></div>
+
+      </div>
+    </div><!-- end panel-orders -->
+
   </main>
 
   <!-- ── Footer ─────────────────────────────────────────── -->
@@ -301,8 +341,158 @@
     <span>Universe: S&amp;P 500 · 15–20 positions · Monthly rebalance · Equal weight</span>
   </footer>
 
-  <!-- ── Order Modal ────────────────────────────────────── -->
-  <div id="orderModal" hidden></div>
+  <!-- ── Search Overlay ───────────────────────────────────── -->
+  <div id="searchOverlay" class="search-overlay" hidden role="dialog" aria-modal="true" aria-label="Symbol search">
+    <div class="search-backdrop" id="searchBackdrop"></div>
+    <div class="search-panel">
+      <div class="search-input-row">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="searchInput" class="search-input"
+               placeholder="Search symbol or company…" autocomplete="off" spellcheck="false">
+        <button class="search-close" id="searchClose" aria-label="Close">&#x2715;</button>
+      </div>
+      <div id="searchResults" class="search-results"></div>
+    </div>
+  </div>
+
+  <!-- ── Symbol Detail Screen ──────────────────────────────── -->
+  <div id="symbolScreen" class="symbol-screen" hidden>
+    <div class="symbol-screen-header">
+      <button class="symbol-back-btn" id="symbolBackBtn" aria-label="Back">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="symbol-screen-title">
+        <span class="symbol-screen-sym" id="symbolScreenSym">—</span>
+        <span class="symbol-screen-name" id="symbolScreenName">—</span>
+      </div>
+      <button class="symbol-trade-fab" id="symbolTradeBtn">Trade</button>
+    </div>
+
+    <div class="symbol-price-hero">
+      <div class="symbol-price-skeleton" id="symbolPriceSkeleton">
+        <div class="sk-block sk-price-lg"></div>
+        <div class="sk-block sk-price-sm"></div>
+      </div>
+      <div id="symbolPriceBlock" hidden>
+        <span class="symbol-last-price" id="symbolLastPrice">—</span>
+        <span class="symbol-change-badge" id="symbolChange">—</span>
+      </div>
+      <div class="symbol-bid-ask" id="symbolBidAsk"></div>
+      <div class="symbol-market-status" id="symbolMarketStatus"></div>
+    </div>
+
+    <div class="symbol-tf-bar" id="symbolTfBar">
+      <button class="tf-btn active" data-tf="1D">1D</button>
+      <button class="tf-btn" data-tf="1W">1W</button>
+      <button class="tf-btn" data-tf="1M">1M</button>
+      <button class="tf-btn" data-tf="3M">3M</button>
+      <button class="tf-btn" data-tf="1Y">1Y</button>
+      <button class="tf-btn" data-tf="5Y">5Y</button>
+      <button class="tf-btn" data-tf="MAX">MAX</button>
+    </div>
+
+    <div class="symbol-chart-wrap">
+      <div class="chart-skeleton-block" id="symbolChartSkeleton"></div>
+      <canvas id="symbolChart"></canvas>
+    </div>
+
+    <div class="symbol-stats-grid" id="symbolStatsGrid">
+      <div class="symbol-stat"><span class="symbol-stat-label">Open</span>   <span class="symbol-stat-val" id="statOpen">—</span></div>
+      <div class="symbol-stat"><span class="symbol-stat-label">High</span>   <span class="symbol-stat-val profit" id="statHigh">—</span></div>
+      <div class="symbol-stat"><span class="symbol-stat-label">Low</span>    <span class="symbol-stat-val loss" id="statLow">—</span></div>
+      <div class="symbol-stat"><span class="symbol-stat-label">Volume</span> <span class="symbol-stat-val" id="statVolume">—</span></div>
+      <div class="symbol-stat"><span class="symbol-stat-label">Bid</span>    <span class="symbol-stat-val" id="statBid">—</span></div>
+      <div class="symbol-stat"><span class="symbol-stat-label">Ask</span>    <span class="symbol-stat-val" id="statAsk">—</span></div>
+    </div>
+  </div>
+
+  <!-- ── Trade Ticket Modal ─────────────────────────────────── -->
+  <div id="tradeModal" class="trade-modal" hidden role="dialog" aria-modal="true">
+    <div class="modal-backdrop" id="tradeModalBackdrop"></div>
+    <div class="trade-panel">
+
+      <!-- Step 1: Order Form -->
+      <div id="tradeStep1" class="trade-step">
+        <div class="trade-panel-header">
+          <div class="trade-panel-sym-block">
+            <span class="trade-panel-sym" id="tradeSym">—</span>
+            <span class="trade-panel-name" id="tradeName">—</span>
+          </div>
+          <button class="modal-close" id="tradeClose" aria-label="Close">&#x2715;</button>
+        </div>
+
+        <div class="trade-side-toggle">
+          <button class="side-btn buy active" id="tradeSideBuy">Buy</button>
+          <button class="side-btn sell" id="tradeSideSell">Sell</button>
+        </div>
+
+        <div class="trade-field">
+          <label class="trade-label">Order Type</label>
+          <div class="trade-type-group">
+            <button class="type-btn active" data-type="market">Market</button>
+            <button class="type-btn" data-type="limit">Limit</button>
+            <button class="type-btn" data-type="stop">Stop</button>
+          </div>
+        </div>
+
+        <div class="trade-field">
+          <label class="trade-label" for="tradeQty">Shares</label>
+          <input type="number" id="tradeQty" class="trade-input" min="1" step="1" placeholder="0" inputmode="numeric">
+        </div>
+
+        <div class="trade-field" id="tradeFieldLimitPrice" hidden>
+          <label class="trade-label" for="tradeLimitPrice">Limit Price ($)</label>
+          <input type="number" id="tradeLimitPrice" class="trade-input" step="0.01" min="0.01" placeholder="0.00" inputmode="decimal">
+        </div>
+
+        <div class="trade-field" id="tradeFieldStopPrice" hidden>
+          <label class="trade-label" for="tradeStopPrice">Stop Price ($)</label>
+          <input type="number" id="tradeStopPrice" class="trade-input" step="0.01" min="0.01" placeholder="0.00" inputmode="decimal">
+        </div>
+
+        <div class="trade-field">
+          <label class="trade-label">Time in Force</label>
+          <div class="trade-tif-group">
+            <button class="tif-btn active" data-tif="day">DAY</button>
+            <button class="tif-btn" data-tif="gtc">GTC</button>
+          </div>
+        </div>
+
+        <div class="trade-preview" id="tradePreview">
+          <div class="preview-row"><span>Est. Cost / Proceeds</span><span id="previewCost">—</span></div>
+          <div class="preview-row"><span>Buying Power</span><span id="previewBP">—</span></div>
+          <div class="preview-row"><span>After Trade</span><span id="previewBPAfter">—</span></div>
+        </div>
+
+        <div class="trade-validation" id="tradeValidation" hidden></div>
+
+        <div class="trade-footer">
+          <button class="trade-cancel-btn" id="tradeCancelBtn">Cancel</button>
+          <button class="trade-review-btn" id="tradeReviewBtn" disabled>Review Order</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Review + Confirm -->
+      <div id="tradeStep2" class="trade-step" hidden>
+        <div class="trade-panel-header">
+          <button class="symbol-back-btn" id="tradeBackBtn" aria-label="Edit order">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+            Edit
+          </button>
+          <span class="trade-panel-title">Review Order</span>
+          <button class="modal-close" id="tradeClose2" aria-label="Close">&#x2715;</button>
+        </div>
+        <div class="trade-review-summary" id="tradeReviewSummary"></div>
+        <div class="paper-warning">&#x1F4CB; Paper trading only — no real money at risk.</div>
+        <div class="trade-footer">
+          <button class="trade-cancel-btn" id="tradeReviewCancelBtn">Cancel</button>
+          <button class="trade-submit-btn" id="tradeSubmitBtn">Submit Order</button>
+        </div>
+        <div class="trade-submit-result" id="tradeSubmitResult" hidden></div>
+      </div>
+
+    </div>
+  </div>
 
 </div>
 
