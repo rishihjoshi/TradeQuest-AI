@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Full-bleed background — no rounded corners so any Android adaptive mask shape works -->
+  <rect width="512" height="512" fill="#0B0B0B"/>
+  <!-- Content scaled and centered within the 80% safe zone (approx 102px inset on 512px canvas) -->
+  <!-- Chart polyline scaled to fit within ~308px × 308px centred area -->
+  <polyline
+    points="128,372 199,284 270,316 342,196 384,160"
+    stroke="#D4AF37" stroke-width="20" fill="none"
+    stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Green dot at peak -->
+  <circle cx="384" cy="160" r="15" fill="#22FF88"/>
+  <!-- Subtle mid-points -->
+  <circle cx="199" cy="284" r="9" fill="#D4AF37" opacity="0.6"/>
+  <circle cx="342" cy="196" r="9" fill="#D4AF37" opacity="0.6"/>
+  <!-- "TQ" wordmark -->
+  <text x="256" y="460" font-family="system-ui,-apple-system,sans-serif"
+    font-size="64" font-weight="700" text-anchor="middle"
+    letter-spacing="-2" fill="#D4AF37">TQ</text>
+</svg>

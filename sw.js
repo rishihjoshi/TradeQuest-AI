@@ -1,5 +1,14 @@
-const CACHE = 'tradequest-v8';
-const SHELL = ['./index.html', './style.css', './app.js', './manifest.json', './icons/icon.svg'];
+const CACHE = 'tradequest-v9';
+const SHELL = [
+  './index.html',
+  './style.css',
+  './app.js',
+  './manifest.json',
+  './icons/icon.svg',
+  './icons/icon-maskable.svg',
+  // CDN dependency — pre-cached so app renders offline
+  'https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js',
+];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)));
@@ -18,6 +27,23 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
 
+  // CDN assets (Chart.js): network-first so updates are picked up,
+  // cache fallback so app renders offline
+  if (url.hostname !== self.location.hostname) {
+    e.respondWith(
+      fetch(e.request)
+        .then(r => {
+          const clone = r.clone();
+          caches.open(CACHE).then(c => c.put(e.request, clone));
+          return r;
+        })
+        .catch(() => caches.match(e.request))
+    );
+    return;
+  }
+
+  // Data files (portfolio.json, symbols.json, bars/*.json): network-first,
+  // serve stale cache when offline so the PWA still shows last-known data
   if (url.pathname.includes('/data/')) {
     e.respondWith(
       fetch(e.request).then(r => {
@@ -28,5 +54,7 @@ self.addEventListener('fetch', e => {
     );
     return;
   }
+
+  // App shell (HTML, CSS, JS, manifest, icons): cache-first
   e.respondWith(caches.match(e.request).then(r => r || fetch(e.request)));
 });
