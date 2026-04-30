@@ -1,4 +1,4 @@
-const CACHE = 'tradequest-v9';
+const CACHE = 'tradequest-v10';
 const SHELL = [
   './index.html',
   './style.css',
@@ -11,8 +11,10 @@ const SHELL = [
 ];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)));
-  self.skipWaiting();
+  // skipWaiting inside the chain so the SW only activates after cache is committed
+  e.waitUntil(
+    caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener('activate', e => {

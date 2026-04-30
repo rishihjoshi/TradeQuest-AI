@@ -375,7 +375,7 @@ def write_symbols_json(universe: list[dict], data_dir: Path) -> None:
     """Write data/symbols.json — [{symbol, name, sector}] for client-side search."""
     out_path = data_dir / "symbols.json"
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(out_path, "w") as f:
+    with open(out_path, "w", encoding="utf-8") as f:
         json.dump(universe, f, separators=(",", ":"))
     print(f"Wrote {out_path} ({len(universe)} symbols)")
 
@@ -395,7 +395,7 @@ def write_holdings_bars(holdings: list[dict], prices: pd.DataFrame, data_dir: Pa
             for ts, v in series.items()
         ]
         out_path = bars_dir / f"{sym}.json"
-        with open(out_path, "w") as f:
+        with open(out_path, "w", encoding="utf-8") as f:
             json.dump(bars, f, separators=(",", ":"))
         written.append(sym)
     if written:
@@ -406,6 +406,12 @@ def handle_manual_order(client) -> None:
     """If ORDER_SYMBOL env var is set, place a single paper order via Alpaca."""
     sym = os.environ.get("ORDER_SYMBOL", "").strip().upper()
     if not sym or not client:
+        return
+
+    # Validate symbol: only uppercase letters, digits, dot, hyphen (e.g. BRK-B, BF.B)
+    import re as _re
+    if not _re.fullmatch(r"[A-Z0-9.\-]{1,10}", sym):
+        print(f"handle_manual_order: invalid ORDER_SYMBOL '{sym}' — skipping.", file=sys.stderr)
         return
 
     from alpaca.trading.requests import MarketOrderRequest, LimitOrderRequest, StopOrderRequest
@@ -421,6 +427,11 @@ def handle_manual_order(client) -> None:
     qty = int(qty_str) if qty_str.isdigit() and int(qty_str) > 0 else 0
     if not qty:
         print("handle_manual_order: ORDER_QTY missing or invalid — skipping.", file=sys.stderr)
+        return
+    # Safety cap: never place a single order for more than 10,000 shares
+    MAX_QTY = 10_000
+    if qty > MAX_QTY:
+        print(f"handle_manual_order: ORDER_QTY {qty} exceeds safety cap {MAX_QTY} — skipping.", file=sys.stderr)
         return
 
     side = OrderSide.BUY  if side_str == "buy"  else OrderSide.SELL
