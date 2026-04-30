@@ -262,10 +262,48 @@ class TradeQuestApp {
     this.setupNewsControls();
     this.setupSearch();
     this.setupTradeTicketListeners();
+    this.setupInstallPrompt();
     await this.load();
     this.scheduleRefresh();
     // Update time-ago strings every 60 s
     this.timeAgoTimer = setInterval(() => this.refreshTimeAgoLabels(), 60_000);
+  }
+
+  // ── PWA Install Prompt (Android A2HS + iOS hint) ──────────
+  setupInstallPrompt() {
+    // Android Chrome: capture the beforeinstallprompt event for a custom button
+    window.addEventListener('beforeinstallprompt', e => {
+      e.preventDefault();
+      this._installPrompt = e;
+      const banner = document.getElementById('installBanner');
+      if (banner) banner.hidden = false;
+    });
+
+    window.addEventListener('appinstalled', () => {
+      this._installPrompt = null;
+      const banner = document.getElementById('installBanner');
+      if (banner) banner.hidden = true;
+    });
+
+    // iOS Safari: no beforeinstallprompt — show manual instructions if not yet installed
+    const isIOS        = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    const isStandalone = window.navigator.standalone === true
+                      || window.matchMedia('(display-mode: standalone)').matches;
+    if (isIOS && !isStandalone) {
+      const hint = document.getElementById('iosInstallHint');
+      if (hint) hint.hidden = false;
+    }
+
+    // Wire install button click (Android)
+    document.getElementById('installBtn')?.addEventListener('click', async () => {
+      if (!this._installPrompt) return;
+      this._installPrompt.prompt();
+      const { outcome } = await this._installPrompt.userChoice;
+      if (outcome === 'accepted') {
+        const banner = document.getElementById('installBanner');
+        if (banner) banner.hidden = true;
+      }
+    });
   }
 
   // ── Adaptive refresh (market-hours aware) ─────────────────

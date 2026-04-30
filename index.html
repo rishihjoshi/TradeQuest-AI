@@ -343,6 +343,19 @@
 
   </main>
 
+  <!-- ── Install Banner (Android A2HS — shown by JS when beforeinstallprompt fires) -->
+  <div id="installBanner" class="install-banner" hidden>
+    <span>Add TradeQuest to your home screen for the best experience</span>
+    <button id="installBtn" class="install-btn">Install</button>
+    <button class="install-dismiss" onclick="document.getElementById('installBanner').hidden=true" aria-label="Dismiss">&#x2715;</button>
+  </div>
+
+  <!-- ── iOS Install Hint (shown by JS when iOS Safari detected outside standalone) -->
+  <div id="iosInstallHint" class="ios-install-hint" hidden>
+    <span>📲 Tap <strong>Share</strong> → <strong>Add to Home Screen</strong> to install TradeQuest</span>
+    <button class="install-dismiss" onclick="document.getElementById('iosInstallHint').hidden=true" aria-label="Dismiss">&#x2715;</button>
+  </div>
+
   <!-- ── Footer ─────────────────────────────────────────── -->
   <footer class="footer">
     <span>TradeQuest AI — Paper Trading Only · No real money</span>
