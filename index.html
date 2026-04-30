@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Viewport: NO viewport-fit=cover (proven fix — without it, iOS viewport already ends
+       above home indicator; env(safe-area-inset-*) gives correct values in standalone mode) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#D4AF37">
   <!-- CSP: scripts only from self + jsdelivr (Chart.js); no Alpaca API calls from browser -->
   <meta http-equiv="Content-Security-Policy" content="
@@ -19,8 +21,14 @@
     form-action 'none';
   ">
   <meta name="description" content="AI-powered paper trading dashboard — momentum strategy on S&P 500">
+  <!-- iOS PWA -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="TradeQuest">
+  <link rel="apple-touch-icon" href="./icons/icon.svg">
+  <!-- Android PWA -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="TradeQuest">
   <link rel="manifest" href="./manifest.json">
   <link rel="icon" type="image/svg+xml" href="./icons/icon.svg">
   <title>TradeQuest AI</title>

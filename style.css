@@ -14,6 +14,14 @@
   --loss-bg:   rgba(255, 77, 77, 0.08);
   --radius:    8px;
   --gap:       16px;
+
+  /* Safe-area insets (no viewport-fit:cover — viewport already ends above home
+     indicator in Safari/standalone; safe-b is 0 in browser, small positive in
+     standalone PWA mode; 0px fallback means no gap on plain web) */
+  --safe-t: env(safe-area-inset-top,    0px);
+  --safe-b: env(safe-area-inset-bottom, 0px);
+  --safe-l: env(safe-area-inset-left,   0px);
+  --safe-r: env(safe-area-inset-right,  0px);
 }
 
 /* ── Reset ─────────────────────────────────────────────────── */
@@ -24,7 +32,12 @@
    keep elements visible even when JS sets el.hidden = true) */
 [hidden] { display: none !important; }
 
-html { font-size: 14px; scroll-behavior: smooth; }
+html {
+  font-size: 14px;
+  scroll-behavior: smooth;
+  /* Prevent iOS rubber-band bounce on the root scroll container */
+  overscroll-behavior: none;
+}
 
 body {
   background: var(--bg);
@@ -32,6 +45,24 @@ body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   line-height: 1.5;
   min-height: 100vh;
+  /* PWA shell: prevent Android pull-to-refresh and iOS overscroll bounce */
+  overscroll-behavior: none;
+  /* Native-app feel: disable text selection on UI chrome */
+  user-select: none;
+  -webkit-user-select: none;
+  /* Prevent iOS font-size inflation on orientation change */
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Re-enable text selection inside form fields */
+input, textarea, select {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+/* Remove blue tap-highlight flash on Android Chrome */
+button, a, [role="button"] {
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* ── Layout ────────────────────────────────────────────────── */
@@ -665,6 +696,9 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 12px max(var(--gap), calc((100vw - 1400px) / 2));
+  /* Bottom: safe-area-inset-bottom clears the home indicator on iPhone in
+     standalone PWA mode; 0px fallback means no gap in browser */
+  padding-bottom: calc(12px + var(--safe-b));
   border-top: 1px solid var(--border);
   font-size: 0.7rem;
   color: var(--muted);
@@ -1774,7 +1808,9 @@ a.article-headline[href=""] { pointer-events: none; }
 .symbol-stats-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 1px; background: var(--border);
-  margin: 16px 20px; border-radius: var(--radius);
+  /* bottom margin accounts for home indicator in standalone PWA mode */
+  margin: 16px 20px calc(16px + var(--safe-b));
+  border-radius: var(--radius);
   overflow: hidden; border: 1px solid var(--border);
 }
 .symbol-stat {
@@ -1811,7 +1847,7 @@ a.article-headline[href=""] { pointer-events: none; }
 .trade-panel-sym   { font-weight: 700; font-size: 1rem; }
 .trade-panel-name  { font-size: 0.72rem; color: var(--muted); }
 .trade-panel-title { flex: 1; font-weight: 600; font-size: 0.9rem; text-align: center; }
-.trade-step        { padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+.trade-step        { padding: 16px; padding-bottom: calc(16px + var(--safe-b)); display: flex; flex-direction: column; gap: 14px; }
 .trade-side-toggle { display: flex; gap: 0; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
 .side-btn {
   flex: 1; padding: 10px; border: none; font-weight: 600;
