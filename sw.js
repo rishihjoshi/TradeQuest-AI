@@ -1,4 +1,4 @@
-const CACHE = 'tradequest-v10';
+const CACHE = 'tradequest-v11';
 const SHELL = [
   './index.html',
   './style.css',

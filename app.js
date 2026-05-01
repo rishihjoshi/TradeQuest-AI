@@ -256,6 +256,8 @@ class TradeQuestApp {
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('./sw.js').catch(() => {});
     }
+    this.syncHeaderHeight();
+    window.addEventListener('resize', () => this.syncHeaderHeight());
     this.setupTabs();
     this.setupTradeControls();
     this.setupAgentHistoryUI();
@@ -267,6 +269,12 @@ class TradeQuestApp {
     this.scheduleRefresh();
     // Update time-ago strings every 60 s
     this.timeAgoTimer = setInterval(() => this.refreshTimeAgoLabels(), 60_000);
+  }
+
+  // Keep --header-h in sync so the sticky tab-bar clears the header exactly
+  syncHeaderHeight() {
+    const hdr = document.querySelector('.header');
+    if (hdr) document.documentElement.style.setProperty('--header-h', hdr.offsetHeight + 'px');
   }
 
   // ── PWA Install Prompt (Android A2HS + iOS hint) ──────────
