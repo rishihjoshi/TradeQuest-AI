@@ -798,13 +798,13 @@ def main():
 
         # Load what Claude approved and apply all risk limits before touching the broker
         agent_approvals = load_agent_approvals()
-        prices = {h["symbol"]: h.get("current_price", 0.0) for h in new_holdings}
-        prices.update({
+        price_map = {h["symbol"]: h.get("current_price", 0.0) for h in new_holdings}
+        price_map.update({
             sym: fundamentals.get(sym, {}).get("current_price", 0.0)
             for sym in to_buy_syms
         })
         to_sell, to_buy = apply_risk_limits(
-            raw_sells, raw_buys, pv, cash, agent_approvals["SELL"], prices
+            raw_sells, raw_buys, pv, cash, agent_approvals["SELL"], price_map
         )
 
         if to_sell or to_buy:
