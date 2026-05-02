@@ -22,6 +22,7 @@
   --safe-b: env(safe-area-inset-bottom, 0px);
   --safe-l: env(safe-area-inset-left,   0px);
   --safe-r: env(safe-area-inset-right,  0px);
+  --header-h: 52px;
 }
 
 /* ── Reset ─────────────────────────────────────────────────── */
@@ -1437,6 +1438,16 @@ button, a, [role="button"] {
   /* ── Modal ──────────────────────────────────────────────── */
   .modal-stats-row { grid-template-columns: 1fr 1fr; }
   .modal-stats-row .modal-stat-item:last-child { grid-column: 1 / -1; }
+
+  /* Notched phones (iPhone X+): clear side cutouts in landscape */
+  .modal-body {
+    padding-left:  calc(20px + var(--safe-l));
+    padding-right: calc(20px + var(--safe-r));
+  }
+  .trade-step {
+    padding-left:  calc(16px + var(--safe-l));
+    padding-right: calc(16px + var(--safe-r));
+  }
 }
 
 @media (max-width: 380px) {
@@ -1444,6 +1455,11 @@ button, a, [role="button"] {
   .stats-grid { grid-template-columns: repeat(5, minmax(108px, 1fr)); }
   .agent-summary-bar  { grid-template-columns: 1fr; }
   .momentum-heatmap   { grid-template-columns: repeat(3, 1fr); }
+
+  /* Stack "Trade" + "Close Position" buttons vertically */
+  .pos-detail-footer { flex-direction: column; gap: 6px; align-items: stretch; }
+  .pos-trade-btn,
+  .pos-close-btn     { width: 100%; text-align: center; }
 }
 
 /* ── News Tab ──────────────────────────────────────────────── */
@@ -1753,6 +1769,8 @@ a.article-headline[href=""] { pointer-events: none; }
   .news-sentiment-bar  { gap: 14px; padding: 12px 14px; }
   .sentiment-count     { font-size: 1.1rem; }
   .news-filter-bar     { gap: 8px; }
+  .news-filter-group   { flex-wrap: wrap; }
+  .news-filter-btn     { white-space: nowrap; }
   .article-summary     { -webkit-line-clamp: 3; }
   .catalysts-banner    { gap: 6px; padding: 8px 12px; }
 }
@@ -2135,7 +2153,9 @@ a.article-headline[href=""] { pointer-events: none; }
   .symbol-stats-grid { grid-template-columns: repeat(2, 1fr); }
   .symbol-last-price { font-size: 1.6rem; }
   .trade-panel       { max-height: 98vh; }
-  .orders-filter-bar { gap: 8px; }
+  .orders-filter-bar   { gap: 8px; }
+  .orders-status-group { flex-wrap: wrap; }
+  .orders-filter-btn   { white-space: nowrap; }
   .review-detail-grid { gap: 4px 10px; font-size: 0.78rem; }
 }
 

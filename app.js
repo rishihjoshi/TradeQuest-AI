@@ -346,6 +346,7 @@ class TradeQuestApp {
   setupTabs() {
     document.querySelectorAll('.tab').forEach(btn => {
       btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
         const target = btn.dataset.tab;
         document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
         document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
@@ -553,6 +554,7 @@ class TradeQuestApp {
 
   // ── Equity Chart ──────────────────────────────────────────
   renderEquityChart() {
+    const isMobile = window.matchMedia('(max-width: 640px)').matches;
     const { equity_curve, summary } = this.data;
     const ctx         = $('equityChart').getContext('2d');
     const returnPct   = this.data.meta.initial_capital > 0
@@ -614,7 +616,7 @@ class TradeQuestApp {
         scales: {
           x: {
             grid:   { color: 'rgba(255,255,255,0.03)', drawBorder: false },
-            ticks:  { color: '#555', maxTicksLimit: 7, font: { size: 10 } },
+            ticks:  { color: '#555', maxTicksLimit: isMobile ? 4 : 7, font: { size: isMobile ? 9 : 10 } },
             border: { color: '#1E1E1E' },
           },
           y: (() => {
@@ -1259,6 +1261,7 @@ class TradeQuestApp {
   async loadSymbolBars(sym, timeframe) {
     const skelEl  = $('symbolChartSkeleton');
     const canvas  = $('symbolChart');
+    const isMobileChart = window.matchMedia('(max-width: 640px)').matches;
     if (skelEl) skelEl.hidden = false;
     if (canvas) canvas.hidden = true;
 
@@ -1322,7 +1325,7 @@ class TradeQuestApp {
           scales: {
             x: {
               grid:   { color: 'rgba(255,255,255,0.03)' },
-              ticks:  { color: '#555', maxTicksLimit: 7, font: { size: 10 } },
+              ticks:  { color: '#555', maxTicksLimit: isMobileChart ? 4 : 7, font: { size: isMobileChart ? 9 : 10 } },
               border: { color: '#1E1E1E' },
             },
             y: {
