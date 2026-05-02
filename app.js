@@ -617,12 +617,25 @@ class TradeQuestApp {
             ticks:  { color: '#555', maxTicksLimit: 7, font: { size: 10 } },
             border: { color: '#1E1E1E' },
           },
-          y: {
-            position: 'right',
-            grid:   { color: 'rgba(255,255,255,0.03)', drawBorder: false },
-            ticks:  { color: '#555', font: { size: 10 }, callback: v => '$' + (v / 1000).toFixed(0) + 'k' },
-            border: { color: '#1E1E1E' },
-          },
+          y: (() => {
+            const vals    = equity_curve.map(p => p.value);
+            const lo      = Math.min(...vals);
+            const hi      = Math.max(...vals);
+            const pad     = (hi - lo) * 0.15 || hi * 0.02; // 15% padding each side; fallback 2% for flat curve
+            return {
+              position:     'right',
+              suggestedMin: lo - pad,
+              suggestedMax: hi + pad,
+              grid:   { color: 'rgba(255,255,255,0.03)', drawBorder: false },
+              ticks:  {
+                color: '#555',
+                font:  { size: 10 },
+                maxTicksLimit: 5,
+                callback: v => '$' + (v / 1000).toFixed(1) + 'k',
+              },
+              border: { color: '#1E1E1E' },
+            };
+          })(),
         },
       },
     });

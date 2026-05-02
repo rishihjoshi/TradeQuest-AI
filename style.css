@@ -1406,7 +1406,7 @@ button, a, [role="button"] {
 
   /* ── Position cards: tighter on mobile ─────────────────── */
   .pos-sparkline { width: 48px; height: 28px; }
-  .pos-meta      { display: none; }
+  .pos-meta      { font-size: 0.64rem; }
   .pos-detail-grid { grid-template-columns: repeat(2, 1fr); }
 
   /* Holdings list: let the page scroll instead of nesting a scroll area */

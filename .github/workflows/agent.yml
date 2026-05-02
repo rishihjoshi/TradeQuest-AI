@@ -37,10 +37,20 @@ jobs:
           # Allowlist validation — reject any value that isn't an expected run type
           if [[ "$OVERRIDE" =~ ^(day_end|monthly)$ ]]; then
             echo "RUN_TYPE=$OVERRIDE" >> $GITHUB_ENV
-          elif [ "$(date -u +%d)" = "01" ]; then
-            echo "RUN_TYPE=monthly" >> $GITHUB_ENV
           else
-            echo "RUN_TYPE=day_end" >> $GITHUB_ENV
+            # First weekday of the month (handles months where 1st falls on Sat/Sun):
+            # - day=01 on Mon–Fri → always first weekday
+            # - day=02 on Mon     → 1st was Sunday
+            # - day=03 on Mon     → 1st was Sat, 2nd was Sun
+            DOM=$(date -u +%d | sed 's/^0//')  # strip leading zero for integer compare
+            DOW=$(date -u +%u)                  # 1=Mon … 7=Sun
+            if [[ "$DOM" -eq 1 && "$DOW" -le 5 ]] || \
+               [[ "$DOM" -eq 2 && "$DOW" -eq 1 ]] || \
+               [[ "$DOM" -eq 3 && "$DOW" -eq 1 ]]; then
+              echo "RUN_TYPE=monthly" >> $GITHUB_ENV
+            else
+              echo "RUN_TYPE=day_end" >> $GITHUB_ENV
+            fi
           fi
 
       - name: Update portfolio
