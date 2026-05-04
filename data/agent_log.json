@@ -1,7 +1,128 @@
 {
-  "last_run": "2026-05-01T22:28:14Z",
+  "last_run": "2026-05-04T22:34:41Z",
   "last_type": "day_end",
   "runs": [
+    {
+      "id": "RUN-20260504-2234",
+      "timestamp": "2026-05-04T22:34:41Z",
+      "type": "day_end",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is up +1.59% since inception but is critically distorted by TSLA which represents 39.16% of portfolio value \u2014 far exceeding the 8% max position limit \u2014 despite being flagged for SELL in the previous two runs. The previous run logged TSLA as sold but the position remains live, suggesting Alpaca order execution failures that must be resolved immediately. Breadth at 58.2% is borderline (narrowing from 62% in regime indicators vs. breadth signal), with the 8MA crossing below the 200MA representing a bearish deterioration warning that reduces regime confidence.",
+      "regime": "bull",
+      "regime_confidence": 0.68,
+      "flags": [
+        "TSLA: CRITICAL \u2014 39.16% portfolio weight vs 8% max; all fundamental data missing (eps_growth=0, revenue_growth=0, forward_pe=0, momentum_rank=0); sector=Unknown; ma_50d=0 (data failure); previously flagged for SELL on 2026-05-01 \u2014 Alpaca sell orders appear to have NOT executed; IMMEDIATE action required",
+        "GOOG+GOOGL: Dual share class in same underlying company (Alphabet Inc.) creates ~7.6% effective exposure to single issuer; combined weight is within limits but concentrated; strategy document flagged this previously \u2014 one class should be exited at next rebalance",
+        "FDX: Price $356.23 < 50-day MA $371.71 \u2014 Rule 2 (trend_break) confirmed; momentum rank 11 still in top 30% but MA break overrides",
+        "TPR: Price $139.74 < 50-day MA $147.37 \u2014 Rule 2 (trend_break) confirmed; was flagged in previous run; sold on 2026-05-01 per previous log but position still appears active at new entry date 2026-05-04; if this is a re-buy, the trend break is immediate and warrants SELL again",
+        "JBL: Volatility 30d = 0.4516 \u2014 elevated; was on watch list from previous run; momentum rank 4 is strong but vol near top decile threshold; monitor closely",
+        "ADI: Volatility 30d = 0.383 \u2014 elevated but below JBL; momentum rank 3, strong fundamentals; acceptable for now but worth monitoring",
+        "Breadth 8MA below 200MA: Bearish breadth trend despite 58.2% above 200MA \u2014 regime confidence reduced from 0.82 to 0.68; approaching sideways threshold",
+        "Cash at 6.9% vs 5% bull target \u2014 slightly elevated but acceptable given TSLA sell proceeds pending"
+      ],
+      "decisions": [
+        {
+          "action": "SELL",
+          "symbol": "TSLA",
+          "reason": "CRITICAL: Position is 39.16% of portfolio vs 8% maximum per strategy. All fundamental data is zero/missing (eps_growth=0, revenue_growth=0, forward_pe=0, momentum_rank=0, ma_50d=0) \u2014 fails quality filter, risk filter, and valuation filter simultaneously. Sector listed as 'Unknown'. This position was flagged and ordered sold on 2026-05-01 \u2014 if prior Alpaca orders failed to execute, this is an escalating emergency. Rule 2 cannot be checked (ma_50d=0), but the position-size violation alone mandates immediate exit. At $392.20 x 10 shares = $3,922 vs $691 cash, selling TSLA would also correct the cash undershoot and enable proper equal-weight rebalancing.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "immediate"
+        },
+        {
+          "action": "SELL",
+          "symbol": "FDX",
+          "reason": "Rule 2 (trend_break) triggered: current price $356.23 is below 50-day MA of $371.71 (gap of -4.2%). Momentum rank 11 remains in top 30% but the MA break confirms momentum has ended per sell rules. Volatility 30d = 0.4136, which is in the upper range of the portfolio \u2014 combined with trend break this is a clear exit. EPS growth 17.3% and revenue growth 8.3% are borderline on quality but the trend break is definitive.",
+          "rule_triggered": "trend_break",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "TPR",
+          "reason": "Rule 2 (trend_break) triggered: current price $139.74 is below 50-day MA of $147.37 (gap of -5.2%). This is the same rule that triggered a SELL on 2026-05-01. The position shows entry date of 2026-05-04 suggesting a re-purchase after the flag \u2014 if so, the trend break is immediately re-triggered. Momentum rank 16 is still in top 30% but price below 50MA is a hard sell rule per strategy. Executing now before further deterioration.",
+          "rule_triggered": "trend_break",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "GOOGL",
+          "reason": "GOOG and GOOGL are both Alphabet Inc. \u2014 holding both creates dual share class concentration in a single issuer. GOOGL (momentum_rank=7, pnl_pct=+2.55%) vs GOOG (momentum_rank=9, pnl_pct=+9.16%). GOOG has stronger 12M momentum (1.3401 vs 1.3842 for GOOGL but GOOG's 6M is lower). GOOGL was flagged in prior run. Eliminating GOOGL and retaining GOOG (higher 6M momentum, better gain) reduces issuer concentration. Strategy requires no duplicate issuer exposure.",
+          "rule_triggered": "null",
+          "urgency": "next_open"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "GOOG",
+          "reason": "Retaining as sole Alphabet exposure. Momentum rank 9, price well above 50-day MA ($379.78 vs $314.22), eps_growth=82%, revenue_growth=21.8%, forward_pe=26.6 (well under 40). All four filters pass. PnL +9.16%. Volatility 0.4072 is elevated but below 90th percentile threshold. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "JBL",
+          "reason": "Volatility 30d = 0.4516 \u2014 this is the highest in the portfolio and approaching the top 10% volatility exclusion threshold. Momentum rank 4 is strong and all fundamentals pass (eps_growth=96.2%, revenue_growth=23.1%, forward_pe=23.4). Price well above 50MA ($340.80 vs $283.43). No sell rule triggered but volatility level requires continued monitoring. If vol exceeds 90th percentile of universe, Rule 4 (risk filter) would mandate exit.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "Momentum rank 3 (top tier), price well above 50-day MA ($395.69 vs $343.15), eps_growth=116.7%, revenue_growth=30.4%, forward_pe=30.2. All four filters pass cleanly. PnL +3.15%. Volatility 0.383 is elevated but acceptable. Strong thesis.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "BEN",
+          "reason": "Momentum rank 15 (top 30%), price above 50-day MA ($29.70 vs $25.78), eps_growth=87.2%, revenue_growth=8.7% (just above 8% quality floor), forward_pe=10.1. All filters pass. Revenue growth at the bare minimum threshold \u2014 worth monitoring for further deceleration. Low volatility (0.346) is a positive.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "BK",
+          "reason": "Momentum rank 23 is in top 30% (universe ~500 stocks, rank 23 = top 5%). Price above 50-day MA ($131.88 vs $123.15). eps_growth=41.8%, revenue_growth=13.4%, forward_pe=13.7. All filters pass. PnL -1.53% is minor and within normal variation for a recent entry. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CFG",
+          "reason": "Momentum rank 19 (top 30%), price above 50-day MA ($63.56 vs $61.36), eps_growth=46.8%, revenue_growth=13.8%, forward_pe=9.9. All filters pass. PnL -1.97% is minor for a recent entry. Low-moderate volatility (0.2382). Financial sector concentration building (BEN, BK, CFG, NTRS all financial) but no hard sector cap in strategy \u2014 noted.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NTRS",
+          "reason": "Momentum rank 18 (top 30%), price above 50-day MA ($161.41 vs $147.68), eps_growth=42.6%, revenue_growth=13.9%, forward_pe=13.7. All filters pass. PnL -3.19% is the largest loss among financial holdings but within acceptable range for recent entry. Note: four Financial Services holdings (BEN, BK, CFG, NTRS) = ~20% sector concentration \u2014 approaching meaningful concentration but not a hard rule trigger.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "Momentum rank 6 (top tier), price above 50-day MA ($225.81 vs $182.00), eps_growth=382.1% (exceptional), revenue_growth=21.3%, forward_pe=14.4. All filters pass strongly. PnL nearly flat (-0.27%) for a recent entry. Low volatility (0.2667) is a positive. Strong thesis.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ROST",
+          "reason": "Momentum rank 13 (top 30%), price above 50-day MA ($226.15 vs $215.69), eps_growth=11.8%, revenue_growth=12.2%, forward_pe=27.8. All filters pass. EPS growth of 11.8% is above the 10% quality floor. Low volatility (0.2234) is a positive. PnL essentially flat (+0.07%). Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "increase",
+      "cash_rationale": "Selling TSLA (39.16% weight, ~$3,922), FDX (~$356), TPR (~$559), and GOOGL (~$383) will generate approximately $5,220 in proceeds, raising cash to ~$5,911 (~59% of portfolio) \u2014 well above the bull regime 5% target. After sells, the remaining 9 positions will represent ~$4,105 invested (~41%). At next rebalance (2026-06-01), proceeds should be redeployed into 6-8 new qualifying positions to restore the 15-20 position target at equal weight (5-8% each), bringing cash back to ~5%. Until then, holding elevated cash is acceptable given the structural portfolio repair needed. Breadth signal narrowing also supports slightly elevated cash as a precaution.",
+      "summary": "Day-end 2026-05-05: SELL TSLA (critical position-size + missing data violation, prior sell order apparently unexecuted), SELL FDX (Rule 2 trend break confirmed), SELL TPR (Rule 2 trend break re-confirmed), SELL GOOGL (duplicate issuer with GOOG, consolidating to single Alphabet share class); 9 remaining positions HOLD pending next rebalance on 2026-06-01.",
+      "usage": {
+        "input_tokens": 9644,
+        "output_tokens": 3337,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 2804
+      }
+    },
     {
       "id": "RUN-20260501-2228",
       "timestamp": "2026-05-01T22:28:14Z",
