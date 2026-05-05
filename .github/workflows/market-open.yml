@@ -1,0 +1,49 @@
+name: TradeQuest Market Open
+
+on:
+  schedule:
+    # 9:30 AM ET (13:30 UTC) Mon–Fri — executes next_open urgency orders from
+    # the prior evening's agent run. No Claude call — zero extra token cost.
+    - cron: '30 13 * * 1-5'
+  workflow_dispatch: {}
+
+jobs:
+  execute-next-open:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405  # v6.2.0
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: bot/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r bot/requirements.txt
+
+      - name: Execute next_open orders
+        env:
+          ALPACA_ACCOUNT_NAME: ${{ secrets.ALPACA_ACCOUNT_NAME }}
+          ALPACA_API_KEY:      ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY:   ${{ secrets.ALPACA_SECRET_KEY }}
+          ALPACA_BASE_URL:     ${{ secrets.ALPACA_BASE_URL }}
+          MARKET_OPEN_RUN:     "true"
+        run: python bot/update.py
+
+      - name: Commit results
+        run: |
+          git config user.name "TradeQuest Bot"
+          git config user.email "actions@github.com"
+          git add data/portfolio.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "market-open: $(date -u +'%Y-%m-%d %H:%M') [skip ci]"
+            git push -u origin HEAD
+          fi
