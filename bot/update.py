@@ -43,6 +43,20 @@ MAX_SELL_VALUE_PCT  = 0.30  # never liquidate more than 30% of portfolio in one 
 CASH_FLOOR_PCT      = 0.05  # always keep ≥5% of portfolio value as cash
 MAX_POSITION_PCT    = 0.08  # single position cap: 8% of portfolio value
 
+# Pre-market execution mode flag (set via MARKET_OPEN_RUN=true env var)
+MARKET_OPEN_RUN = os.environ.get("MARKET_OPEN_RUN", "").lower() == "true"
+
+# Known dual-class share pairs: maps each ticker to a canonical issuer ID.
+# Screener keeps only the highest-momentum ticker per issuer.
+ISSUER_MAP: dict[str, str] = {
+    "GOOG":  "ALPHABET",
+    "GOOGL": "ALPHABET",
+    "BRK-A": "BERKSHIRE",
+    "BRK-B": "BERKSHIRE",
+    "BF-A":  "BROWFORMAN",
+    "BF-B":  "BROWFORMAN",
+}
+
 
 # ── Safety guards ─────────────────────────────────────────────
 
@@ -55,10 +69,17 @@ def verify_paper_url() -> None:
         )
 
 
-def load_agent_approvals() -> dict[str, set[str]]:
+def load_agent_approvals(target_urgency: str = "immediate") -> dict[str, set[str]]:
     """
-    Read agent_log.json and return the most recent day_end or monthly run's
+    Read agent_log.json and return the most recent valid day_end or monthly run's
     approved actions as sets: {"SELL": {symbols...}, "BUY": {symbols...}}.
+
+    target_urgency controls which urgency level is executed:
+      "immediate"  — post-close run (default): actions marked immediate only
+      "next_open"  — pre-market run: actions marked next_open only
+
+    Runs flagged with parse_failed=True are skipped so a bad Claude response
+    never silently blocks all sells by returning empty approvals.
 
     Returns empty sets if no relevant run is found (no orders will be placed).
     """
@@ -74,24 +95,26 @@ def load_agent_approvals() -> dict[str, set[str]]:
         print(f"Warning: could not read agent_log.json ({e}) — orders blocked.", file=sys.stderr)
         return approvals
 
-    # Find the most recent day_end or monthly run
+    # Find the most recent valid day_end or monthly run (skip parse-failed entries)
     for run in log.get("runs", []):
         run_type = run.get("run_type") or run.get("type", "")
         if run_type not in ("day_end", "monthly"):
             continue
+        if run.get("parse_failed"):
+            print(f"  Skipping parse-failed run {run.get('id','?')} — looking for earlier run")
+            continue
         for d in run.get("decisions", []):
-            action = str(d.get("action", "")).upper()
-            symbol = str(d.get("symbol", "")).strip().upper()
+            action  = str(d.get("action", "")).upper()
+            symbol  = str(d.get("symbol", "")).strip().upper()
             urgency = str(d.get("urgency", "")).lower()
-            if action in ("SELL", "BUY") and symbol:
-                # Only execute if agent marked it immediate or next_open
-                if urgency in ("immediate", "next_open"):
-                    approvals[action].add(symbol)
-        print(f"Agent approvals loaded from run {run.get('id','?')}: "
+            if action in ("SELL", "BUY") and symbol and urgency == target_urgency:
+                approvals[action].add(symbol)
+        print(f"Agent approvals loaded from run {run.get('id','?')} "
+              f"(urgency={target_urgency}): "
               f"{len(approvals['SELL'])} SELLs, {len(approvals['BUY'])} BUYs approved")
         return approvals  # use only the most recent qualifying run
 
-    print("No day_end or monthly agent run found — orders blocked for safety.", file=sys.stderr)
+    print("No valid day_end or monthly agent run found — orders blocked for safety.", file=sys.stderr)
     return approvals
 
 
@@ -118,24 +141,39 @@ def apply_risk_limits(
     max_sell_val = pv * MAX_SELL_VALUE_PCT
     max_pos_val  = pv * MAX_POSITION_PCT
 
-    # 1. Gate sells behind agent approval
-    approved_sells = [(sym, shares) for sym, shares in to_sell
-                      if sym.upper() in agent_sell_approvals]
+    # 1. Gate sells behind agent approval.
+    # Exception: positions that are >2× the max size are always approved — the risk limit
+    # designed to prevent panic selling must not trap a confirmed overweight position.
+    position_size_overrides = {
+        sym.upper() for sym, shares in to_sell
+        if prices.get(sym.upper(), 0.0) * shares > pv * MAX_POSITION_PCT * 2
+    }
+    if position_size_overrides:
+        print(f"  Risk gate: position-size override applied for {', '.join(sorted(position_size_overrides))}"
+              f" (>2× max position — bypassing agent approval gate)")
+    approved_sells = [
+        (sym, shares) for sym, shares in to_sell
+        if sym.upper() in agent_sell_approvals or sym.upper() in position_size_overrides
+    ]
     blocked = set(sym for sym, _ in to_sell) - set(sym for sym, _ in approved_sells)
     if blocked:
         print(f"  Risk gate: blocked unapproved SELLs — {', '.join(sorted(blocked))}")
 
-    # 2. Cap total sell value in dollars
+    # 2. Cap total sell value in dollars.
+    # Exception: confirmed position-size violations are not subject to the 30% cap —
+    # an overweight position can only be corrected if it is actually allowed to sell.
     capped_sells: list[tuple] = []
     running_sell_val = 0.0
     for sym, shares in approved_sells:
         price = prices.get(sym.upper(), 0.0)
         order_val = shares * price if price > 0 else 0.0
-        if running_sell_val + order_val > max_sell_val:
+        is_size_violation = sym.upper() in position_size_overrides
+        if not is_size_violation and running_sell_val + order_val > max_sell_val:
             print(f"  Risk gate: sell cap ${max_sell_val:,.0f} reached — {sym} skipped")
-            break
+            continue
         capped_sells.append((sym, shares))
-        running_sell_val += order_val
+        if not is_size_violation:
+            running_sell_val += order_val
 
     # 3. Total order cap
     sell_budget = min(len(capped_sells), MAX_ORDERS_PER_RUN)
@@ -205,21 +243,38 @@ def alpaca_read_state(client) -> dict | None:
         return None
 
 
-def alpaca_positions_to_holdings(positions, fundamentals: dict,
-                                  screened_ranks: dict, vol30: "pd.Series") -> list[dict]:
-    """Map Alpaca Position objects → portfolio.json holdings format."""
+def alpaca_positions_to_holdings(
+    positions,
+    fundamentals: dict,
+    screened_ranks: dict,
+    vol30: "pd.Series",
+    existing_map: dict | None = None,
+) -> list[dict]:
+    """Map Alpaca Position objects → portfolio.json holdings format.
+
+    existing_map: {symbol: existing_holding_dict} from the previous portfolio.json.
+    Used to preserve entry_date so Sell Rule 4 (profit >60% in <60 days) can fire.
+    Fundamental fields are stored as None when data is unavailable so the agent
+    can distinguish genuinely-missing data from a confirmed zero value.
+    """
+    existing_map = existing_map or {}
     holdings = []
     for pos in positions:
-        sym      = pos.symbol
-        fi       = fundamentals.get(sym, {})
-        price    = float(pos.current_price   or 0)
-        avg_cost = float(pos.avg_entry_price or 0)
-        shares   = float(pos.qty             or 0)
-        mv       = float(pos.market_value    or 0)
-        upnl     = float(pos.unrealized_pl   or 0)
-        upnl_pct = float(pos.unrealized_plpc or 0) * 100
-        ma50     = fi.get("ma_50d", 0)
+        sym       = pos.symbol
+        fi        = fundamentals.get(sym, {})
+        price     = float(pos.current_price   or 0)
+        avg_cost  = float(pos.avg_entry_price or 0)
+        shares    = float(pos.qty             or 0)
+        mv        = float(pos.market_value    or 0)
+        upnl      = float(pos.unrealized_pl   or 0)
+        upnl_pct  = float(pos.unrealized_plpc or 0) * 100
+        ma50      = fi.get("ma_50d")   # None means data is missing
         rank_info = screened_ranks.get(sym, {})
+
+        # Preserve the original entry date so the profit-taking rule can be evaluated.
+        # Only fall back to today when the position is genuinely new (not in prior portfolio).
+        existing_entry = existing_map.get(sym, {}).get("entry_date")
+        entry_date = existing_entry or datetime.now().strftime("%Y-%m-%d")
 
         holdings.append({
             "symbol":         sym,
@@ -232,13 +287,14 @@ def alpaca_positions_to_holdings(positions, fundamentals: dict,
             "weight":         0,   # recalculated below in reconcile/main
             "pnl":            round(upnl, 2),
             "pnl_pct":        round(upnl_pct, 2),
-            "eps_growth":     fi.get("eps_growth", 0),
-            "revenue_growth": fi.get("revenue_growth", 0),
-            "forward_pe":     fi.get("forward_pe", 0),
+            "eps_growth":     fi.get("eps_growth"),     # None = data missing
+            "revenue_growth": fi.get("revenue_growth"), # None = data missing
+            "forward_pe":     fi.get("forward_pe"),     # None = data missing
             "volatility_30d": round(float(vol30.get(sym, 0)), 4),
-            "entry_date":     datetime.now().strftime("%Y-%m-%d"),
-            "ma_50d":         ma50,
-            "status":         "above_ma" if price > ma50 else "below_ma",
+            "entry_date":     entry_date,
+            "ma_50d":         ma50,                     # None = data missing
+            "status":         ("unknown_ma" if ma50 is None
+                               else ("above_ma" if price > ma50 else "below_ma")),
             "momentum_rank":  rank_info.get("rank", 0),
             "momentum_6m":    round(rank_info.get("mom_6m", 0), 4),
             "momentum_12m":   round(rank_info.get("mom_12m", 0), 4),
@@ -521,14 +577,20 @@ def fetch_fundamentals(symbols: list[str]) -> dict:
     for sym in symbols:
         try:
             info = yf.Ticker(sym).info
+            eg_raw  = info.get("earningsGrowth")
+            rg_raw  = info.get("revenueGrowth")
+            fpe_raw = info.get("forwardPE")
+            ma_raw  = info.get("fiftyDayAverage")
             out[sym] = {
-                "name":             info.get("longName") or info.get("shortName", sym),
-                "sector":           info.get("sector", "Unknown"),
-                "eps_growth":       round((info.get("earningsGrowth")  or 0) * 100, 1),
-                "revenue_growth":   round((info.get("revenueGrowth")   or 0) * 100, 1),
-                "forward_pe":       round(info.get("forwardPE") or 999, 1),
-                "ma_50d":           round(info.get("fiftyDayAverage")  or 0, 2),
-                "current_price":    round(info.get("currentPrice") or info.get("regularMarketPrice") or 0, 2),
+                "name":           info.get("longName") or info.get("shortName", sym),
+                "sector":         info.get("sector", "Unknown"),
+                # Store None when yfinance returns no data so the agent can distinguish
+                # "data is missing" from "growth is genuinely zero or negative".
+                "eps_growth":     round(eg_raw  * 100, 1) if eg_raw  is not None else None,
+                "revenue_growth": round(rg_raw  * 100, 1) if rg_raw  is not None else None,
+                "forward_pe":     round(fpe_raw,      1)  if fpe_raw is not None else None,
+                "ma_50d":         round(ma_raw,        2)  if ma_raw  is not None else None,
+                "current_price":  round(info.get("currentPrice") or info.get("regularMarketPrice") or 0, 2),
             }
         except Exception as e:
             print(f"  {sym}: {e}", file=sys.stderr)
@@ -729,21 +791,42 @@ def main():
     quality_pass = valuation_pass = 0
     screened = []
     for sym in candidates:
-        fi = fundamentals.get(sym, {})
-        eg, rg, fpe = fi.get("eps_growth", 0), fi.get("revenue_growth", 0), fi.get("forward_pe", 999)
-        q_ok = eg > 10 and rg > 8
-        v_ok = fpe < 40 or fpe == 999
-        if q_ok: quality_pass += 1
-        if v_ok: valuation_pass += 1
+        fi  = fundamentals.get(sym, {})
+        eg  = fi.get("eps_growth")     # None = data missing
+        rg  = fi.get("revenue_growth") # None = data missing
+        fpe = fi.get("forward_pe")     # None = data missing
+        # Quality: require confirmed data — missing data fails conservatively.
+        # STRATEGY.md: "filters out low-quality junk momentum"
+        q_ok = eg is not None and rg is not None and eg > 10 and rg > 8
+        # Valuation: STRATEGY.md says "falls back to relaxed rules when data unavailable"
+        v_ok = fpe is None or fpe < 40
+        if q_ok:
+            quality_pass += 1
+        if v_ok:
+            valuation_pass += 1
         if q_ok and v_ok:
             screened.append({
-                "symbol":       sym,
+                "symbol":        sym,
                 "momentum_rank": len(screened) + 1,
-                "momentum_6m":  round(float(mom6.get(sym, 0)), 4),
-                "momentum_12m": round(float(mom12.get(sym, 0)), 4),
-                "vol_30d":      round(float(vol30.get(sym, 0)), 4),
+                "momentum_6m":   round(float(mom6.get(sym, 0)), 4),
+                "momentum_12m":  round(float(mom12.get(sym, 0)), 4),
+                "vol_30d":       round(float(vol30.get(sym, 0)), 4),
                 "current_price": fi.get("current_price", 0),
             })
+
+    # Deduplicate dual-class share pairs: keep the highest-momentum ticker per issuer.
+    # screened is already ordered by momentum, so the first occurrence wins.
+    seen_issuers: dict[str, str] = {}
+    deduped: list[dict] = []
+    for item in screened:
+        sym    = item["symbol"]
+        issuer = ISSUER_MAP.get(sym, sym)
+        if issuer not in seen_issuers:
+            seen_issuers[issuer] = sym
+            deduped.append(item)
+        else:
+            print(f"  Dedup: dropped {sym} (same issuer as {seen_issuers[issuer]})")
+    screened = deduped
 
     print(f"Screened: {len(screened)} pass all filters. Targeting {TARGET_N}.")
 
@@ -770,9 +853,12 @@ def main():
         # Guard: refuse to run against a live (non-paper) endpoint
         verify_paper_url()
 
-        # Current Alpaca positions → holdings
+        # Build existing holdings map for entry_date preservation
+        existing_map = {h["symbol"]: h for h in existing_holdings}
+
+        # Current Alpaca positions → holdings (preserves entry_date via existing_map)
         new_holdings = alpaca_positions_to_holdings(
-            alpaca_state["positions"], fundamentals, screened_ranks, vol30
+            alpaca_state["positions"], fundamentals, screened_ranks, vol30, existing_map
         )
 
         cash = alpaca_state["cash"]
@@ -796,8 +882,10 @@ def main():
             if fundamentals.get(sym, {}).get("current_price", 0) > 0
         ]
 
-        # Load what Claude approved and apply all risk limits before touching the broker
-        agent_approvals = load_agent_approvals()
+        # Load what Claude approved and apply all risk limits before touching the broker.
+        # Pre-market run executes next_open decisions; post-close run executes immediate.
+        target_urgency  = "next_open" if MARKET_OPEN_RUN else "immediate"
+        agent_approvals = load_agent_approvals(target_urgency=target_urgency)
         price_map = {h["symbol"]: h.get("current_price", 0.0) for h in new_holdings}
         price_map.update({
             sym: fundamentals.get(sym, {}).get("current_price", 0.0)
@@ -816,7 +904,7 @@ def main():
             refreshed = alpaca_read_state(client)
             if refreshed:
                 new_holdings = alpaca_positions_to_holdings(
-                    refreshed["positions"], fundamentals, screened_ranks, vol30
+                    refreshed["positions"], fundamentals, screened_ranks, vol30, existing_map
                 )
                 cash = refreshed["cash"]
                 pv   = refreshed["portfolio_value"]
@@ -866,12 +954,36 @@ def main():
     curve = update_equity_curve(data.get("equity_curve", []), pv)
 
     # ── 7. Filter status ───────────────────────────────────────
+    # In Alpaca mode holdings come from live positions (may include non-screened stocks),
+    # so we validate the actual portfolio rather than reporting screened-candidate stats.
     nh = len(new_holdings)
+    if alpaca_state:
+        momentum_pass_held  = sum(1 for h in new_holdings if h.get("momentum_rank", 0) > 0)
+        quality_pass_held   = sum(
+            1 for h in new_holdings
+            if h.get("eps_growth") is not None
+            and h.get("revenue_growth") is not None
+            and h["eps_growth"] > 10
+            and h["revenue_growth"] > 8
+        )
+        valuation_pass_held = sum(
+            1 for h in new_holdings
+            if h.get("forward_pe") is None or h["forward_pe"] < 40
+        )
+        risk_pass_held = sum(
+            1 for h in new_holdings if h.get("volatility_30d", 0) < vol_90th
+        )
+    else:
+        momentum_pass_held  = nh
+        quality_pass_held   = min(quality_pass, nh)
+        valuation_pass_held = min(valuation_pass, nh)
+        risk_pass_held      = nh
+
     filter_status = {
-        "momentum":  {"label": "Momentum",  "description": "Top 30% by 6M & 12M return",         "passing": nh, "total": nh, "threshold": "Top 30%"},
-        "quality":   {"label": "Quality",   "description": "EPS growth >10%, Revenue growth >8%", "passing": min(quality_pass, nh), "total": nh, "threshold": "EPS >10% & Rev >8%"},
-        "valuation": {"label": "Valuation", "description": "Forward P/E <40 or top 70% by sector","passing": min(valuation_pass, nh), "total": nh, "threshold": "Fwd P/E <40"},
-        "risk":      {"label": "Risk",      "description": "Volatility below 90th percentile",    "passing": nh, "total": nh, "threshold": "Vol < 90th pct"},
+        "momentum":  {"label": "Momentum",  "description": "Top 30% by 6M & 12M return",          "passing": momentum_pass_held,  "total": nh, "threshold": "Top 30%"},
+        "quality":   {"label": "Quality",   "description": "EPS growth >10%, Revenue growth >8%",  "passing": quality_pass_held,   "total": nh, "threshold": "EPS >10% & Rev >8%"},
+        "valuation": {"label": "Valuation", "description": "Forward P/E <40 or top 70% by sector", "passing": valuation_pass_held, "total": nh, "threshold": "Fwd P/E <40"},
+        "risk":      {"label": "Risk",      "description": "Volatility below 90th percentile",     "passing": risk_pass_held,      "total": nh, "threshold": "Vol < 90th pct"},
     }
 
     # ── 8. Write portfolio.json ────────────────────────────────

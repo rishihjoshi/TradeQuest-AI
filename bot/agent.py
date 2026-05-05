@@ -325,6 +325,9 @@ def run_agent(
             f"(stop_reason={stop_reason}, error={e}). Storing raw.",
             file=sys.stderr,
         )
+        # parse_failed=True tells load_agent_approvals() to skip this entry and look
+        # further back in history, so a single bad Claude response never silently
+        # blocks all sells by returning an empty decisions list.
         result = {
             "assessment":        raw,
             "regime":            "unknown",
@@ -334,6 +337,7 @@ def run_agent(
             "cash_action":       "maintain",
             "cash_rationale":    "",
             "summary":           f"Agent ran ({run_type}) — response parse failed",
+            "parse_failed":      True,
         }
 
     return result, usage
@@ -357,6 +361,9 @@ def write_log(log: dict, run_type: str, result: dict, usage: dict) -> dict:
         "summary":          result.get("summary", ""),
         "usage":            usage,
     }
+    # Propagate parse_failed flag so load_agent_approvals() can skip this entry
+    if result.get("parse_failed"):
+        entry["parse_failed"] = True
 
     log.setdefault("runs", []).insert(0, entry)
     log["runs"]      = log["runs"][:90]   # keep ~3 months of history
