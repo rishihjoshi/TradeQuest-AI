@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-05-11T16:01:18Z",
+  "mode": "market_open",
+  "orders_placed": [],
+  "orders_skipped": [
+    {
+      "symbol": "VRT",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "NTRS",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "CFG",
+      "reason": "blocked by agent approval or risk gate"
+    }
+  ],
+  "errors": [],
+  "cash_pct_after": -18.35
+}
