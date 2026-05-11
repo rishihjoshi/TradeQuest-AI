@@ -23,13 +23,15 @@ from pathlib import Path
 
 import anthropic
 
-REPO_ROOT        = Path(__file__).resolve().parent.parent
-DATA_FILE        = REPO_ROOT / "data" / "portfolio.json"
-LOG_FILE         = REPO_ROOT / "data" / "agent_log.json"
-STRATEGY_FILE    = REPO_ROOT / "STRATEGY.md"
-ENRICHMENT_FILE  = REPO_ROOT / "data" / "enrichment.json"
-RUN_TYPE         = os.environ.get("RUN_TYPE", "day_end")
-MODEL            = "claude-sonnet-4-6"
+REPO_ROOT           = Path(__file__).resolve().parent.parent
+DATA_FILE           = REPO_ROOT / "data" / "portfolio.json"
+LOG_FILE            = REPO_ROOT / "data" / "agent_log.json"
+STRATEGY_FILE       = REPO_ROOT / "STRATEGY.md"
+ENRICHMENT_FILE     = REPO_ROOT / "data" / "enrichment.json"
+EXEC_SUMMARY_FILE   = REPO_ROOT / "data" / "execution_summary.json"
+RUN_TYPE            = os.environ.get("RUN_TYPE", "day_end")
+MODEL               = "claude-sonnet-4-6"
+HISTORY_RUNS        = 5   # number of prior runs injected for continuity (was 1)
 
 # ── Task prompts per run type ─────────────────────────────────
 
@@ -156,6 +158,71 @@ def load_enrichment() -> dict:
         return json.load(f)
 
 
+def load_execution_summary() -> dict:
+    """Load last execution summary written by update.py after Alpaca order placement."""
+    if not EXEC_SUMMARY_FILE.exists():
+        return {}
+    with open(EXEC_SUMMARY_FILE, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def build_execution_section(exec_summary: dict) -> str:
+    """Inject market-open execution results so Claude knows which orders actually ran.
+
+    This closes the 'KLAC never sold' feedback gap: without this the agent
+    re-issues the same SELL every day because it can't distinguish an unfilled
+    order from one that was never placed.
+    """
+    if not exec_summary:
+        return ""
+
+    ts       = _safe(exec_summary.get("timestamp", "")[:16], 16)
+    placed   = exec_summary.get("orders_placed", [])
+    skipped  = exec_summary.get("orders_skipped", [])
+    errors   = exec_summary.get("errors", [])
+    cash_pct = exec_summary.get("cash_pct_after")
+
+    if not placed and not skipped and not errors:
+        return ""
+
+    lines = [f"## Last Market-Open Execution ({ts} UTC)\n"]
+
+    if placed:
+        lines.append("### Orders Placed at Market Open")
+        for o in placed[:20]:          # guard against huge lists
+            sym    = _safe(o.get("symbol", "?"), 10)
+            action = _safe(o.get("side", o.get("action", "?")), 10)
+            qty    = o.get("qty", o.get("shares", "?"))
+            status = _safe(o.get("status", "submitted"), 20)
+            lines.append(f"  - {action.upper()} {qty} {sym} → {status}")
+        lines.append("")
+
+    if skipped:
+        lines.append("### Orders Skipped (no approval or market closed)")
+        for o in skipped[:10]:
+            sym    = _safe(o.get("symbol", "?"), 10)
+            reason = _safe(o.get("reason", "unknown"), 80)
+            lines.append(f"  - {sym}: {reason}")
+        lines.append("")
+
+    if errors:
+        lines.append("### Execution Errors")
+        for e in errors[:10]:
+            lines.append(f"  - {_safe(str(e), 100)}")
+        lines.append("")
+
+    if cash_pct is not None:
+        lines.append(f"Cash after execution: {float(cash_pct):.1f}%\n")
+
+    lines.append(
+        "> If a symbol appears above as PLACED/submitted but is still in the portfolio, "
+        "the order may be pending fill — do NOT re-issue the same order today."
+    )
+    lines.append("")
+
+    return "\n".join(lines) + "\n"
+
+
 def _safe(text: str | None, max_len: int = 100) -> str:
     """Truncate external API text; strips newlines and Markdown chars to prevent prompt injection."""
     cleaned = (str(text) if text is not None else "")[:max_len]
@@ -207,30 +274,91 @@ def build_enrichment_section(enrichment: dict) -> str:
 
 
 def build_history_section(recent_history: list) -> str:
-    """Summarise the last agent run so Claude has day-over-day continuity."""
+    """Summarise the last N agent runs so Claude has multi-day continuity.
+
+    Key improvements over the original single-run version:
+    - Surfaces the most-recent run in full detail
+    - Detects symbols flagged/sold across multiple runs (persistent problems)
+    - Explicitly calls out SELL orders that appear unresolved (still held)
+    """
     if not recent_history:
         return ""
+
+    lines = ["## Agent History (last runs)\n"]
+
+    # ── Most recent run — full detail ─────────────────────────────
     entry = recent_history[0]
-    lines = [
-        f"## Previous Run ({_safe(entry.get('type', '?'), 20)}, "
-        f"{_safe(entry.get('timestamp', '')[:10], 10)})\n"
-    ]
+    lines.append(
+        f"### Latest Run ({_safe(entry.get('type', '?'), 20)}, "
+        f"{_safe(entry.get('timestamp', '')[:10], 10)})"
+    )
     lines.append(
         f"Regime: {_safe(entry.get('regime', '?'), 20)} "
         f"({entry.get('regime_confidence', 0):.0%} confidence)"
     )
     flags = entry.get("flags", [])
     if flags:
-        lines.append(f"Flags carried forward: {'; '.join(_safe(str(f), 80) for f in flags[:4])}")
+        lines.append("Flags: " + "; ".join(_safe(str(f), 80) for f in flags[:5]))
     decisions = entry.get("decisions", [])
-    sells   = [d["symbol"] for d in decisions if d.get("action") == "SELL"]
-    watches = [d["symbol"] for d in decisions if d.get("action") == "WATCH"]
-    if sells:
-        lines.append(f"Sold last run: {', '.join(_safe(s, 10) for s in sells)}")
-    if watches:
-        lines.append(f"Watching from last run: {', '.join(_safe(s, 10) for s in watches)}")
+    for action in ("SELL", "BUY", "WATCH"):
+        syms = [d.get("symbol", "?") for d in decisions if d.get("action") == action]
+        if syms:
+            lines.append(f"{action}: {', '.join(_safe(s, 10) for s in syms)}")
     lines.append(f"Summary: {_safe(entry.get('summary', ''), 150)}")
-    return "\n".join(lines) + "\n\n"
+    lines.append("")
+
+    # ── Prior runs — abbreviated ───────────────────────────────────
+    if len(recent_history) > 1:
+        lines.append("### Prior Runs")
+        for run in recent_history[1:]:
+            rtype = _safe(run.get("type", "?"), 15)
+            rdate = _safe(run.get("timestamp", "")[:10], 10)
+            regime = _safe(run.get("regime", "?"), 12)
+            sells = [d.get("symbol", "?") for d in run.get("decisions", []) if d.get("action") == "SELL"]
+            watches = [d.get("symbol", "?") for d in run.get("decisions", []) if d.get("action") == "WATCH"]
+            parts = [f"[{rdate} {rtype}] regime={regime}"]
+            if sells:
+                parts.append(f"sold={','.join(_safe(s, 10) for s in sells)}")
+            if watches:
+                parts.append(f"watch={','.join(_safe(s, 10) for s in watches)}")
+            lines.append("  " + "  ".join(parts))
+        lines.append("")
+
+    # ── Persistent-problem detection ───────────────────────────────
+    # Count how many runs each symbol appeared in as SELL or flag
+    symbol_sell_runs: dict[str, list[str]] = {}
+    symbol_flag_runs: dict[str, list[str]] = {}
+    for run in recent_history:
+        rdate = run.get("timestamp", "")[:10]
+        for d in run.get("decisions", []):
+            if d.get("action") == "SELL":
+                sym = _safe(d.get("symbol", ""), 10)
+                symbol_sell_runs.setdefault(sym, []).append(rdate)
+        for f in run.get("flags", []):
+            fstr = str(f)
+            # Flags are typically "SYMBOL: reason" format
+            sym = _safe(fstr.split(":")[0].strip(), 10) if ":" in fstr else ""
+            if sym:
+                symbol_flag_runs.setdefault(sym, []).append(rdate)
+
+    persistent_sells = {s: dates for s, dates in symbol_sell_runs.items() if len(dates) >= 2}
+    persistent_flags = {s: dates for s, dates in symbol_flag_runs.items() if len(dates) >= 2}
+
+    if persistent_sells:
+        lines.append("### ⚠ UNRESOLVED SELL ORDERS (repeated across multiple runs)")
+        lines.append("These symbols have been flagged SELL in 2+ consecutive runs but may still be held.")
+        lines.append("If still in portfolio, treat as URGENT — investigate why execution did not occur.")
+        for sym, dates in persistent_sells.items():
+            lines.append(f"  - **{sym}**: SELL issued on {', '.join(dates)}")
+        lines.append("")
+
+    if persistent_flags:
+        lines.append("### Persistently Flagged Positions")
+        for sym, dates in persistent_flags.items():
+            lines.append(f"  - {sym}: flagged on {', '.join(dates)}")
+        lines.append("")
+
+    return "\n".join(lines) + "\n"
 
 
 # ── Agent call ────────────────────────────────────────────────
@@ -241,6 +369,7 @@ def run_agent(
     strategy: str,
     enrichment: dict,
     recent_history: list | None = None,
+    exec_summary: dict | None = None,
 ) -> tuple[dict, dict]:
     """
     Call Claude with prompt-cached strategy + portfolio state + enrichment context.
@@ -253,14 +382,15 @@ def run_agent(
     client = anthropic.Anthropic(api_key=api_key)
     task   = TASK_MAP.get(run_type, TASK_DAY_END)
 
-    # Compact portfolio for the prompt (drop equity_curve to save tokens)
+    # Compact portfolio for the prompt (drop equity_curve + spy_curve to save tokens)
     portfolio_slim = {
         k: v for k, v in portfolio.items()
-        if k not in ("equity_curve",)
+        if k not in ("equity_curve", "spy_curve")
     }
 
     enrichment_section = build_enrichment_section(enrichment)
     history_section    = build_history_section(recent_history or [])
+    execution_section  = build_execution_section(exec_summary or {})
 
     message = client.messages.create(
         model=MODEL,
@@ -283,6 +413,7 @@ def run_agent(
                 "content": (
                     f"{task}\n\n"
                     f"{enrichment_section}"
+                    f"{execution_section}"
                     f"{history_section}"
                     f"## Current Portfolio State\n"
                     f"```json\n{json.dumps(portfolio_slim, indent=2)}\n```\n\n"
@@ -387,7 +518,8 @@ def main():
     portfolio      = load_portfolio()
     log            = load_log()
     enrichment     = load_enrichment()
-    recent_history = log.get("runs", [])[:1]   # last 1 run for continuity
+    exec_summary   = load_execution_summary()
+    recent_history = log.get("runs", [])[:HISTORY_RUNS]   # last N runs for continuity
 
     if not portfolio:
         print("Warning: portfolio.json not found — agent running with empty state.", file=sys.stderr)
@@ -399,10 +531,20 @@ def main():
     else:
         print("Enrichment : none (run bot/enrich.py first for calendar context)")
     if recent_history:
-        print(f"History    : last run was {recent_history[0].get('type','?')} "
-              f"({recent_history[0].get('timestamp','')[:10]})")
+        print(f"History    : {len(recent_history)} prior runs loaded "
+              f"(latest: {recent_history[0].get('type','?')} "
+              f"{recent_history[0].get('timestamp','')[:10]})")
+    if exec_summary:
+        n_placed = len(exec_summary.get("orders_placed", []))
+        print(f"Execution  : {n_placed} orders from last market-open "
+              f"({exec_summary.get('timestamp', '')[:10]})")
+    else:
+        print("Execution  : no execution_summary.json found (run update.py first)")
 
-    result, usage = run_agent(run_type, portfolio, strategy, enrichment, recent_history)
+    result, usage = run_agent(
+        run_type, portfolio, strategy, enrichment,
+        recent_history, exec_summary,
+    )
     entry = write_log(log, run_type, result, usage)
 
     # Console summary

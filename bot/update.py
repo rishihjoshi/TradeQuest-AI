@@ -23,9 +23,10 @@ import pandas as pd
 import requests
 import yfinance as yf
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
-DATA_FILE = REPO_ROOT / "data" / "portfolio.json"
-LOG_FILE  = REPO_ROOT / "data" / "agent_log.json"
+REPO_ROOT        = Path(__file__).resolve().parent.parent
+DATA_FILE        = REPO_ROOT / "data" / "portfolio.json"
+LOG_FILE         = REPO_ROOT / "data" / "agent_log.json"
+EXEC_SUMMARY_FILE = REPO_ROOT / "data" / "execution_summary.json"
 INITIAL_CAPITAL = 100_000
 TARGET_N = 17          # target number of holdings (15-20)
 CANDIDATES_CAP = 60    # max tickers to fetch fundamentals for
@@ -396,6 +397,41 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
             print(f"  ✗ BUY  {sym}: {e}", file=sys.stderr)
 
     return placed
+
+
+def write_execution_summary(
+    placed: list[tuple],
+    skipped: list[dict],
+    errors: list[str],
+    cash_pct_after: float | None,
+    data_dir: Path,
+) -> None:
+    """Write data/execution_summary.json so agent.py can report what actually ran.
+
+    This closes the execution-feedback gap: the agent sees exactly which orders
+    were submitted, so it won't re-issue the same SELL next run assuming it was
+    ignored (the KLAC problem).
+
+    placed  — list of (action, symbol, qty) tuples from alpaca_place_orders()
+    skipped — list of {"symbol": ..., "reason": ...} dicts for blocked orders
+    errors  — list of plain-string error messages
+    """
+    payload = {
+        "timestamp":      datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "mode":           "market_open" if MARKET_OPEN_RUN else "post_close",
+        "orders_placed":  [
+            {"action": a, "symbol": s, "qty": q, "status": "submitted"}
+            for a, s, q in placed
+        ],
+        "orders_skipped": skipped,
+        "errors":         errors,
+        "cash_pct_after": round(cash_pct_after, 2) if cash_pct_after is not None else None,
+    }
+    out_path = data_dir / "execution_summary.json"
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2)
+    print(f"Execution summary written: {len(placed)} placed, {len(skipped)} skipped → {out_path}")
 
 
 # ── Universe ─────────────────────────────────────────────────
@@ -938,9 +974,13 @@ def main():
             raw_sells, raw_buys, pv, cash, agent_approvals["SELL"], price_map
         )
 
+        exec_placed:  list[tuple] = []
+        exec_skipped: list[dict]  = []
+        exec_errors:  list[str]   = []
+
         if to_sell or to_buy:
             print(f"Rebalance: {len(to_sell)} sells, {len(to_buy)} buys (after risk gates)")
-            alpaca_place_orders(client, to_sell, to_buy, pv, cash)
+            exec_placed = alpaca_place_orders(client, to_sell, to_buy, pv, cash)
             # Brief pause then re-fetch: during-hours fills settle in <1s;
             # after-hours orders appear as pending in the open-orders list.
             time.sleep(3)
@@ -956,6 +996,18 @@ def main():
                 all_trades = alpaca_orders_to_trades(alpaca_state["orders"])
         else:
             print("No orders placed — either no rebalance needed or risk gates blocked all orders.")
+
+        # Collect symbols that were proposed but blocked by risk gates for skipped list
+        proposed_sells = {sym for sym, _ in raw_sells}
+        executed_sells = {sym for action, sym, _ in exec_placed if action == "SELL"}
+        for sym in proposed_sells - executed_sells:
+            exec_skipped.append({"symbol": sym, "reason": "blocked by agent approval or risk gate"})
+
+        cash_pct_now = round(cash / pv * 100, 2) if pv else None
+        write_execution_summary(
+            exec_placed, exec_skipped, exec_errors,
+            cash_pct_now, REPO_ROOT / "data",
+        )
 
         # Handle manual order triggered via workflow_dispatch inputs
         handle_manual_order(client)

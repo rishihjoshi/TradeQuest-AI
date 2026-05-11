@@ -199,10 +199,13 @@
           <div id="regimeDetail"></div>
         </div>
         <div class="sell-rules">
-          <h3>Sell Rules</h3>
+          <h3>Sell Rules (v2.1 — tax-aware)</h3>
           <ul>
-            <li>Momentum rank drops below top 40%</li>
-            <li>Price falls below 50-day moving average</li>
+            <li>Momentum rank below top 30% for 5 consecutive days</li>
+            <li>Price below 50-day MA for 3 consecutive days</li>
+            <li>EPS growth negative for 2 consecutive quarters</li>
+            <li>Parabolic gain &gt;60% in &lt;60 days → sell half</li>
+            <li>Position weight exceeds 20% hard cap → trim to 15%</li>
           </ul>
         </div>
       </div>
@@ -362,7 +365,7 @@
   <!-- ── Footer ─────────────────────────────────────────── -->
   <footer class="footer">
     <span>TradeQuest AI — Paper Trading Only · No real money</span>
-    <span>Universe: S&amp;P 500 · 15–20 positions · Monthly rebalance · Equal weight</span>
+    <span>Universe: S&amp;P 500 · 15–20 positions · Quarterly rebalance · Tax-aware</span>
   </footer>
 
   <!-- ── Search Overlay ───────────────────────────────────── -->

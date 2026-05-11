@@ -13,6 +13,22 @@
   "orientation": "any",
   "prefer_related_applications": false,
   "categories": ["finance", "utilities"],
+  "shortcuts": [
+    {
+      "name": "Portfolio",
+      "short_name": "Portfolio",
+      "description": "View equity curve and holdings",
+      "url": "./index.html#portfolio",
+      "icons": [{ "src": "icons/icon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Agent Log",
+      "short_name": "Agent",
+      "description": "Review Claude AI decisions and flags",
+      "url": "./index.html#agent",
+      "icons": [{ "src": "icons/icon.svg", "sizes": "any" }]
+    }
+  ],
   "icons": [
     {
       "src": "icons/icon.svg",
