@@ -1,13 +1,20 @@
 {
-  "generated_at": "2026-05-08",
-  "earnings_this_week": [],
+  "generated_at": "2026-05-11",
+  "earnings_this_week": [
+    {
+      "symbol": "CSCO",
+      "date": "2026-05-13",
+      "timing": "TAS",
+      "eps_estimate": 1.04
+    }
+  ],
   "macro_events_14d": [],
   "market_breadth": {
-    "date": "2026-05-07",
-    "breadth_raw": 0.5697,
-    "breadth_8ma": 0.5724,
-    "breadth_200ma": 0.6001,
-    "pct_above_200ma": "57.0%",
+    "date": "2026-05-08",
+    "breadth_raw": 0.5578,
+    "breadth_8ma": 0.568,
+    "breadth_200ma": 0.5988,
+    "pct_above_200ma": "55.8%",
     "trend_above_200ma": false,
     "interpretation": "NARROWING \u2014 selective rally, treat regime with caution"
   }
