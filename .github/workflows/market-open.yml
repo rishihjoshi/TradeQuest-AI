@@ -2,8 +2,7 @@ name: TradeQuest Market Open
 
 on:
   schedule:
-    # 9:30 AM ET (13:30 UTC) Mon–Fri — executes next_open urgency orders from
-    # the prior evening's agent run. No Claude call — zero extra token cost.
+    # 9:30 AM ET (13:30 UTC) Mon–Fri — pre-market check then next_open order execution.
     - cron: '30 13 * * 1-5'
   workflow_dispatch: {}
 
@@ -27,6 +26,23 @@ jobs:
       - name: Install dependencies
         run: pip install -r bot/requirements.txt
 
+      # Step 1: Pre-market flag check — agent reviews holdings BEFORE orders fire.
+      # RUN_TYPE=day_start → flag-only mode, no trade decisions, logs to agent_log.json.
+      # This surfaces early warnings (e.g., approaching MA breaks) and is now visible
+      # in the Agent tab — previously this step was entirely missing from the workflow.
+      - name: Pre-market agent check (day_start)
+        env:
+          ANTHROPIC_API_KEY:   ${{ secrets.ANTHROPIC_API_KEY }}
+          ALPACA_ACCOUNT_NAME: ${{ secrets.ALPACA_ACCOUNT_NAME }}
+          ALPACA_API_KEY:      ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY:   ${{ secrets.ALPACA_SECRET_KEY }}
+          ALPACA_BASE_URL:     ${{ secrets.ALPACA_BASE_URL }}
+          RUN_TYPE:            day_start
+        run: python bot/agent.py
+
+      # Step 2: Execute pending next_open orders approved by prior evening's agent.
+      # Also writes data/execution_summary.json so the next agent run can confirm
+      # what actually executed (closing the "KLAC never sold" feedback gap).
       - name: Execute next_open orders
         env:
           ALPACA_ACCOUNT_NAME: ${{ secrets.ALPACA_ACCOUNT_NAME }}
@@ -40,7 +56,7 @@ jobs:
         run: |
           git config user.name "TradeQuest Bot"
           git config user.email "actions@github.com"
-          git add data/portfolio.json
+          git add data/portfolio.json data/agent_log.json data/execution_summary.json
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
