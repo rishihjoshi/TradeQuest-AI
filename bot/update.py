@@ -744,6 +744,49 @@ def update_equity_curve(curve: list, pv: float) -> list:
     return curve[-90:]   # keep ~3 months of daily points
 
 
+def build_spy_curve(equity_curve: list, spy: "pd.Series", initial_capital: float) -> list:
+    """Build SPY benchmark curve normalized to the same start value as the portfolio.
+
+    Reuses the SPY price series already fetched for regime detection — no extra API call.
+    Each equity_curve date label ("May 7") is matched to the nearest prior trading day
+    in the SPY index. The SPY value is then scaled so the first shared data point equals
+    the portfolio's initial_capital, enabling an apples-to-apples visual comparison.
+    """
+    if not equity_curve or spy is None or spy.empty:
+        return []
+
+    try:
+        # Build a lookup: "May 7" → close price
+        spy_by_label: dict[str, float] = {}
+        for ts, price in spy.items():
+            label = f"{ts.strftime('%b')} {ts.day}"
+            spy_by_label[label] = float(price)
+
+        # Find the SPY price on the first equity_curve date
+        first_label = equity_curve[0]["date"]
+        spy_start = spy_by_label.get(first_label)
+        if spy_start is None or spy_start <= 0:
+            # Walk forward up to 5 days to find a trading day close to the start
+            for point in equity_curve[1:6]:
+                spy_start = spy_by_label.get(point["date"])
+                if spy_start and spy_start > 0:
+                    break
+        if not spy_start or spy_start <= 0:
+            return []
+
+        result = []
+        for point in equity_curve:
+            price = spy_by_label.get(point["date"])
+            if price is not None and price > 0:
+                normalized = round(price / spy_start * initial_capital)
+                result.append({"date": point["date"], "value": normalized})
+
+        return result
+    except Exception as e:
+        print(f"Warning: build_spy_curve failed ({e})", file=sys.stderr)
+        return []
+
+
 # ── Main ──────────────────────────────────────────────────────
 def main():
     # Load existing state
@@ -950,8 +993,10 @@ def main():
         pv      = sum(h["market_value"] for h in new_holdings) + cash
         summary = compute_summary(new_holdings, cash, data.get("summary"), all_trades)
 
-    # ── 6. Equity curve ────────────────────────────────────────
-    curve = update_equity_curve(data.get("equity_curve", []), pv)
+    # ── 6. Equity curve + SPY benchmark curve ─────────────────
+    curve     = update_equity_curve(data.get("equity_curve", []), pv)
+    initial   = data.get("meta", {}).get("initial_capital", INITIAL_CAPITAL)
+    spy_curve = build_spy_curve(curve, spy, initial)
 
     # ── 7. Filter status ───────────────────────────────────────
     # In Alpaca mode holdings come from live positions (may include non-screened stocks),
@@ -1004,6 +1049,7 @@ def main():
         "summary":       summary,
         "filter_status": filter_status,
         "equity_curve":  curve,
+        "spy_curve":     spy_curve,
         "holdings":      new_holdings,
         "trades":        all_trades[:50],
     }
