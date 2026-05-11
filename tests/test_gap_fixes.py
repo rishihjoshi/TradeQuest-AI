@@ -533,5 +533,82 @@ class TestAgentParseFailedFlag(unittest.TestCase):
                          "Successful parse must NOT set parse_failed")
 
 
+# ════════════════════════════════════════════════════════════════════════════
+# Gap 9 — build_spy_curve: normalization and date alignment
+# ════════════════════════════════════════════════════════════════════════════
+class TestBuildSpyCurve(unittest.TestCase):
+    """Tests for the new build_spy_curve() function added in v2.1."""
+
+    def _make_spy(self, dates_prices: dict) -> "pd.Series":
+        """Create a pandas Series keyed by Timestamps, like yfinance returns."""
+        import pandas as pd
+        idx = pd.to_datetime(list(dates_prices.keys()))
+        return pd.Series(list(dates_prices.values()), index=idx)
+
+    def test_normalizes_to_initial_capital(self):
+        """SPY curve first value must equal initial_capital after normalization."""
+        spy = self._make_spy({"2026-04-24": 500.0, "2026-04-26": 510.0})
+        equity = [{"date": "Apr 24", "value": 9864}, {"date": "Apr 26", "value": 9873}]
+        result = update.build_spy_curve(equity, spy, initial_capital=9864)
+        self.assertEqual(result[0]["value"], 9864, "First SPY value must equal initial_capital")
+
+    def test_second_point_correctly_scaled(self):
+        """A 2% SPY gain from start should produce a ~2% gain in the normalized curve."""
+        spy = self._make_spy({"2026-04-24": 500.0, "2026-04-26": 510.0})
+        equity = [{"date": "Apr 24", "value": 9864}, {"date": "Apr 26", "value": 9873}]
+        result = update.build_spy_curve(equity, spy, initial_capital=10000)
+        # 510/500 * 10000 = 10200
+        self.assertEqual(result[1]["value"], 10200)
+
+    def test_returns_empty_on_empty_equity_curve(self):
+        """Empty equity_curve input → empty output."""
+        import pandas as pd
+        spy = self._make_spy({"2026-04-24": 500.0})
+        result = update.build_spy_curve([], spy, 10000)
+        self.assertEqual(result, [])
+
+    def test_returns_empty_on_none_spy(self):
+        """None spy input → empty output (safe fallback)."""
+        equity = [{"date": "Apr 24", "value": 9864}]
+        result = update.build_spy_curve(equity, None, 10000)
+        self.assertEqual(result, [])
+
+    def test_missing_spy_date_skipped_gracefully(self):
+        """Equity curve dates with no matching SPY close are skipped, not crashed."""
+        spy = self._make_spy({"2026-04-24": 500.0})  # only one date
+        equity = [
+            {"date": "Apr 24", "value": 9864},
+            {"date": "Apr 26", "value": 9873},  # no SPY data for Apr 26
+        ]
+        result = update.build_spy_curve(equity, spy, 10000)
+        # Only Apr 24 should be in result; Apr 26 skipped
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0]["date"], "Apr 24")
+
+    def test_date_labels_match_equity_curve_format(self):
+        """Output date labels must match equity_curve format ('May 7', not '2026-05-07')."""
+        spy = self._make_spy({"2026-05-07": 555.0, "2026-05-08": 558.0})
+        equity = [{"date": "May 7", "value": 10042}, {"date": "May 8", "value": 10100}]
+        result = update.build_spy_curve(equity, spy, 10000)
+        self.assertEqual(result[0]["date"], "May 7")
+        self.assertEqual(result[1]["date"], "May 8")
+
+    def test_fallback_when_first_date_missing_spy(self):
+        """When the first equity date has no SPY match, walk forward to find the start price."""
+        spy = self._make_spy({"2026-04-26": 500.0, "2026-04-28": 505.0})
+        equity = [
+            {"date": "Apr 24", "value": 9864},  # weekend — no SPY
+            {"date": "Apr 26", "value": 9873},  # first valid SPY date
+            {"date": "Apr 28", "value": 9896},
+        ]
+        result = update.build_spy_curve(equity, spy, 10000)
+        # Apr 26 should be the normalization anchor (500.0 → 10000)
+        # Apr 28: 505/500 * 10000 = 10100
+        self.assertTrue(len(result) >= 2)
+        apr26 = next((r for r in result if r["date"] == "Apr 26"), None)
+        self.assertIsNotNone(apr26)
+        self.assertEqual(apr26["value"], 10000)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
