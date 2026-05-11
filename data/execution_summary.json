@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-05-11T16:01:18Z",
+  "timestamp": "2026-05-11T16:17:56Z",
   "mode": "market_open",
   "orders_placed": [],
   "orders_skipped": [
     {
-      "symbol": "VRT",
+      "symbol": "CFG",
       "reason": "blocked by agent approval or risk gate"
     },
     {
@@ -12,7 +12,7 @@
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "CFG",
+      "symbol": "VRT",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
