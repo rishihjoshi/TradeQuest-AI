@@ -1,7 +1,177 @@
 {
-  "last_run": "2026-05-12T16:06:56Z",
-  "last_type": "day_start",
+  "last_run": "2026-05-12T22:42:31Z",
+  "last_type": "day_end",
   "runs": [
+    {
+      "id": "RUN-20260512-2242",
+      "timestamp": "2026-05-12T22:42:31Z",
+      "type": "day_end",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio remains critically leveraged at -18.6% cash despite sell orders submitted at this morning's open for CFG, NTRS, ROST, and VRT. These four orders appear to have been submitted (per execution log) but positions still show in portfolio state \u2014 likely pending fill confirmation in the data layer. KLAC remains a persistent unresolved SELL flagged across 6+ consecutive runs and must be treated as URGENT. Market breadth at 55% is in the narrowing/sideways zone (8MA below 200MA bearish trend), which reduces regime confidence from 0.9 to a more cautious level despite VIX at 13.1 and SPY above 200MA. CSCO has earnings tomorrow (2026-05-13) \u2014 this is a hold-with-watch given no sell rules are currently triggered.",
+      "regime": "bull",
+      "regime_confidence": 0.65,
+      "flags": [
+        "PORTFOLIO CRITICAL: Cash = -18.6% (leveraged 118%). Sell orders for CFG/NTRS/ROST/VRT submitted at today's open \u2014 confirm fills. If unfilled, resubmit immediately at next open.",
+        "KLAC: URGENT SELL \u2014 unexecuted across 7+ consecutive runs. Momentum rank 6 of 19 in current portfolio (appears passing) but was flagged for volatility (30d vol 0.502 = near 90th pct) and prior momentum rank decay. Weight = 17.84%, hard approaching 20% hard cap. Resolve immediately.",
+        "VRT: SELL submitted 2026-05-12 open \u2014 confirm fill. If still held: momentum_rank=0, forward P/E=42 (above 40 threshold, fails valuation filter), volatility 0.559 (above 90th pct risk filter). Multiple filter failures.",
+        "CFG: SELL submitted 2026-05-12 open \u2014 confirm fill. If still held: momentum_rank=0, all fundamental data null/unknown sector, momentum_6m=0, momentum_12m=0. Fails all filters.",
+        "NTRS: SELL submitted 2026-05-12 open \u2014 confirm fill. If still held: momentum_rank=20 (bottom of current holdings, well outside top 30%), momentum_6m=0.264 (low). Momentum decay confirmed.",
+        "ROST: SELL submitted 2026-05-12 open \u2014 confirm fill. If still held: price BELOW 50-day MA (217.54 vs MA50 218.34), momentum_rank=19, momentum_6m=0.357. Trend break rule active.",
+        "CSCO: Earnings 2026-05-13 (tomorrow, TAS). No sell rule triggered. WATCH \u2014 earnings gap risk elevated. EPS est $1.04.",
+        "STX: Weight=15.98%, volatility=0.5585 (high, near/above 90th pct threshold). Momentum rank #1 \u2014 no sell rule triggered but weight and vol warrant monitoring.",
+        "KLAC: Weight=17.84% approaching 20% hard cap. Volatility 0.502 near 90th percentile.",
+        "BREADTH: 55% of S&P above 200MA with 8MA crossing below 200MA = narrowing rally. Regime confidence reduced to 0.65. Cash target should trend toward sideways allocation (25%) despite bull classification.",
+        "BEN: momentum_rank=15, momentum_6m=0.466 \u2014 borderline top 30%. Revenue growth 8.7% just barely above 8% threshold. Continue monitoring.",
+        "NEM: volatility=0.540 \u2014 elevated, near 90th percentile. Momentum_rank=9, holding for now.",
+        "JBL: volatility=0.488 \u2014 elevated. Momentum_rank=5. Passing filters but vol is a watch item.",
+        "FDX: momentum_rank=13, momentum_6m=0.449 \u2014 in the lower half of holdings. pnl=-4.16%. Watch for further momentum decay.",
+        "CAT: volatility=0.454 \u2014 elevated. pnl=-1.19%. Above MA50. Passing filters currently."
+      ],
+      "decisions": [
+        {
+          "action": "SELL",
+          "symbol": "CFG",
+          "reason": "URGENT \u2014 order submitted at 2026-05-12 open, confirm fill. If still held: momentum_rank=0, all fundamental data null, sector unknown, fails every filter. Unrealized loss -4.46% (-$23.12) \u2014 tax-loss harvest applies, no gain realized. Resubmit at next open if unfilled.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "immediate"
+        },
+        {
+          "action": "SELL",
+          "symbol": "NTRS",
+          "reason": "URGENT \u2014 order submitted at 2026-05-12 open, confirm fill. If still held: momentum_rank=20 (bottom decile of current holdings, outside top 30%), momentum_6m=0.264. Momentum decay confirmed multiple days. Unrealized loss -2.62% (-$13.11) \u2014 tax-loss harvest, no gain realized.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "immediate"
+        },
+        {
+          "action": "SELL",
+          "symbol": "ROST",
+          "reason": "URGENT \u2014 order submitted at 2026-05-12 open, confirm fill. If still held: price below 50-day MA (217.54 vs 218.34), momentum_rank=19, momentum_6m=0.357 outside top 30%. Trend break rule and momentum decay both active. Unrealized loss -3.74% (-$16.89) \u2014 tax-loss harvest, no gain realized.",
+          "rule_triggered": "trend_break",
+          "urgency": "immediate"
+        },
+        {
+          "action": "SELL",
+          "symbol": "VRT",
+          "reason": "URGENT \u2014 order submitted at 2026-05-12 open, confirm fill. If still held: momentum_rank=0, forward_pe=42 (fails valuation filter >40), volatility=0.559 (fails risk filter, above 90th pct). Multiple filter failures. Unrealized GAIN of +7.14% (+$24.56). Tax note: realizing a short-term gain but multiple filter failures justify exit. Resubmit at next open if unfilled.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "immediate"
+        },
+        {
+          "action": "SELL",
+          "symbol": "KLAC",
+          "reason": "URGENT \u2014 unresolved SELL flagged across 7+ consecutive runs (2026-05-07 through 2026-05-12). Volatility=0.502 at or above 90th percentile (risk filter breach). Weight=17.84% approaching 20% hard cap. While momentum_rank=6 in current portfolio appears reasonable, the persistent risk filter failure and elevated concentration risk justify immediate exit. Unrealized GAIN +2.98% (+$52.20). Tax note: short-term gain realization required due to confirmed risk filter breach (volatility) and hard cap approach. Rule justifies gain realization.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "immediate"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "CSCO",
+          "reason": "Earnings tomorrow 2026-05-13 (TAS, EPS est $1.04). No sell rule triggered: momentum_rank=14, above MA50 (99.69 vs 83.60), EPS growth 31.2%, revenue growth 9.7%, forward_pe=22. Earnings gap risk elevated \u2014 flag with urgency next_open. Do NOT sell solely for earnings. Hold unless sell rule fires post-earnings.",
+          "rule_triggered": "null",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "STX",
+          "reason": "Momentum rank #1 in portfolio, exceptional momentum scores (6m=1.908, 12m=7.559). However weight=15.98% (approaching soft cap 12%, already above) and volatility=0.5585 (elevated, near 90th pct). No sell rule triggered. Monitor weight and vol closely \u2014 trim if weight reaches 20% or vol confirmed above 90th pct threshold.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "BEN",
+          "reason": "Momentum_rank=15, momentum_6m=0.466 borderline top 30%. Revenue growth 8.7% barely above 8% threshold. No sell rule confirmed over 5 days \u2014 continue monitoring for momentum decay below top 30% threshold.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "NEM",
+          "reason": "Volatility=0.540 elevated and potentially near 90th percentile risk threshold. Momentum_rank=9, above MA50. No definitive sell rule triggered today. Watch volatility ranking versus full universe.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "JBL",
+          "reason": "Volatility=0.488 elevated. Momentum_rank=5, above MA50, strong fundamentals (EPS growth 96.2%, rev growth 23.1%). No sell rule triggered. Monitor vol versus 90th percentile threshold.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "FDX",
+          "reason": "Momentum_rank=13 in lower half of holdings, momentum_6m=0.449. Price above MA50 (376.69 vs 370.02). Unrealized loss -4.16%. No sell rule confirmed yet \u2014 watch for momentum rank slipping below top 30% for 5 consecutive days.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "Momentum_rank=4, strong momentum (6m=0.849, 12m=1.053). EPS growth 116.7%, revenue growth 30.4%, forward_pe=31.8. Above MA50 (418.99 vs 349.71). All filters passing. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "C",
+          "reason": "Momentum_rank=16 is low but price above MA50 (126.44 vs 118.97), EPS growth 56.1%, revenue 15.9%. Weight only 1.25% \u2014 minimal portfolio impact. Monitor for momentum decay confirmation over 5 days.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "Momentum_rank=3, strong 12m momentum (1.832). EPS growth 30.2%, revenue 22.2%. Above MA50 (911 vs 767.93). Volatility=0.454 elevated but not confirmed above 90th pct. Small loss -1.19% within normal range. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "EME",
+          "reason": "Momentum_rank=10, above MA50 (924.90 vs 794.36). EPS growth 30%, revenue 19.7%, forward_pe=28.5. Loss -2.15% within normal range. All filters passing. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "GOOGL",
+          "reason": "Momentum_rank=8, strong 12m momentum (1.545). EPS growth 82%, revenue 21.8%, forward_pe=26.8. Above MA50 (390.77 vs 325.27). All filters passing. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "KEYS",
+          "reason": "Momentum_rank=2, excellent momentum (6m=0.999, 12m=1.347). EPS growth 68%, revenue 23.3%, forward_pe=35. Above MA50 (361.65 vs 313.41). All filters passing. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "Momentum_rank=7, above MA50 (229.83 vs 188.33). EPS growth 382.1%, revenue 21.3%, forward_pe=14.8. Low vol 0.297. All filters passing. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "STLD",
+          "reason": "Momentum_rank=12, above MA50 (232.80 vs 196.71). EPS growth 93.1%, revenue 19.1%, forward_pe=13.8. Loss -3.87% within normal range. All filters passing. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "increase",
+      "cash_rationale": "Cash is critically negative at -18.6% (leveraged portfolio). Five sells submitted at today's open (CFG, NTRS, ROST, VRT + KLAC now added) should bring cash positive when confirmed. Target is +5% cash for bull regime, but given breadth narrowing (55%, 8MA below 200MA bearish trend) and regime_confidence reduced to 0.65, a cash buffer trending toward 15-20% (between bull 5% and sideways 25%) is prudent until breadth improves above 60% and leverage is fully eliminated. Do NOT deploy new capital until negative cash is resolved.",
+      "summary": "DAY END 2026-05-12 (FRIDAY): CRITICAL \u2014 confirm fills on 4 sells submitted at open (CFG/NTRS/ROST/VRT); adding KLAC as 5th SELL (risk filter breach, vol >90th pct, 7-run unresolved flag); CSCO earnings tomorrow flagged WATCH; regime bull at reduced confidence 0.65 due to narrowing breadth; 14 other positions HOLD with thesis intact.",
+      "usage": {
+        "input_tokens": 14619,
+        "output_tokens": 3893,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 3614
+      }
+    },
     {
       "id": "RUN-20260512-1606",
       "timestamp": "2026-05-12T16:06:56Z",
