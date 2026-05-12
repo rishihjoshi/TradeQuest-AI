@@ -1,21 +1,29 @@
 {
-  "timestamp": "2026-05-11T16:17:56Z",
+  "timestamp": "2026-05-12T16:07:54Z",
   "mode": "market_open",
   "orders_placed": [],
   "orders_skipped": [
-    {
-      "symbol": "CFG",
-      "reason": "blocked by agent approval or risk gate"
-    },
     {
       "symbol": "NTRS",
       "reason": "blocked by agent approval or risk gate"
     },
     {
+      "symbol": "CFG",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "ROST",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
       "symbol": "VRT",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "STX",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": -18.35
+  "cash_pct_after": -19.03
 }
