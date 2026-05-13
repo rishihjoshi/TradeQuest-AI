@@ -1,7 +1,143 @@
 {
-  "last_run": "2026-05-13T22:46:41Z",
+  "last_run": "2026-05-13T22:49:47Z",
   "last_type": "day_end",
   "runs": [
+    {
+      "id": "RUN-20260513-2249",
+      "timestamp": "2026-05-13T22:49:47Z",
+      "type": "day_end",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is up +4.25% on initial capital with 15 positions, but carries structural risks: KLAC at 17.9% weight and STX at 15.7% are both above the 12% soft cap; FDX has been below its 50-day MA for multiple consecutive days and is a confirmed Rule 2 sell; NEM and STX carry volatility above likely 90th percentile thresholds. Today is Wednesday May 14 post-CSCO earnings \u2014 CSCO reported tonight (AMC May 13) so earnings result is now known and the WATCH flag resolves. Market breadth at 55.8% is in the NARROWING zone, breadth 8MA is below 200MA (bearish trend), which warrants regime caution despite SPY above 200-MA and VIX at 10.9. The portfolio data still shows 'bull' regime at 91% confidence, but breadth signal argues for downgrading to sideways at reduced confidence.",
+      "regime": "sideways",
+      "regime_confidence": 0.6,
+      "flags": [
+        "FDX: Price $369.70 is BELOW 50-day MA $369.80 \u2014 status confirmed 'below_ma' \u2014 Rule 2 (trend break) triggered; this is an unrealized LOSS of -5.94% \u2014 tax-loss harvest priority, SELL immediately",
+        "KLAC: Weight 17.9% exceeds 12% soft cap significantly; volatility 47.6% is elevated and may breach 90th percentile risk filter; momentum_rank 7 still passing; no hard cap breach yet (under 20%) \u2014 WATCH, schedule trim at next quarterly",
+        "STX: Weight 15.7% above 12% soft cap; volatility 53.7% very high \u2014 likely above 90th percentile of universe, potentially failing Risk Filter 4; momentum_rank 2 is excellent; unrealized gain only +1.14% \u2014 WATCH for volatility breach",
+        "NEM: Volatility 52.4% is very high \u2014 likely at or above 90th percentile, potentially failing Risk Filter 4; momentum_rank 13 still in top 30%; small gain +0.11% \u2014 WATCH",
+        "CSCO: Earnings were AMC May 13 \u2014 result now known post-close; stock up +26.5% from entry on May 11 (3 days); approaching but not yet at 60% gain threshold (Rule 4 not triggered); momentum_rank 15 is borderline top-30% \u2014 monitor closely",
+        "BEN: momentum_6m 0.4633 (46th percentile) and momentum_12m 0.5617 (56th percentile) \u2014 BOTH are outside top 30% of universe (need rank in top 30%, i.e., 70th percentile or above); momentum_rank 17 \u2014 FLAGGING as potentially failing primary momentum filter; needs 5-day confirmation before sell",
+        "CAT: Volatility 43.2% elevated; momentum_rank 6 passing; small loss -1.99%; above 50-day MA \u2014 WATCH volatility",
+        "BREADTH: 55.8% S&P above 200-MA with 8MA below 200MA is NARROWING \u2014 supports sideways regime classification; reduce regime confidence from portfolio's stated 91% bull to 60% sideways",
+        "CASH: Portfolio shows -1.0% cash (negative cash / slight margin usage) \u2014 sideways regime target is 25% cash; significant cash shortfall relative to regime-adjusted target, but full rebalance deferred to next quarterly (July); flag for awareness"
+      ],
+      "decisions": [
+        {
+          "action": "SELL",
+          "symbol": "FDX",
+          "reason": "Rule 2 (trend break): Price $369.70 is below 50-day MA $369.80, confirmed 'below_ma' status. This has been flagged across multiple consecutive runs (May 11, 12, 13, 14) \u2014 the 3-consecutive-day confirmation threshold is met. Position carries unrealized loss of -5.94% (-$23.33), making this a tax-loss harvest priority sale. No gain realization concern. Sell all 1 share at next open.",
+          "rule_triggered": "trend_break",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "KLAC",
+          "reason": "Weight 17.9% exceeds 12% soft cap but remains below 20% hard cap \u2014 no forced trim required until quarterly rebalance (July). Momentum rank 7 (top 30% passing), above 50-day MA, EPS growth 11.8% (barely above 10% threshold \u2014 monitor). Volatility 47.6% elevated. No sell rule technically triggered today. Will flag for trim to ~12% weight at July quarterly rebalance. Tax note: position has unrealized gain of +$102 (+5.82%) \u2014 do not sell winner without rule trigger per tax-aware priority.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "STX",
+          "reason": "Weight 15.7% above 12% soft cap. Volatility 53.7% is very high and likely at or above 90th percentile of S&P 500 universe \u2014 this may constitute a Risk Filter 4 failure, but requires universe-wide volatility data to confirm. Momentum rank 2 is exceptional (top 30% passing strongly). Price well above 50-day MA ($816 vs $513). Unrealized gain +1.14%. Cannot sell on volatility suspicion alone without confirmed 90th percentile breach \u2014 flagging for data verification. If volatility confirmed above 90th pct at next data pull, escalate to SELL.",
+          "rule_triggered": "null",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "NEM",
+          "reason": "Volatility 52.4% is very high and likely near or above 90th percentile of universe \u2014 Risk Filter 4 potential breach. Momentum rank 13 (top 30% passing). Price above 50-day MA ($118.96 vs $111.93). Unrealized gain +0.11% (near flat). Monitoring for volatility confirmation; if 90th pct breach confirmed, will escalate to SELL. Tax impact minimal given near-zero gain.",
+          "rule_triggered": "null",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "CSCO",
+          "reason": "Earnings were reported AMC May 13 \u2014 result now known. Position up +26.5% in ~3 days (entry May 11). Rule 4 (profit taking) threshold is >60% in <60 days \u2014 not yet triggered at 26.5%. Momentum rank 15 is borderline top 30% (need rank \u226415 out of 50 in top 30% of ~500 = rank \u2264150; rank 15 of universe appears to be top 30% passing). Monitor post-earnings price action closely. If stock surges further toward 60% gain, prepare to sell half per Rule 4.",
+          "rule_triggered": "null",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "BEN",
+          "reason": "momentum_6m of 0.4633 (46th percentile raw return) and momentum_12m of 0.5617 (56th percentile raw return) \u2014 the strategy requires top 30% rank on BOTH 6M and 12M. Momentum_rank listed as 17 which may reflect composite scoring. However raw momentum percentiles suggest borderline passing. Monitoring for 5 consecutive trading days of confirmed sub-top-30% rank before Rule 1 sell trigger fires. Not selling today \u2014 confirmation window not yet complete.",
+          "rule_triggered": "null",
+          "urgency": "next_open"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "Momentum rank 5 (top 30% passing strongly). Price $431 well above 50-day MA $351. EPS growth 116.7%, revenue growth 30.4% \u2014 quality filter passing. Forward P/E 32.7 below 40 \u2014 valuation passing. Volatility 34.9% \u2014 moderate, likely within acceptable range. Unrealized gain +12.36%. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "C",
+          "reason": "Momentum rank 18 \u2014 borderline but passing top 30% composite. Price $124.42 above 50-day MA $119.27. EPS growth 56.1%, revenue growth 15.9% \u2014 quality passing. Small unrealized loss -1.49% (-$1.88). Volatility 25.9% \u2014 low, well within risk filter. Hold; not triggering any sell rule.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "Momentum rank 6 (top 30% passing). Price $903.59 well above 50-day MA $771.13. EPS growth 30.2%, revenue growth 22.2% \u2014 quality passing. Forward P/E 30.5. Volatility 43.2% elevated but monitoring. Small unrealized loss -1.99% \u2014 no sell rule triggered. Thesis intact as industrial momentum play.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "EME",
+          "reason": "Momentum rank 14 (top 30% passing). Price $923 above 50-day MA $798. EPS growth 30%, revenue growth 19.7% \u2014 quality passing. Forward P/E 28.5. Volatility 34.2% moderate. Unrealized loss -2.34% \u2014 small, no rule triggered. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "GOOGL",
+          "reason": "Momentum rank 10 (top 30% passing). Price $402.70 well above 50-day MA $326.88. EPS growth 82%, revenue growth 21.8% \u2014 strong quality. Forward P/E 27.8. Volatility 37.2% moderate. Unrealized gain +7.76%. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "Momentum rank 8 (top 30% passing). Price $355.43 above 50-day MA $295.37. EPS growth 96.2%, revenue growth 23.1% \u2014 strong quality. Forward P/E 24.4. Volatility 45.3% elevated but monitoring. Unrealized gain +5.6%. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "KEYS",
+          "reason": "Momentum rank 4 (top 30% passing strongly). Price $364.04 above 50-day MA $314.37. EPS growth 68%, revenue growth 23.3% \u2014 strong quality. Forward P/E 35.0 below 40. Volatility 30.2% \u2014 within acceptable range. Unrealized gain +2.55%. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "Momentum rank 9 (top 30% passing). Price $232.34 above 50-day MA $189.31. EPS growth 382.1%, revenue growth 21.3% \u2014 exceptional quality. Forward P/E 14.9. Volatility 29.1% \u2014 low. Unrealized gain +2.62%. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "STLD",
+          "reason": "Momentum rank 12 (top 30% passing). Price $237.08 above 50-day MA $197.33. EPS growth 93.1%, revenue growth 19.1% \u2014 strong quality. Forward P/E 14.1. Volatility 33.9% moderate. Small unrealized loss -2.1%. No sell rule triggered. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "increase",
+      "cash_rationale": "Portfolio currently shows -1.0% cash (marginal negative balance) against a sideways regime target of 25% cash. Downgrading regime from bull to sideways based on breadth narrowing (55.8% S&P above 200-MA, breadth 8MA below 200MA). Full cash rebalance to 25% is deferred to July quarterly rebalance per strategy rules (non-quarterly month = flag only). However, proceeds from FDX sale (~$370) should be held as cash rather than reinvested, bringing cash slightly positive. No new buys until next quarterly.",
+      "summary": "DAY END 2026-05-14 (Wednesday): SELL FDX at next open (Rule 2 confirmed trend break, -5.94% loss, tax-loss harvest priority); WATCH KLAC/STX for weight and volatility; WATCH NEM/STX for potential Risk Filter 4 breach; regime downgraded to SIDEWAYS (60% confidence) on breadth narrowing; 13 positions HOLD with thesis intact; next full rebalance July.",
+      "usage": {
+        "input_tokens": 13687,
+        "output_tokens": 3650,
+        "cache_read_tokens": 3614,
+        "cache_write_tokens": 0
+      }
+    },
     {
       "id": "RUN-20260513-2246",
       "timestamp": "2026-05-13T22:46:41Z",
