@@ -18,7 +18,6 @@ import time
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
-import numpy as np
 import pandas as pd
 import requests
 import yfinance as yf
@@ -827,7 +826,7 @@ def build_spy_curve(equity_curve: list, spy: "pd.Series", initial_capital: float
 def main():
     # Load existing state
     if DATA_FILE.exists():
-        with open(DATA_FILE) as f:
+        with open(DATA_FILE, encoding="utf-8") as f:
             data = json.load(f)
     else:
         print("No existing portfolio.json — starting fresh.")
@@ -1107,7 +1106,7 @@ def main():
     }
 
     DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
-    with open(DATA_FILE, "w") as f:
+    with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2)
 
     mode_label = f"Alpaca ({ALPACA_ACCOUNT_NAME})" if alpaca_state else "Simulation"
