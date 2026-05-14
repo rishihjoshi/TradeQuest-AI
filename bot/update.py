@@ -1131,6 +1131,7 @@ def main():
         "filter_status": filter_status,
         "equity_curve":  curve,
         "spy_curve":     spy_curve,
+        "benchmark":     spy_curve,
         "holdings":      new_holdings,
         "trades":        all_trades[:50],
     }

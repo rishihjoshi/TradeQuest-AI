@@ -576,8 +576,20 @@ class TradeQuestApp {
       return;
     }
 
-    chartReturn.textContent = fmtPct(returnPct) + ' since inception';
-    chartReturn.className   = `chart-return ${returnPct >= 0 ? 'profit-cell' : 'loss-cell'}`;
+    const benchCurve = this.data.benchmark || spy_curve;
+    const hasBench   = benchCurve && benchCurve.length >= 2;
+    let returnHtml   = fmtPct(returnPct) + ' since inception';
+    if (hasBench) {
+      const bStart  = benchCurve[0].value;
+      const bEnd    = benchCurve[benchCurve.length - 1].value;
+      const spyPct  = bStart > 0 ? ((bEnd - bStart) / bStart * 100) : 0;
+      const delta   = returnPct - spyPct;
+      const dSign   = delta >= 0 ? '+' : '';
+      const dColor  = delta >= 0 ? '#4CAF50' : '#EF5350';
+      returnHtml   += ` <span style="color:${dColor}">(${dSign}${delta.toFixed(1)}% vs SPY)</span>`;
+    }
+    chartReturn.innerHTML = returnHtml;
+    chartReturn.className = `chart-return ${returnPct >= 0 ? 'profit-cell' : 'loss-cell'}`;
 
     if (this.chart) this.chart.destroy();
 
@@ -594,9 +606,9 @@ class TradeQuestApp {
       const spyByDate = Object.fromEntries(spy_curve.map(p => [p.date, p.value]));
       const alignedSpy = equity_curve.map(p => spyByDate[p.date] ?? null);
       spyDataset = {
-        label:                     'S&P 500',
+        label:                     'SPY Buy & Hold',
         data:                      alignedSpy,
-        borderColor:               '#6B8AFF',
+        borderColor:               '#888888',
         borderWidth:               1.4,
         borderDash:                [4, 3],
         backgroundColor:           'transparent',
@@ -604,7 +616,7 @@ class TradeQuestApp {
         tension:                   0.4,
         pointRadius:               0,
         pointHoverRadius:          4,
-        pointHoverBackgroundColor: '#6B8AFF',
+        pointHoverBackgroundColor: '#888888',
         pointHoverBorderColor:     '#0B0B0B',
         pointHoverBorderWidth:     2,
         spanGaps:                  true,
