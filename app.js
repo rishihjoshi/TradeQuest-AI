@@ -479,6 +479,13 @@ class TradeQuestApp {
     badge.querySelector('#regimeLabel').textContent =
       regime === 'bull' ? 'Bull Market' : regime === 'bear' ? 'Bear Market' : 'Sideways';
 
+    const verEl = $('strategyVersion');
+    if (verEl) {
+      const ver = meta.strategy_version || '';
+      verEl.textContent = ver ? `v${ver}` : '';
+      verEl.style.display = ver ? '' : 'none';
+    }
+
     $('nextRebalance').textContent = `Rebalance: ${fmtDate(meta.next_rebalance)}`;
   }
 
