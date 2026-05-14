@@ -1,6 +1,7 @@
 {
   "meta": {
-    "strategy": "TradeQuest AI Momentum Strategy v2.0",
+    "strategy": "TradeQuest AI Momentum Strategy v2.1",
+    "strategy_version": "2.1",
     "account_name": "TradeQuest Paper",
     "mode": "alpaca",
     "initial_capital": 9864.11,
