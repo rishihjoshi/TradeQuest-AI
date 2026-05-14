@@ -159,7 +159,7 @@ def fetch_breadth_score() -> dict | None:
         ma8_val  = float(row.get("Breadth_Index_8MA",  0))
         ma200_val = float(row.get("Breadth_Index_200MA", 0))
 
-        if not (0.0 <= raw_val <= 1.0):
+        if not 0.0 <= raw_val <= 1.0:
             print(f"  Warning: breadth raw_val {raw_val} out of [0,1] — clamping", file=sys.stderr)
             raw_val = max(0.0, min(1.0, raw_val))
 
