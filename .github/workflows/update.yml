@@ -1,9 +1,8 @@
 name: Update Portfolio Data
 
 on:
-  schedule:
-    # 4:30 PM ET (21:30 UTC) every weekday — 30 min after NYSE close
-    - cron: '30 21 * * 1-5'
+  # Scheduled execution is handled by agent.yml (same cron, superset of steps).
+  # This workflow remains for manual order dispatch only.
   workflow_dispatch:
     inputs:
       order_symbol:
