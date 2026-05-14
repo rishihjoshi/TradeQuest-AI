@@ -337,7 +337,7 @@ def build_history_section(recent_history: list) -> str:
         for f in run.get("flags", []):
             fstr = str(f)
             # Flags are typically "SYMBOL: reason" format
-            sym = _safe(fstr.split(":")[0].strip(), 10) if ":" in fstr else ""
+            sym = _safe(fstr.split(":", maxsplit=1)[0].strip(), 10) if ":" in fstr else ""
             if sym:
                 symbol_flag_runs.setdefault(sym, []).append(rdate)
 
