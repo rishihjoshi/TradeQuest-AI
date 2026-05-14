@@ -1,7 +1,142 @@
 {
-  "last_run": "2026-05-14T16:51:55Z",
+  "last_run": "2026-05-14T22:39:13Z",
   "last_type": "day_end",
   "runs": [
+    {
+      "id": "RUN-20260514-2239",
+      "timestamp": "2026-05-14T22:39:13Z",
+      "type": "day_end",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is up +4.08% overall on initial capital in a bull regime, outperforming the benchmark trend since inception. However, three critical structural issues persist: (1) KLAC at 18.35% weight is approaching the 20% hard cap and well above the 12% soft cap; (2) STX at 15.52% is above the 12% soft cap; (3) FDX has been flagged SELL for 5 consecutive runs with unresolved execution \u2014 this is an urgent operational failure requiring immediate attention. Breadth at 54.8% sits in the 'narrowing' zone, and the breadth 8MA is below the 200MA, warranting modest caution despite the bull regime classification.",
+      "regime": "bull",
+      "regime_confidence": 0.72,
+      "flags": [
+        "FDX: URGENT UNRESOLVED SELL \u2014 flagged across 5 runs (2026-05-12 through 2026-05-14). Momentum rank 16 (6M rank 43.2%, 12M rank 68.0% \u2014 6M is BELOW top 30% cutoff of 70th percentile). Position at -3.32% loss. Tax-loss harvest candidate. Execution must occur at next open.",
+        "NEM: URGENT \u2014 SELL flagged multiple runs. Momentum_6m = 0.2997 (29.97th percentile \u2014 BELOW top 30% threshold). Volatility 50.93% extremely high, almost certainly above 90th percentile risk filter. At -2.03% loss \u2014 tax-loss harvest. A partial NEM SELL executed 2026-05-14 (1 share) but 6 shares remain. Must resolve.",
+        "BEN: Momentum rank 17 (6M rank 45.8% \u2014 BELOW top 30% cutoff). Revenue growth 8.7% barely passes quality filter. Position at +9.99% gain. Not yet a mandatory sell (12M rank 58.5% partially compensates, and 5-day confirmation window applies), but momentum decay rule is close to triggering \u2014 entering day 2+ of sub-30% 6M rank. WATCH with urgency.",
+        "KLAC: Weight 18.35% \u2014 above 12% soft cap, approaching 20% hard cap. Strategy requires review but not forced trim until 20% breach. Momentum rank 6, strong fundamentals \u2014 hold per strategy but flag. Will breach hard cap if stock rises ~9% more.",
+        "STX: Weight 15.52% \u2014 above 12% soft cap. Volatility 52.37% is very high, likely above 90th percentile risk filter threshold. Momentum rank 2 with extraordinary 12M momentum (6.73x). Not a sell on momentum, but volatility filter may technically disqualify at rebalance. Flag for quarterly review.",
+        "CAT: Volatility 42.83% elevated. Weight 8.89% acceptable. Momentum rank 5, strong 12M return. Previously flagged \u2014 no sell rule triggered today. Monitor.",
+        "BREADTH: 54.8% S&P above 200MA places us in narrowing rally territory. Breadth 8MA below 200MA is bearish trend signal. Regime confidence reduced from 0.94 to 0.72. No regime change yet (2-of-3 signals still bull), but caution warranted.",
+        "CASH: At 0.12% \u2014 well below the 5% bull regime target. After resolving FDX and NEM sells, cash should recover toward 5% target. C order was blocked \u2014 remains at 1.21% weight, below minimum 5% position size, creating an undersized position."
+      ],
+      "decisions": [
+        {
+          "action": "SELL",
+          "symbol": "FDX",
+          "reason": "URGENT UNRESOLVED \u2014 5th consecutive SELL flag. Momentum 6M rank = 43.2%, confirmed below top 30% threshold across multiple consecutive days (well beyond the 5-day confirmation window). Position at -3.32% unrealized loss \u2014 tax-loss harvest priority per strategy. No gain realization concern. This sell is overdue and must execute at next open.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "NEM",
+          "reason": "Momentum 6M rank = 29.97% \u2014 BELOW the top 30% threshold (confirmed across multiple runs). Volatility 50.93% is almost certainly above 90th percentile of universe, failing the risk filter. Position at -2.03% loss \u2014 tax-loss harvest candidate. Partial sell of 1 share executed 2026-05-14 but 6 shares remain. Sell remaining 6 shares at next open. No unrealized gain \u2014 no tax impact concern.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "BEN",
+          "reason": "6M momentum rank = 45.8% \u2014 below top 30% cutoff for multiple days. 12M rank = 58.5% partially compensates. Strategy requires 5-day confirmation window; this is approximately day 2-3 of confirmed sub-30% 6M rank. If 6M rank remains below 70th percentile through end of next week, momentum_decay rule will definitively trigger. Revenue growth 8.7% barely meets quality threshold. Position has +9.99% unrealized gain \u2014 if sell is triggered, must note estimated tax impact (~$5.59 gain realization on a $55.85 unrealized gain, modest). Not selling today but elevating to high-urgency watch.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "KLAC",
+          "reason": "Weight 18.35% is above 12% soft cap. Strategy says review but do not force-trim until 20% hard cap breach. Momentum rank 6, EPS growth 11.8%, revenue growth 11.5%, forward P/E 38 (within limits). All sell rules clear \u2014 no momentum decay, price well above 50-day MA ($1,898 vs $1,637), no quality deterioration. Hold per strategy but flag for quarterly rebalance trim to bring weight toward target. If KLAC rises ~9% to ~$2,070, hard cap triggers mandatory trim at next rebalance.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "STX",
+          "reason": "Weight 15.52% above 12% soft cap. Volatility 52.37% is very high and likely above 90th percentile risk filter \u2014 technically fails the risk filter, which would normally exclude it from the universe. However, STX has extraordinary momentum (rank 2, 12M return 6.73x) and strong fundamentals (EPS +108%, revenue +44%). Strategy says soft cap positions are reviewed but not force-trimmed. Volatility filter disqualification would formally apply at next quarterly rebalance screen. No intra-period sell rule triggered. Flag for July rebalance review.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "Momentum rank 8 (top 20% of universe). 6M rank 84.1%, 12M rank 91.2% \u2014 strong momentum. Price $427.72 vs 50-day MA $352.92 \u2014 well above trend. EPS growth 116.7%, revenue growth 30.4%, forward P/E 32.3. All filters passing. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "null"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "C",
+          "reason": "Momentum rank 20 \u2014 6M rank 25.1% is below top 30% threshold. However, 12M rank 68.9% is strong, and C was a new buy (2026-05-05, entry date 10 days ago). The 5-day confirmation window for momentum_decay applies to the 6M rank being below threshold \u2014 needs confirmation over 5 trading days. Position is very small (1.21% weight, below 5% minimum). Prior buy order was blocked. This position is structurally problematic due to undersized weight. Monitor 6M momentum rank \u2014 if still below 30th percentile by next week, momentum decay rule will trigger.",
+          "rule_triggered": "null",
+          "urgency": "next_open"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "Momentum rank 5 (top 10%). 6M rank 62.7%, 12M rank >100% (163.9%). Price $920 vs 50-day MA $774.73 \u2014 strongly above trend. EPS growth 30.2%, revenue growth 22.2%, forward P/E 31. All four filters passing. Volatility 42.83% elevated but not confirmed above 90th pct. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "null"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CSCO",
+          "reason": "Momentum rank 10 (top 20%). 6M rank 62.9%, 12M rank 91.3%. Price $114.96 vs 50-day MA $84.46 \u2014 strongly above trend. EPS growth 31.2%, revenue growth 9.7%, forward P/E 24.8. Up 20.09% since entry on 2026-05-11 (4 days) \u2014 approaching notable gains but only 4 days in, nowhere near 60-day/60% profit-take threshold. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "null"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "EME",
+          "reason": "Momentum rank 14 (top 30% boundary \u2014 6M rank 45.3% is below top 30%). 12M rank 97.3% is very strong. Similar to BEN, the 5-day confirmation window for 6M rank applies. Price $930 vs 50-day MA $801.87 \u2014 well above trend. EPS growth 30%, revenue growth 19.7%, forward P/E 28.7. Hold but monitor 6M rank closely \u2014 if it stays below 70th percentile for 5 confirmed days, momentum decay rule triggers.",
+          "rule_triggered": "null",
+          "urgency": "next_open"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "GOOGL",
+          "reason": "Momentum rank 11 (top 22%). 6M rank 37.9%, 12M rank 152.3%. Price $400.80 vs 50-day MA $328.86 \u2014 well above trend. EPS growth 82%, revenue growth 21.8%, forward P/E 27.7. Note: 6M rank at 37.9% is below the top 30% cutoff \u2014 monitoring required. 12M rank is excellent. Apply 5-day confirmation window to 6M rank. Thesis broadly intact.",
+          "rule_triggered": "null",
+          "urgency": "next_open"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "Momentum rank 7 (top 14%). 6M rank 68.0%, 12M rank 112.5%. Price $354.34 vs 50-day MA $297.39 \u2014 well above trend. EPS growth 96.2%, revenue growth 23.1%, forward P/E 24.3. Previously flagged for volatility concern (45.2%) \u2014 borderline but not confirmed above 90th pct. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "null"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "KEYS",
+          "reason": "Momentum rank 4 (top 8%). 6M rank 98.2%, 12M rank 119.0% \u2014 exceptional momentum. Price $361.55 vs 50-day MA $315.55 \u2014 well above trend. EPS growth 68%, revenue growth 23.3%, forward P/E 35. All filters passing. Thesis strongly intact.",
+          "rule_triggered": "null",
+          "urgency": "null"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "Momentum rank 9 (top 18%). 6M rank 62.8%, 12M rank 98.7%. Price $232.85 vs 50-day MA $190.41 \u2014 well above trend. EPS growth 382.1%, revenue growth 21.3%, forward P/E 15. All filters passing. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "null"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "STLD",
+          "reason": "Momentum rank 13 (top 26%). 6M rank 54.9%, 12M rank 75.6%. Price $234.74 vs 50-day MA $198.12 \u2014 above trend. EPS growth 93.1%, revenue growth 19.1%, forward P/E 13.9. 6M rank borderline (54.9% \u2014 not in top 30% strict cutoff). Apply 5-day confirmation window. At -3.07% loss \u2014 if sell rule triggers, tax-loss harvest opportunity. Monitor.",
+          "rule_triggered": "null",
+          "urgency": "next_open"
+        }
+      ],
+      "cash_action": "increase",
+      "cash_rationale": "Current cash is 0.12% \u2014 far below the 5% bull regime target. Executing FDX sell (~$380) and NEM sell (~$698 for 6 shares at ~$116) will raise approximately $1,078 in proceeds, bringing cash to approximately 10.5% of portfolio \u2014 temporarily above target. After FDX and NEM resolve, cash should be partially deployed into a new qualifying position to return to the 5% target. Net effect is a healthy increase toward target from a dangerously low cash position.",
+      "summary": "DAY END 2026-05-15 (Thursday): SELL FDX (momentum decay, 5th consecutive flag, tax-loss harvest, -3.32%) and SELL NEM remaining 6 shares (momentum decay + risk filter fail, tax-loss harvest, -2.03%) at next open; WATCH BEN, EME, GOOGL, STLD for momentum_decay confirmation; KLAC and STX flagged above soft cap for quarterly review; regime remains bull at 72% confidence with narrowing breadth warranting caution.",
+      "usage": {
+        "input_tokens": 13948,
+        "output_tokens": 3685,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 3614
+      }
+    },
     {
       "id": "RUN-20260514-1651",
       "timestamp": "2026-05-14T16:51:55Z",
