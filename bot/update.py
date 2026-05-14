@@ -193,8 +193,13 @@ def apply_risk_limits(
         capped_shares = max(1, min(shares, max_shares))
         order_cost = capped_shares * price if price > 0 else 0.0
         if order_cost > available_cash and price > 0:
-            # Reduce to what cash allows
-            capped_shares = max(1, int(available_cash / price))
+            # Reduce to what cash allows; skip entirely if even 1 share exceeds budget
+            affordable = int(available_cash / price)
+            if affordable < 1:
+                print(f"  Risk gate: can't afford even 1 share of {sym} "
+                      f"(${price:,.0f}/share, available ${available_cash:,.0f}) — skipped")
+                continue
+            capped_shares = affordable
         capped_buys.append((sym, capped_shares))
         available_cash -= capped_shares * price if price > 0 else 0.0
 
@@ -354,19 +359,38 @@ def alpaca_orders_to_trades(orders) -> list[dict]:
 
 
 def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
-                         pv: float, cash: float) -> list[tuple]:
+                         pv: float, cash: float,
+                         prices: dict[str, float] | None = None) -> list[tuple]:
     """
     Submit market orders to Alpaca paper trading. Sells first to free cash.
     Enforces CASH_FLOOR_PCT: stops buying if remaining cash would fall below floor.
+    Idempotency guard: skips symbols that already have an open order today to prevent
+    duplicate submissions from concurrent workflow runs.
     """
-    from alpaca.trading.requests import MarketOrderRequest
-    from alpaca.trading.enums import OrderSide, TimeInForce
+    from alpaca.trading.requests import MarketOrderRequest, GetOrdersRequest
+    from alpaca.trading.enums import OrderSide, TimeInForce, QueryOrderStatus
 
+    prices     = prices or {}
     cash_floor = pv * CASH_FLOOR_PCT
     placed = []
 
+    # Build set of symbols already having an open/pending order today (idempotency guard)
+    today_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    already_ordered: set[str] = set()
+    try:
+        open_orders = client.get_orders(GetOrdersRequest(status=QueryOrderStatus.OPEN))
+        for o in open_orders:
+            order_date = str(getattr(o, "created_at", ""))[:10]
+            if order_date == today_str:
+                already_ordered.add(str(getattr(o, "symbol", "")).upper())
+    except Exception as e:
+        print(f"  Warning: could not fetch open orders for idempotency check: {e}", file=sys.stderr)
+
     for sym, shares in to_sell:
         qty = max(1, int(shares))
+        if sym.upper() in already_ordered:
+            print(f"  Idempotency: SELL {sym} already has an open order today — skipped")
+            continue
         try:
             client.submit_order(MarketOrderRequest(
                 symbol=sym, qty=qty,
@@ -375,12 +399,17 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
             ))
             print(f"  ↓ SELL {qty:>5} {sym}")
             placed.append(("SELL", sym, qty))
+            already_ordered.add(sym.upper())
         except Exception as e:
             print(f"  ✗ SELL {sym}: {e}", file=sys.stderr)
 
     for sym, shares in to_buy:
         qty      = max(1, int(shares))
-        est_cost = qty * 1  # real cost check happens at broker; this is a share-count guard
+        if sym.upper() in already_ordered:
+            print(f"  Idempotency: BUY {sym} already has an open order today — skipped")
+            continue
+        price    = prices.get(sym.upper(), 0.0)
+        est_cost = qty * price if price > 0 else qty * 1
         if cash - est_cost < cash_floor:
             print(f"  Risk gate: cash floor — skipping BUY {sym} (cash ${cash:,.0f} near floor ${cash_floor:,.0f})")
             continue
@@ -392,6 +421,7 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
             ))
             print(f"  ↑ BUY  {qty:>5} {sym}")
             placed.append(("BUY", sym, qty))
+            already_ordered.add(sym.upper())
         except Exception as e:
             print(f"  ✗ BUY  {sym}: {e}", file=sys.stderr)
 
@@ -979,7 +1009,7 @@ def main():
 
         if to_sell or to_buy:
             print(f"Rebalance: {len(to_sell)} sells, {len(to_buy)} buys (after risk gates)")
-            exec_placed = alpaca_place_orders(client, to_sell, to_buy, pv, cash)
+            exec_placed = alpaca_place_orders(client, to_sell, to_buy, pv, cash, price_map)
             # Brief pause then re-fetch: during-hours fills settle in <1s;
             # after-hours orders appear as pending in the open-orders list.
             time.sleep(3)
