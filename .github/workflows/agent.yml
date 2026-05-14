@@ -85,5 +85,6 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "agent[${{ env.RUN_TYPE }}]: $(date -u +'%Y-%m-%d %H:%M')"
+            git pull --rebase origin HEAD
             git push -u origin HEAD
           fi

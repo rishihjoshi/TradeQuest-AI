@@ -61,5 +61,6 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "market-open: $(date -u +'%Y-%m-%d %H:%M') [skip ci]"
+            git pull --rebase origin HEAD
             git push -u origin HEAD
           fi

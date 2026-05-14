@@ -97,5 +97,6 @@ jobs:
             echo "No changes."
           else
             git commit -m "agent[day-end]: $(date +'%Y-%m-%d %H:%M UTC')"
+            git pull --rebase origin HEAD
             git push -u origin HEAD
           fi
