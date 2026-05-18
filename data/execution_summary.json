@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-05-15T22:30:37Z",
+  "timestamp": "2026-05-18T22:33:30Z",
   "mode": "post_close",
   "orders_placed": [],
   "orders_skipped": [
     {
-      "symbol": "C",
+      "symbol": "STX",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 0.12
+  "cash_pct_after": 1.36
 }
