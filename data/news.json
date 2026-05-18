@@ -1,45 +1,302 @@
 {
-  "generated_at": "2026-05-14T15:42:56Z",
+  "generated_at": "2026-05-18T16:39:01Z",
   "article_count": 30,
   "articles": [
     {
-      "id": "52567061",
-      "headline": "What Is Going On With Marvell Tech Stock On Thursday?",
-      "summary": "Marvell (MRVL) stock jumps 6% on a high-profile custom AI chip alliance with Google and a massive $200 price target raise from BofA. Discover how this partnership challenges NVIDIA&39;s hardware dominance.",
-      "url": "https://www.benzinga.com/markets/tech/26/05/52567061/what-is-going-on-with-marvell-tech-stock-on-thursday",
-      "author": "Anusuya Lahiri",
+      "id": "52639278",
+      "headline": "Why Redwire Stock Is Falling On Monday?",
+      "summary": "Redwire stock drops on Monday, extending declines from Friday. Discover why the space infrastructure stock is hitting resistance.",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/05/52639278/why-redwire-stock-is-falling-on-monday",
+      "author": "Kaustubh Bagalkote",
       "source": "benzinga",
       "symbols": [
+        "GOOG",
         "GOOGL",
-        "META",
-        "MRVL",
-        "NVDA"
+        "RDW",
+        "TEL"
       ],
-      "created_at": "2026-05-14T15:18:23Z",
-      "sentiment": "bull",
+      "created_at": "2026-05-18T15:23:15Z",
+      "sentiment": "bear",
       "confidence": 0.95,
-      "reason": "Strong positive catalysts: 6% stock jump, Google AI chip partnership, and major price target increase from BofA."
+      "reason": "Stock experiencing sustained declines with technical resistance headwinds."
     },
     {
-      "id": "52566700",
-      "headline": "Piper Sandler Maintains Neutral on Cisco Systems, Raises Price Target to $132",
+      "id": "52635654",
+      "headline": "Stanley Druckenmiller Dumps Amazon And Alphabet While Loading Up On Commodities, Argentina And Biotech",
+      "summary": "Stanley Druckenmiller cut Amazon, exited Alphabet while increasing bets on Argentina, commodities, semiconductors, biotech stocks during Q1.",
+      "url": "https://www.benzinga.com/markets/hedge-funds/26/05/52635654/stanley-druckenmiller-dumps-amazon-and-alphabet-while-loading-up-on-commodities-argentina-and-biotech",
+      "author": "Surbhi Jain",
+      "source": "benzinga",
+      "symbols": [
+        "AA",
+        "ADMA",
+        "AMZN",
+        "ARGT",
+        "ARM",
+        "AVGO",
+        "CAI",
+        "CLF",
+        "DAL",
+        "DASH",
+        "DOCU",
+        "EWZ",
+        "GOOG",
+        "GOOGL",
+        "GS",
+        "GSG",
+        "INTC",
+        "MU",
+        "RVMD",
+        "SCCO",
+        "STM",
+        "YPF"
+      ],
+      "created_at": "2026-05-18T14:12:25Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Major investor dumping large tech positions signals reduced confidence in Amazon and Alphabet."
+    },
+    {
+      "id": "52632336",
+      "headline": "Citigroup And BlackRock Unit HPS Investment Partners Launch \u20ac15B Private Capital Program To Augment Client Offerings In The EMEA Region",
       "summary": "",
-      "url": "https://www.benzinga.com/news/26/05/52566700/piper-sandler-maintains-neutral-on-cisco-systems-raises-price-target-to-132",
+      "url": "https://www.benzinga.com/news/26/05/52632336/citigroup-and-blackrock-unit-hps-investment-partners-launch-15b-private-capital-program-to-augment-c",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "CSCO"
+        "BLK",
+        "C"
       ],
-      "created_at": "2026-05-14T15:10:37Z",
-      "sentiment": "neutral",
+      "created_at": "2026-05-18T13:04:52Z",
+      "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Neutral rating maintained despite price target increase suggests modest positive outlook."
+      "reason": "Strategic \u20ac15B partnership expansion demonstrates strong client demand and growth initiatives in EMEA region."
     },
     {
-      "id": "52566644",
-      "headline": "Anthropic forms $200 million partnership with the Gates Foundation",
+      "id": "52631836",
+      "headline": "S&P 500 Momentum Just Went Vertical: The Last 4 Times It Did, Stocks Sold Off",
+      "summary": "Something rare just happened beneath the surface of the U.S. equity market, and almost nobody is talking about it.",
+      "url": "https://www.benzinga.com/markets/equities/26/05/52631836/sp500-momentum-rally-historical-analysis-goldman-sachs-2026",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "AMD",
+        "AMZN",
+        "AVGO",
+        "CSCO",
+        "GOOG",
+        "GOOGL",
+        "INTC",
+        "MSFT",
+        "MU",
+        "NVDA",
+        "SNDK",
+        "SPMO",
+        "SPY",
+        "TSLA"
+      ],
+      "created_at": "2026-05-18T12:53:55Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Historical pattern suggests sharp momentum reversals preceded sell-offs in equities."
+    },
+    {
+      "id": "52631643",
+      "headline": "What's Going On With Marvell Stock Monday?",
+      "summary": "Marvell Technology (MRVL) hits $180 in premarket as chip momentum rolls on. Is the stock&39;s steep uptrend ready to continue?",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/05/52631643/whats-going-on-with-marvell-stock-monday",
+      "author": "Anusuya Lahiri",
+      "source": "benzinga",
+      "symbols": [
+        "ARTY",
+        "FTXL",
+        "GOOGL",
+        "MRVL",
+        "NVDA",
+        "SOXX"
+      ],
+      "created_at": "2026-05-18T12:44:32Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Stock hitting new premarket highs with positive chip sector momentum suggests continued uptrend potential."
+    },
+    {
+      "id": "52631367",
+      "headline": "Trump Regrets Not Asking For A Bigger Intel Stake",
+      "summary": "INTC stock trends as Trump reveals he regrets not asking for a larger government equity stake in Intel. Read the latest updates.",
+      "url": "https://www.benzinga.com/markets/tech/26/05/52631367/trump-regrets-not-asking-for-a-bigger-intel-stake",
+      "author": "Anusuya Lahiri",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "AMZN",
+        "BA",
+        "GOOGL",
+        "INTC",
+        "META",
+        "NVDA",
+        "TSLA",
+        "TSM"
+      ],
+      "created_at": "2026-05-18T12:32:56Z",
+      "sentiment": "neutral",
+      "confidence": 0.65,
+      "reason": "Trump's regret about stake size is ambiguous; no clear positive or negative impact on INTC operations."
+    },
+    {
+      "id": "52630972",
+      "headline": "Susquehanna Maintains Positive on Keysight Techs, Raises Price Target to $415",
       "summary": "",
-      "url": "https://www.benzinga.com/news/26/05/52566644/anthropic-forms-200-million-partnership-with-the-gates-foundation",
+      "url": "https://www.benzinga.com/news/26/05/52630972/susquehanna-maintains-positive-on-keysight-techs-raises-price-target-to-415",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "KEYS"
+      ],
+      "created_at": "2026-05-18T12:16:37Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains positive stance and raises price target, indicating confidence in future performance."
+    },
+    {
+      "id": "52630474",
+      "headline": "Nvidia Is Still 'Cheapest Name' In Tech, Says Market Strategist: Q1 Earnings Will Make Your 'Jaw Drop'",
+      "summary": "CJ Muse calls Nvidia tech&39;s &34;cheapest name&34; ahead of Q1 earnings, while experts predict a &34;jaw drop&34; financial blowout. Read the forecast.",
+      "url": "https://www.benzinga.com/markets/equities/26/05/52630474/nvidia-is-still-cheapest-name-in-tech-says-market-strategist-q1-earnings-will-make-your-jaw-drop",
+      "author": "Rishabh Mishra",
+      "source": "benzinga",
+      "symbols": [
+        "AMZN",
+        "CBRS",
+        "GOOG",
+        "GOOGL",
+        "NVDA",
+        "TSM"
+      ],
+      "created_at": "2026-05-18T12:00:58Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Strategist calls NVDA 'cheapest name' in tech with expectations for exceptional Q1 earnings"
+    },
+    {
+      "id": "52628918",
+      "headline": "Elon Musk Makes Bold Self-Driving Prediction, Says AI Cars Could Dominate Roads Within A Decade",
+      "summary": "Tesla CEO Elon Musk predicts AI and self-driving cars will dominate roads in 10 years, with human-driven cars becoming niche.",
+      "url": "https://www.benzinga.com/markets/tech/26/05/52628918/elon-musk-makes-bold-self-driving-prediction-says-ai-cars-could-dominate-roads-within-a-decade",
+      "author": "Badar Shaikh",
+      "source": "benzinga",
+      "symbols": [
+        "GOOG",
+        "GOOGL",
+        "TSLA"
+      ],
+      "created_at": "2026-05-18T10:50:34Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Bold self-driving predictions signal confidence in Tesla's AI capabilities and future market dominance."
+    },
+    {
+      "id": "52628177",
+      "headline": "What's Going On With Micron Stock Monday?",
+      "summary": "Micron (MU) stock climbs 2.5% in premarket trading. Inside the AI demand, China exposure, and massive analyst price target hikes.",
+      "url": "https://www.benzinga.com/markets/tech/26/05/52628177/whats-going-on-with-micron-stock-monday-2",
+      "author": "Anusuya Lahiri",
+      "source": "benzinga",
+      "symbols": [
+        "AMZN",
+        "AVGO",
+        "GOOGL",
+        "LNVGY",
+        "MSFT",
+        "MU",
+        "NVDA",
+        "ORCL"
+      ],
+      "created_at": "2026-05-18T10:06:14Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Stock gains with AI demand tailwinds and analyst price target increases offsetting China exposure concerns."
+    },
+    {
+      "id": "52627915",
+      "headline": "AI Stocks Are Becoming Wall Street's New Defensive Trade As Inflation Fears Rise, Goldman Says",
+      "summary": "Investors are rotating back into AI and hyperscaler stocks as Goldman Sachs says the theme is increasingly seen as a defensive trade.",
+      "url": "https://www.benzinga.com/markets/equities/26/05/52627915/ai-stocks-are-becoming-wall-streets-new-defensive-trade-as-inflation-fears-rise-goldman-says",
+      "author": "Sweta Killa",
+      "source": "benzinga",
+      "symbols": [
+        "AMZN",
+        "GOOG",
+        "GOOGL",
+        "GS",
+        "META",
+        "MSFT"
+      ],
+      "created_at": "2026-05-18T09:54:02Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "AI stocks gaining defensive appeal and investor rotation support positive outlook for the sector."
+    },
+    {
+      "id": "52627866",
+      "headline": "Elizabeth Warren Warns AI Could Trigger Mass Layoffs, Says 'Your Health Care Should Not Be Dependent On Your Job'",
+      "summary": "Sen. Elizabeth Warren warns AI could trigger mass layoffs and calls for universal health care, free retraining, and stronger worker safety nets.",
+      "url": "https://www.benzinga.com/markets/tech/26/05/52627866/elizabeth-warren-warns-ai-could-trigger-mass-layoffs-says-your-health-care-should-not-be-dependent-on-your-job",
+      "author": "Snigdha Gairola",
+      "source": "benzinga",
+      "symbols": [
+        "CSCO",
+        "META",
+        "NVDA"
+      ],
+      "created_at": "2026-05-18T09:44:30Z",
+      "sentiment": "bear",
+      "confidence": 0.75,
+      "reason": "Warns of AI-driven mass layoffs and job displacement risks, creating negative sentiment for labor-dependent sectors."
+    },
+    {
+      "id": "52627672",
+      "headline": "Axios Reported More Than 60 Trump Allies Urge President To Test And Approve Most Powerful AI Models Before Release",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/05/52627672/axios-reported-more-than-60-trump-allies-urge-president-to-test-and-approve-most-powerful-ai-models",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "AI",
+        "BABA",
+        "BBAI",
+        "BFRG",
+        "BIDU",
+        "GFAI",
+        "GOOG",
+        "GOOGL",
+        "IBM",
+        "INTC",
+        "INTU",
+        "LPSN",
+        "MARK",
+        "MCHX",
+        "META",
+        "MSFT",
+        "NVDA",
+        "QCOM",
+        "SNAP",
+        "SOUN",
+        "SSTK",
+        "TBLA",
+        "VERI"
+      ],
+      "created_at": "2026-05-18T09:23:41Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Regulatory pressure on AI development affects sector but no specific stock mentioned."
+    },
+    {
+      "id": "52627350",
+      "headline": "'Anthropic To Brief Global Financial Watchdog On Cyber Flaws Exposed By Mythos' - FT",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/05/52627350/anthropic-to-brief-global-financial-watchdog-on-cyber-flaws-exposed-by-mythos-ft",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
@@ -48,527 +305,348 @@
         "GOOGL",
         "MSFT"
       ],
-      "created_at": "2026-05-14T15:09:09Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Major partnership validates Anthropic's technology and provides significant funding for expansion."
-    },
-    {
-      "id": "52564886",
-      "headline": "Wells Fargo Maintains Overweight on Cisco Systems, Raises Price Target to $130",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/05/52564886/wells-fargo-maintains-overweight-on-cisco-systems-raises-price-target-to-130",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "CSCO"
-      ],
-      "created_at": "2026-05-14T14:41:39Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Overweight rating and raised price target indicate positive outlook for Cisco Systems"
-    },
-    {
-      "id": "52563667",
-      "headline": "Keybanc Maintains Overweight on Cisco Systems, Raises Price Target to $125",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/05/52563667/keybanc-maintains-overweight-on-cisco-systems-raises-price-target-to-125",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "CSCO"
-      ],
-      "created_at": "2026-05-14T14:20:43Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "KeyBanc maintains overweight rating and raises price target, signaling positive outlook"
-    },
-    {
-      "id": "52562511",
-      "headline": "Staar Surgical Posts Upbeat Q1 Results, Joins Cisco, Yeti Holdings And Other Big Stocks Moving Higher On Thursday",
-      "summary": "U.S. stocks rose, with Dow Jones up 300 points. STAA shares surged after better-than-expected results. Other big gainers include POET, STUB, MSC, ARX, CSCO, PCT, WOLF, CPA, ONDS, KLAR, and RDW.",
-      "url": "https://www.benzinga.com/news/26/05/52562511/staar-surgical-posts-upbeat-q1-results-joins-cisco-yeti-holdings-and-other-big-stocks-moving-higher-on-thursday",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "AQST",
-        "ARX",
-        "CPA",
-        "CSCO",
-        "F",
-        "JLHL",
-        "KLAR",
-        "LUMN",
-        "MSC",
-        "ONDS",
-        "PCT",
-        "POET",
-        "RDW",
-        "STAA",
-        "STUB",
-        "VIK",
-        "WOLF",
-        "YETI"
-      ],
-      "created_at": "2026-05-14T14:01:47Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "STAA surged on better-than-expected Q1 results and strong market performance."
-    },
-    {
-      "id": "52559330",
-      "headline": "Cisco CEO Warns AI Infrastructure Players Without Silicon Will 'Struggle To Be Relevant'",
-      "summary": "Cisco CEO says AI infrastructure companies without proprietary silicon may struggle to remain relevant with hyperscalers in the AI era.",
-      "url": "https://www.benzinga.com/markets/tech/26/05/52559330/cisco-ceo-warns-ai-infrastructure-players-without-silicon-will-struggle-to-be-relevant",
-      "author": "Surbhi Jain",
-      "source": "benzinga",
-      "symbols": [
-        "CSCO"
-      ],
-      "created_at": "2026-05-14T13:16:43Z",
+      "created_at": "2026-05-18T08:57:53Z",
       "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "CEO warning suggests competitive disadvantage for companies lacking proprietary silicon in AI market."
+      "confidence": 0.72,
+      "reason": "Company must brief regulators about exposed cyber flaws, indicating security vulnerabilities requiring disclosure."
     },
     {
-      "id": "52559215",
-      "headline": "What's Going On With Micron Stock Thursday?",
-      "summary": "With MU stock trading near 52-week highs, see why constrained memory supply could keep pricing power with Micron through 2028.",
-      "url": "https://www.benzinga.com/markets/tech/26/05/52559215/whats-going-on-with-micron-stock-thursday-2",
-      "author": "Anusuya Lahiri",
-      "source": "benzinga",
-      "symbols": [
-        "AMZN",
-        "ASML",
-        "GOOGL",
-        "MSFT",
-        "MU",
-        "NVDA",
-        "ORCL"
-      ],
-      "created_at": "2026-05-14T13:13:06Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "52-week highs and constrained supply providing pricing power through 2028 indicate positive outlook."
-    },
-    {
-      "id": "52551920",
-      "headline": "Stock Market Today: S&P 500, Dow, Nasdaq Futures Gain As Trump Clears NVDA's H200 Sales To China\u2014 Cisco Systems, Doximity In Focus (UPDATED)",
-      "summary": "(Editor\u2019s note: The future prices of benchmark tracking ETFs, the headline, the lede and the economic were updated in the story.)",
-      "url": "https://www.benzinga.com/markets/equities/26/05/52551920/stock-market-today-sp-500-dow-jones-futures-gain-as-trump-clears-nvdas-h200-sales-to-china-cisco-systems-doximity-grocery-outlet-in-focus",
-      "author": "Rishabh Mishra",
-      "source": "benzinga",
-      "symbols": [
-        "AMAT",
-        "BABA",
-        "BTCUSD",
-        "CSCO",
-        "DOCS",
-        "GO",
-        "NVDA",
-        "POCI",
-        "QQQ",
-        "SPY",
-        "TCEHY"
-      ],
-      "created_at": "2026-05-14T12:55:47Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Trump approval of NVDA H200 sales to China removes regulatory headwind, boosting market futures and semiconductor stocks."
-    },
-    {
-      "id": "52557210",
-      "headline": "Cisco's Comeback Highlights A New Wave Of AI Winners \u2014 And ETFs Are Responding Fast",
-      "summary": "Cisco&39;s AI outlook boosted shares and signaled the AI trade is expanding beyond the Magnificent Seven into broader tech and AI ETFs.",
-      "url": "https://www.benzinga.com/etfs/sector-etfs/26/05/52557210/ciscos-comeback-highlights-a-new-wave-of-ai-winners-and-etfs-are-responding-fast",
-      "author": "Chandrima Sanyal",
-      "source": "benzinga",
-      "symbols": [
-        "AIQ",
-        "CSCO",
-        "NVDA",
-        "QQEW",
-        "RSPT",
-        "SKYY",
-        "THNQ"
-      ],
-      "created_at": "2026-05-14T12:25:22Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Cisco's positive AI outlook and expanding AI trade signal growth opportunities and investor optimism."
-    },
-    {
-      "id": "52556493",
-      "headline": "12 Information Technology Stocks Moving In Thursday's Pre-Market Session",
-      "summary": " ",
-      "url": "https://www.benzinga.com/insights/movers/26/05/52556493/12-information-technology-stocks-moving-in-thursdays-pre-market-session",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "ABTS",
-        "ALMU",
-        "CSCO",
-        "DGNX",
-        "GAUZ",
-        "INVZ",
-        "LIDR",
-        "ONDS",
-        "PCLA",
-        "PDFS",
-        "POET",
-        "RPGL"
-      ],
-      "created_at": "2026-05-14T12:05:42Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Article reports stock movement without indicating positive or negative direction."
-    },
-    {
-      "id": "52556406",
-      "headline": "Rosenblatt Maintains Buy on Cisco Systems, Raises Price Target to $150",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/05/52556406/rosenblatt-maintains-buy-on-cisco-systems-raises-price-target-to-150",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "CSCO"
-      ],
-      "created_at": "2026-05-14T12:03:53Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, signaling positive outlook for Cisco stock."
-    },
-    {
-      "id": "52554843",
-      "headline": "Market-Moving News for May 14th",
-      "summary": "",
-      "url": "https://www.benzinga.com/trading-ideas/movers/26/05/52554843/market-moving-news-for-may-14th",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "CSCO",
-        "MRVL",
-        "SNAL"
-      ],
-      "created_at": "2026-05-14T11:14:16Z",
-      "sentiment": "neutral",
-      "confidence": 0.5,
-      "reason": "Headline lacks specific details or company information to determine directional sentiment."
-    },
-    {
-      "id": "52553294",
-      "headline": "Analysts Say Agentic AI Will Power One-Third Of Smartphones Within Two Years",
-      "summary": "Qualcomm and MediaTek battle for Agentic AI dominance. See how the Dimensity 9400 and Snapdragon 8 Elite are reshaping the premium market.",
-      "url": "https://www.benzinga.com/analyst-stock-ratings/analyst-color/26/05/52553294/analysts-say-agentic-ai-will-power-one-third-of-smartphones-within-two-years",
-      "author": "Anusuya Lahiri",
-      "source": "benzinga",
-      "symbols": [
-        "AAPL",
-        "AMD",
-        "GOOGL",
-        "QCOM",
-        "SSNLF",
-        "TSM"
-      ],
-      "created_at": "2026-05-14T10:28:58Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Qualcomm positioned as leader in high-growth agentic AI smartphone market with competitive Snapdragon 8 Elite"
-    },
-    {
-      "id": "52552686",
-      "headline": "Cisco Stock Hits 52-Week High - Here's Why",
-      "summary": "CSCO stock hits a 52-week high after Cisco beats Q3 estimates and raises guidance on massive AI demand. Get the full financial breakdown.",
-      "url": "https://www.benzinga.com/trading-ideas/movers/26/05/52552686/cisco-stock-hits-52-week-high-heres-why",
-      "author": "Lekha Gupta",
-      "source": "benzinga",
-      "symbols": [
-        "CSCO"
-      ],
-      "created_at": "2026-05-14T10:08:42Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "52-week high, beats earnings estimates, and raises guidance driven by strong AI demand"
-    },
-    {
-      "id": "52552079",
-      "headline": "Why Cisco Shares Are Trading Higher By Over 17%; Here Are 20 Stocks Moving Premarket",
-      "summary": "Cisco Inc (NASDAQ: CSCO) beat expectations and raised guidance with $15.84B revenue and $1.06 EPS. Shares jumped 17.3% in pre-market trading.",
-      "url": "https://www.benzinga.com/news/26/05/52552079/why-cisco-shares-are-trading-higher-by-over-17-here-are-20-stocks-moving-premarket",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "AEHL",
-        "AIIO",
-        "ALMU",
-        "ALP",
-        "CSCO",
-        "DOCS",
-        "DXF",
-        "GO",
-        "LIDR",
-        "LNKS",
-        "MDXH",
-        "MSGM",
-        "OCG",
-        "PDFS",
-        "PGEN",
-        "QUCY",
-        "SNAL",
-        "STAK",
-        "TDIC",
-        "WOK"
-      ],
-      "created_at": "2026-05-14T09:18:53Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Beat earnings expectations, raised guidance, and shares surged 17.3% in premarket trading."
-    },
-    {
-      "id": "52551814",
-      "headline": "Bernie Sanders Slams 'AI Oligarchs' Joining Trump On China Trip Amid Layoffs: 'Do You Think They're Losing Sleep'",
-      "summary": "Sanders criticized billionaires on Trump&39;s China trip as $16.4 trillion in corporate power and rising AI layoffs spark job loss concerns.",
-      "url": "https://www.benzinga.com/markets/tech/26/05/52551814/bernie-sanders-slams-ai-oligarchs-joining-trump-on-china-trip-amid-layoffs-do-you-think-theyre-losing-sleep",
-      "author": "Ananya Gairola",
-      "source": "benzinga",
-      "symbols": [
-        "AAPL",
-        "BA",
-        "BLK",
-        "C",
-        "GS",
-        "MA",
-        "META",
-        "NVDA",
-        "TSLA",
-        "V"
-      ],
-      "created_at": "2026-05-14T09:00:27Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Criticism of tech billionaires and rising AI layoffs spark negative sentiment about sector job losses."
-    },
-    {
-      "id": "52551628",
-      "headline": "Will S&P 500 Open Up Or Down On May 14?",
-      "summary": "May 14, 2026, Thursday: Polymarket traders stay bullish on the S&amp;P 500 despite hotter inflation and rising oil prices.",
-      "url": "https://www.benzinga.com/markets/prediction-markets/26/05/52551628/sp500-may-14-open-up-or-down-polymarket-inflation-ai-rally",
-      "author": "Eva Mathew",
-      "source": "benzinga",
-      "symbols": [
-        "AMAT",
-        "CSCO",
-        "KLAR",
-        "MU",
-        "NVDA",
-        "SMH",
-        "TSLA"
-      ],
-      "created_at": "2026-05-14T08:31:30Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Polymarket traders remain bullish on S&P 500 despite headwinds from inflation and oil prices."
-    },
-    {
-      "id": "52551053",
-      "headline": "Dillard's, Cisco Systems And 3 Stocks To Watch Heading Into Thursday",
-      "summary": "U.S. stock futures up, Dillard&39;s, Cisco, Applied Materials, Doximity, Legence expected to report earnings. Stocks to watch. Photo via Shutterstock.",
-      "url": "https://www.benzinga.com/markets/equities/26/05/52551053/dillards-cisco-systems-and-3-stocks-to-watch-heading-into-thursday",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "AMAT",
-        "CSCO",
-        "DDS",
-        "DOCS",
-        "LGN"
-      ],
-      "created_at": "2026-05-14T07:25:43Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Article lists stocks to watch with earnings reports; no explicit positive or negative commentary provided."
-    },
-    {
-      "id": "52550445",
-      "headline": "Cisco Lays Off 4,000 Employees In AI Overhaul, CFO Mark Patterson Says Move Not 'Savings' Driven But About 'Realigning' Resources",
-      "summary": "Cisco is cutting 4,000 jobs to accelerate its AI and security strategy as strong earnings and raised guidance drive shares sharply higher.",
-      "url": "https://www.benzinga.com/markets/tech/26/05/52550445/cisco-lays-off-4000-employees-ai-overhaul",
-      "author": "Ananya Gairola",
-      "source": "benzinga",
-      "symbols": [
-        "CSCO"
-      ],
-      "created_at": "2026-05-14T06:04:28Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Strong earnings, raised guidance, and strategic AI realignment drive positive investor sentiment despite layoffs."
-    },
-    {
-      "id": "52550177",
-      "headline": "Nvidia Overtakes Silver To Become World's Second-Largest Asset At $5.52 Trillion, Market Commentator Calls It 'Historic Technological Revolution'",
-      "summary": "Nvidia surpassed silver in estimated value to become the world&39;s second-largest asset as investor enthusiasm around AI continued to fuel a historic rally in semiconductor stocks.",
-      "url": "https://www.benzinga.com/markets/economic-data/26/05/52550177/nvidia-overtakes-silver-second-largest-asset-5-52-trillion",
-      "author": "Sweta Killa",
+      "id": "52627188",
+      "headline": "Two Tesla Robotaxi Crashes In Austin Are Putting Fresh Pressure On Elon Musk's EV Giant As Youtuber Says It's Time To 'Come Clean'",
+      "summary": "YouTuber JerryRigEverything, urges Tesla CEO Elon Musk to clarify reports of Supervised Tesla Robotaxis reporting crashes in Austin.",
+      "url": "https://www.benzinga.com/markets/tech/26/05/52627188/two-tesla-robotaxi-crashes-in-austin-are-putting-fresh-pressure-on-elon-musks-ev-giant-as-youtuber-says-its-time-to-come-clean",
+      "author": "Badar Shaikh",
       "source": "benzinga",
       "symbols": [
         "GOOG",
         "GOOGL",
-        "NVDA"
+        "TSLA"
       ],
-      "created_at": "2026-05-14T05:28:24Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Nvidia's historic market valuation surge and AI-driven rally demonstrate strong investor confidence"
-    },
-    {
-      "id": "52549400",
-      "headline": "Cisco, Nokia, Ford, Quantum Cyber And Nebius Group: Why These 5 Stocks Are On Investors' Radars Today",
-      "summary": "Major U.S. indices ended Wednesday mixed, with the Dow Jones Industrial Average slipping 0.14% to 49,693.20.",
-      "url": "https://www.benzinga.com/markets/equities/26/05/52549400/cisco-nokia-ford-quantum-cyber-and-nebius-group-why-these-5-stocks-are-on-investors-radars-today",
-      "author": "Shivdeep Dhaliwal",
-      "source": "benzinga",
-      "symbols": [
-        "CSCO",
-        "F",
-        "NBIS",
-        "NOK",
-        "QUCY"
-      ],
-      "created_at": "2026-05-14T01:35:32Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Mixed market performance with slight decline; stocks listed for attention without directional bias."
-    },
-    {
-      "id": "52548450",
-      "headline": "Here's How Much You Would Have Made Owning KLA Stock In The Last 10 Years",
-      "summary": " ",
-      "url": "https://www.benzinga.com/insights/news/26/05/52548450/heres-how-much-you-would-have-made-owning-kla-stock-in-the-last-10-years",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "KLAC"
-      ],
-      "created_at": "2026-05-13T22:30:30Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Article highlights profitable historical returns of KLA stock over 10 years, implying strong past performance."
-    },
-    {
-      "id": "52547333",
-      "headline": "Cisco Systems Reports Q3 2026 Results: Full Earnings Call Transcript",
-      "summary": " ",
-      "url": "https://www.benzinga.com/insights/news/26/05/52547333/cisco-systems-reports-q3-2026-results-full-earnings-call-transcript",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "CSCO"
-      ],
-      "created_at": "2026-05-13T21:33:26Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Headline only reports earnings release without indicating positive or negative performance metrics."
-    },
-    {
-      "id": "52546441",
-      "headline": "12 Information Technology Stocks Moving In Wednesday's After-Market Session",
-      "summary": " ",
-      "url": "https://www.benzinga.com/insights/movers/26/05/52546441/12-information-technology-stocks-moving-in-wednesdays-after-market-session",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "AIMD",
-        "ALMU",
-        "CGTL",
-        "CSCO",
-        "INVE",
-        "INVZ",
-        "LIDR",
-        "MVIS",
-        "NXTT",
-        "PDFS",
-        "RPGL",
-        "WRAP"
-      ],
-      "created_at": "2026-05-13T21:06:01Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Article reports stock movements without indicating positive or negative direction."
-    },
-    {
-      "id": "52544994",
-      "headline": "Cisco Says To Reduce Our Overall Workforce In Q4 By Fewer Than 4,000 Jobs, Representing Less Than 5% Of Our Total Employee Base",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/05/52544994/cisco-says-to-reduce-our-overall-workforce-in-q4-by-fewer-than-4-000-jobs-representing-less-than-5-o",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "CSCO"
-      ],
-      "created_at": "2026-05-13T20:35:01Z",
+      "created_at": "2026-05-18T08:23:34Z",
       "sentiment": "bear",
       "confidence": 0.85,
-      "reason": "Workforce reduction of up to 4,000 employees signals operational challenges and cost-cutting measures."
+      "reason": "Robotaxi crashes and calls for transparency create safety concerns and negative publicity for Tesla."
     },
     {
-      "id": "52538616",
-      "headline": "Sell in May? This 10-Year Semiconductor Stock Patterns Says No.",
-      "summary": "Outdated advice to &39;sell in May&39; ignores data and opportunities. KLA Corporation (NYSE:KLAC) shows a 10-year pattern in the summer market.",
-      "url": "https://www.benzinga.com/opinion/26/05/52538616/wall-street-says-sell-in-may-a-10-year-pattern-on-this-semiconductor-stock-says-the-opposite",
-      "author": "Tom Gentile",
+      "id": "52626987",
+      "headline": "Bill Gates' Foundation Closes Microsoft Chapter, Offloads Last $3.2 Billion Stake",
+      "summary": "Gates Foundation exits Microsoft after selling final $3.2 billion stake, ending a decades-long investment relationship.",
+      "url": "https://www.benzinga.com/markets/tech/26/05/52626987/bill-gates-foundation-closes-microsoft-chapter-offloads-last-3-2-billion-stake",
+      "author": "Namrata Sen",
       "source": "benzinga",
       "symbols": [
-        "KLAC"
+        "GOOG",
+        "GOOGL",
+        "MSFT",
+        "PS"
       ],
-      "created_at": "2026-05-13T18:16:03Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Article highlights positive 10-year summer pattern for KLA, contradicting bearish 'sell in May' advice."
-    },
-    {
-      "id": "52544347",
-      "headline": "Cisco Stock Soars As 'Very Strong, Broad-Based Demand' Drives Q3 Earnings Beat",
-      "summary": "Cisco Systems Inc (NASDAQ:CSCO) reports financial results for the third quarter of fiscal 2026 after the market close on Wednesday.",
-      "url": "https://www.benzinga.com/markets/earnings/26/05/52544347/cisco-stock-soars-as-very-strong-broad-based-demand-drives-q3-earnings-beat",
-      "author": "Adam Eckert",
-      "source": "benzinga",
-      "symbols": [
-        "CSCO"
-      ],
-      "created_at": "2026-05-13T20:24:11Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong Q3 earnings beat driven by broad-based demand resulted in stock soars."
-    },
-    {
-      "id": "52543572",
-      "headline": "Cisco Raising Expected FY26 Orders To $9B, Up From $5B",
-      "summary": "",
-      "url": "https://www.benzinga.com/quote/CSCO",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "CSCO"
-      ],
-      "created_at": "2026-05-13T20:12:50Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Cisco significantly raised FY26 order guidance by 80%, from $5B to $9B, indicating strong demand."
-    },
-    {
-      "id": "52543529",
-      "headline": "Cisco Announces Restructuring To Boost AI, Security And Silicon Investments; Expects Up To $1B In Charges",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/05/52543529/cisco-announces-restructuring-to-boost-ai-security-and-silicon-investments-expects-up-to-1b-in-charg",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "CSCO"
-      ],
-      "created_at": "2026-05-13T20:12:19Z",
+      "created_at": "2026-05-18T07:31:55Z",
       "sentiment": "neutral",
       "confidence": 0.85,
-      "reason": "Restructuring costs negative short-term, but AI/security focus positive long-term strategy."
+      "reason": "Foundation liquidation is administrative, not reflective of Microsoft's business fundamentals or outlook."
+    },
+    {
+      "id": "52626977",
+      "headline": "Singapore Foreign Minister Builds Diplomatic Second Brain Using Using Claude, WhatsApp And A Raspberry Pi: Here's Why He Did It",
+      "summary": "Singapore FM built an AI second brain using Claude and WhatsApp to enhance diplomacy, highlighting the growing use of AI agents.",
+      "url": "https://www.benzinga.com/markets/tech/26/05/52626977/singapore-foreign-minister-claude-whatsapp-raspberry-pi",
+      "author": "Ananya Gairola",
+      "source": "benzinga",
+      "symbols": [
+        "GOOG",
+        "GOOGL",
+        "META"
+      ],
+      "created_at": "2026-05-18T07:30:25Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Positive AI adoption story demonstrates Claude's practical value in high-profile government applications."
+    },
+    {
+      "id": "52625053",
+      "headline": "Cisco Stock Is Up 55% This Year, But Two Key Risks May Trigger Reversal",
+      "summary": "Cisco stock has jumped by 55% this year, but its extreme overbought conditions and elevated valuations means that a reversal is possible.",
+      "url": "https://www.benzinga.com/markets/equities/26/05/52625053/cisco-stock-is-up-55-this-year-but-two-key-risks-may-trigger-reversal",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "CSCO",
+        "MU",
+        "NVDA"
+      ],
+      "created_at": "2026-05-17T15:04:07Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Overbought conditions and elevated valuations present reversal risks despite YTD gains."
+    },
+    {
+      "id": "52625011",
+      "headline": "EXCLUSIVE: Tesla Isn't On The Same Playing Field As Waymo, Expert Says\u2014Predicts Chinese Manufacturers Entering The U.S. Is 'Inevitable'",
+      "summary": "While Waymo dominates the U.S. Robotaxis and Tesla lags behind. Uber&39;s reach and partnerships could make it an orchestrator in the sector.",
+      "url": "https://www.benzinga.com/markets/tech/26/05/52625011/exclusive-tesla-isnt-on-the-same-playing-field-as-waymo-expert-says-predicts-chinese-manufacturers-entering-the-u-s-is-inevitable",
+      "author": "Badar Shaikh",
+      "source": "benzinga",
+      "symbols": [
+        "AMZN",
+        "GOOG",
+        "GOOGL",
+        "LYFT",
+        "STLA",
+        "TSLA",
+        "UBER"
+      ],
+      "created_at": "2026-05-17T14:32:43Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Tesla lagging behind Waymo in robotaxi competition with Chinese competition emerging poses competitive threats."
+    },
+    {
+      "id": "52624919",
+      "headline": "Rocket Lab, Tower Semiconductor, And Palo Alto Are Among Top 10 Large-Cap Gainers Last Week (May 11-May 15): Are the Others in Your Portfolio?",
+      "summary": "AI, semiconductor and digital infrastructure names led last week&39;s large-cap gainers as strong earnings, upbeat guidance and analyst optimism fueled broad investor momentum.",
+      "url": "https://www.benzinga.com/markets/large-cap/26/05/52624919/rocket-lab-tower-semiconductor-and-palo-alto-are-among-top-10-large-cap-gainers-last-week-may-11-may-15-are-the-others-in-your-portfolio",
+      "author": "Nabaparna Bhattacharya",
+      "source": "benzinga",
+      "symbols": [
+        "AAOI",
+        "ALAB",
+        "ARMK",
+        "AVGO",
+        "CSCO",
+        "LUMN",
+        "NBIS",
+        "PANW",
+        "RKLB",
+        "TSEM",
+        "VG"
+      ],
+      "created_at": "2026-05-17T13:21:09Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Strong earnings, upbeat guidance, and analyst optimism driving gains in AI and semiconductor sectors."
+    },
+    {
+      "id": "52624904",
+      "headline": "Consumer Tech News (May 11-15): Trump\u2013Xi Talk Fails to Deliver Chip Deal, Elon Musk vs. OpenAI Trail & More",
+      "summary": "Semiconductor stocks fell after Trump\u2013Xi talks ended without major chip agreements, while AI demand and earnings strength supported select tech names.",
+      "url": "https://www.benzinga.com/markets/tech/26/05/52624904/consumer-tech-news-may-11-15-trump-xi-talk-fails-to-deliver-chip-deal-elon-musk-vs-openai-trail-more",
+      "author": "Lekha Gupta",
+      "source": "benzinga",
+      "symbols": [
+        "AIIO",
+        "AMAT",
+        "AMZN",
+        "BABA",
+        "BIRK",
+        "BYDDF",
+        "BYDDY",
+        "CBRS",
+        "CSCO",
+        "DAL",
+        "FIG",
+        "GOOG",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NBIS",
+        "NOK",
+        "NVDA",
+        "PLTR",
+        "POET",
+        "SFTBY",
+        "SSNLF",
+        "TSEM",
+        "TSLA",
+        "TSM",
+        "UBER",
+        "XPEV"
+      ],
+      "created_at": "2026-05-17T13:20:27Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Mixed signals: chip stocks fell on failed trade talks, but AI demand supported select tech names."
+    },
+    {
+      "id": "52624745",
+      "headline": "Tim Cook Finds Purpose, OpenAI-Apple Relationship Sours, Intel Strikes Deal: This Week In Appleverse",
+      "summary": "Weekend tech news included Tim Cook reflecting on purpose, tensions between Apple and OpenAI and Apple securing a new supply deal with Intel.",
+      "url": "https://www.benzinga.com/markets/tech/26/05/52624745/tim-cook-finds-purpose-openai-apple-relationship-sours-intel-strikes-deal-this-week-in-appleverse",
+      "author": "Mohd Haider",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "GOOG",
+        "GOOGL",
+        "INTC",
+        "NOW",
+        "XOM"
+      ],
+      "created_at": "2026-05-17T11:00:33Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Mixed signals: positive Intel deal offset by Apple-OpenAI tensions and Cook's purpose reflection."
+    },
+    {
+      "id": "52624458",
+      "headline": "Chamath Palihapitiya Warns Anthropic Risks Becoming 'Friendster Of The AI Era' After Claude Refuses Stock Screening Prompt",
+      "summary": "Chamath Palihapitiya warns that Anthropic may lag in the AI race after Claude refuses a stock screening task.",
+      "url": "https://www.benzinga.com/markets/tech/26/05/52624458/chamath-palihapitiya-warns-anthropic-risks-becoming-friendster-of-the-ai-era-after-claude-refuses-stock-screening-prompt",
+      "author": "Snigdha Gairola",
+      "source": "benzinga",
+      "symbols": [
+        "GOOG",
+        "GOOGL",
+        "MSFT"
+      ],
+      "created_at": "2026-05-17T05:53:42Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Comparison to failed platform Friendster suggests Anthropic risks irrelevance in competitive AI market."
+    },
+    {
+      "id": "52623061",
+      "headline": "Memory Boom Fuels DRAM ETF's Sprint To $10 Billion, But Risks Remain",
+      "summary": "The Roundhill Memory ETF (CBOE: DRAM) continued its strong momentum last week, helped by the strong demand for memory products as the artificial intelligence (AI) boom continued.\u00a0",
+      "url": "https://www.benzinga.com/etfs/sector-etfs/26/05/52623061/memory-boom-fuels-dram-etfs-sprint-to-10-billion-but-risks-remain",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "DRAM",
+        "MU",
+        "SNDK",
+        "STX"
+      ],
+      "created_at": "2026-05-16T20:00:37Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Strong momentum and AI-driven demand boost DRAM ETF to $10B, though risks are noted."
+    },
+    {
+      "id": "52622896",
+      "headline": "How Elon Musk Knows If You're Lying In A Job Interview",
+      "summary": "Elon Musk has a favorite interview question to ask to try and detect liars. Here&39;s the question and how people can stand out.",
+      "url": "https://www.benzinga.com/personal-finance/management/26/05/52622896/how-elon-musk-knows-if-youre-lying-in-a-job-interview",
+      "author": "Chris Katje",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "GOOGL",
+        "TSLA"
+      ],
+      "created_at": "2026-05-16T17:31:43Z",
+      "sentiment": "neutral",
+      "confidence": 0.95,
+      "reason": "Article discusses interview techniques, no financial impact on stock performance mentioned."
+    },
+    {
+      "id": "52622528",
+      "headline": "Benzinga Bulls And Bears: Nvidia, Cisco, Virgin Galactic \u2014 And Inflation Fears Rattle Investors",
+      "summary": "Benzinga examined the prospects for many investors&39; favorite stocks over the last week \u2014 here&39;s a look at some of our top stories.",
+      "url": "https://www.benzinga.com/markets/market-summary/26/05/52622528/benzinga-bulls-and-bears-nvidia-cisco-virgin-galactic-and-inflation-fears-rattle-investors",
+      "author": "Benzinga Senior Editor",
+      "source": "benzinga",
+      "symbols": [
+        "CBRS",
+        "CSCO",
+        "DOCS",
+        "ENVX",
+        "FIG",
+        "MU",
+        "MVST",
+        "NBIS",
+        "NU",
+        "NVDA",
+        "QUBT",
+        "SNDK",
+        "SPCE"
+      ],
+      "created_at": "2026-05-16T12:50:55Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Article discusses multiple stocks with mixed prospects and inflation concerns without clear directional bias."
+    },
+    {
+      "id": "52622497",
+      "headline": "Nebius Group, Cisco Systems, Micron Technology And More: 5 Stocks Investors Couldn't Stop Buzzing About This Week",
+      "summary": "Retail investors talked up five hot stocks this week (May 11 to May 15) on X and Reddit&39;s r/WallStreetBets: CSCO, MU, MSFT, NVDA, NBIS.",
+      "url": "https://www.benzinga.com/markets/equities/26/05/52622497/nebius-group-cisco-systems-micron-technology-and-more-5-stocks-investors-couldnt-stop-buzzing-about-this-week",
+      "author": "Rishabh Mishra",
+      "source": "benzinga",
+      "symbols": [
+        "BABA",
+        "CSCO",
+        "META",
+        "MSFT",
+        "MU",
+        "NBIS",
+        "NVDA",
+        "TCEHY"
+      ],
+      "created_at": "2026-05-16T12:32:13Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "High retail investor buzz and discussion activity typically signals positive sentiment and buying interest."
+    },
+    {
+      "id": "52622210",
+      "headline": "OpenAI Merges ChatGPT And Codex, Taps Greg Brockman To Lead Product Strategy Ahead Of Potential IPO: Report",
+      "summary": "OpenAI is restructuring its core products under a single team by combining ChatGPT, its Codex AI coding agent and developer API operations ahead of a potential IPO filing later this year.",
+      "url": "https://www.benzinga.com/markets/tech/26/05/52622210/openai-merges-chatgpt-and-codex-taps-greg-brockman-to-lead-product-strategy-ahead-of-potential-ipo-report",
+      "author": "Mohd Haider",
+      "source": "benzinga",
+      "symbols": [
+        "GOOG",
+        "GOOGL"
+      ],
+      "created_at": "2026-05-16T08:09:35Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Strategic product consolidation and IPO preparation signal growth momentum and operational maturation."
+    },
+    {
+      "id": "52622139",
+      "headline": "NextEra Energy, Dominion In Talks To Create $400 Billion Utility Giant As Electricity Demand Surges Amid AI Boom: Report",
+      "summary": "NextEra is reportedly seeking a $400 billion merger with Dominion to dominate booming AI-driven U.S. power demand.",
+      "url": "https://www.benzinga.com/m-a/26/05/52622139/nextera-energy-dominion-in-talks-to-create-400-billion-utility-giant-as-electricity-demand-surges-amid-ai-boom-report",
+      "author": "Ananya Gairola",
+      "source": "benzinga",
+      "symbols": [
+        "AMZN",
+        "D",
+        "GOOG",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NEE"
+      ],
+      "created_at": "2026-05-16T06:36:16Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Merger creates utility giant positioned to capitalize on surging AI-driven electricity demand growth."
+    },
+    {
+      "id": "52619068",
+      "headline": "Third Point Takes New Stake In Alphabet Inc With 175,000 Shares; ASML With 12,000 Shares; Broadcom With 50,000 Shares; Danaher Corp With 525,000 Shares; Hut 8 Corp With 869,563 Shares; KLA Corp With 1",
+      "summary": "",
+      "url": "https://www.benzinga.com/quote/TSM",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "ASML",
+        "AVGO",
+        "DHR",
+        "GOOGL",
+        "HUT",
+        "KLAC",
+        "LRCX",
+        "META",
+        "TDG",
+        "TSM"
+      ],
+      "created_at": "2026-05-15T21:11:35Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Major investor Third Point takes significant new stakes in multiple quality tech/industrial companies"
     }
   ]
 }
