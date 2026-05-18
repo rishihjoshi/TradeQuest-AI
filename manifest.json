@@ -31,6 +31,12 @@
   ],
   "icons": [
     {
+      "src": "icons/App Icon.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
       "src": "icons/icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
@@ -41,18 +47,14 @@
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "maskable"
-    },
+    }
+  ],
+  "screenshots": [
     {
-      "src": "icons/icon-192.png",
-      "sizes": "192x192",
+      "src": "icons/Hero Image.png",
       "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
+      "form_factor": "narrow",
+      "label": "TradeQuest AI — Portfolio Dashboard"
     }
   ]
 }
