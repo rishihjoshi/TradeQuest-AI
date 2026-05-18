@@ -1,4 +1,4 @@
-const CACHE = 'tradequest-v13';
+const CACHE = 'tradequest-v14';
 const SHELL = [
   './index.html',
   './style.css',
@@ -6,8 +6,8 @@ const SHELL = [
   './manifest.json',
   './icons/icon.svg',
   './icons/icon-maskable.svg',
-  './icons/icon-192.png',   // Android homescreen + splash screen
-  './icons/icon-512.png',   // Play Store / install banner
+  './icons/App Icon.png',
+  './icons/Hero Image.png',
   // CDN dependency — pre-cached so app renders offline
   'https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js',
 ];
