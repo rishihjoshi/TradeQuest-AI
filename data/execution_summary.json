@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-05-18T22:33:30Z",
-  "mode": "post_close",
+  "timestamp": "2026-05-19T16:40:30Z",
+  "mode": "market_open",
   "orders_placed": [],
   "orders_skipped": [
     {
@@ -9,5 +9,5 @@
     }
   ],
   "errors": [],
-  "cash_pct_after": 1.36
+  "cash_pct_after": 1.38
 }
