@@ -1,13 +1,15 @@
 {
-  "timestamp": "2026-05-19T16:40:30Z",
-  "mode": "market_open",
-  "orders_placed": [],
-  "orders_skipped": [
+  "timestamp": "2026-05-19T22:45:41Z",
+  "mode": "post_close",
+  "orders_placed": [
     {
+      "action": "SELL",
       "symbol": "STX",
-      "reason": "blocked by agent approval or risk gate"
+      "qty": 2,
+      "status": "submitted"
     }
   ],
+  "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 1.38
+  "cash_pct_after": 1.39
 }
