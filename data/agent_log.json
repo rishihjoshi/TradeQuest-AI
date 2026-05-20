@@ -1,7 +1,138 @@
 {
-  "last_run": "2026-05-19T22:46:47Z",
-  "last_type": "day_end",
+  "last_run": "2026-05-20T16:36:36Z",
+  "last_type": "day_start",
   "runs": [
+    {
+      "id": "RUN-20260520-1636",
+      "timestamp": "2026-05-20T16:36:36Z",
+      "type": "day_start",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is down -2.29% overall against a benchmark that has gained ~2.8% since inception, representing meaningful underperformance. Several positions (NEM, FDX, BEN, EME, STX) have been flagged for SELL across 2-5 consecutive runs with incomplete execution \u2014 this is the primary risk requiring resolution at today's open. Market breadth at 56.4% is narrowing (8MA below 200MA), which warrants reduced regime confidence despite SPY above its 200-day MA.",
+      "regime": "bull",
+      "regime_confidence": 0.55,
+      "flags": [
+        "STX: URGENT \u2014 SELL order submitted 2026-05-19 for 2 shares at ~$733 appears PENDING FILL. Position still shows 2 shares at $733 current price, avg cost $806.77, -9.14% PnL. momentum_6m=0, momentum_12m=0, volatility_30d=0.585 (likely above 90th pct), sector=Unknown, no MA data. All four filters effectively fail. Do NOT re-issue until fill status confirmed \u2014 if unfilled, escalate immediately.",
+        "NEM: URGENT UNRESOLVED SELL \u2014 flagged across 5+ consecutive runs. Price $105.19 is BELOW 50-day MA $111.61 (status=below_ma). momentum_6m=0.2028 (20th pct, well below 30% threshold). Sell Rule 1 (momentum decay confirmed) AND Rule 2 (trend break) both active. Unrealized loss -$81.87 (-11.48%) \u2014 tax-loss harvest candidate. SELL at open if not already filled.",
+        "FDX: URGENT UNRESOLVED SELL \u2014 flagged across 5+ consecutive runs. momentum_6m=0.4143 (41st pct, below 30% threshold), momentum_12m=0.6701 (67th pct, passes). 6-month rank has been below top 30% confirmed well beyond 5 trading days. Sell Rule 1 triggered. Unrealized loss -$18.06 (-4.59%) \u2014 minor tax-loss candidate. SELL at open.",
+        "BEN: URGENT UNRESOLVED SELL \u2014 flagged across 4+ consecutive runs. momentum_6m=0.4284 (43rd pct), momentum_12m=0.4545 (45th pct) \u2014 both below 30% threshold, confirmed well beyond 5 trading days. Sell Rule 1 triggered. Unrealized gain +$26.21 (+4.69%) \u2014 note: selling a winner; tax impact modest but rule justifies realization given persistent momentum failure.",
+        "EME: SELL confirmed \u2014 momentum_6m=0.3798 (38th pct, below 30% threshold), flagged across 3 consecutive runs. Approaching 5-day confirmation window for Sell Rule 1. Unrealized loss -$90.81 (-9.61%) \u2014 tax-loss harvest candidate. Price $854.36 is above 50-day MA $812.97 so Rule 2 not yet triggered, but Rule 1 momentum decay is primary concern. SELL at open per prior day_end decision.",
+        "KLAC: Weight=17.8% \u2014 well above 12% soft cap, approaching 20% hard cap threshold. momentum_6m=0.541 (54th pct), momentum_12m=1.2195 \u2014 passes momentum. Quality passes. However volatility_30d=0.5066 is elevated and likely near 90th pct of universe. Monitor for risk filter violation. No trim required until 20% hard cap is breached or quarterly rebalance. Flag for next rebalance review.",
+        "GOOGL: momentum_6m=0.4044 (40th pct) \u2014 approaching 30% threshold boundary but not yet in violation. momentum_12m=1.3407 \u2014 strong. Price $386.99 well above MA50 $334.71. No sell rule triggered. Watch for 6M rank deterioration.",
+        "STLD: momentum_6m=0.446 (45th pct), momentum_12m=0.6797 (68th pct) \u2014 both below top 30% threshold. However confirmation window status unclear from prior runs. Unrealized loss -$18.75 (-7.74%). If momentum rank below 30% is confirmed for 5 trading days, Sell Rule 1 triggers. Escalate to SELL at day_end if confirmation reached.",
+        "CAT: momentum_6m=0.5591 (56th pct) \u2014 below top 30%, but momentum_12m=1.459 is strong (top decile). Mixed signal. Unrealized loss -$61.79 (-6.70%). volatility_30d=0.4524 is elevated. Watch closely \u2014 6M rank failing while 12M strong suggests recent deceleration. Not yet triggering Rule 1 if score average is in top 30%.",
+        "BREADTH: Market breadth at 56.4% (borderline narrowing), with 8MA below 200MA indicating deteriorating participation. Regime confidence reduced from 0.86 to 0.55. This is a late/narrow bull \u2014 current 5% cash target is appropriate for bull regime but breadth warns against adding new equity exposure.",
+        "CASH: Cash at 1.39% vs 5% bull target. After pending STX fill and execution of NEM/FDX/BEN/EME sells, cash should recover toward 5% target. No new buys until unresolved sells are cleared and cash is rebuilt."
+      ],
+      "decisions": [
+        {
+          "action": "WATCH",
+          "symbol": "STX",
+          "reason": "SELL order submitted 2026-05-19 for 2 shares \u2014 DO NOT re-issue. Confirm fill status at open. If unfilled, treat as immediate SELL. All filters fail: momentum=0, unknown sector, volatility_30d=0.585 (extreme), no MA data. Largest loss contributor at -$147.54.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "immediate"
+        },
+        {
+          "action": "SELL",
+          "symbol": "NEM",
+          "reason": "Sell Rule 1 confirmed: momentum_6m=0.2028 (20th pct, below 30% threshold, confirmed 5+ trading days). Sell Rule 2 confirmed: price $105.19 below 50-day MA $111.61 (status=below_ma, confirmed multiple days). Both rules active simultaneously. Unrealized loss -$81.87 (-11.48%) \u2014 tax-loss harvest. No gain realization tax impact.",
+          "rule_triggered": "trend_break",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "FDX",
+          "reason": "Sell Rule 1 confirmed: momentum_6m=0.4143 (41st pct, below top 30% threshold), confirmed well beyond 5 trading days across multiple run cycles. Unrealized loss -$18.06 (-4.59%) \u2014 minor tax-loss benefit. No gain realization concern.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "BEN",
+          "reason": "Sell Rule 1 confirmed: momentum_6m=0.4284 (43rd pct) AND momentum_12m=0.4545 (45th pct) \u2014 both below top 30% threshold, confirmed across 4+ consecutive run days (well beyond 5-day confirmation window). Unrealized gain +$26.21 (+4.69%). Tax note: small short-term gain realized; rule justifies realization given persistent dual-metric momentum failure with no recovery signal.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "EME",
+          "reason": "Sell Rule 1 approaching confirmed: momentum_6m=0.3798 (38th pct, below 30% threshold), flagged 3 consecutive runs. Prior day_end issued SELL decision. Unrealized loss -$90.81 (-9.61%) \u2014 tax-loss harvest candidate. No gain realization concern. Execute as directed by prior day_end run.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "STLD",
+          "reason": "momentum_6m=0.446 (45th pct), momentum_12m=0.6797 (68th pct) \u2014 both below top 30% threshold. Confirmation window approaching 5 days. Unrealized loss -$18.75 (-7.74%). Monitor at day_end for Rule 1 trigger confirmation.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "KLAC",
+          "reason": "Weight=17.8% above 12% soft cap. Passes momentum (6m=54th pct, 12m=122nd pct) and quality filters but volatility_30d=0.5066 is elevated \u2014 potential risk filter breach. No hard cap violation yet (below 20%). Review at next quarterly rebalance for trim to 15%.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "GOOGL",
+          "reason": "momentum_6m=0.4044 (40th pct) \u2014 approaching top 30% threshold from above. momentum_12m=1.3407 remains strong. No sell rule triggered. Watch for continued 6M rank deterioration over next 3-5 sessions.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "CAT",
+          "reason": "momentum_6m=0.5591 (56th pct) below top 30%, but momentum_12m=1.459 (top decile) is strong. Average momentum score may still pass composite rank. Unrealized loss -$61.79 (-6.70%). volatility_30d=0.4524 elevated. No single sell rule clearly triggered yet \u2014 monitor 6M rank trend.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "All filters pass. momentum_rank=6 (top tier), momentum_6m=0.776, momentum_12m=0.852. Price $419.98 well above MA50 $358.44. EPS growth 116.7%, revenue growth 30.4%. PnL +9.48%. No sell rules triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CSCO",
+          "reason": "Strong performer. PnL +20.4% in ~8 days but not yet at 60% threshold for profit-take rule. momentum_6m=0.4952 (below top 30% \u2014 monitor), momentum_12m=0.8553. Price $115.26 vs MA50 $86.72. Watch 6M rank closely as it is near threshold.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "momentum_rank=7, momentum_6m=0.6505, momentum_12m=0.9865. EPS growth 96.2%, revenue 23.1%. Price above MA50. Minor loss -1.1%. All filters pass.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "KEYS",
+          "reason": "Top momentum name: rank=4, momentum_6m=0.9218, momentum_12m=1.0805. EPS growth 68%, revenue 23.3%. Price $352.04 above MA50 $319.41. All filters pass. Minor loss -0.83%.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "momentum_rank=9, momentum_6m=0.5107, momentum_12m=0.9378. EPS growth 382.1%, revenue 21.3%. Price $221.73 above MA50 $193.80. Minor loss -2.07%. All filters pass.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "increase",
+      "cash_rationale": "Current cash at 1.39% is well below the 5% bull-regime target. Executing sells of NEM/FDX/BEN/EME (plus confirming STX fill) will release approximately $1,500-$2,300 in proceeds, rebuilding cash toward 5% target (~$486). No new buys should be initiated today \u2014 unresolved sells must clear first, and narrowing breadth (56.4%, 8MA below 200MA) supports maintaining higher cash buffer within the bull regime allocation.",
+      "summary": "DAY START 2026-05-20: URGENT \u2014 confirm STX sell fill and flag NEM/FDX/BEN/EME for immediate sell-at-open execution; regime downgraded to bull/55% confidence on narrowing breadth; 8 positions hold, 4 flagged SELL, 1 pending confirmation.",
+      "usage": {
+        "input_tokens": 13461,
+        "output_tokens": 3445,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 3614
+      }
+    },
     {
       "id": "RUN-20260519-2246",
       "timestamp": "2026-05-19T22:46:47Z",

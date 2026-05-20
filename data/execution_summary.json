@@ -1,15 +1,33 @@
 {
-  "timestamp": "2026-05-19T22:45:41Z",
-  "mode": "post_close",
+  "timestamp": "2026-05-20T16:37:21Z",
+  "mode": "market_open",
   "orders_placed": [
     {
       "action": "SELL",
-      "symbol": "STX",
+      "symbol": "NEM",
+      "qty": 6,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "AMAT",
+      "qty": 1,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "TPR",
+      "qty": 4,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "IBKR",
       "qty": 2,
       "status": "submitted"
     }
   ],
   "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 1.39
+  "cash_pct_after": 11.64
 }
