@@ -1,33 +1,20 @@
 {
-  "timestamp": "2026-05-20T16:37:21Z",
-  "mode": "market_open",
+  "timestamp": "2026-05-20T22:52:36Z",
+  "mode": "post_close",
   "orders_placed": [
     {
-      "action": "SELL",
-      "symbol": "NEM",
-      "qty": 6,
-      "status": "submitted"
-    },
-    {
       "action": "BUY",
-      "symbol": "AMAT",
-      "qty": 1,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "TPR",
-      "qty": 4,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "IBKR",
-      "qty": 2,
+      "symbol": "NTRS",
+      "qty": 3,
       "status": "submitted"
     }
   ],
-  "orders_skipped": [],
+  "orders_skipped": [
+    {
+      "symbol": "IBKR",
+      "reason": "blocked by agent approval or risk gate"
+    }
+  ],
   "errors": [],
   "cash_pct_after": 11.64
 }
