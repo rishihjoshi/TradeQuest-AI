@@ -149,7 +149,9 @@ class TestLoadAgentApprovals(unittest.TestCase):
         tmp_path.write_text(json.dumps({"runs": runs}), encoding="utf-8")
 
     def test_immediate_urgency_default(self, tmp_dir=None):
-        """Default call (no target_urgency) loads only 'immediate' decisions."""
+        """Default call loads 'next_open' decisions (and legacy 'immediate' as next_open).
+        'immediate' is a deprecated label — both are treated as execute-at-market-open.
+        """
         import tempfile, os
         with tempfile.TemporaryDirectory() as td:
             log_path = Path(td) / "agent_log.json"
@@ -159,15 +161,23 @@ class TestLoadAgentApprovals(unittest.TestCase):
                 "decisions": [
                     {"action": "SELL", "symbol": "TSLA", "urgency": "immediate"},
                     {"action": "SELL", "symbol": "AAPL", "urgency": "next_open"},
+                    {"action": "SELL", "symbol": "BEN",  "urgency": "next_rebalance"},
                 ],
             }])
             with patch.object(update, "LOG_FILE", log_path):
-                approvals = update.load_agent_approvals(target_urgency="immediate")
+                approvals = update.load_agent_approvals(target_urgency="next_open")
+        # next_open decisions load
+        self.assertIn("AAPL", approvals["SELL"])
+        # legacy "immediate" is treated as next_open — backward compat
         self.assertIn("TSLA", approvals["SELL"])
-        self.assertNotIn("AAPL", approvals["SELL"])
+        # next_rebalance decisions must NOT load when target is next_open
+        self.assertNotIn("BEN", approvals["SELL"])
 
     def test_next_open_urgency(self):
-        """Pre-market run with target_urgency='next_open' loads only next_open decisions."""
+        """next_open urgency decisions must load for target_urgency='next_open'.
+        Legacy 'immediate' urgency is treated as next_open (backward compat)
+        so both labels execute at market open.
+        """
         import tempfile
         with tempfile.TemporaryDirectory() as td:
             log_path = Path(td) / "agent_log.json"
@@ -181,8 +191,9 @@ class TestLoadAgentApprovals(unittest.TestCase):
             }])
             with patch.object(update, "LOG_FILE", log_path):
                 approvals = update.load_agent_approvals(target_urgency="next_open")
+        # Both "next_open" and legacy "immediate" execute at market open
         self.assertIn("AAPL", approvals["SELL"])
-        self.assertNotIn("TSLA", approvals["SELL"])
+        self.assertIn("TSLA", approvals["SELL"], "'immediate' must be treated as 'next_open'")
 
     def test_parse_failed_run_is_skipped(self):
         """A run with parse_failed=True must be skipped; the next valid run is used."""
@@ -961,6 +972,107 @@ class TestWriteExecutionSummary(unittest.TestCase):
             with open(Path(td) / "execution_summary.json") as f:
                 payload = json.load(f)
         self.assertEqual(payload["orders_placed"][0]["status"], "submitted")
+
+
+# Sentinel — rule-based intraday sell checker
+# ════════════════════════════════════════════════════════════════════════════
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "bot"))
+import sentinel  # noqa: E402
+
+
+class TestSentinelRuleEngine(unittest.TestCase):
+    """Tests for bot/sentinel.py — the three hard sell rules."""
+
+    def _make_portfolio(self, holdings: list) -> dict:
+        return {"holdings": holdings}
+
+    def _make_runs(self, symbol: str, action: str, n: int, rule: str = "trend_break") -> list:
+        """Return n fake agent runs all flagging `symbol` with `action`."""
+        decision = {
+            "action": action,
+            "symbol": symbol,
+            "reason": "price below 50-day MA" if rule == "trend_break" else "momentum decay",
+            "rule_triggered": rule,
+            "urgency": "next_open",
+        }
+        return [{"run_type": "day_end", "decisions": [decision]} for _ in range(n)]
+
+    # ── Rule 1: Concentration ──────────────────────────────────────────────
+
+    def test_rule1_concentration_triggers_sell(self):
+        """Position weight > 16% (2× 8%) must trigger a concentration sell."""
+        holdings = [{"symbol": "KLAC", "weight": 0.185, "shares": 1}]
+        sells = sentinel.check_rules(self._make_portfolio(holdings), [])
+        syms = [s["symbol"] for s in sells]
+        self.assertIn("KLAC", syms)
+        self.assertEqual(sells[0]["rule"], "concentration")
+
+    def test_rule1_below_threshold_does_not_trigger(self):
+        """Position weight ≤ 16% must NOT trigger concentration sell."""
+        holdings = [{"symbol": "ADI", "weight": 0.09, "shares": 2}]
+        sells = sentinel.check_rules(self._make_portfolio(holdings), [])
+        self.assertEqual(sells, [])
+
+    # ── Rule 2: Trend break ────────────────────────────────────────────────
+
+    def test_rule2_three_consecutive_below_ma_triggers(self):
+        """Price below MA50 for ≥ 3 consecutive runs must trigger trend-break sell."""
+        holdings = [{"symbol": "TPR", "weight": 0.05, "shares": 4}]
+        runs = self._make_runs("TPR", "SELL", 3, rule="trend_break")
+        sells = sentinel.check_rules(self._make_portfolio(holdings), runs)
+        syms = [s["symbol"] for s in sells]
+        self.assertIn("TPR", syms)
+        self.assertEqual(sells[0]["rule"], "trend_break")
+
+    def test_rule2_two_runs_does_not_trigger(self):
+        """Only 2 consecutive below-MA runs must NOT trigger sell (threshold is 3)."""
+        holdings = [{"symbol": "TPR", "weight": 0.05, "shares": 4}]
+        runs = self._make_runs("TPR", "SELL", 2, rule="trend_break")
+        sells = sentinel.check_rules(self._make_portfolio(holdings), runs)
+        self.assertEqual(sells, [])
+
+    # ── Rule 3: Persistent flag ────────────────────────────────────────────
+
+    def test_rule3_five_consecutive_flags_triggers(self):
+        """Symbol flagged SELL in ≥ 5 consecutive runs must trigger persistent-flag sell."""
+        holdings = [{"symbol": "EME", "weight": 0.06, "shares": 1}]
+        runs = self._make_runs("EME", "SELL", 5, rule="momentum_decay")
+        sells = sentinel.check_rules(self._make_portfolio(holdings), runs)
+        syms = [s["symbol"] for s in sells]
+        self.assertIn("EME", syms)
+        self.assertEqual(sells[0]["rule"], "persistent_flag")
+
+    def test_rule3_four_consecutive_does_not_trigger(self):
+        """Only 4 consecutive SELL flags must NOT trigger (threshold is 5)."""
+        holdings = [{"symbol": "EME", "weight": 0.06, "shares": 1}]
+        runs = self._make_runs("EME", "SELL", 4, rule="momentum_decay")
+        sells = sentinel.check_rules(self._make_portfolio(holdings), runs)
+        self.assertEqual(sells, [])
+
+    def test_rule3_streak_broken_resets_count(self):
+        """A HOLD between two SELL flags must break the streak."""
+        holdings = [{"symbol": "FDX", "weight": 0.06, "shares": 1}]
+        # 3 SELLs then a HOLD then 3 more SELLs — no 5-consecutive streak
+        sell_run = {"run_type": "day_end", "decisions": [
+            {"action": "SELL", "symbol": "FDX", "reason": "momentum decay",
+             "rule_triggered": "momentum_decay", "urgency": "next_open"}
+        ]}
+        hold_run = {"run_type": "day_end", "decisions": [
+            {"action": "HOLD", "symbol": "FDX", "reason": "thesis intact",
+             "rule_triggered": "null", "urgency": "next_rebalance"}
+        ]}
+        runs = [sell_run, sell_run, sell_run, hold_run, sell_run, sell_run, sell_run]
+        sells = sentinel.check_rules(self._make_portfolio(holdings), runs)
+        self.assertEqual(sells, [], "Streak broken by HOLD — should not trigger Rule 3")
+
+    def test_no_rules_triggered_returns_empty(self):
+        """Normal holdings with no rule violations must return an empty sell list."""
+        holdings = [
+            {"symbol": "JBL", "weight": 0.06, "shares": 1},
+            {"symbol": "ADI", "weight": 0.07, "shares": 1},
+        ]
+        sells = sentinel.check_rules(self._make_portfolio(holdings), [])
+        self.assertEqual(sells, [])
 
 
 if __name__ == "__main__":
