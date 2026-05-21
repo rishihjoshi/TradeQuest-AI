@@ -1,9 +1,8 @@
 name: Update Portfolio Data
 
 on:
-  schedule:
-    # 4:30 PM ET (21:30 UTC) every weekday — 30 min after NYSE close
-    - cron: '30 21 * * 1-5'
+  # Scheduled execution is handled by agent.yml (same cron, superset of steps).
+  # This workflow remains for manual order dispatch only.
   workflow_dispatch:
     inputs:
       order_symbol:
@@ -49,12 +48,12 @@ jobs:
 
     steps:
       - name: Checkout repo
-        # Pinned to commit SHA for supply-chain safety (v4.2.2)
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        # Pinned to commit SHA for supply-chain safety (v6.0.2 — Node.js 24 compatible)
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Set up Python
-        # Pinned to commit SHA for supply-chain safety (v5.3.0)
-        uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b
+        # Pinned to commit SHA for supply-chain safety (v6.2.0 — Node.js 24 compatible)
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405
         with:
           python-version: '3.12'
           cache: pip
@@ -97,5 +96,6 @@ jobs:
             echo "No changes."
           else
             git commit -m "agent[day-end]: $(date +'%Y-%m-%d %H:%M UTC')"
-            git push
+            git pull --rebase origin HEAD
+            git push -u origin HEAD
           fi

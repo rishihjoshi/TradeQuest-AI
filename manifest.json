@@ -13,7 +13,29 @@
   "orientation": "any",
   "prefer_related_applications": false,
   "categories": ["finance", "utilities"],
+  "shortcuts": [
+    {
+      "name": "Portfolio",
+      "short_name": "Portfolio",
+      "description": "View equity curve and holdings",
+      "url": "./index.html#portfolio",
+      "icons": [{ "src": "icons/icon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Agent Log",
+      "short_name": "Agent",
+      "description": "Review Claude AI decisions and flags",
+      "url": "./index.html#agent",
+      "icons": [{ "src": "icons/icon.svg", "sizes": "any" }]
+    }
+  ],
   "icons": [
+    {
+      "src": "icons/App Icon.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
     {
       "src": "icons/icon.svg",
       "sizes": "any",
@@ -25,18 +47,14 @@
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "maskable"
-    },
+    }
+  ],
+  "screenshots": [
     {
-      "src": "icons/icon-192.png",
-      "sizes": "192x192",
+      "src": "icons/Hero Image.png",
       "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
+      "form_factor": "narrow",
+      "label": "TradeQuest AI — Portfolio Dashboard"
     }
   ]
 }

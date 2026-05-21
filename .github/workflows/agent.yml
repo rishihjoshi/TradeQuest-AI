@@ -80,10 +80,11 @@ jobs:
         run: |
           git config user.name "TradeQuest Bot"
           git config user.email "actions@github.com"
-          git add data/portfolio.json data/agent_log.json data/enrichment.json
+          git add data/
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
             git commit -m "agent[${{ env.RUN_TYPE }}]: $(date -u +'%Y-%m-%d %H:%M')"
+            git pull --rebase origin HEAD
             git push -u origin HEAD
           fi

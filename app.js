@@ -479,6 +479,13 @@ class TradeQuestApp {
     badge.querySelector('#regimeLabel').textContent =
       regime === 'bull' ? 'Bull Market' : regime === 'bear' ? 'Bear Market' : 'Sideways';
 
+    const verEl = $('strategyVersion');
+    if (verEl) {
+      const ver = meta.strategy_version || '';
+      verEl.textContent = ver ? `v${ver}` : '';
+      verEl.style.display = ver ? '' : 'none';
+    }
+
     $('nextRebalance').textContent = `Rebalance: ${fmtDate(meta.next_rebalance)}`;
   }
 
@@ -555,7 +562,7 @@ class TradeQuestApp {
   // ── Equity Chart ──────────────────────────────────────────
   renderEquityChart() {
     const isMobile = window.matchMedia('(max-width: 640px)').matches;
-    const { equity_curve, summary } = this.data;
+    const { equity_curve, spy_curve, summary } = this.data;
     const ctx         = $('equityChart').getContext('2d');
     const returnPct   = this.data.meta.initial_capital > 0
       ? ((summary.portfolio_value - this.data.meta.initial_capital) / this.data.meta.initial_capital * 100)
@@ -569,8 +576,20 @@ class TradeQuestApp {
       return;
     }
 
-    chartReturn.textContent = fmtPct(returnPct) + ' since inception';
-    chartReturn.className   = `chart-return ${returnPct >= 0 ? 'profit-cell' : 'loss-cell'}`;
+    const benchCurve = this.data.benchmark || spy_curve;
+    const hasBench   = benchCurve && benchCurve.length >= 2;
+    let returnHtml   = fmtPct(returnPct) + ' since inception';
+    if (hasBench) {
+      const bStart  = benchCurve[0].value;
+      const bEnd    = benchCurve[benchCurve.length - 1].value;
+      const spyPct  = bStart > 0 ? ((bEnd - bStart) / bStart * 100) : 0;
+      const delta   = returnPct - spyPct;
+      const dSign   = delta >= 0 ? '+' : '';
+      const dColor  = delta >= 0 ? '#4CAF50' : '#EF5350';
+      returnHtml   += ` <span style="color:${dColor}">(${dSign}${delta.toFixed(1)}% vs SPY)</span>`;
+    }
+    chartReturn.innerHTML = returnHtml;
+    chartReturn.className = `chart-return ${returnPct >= 0 ? 'profit-cell' : 'loss-cell'}`;
 
     if (this.chart) this.chart.destroy();
 
@@ -578,37 +597,74 @@ class TradeQuestApp {
     gradient.addColorStop(0, 'rgba(212,175,55,0.18)');
     gradient.addColorStop(1, 'rgba(212,175,55,0)');
 
+    const spyValues  = (spy_curve && spy_curve.length >= 2) ? spy_curve.map(p => p.value) : [];
+    const showSpy    = spyValues.length >= 2;
+
+    // Build S&P 500 dataset aligned to the portfolio labels — fill gaps with null
+    let spyDataset = null;
+    if (showSpy) {
+      const spyByDate = Object.fromEntries(spy_curve.map(p => [p.date, p.value]));
+      const alignedSpy = equity_curve.map(p => spyByDate[p.date] ?? null);
+      spyDataset = {
+        label:                     'SPY Buy & Hold',
+        data:                      alignedSpy,
+        borderColor:               '#888888',
+        borderWidth:               1.4,
+        borderDash:                [4, 3],
+        backgroundColor:           'transparent',
+        fill:                      false,
+        tension:                   0.4,
+        pointRadius:               0,
+        pointHoverRadius:          4,
+        pointHoverBackgroundColor: '#888888',
+        pointHoverBorderColor:     '#0B0B0B',
+        pointHoverBorderWidth:     2,
+        spanGaps:                  true,
+      };
+    }
+
     this.chart = new Chart(ctx, {
       type: 'line',
       data: {
         labels:   equity_curve.map(p => p.date),
-        datasets: [{
-          data:                    equity_curve.map(p => p.value),
-          borderColor:             '#D4AF37',
-          borderWidth:             1.8,
-          backgroundColor:         gradient,
-          fill:                    true,
-          tension:                 0.4,
-          pointRadius:             0,
-          pointHoverRadius:        5,
-          pointHoverBackgroundColor: '#D4AF37',
-          pointHoverBorderColor:   '#0B0B0B',
-          pointHoverBorderWidth:   2,
-        }],
+        datasets: [
+          {
+            label:                     'Portfolio',
+            data:                      equity_curve.map(p => p.value),
+            borderColor:               '#D4AF37',
+            borderWidth:               1.8,
+            backgroundColor:           gradient,
+            fill:                      true,
+            tension:                   0.4,
+            pointRadius:               0,
+            pointHoverRadius:          5,
+            pointHoverBackgroundColor: '#D4AF37',
+            pointHoverBorderColor:     '#0B0B0B',
+            pointHoverBorderWidth:     2,
+          },
+          ...(showSpy ? [spyDataset] : []),
+        ],
       },
       options: {
         responsive: true, maintainAspectRatio: false,
         interaction: { mode: 'index', intersect: false },
         plugins: {
-          legend: { display: false },
+          legend: {
+            display: showSpy,
+            labels:  { color: '#808080', font: { size: 10 }, boxWidth: 14, padding: 12 },
+          },
           tooltip: {
             backgroundColor: '#1A1A1A', borderColor: '#2A2A2A', borderWidth: 1,
             titleColor: '#808080', bodyColor: '#EAEAEA', padding: 10,
             callbacks: {
-              label:      ctx => `  ${fmt$(ctx.raw)}`,
-              afterLabel: ctx => {
-                const pct = (ctx.raw - equity_curve[0].value) / equity_curve[0].value * 100;
-                return `  ${pct >= 0 ? '+' : ''}${pct.toFixed(2)}%`;
+              label: ctx => {
+                if (ctx.raw === null) return null;
+                const startVal = ctx.datasetIndex === 0
+                  ? equity_curve[0].value
+                  : (spy_curve && spy_curve[0] ? spy_curve[0].value : ctx.raw);
+                const pct = startVal > 0 ? (ctx.raw - startVal) / startVal * 100 : 0;
+                const name = ctx.dataset.label || '';
+                return `  ${name}: ${fmt$(ctx.raw)}  (${pct >= 0 ? '+' : ''}${pct.toFixed(2)}%)`;
               },
             },
           },
@@ -620,10 +676,13 @@ class TradeQuestApp {
             border: { color: '#1E1E1E' },
           },
           y: (() => {
-            const vals    = equity_curve.map(p => p.value);
-            const lo      = Math.min(...vals);
-            const hi      = Math.max(...vals);
-            const pad     = (hi - lo) * 0.15 || hi * 0.02; // 15% padding each side; fallback 2% for flat curve
+            const allVals = [
+              ...equity_curve.map(p => p.value),
+              ...(showSpy ? spyValues : []),
+            ].filter(v => v !== null && v !== undefined);
+            const lo  = Math.min(...allVals);
+            const hi  = Math.max(...allVals);
+            const pad = (hi - lo) * 0.15 || hi * 0.02;
             return {
               position:     'right',
               suggestedMin: lo - pad,

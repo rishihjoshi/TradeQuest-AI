@@ -18,14 +18,14 @@ import time
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
-import numpy as np
 import pandas as pd
 import requests
 import yfinance as yf
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
-DATA_FILE = REPO_ROOT / "data" / "portfolio.json"
-LOG_FILE  = REPO_ROOT / "data" / "agent_log.json"
+REPO_ROOT        = Path(__file__).resolve().parent.parent
+DATA_FILE        = REPO_ROOT / "data" / "portfolio.json"
+LOG_FILE         = REPO_ROOT / "data" / "agent_log.json"
+EXEC_SUMMARY_FILE = REPO_ROOT / "data" / "execution_summary.json"
 INITIAL_CAPITAL = 100_000
 TARGET_N = 17          # target number of holdings (15-20)
 CANDIDATES_CAP = 60    # max tickers to fetch fundamentals for
@@ -193,8 +193,13 @@ def apply_risk_limits(
         capped_shares = max(1, min(shares, max_shares))
         order_cost = capped_shares * price if price > 0 else 0.0
         if order_cost > available_cash and price > 0:
-            # Reduce to what cash allows
-            capped_shares = max(1, int(available_cash / price))
+            # Reduce to what cash allows; skip entirely if even 1 share exceeds budget
+            affordable = int(available_cash / price)
+            if affordable < 1:
+                print(f"  Risk gate: can't afford even 1 share of {sym} "
+                      f"(${price:,.0f}/share, available ${available_cash:,.0f}) — skipped")
+                continue
+            capped_shares = affordable
         capped_buys.append((sym, capped_shares))
         available_cash -= capped_shares * price if price > 0 else 0.0
 
@@ -354,19 +359,38 @@ def alpaca_orders_to_trades(orders) -> list[dict]:
 
 
 def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
-                         pv: float, cash: float) -> list[tuple]:
+                         pv: float, cash: float,
+                         prices: dict[str, float] | None = None) -> list[tuple]:
     """
     Submit market orders to Alpaca paper trading. Sells first to free cash.
     Enforces CASH_FLOOR_PCT: stops buying if remaining cash would fall below floor.
+    Idempotency guard: skips symbols that already have an open order today to prevent
+    duplicate submissions from concurrent workflow runs.
     """
-    from alpaca.trading.requests import MarketOrderRequest
-    from alpaca.trading.enums import OrderSide, TimeInForce
+    from alpaca.trading.requests import MarketOrderRequest, GetOrdersRequest
+    from alpaca.trading.enums import OrderSide, TimeInForce, QueryOrderStatus
 
+    prices     = prices or {}
     cash_floor = pv * CASH_FLOOR_PCT
     placed = []
 
+    # Build set of symbols already having an open/pending order today (idempotency guard)
+    today_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    already_ordered: set[str] = set()
+    try:
+        open_orders = client.get_orders(GetOrdersRequest(status=QueryOrderStatus.OPEN))
+        for o in open_orders:
+            order_date = str(getattr(o, "created_at", ""))[:10]
+            if order_date == today_str:
+                already_ordered.add(str(getattr(o, "symbol", "")).upper())
+    except Exception as e:
+        print(f"  Warning: could not fetch open orders for idempotency check: {e}", file=sys.stderr)
+
     for sym, shares in to_sell:
         qty = max(1, int(shares))
+        if sym.upper() in already_ordered:
+            print(f"  Idempotency: SELL {sym} already has an open order today — skipped")
+            continue
         try:
             client.submit_order(MarketOrderRequest(
                 symbol=sym, qty=qty,
@@ -375,12 +399,17 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
             ))
             print(f"  ↓ SELL {qty:>5} {sym}")
             placed.append(("SELL", sym, qty))
+            already_ordered.add(sym.upper())
         except Exception as e:
             print(f"  ✗ SELL {sym}: {e}", file=sys.stderr)
 
     for sym, shares in to_buy:
         qty      = max(1, int(shares))
-        est_cost = qty * 1  # real cost check happens at broker; this is a share-count guard
+        if sym.upper() in already_ordered:
+            print(f"  Idempotency: BUY {sym} already has an open order today — skipped")
+            continue
+        price    = prices.get(sym.upper(), 0.0)
+        est_cost = qty * price if price > 0 else qty * 1
         if cash - est_cost < cash_floor:
             print(f"  Risk gate: cash floor — skipping BUY {sym} (cash ${cash:,.0f} near floor ${cash_floor:,.0f})")
             continue
@@ -392,10 +421,46 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
             ))
             print(f"  ↑ BUY  {qty:>5} {sym}")
             placed.append(("BUY", sym, qty))
+            already_ordered.add(sym.upper())
         except Exception as e:
             print(f"  ✗ BUY  {sym}: {e}", file=sys.stderr)
 
     return placed
+
+
+def write_execution_summary(
+    placed: list[tuple],
+    skipped: list[dict],
+    errors: list[str],
+    cash_pct_after: float | None,
+    data_dir: Path,
+) -> None:
+    """Write data/execution_summary.json so agent.py can report what actually ran.
+
+    This closes the execution-feedback gap: the agent sees exactly which orders
+    were submitted, so it won't re-issue the same SELL next run assuming it was
+    ignored (the KLAC problem).
+
+    placed  — list of (action, symbol, qty) tuples from alpaca_place_orders()
+    skipped — list of {"symbol": ..., "reason": ...} dicts for blocked orders
+    errors  — list of plain-string error messages
+    """
+    payload = {
+        "timestamp":      datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "mode":           "market_open" if MARKET_OPEN_RUN else "post_close",
+        "orders_placed":  [
+            {"action": a, "symbol": s, "qty": q, "status": "submitted"}
+            for a, s, q in placed
+        ],
+        "orders_skipped": skipped,
+        "errors":         errors,
+        "cash_pct_after": round(cash_pct_after, 2) if cash_pct_after is not None else None,
+    }
+    out_path = data_dir / "execution_summary.json"
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2)
+    print(f"Execution summary written: {len(placed)} placed, {len(skipped)} skipped → {out_path}")
 
 
 # ── Universe ─────────────────────────────────────────────────
@@ -748,6 +813,49 @@ def update_equity_curve(curve: list, pv: float) -> list:
     return curve[-90:]   # keep ~3 months of daily points
 
 
+def build_spy_curve(equity_curve: list, spy: "pd.Series", initial_capital: float) -> list:
+    """Build SPY benchmark curve normalized to the same start value as the portfolio.
+
+    Reuses the SPY price series already fetched for regime detection — no extra API call.
+    Each equity_curve date label ("May 7") is matched to the nearest prior trading day
+    in the SPY index. The SPY value is then scaled so the first shared data point equals
+    the portfolio's initial_capital, enabling an apples-to-apples visual comparison.
+    """
+    if not equity_curve or spy is None or spy.empty:
+        return []
+
+    try:
+        # Build a lookup: "May 7" → close price
+        spy_by_label: dict[str, float] = {}
+        for ts, price in spy.items():
+            label = f"{ts.strftime('%b')} {ts.day}"
+            spy_by_label[label] = float(price)
+
+        # Find the SPY price on the first equity_curve date
+        first_label = equity_curve[0]["date"]
+        spy_start = spy_by_label.get(first_label)
+        if spy_start is None or spy_start <= 0:
+            # Walk forward up to 5 days to find a trading day close to the start
+            for point in equity_curve[1:6]:
+                spy_start = spy_by_label.get(point["date"])
+                if spy_start and spy_start > 0:
+                    break
+        if not spy_start or spy_start <= 0:
+            return []
+
+        result = []
+        for point in equity_curve:
+            price = spy_by_label.get(point["date"])
+            if price is not None and price > 0:
+                normalized = round(price / spy_start * initial_capital)
+                result.append({"date": point["date"], "value": normalized})
+
+        return result
+    except Exception as e:
+        print(f"Warning: build_spy_curve failed ({e})", file=sys.stderr)
+        return []
+
+
 # ── Main ──────────────────────────────────────────────────────
 def main():
     # Load existing state
@@ -905,9 +1013,13 @@ def main():
             raw_sells, raw_buys, pv, cash, agent_approvals["SELL"], price_map
         )
 
+        exec_placed:  list[tuple] = []
+        exec_skipped: list[dict]  = []
+        exec_errors:  list[str]   = []
+
         if to_sell or to_buy:
             print(f"Rebalance: {len(to_sell)} sells, {len(to_buy)} buys (after risk gates)")
-            alpaca_place_orders(client, to_sell, to_buy, pv, cash)
+            exec_placed = alpaca_place_orders(client, to_sell, to_buy, pv, cash, price_map)
             # Brief pause then re-fetch: during-hours fills settle in <1s;
             # after-hours orders appear as pending in the open-orders list.
             time.sleep(3)
@@ -923,6 +1035,18 @@ def main():
                 all_trades = alpaca_orders_to_trades(alpaca_state["orders"])
         else:
             print("No orders placed — either no rebalance needed or risk gates blocked all orders.")
+
+        # Collect symbols that were proposed but blocked by risk gates for skipped list
+        proposed_sells = {sym for sym, _ in raw_sells}
+        executed_sells = {sym for action, sym, _ in exec_placed if action == "SELL"}
+        for sym in proposed_sells - executed_sells:
+            exec_skipped.append({"symbol": sym, "reason": "blocked by agent approval or risk gate"})
+
+        cash_pct_now = round(cash / pv * 100, 2) if pv else None
+        write_execution_summary(
+            exec_placed, exec_skipped, exec_errors,
+            cash_pct_now, REPO_ROOT / "data",
+        )
 
         # Handle manual order triggered via workflow_dispatch inputs
         handle_manual_order(client)
@@ -960,8 +1084,10 @@ def main():
         pv      = sum(h["market_value"] for h in new_holdings) + cash
         summary = compute_summary(new_holdings, cash, data.get("summary"), all_trades)
 
-    # ── 6. Equity curve ────────────────────────────────────────
-    curve = update_equity_curve(data.get("equity_curve", []), pv)
+    # ── 6. Equity curve + SPY benchmark curve ─────────────────
+    curve     = update_equity_curve(data.get("equity_curve", []), pv)
+    initial   = data.get("meta", {}).get("initial_capital", INITIAL_CAPITAL)
+    spy_curve = build_spy_curve(curve, spy, initial)
 
     # ── 7. Filter status ───────────────────────────────────────
     # In Alpaca mode holdings come from live positions (may include non-screened stocks),
@@ -1014,6 +1140,8 @@ def main():
         "summary":       summary,
         "filter_status": filter_status,
         "equity_curve":  curve,
+        "spy_curve":     spy_curve,
+        "benchmark":     spy_curve,
         "holdings":      new_holdings,
         "trades":        all_trades[:50],
     }

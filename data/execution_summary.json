@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-05-20T22:52:36Z",
+  "mode": "post_close",
+  "orders_placed": [
+    {
+      "action": "BUY",
+      "symbol": "NTRS",
+      "qty": 3,
+      "status": "submitted"
+    }
+  ],
+  "orders_skipped": [
+    {
+      "symbol": "IBKR",
+      "reason": "blocked by agent approval or risk gate"
+    }
+  ],
+  "errors": [],
+  "cash_pct_after": 11.64
+}
