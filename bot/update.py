@@ -526,8 +526,12 @@ def calc_momentum(prices: pd.DataFrame):
     n = len(prices)
     d6  = min(126, n - 2)
     d12 = min(252, n - 2)
-    mom6  = (prices.iloc[-1] / prices.iloc[-d6  - 1] - 1).rename("mom_6m")
-    mom12 = (prices.iloc[-1] / prices.iloc[-d12 - 1] - 1).rename("mom_12m")
+    # Skip the most recent 21 trading days (~1 month) to avoid the well-documented
+    # short-term reversal effect (Jegadeesh & Titman, 1993).  Using the price from
+    # 21 days ago as the "current" price removes the last-month return from the signal.
+    skip = min(21, max(1, d6 - 1))
+    mom6  = (prices.iloc[-skip] / prices.iloc[-d6  - 1] - 1).rename("mom_6m")
+    mom12 = (prices.iloc[-skip] / prices.iloc[-d12 - 1] - 1).rename("mom_12m")
     return mom6, mom12
 
 
@@ -748,7 +752,7 @@ def update_equity_curve(curve: list, pv: float) -> list:
 def main():
     # Load existing state
     if DATA_FILE.exists():
-        with open(DATA_FILE) as f:
+        with open(DATA_FILE, encoding="utf-8") as f:
             data = json.load(f)
     else:
         print("No existing portfolio.json — starting fresh.")
@@ -800,11 +804,17 @@ def main():
         q_ok = eg is not None and rg is not None and eg > 10 and rg > 8
         # Valuation: STRATEGY.md says "falls back to relaxed rules when data unavailable"
         v_ok = fpe is None or fpe < 40
+        # Trend gate: only enter a position that is already above its 50-day MA.
+        # Prevents buying a stock that would immediately trigger the trend-break sell rule.
+        # Lenient when MA data is unavailable (None) to avoid blocking new listings.
+        ma50  = fi.get("ma_50d")
+        price = fi.get("current_price", 0)
+        t_ok  = ma50 is None or price <= 0 or price > ma50
         if q_ok:
             quality_pass += 1
         if v_ok:
             valuation_pass += 1
-        if q_ok and v_ok:
+        if q_ok and v_ok and t_ok:
             screened.append({
                 "symbol":        sym,
                 "momentum_rank": len(screened) + 1,
@@ -1009,7 +1019,7 @@ def main():
     }
 
     DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
-    with open(DATA_FILE, "w") as f:
+    with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2)
 
     mode_label = f"Alpaca ({ALPACA_ACCOUNT_NAME})" if alpaca_state else "Simulation"
