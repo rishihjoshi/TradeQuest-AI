@@ -1,0 +1,63 @@
+name: TradeQuest Sentinel
+
+on:
+  schedule:
+    # 2:30 PM ET (18:30 UTC) Mon–Fri — 90 minutes before market close.
+    # Applies hard sell rules without an LLM call so urgent exits happen
+    # during market hours, not post-close.
+    - cron: '30 18 * * 1-5'
+  workflow_dispatch: {}
+
+jobs:
+  sentinel-check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405  # v6.2.0
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: bot/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r bot/requirements.txt
+
+      # Step 1: Run rule-based sentinel checker (no LLM call).
+      # Evaluates three hard rules from portfolio.json + agent_log.json:
+      #   1. Concentration > 2× MAX_POSITION_PCT (>16%)
+      #   2. Price < MA50 for ≥ 3 consecutive agent runs
+      #   3. Flagged SELL in ≥ 5 consecutive runs without execution
+      # Writes data/sentinel_orders.json with the sell list.
+      - name: Run sentinel rule checker
+        run: python bot/sentinel.py
+
+      # Step 2: Execute sentinel sell orders via Alpaca (market hours).
+      # Reads sentinel_orders.json, applies risk limits, places orders.
+      # Orders submitted at ~2:30 PM ET execute at market price — NOT overnight.
+      - name: Execute sentinel orders
+        env:
+          ALPACA_ACCOUNT_NAME: ${{ secrets.ALPACA_ACCOUNT_NAME }}
+          ALPACA_API_KEY:      ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY:   ${{ secrets.ALPACA_SECRET_KEY }}
+          ALPACA_BASE_URL:     ${{ secrets.ALPACA_BASE_URL }}
+          SENTINEL_RUN:        "true"
+        run: python bot/update.py
+
+      - name: Commit results
+        run: |
+          git config user.name "TradeQuest Bot"
+          git config user.email "actions@github.com"
+          git add data/
+          if git diff --staged --quiet; then
+            echo "No sentinel orders triggered — nothing to commit."
+          else
+            git commit -m "sentinel: $(date -u +'%Y-%m-%d %H:%M') [skip ci]"
+            git pull --rebase origin HEAD
+            git push -u origin HEAD
+          fi

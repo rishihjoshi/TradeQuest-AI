@@ -46,6 +46,10 @@ MAX_POSITION_PCT    = 0.08  # single position cap: 8% of portfolio value
 # Pre-market execution mode flag (set via MARKET_OPEN_RUN=true env var)
 MARKET_OPEN_RUN = os.environ.get("MARKET_OPEN_RUN", "").lower() == "true"
 
+# Sentinel execution mode: reads sentinel_orders.json and places those sells immediately.
+# Set via --sentinel CLI flag or SENTINEL_RUN=true env var.
+SENTINEL_RUN = "--sentinel" in sys.argv or os.environ.get("SENTINEL_RUN", "").lower() == "true"
+
 # Known dual-class share pairs: maps each ticker to a canonical issuer ID.
 # Screener keeps only the highest-momentum ticker per issuer.
 ISSUER_MAP: dict[str, str] = {
@@ -69,14 +73,17 @@ def verify_paper_url() -> None:
         )
 
 
-def load_agent_approvals(target_urgency: str = "immediate") -> dict[str, set[str]]:
+def load_agent_approvals(target_urgency: str = "next_open") -> dict[str, set[str]]:
     """
     Read agent_log.json and return the most recent valid day_end or monthly run's
     approved actions as sets: {"SELL": {symbols...}, "BUY": {symbols...}}.
 
     target_urgency controls which urgency level is executed:
-      "immediate"  — post-close run (default): actions marked immediate only
-      "next_open"  — pre-market run: actions marked next_open only
+      "next_open"    — market-open run (default): actions marked next_open
+      "next_rebalance" — monthly rebalance actions only
+
+    All real sell decisions use "next_open" urgency and execute via market-open.yml
+    at 9:30 AM ET. There is no intraday execution path for post-close decisions.
 
     Runs flagged with parse_failed=True are skipped so a bad Claude response
     never silently blocks all sells by returning empty approvals.
@@ -107,7 +114,11 @@ def load_agent_approvals(target_urgency: str = "immediate") -> dict[str, set[str
             action  = str(d.get("action", "")).upper()
             symbol  = str(d.get("symbol", "")).strip().upper()
             urgency = str(d.get("urgency", "")).lower()
-            if action in ("SELL", "BUY") and symbol and urgency == target_urgency:
+            # Accept both "next_open" and legacy "immediate" labels — both execute at market open.
+            is_match = (urgency == target_urgency) or (
+                target_urgency == "next_open" and urgency == "immediate"
+            )
+            if action in ("SELL", "BUY") and symbol and is_match:
                 approvals[action].add(symbol)
         print(f"Agent approvals loaded from run {run.get('id','?')} "
               f"(urgency={target_urgency}): "
@@ -857,7 +868,69 @@ def build_spy_curve(equity_curve: list, spy: "pd.Series", initial_capital: float
 
 
 # ── Main ──────────────────────────────────────────────────────
+def run_sentinel() -> None:
+    """Execute sell orders from sentinel_orders.json immediately via Alpaca.
+
+    Called when update.py is invoked with --sentinel (or SENTINEL_RUN=true).
+    Reads the sentinel_orders.json written by bot/sentinel.py, applies risk limits,
+    and places Alpaca orders during market hours. Skips the full screener/enrichment
+    pipeline — only sync + execute.
+    """
+    sentinel_file = REPO_ROOT / "data" / "sentinel_orders.json"
+    if not sentinel_file.exists():
+        print("sentinel mode: sentinel_orders.json not found — nothing to execute.")
+        return
+
+    with open(sentinel_file, encoding="utf-8") as f:
+        sentinel_data = json.load(f)
+
+    sells_raw = sentinel_data.get("sells", [])
+    if not sells_raw:
+        print("sentinel mode: no sells in sentinel_orders.json — nothing to execute.")
+        return
+
+    verify_paper_url()
+    client = create_alpaca_client()
+    alpaca_state = alpaca_read_state(client)
+    if not alpaca_state:
+        print("sentinel mode: could not read Alpaca state — aborting.", file=sys.stderr)
+        return
+
+    pv   = alpaca_state["portfolio_value"]
+    cash = alpaca_state["cash"]
+
+    # Build sell list from sentinel rules — bypass the agent approval gate (rules are hard)
+    raw_sells = [(s["symbol"], s["shares"]) for s in sells_raw]
+    price_map = {
+        str(pos.get("symbol", "")).upper(): float(pos.get("current_price", pos.get("avg_cost", 0)))
+        for pos in alpaca_state.get("positions", [])
+    }
+
+    # Pass sentinel symbols as pre-approved; apply_risk_limits handles the 30% sell cap
+    # and will internally detect overweight positions to bypass that cap for them.
+    sentinel_syms = {s["symbol"].upper() for s in sells_raw}
+    gated_sells, _ = apply_risk_limits(raw_sells, [], pv, cash, sentinel_syms, price_map)
+
+    print(f"sentinel mode: placing {len(gated_sells)} sell order(s) via Alpaca")
+    placed = alpaca_place_orders(client, gated_sells, [], pv, cash, price_map)
+
+    executed_syms = {sym.upper() for _, sym, _ in placed}
+    exec_placed: list[tuple] = placed
+    exec_skipped = [
+        {"symbol": s["symbol"], "reason": "sentinel rule triggered but order blocked by risk gate"}
+        for s in sells_raw
+        if s["symbol"].upper() not in executed_syms
+    ]
+    cash_pct = round(cash / pv * 100, 2) if pv else None
+    write_execution_summary(exec_placed, exec_skipped, [], cash_pct, REPO_ROOT / "data")
+    print("sentinel mode: execution complete.")
+
+
 def main():
+    if SENTINEL_RUN:
+        run_sentinel()
+        return
+
     # Load existing state
     if DATA_FILE.exists():
         with open(DATA_FILE, encoding="utf-8") as f:
@@ -1001,8 +1074,9 @@ def main():
         ]
 
         # Load what Claude approved and apply all risk limits before touching the broker.
-        # Pre-market run executes next_open decisions; post-close run executes immediate.
-        target_urgency  = "next_open" if MARKET_OPEN_RUN else "immediate"
+        # Both pre-market and post-close runs execute "next_open" decisions.
+        # Legacy "immediate" labels are treated as next_open inside load_agent_approvals.
+        target_urgency  = "next_open"
         agent_approvals = load_agent_approvals(target_urgency=target_urgency)
         price_map = {h["symbol"]: h.get("current_price", 0.0) for h in new_holdings}
         price_map.update({

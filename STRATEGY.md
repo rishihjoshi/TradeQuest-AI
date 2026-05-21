@@ -181,6 +181,30 @@ When enrichment data includes earnings announcements for current holdings:
 - Do **not** sell solely because of an upcoming earnings — but do factor earnings risk into confidence levels
 - If already planning to SELL based on a rule, prefer executing **before** earnings, not after
 
+## Execution Pipeline & Urgency Semantics
+
+TradeQuest runs on GitHub Actions with two workflows:
+
+- **agent.yml** (5:30 PM ET Mon–Fri): Syncs Alpaca → enriches data → Claude makes decisions → commits state.
+- **market-open.yml** (9:30 AM ET Mon–Fri): Executes approved orders at market open.
+
+**All SELL and BUY orders execute at the next market open (9:30 AM ET).** There is no same-session execution path. Do not confuse urgency with speed.
+
+Valid urgency values in `decisions[].urgency`:
+- `"next_open"` — Execute at next 9:30 AM ET market open. Use for all actionable SELL and BUY decisions.
+- `"next_rebalance"` — Defer to the next monthly rebalance run (1st trading day). Use for non-urgent position adjustments.
+
+The label `"immediate"` is deprecated. It was a misnomer — the earliest any order could execute was still 9:30 AM the following day. All agents should use `"next_open"` instead.
+
+**Persistent-flag escalation:** If a symbol has been flagged SELL in 3+ consecutive prior runs without execution, this indicates an execution delay (not a stale signal). Re-issue the SELL with `urgency="next_open"` and note the consecutive count in the reason field. Do NOT issue a BUY for any symbol that has an active SELL flag.
+
+**Sentinel rule (automated, no LLM):** A separate `sentinel.yml` workflow runs at 2:30 PM ET and automatically executes sell orders for positions meeting any of these hard rules — without waiting for the 5:30 PM agent run:
+1. Position weight > 2× MAX_POSITION_PCT (>16%) → forced sell
+2. Price < 50-day MA for 3+ consecutive agent runs → forced sell
+3. Symbol flagged SELL in 5+ consecutive runs without execution → forced sell
+
+---
+
 ## Known Limitations & Honest Caveats
 
 1. **Earnings gap risk** — Momentum stocks holding into earnings can gap 10–20% overnight in either direction. Mitigated by quality filter (earnings growers rarely miss badly), not fully eliminated.

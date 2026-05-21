@@ -66,6 +66,16 @@ The portfolio data has been updated with today's closing prices. Make definitive
 
 Be decisive. Any clear sell-rule trigger should result in a SELL decision.
 
+## Urgency Semantics
+All SELL and BUY orders execute at the NEXT MARKET OPEN (9:30 AM ET) via the
+market-open workflow. Use urgency="next_open" for all actionable decisions.
+Use urgency="next_rebalance" only for decisions that should wait until the
+monthly rebalance run. There is no intraday execution path.
+
+If a symbol has been flagged SELL in 3 or more consecutive prior runs without
+being executed, note this explicitly in the reason field and set urgency="next_open".
+Do NOT re-issue a BUY for any symbol currently flagged SELL.
+
 ## Friday Close Addition
 If today is Friday, include a `weekly_summary` object in your JSON response alongside
 the standard fields:
@@ -119,7 +129,7 @@ Respond ONLY with valid JSON — no markdown fences, no prose outside the JSON:
       "symbol": "TICKER",
       "reason": "specific rule or rationale",
       "rule_triggered": "momentum_decay|trend_break|quality_drop|profit_take|new_entry|null",
-      "urgency": "immediate|next_open|next_rebalance"
+      "urgency": "next_open|next_rebalance"
     }
   ],
   "cash_action": "increase|decrease|maintain",
