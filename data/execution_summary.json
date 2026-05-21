@@ -1,21 +1,19 @@
 {
-  "timestamp": "2026-05-21T16:27:14Z",
-  "mode": "market_open",
+  "timestamp": "2026-05-21T22:50:10Z",
+  "mode": "post_close",
   "orders_placed": [
     {
-      "action": "SELL",
-      "symbol": "BEN",
-      "qty": 19,
-      "status": "submitted"
-    },
-    {
       "action": "BUY",
-      "symbol": "CFG",
-      "qty": 2,
+      "symbol": "WDC",
+      "qty": 1,
       "status": "submitted"
     }
   ],
   "orders_skipped": [
+    {
+      "symbol": "GOOGL",
+      "reason": "blocked by agent approval or risk gate"
+    },
     {
       "symbol": "IBKR",
       "reason": "blocked by agent approval or risk gate"
@@ -27,12 +25,8 @@
     {
       "symbol": "CSCO",
       "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "GOOGL",
-      "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 11.21
+  "cash_pct_after": 11.13
 }
