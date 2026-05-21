@@ -890,7 +890,7 @@ def run_sentinel() -> None:
         return
 
     verify_paper_url()
-    client = create_alpaca_client()
+    client = _alpaca_client()
     alpaca_state = alpaca_read_state(client)
     if not alpaca_state:
         print("sentinel mode: could not read Alpaca state — aborting.", file=sys.stderr)
@@ -902,7 +902,7 @@ def run_sentinel() -> None:
     # Build sell list from sentinel rules — bypass the agent approval gate (rules are hard)
     raw_sells = [(s["symbol"], s["shares"]) for s in sells_raw]
     price_map = {
-        str(pos.get("symbol", "")).upper(): float(pos.get("current_price", pos.get("avg_cost", 0)))
+        str(pos.symbol).upper(): float(pos.current_price or pos.avg_entry_price or 0)
         for pos in alpaca_state.get("positions", [])
     }
 
