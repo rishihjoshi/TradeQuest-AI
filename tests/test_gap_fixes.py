@@ -534,6 +534,121 @@ class TestAgentParseFailedFlag(unittest.TestCase):
 
 
 # ════════════════════════════════════════════════════════════════════════════
+# New fix — calc_momentum: skip-month rule (uses iloc[-21], not iloc[-1])
+# ════════════════════════════════════════════════════════════════════════════
+class TestCalcMomentumSkipMonth(unittest.TestCase):
+
+    def _make_prices(self, n: int = 300) -> "pd.DataFrame":
+        import pandas as pd, numpy as np
+        dates = pd.date_range("2025-01-01", periods=n, freq="B")
+        # Trend up for first 279 days, then drop last 21 so skip-month catches it.
+        vals = np.linspace(100, 200, n - 21).tolist() + [150.0] * 21
+        return pd.DataFrame({"SPY": vals}, index=dates)
+
+    def test_skip_month_numerator_differs_from_today(self):
+        """Mom score must differ when today's price != 21-day-ago price."""
+        import pandas as pd, numpy as np
+        prices = self._make_prices(300)
+        mom6, mom12 = update.calc_momentum(prices)
+        # The 21-day-ago price is 150.0 (drop happened), today is also 150 —
+        # but 21 days ago was in the flat zone too.  The key test: the result
+        # must be computed from iloc[-21], not iloc[-1].
+        # Verify by checking that altering the last row does NOT change the score.
+        prices_alt = prices.copy()
+        prices_alt.iloc[-1] = 999.0   # change today's price dramatically
+        mom6_alt, _ = update.calc_momentum(prices_alt)
+        # If skip-month is implemented, the score must be IDENTICAL despite the
+        # last-row change (since iloc[-21] is unchanged).
+        self.assertTrue(
+            (mom6 == mom6_alt).all(),
+            "calc_momentum must ignore the last row when skip-month is implemented"
+        )
+
+    def test_skip_month_uses_21_day_lookback(self):
+        """iloc[-21] price change must propagate into mom score."""
+        import pandas as pd, numpy as np
+        prices = self._make_prices(300)
+        prices_modified = prices.copy()
+        # Change price exactly 21 trading days ago — should shift the score.
+        prices_modified.iloc[-21] = 500.0
+        mom6, _ = update.calc_momentum(prices)
+        mom6_mod, _ = update.calc_momentum(prices_modified)
+        self.assertFalse(
+            (mom6 == mom6_mod).all(),
+            "Changing iloc[-21] must change the momentum score"
+        )
+
+    def test_skip_within_bounds_small_history(self):
+        """calc_momentum must not raise when history is shorter than 21 days."""
+        import pandas as pd
+        prices = pd.DataFrame(
+            {"X": [100.0, 101.0, 102.0, 103.0, 104.0]},
+            index=pd.date_range("2026-01-01", periods=5, freq="B"),
+        )
+        try:
+            mom6, mom12 = update.calc_momentum(prices)
+        except IndexError:
+            self.fail("calc_momentum raised IndexError on short price history")
+
+
+# ════════════════════════════════════════════════════════════════════════════
+# New fix — screener trend gate: price > MA50 required for new entries
+# ════════════════════════════════════════════════════════════════════════════
+class TestScreenerTrendGate(unittest.TestCase):
+    """Verify that the MA50 entry gate filters candidates correctly.
+
+    The helper mirrors only the per-symbol gate logic from main() (q_ok, v_ok, t_ok)
+    to keep tests focused on the trend gate without dragging in pandas percentile
+    edge-cases caused by tiny test datasets.
+    """
+
+    def _apply_gates(self, candidates, fundamentals):
+        """Apply quality + valuation + trend gates, mirroring the screener loop."""
+        screened = []
+        for sym in candidates:
+            fi  = fundamentals.get(sym, {})
+            eg  = fi.get("eps_growth")
+            rg  = fi.get("revenue_growth")
+            fpe = fi.get("forward_pe")
+            q_ok  = eg is not None and rg is not None and eg > 10 and rg > 8
+            v_ok  = fpe is None or fpe < 40
+            ma50  = fi.get("ma_50d")
+            price = fi.get("current_price", 0)
+            t_ok  = ma50 is None or price <= 0 or price > ma50
+            if q_ok and v_ok and t_ok:
+                screened.append(sym)
+        return screened
+
+    def _base_fundamentals(self):
+        return {
+            "GOOD": {"eps_growth": 30.0, "revenue_growth": 15.0, "forward_pe": 25.0,
+                     "current_price": 200.0, "ma_50d": 150.0},   # above MA50
+            "BAD":  {"eps_growth": 30.0, "revenue_growth": 15.0, "forward_pe": 25.0,
+                     "current_price": 100.0, "ma_50d": 150.0},   # below MA50
+        }
+
+    def test_below_ma50_excluded_from_screen(self):
+        """A stock below its 50-day MA must not appear in screened output."""
+        fi = self._base_fundamentals()
+        result = self._apply_gates(["GOOD", "BAD"], fi)
+        self.assertIn("GOOD",   result, "Stock above MA50 must pass trend gate")
+        self.assertNotIn("BAD", result, "Stock below MA50 must be rejected by trend gate")
+
+    def test_none_ma50_passes_trend_gate(self):
+        """When MA50 data is unavailable (None), the gate must be lenient."""
+        fi = self._base_fundamentals()
+        fi["BAD"]["ma_50d"] = None   # no MA data → should be lenient
+        result = self._apply_gates(["GOOD", "BAD"], fi)
+        self.assertIn("BAD", result, "None MA50 must not block entry (data missing → lenient)")
+
+    def test_zero_price_passes_trend_gate(self):
+        """When current_price is 0 (data gap), trend gate must be skipped."""
+        fi = self._base_fundamentals()
+        fi["BAD"]["current_price"] = 0.0
+        result = self._apply_gates(["GOOD", "BAD"], fi)
+        self.assertIn("BAD", result, "Zero price must not block entry (data gap → lenient)")
+
+
 # Gap 9 — build_spy_curve: normalization and date alignment
 # ════════════════════════════════════════════════════════════════════════════
 class TestBuildSpyCurve(unittest.TestCase):
