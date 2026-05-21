@@ -1,7 +1,145 @@
 {
-  "last_run": "2026-05-20T22:53:50Z",
-  "last_type": "day_end",
+  "last_run": "2026-05-21T16:26:19Z",
+  "last_type": "day_start",
   "runs": [
+    {
+      "id": "RUN-20260521-1626",
+      "timestamp": "2026-05-21T16:26:19Z",
+      "type": "day_start",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio holds 15 positions with $9,866 total value (+1.05% unrealized PnL) in a bull regime, but breadth at 54.4% (below 8MA) signals a narrowing rally warranting caution. Critical execution gap: EME, FDX, and BEN have been flagged SELL for 3-4 consecutive runs but remain in portfolio \u2014 these need immediate attention at next open. KLAC is a major concentration risk at 18.48% weight (approaching the 20% hard cap), and TPR entered yesterday already trading below its 50-day MA.",
+      "regime": "bull",
+      "regime_confidence": 0.62,
+      "flags": [
+        "EME: URGENT UNRESOLVED SELL \u2014 flagged 3+ consecutive runs (May 19-20). momentum_6m=0.3969 ranks 15th/20, borderline top-30% threshold. Price $853.15 vs MA50 $815.67 (above MA, sell rule is momentum decay). Unrealized loss -$92.02 (-9.74%) \u2014 tax-loss harvest candidate. Day-start check: SELL signal active.",
+        "FDX: URGENT UNRESOLVED SELL \u2014 flagged 4+ consecutive runs (May 18-20). momentum_6m=0.4747 ranks 14th/20, approaching bottom of top-30% cutoff. Unrealized loss -$6.19 (-1.57%). Tax-loss harvest candidate. Day-start check: SELL signal active.",
+        "BEN: URGENT UNRESOLVED SELL \u2014 flagged 3+ consecutive runs (May 18-20). momentum_6m=0.4884 ranks 17th/20, near bottom of eligible range. Unrealized gain +$34.00 (+6.08%) \u2014 gain realization justified by persistent momentum decay confirmed over 5+ days. Day-start check: SELL signal active.",
+        "KLAC: CONCENTRATION RISK \u2014 weight 18.48% vs 12% soft cap and approaching 20% hard cap ($1,823.36 market value). If KLAC gains ~8.7% from current price, hard cap breach triggers forced trim. Monitor closely. momentum_rank=6, above MA \u2014 no sell rule triggered, but concentration is a structural risk.",
+        "TPR: TREND BREAK WARNING \u2014 price $135.79 is BELOW MA50 $142.77 (Day 1 of potential 3-day rule). Entered 2026-05-20, so this is the first confirmed close below MA50. Momentum_rank=16, momentum_6m=0.3429 (approaching bottom of top-30%). Need 2 more consecutive closes below MA50 to trigger sell rule. Flag escalating.",
+        "GOOGL: MOMENTUM APPROACH WARNING \u2014 momentum_6m=0.3664 ranks 11th overall but the 6M score is approaching the top-30% boundary. Has been on watch list for several runs. Currently above MA50 ($386.88 vs $336.34). No sell rule triggered but momentum score trending toward threshold.",
+        "STLD: MOMENTUM WATCH \u2014 momentum_6m=0.4811 ranks 13th/20, unrealized loss -$18.85 (-7.78%). Steel sector under pressure. Above MA50 ($223.32 vs $201.49). No sell rule triggered but persistent watch flag.",
+        "IBKR: LOW WEIGHT ANOMALY \u2014 weight only 1.70% ($167.72), well below the 5% minimum position size threshold defined in strategy. Buy order was blocked yesterday. Position is undersized and should either be completed to proper size or reviewed.",
+        "BREADTH: NARROWING SIGNAL \u2014 breadth at 54.4% with 8MA crossing below 200MA. This is the 'narrowing rally' zone (40-60%) per strategy document. Regime_confidence should be treated as moderate despite bull classification. Maintain cautious posture.",
+        "CAT: MOMENTUM WATCH \u2014 momentum_6m=0.5873 ranks 7th but unrealized loss -$49.38 (-5.36%). Has been persistently flagged on watch. Above MA50 ($872.56 vs $788.91). No sell rule triggered. Near 5% unrealized loss threshold that could qualify for tax-loss harvest consideration at quarterly rebalance.",
+        "NTRS: BUY PENDING \u2014 3 shares submitted at market open (2026-05-20T22:52 UTC). Confirm fill before any further action. Do NOT re-issue buy order."
+      ],
+      "decisions": [
+        {
+          "action": "SELL",
+          "symbol": "EME",
+          "reason": "URGENT UNRESOLVED \u2014 momentum decay confirmed 5+ consecutive days (momentum_6m=0.3969, rank 15/20, at bottom of top-30% threshold). Flagged SELL on May 19 and May 20 (2 runs) without execution. Unrealized loss -$92.02 (-9.74%) makes this a priority tax-loss harvest. Rule 1 triggered.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "FDX",
+          "reason": "URGENT UNRESOLVED \u2014 momentum decay confirmed 5+ consecutive days (momentum_6m=0.4747, rank 14/20). Flagged SELL on May 18, 19, and 20 (4 runs) without execution. Unrealized loss -$6.19 (-1.57%) qualifies for tax-loss harvest. Rule 1 triggered. Consecutive SELL count: 4.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "BEN",
+          "reason": "URGENT UNRESOLVED \u2014 momentum decay confirmed 5+ consecutive days (momentum_6m=0.4884, rank 17/20). Flagged SELL on May 18, 19, and 20 (3+ runs) without execution. Unrealized gain +$34.00 (+6.08%) \u2014 gain realization justified by persistent momentum decay confirmed over multiple days; tax impact is modest on a small gain. Rule 1 triggered. Consecutive SELL count: 3.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "TPR",
+          "reason": "Price $135.79 is BELOW MA50 $142.77 \u2014 Day 1 of potential 3-day trend-break rule. Entered position on 2026-05-20 and immediately trading below MA. Momentum_rank=16 and momentum_6m=0.3429 also approaching lower bound. Will trigger SELL if price remains below MA50 for 2 more consecutive closes.",
+          "rule_triggered": "trend_break",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "KLAC",
+          "reason": "Weight at 18.48% approaching 20% hard cap. No sell rule triggered \u2014 momentum_rank=6, above MA50. Monitor for hard cap breach. If weight exceeds 20%, sentinel rule will force trim. Flag for tracking.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "GOOGL",
+          "reason": "momentum_6m=0.3664 approaching top-30% boundary. Has been on watch list for multiple runs. No sell rule triggered yet \u2014 above MA50, rank=11. Monitor for confirmation of momentum decay.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "STLD",
+          "reason": "Persistent watch flag. momentum_6m=0.4811, rank=13/20, unrealized loss -7.78%. Above MA50. No sell rule triggered but steel sector under pressure and position approaching actionable loss level.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "IBKR",
+          "reason": "Position weight 1.70% is far below the strategy minimum of 5%. Buy order was blocked at last execution. Need to confirm whether NTRS buy (submitted 2026-05-20) fills correctly and whether IBKR block is resolved before adding shares.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "Momentum_rank=8, momentum_6m=0.7427, above MA50 ($396.01 vs $360.33), EPS growth 116.7%. Strong across all filters. No sell rule triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "AMAT",
+          "reason": "Entered 2026-05-20. Momentum_rank=3, momentum_6m=0.8723 \u2014 top momentum score in portfolio. Above MA50. No sell rule triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "Momentum_rank=7, momentum_6m=0.5873, above MA50 ($872.56 vs $788.91). Unrealized loss -5.36% nearing watch threshold but no sell rule triggered. Has been persistently flagged on watch \u2014 monitor.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CSCO",
+          "reason": "Momentum_rank=10, above MA50 significantly. Unrealized gain +18.88% in ~9 days \u2014 approaching but not yet at 60% profit-take threshold (requires >60% in <60 days). No sell rule triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "Momentum_rank=5, momentum_6m=0.7227, above MA50. EPS growth 96.2%. Strong quality and momentum. No sell rule triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "KEYS",
+          "reason": "Momentum_rank=4, momentum_6m=0.9491 \u2014 second highest in portfolio. Above MA50 ($342.08 vs $320.65). Unrealized loss -3.64% is noise. No sell rule triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "Momentum_rank=9, above MA50 ($225.67 vs $194.84). EPS growth 382.1%. Minimal unrealized loss -0.33%. No sell rule triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "increase",
+      "cash_rationale": "Cash at 11.64% is above the 5% bull regime target but appropriate given: (1) breadth narrowing to 54.4% with bearish 8MA trend warrants cautious posture per strategy, (2) pending sells of EME/FDX/BEN will add approximately $1,833 (~18.6% of portfolio) to cash upon execution, which would bring cash to ~30% \u2014 well above bull target. After sell executions, consider whether to redeploy into new momentum candidates or hold elevated cash given breadth signal suggesting regime confidence should be lower (~0.62 vs recorded 0.89). Maintain current cash until sell orders execute; reassess at day-end run.",
+      "summary": "DAY START 2026-05-21: 3 urgent unresolved SELLs (EME, FDX, BEN) re-issued for next_open execution; TPR flagged Day 1 below MA50; KLAC concentration at 18.5% approaching hard cap; breadth narrowing reduces regime confidence to 0.62.",
+      "usage": {
+        "input_tokens": 13891,
+        "output_tokens": 3116,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 4090
+      }
+    },
     {
       "id": "RUN-20260520-2253",
       "timestamp": "2026-05-20T22:53:50Z",
