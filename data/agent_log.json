@@ -1,7 +1,153 @@
 {
-  "last_run": "2026-05-21T22:51:21Z",
-  "last_type": "day_end",
+  "last_run": "2026-05-22T16:03:14Z",
+  "last_type": "day_start",
   "runs": [
+    {
+      "id": "RUN-20260522-1603",
+      "timestamp": "2026-05-22T16:03:14Z",
+      "type": "day_start",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is in a bull regime but with meaningful execution risk \u2014 EME and FDX have been flagged SELL for 5+ consecutive runs without confirmed execution, and TPR is now Day 2 below its 50-day MA, one day away from triggering a confirmed sell rule. KLAC remains at 18.56% weight, well above the 12% soft cap and approaching the 20% hard cap, representing the largest single risk. Market breadth at 56.8% is borderline sideways (40-60% zone) with the breadth 8MA below the 200MA, warranting cautious confidence in the bull classification despite SPY being above its 200-day MA.",
+      "regime": "bull",
+      "regime_confidence": 0.62,
+      "flags": [
+        "EME: URGENT \u2014 SELL flagged 5+ consecutive runs (May 19-21), still in portfolio at $849.20 (-10.15% unrealized loss). Momentum rank 11/20 (top 55%, below top 30% threshold). Sentinel rule should have triggered automatic execution. Investigate immediately.",
+        "FDX: URGENT \u2014 SELL flagged 5+ consecutive runs (May 19-21), still in portfolio at $390.00 (-0.77% unrealized loss). Momentum rank 10/20 (top 50%, below top 30% threshold). Sentinel rule should have triggered automatic execution. Investigate immediately.",
+        "TPR: WARNING \u2014 Price $139.11 is BELOW MA50 $142.52 for Day 2 of confirmation window. One more close below MA50 triggers Sell Rule 2 (trend break). Momentum rank showing 0 (data missing). Watching for Day 3 confirmation at next close.",
+        "KLAC: CONCENTRATION RISK \u2014 Weight 18.56% vs 12% soft cap and approaching 20% hard cap. Passes all four filters (momentum rank 5, above MA50 at $1844 vs $1675, all quality/valuation metrics pass). No sell rule triggered; monitor for hard cap breach at ~$2081/share.",
+        "CSCO: DATA QUALITY \u2014 Sector 'Unknown', EPS/revenue growth null, MA50 null, momentum rank 0. Cannot evaluate against sell rules without data. Position has +23.86% unrealized gain ($182.71). Needs manual data verification before next rebalance.",
+        "IBKR: DATA QUALITY \u2014 Sector 'Unknown', EPS/revenue growth null, MA50 null, momentum rank 0. Position entered 2026-05-20, small weight (1.69%), minor unrealized loss (-1.25%). BUY was blocked at market open execution. Needs data verification.",
+        "GOOGL: MOMENTUM CAUTION \u2014 Rank 19/20 (bottom 5% of portfolio). 6M momentum 0.194 is below top 30% threshold, though 12M momentum 1.074 is strong. Flag for continued monitoring; if rank confirmed below top 30% of full S&P 500 universe for 5 days, sell rule triggers.",
+        "STLD: MOMENTUM CAUTION \u2014 Rank 12/20, 6M momentum 0.464, 12M momentum 0.685. Trending lower. Price $232.01 is above MA50 $202.41 (cushion intact). Watch for rank deterioration.",
+        "CAT: PERFORMANCE CONCERN \u2014 Down 5.96% ($54.98 unrealized loss) since entry 2026-05-06. Momentum rank 6/20 (top 30% within portfolio). Price $866.96 well above MA50 $792.02. No sell rule triggered yet; loss qualifies for tax-loss harvesting consideration at next quarterly.",
+        "WDC: PENDING FILL \u2014 BUY order for 1 share WDC submitted at last market open (2026-05-21T22:50 UTC). Position not yet appearing in holdings. Do NOT re-issue. Await confirmation of fill.",
+        "BREADTH: REGIME CAUTION \u2014 Market breadth at 56.8% is in the 40-60% 'narrowing' zone with 8MA below 200MA. This is a borderline bull/sideways signal. Regime confidence reduced to 0.62. Consider maintaining elevated cash vs 5% bull target.",
+        "CASH: ELEVATED \u2014 Cash at 11.13% vs 5% bull regime target. Partially explained by blocked buy orders (GOOGL, IBKR, TPR, CSCO blocked at last open) and pending WDC fill. However, given breadth warning and unresolved sells, elevated cash is prudent."
+      ],
+      "decisions": [
+        {
+          "action": "SELL",
+          "symbol": "EME",
+          "reason": "URGENT UNRESOLVED SELL \u2014 5+ consecutive runs flagged without execution. Momentum rank 11/20 confirmed below top 30% of portfolio. -10.15% unrealized loss qualifies as tax-loss harvest. Sentinel rule criteria met (flagged 5+ consecutive runs). Re-issuing at next_open. Run count: 5+.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "FDX",
+          "reason": "URGENT UNRESOLVED SELL \u2014 5+ consecutive runs flagged without execution. Momentum rank 10/20 confirmed below top 30% of portfolio. -0.77% unrealized loss. Sentinel rule criteria met (flagged 5+ consecutive runs). Re-issuing at next_open. Run count: 5+.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "TPR",
+          "reason": "Day 2 below MA50 ($139.11 vs MA50 $142.52). Sell Rule 2 requires 3 consecutive days below MA50. If today's close remains below $142.52, this becomes a confirmed SELL at next_open. Position currently +3.37% gain ($18.12); sell would realize a taxable short-term gain \u2014 confirm rule justification before execution. Momentum rank data missing (0), adding urgency.",
+          "rule_triggered": "trend_break",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "KLAC",
+          "reason": "Weight 18.56% approaching 20% hard cap. Hard cap breach would occur at approximately $2081/share (+12.8% from current $1844). No sell rule triggered. All filters pass. Monitor intraday \u2014 if price approaches hard cap threshold, prepare trim order to 15% at next quarterly rebalance per strategy.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "CSCO",
+          "reason": "Missing fundamental data (sector, EPS growth, revenue growth, MA50, momentum rank all null/unknown). Cannot verify quality filter compliance. Position has +23.86% unrealized gain. Profit-take Rule 4 requires >60% gain in <60 days \u2014 not yet triggered. Needs data verification at next monthly review.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "IBKR",
+          "reason": "Missing fundamental data (sector, EPS growth, revenue growth, MA50, momentum rank all null/unknown). Small position (1.69% weight, -1.25% loss). BUY was blocked at last market open execution \u2014 investigate why. Cannot verify filter compliance without data.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "GOOGL",
+          "reason": "6M momentum rank 0.194 (below top 30% threshold) but 12M rank 1.074 is strong. Portfolio rank 19/20. Position is +4.21% gain. Watching for 5-day confirmation of rank below top 30% of full S&P 500 universe before triggering Sell Rule 1. BUY was blocked at last execution \u2014 do not re-issue.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "All filters pass. Momentum rank 8/20 (top 40% portfolio). Price $384.70 well above MA50 $361.91. EPS growth 110.5%, revenue growth 37.2%. No sell rule triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "AMAT",
+          "reason": "All filters pass. Momentum rank 4/20 (top 20% portfolio). Price $428.50 well above MA50 $385.56. EPS growth 33.5%, revenue growth 11.4%. No sell rule triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "Momentum rank 6/20 (top 30% portfolio). Price $866.96 above MA50 $792.02. EPS growth 30.2%, revenue growth 22.2%. -5.96% unrealized loss \u2014 qualifies for tax-loss harvest consideration but no sell rule triggered. Hold; flag for quarterly review.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CFG",
+          "reason": "New position entered 2026-05-21. Momentum rank 15/20 (borderline). Price $62.78 above MA50 $61.77 (narrow cushion $1.01). EPS growth 46.8%. Monitor MA50 proximity \u2014 only $1.01 above support.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "All filters pass. Momentum rank 7/20. Price $356.41 well above MA50 $306.67. EPS growth 96.2%, revenue growth 23.1%. +5.89% unrealized gain. No sell rule triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "KEYS",
+          "reason": "Strong momentum rank 3/20. Price $337.55 above MA50 $321.78. EPS growth 35.6%, revenue growth 31.5%. -4.92% unrealized loss from entry at $355.00. No sell rule triggered; loss is within normal range.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NTRS",
+          "reason": "New position entered 2026-05-21. Momentum rank 14/20 (borderline, watch). Price $167.11 above MA50 $152.95. EPS growth 42.6%, revenue growth 13.9%. +0.22% unrealized gain. No sell rule triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "Momentum rank 9/20. Price $226.44 well above MA50 $195.95. EPS growth 382.1%, revenue growth 21.3%. Effectively flat (+0.01%). No sell rule triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "STLD",
+          "reason": "Momentum rank 12/20 and declining. 6M momentum 0.464, 12M 0.685 \u2014 both below top 30% of portfolio but need full universe ranking to confirm sell rule. Price $232.01 above MA50 $202.41. -4.2% unrealized loss. Monitor for rank deterioration.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "maintain",
+      "cash_rationale": "Cash at 11.13% is elevated vs 5% bull target, but this is appropriate given: (1) breadth at 56.8% is borderline sideways warranting caution, (2) unresolved sell orders for EME and FDX that when executed will add further cash, (3) blocked buy orders at last execution suggest risk gate constraints. Maintain current level until EME/FDX sells are confirmed executed; do not deploy additional cash today.",
+      "summary": "DAY START 2026-05-22: Re-issuing URGENT SELLs for EME and FDX (5+ consecutive runs unexecuted); TPR at Day 2 below MA50 \u2014 one close away from confirmed sell; KLAC weight 18.56% approaching hard cap; breadth signal (56.8%) reduces regime confidence to 0.62.",
+      "usage": {
+        "input_tokens": 14227,
+        "output_tokens": 3328,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 4090
+      }
+    },
     {
       "id": "RUN-20260521-2251",
       "timestamp": "2026-05-21T22:51:21Z",

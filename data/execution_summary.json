@@ -1,14 +1,7 @@
 {
-  "timestamp": "2026-05-21T22:50:10Z",
-  "mode": "post_close",
-  "orders_placed": [
-    {
-      "action": "BUY",
-      "symbol": "WDC",
-      "qty": 1,
-      "status": "submitted"
-    }
-  ],
+  "timestamp": "2026-05-22T16:04:19Z",
+  "mode": "market_open",
+  "orders_placed": [],
   "orders_skipped": [
     {
       "symbol": "GOOGL",
@@ -28,5 +21,5 @@
     }
   ],
   "errors": [],
-  "cash_pct_after": 11.13
+  "cash_pct_after": 6.16
 }
