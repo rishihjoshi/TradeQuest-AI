@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-05-22T20:19:20Z",
+  "sells": [
+    {
+      "symbol": "KLAC",
+      "shares": 1,
+      "rule": "concentration",
+      "reason": "Position weight 18.8% exceeds 2\u00d7 MAX_POSITION_PCT (16%). Forced exit \u2014 sentinel Rule 1."
+    },
+    {
+      "symbol": "TPR",
+      "shares": 4,
+      "rule": "trend_break",
+      "reason": "Price below 50-day MA for 4 consecutive agent runs (\u2265 3 threshold). Forced exit \u2014 sentinel Rule 2."
+    }
+  ],
+  "count": 2
+}
