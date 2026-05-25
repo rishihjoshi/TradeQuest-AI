@@ -1,15 +1,23 @@
 {
-  "timestamp": "2026-05-25T20:09:07Z",
+  "timestamp": "2026-05-25T22:35:04Z",
   "mode": "post_close",
   "orders_placed": [],
   "orders_skipped": [
     {
-      "symbol": "KLAC",
-      "reason": "sentinel rule triggered but order blocked by risk gate"
+      "symbol": "CSCO",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "IBKR",
+      "reason": "blocked by agent approval or risk gate"
     },
     {
       "symbol": "TPR",
-      "reason": "sentinel rule triggered but order blocked by risk gate"
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "GOOGL",
+      "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
