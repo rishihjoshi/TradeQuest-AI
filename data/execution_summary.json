@@ -1,28 +1,15 @@
 {
-  "timestamp": "2026-05-25T16:09:04Z",
-  "mode": "market_open",
-  "orders_placed": [
-    {
-      "action": "SELL",
-      "symbol": "CSCO",
-      "qty": 8,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "IBKR",
-      "qty": 2,
-      "status": "submitted"
-    }
-  ],
+  "timestamp": "2026-05-25T20:09:07Z",
+  "mode": "post_close",
+  "orders_placed": [],
   "orders_skipped": [
     {
-      "symbol": "GOOGL",
-      "reason": "blocked by agent approval or risk gate"
+      "symbol": "KLAC",
+      "reason": "sentinel rule triggered but order blocked by risk gate"
     },
     {
       "symbol": "TPR",
-      "reason": "blocked by agent approval or risk gate"
+      "reason": "sentinel rule triggered but order blocked by risk gate"
     }
   ],
   "errors": [],

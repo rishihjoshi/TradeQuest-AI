@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-22T20:19:20Z",
+  "timestamp": "2026-05-25T20:09:04Z",
   "sells": [
     {
       "symbol": "KLAC",
@@ -11,7 +11,7 @@
       "symbol": "TPR",
       "shares": 4,
       "rule": "trend_break",
-      "reason": "Price below 50-day MA for 4 consecutive agent runs (\u2265 3 threshold). Forced exit \u2014 sentinel Rule 2."
+      "reason": "Price below 50-day MA for 6 consecutive agent runs (\u2265 3 threshold). Forced exit \u2014 sentinel Rule 2."
     }
   ],
   "count": 2
