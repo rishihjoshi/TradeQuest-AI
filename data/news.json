@@ -1,560 +1,613 @@
 {
-  "generated_at": "2026-05-21T16:26:03Z",
+  "generated_at": "2026-05-25T16:06:03Z",
   "article_count": 30,
   "articles": [
     {
-      "id": "52723985",
-      "headline": "Wells Fargo Maintains Overweight on Analog Devices, Raises Price Target to $515",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/05/52723985/wells-fargo-maintains-overweight-on-analog-devices-raises-price-target-to-515",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "ADI"
-      ],
-      "created_at": "2026-05-21T16:13:49Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Overweight rating maintained with price target raised to $515 signals positive outlook."
-    },
-    {
-      "id": "52722154",
-      "headline": "'White House Postpones AI EO Signing Ceremony' - Axios",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/05/52722154/white-house-postpones-ai-eo-signing-ceremony-axios",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "AMZN",
-        "GOOG",
-        "GOOGL",
-        "MSFT",
-        "SPY"
-      ],
-      "created_at": "2026-05-21T15:25:42Z",
-      "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Postponement of ceremony is procedural; lacks clear positive or negative impact on stocks."
-    },
-    {
-      "id": "52721613",
-      "headline": "Goldman Sachs Maintains Buy on Jabil, Raises Price Target to $384",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/05/52721613/goldman-sachs-maintains-buy-on-jabil-raises-price-target-to-384",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "JBL"
-      ],
-      "created_at": "2026-05-21T15:14:45Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Goldman Sachs maintains Buy rating and raises price target, indicating positive outlook"
-    },
-    {
-      "id": "52720913",
-      "headline": "Keybanc Maintains Overweight on Analog Devices, Raises Price Target to $500",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/05/52720913/keybanc-maintains-overweight-on-analog-devices-raises-price-target-to-500",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "ADI"
-      ],
-      "created_at": "2026-05-21T14:58:49Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Maintained overweight rating with raised price target signals strong positive outlook"
-    },
-    {
-      "id": "52720427",
-      "headline": "Analog Devices Analysts Boost Their Forecasts Following Upbeat Q2 Results",
-      "summary": "Analog Devices, Inc (ADI) reported strong Q2 results, plans to acquire Empower Semiconductor for $1.5B. Analysts raise price targets for ADI stock.",
-      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/05/52720427/analog-devices-analysts-boost-their-forecasts-following-upbeat-q2-results",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "ADI"
-      ],
-      "created_at": "2026-05-21T14:45:31Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Strong Q2 results, strategic acquisition, and analyst price target increases signal positive momentum."
-    },
-    {
-      "id": "52719497",
-      "headline": "TD Cowen Maintains Buy on Analog Devices, Raises Price Target to $450",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/05/52719497/td-cowen-maintains-buy-on-analog-devices-raises-price-target-to-450",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "ADI"
-      ],
-      "created_at": "2026-05-21T14:24:35Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, indicating positive outlook"
-    },
-    {
-      "id": "52718735",
-      "headline": "Jefferies Maintains Buy on Analog Devices, Raises Price Target to $475",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/05/52718735/jefferies-maintains-buy-on-analog-devices-raises-price-target-to-475",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "ADI"
-      ],
-      "created_at": "2026-05-21T14:10:44Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, signaling positive outlook"
-    },
-    {
-      "id": "52717174",
-      "headline": "What's Going On With Broadcom Stock Thursday?",
-      "summary": "Broadcom (AVGO) targets AI chip bottlenecks with new AMAT partnership. Wall Street remains bullish ahead of earnings.",
-      "url": "https://www.benzinga.com/markets/tech/26/05/52717174/whats-going-on-with-broadcom-stock-thursday-5",
-      "author": "Anusuya Lahiri",
-      "source": "benzinga",
-      "symbols": [
-        "AMAT",
-        "AVGO"
-      ],
-      "created_at": "2026-05-21T13:45:44Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "AI chip partnership and bullish Wall Street outlook ahead of earnings signal positive momentum."
-    },
-    {
-      "id": "52717484",
-      "headline": "Citigroup Reinstates Buy on FedEx, Announces $443 Price Target",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/05/52717484/citigroup-reinstates-buy-on-fedex-announces-443-price-target",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "FDX"
-      ],
-      "created_at": "2026-05-21T13:48:51Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Citigroup's buy rating reinstatement with $443 price target signals positive outlook."
-    },
-    {
-      "id": "52715497",
-      "headline": "'Anthropic Is in Talks to Use Microsoft's AI Chips' - The Information",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/05/52715497/anthropic-is-in-talks-to-use-microsofts-ai-chips-the-information",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "AMZN",
-        "GOOG",
-        "GOOGL",
-        "MSFT"
-      ],
-      "created_at": "2026-05-21T13:06:46Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Partnership discussions between Anthropic and Microsoft signal stronger AI infrastructure collaboration and market validation."
-    },
-    {
-      "id": "52715001",
-      "headline": "Stock Of The Day: Will Cisco Fill The Gap?",
-      "summary": "Cisco Systems (CSCO) shares may be about to fill a gap. This means they could make a rapid and large move lower.",
-      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/05/52715001/stock-of-the-day-will-cisco-fill-the-gap",
-      "author": "Mark Putrino",
-      "source": "benzinga",
-      "symbols": [
-        "CSCO"
-      ],
-      "created_at": "2026-05-21T12:53:37Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Article suggests Cisco shares could make a rapid and large move lower by filling a gap."
-    },
-    {
-      "id": "52714223",
-      "headline": "SpaceX Wants You To Bankroll Musk's Mars Dream \u2014 And Stay Out Of It",
-      "summary": "SpaceX&39;s IPO filing gives Elon Musk outsized control, limits shareholder lawsuits, and signals no dividend plans for the foreseeable future.",
-      "url": "https://www.benzinga.com/markets/ipos/26/05/52714223/spacex-wants-you-to-bankroll-musks-mars-dream-and-stay-out-of-it",
-      "author": "Surbhi Jain",
-      "source": "benzinga",
-      "symbols": [
-        "GOOG",
-        "GOOGL",
-        "META",
-        "SPCX"
-      ],
-      "created_at": "2026-05-21T12:24:06Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "IPO limits shareholder rights, provides outsized Musk control, and signals no dividend returns."
-    },
-    {
-      "id": "52713691",
-      "headline": "Nvidia, Alphabet, Delta Air And A Financial Stock On CNBC's 'Final Trades'",
-      "summary": "Joshua Brown picks Nvidia, Jim Lebenthal chooses Delta Air Lines, Stephen Weiss recommends Alphabet, Joseph Terranova&39;s final trade is Goldman Sachs.",
-      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/05/52713691/nvidia-alphabet-delta-air-and-a-financial-stock-on-cnbcs-final-trades",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "DAL",
-        "GOOG",
-        "GOOGL",
-        "GS",
-        "NVDA"
-      ],
-      "created_at": "2026-05-21T12:03:31Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Multiple CNBC analysts recommend buying Nvidia, Alphabet, Delta Air, and Goldman Sachs."
-    },
-    {
-      "id": "52713319",
-      "headline": "B of A Securities Maintains Buy on Analog Devices, Raises Price Target to $460",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/05/52713319/b-of-a-securities-maintains-buy-on-analog-devices-raises-price-target-to-460",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "ADI"
-      ],
-      "created_at": "2026-05-21T11:51:45Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, signaling positive outlook for ADI"
-    },
-    {
-      "id": "52712103",
-      "headline": "Baird Maintains Outperform on Analog Devices, Raises Price Target to $450",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/05/52712103/baird-maintains-outperform-on-analog-devices-raises-price-target-to-450",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "ADI"
-      ],
-      "created_at": "2026-05-21T11:02:04Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains positive rating and raises price target, indicating confidence in future stock appreciation."
-    },
-    {
-      "id": "52711311",
-      "headline": "Just 10 Stocks Now Make Up Over Of S&P 500\u2014Surpassing Dot-Com Bubble Levels",
-      "summary": "The 10 largest stocks now account for 41% of the S&amp;P 500&39;s market value, as investor money continues pouring.",
-      "url": "https://www.benzinga.com/markets/equities/26/05/52711311/just-10-stocks-now-make-up-over-of-sp-500-surpassing-dot-com-bubble-levels",
-      "author": "Sweta Killa",
-      "source": "benzinga",
-      "symbols": [
-        "AAPL",
-        "AMZN",
-        "AVGO",
-        "BRK",
-        "GOOG",
-        "GOOGL",
-        "GS",
-        "LLY",
-        "META",
-        "MSFT",
-        "NVDA",
-        "TSLA"
-      ],
-      "created_at": "2026-05-21T10:20:03Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Extreme concentration surpassing dot-com bubble levels signals valuation risk and market vulnerability."
-    },
-    {
-      "id": "52711252",
-      "headline": "Jim Cramer Warns Amazon And Alphabet Chips Seem 'So Easy' To Buy, But They Don't Hold 'Value'",
-      "summary": "Jim Cramer warns Amazon and Alphabet GPUs seem &39;so easy&39; to buy but don&39;t hold &39;value&39; over the long haul compared to Nvidia.",
-      "url": "https://www.benzinga.com/markets/equities/26/05/52711252/jim-cramer-warns-amazon-and-alphabet-buy-value",
-      "author": "Rishabh Mishra",
-      "source": "benzinga",
-      "symbols": [
-        "AMZN",
-        "GOOG",
-        "GOOGL",
-        "NVDA"
-      ],
-      "created_at": "2026-05-21T10:16:22Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Cramer warns Amazon and Alphabet chips lack long-term value compared to Nvidia alternatives."
-    },
-    {
-      "id": "52711140",
-      "headline": "Needham Maintains Buy on Analog Devices, Raises Price Target to $440",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/05/52711140/needham-maintains-buy-on-analog-devices-raises-price-target-to-440",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "ADI"
-      ],
-      "created_at": "2026-05-21T10:15:09Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, signaling positive outlook for Analog Devices stock."
-    },
-    {
-      "id": "52710686",
-      "headline": "Nvidia's China Business Is Now A 'Nothingburger': Analyst",
-      "summary": "Is NVIDIA a safe haven? Analysts weigh in on NVDA&39;s dominant $82B Q1 earnings, &34;agentic AI,&34; and long-term valuation concerns.",
-      "url": "https://www.benzinga.com/markets/tech/26/05/52710686/nvidias-china-business-is-now-a-nothingburger-analyst",
-      "author": "Anusuya Lahiri",
-      "source": "benzinga",
-      "symbols": [
-        "AMZN",
-        "CRWV",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NVDA"
-      ],
-      "created_at": "2026-05-21T09:57:32Z",
-      "sentiment": "neutral",
-      "confidence": 0.72,
-      "reason": "Mixed signals: strong earnings offset by China headwinds and valuation concerns."
-    },
-    {
-      "id": "52710372",
-      "headline": "Jensen Huang Says Nvidia Is Powering Uber's Push Into Trillion-Dollar Self-Driving Opportunity Across 30 Cities",
-      "summary": "Nvidia CEO Jensen Huang reiterated that partnership with Uber Technologies Inc to expand Robotaxi fleet across 30 cities in 2 years.",
-      "url": "https://www.benzinga.com/markets/earnings/26/05/52710372/jensen-huang-says-nvidia-is-powering-ubers-push-into-trillion-dollar-self-driving-opportunity-across-30-cities",
-      "author": "Badar Shaikh",
-      "source": "benzinga",
-      "symbols": [
-        "GOOG",
-        "GOOGL",
-        "LCID",
-        "NVDA",
-        "RIVN",
-        "UBER"
-      ],
-      "created_at": "2026-05-21T09:07:53Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Partnership expansion across 30 cities signals strong demand and growth potential for Nvidia's autonomous driving technology."
-    },
-    {
-      "id": "52708867",
-      "headline": "Bernie Sanders Slams Meta After 8,000 Layoffs And Asks: If Mark  Zuckerberg Will Lay Off 10% Of His Staff, What Will AI Do To American Workers?",
-      "summary": "Bernie Sanders slammed Meta Platforms&39;s 8,000 layoffs amid its AI push and urged workers affected by AI to share their stories.",
-      "url": "https://www.benzinga.com/markets/tech/26/05/52708867/bernie-sanders-meta-layoffs-mark-zuckerberg-ai-workers",
-      "author": "Ananya Gairola",
-      "source": "benzinga",
-      "symbols": [
-        "GOOG",
-        "GOOGL",
-        "META"
-      ],
-      "created_at": "2026-05-21T05:39:22Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Political criticism of layoffs and AI workforce concerns creates negative sentiment around Meta's operations and future labor impact."
-    },
-    {
-      "id": "52708343",
-      "headline": "Jim Cramer Says Nvidia Stock Getting 'Relentless Hammering' A Familiar Pattern, Daniel Newman Calls Company 'Victim Of Its Own Success'",
-      "summary": "NVDA topped earnings estimates and raised guidance, with Munster, Newman and Cramer saying strong AI demand continues.",
-      "url": "https://www.benzinga.com/markets/tech/26/05/52708343/jim-cramer-nvidia-stock-relentless-hammering-daniel-newman",
-      "author": "Ananya Gairola",
-      "source": "benzinga",
-      "symbols": [
-        "AMZN",
-        "GOOG",
-        "GOOGL",
-        "NVDA"
-      ],
-      "created_at": "2026-05-21T02:06:09Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Strong earnings beat, raised guidance, and continued AI demand despite recent price pressure."
-    },
-    {
-      "id": "52707360",
-      "headline": "Here's How Much $100 Invested In Steel Dynamics 5 Years Ago Would Be Worth Today",
+      "id": "52766748",
+      "headline": "A Congress Member Sold Up To $60K In Analog Devices Stock: Here's What You Need To Know",
       "summary": " ",
-      "url": "https://www.benzinga.com/insights/news/26/05/52707360/heres-how-much-100-invested-in-steel-dynamics-5-years-ago-would-be-worth-today",
+      "url": "https://www.benzinga.com/insights/government/26/05/52766748/a-congress-member-sold-up-to-60k-in-analog-devices-stock-heres-what-you-need-to-know",
       "author": "Benzinga Insights",
       "source": "benzinga",
       "symbols": [
-        "STLD"
+        "ADI",
+        "CB",
+        "PEP",
+        "SPGI"
       ],
-      "created_at": "2026-05-20T22:15:58Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Article highlights positive long-term returns from Steel Dynamics investment over 5 years."
+      "created_at": "2026-05-25T15:00:32Z",
+      "sentiment": "bear",
+      "confidence": 0.72,
+      "reason": "Congressional insider selling signals potential concerns about stock valuation or company outlook."
     },
     {
-      "id": "52705862",
-      "headline": "'Mind-Blowing Growth Is About to Propel Anthropic Into Its First Profitable Quarter' - WSJ Exclusive",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/05/52705862/mind-blowing-growth-is-about-to-propel-anthropic-into-its-first-profitable-quarter-wsj-exclusive",
-      "author": "Benzinga Newsdesk",
+      "id": "52765677",
+      "headline": "Exploring The Competitive Space: Analog Devices Versus Industry Peers In Semiconductors &amp; Semiconductor Equipment",
+      "summary": " ",
+      "url": "https://www.benzinga.com/insights/news/26/05/52765677/exploring-the-competitive-space-analog-devices-versus-industry-peers-in-semiconductors-amp-semicond",
+      "author": "Benzinga Insights",
       "source": "benzinga",
       "symbols": [
+        "ADI"
+      ],
+      "created_at": "2026-05-25T09:59:53Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Article compares Analog Devices to peers without expressing positive or negative outlook."
+    },
+    {
+      "id": "52765624",
+      "headline": "While Big Tech Pushes AI Agents, Aaron Levie Says Many Executives Still Don't Understand The 'Last Mile' Problem",
+      "summary": "Aaron Levie warns CEOs are falling into &34;AI psychosis,&34; overestimating AI automation after seeing demo outputs that hide real enterprise complexity.",
+      "url": "https://www.benzinga.com/markets/tech/26/05/52765624/while-big-tech-pushes-ai-agents-aaron-levie-says-many-executives-still-dont-understand-the-last-mile-problem",
+      "author": "Snigdha Gairola",
+      "source": "benzinga",
+      "symbols": [
+        "BOX",
+        "CRM",
+        "GOOG",
+        "GOOGL"
+      ],
+      "created_at": "2026-05-25T09:43:12Z",
+      "sentiment": "bear",
+      "confidence": 0.75,
+      "reason": "Levie warns of AI overestimation and hidden complexity, suggesting executives misjudge AI capabilities."
+    },
+    {
+      "id": "52765391",
+      "headline": "Anthropic To Become More Valuable Than Today's AMD, Sk Hynix And Micron? Crypto Prediction Market Is Fully Convinced",
+      "summary": "Cryptocurrency punters are overwhelmingly betting that privately held AI company Anthropic will exceed a $1 trillion pre-IPO valuation by year-end.",
+      "url": "https://www.benzinga.com/markets/prediction-markets/26/05/52765391/anthropic-more-valuable-amd-sk-hynix-micron-prediction-market",
+      "author": "Aniket Verma",
+      "source": "benzinga",
+      "symbols": [
+        "AMD",
         "AMZN",
+        "BTCUSD",
+        "DOGEUSD",
+        "GOOGL",
+        "MSFT",
+        "MU",
+        "NVDA",
+        "ZECUSD"
+      ],
+      "created_at": "2026-05-25T08:06:46Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Market confidence in Anthropic's valuation growth suggests strong belief in AI sector expansion"
+    },
+    {
+      "id": "52765142",
+      "headline": "AI Memory Boom Powers This Fund To The 'Fastest-Growing ETF' In History, Says Market Commentator, Bitcoin ETF's Record Broken",
+      "summary": "Roundhill&39;s DRAM ETF is the fastest-growing ETF launch in history as the AI-driven memory chip rally is fueling record inflows.",
+      "url": "https://www.benzinga.com/etfs/sector-etfs/26/05/52765142/ai-memory-boom-fastest-growing-etf-bitcoin",
+      "author": "Sweta Killa",
+      "source": "benzinga",
+      "symbols": [
+        "BTCUSD",
+        "DRAM",
+        "IBIT",
+        "MU",
+        "SNDK",
+        "SSNLF",
+        "STX",
+        "WDC"
+      ],
+      "created_at": "2026-05-25T06:48:10Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Record inflows and fastest-growing ETF launch driven by strong AI memory chip demand."
+    },
+    {
+      "id": "52763701",
+      "headline": "Consumer Tech News (May 18-22): Meta Cuts 8,000 Jobs, Nvidia Posts Strong Earnings & More",
+      "summary": "Nvidia earnings, Boeing&39;s China aircraft order, AI regulation proposals and major semiconductor investments dominate this week&39;s market-moving developments.",
+      "url": "https://www.benzinga.com/markets/tech/26/05/52763701/consumer-tech-news-may-18-22-meta-cuts-8000-jobs-nvidia-posts-strong-earnings-more",
+      "author": "Lekha Gupta",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "ADI",
+        "APLD",
+        "BA",
+        "BABA",
+        "BIDU",
+        "BILI",
+        "BX",
+        "CHPT",
+        "CRWD",
+        "GOOG",
+        "GOOGL",
+        "IBM",
+        "INTU",
+        "KEYS",
+        "META",
+        "MSFT",
+        "NIO",
+        "NOK",
+        "NVDA",
+        "PATH",
+        "PLUG",
+        "RYAAY",
+        "SSNLF",
+        "STLA",
+        "TSM",
+        "UPWK",
+        "XPEV"
+      ],
+      "created_at": "2026-05-24T13:36:09Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Mixed news: Meta layoffs are negative, but Nvidia's strong earnings and Boeing's order are positive."
+    },
+    {
+      "id": "52763546",
+      "headline": "Apple's Spatial Computing, Google Appeals Monopoly Ruling And More: This Week In Appleverse",
+      "summary": "Google&39;s antitrust appeal, Apple&39;s AI expansion, Nvidia&39;s dividend hike and smartphone market shifts led this week&39;s tech headlines.",
+      "url": "https://www.benzinga.com/markets/tech/26/05/52763546/apples-spatial-computing-google-appeals-monopoly-ruling-and-more-this-week-in-appleverse",
+      "author": "Mohd Haider",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "GOOG",
+        "GOOGL",
+        "NVDA",
+        "SSNLF"
+      ],
+      "created_at": "2026-05-24T11:01:24Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Mixed news: Apple's AI expansion is positive, but Google's antitrust issues and market shifts are concerns."
+    },
+    {
+      "id": "52761838",
+      "headline": "Google Appeals Landmark Monopoly Ruling That Targets Apple Default Deals",
+      "summary": "Google appealed a landmark ruling accusing it of illegally maintaining its online search dominance through default deals with Apple.",
+      "url": "https://www.benzinga.com/news/legal/26/05/52761838/google-appeals-landmark-monopoly-ruling-that-targets-apple-default-deals",
+      "author": "Ananya Gairola",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
         "GOOG",
         "GOOGL",
         "MSFT"
       ],
-      "created_at": "2026-05-20T20:46:48Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Article highlights impending profitability and strong growth momentum for Anthropic."
+      "created_at": "2026-05-23T05:32:06Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Appeal is procedural; long-term outcome remains uncertain for Google's business."
     },
     {
-      "id": "52704280",
-      "headline": "TransUnion And Google  Announce An Industry-First Capability That Helps Marketers Measure YouTube Advertising Within TransUnion's Multi-Touch Attribution Solution",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/05/52704280/transunion-and-google-announce-an-industry-first-capability-that-helps-marketers-measure-youtube-adv",
-      "author": "Benzinga Newsdesk",
+      "id": "52758817",
+      "headline": "Here's How Much You Would Have Made Owning Keysight Techs Stock In The Last 10 Years",
+      "summary": " ",
+      "url": "https://www.benzinga.com/insights/news/26/05/52758817/heres-how-much-you-would-have-made-owning-keysight-techs-stock-in-the-last-10-years",
+      "author": "Benzinga Insights",
       "source": "benzinga",
       "symbols": [
-        "GOOG",
-        "GOOGL",
-        "TRU"
+        "KEYS"
       ],
-      "created_at": "2026-05-20T20:09:12Z",
+      "created_at": "2026-05-22T20:45:39Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Strategic partnership expansion enhances TransUnion's product capabilities and market competitiveness in digital advertising measurement."
+      "reason": "Article highlights positive 10-year returns, implying strong historical performance of KEYS stock."
     },
     {
-      "id": "52702982",
-      "headline": "Alphabet's Google Announces Capacity Commitment Framework With Ameren To Support Additional 500 MW Of Capacity; $15B New Investment In Infrastructure In Missouri, Including New Data Center In New Flor",
+      "id": "52756805",
+      "headline": "'Anthropic to Close Over $30 Billion Round as Soon as Next Week' - Bloomberg",
       "summary": "",
-      "url": "https://www.benzinga.com/news/26/05/52702982/alphabets-google-announces-capacity-commitment-framework-with-ameren-to-support-additional-500-mw-of",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "AEE",
-        "GOOG",
-        "GOOGL"
-      ],
-      "created_at": "2026-05-20T19:39:49Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Alphabet's $15B infrastructure investment and new data center expansion signals growth and long-term commitment."
-    },
-    {
-      "id": "52702309",
-      "headline": "'White House Briefs AI Companies on Plan to Review Models Before Release' - The Information",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/05/52702309/white-house-briefs-ai-companies-on-plan-to-review-models-before-release-the-information",
+      "url": "https://www.benzinga.com/news/26/05/52756805/anthropic-to-close-over-30-billion-round-as-soon-as-next-week-bloomberg",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
         "AMZN",
-        "BAH",
-        "CACI",
-        "CRWD",
-        "GOOGL",
-        "LDOS",
-        "MSFT",
-        "PANW",
-        "PLTR",
-        "SAIC"
+        "GOOG",
+        "GOOGL"
       ],
-      "created_at": "2026-05-20T19:13:38Z",
-      "sentiment": "bear",
-      "confidence": 0.72,
-      "reason": "Increased regulatory scrutiny and pre-release review requirements could increase compliance costs and slow AI model deployment timelines."
+      "created_at": "2026-05-22T19:53:41Z",
+      "sentiment": "bull",
+      "confidence": 0.92,
+      "reason": "Major funding round signals strong investor confidence and accelerates Anthropic's growth trajectory."
     },
     {
-      "id": "52700430",
-      "headline": "Susquehanna Maintains Positive on Keysight Techs, Raises Price Target to $425",
+      "id": "52756286",
+      "headline": "Anthropic Rolls Out Claude Security In Public Beta For Claude Enterprise Clients; Starts Cyber Verification Program",
       "summary": "",
-      "url": "https://www.benzinga.com/news/26/05/52700430/susquehanna-maintains-positive-on-keysight-techs-raises-price-target-to-425",
+      "url": "https://www.benzinga.com/news/26/05/52756286/anthropic-rolls-out-claude-security-in-public-beta-for-claude-enterprise-clients-starts-cyber-verifi",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "AMZN",
+        "GOOG",
+        "GOOGL"
+      ],
+      "created_at": "2026-05-22T19:37:14Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "New security features and enterprise program expansion signal product maturation and growing enterprise adoption."
+    },
+    {
+      "id": "52752874",
+      "headline": "8 Communication Services Stocks With Whale Alerts In Today's Session",
+      "summary": " ",
+      "url": "https://www.benzinga.com/insights/options/26/05/52752874/8-communication-services-stocks-with-whale-alerts-in-todays-session",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "ASTS",
+        "CHTR",
+        "GOOG",
+        "GOOGL",
+        "META",
+        "NFLX",
+        "RBLX",
+        "TTWO"
+      ],
+      "created_at": "2026-05-22T17:35:53Z",
+      "sentiment": "neutral",
+      "confidence": 0.65,
+      "reason": "Whale alerts indicate large trades but don't inherently signal positive or negative outlook."
+    },
+    {
+      "id": "52752173",
+      "headline": "Nvidia Powers 52% Of Sovereign AI Projects \u2014 So Who's Really Sovereign?",
+      "summary": "Nvidia supplies GPUs for 52% of tracked sovereign AI projects worldwide, highlighting the company&39;s growing role in government-backed AI infrastructure initiatives.",
+      "url": "https://www.benzinga.com/markets/tech/26/05/52752173/nvidia-powers-52-of-sovereign-ai-projects-so-whos-really-sovereign",
+      "author": "Surbhi Jain",
+      "source": "benzinga",
+      "symbols": [
+        "AMD",
+        "AMZN",
+        "CSCO",
+        "DELL",
+        "GOOG",
+        "GOOGL",
+        "HPE",
+        "INTC",
+        "MSFT",
+        "NVDA",
+        "ORCL"
+      ],
+      "created_at": "2026-05-22T17:16:05Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Dominant market position in critical sovereign AI infrastructure demonstrates strong competitive moat and revenue growth potential."
+    },
+    {
+      "id": "52751133",
+      "headline": "Anthropic Hits $900 Billion Valuation \u2014 With One Surprising Back\u2011Door Access Point Before Its IPO",
+      "summary": "Multiple public companies have stakes in Anthropic. One smaller stock could be the big winner from Anthropic&39;s rising valuation and potential IPO.",
+      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/05/52751133/anthropic-hits-900-billion-valuation-with-one-surprising-back%e2%80%91door-access-point-before-its-ipo",
+      "author": "Chris Katje",
+      "source": "benzinga",
+      "symbols": [
+        "AMZN",
+        "GOOGL",
+        "MSFT",
+        "NVDA",
+        "SATS",
+        "SKM",
+        "ZM"
+      ],
+      "created_at": "2026-05-22T16:41:51Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Anthropic's rising valuation and potential IPO could benefit smaller public companies with stakes in it."
+    },
+    {
+      "id": "52750096",
+      "headline": "Truist Securities Maintains Hold on Keysight Techs, Raises Price Target to $376",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/05/52750096/truist-securities-maintains-hold-on-keysight-techs-raises-price-target-to-376",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
         "KEYS"
       ],
-      "created_at": "2026-05-20T17:59:14Z",
+      "created_at": "2026-05-22T16:04:33Z",
       "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains positive stance and raises price target, signaling confidence in stock upside potential."
+      "confidence": 0.85,
+      "reason": "Price target raise indicates positive outlook despite maintaining Hold rating."
     },
     {
-      "id": "52699932",
-      "headline": "Analog Devices Cashes In On AI Infrastructure Boom",
-      "summary": "Analog Devices (ADI) beats Q2 expectations with $3.62B in revenue and $3.09 EPS, driven by massive AI data center and industrial demand.",
-      "url": "https://www.benzinga.com/markets/earnings/26/05/52699932/analog-devices-cashes-in-on-ai-infrastructure-boom",
+      "id": "52749683",
+      "headline": "UBS Maintains Buy on FedEx, Lowers Price Target to $445",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/05/52749683/ubs-maintains-buy-on-fedex-lowers-price-target-to-445",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "FDX"
+      ],
+      "created_at": "2026-05-22T15:55:28Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Buy rating maintained despite price target reduction, indicating continued positive outlook."
+    },
+    {
+      "id": "52749477",
+      "headline": "Dell Technologies Stock Hits 52-Week High - Here's Why",
+      "summary": "Dell hits a 52-week high as analysts boost price targets ahead of Q1 earnings, citing &34;parabolic&34; AI infrastructure demand.",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/05/52749477/dell-technologies-stock-hits-52-week-high-heres-why",
       "author": "Anusuya Lahiri",
       "source": "benzinga",
       "symbols": [
-        "ADI"
+        "DELL",
+        "GOOGL",
+        "HON",
+        "LLY",
+        "LNVGF",
+        "LNVGY",
+        "NVDA",
+        "PLTR",
+        "SSNLF"
       ],
-      "created_at": "2026-05-20T17:39:19Z",
+      "created_at": "2026-05-22T15:50:04Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Strong earnings beat with robust AI data center demand driving revenue growth."
+      "reason": "52-week high with boosted analyst targets driven by strong AI infrastructure demand."
     },
     {
-      "id": "52699404",
-      "headline": "S&P 500 Rebounds Ahead Of Nvidia's Print, Oil Sinks 5% On Iran Truce Hopes: Stock Market Today",
-      "summary": "U.S. stocks halt a three-day slide as oil tumbles 5% on revived Iran truce hopes, easing inflation fears ahead of Nvidia&39;s results after the close.",
-      "url": "https://www.benzinga.com/trading-ideas/movers/26/05/52699404/stocks-rebound-oil-sinks-5-percent-iran-truce-hopes-nvidia-markets-wednesday",
+      "id": "52748702",
+      "headline": "Dow Jones Hits Record Highs, DELL Jumps 15%: Stock Market Today",
+      "summary": "Dell, Qualcomm and HP power an AI-fueled rally to send the Dow to record highs. Nasdaq 100 and S&amp;P 500 eyes eighth straight week of gains.",
+      "url": "https://www.benzinga.com/markets/equities/26/05/52748702/dow-record-highs-ibm-dell-hp-rally-michigan-consumer-sentiment-markets-friday",
       "author": "Piero Cingari",
       "source": "benzinga",
       "symbols": [
-        "AAPL",
-        "ADI",
-        "ALAB",
-        "ALK",
         "AMD",
-        "AMZN",
-        "BA",
-        "CF",
-        "CVX",
+        "BJ",
+        "CAT",
+        "COKE",
+        "COST",
+        "DELL",
         "DIA",
-        "ENPH",
-        "GDX",
-        "GE",
-        "GLD",
         "GOOGL",
-        "GS",
-        "HAS",
+        "HPQ",
+        "IBM",
         "INTC",
         "IWM",
-        "JETS",
-        "LOW",
-        "LRCX",
-        "META",
+        "MCD",
+        "MRK",
         "MSFT",
-        "MU",
-        "NTNX",
         "NVDA",
-        "PBW",
+        "QCOM",
         "QQQ",
         "RDDT",
-        "ROIV",
+        "RKLB",
         "SMH",
-        "TGT",
-        "TJX",
-        "TSLA",
+        "SMMT",
+        "STLA",
+        "TTWO",
+        "TXN",
         "VOO",
-        "W",
-        "XLB",
-        "XLE",
-        "XLF",
-        "XLI",
+        "WMT",
         "XLK",
-        "XLY",
-        "XOM",
-        "XOP"
+        "XLP",
+        "ZM"
       ],
-      "created_at": "2026-05-20T17:19:12Z",
+      "created_at": "2026-05-22T15:27:33Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Dell jumps 15% amid AI-fueled rally driving Dow to record highs and market gains."
+    },
+    {
+      "id": "52748031",
+      "headline": "Nvidia Is Cheap, Says A Wall Street Journal Columnist\u2014But Prediction Markets Disagree With Him",
+      "summary": "A WSJ columnist says Nvidia is a bargain even at $5.4 trillion. Polymarket traders aren&39;t so sure, pricing real risk into the AI bellwether&39;s year-end reign.",
+      "url": "https://www.benzinga.com/markets/prediction-markets/26/05/52748031/nvidia-is-cheap-says-a-wall-street-journal-columnist-but-prediction-markets-disagree-with-him",
+      "author": "Daragh Thomas",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "GOOGL",
+        "INTC",
+        "NVDA"
+      ],
+      "created_at": "2026-05-22T15:09:11Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Mixed signals: columnist bullish on valuation while prediction markets reflect skepticism."
+    },
+    {
+      "id": "52745815",
+      "headline": "Barclays Initiates Coverage On Nucor with Overweight Rating, Announces Price Target of $270",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/05/52745815/barclays-initiates-coverage-on-nucor-with-overweight-rating-announces-price-target-of-270",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "NUE"
+      ],
+      "created_at": "2026-05-22T14:22:21Z",
+      "sentiment": "bull",
+      "confidence": 0.92,
+      "reason": "Overweight rating with $270 price target indicates positive outlook and analyst confidence in Nucor's future performance."
+    },
+    {
+      "id": "52739913",
+      "headline": "Trump Backs Out Of AI Executive Order Amid Fears It Could Hurt US Tech Edge\u2014 'Don't Want To...Get In The Way Of That Lead'",
+      "summary": "Trump canceled a planned AI order over concerns stricter rules could weaken America&39;s lead over China in AI.",
+      "url": "https://www.benzinga.com/news/politics/26/05/52739913/trump-backs-out-of-ai-executive-order-amid-fears-it-could-hurt-us-tech-edge-dont-want-to-get-in-the-way-of-that-lead",
+      "author": "Tanya Rawat",
+      "source": "benzinga",
+      "symbols": [
+        "GOOG",
+        "GOOGL"
+      ],
+      "created_at": "2026-05-22T10:39:44Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "S&P 500 rebound, oil decline easing inflation fears, and Nvidia earnings anticipation boost market optimism."
+      "reason": "Reduced regulatory burden supports US tech companies' AI development and competitiveness."
+    },
+    {
+      "id": "52739864",
+      "headline": "Asia's AI Trade Is Expanding Beyond Taiwan Semiconductor: Analyst",
+      "summary": "As the AI trade broadens, investors rotate from Taiwan Semiconductor to emerging winners like MediaTek and Samsung.",
+      "url": "https://www.benzinga.com/markets/tech/26/05/52739864/asias-ai-trade-is-expanding-beyond-taiwan-semiconductor-analyst",
+      "author": "Anusuya Lahiri",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "AMD",
+        "GOOGL",
+        "NVDA",
+        "SSNLF",
+        "TSM"
+      ],
+      "created_at": "2026-05-22T10:32:17Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Broadening AI trade and investor rotation to emerging winners like MediaTek and Samsung signals growth opportunities."
+    },
+    {
+      "id": "52739393",
+      "headline": "Google's AI Glasses Threaten Meta's 80% Market Grip, Analyst Says",
+      "summary": "Google partners with Samsung, Warby Parker, and Gentle Monster for new Android XR glasses to challenge Meta&39;s market lead.",
+      "url": "https://www.benzinga.com/analyst-stock-ratings/analyst-color/26/05/52739393/googles-ai-glasses-threaten-metas-80-market-grip-analyst-says",
+      "author": "Anusuya Lahiri",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "ESLOF",
+        "GOOG",
+        "GOOGL",
+        "META",
+        "QCOM",
+        "SSNLF",
+        "WRBY"
+      ],
+      "created_at": "2026-05-22T09:56:29Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Google's new AR glasses partnership threatens Meta's dominant 80% market share in the segment."
+    },
+    {
+      "id": "52739247",
+      "headline": "Meta, Broadcom And Others Launch $125 Million UCLA AI Chip Hub",
+      "summary": "Broadcom, Meta, AMAT &amp; more partner with UCLA for a new $125M AI semiconductor hub to boost research &amp; workforce growth.",
+      "url": "https://www.benzinga.com/markets/tech/26/05/52739247/meta-broadcom-and-others-launch-125-million-ucla-ai-chip-hub",
+      "author": "Anusuya Lahiri",
+      "source": "benzinga",
+      "symbols": [
+        "AMAT",
+        "AMZN",
+        "AVGO",
+        "GFS",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "ORCL",
+        "SNPS"
+      ],
+      "created_at": "2026-05-22T09:37:08Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Major $125M investment in AI chip research signals industry commitment to semiconductor innovation and talent development."
+    },
+    {
+      "id": "52739033",
+      "headline": "Texas AG Ken Paxton Sues Meta, Alleges WhatsApp Misled Users About Encryption",
+      "summary": "Texas sued Meta and WhatsApp, alleging the app misrepresented encryption and accessed private messages, claims Meta denies.",
+      "url": "https://www.benzinga.com/news/legal/26/05/52739033/texas-ag-ken-paxton-sues-meta-alleges-whatsapp-misled-users-about-encryption",
+      "author": "Ananya Gairola",
+      "source": "benzinga",
+      "symbols": [
+        "GOOG",
+        "GOOGL",
+        "META",
+        "NFLX"
+      ],
+      "created_at": "2026-05-22T09:04:40Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Lawsuit alleges deceptive practices regarding user privacy, creating legal and reputational risk for Meta."
+    },
+    {
+      "id": "52738655",
+      "headline": "Nvidia Is Going To Have To Do An Apple On Dividends, Says Jim Cramer: Sounds 'Boring' But It Works",
+      "summary": "Nvidia&39;s dividend hike still offers a modest yield, reinforcing that mega-cap AI stocks are built for growth rather than income.",
+      "url": "https://www.benzinga.com/markets/equities/26/05/52738655/nvidia-do-an-apple-boring-jim-cramer-growth-story",
+      "author": "Sweta Killa",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "GOOG",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NVDA"
+      ],
+      "created_at": "2026-05-22T08:17:41Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Acknowledges modest dividend yield while emphasizing growth focus of mega-cap AI stocks"
+    },
+    {
+      "id": "52738266",
+      "headline": "FedEx-Led $9 Billion Buyout Offer Window For Polish Parcel Firm InPost Opens May-End",
+      "summary": "FedEx-led consortium launches InPost buyout offer from May 26 to July 27 in proposed \u20ac7.8 billion ($9 billion) deal.",
+      "url": "https://www.benzinga.com/m-a/26/05/52738266/fedex-led-9-billion-buyout-offer-window-for-polish-parcel-firm-inpost-opens-may-end",
+      "author": "Namrata Sen",
+      "source": "benzinga",
+      "symbols": [
+        "FDX"
+      ],
+      "created_at": "2026-05-22T07:02:13Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Large acquisition offer signals strong investor interest and potential value creation for InPost shareholders."
+    },
+    {
+      "id": "52738265",
+      "headline": "FedEx-Led $9 Billion Buyout Offer Window For Polish Parcel Firm InPost Opens May-End",
+      "summary": "FedEx-led consortium launches InPost buyout offer from May 26 to July 27 in proposed \u20ac7.8 billion ($9 billion) deal.",
+      "url": "https://www.benzinga.com/m-a/26/05/52738265/fedex-led-9-billion-buyout-offer-window-for-polish-parcel-firm-inpost-opens-may-end",
+      "author": "Namrata Sen",
+      "source": "benzinga",
+      "symbols": [
+        "FDX"
+      ],
+      "created_at": "2026-05-22T07:02:12Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Major acquisition offer signals strong investor confidence in InPost's market value and growth potential."
+    },
+    {
+      "id": "52735075",
+      "headline": "'Waymo halts freeway rides after robotaxis struggle in construction zones'- TechCrunch",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/05/52735075/waymo-halts-freeway-rides-after-robotaxis-struggle-in-construction-zones-techcrunch",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "GOOG",
+        "GOOGL"
+      ],
+      "created_at": "2026-05-21T21:17:54Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Waymo halting freeway rides due to operational struggles signals setback in autonomous vehicle deployment."
+    },
+    {
+      "id": "52733753",
+      "headline": "Buffett Bet Big On Visa, Mastercard Stocks 15 Years Ago: Here's How Much Those Positions Gained",
+      "summary": "Berkshire Hathaway no longer holds stakes in Visa or Mastercard. Here&39;s a look back at the timeline of owning shares and how much the conglomerate may have made.",
+      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/05/52733753/buffett-bet-big-on-visa-mastercard-stocks-15-years-ago-heres-how-much-those-positions-gained",
+      "author": "Chris Katje",
+      "source": "benzinga",
+      "symbols": [
+        "AXP",
+        "BRK",
+        "GOOGL",
+        "MA",
+        "NYT",
+        "V"
+      ],
+      "created_at": "2026-05-21T20:40:21Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Historical investment review with no current position, neither positive nor negative for future outlook."
     }
   ]
 }
