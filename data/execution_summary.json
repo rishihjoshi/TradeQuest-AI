@@ -1,25 +1,44 @@
 {
-  "timestamp": "2026-05-25T22:35:04Z",
-  "mode": "post_close",
-  "orders_placed": [],
+  "timestamp": "2026-05-26T16:59:23Z",
+  "mode": "market_open",
+  "orders_placed": [
+    {
+      "action": "BUY",
+      "symbol": "KLAC",
+      "qty": 1,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "NEM",
+      "qty": 5,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "ROST",
+      "qty": 2,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "C",
+      "qty": 4,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "BNY",
+      "qty": 1,
+      "status": "submitted"
+    }
+  ],
   "orders_skipped": [
     {
-      "symbol": "CSCO",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "IBKR",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "TPR",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "GOOGL",
+      "symbol": "WDC",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 6.18
+  "cash_pct_after": 5.44
 }
