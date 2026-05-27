@@ -1,12 +1,5 @@
 {
-  "timestamp": "2026-05-26T20:29:24Z",
-  "sells": [
-    {
-      "symbol": "KLAC",
-      "shares": 1,
-      "rule": "concentration",
-      "reason": "Position weight 19.4% exceeds 2\u00d7 MAX_POSITION_PCT (16%). Forced exit \u2014 sentinel Rule 1."
-    }
-  ],
-  "count": 1
+  "timestamp": "2026-05-27T20:37:09Z",
+  "sells": [],
+  "count": 0
 }
