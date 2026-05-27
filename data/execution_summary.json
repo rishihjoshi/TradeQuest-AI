@@ -1,20 +1,7 @@
 {
-  "timestamp": "2026-05-27T16:51:01Z",
-  "mode": "market_open",
-  "orders_placed": [
-    {
-      "action": "SELL",
-      "symbol": "GOOGL",
-      "qty": 1,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "BEN",
-      "qty": 19,
-      "status": "submitted"
-    }
-  ],
+  "timestamp": "2026-05-27T22:56:48Z",
+  "mode": "post_close",
+  "orders_placed": [],
   "orders_skipped": [
     {
       "symbol": "NEM",
@@ -22,5 +9,5 @@
     }
   ],
   "errors": [],
-  "cash_pct_after": 23.28
+  "cash_pct_after": 23.01
 }

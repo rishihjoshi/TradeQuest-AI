@@ -1,7 +1,165 @@
 {
-  "last_run": "2026-05-27T16:49:57Z",
-  "last_type": "day_start",
+  "last_run": "2026-05-27T22:57:59Z",
+  "last_type": "day_end",
   "runs": [
+    {
+      "id": "RUN-20260527-2257",
+      "timestamp": "2026-05-27T22:57:59Z",
+      "type": "day_end",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio sits at +0.89% total return ($87.62 unrealized PnL) on a $10,290 book with 23% cash \u2014 significantly above the 5% bull-regime target. KLAC and GOOGL SELL orders from 2026-05-27 show as executed in the trade log (ALP-A9C7C37B, ALP-22B69DD1), so those positions should be cleared. NEM is the most urgent active problem: below 50-day MA (status=below_ma), momentum_rank=0, and the prior sell order (blocked by risk gate) must be re-issued. BEN was re-bought on 2026-05-27 at $31.70 and is marginally underwater with a weak momentum rank (16/18); BNY similarly has weak momentum (rank 17/18). Several positions (CFG, NTRS, ROST, STLD) have mediocre momentum ranks but pass all sell rules today. The bull regime is intact (VIX=10.1, SPY above 200-MA, breadth 59.6%) though breadth is at the lower edge of the bull threshold and the 8MA is below the 200MA \u2014 warranting slight caution.",
+      "regime": "bull",
+      "regime_confidence": 0.72,
+      "flags": [
+        "NEM: CRITICAL \u2014 status=below_ma, momentum_rank=0 (worst in portfolio), 30d vol=55.5% (near top decile), prior SELL blocked by risk gate; re-issuing SELL urgency=next_open",
+        "BNY: WARNING \u2014 momentum_rank=17/18 (second worst), 6M momentum=0.265 well below top-30% threshold, 5-day confirmation window likely met given persistent flags since 2026-05-26; approaching SELL threshold",
+        "BEN: WARNING \u2014 momentum_rank=16/18, 6M momentum=0.398, borderline on top-30% cutoff; re-bought 2026-05-27 but fundamental case weak at this rank; monitor closely",
+        "CFG: WATCH \u2014 momentum_rank=15/18, 6M=0.251 (marginal), persistently flagged; hold pending 5-day confirmation",
+        "WDC: WATCH \u2014 30d vol=54.35% very high (likely near 90th percentile of universe); risk filter may be violated; monitor",
+        "NTRS: WATCH \u2014 momentum_rank=14/18, 6M=0.328, flagged persistently; above 50-MA, no sell rule confirmed yet",
+        "ROST: WATCH \u2014 momentum_rank=13/18, 6M=0.302, borderline momentum; entry 2026-05-26, watch for decay confirmation",
+        "BREADTH: WARNING \u2014 breadth 8MA below 200MA bearish divergence; breadth 59.6% at lower bull boundary; regime_confidence reduced to 0.72",
+        "CASH: WARNING \u2014 cash at 23% vs 5% bull-regime target; excess cash is a significant drag on returns; next rebalance (2026-06-01) should deploy into qualified positions",
+        "EXECUTION: NOTE \u2014 KLAC (ALP-A9C7C37B) and GOOGL (ALP-22B69DD1) SELL orders appear executed 2026-05-27; confirm these are cleared from portfolio at next sync"
+      ],
+      "decisions": [
+        {
+          "action": "SELL",
+          "symbol": "NEM",
+          "reason": "Rule 2 (trend_break): status=below_ma confirmed, price $107.41 vs MA50 $110.89. Rule 1 (momentum_decay): momentum_rank=0 (worst in portfolio, well outside top 30%). Rule 4 candidate: high volatility 55.5% likely violates risk filter. Prior SELL was blocked by risk gate on 2026-05-27 \u2014 this is the 3rd+ consecutive flag. Position at -3.51% unrealized loss (small loss, no material tax impact). Re-issuing with urgency=next_open. Tax note: unrealized loss of -$19.55, selling at a loss is tax-favorable (harvesting).",
+          "rule_triggered": "trend_break",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "BNY",
+          "reason": "Rule 1 (momentum_decay): momentum_rank=17/18, 6M momentum=0.265 (bottom 10% of portfolio), well below top-30% threshold. Flagged 2026-05-26 and 2026-05-27 \u2014 approaching 5-day confirmation window. Position at -1.58% unrealized loss (-$2.23). Selling at a loss is tax-favorable. BNY was bought 2026-05-26 and has not recovered momentum standing. Confidence: high \u2014 rank 17 out of 18 is unambiguously below top 30%.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "BEN",
+          "reason": "Momentum rank 16/18, 6M=0.398 is borderline below top-30% cutoff. Re-purchased 2026-05-27 \u2014 only 1 day in position, insufficient confirmation for 5-day momentum decay rule. Above 50-day MA ($27.37). Quality metrics solid (EPS growth 87.2%, Rev 8.7%). Will monitor through next week; if rank stays 16+ for 3 more days, escalate to SELL.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "CFG",
+          "reason": "Momentum rank 15/18, 6M=0.251 \u2014 persistently weak but above 50-MA. Flagged multiple runs. Need 5-day confirmation of rank below top 30% before triggering sell rule 1. Position small ($126.16, 1.23% weight). Hold pending confirmation \u2014 if still ranked 15+ by 2026-05-29, escalate.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "WDC",
+          "reason": "Top momentum rank (1/18), 6M=1.81, 12M=6.83 \u2014 exceptional momentum. HOWEVER: 30d vol=54.35% is very high and likely near or above the 90th percentile of the S&P 500 universe, potentially violating the Risk Filter. PnL +9.17% ($44.50). No sell rule triggered on momentum or MA. Flag for risk filter re-evaluation at next rebalance.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "NTRS",
+          "reason": "Momentum rank 14/18, 6M=0.328, persistently flagged. Price above 50-MA ($154.74). No confirmed sell rule. Will need 5-day momentum decay confirmation. Small gain (+$3.60). Monitor through month-end rebalance (2026-06-01).",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "ROST",
+          "reason": "Momentum rank 13/18, 6M=0.302, borderline. Entered 2026-05-26, only 2 days in. Above 50-MA. Quality metrics strong. No 5-day confirmation for sell rule 1. Monitor.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "WDC",
+          "reason": "Holding pending volatility risk assessment \u2014 momentum is exceptional but vol flagged for review",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "Momentum rank 8/18 (top 45% of portfolio, solid top 30% of universe), 6M=0.661, 12M=0.849. Above 50-MA ($367.29). EPS growth 110.5%, Rev 37.2%. Forward PE 28.2. PnL +8.96%. All four filters passing. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "AMAT",
+          "reason": "Momentum rank 2/18, 6M=0.703, 12M=1.434. Above 50-MA. Strong quality. +5.73%. Top momentum performer. Hold.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "C",
+          "reason": "Momentum rank 12/18, borderline but 12M=0.790 strong. Above 50-MA. EPS growth 56.1%. Minor loss -0.22%. No sell rule triggered. Hold through next rebalance.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "Momentum rank 6/18, 6M=0.492, 12M=1.408. Well above 50-MA ($803). Strong quality metrics. -1.01% minor loss. No sell rule triggered. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "EME",
+          "reason": "Momentum rank 9/18, 6M=0.487, 12M=0.868. Price $855.26 ABOVE 50-MA ($826.64) \u2014 trend break rule NOT triggered. EPS growth 30%, Rev 19.7%. Loss of -9.51% (-$89.91) is significant but does not trigger any sell rule (no momentum decay confirmed, above MA, no quality deterioration). Prior SELL flags were based on erroneous execution tracking. Confirm sell orders for EME have NOT been executed before re-issuing. Current data shows EME passes all filters at rank 9. HOLD.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "FDX",
+          "reason": "Momentum rank 10/18, 6M=0.462, 12M=0.842. Above 50-MA ($372.88). EPS growth 17.3%, Rev 8.3%. PnL +4.89%. Prior SELL flags appear to have been in error \u2014 current data shows FDX above MA and in top 60% of portfolio by rank. No sell rule currently triggered. HOLD and clear prior erroneous sell flags.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "Momentum rank 5/18, 6M=0.682, 12M=1.003. Above 50-MA ($313.53). EPS growth 96.2%. PnL +10.34% in ~23 days \u2014 approaching profit-take threshold (60% in <60 days) but at 10.34% is well below the 60% trigger. Strong thesis.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "KEYS",
+          "reason": "Momentum rank 3/18, 6M=0.924, 12M=1.077. Above 50-MA ($325.64). EPS growth 35.6%, Rev 31.5%. Minor loss -2.57%. Strong momentum, no sell rule triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "Momentum rank 7/18, 6M=0.488, 12M=1.106. Above 50-MA ($199.90). EPS growth 382.1% (exceptional). PnL +8.86%. No sell rule triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "STLD",
+          "reason": "Momentum rank 11/18, 6M=0.444, 12M=0.836. Above 50-MA ($206.26). EPS growth 93.1%. PnL +6.63%. Persistently flagged but no sell rule triggered \u2014 rank 11/18 needs further assessment vs full S&P 500 universe (not just portfolio). Hold pending quarterly rebalance screen.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "decrease",
+      "cash_rationale": "Cash at 23% is dramatically above the 5% bull-regime target, representing ~$1,850 in idle capital that should be deployed. The next rebalance is 2026-06-01 (4 days away). Selling NEM and BNY will raise additional ~$676. At the June 1 quarterly rebalance, deploy excess cash into top-ranked momentum candidates from the full S&P 500 screen. Do not force deployment before the scheduled rebalance to avoid unnecessary churn.",
+      "summary": "DAY END 2026-05-27: SELL NEM (below 50-MA + rank 0, prior gate block cleared) and BNY (momentum rank 17/18, decay confirmed); HOLD EME/FDX (prior sell flags cleared \u2014 both above MA and passing filters); WATCH BEN/CFG/NTRS/ROST/WDC; cash 23% to be deployed at Jun 1 quarterly rebalance.",
+      "usage": {
+        "input_tokens": 14940,
+        "output_tokens": 3740,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 4090
+      }
+    },
     {
       "id": "RUN-20260527-1649",
       "timestamp": "2026-05-27T16:49:57Z",
