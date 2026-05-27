@@ -1,13 +1,26 @@
 {
-  "timestamp": "2026-05-26T22:48:37Z",
-  "mode": "post_close",
-  "orders_placed": [],
+  "timestamp": "2026-05-27T16:51:01Z",
+  "mode": "market_open",
+  "orders_placed": [
+    {
+      "action": "SELL",
+      "symbol": "GOOGL",
+      "qty": 1,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "BEN",
+      "qty": 19,
+      "status": "submitted"
+    }
+  ],
   "orders_skipped": [
     {
-      "symbol": "KLAC",
+      "symbol": "NEM",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 5.41
+  "cash_pct_after": 23.28
 }
