@@ -1,7 +1,159 @@
 {
-  "last_run": "2026-05-27T22:57:59Z",
-  "last_type": "day_end",
+  "last_run": "2026-05-28T17:08:45Z",
+  "last_type": "day_start",
   "runs": [
+    {
+      "id": "RUN-20260528-1708",
+      "timestamp": "2026-05-28T17:08:45Z",
+      "type": "day_start",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio holds 17 positions across $10,290 in value with 23% cash \u2014 well above the 5% bull-regime target, creating meaningful deployment opportunity. Two critical sell orders (NEM, BNY) remain unresolved from prior runs and require urgent attention at next open; NEM is the most acute with below-MA status, momentum rank 0, and 30d vol of 55.5% well above the 90th percentile threshold. Breadth at 59.6% sits at the lower edge of the bull threshold with the 8MA crossing below the 200MA, signaling a narrowing rally that warrants slight caution despite the headline bull regime classification.",
+      "regime": "bull",
+      "regime_confidence": 0.68,
+      "flags": [
+        "NEM: CRITICAL \u2014 below 50-day MA ($107.41 vs MA50 $110.89), momentum rank 0/18 (worst in portfolio), 6M momentum = 0.00, 30d vol = 55.5% (near/above 90th pct), SELL issued 2 consecutive runs \u2014 unresolved execution. Sentinel rule may trigger automatically. Unrealized loss -3.51% (-$19.55).",
+        "BNY: URGENT \u2014 momentum rank 17/18 (second worst), 6M momentum = 0.265 (well below top-30% threshold), SELL issued 2 consecutive runs \u2014 unresolved execution. Unrealized loss -1.58% (-$2.23).",
+        "BEN: WARNING \u2014 momentum rank 16/18, 6M momentum = 0.398, borderline on top-30% cut. Entered 2026-05-27 (1 day ago); prior sell/rebuy cycle raises concern about churn. Monitor closely \u2014 if rank does not improve at day-end, will meet 5-day confirmation window soon.",
+        "CFG: WATCH \u2014 momentum rank 15/18, 6M momentum = 0.251 (below top-30%), persistently flagged across 5 runs. Above MA50 ($63.08 vs $62.14) but thin buffer. Small position (1.23% weight). Approaching sell trigger confirmation window.",
+        "NTRS: WATCH \u2014 momentum rank 14/18, 6M momentum = 0.328, flagged across 3+ runs. Still above MA50 ($167.94 vs $154.74) with comfortable buffer. Unrealized gain +0.72% \u2014 no sell rule confirmed yet but approaching threshold.",
+        "ROST: WATCH \u2014 momentum rank 13/18, 6M momentum = 0.302, borderline top-30%. Above MA50 ($233.47 vs $220.13). Small unrealized gain +0.15%. Flag for monitoring.",
+        "WDC: WATCH \u2014 30d volatility = 54.35% (almost certainly above 90th percentile of universe), risk filter likely failing. However, momentum rank 1/18 with 6M = 1.81, 12M = 6.83 (strongest in portfolio) and +9.17% unrealized gain. Flagged 5 consecutive runs \u2014 vol concern is real but momentum is exceptional. Do not sell today; flag for quantitative vol rank check at day-end.",
+        "EME: WATCH \u2014 prior sell orders issued on 2026-05-25 and 2026-05-26, but current data shows momentum rank 9/18, status above_ma ($855.26 vs MA50 $826.64), unrealized loss -9.51%. Sell orders appear to have been reversed/not executed. Current data does not confirm active sell rule \u2014 monitor at day-end for fresh rule check.",
+        "SECTOR CONCENTRATION: Financial Services holds 5 positions (BEN, BNY, C, CFG, NTRS) representing ~18.3% of portfolio. Three of the five rank in the bottom 5 of momentum rankings. Consider this sector's overweight as a risk factor at next rebalance.",
+        "BREADTH: At 59.6% (8MA below 200MA), breadth is at the lower boundary of bull classification. Strategy document indicates this warrants treating regime with caution \u2014 regime confidence reduced from 92% reported in meta to 68% for this run. Cash overage at 23% vs 5% bull target is actually protective given this signal.",
+        "UNRESOLVED ORDERS: NEM blocked by agent approval gate on last market-open execution. BNY, KLAC, GOOGL all show SELL flags in 2+ consecutive runs \u2014 KLAC and GOOGL appear to have executed (trades show 2026-05-27 sells), but NEM and BNY remain in portfolio and are unresolved. Investigate execution pipeline for NEM gate block."
+      ],
+      "decisions": [
+        {
+          "action": "WATCH",
+          "symbol": "NEM",
+          "reason": "SELL already approved in prior run but blocked by agent gate. Below MA50 ($107.41 < $110.89), momentum rank 0, vol 55.5%. This is a pre-market flag-only run \u2014 flagging as URGENT WATCH; SELL re-issuance expected at day-end run. Consecutive SELL count: 3 runs. Sentinel rule may auto-execute.",
+          "rule_triggered": "trend_break",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "BNY",
+          "reason": "SELL issued 2 consecutive runs, unresolved. Momentum rank 17/18, 6M = 0.265. Pre-market flag only \u2014 confirming SELL signal active. Unrealized loss -1.58% supports tax-loss harvest priority.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "BEN",
+          "reason": "Momentum rank 16/18, 6M = 0.398. Entered yesterday \u2014 only 1 day into confirmation window (need 5 days of rank below top-30% to trigger sell rule 1). Monitor daily. Not a sell today.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "CFG",
+          "reason": "Momentum rank 15/18, 6M = 0.251. Persistently flagged 5 runs. Approaching 5-day confirmation window for momentum decay sell rule. MA50 buffer thin ($63.08 vs $62.14 = 1.5%). Watch at day-end for confirmation count.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "NTRS",
+          "reason": "Momentum rank 14/18, 6M = 0.328. Flagged 3+ runs. Still passing MA filter with comfortable buffer. Accumulating toward 5-day confirmation window for momentum decay. No sell rule confirmed yet.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "ROST",
+          "reason": "Momentum rank 13/18, 6M = 0.302. Borderline top-30%. Above MA50 comfortably. Small unrealized gain. Flag for monitoring \u2014 not yet near sell threshold.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "WDC",
+          "reason": "30d vol = 54.35% likely exceeds 90th percentile risk filter threshold. However, momentum rank 1/18 (best in portfolio), 6M = 1.81, 12M = 6.83, unrealized gain +9.17%. Risk filter concern vs exceptional momentum \u2014 need universe vol rank data to confirm. Flagged 5 consecutive runs. Do not act pre-market; requires day-end vol rank confirmation.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "Momentum rank 8/18, 6M = 0.661, 12M = 0.849. Well above MA50 ($418 vs $367.29). Unrealized gain +8.96%. No sell rules triggered. Strong position.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "AMAT",
+          "reason": "Momentum rank 2/18, 6M = 0.703, 12M = 1.434. Above MA50 ($449.03 vs $391.25). Unrealized gain +5.73%. Strong momentum. No sell rules triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "C",
+          "reason": "Momentum rank 12/18, 6M = 0.309. Above MA50 ($125.50 vs $122.14). Marginal momentum but above threshold. Minor unrealized loss -0.22%. No sell rule confirmed.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "Momentum rank 6/18, 6M = 0.492. Well above MA50 ($912.63 vs $803.07). Unrealized loss -1.01% \u2014 within normal range. No sell rules triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "EME",
+          "reason": "Momentum rank 9/18, 6M = 0.487. Status above_ma ($855.26 vs $826.64). Prior sell flags appear stale \u2014 current rank and MA data do not confirm active sell rule. Unrealized loss -9.51% is a concern but does not trigger any sell rule in strategy. Monitor.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "FDX",
+          "reason": "Momentum rank 10/18, 6M = 0.462. Above MA50 ($412.25 vs $372.88). Unrealized gain +4.89%. Prior sell flags appear resolved \u2014 current data shows no active sell rule. No action needed.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "Momentum rank 5/18, 6M = 0.682. Well above MA50 ($371.38 vs $313.53). Unrealized gain +10.34%. No sell rules triggered. Healthy position.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "KEYS",
+          "reason": "Momentum rank 3/18, 6M = 0.924. Well above MA50 ($345.86 vs $325.64). Unrealized loss -2.57% \u2014 minor. Strong momentum. No sell rules triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "Momentum rank 7/18, 6M = 0.488. Well above MA50 ($246.47 vs $199.90). Unrealized gain +8.86%. No sell rules triggered. Solid position.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "STLD",
+          "reason": "Momentum rank 11/18, 6M = 0.444. Well above MA50 ($258.22 vs $206.26). Unrealized gain +6.63%. Persistently flagged in prior runs but current data shows no active sell rule. Hold.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "maintain",
+      "cash_rationale": "Cash at 23% significantly exceeds the 5% bull-regime target, but breadth at 59.6% with 8MA below 200MA warrants treating this as a narrowing bull \u2014 holding 20-25% cash is defensively appropriate given the breadth caution signal. Additionally, NEM and BNY sells (when executed) will free additional cash. Do not deploy cash aggressively until breadth confirms above 60% sustained, or until next quarterly rebalance (2026-06-01) when structured deployment can occur.",
+      "summary": "DAY START 2026-05-28: Pre-market flag-only \u2014 URGENT WATCH on NEM (below MA, rank 0, sell blocked 3 runs) and BNY (rank 17/18, sell unresolved 2 runs); WATCH on BEN/CFG/NTRS/ROST for momentum decay, WDC for vol risk; breadth at 59.6% reduces regime confidence to 68%; 23% cash overage defensively appropriate given narrowing breadth signal.",
+      "usage": {
+        "input_tokens": 14542,
+        "output_tokens": 3362,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 4090
+      }
+    },
     {
       "id": "RUN-20260527-2257",
       "timestamp": "2026-05-27T22:57:59Z",

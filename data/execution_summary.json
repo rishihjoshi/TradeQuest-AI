@@ -1,13 +1,26 @@
 {
-  "timestamp": "2026-05-27T22:56:48Z",
-  "mode": "post_close",
-  "orders_placed": [],
+  "timestamp": "2026-05-28T17:09:35Z",
+  "mode": "market_open",
+  "orders_placed": [
+    {
+      "action": "SELL",
+      "symbol": "NEM",
+      "qty": 5,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "TPR",
+      "qty": 4,
+      "status": "submitted"
+    }
+  ],
   "orders_skipped": [
     {
-      "symbol": "NEM",
+      "symbol": "CFG",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 23.01
+  "cash_pct_after": 22.74
 }
