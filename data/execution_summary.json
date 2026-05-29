@@ -1,26 +1,7 @@
 {
-  "timestamp": "2026-05-29T16:59:10Z",
-  "mode": "market_open",
-  "orders_placed": [
-    {
-      "action": "SELL",
-      "symbol": "CFG",
-      "qty": 2,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "IBKR",
-      "qty": 6,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "GOOGL",
-      "qty": 1,
-      "status": "submitted"
-    }
-  ],
+  "timestamp": "2026-05-29T22:51:02Z",
+  "mode": "post_close",
+  "orders_placed": [],
   "orders_skipped": [
     {
       "symbol": "EME",

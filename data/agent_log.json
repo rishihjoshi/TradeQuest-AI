@@ -1,7 +1,157 @@
 {
-  "last_run": "2026-05-29T16:58:16Z",
-  "last_type": "day_start",
+  "last_run": "2026-05-29T22:52:10Z",
+  "last_type": "day_end",
   "runs": [
+    {
+      "id": "RUN-20260529-2252",
+      "timestamp": "2026-05-29T22:52:10Z",
+      "type": "day_end",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is marginally positive (+0.16% total PnL) in a healthy bull regime with 60.2% breadth and VIX at 10. EME remains the critical problem position \u2014 it is below its 50-day MA and has been blocked from execution for multiple runs. Several financial sector positions (BEN, NTRS, C, ROST) show weak momentum ranks suggesting stale entries from recent churn. Cash at 16.68% significantly exceeds the 5% bull regime target, indicating incomplete deployment from recent sells.",
+      "regime": "bull",
+      "regime_confidence": 0.88,
+      "flags": [
+        "EME: SELL CRITICAL \u2014 price $826.82 below 50-day MA $831.61 for 3+ consecutive days; momentum_rank=0 (failed filter entirely); down -12.52%; has been blocked from execution for multiple runs \u2014 escalating to next_open urgency per persistent-flag rule",
+        "BEN: momentum_rank=16 out of 18 holdings; 6M momentum 0.3848 placing it near bottom of universe top-30% threshold; persistently flagged across 4 runs; small unrealized loss (-2.15%) makes this a tax-loss harvest candidate",
+        "NTRS: momentum_rank=14; flagged across 5 runs; unrealized loss (-0.77%); borderline momentum but not yet confirmed below 30th percentile for 5 days \u2014 downgrade to WATCH",
+        "C: momentum_rank=13; 6M momentum 0.2716 is weak; flagged 2 runs; above MA; monitoring required",
+        "ROST: momentum_rank=12; flagged 4 runs; 6M momentum 0.2963 weak; small unrealized loss (-0.48%) \u2014 tax-loss harvest candidate",
+        "IBKR: momentum_rank=18 \u2014 highest number rank means lowest in momentum ordering; 6M momentum 0.2614 is weakest in portfolio; newly entered but already showing weak momentum credentials",
+        "GOOGL: momentum_rank=15; 6M momentum only 0.1913 \u2014 this is very weak; newly re-entered but 6M rank may not be in top 30% of S&P 500 universe",
+        "CASH: 16.68% cash vs 5% bull regime target \u2014 significantly over-allocated to cash; needs deployment at next quarterly rebalance (June 1)",
+        "SECTOR CON: Technology holdings ADI+AMAT+JBL+KEYS+WDC = 5 positions; Basic Materials NUE+STLD = 2 positions; Industrials CAT+EME+FDX = 3 positions; Financial Services BEN+C+IBKR+NTRS = 4 positions \u2014 financial concentration elevated"
+      ],
+      "decisions": [
+        {
+          "action": "SELL",
+          "symbol": "EME",
+          "reason": "PERSISTENT SELL \u2014 flagged in 5+ consecutive runs without execution (2026-05-27 through 2026-05-29). Price $826.82 is below 50-day MA $831.61 for 3+ consecutive days (Rule 2: trend_break confirmed). Momentum rank = 0 \u2014 failed screening entirely. Down -12.52% unrealized loss, making this a tax-loss harvest priority. Sentinel rule should have already triggered forced sell. Re-issuing with next_open urgency. No tax impact on winning position \u2014 this is a loss.",
+          "rule_triggered": "trend_break",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "BEN",
+          "reason": "Persistent flag across 4 runs (2026-05-27 through 2026-05-29). Momentum rank 16/18 \u2014 near bottom of portfolio. 6M momentum 0.3848 is borderline top-30% of full S&P 500 universe. Previous SELL orders issued 2026-05-28 appear to have executed per trade log (ALP-3597D13E sold BEN on 2026-05-21, then re-bought ALP-F12FF93D on 2026-05-27) \u2014 position was re-entered and is again deteriorating. Unrealized loss of -2.15% makes this a clean tax-loss harvest. Rule 1 (momentum_decay) approaching confirmation threshold.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "ROST",
+          "reason": "Persistent flag across 4 runs. Momentum rank 12/18 in portfolio \u2014 6M momentum 0.2963 is weak for a momentum strategy. Small unrealized loss (-0.48%) qualifies for tax-loss harvest priority. Previous SELL order issued 2026-05-28 \u2014 unclear if executed (not in recent trade confirmations for today). Re-issuing. Momentum_decay approaching 5-day confirmation.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "NTRS",
+          "reason": "Persistent flag 5 runs but still above 50-day MA ($165.45 vs MA $156.00 \u2014 well above). Momentum rank 14/18 but 12M momentum 0.5973 still positive. Unrealized loss -0.77%. Will confirm momentum_decay rule if rank remains below top-30% universe threshold for 2 more days. Downgrading from SELL to WATCH pending next rebalance (June 1) for cleaner exit decision.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "C",
+          "reason": "Momentum rank 13/18; 6M momentum 0.2716 is the second weakest 6M figure in portfolio. Above MA ($125.51 vs $122.84). Flagged 2 runs. Not yet triggering sell rules but approaching momentum threshold. Monitor through June 1 rebalance for inclusion decision.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "IBKR",
+          "reason": "Newly entered 2026-05-29 but momentum_rank=18 (worst in portfolio by rank number). 6M momentum 0.2614 is the weakest in the portfolio. 12M momentum 0.5162 is moderate. Quality metrics are solid (EPS +22.9%, Rev +16.8%). Above MA. Too new to confirm decay (5-day rule), but flag for June 1 rebalance screening.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "GOOGL",
+          "reason": "Newly entered 2026-05-29. 6M momentum 0.1913 is extremely weak \u2014 this may not pass top-30% universe screen. 12M momentum 1.2403 is strong. Quality excellent (EPS +82%, Rev +21.8%). Needs universe-wide momentum ranking to confirm filter pass. Flag for verification at June 1 rebalance.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "WDC",
+          "reason": "Momentum rank #1 in portfolio. 6M momentum 1.7995, 12M momentum 7.3361 \u2014 exceptional. Up +8.88%. Above MA ($528.60 vs $393.65). EPS growth 482.9%, Revenue growth 45.5%. All filters pass. Previously flagged for volatility (0.5399 \u2014 elevated) but below 90th percentile threshold. No sell rule triggered. HOLD.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "KEYS",
+          "reason": "Momentum rank #2. 6M momentum 0.7902, 12M momentum 1.2071 \u2014 strong. Down -4.70% but above MA ($338.33 vs $327.91). EPS +35.6%, Rev +31.5%. All quality/valuation filters pass. No sell rule triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "AMAT",
+          "reason": "Momentum rank #3. 6M 0.6291, 12M 1.4562. Up +5.78%. Above MA. EPS +33.5%, Rev +11.4%. Fwd P/E 27.8. All filters pass. HOLD.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "Momentum rank #4. 6M 0.5776, 12M 1.5744 \u2014 excellent 12M momentum. Down -5.25% from entry but well above 50-day MA ($873.50 vs $810.98). EPS +30.2%, Rev +22.2%. No sell rule triggered. The position is underperforming from cost basis but thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "Momentum rank #5. 6M 0.655, 12M 1.0142. Up +8.31%. Above MA. EPS +96.2%, Rev +23.1%. All filters pass. HOLD.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "Momentum rank #7. 6M 0.6068, 12M 0.8941. Up +7.47%. Above MA ($412.26 vs $371.51). EPS +110.5%, Rev +37.2%. All filters pass. HOLD.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "FDX",
+          "reason": "Momentum rank #8. 6M 0.4862, 12M 0.8986. Up +4.76%. Above MA. EPS +17.3%, Rev +8.3%. Borderline quality but passes. HOLD through June 1 rebalance.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "Momentum rank #9. 6M 0.4517, 12M 1.1013. Up +10.42% \u2014 best performing position. Above MA ($250.00 vs $203.32). EPS +382.1% (exceptional). Fwd P/E 15.8 \u2014 value. HOLD.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "STLD",
+          "reason": "Momentum rank #10. 6M 0.4005, 12M 0.8289. Up +7.42%. Above MA ($260.15 vs $209.70). EPS +93.1%. HOLD.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "TPR",
+          "reason": "Momentum rank #11. 6M 0.3553, 12M 0.8296. Up +1.28%. Above MA ($145.46 vs $142.26). EPS +73.7%, Rev +21.2%. Passes all filters. HOLD.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "decrease",
+      "cash_rationale": "Cash at 16.68% is significantly above the 5% bull regime target. After EME/BEN/ROST sells (approximately $1,881 in proceeds added to existing $1,701 cash \u2248 $3,582 total), June 1 quarterly rebalance should deploy excess cash into top-momentum candidates from the full S&P 500 screen. The sell proceeds from loss positions (EME -$118, BEN -$13, ROST -$2) are ideal tax-loss harvests to offset against any future gains. Next rebalance should reduce cash to ~5% by buying 3-4 new qualifying positions.",
+      "summary": "DAY END 2026-05-29 (Friday): SELL EME (trend_break confirmed, 5+ run persistent flag), SELL BEN (momentum_decay, tax-loss harvest), SELL ROST (momentum_decay, tax-loss harvest); WATCH NTRS/C/IBKR/GOOGL for June 1 rebalance; 11 HOLDs intact; cash 16.68% to be redeployed at quarterly rebalance Monday.",
+      "usage": {
+        "input_tokens": 14536,
+        "output_tokens": 3608,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 4090
+      }
+    },
     {
       "id": "RUN-20260529-1658",
       "timestamp": "2026-05-29T16:58:16Z",
