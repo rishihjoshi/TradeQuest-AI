@@ -1,15 +1,32 @@
 {
-  "timestamp": "2026-05-28T22:53:28Z",
-  "mode": "post_close",
+  "timestamp": "2026-05-29T16:59:10Z",
+  "mode": "market_open",
   "orders_placed": [
     {
       "action": "SELL",
-      "symbol": "BNY",
+      "symbol": "CFG",
+      "qty": 2,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "IBKR",
+      "qty": 6,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "GOOGL",
       "qty": 1,
       "status": "submitted"
     }
   ],
-  "orders_skipped": [],
+  "orders_skipped": [
+    {
+      "symbol": "EME",
+      "reason": "blocked by agent approval or risk gate"
+    }
+  ],
   "errors": [],
-  "cash_pct_after": 22.78
+  "cash_pct_after": 16.68
 }

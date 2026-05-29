@@ -1,7 +1,160 @@
 {
-  "last_run": "2026-05-28T22:54:37Z",
-  "last_type": "day_end",
+  "last_run": "2026-05-29T16:58:16Z",
+  "last_type": "day_start",
   "runs": [
+    {
+      "id": "RUN-20260529-1658",
+      "timestamp": "2026-05-29T16:58:16Z",
+      "type": "day_start",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio holds 17 positions worth $10,248 with 22.8% cash \u2014 significantly above the 5% bull-regime target, reflecting recent sell activity (BNY order pending fill from yesterday's open). Four positions (BEN, CFG, NTRS, ROST) carry active SELL orders from the 2026-05-28 day_end run; these should be executing at today's open. Regime reads bull but breadth at 58.8% is in the narrowing-rally zone (strategy threshold is >60% for full bull confidence), and the breadth 8MA has crossed below the 200MA \u2014 warranting caution despite a 94% regime confidence reading in the portfolio meta.",
+      "regime": "bull",
+      "regime_confidence": 0.72,
+      "flags": [
+        "BNY: SELL order submitted 2026-05-28T22:53 UTC \u2014 pending fill at today's open. Do NOT re-issue. Monitor for confirmation. Momentum rank 18/18 (bottom 6%), 6M momentum 0.234 far below top-30% threshold. Flagged 5 consecutive runs.",
+        "BEN: SELL order issued at day_end 2026-05-28 \u2014 should execute at today's open (next_open). Momentum rank 17/18, 6M momentum 0.375 below top-30% threshold. Small unrealized loss -1.55% ($9.31) \u2014 tax-loss priority confirmed. Flagged 3 consecutive runs.",
+        "CFG: SELL order issued at day_end 2026-05-28 \u2014 should execute at today's open. Momentum rank 16/18, 6M momentum 0.229 below top-30% threshold. Tiny gain +0.32% ($0.40) \u2014 negligible, loss-priority rule satisfied. Flagged 5 consecutive runs.",
+        "NTRS: SELL order issued at day_end 2026-05-28 \u2014 should execute at today's open. Momentum rank 15/18, 6M momentum 0.295 below top-30% threshold. Small unrealized gain +0.97% ($4.83) \u2014 rule triggered justifies realization (momentum decay Rule 1 confirmed multiple days). Flagged 4 consecutive runs.",
+        "ROST: SELL order issued at day_end 2026-05-28 \u2014 should execute at today's open. Momentum rank 14/18, 6M momentum 0.298 borderline below top-30% threshold. Unrealized loss -2.99% ($13.94) \u2014 tax-loss priority confirmed. Flagged 3 consecutive runs.",
+        "C: WATCH \u2014 Momentum rank 13/18 (bottom 28% of 18-stock universe), 6M momentum 0.287. Approaching the threshold boundary. Not yet a confirmed sell (requires 5-day confirmation), but proximity warrants daily monitoring. Unrealized loss -0.88%.",
+        "EME: WATCH \u2014 Momentum rank 11/18, but position carries largest unrealized loss in portfolio at -10.23% ($96.72). Price $848.45 vs MA50 $829.22 \u2014 still above MA by $19.23 (2.3%), but downward drift risk if market softens. Monitor for trend break (Rule 2).",
+        "WDC: WATCH \u2014 Momentum rank 1/18, strongest performer (+10.09%, $49.00 gain). However volatility_30d of 0.5425 is the highest in portfolio \u2014 approaching risk filter threshold. No sell rule triggered. Continue monitoring for parabolic blow-off (Rule 4 would trigger at >60% in <60 days; currently +10.09% since 2026-05-22, well below threshold).",
+        "CAT: WATCH \u2014 Unrealized loss -3.53% ($32.52) since entry 2026-05-06. Momentum rank 6/18 is solid, price $889.42 well above MA50 $807.27. No sell rule triggered, but largest single-stock dollar loss after EME. Monitor.",
+        "SECTOR CON: Financial Services concentration elevated \u2014 BEN + C + CFG + NTRS = 4 positions representing ~23% of invested equity. After pending sells execute (BNY, BEN, CFG, NTRS), this drops materially to C alone (~6%). Concentration concern largely resolves post-execution.",
+        "BREADTH: Market breadth 58.8% is just below the 60% bull threshold. Breadth 8MA below 200MA signals deteriorating participation. Regime confidence reduced to 0.72 from portfolio's reported 0.94. Narrowing rally \u2014 monitor for further deterioration below 55%.",
+        "CASH: Current cash 22.8% significantly exceeds bull-regime target of 5%. This is a temporary artifact of pending sells (BNY, BEN, CFG, NTRS, ROST). Post-execution cash will increase further to approximately 28-30%, requiring deployment at next quarterly rebalance (2026-07-01) or sooner if strong candidates emerge."
+      ],
+      "decisions": [
+        {
+          "action": "WATCH",
+          "symbol": "BNY",
+          "reason": "SELL order submitted 2026-05-28T22:53 UTC \u2014 order pending fill at today's open. Do NOT re-issue. Confirm fill in post-market update. Momentum rank 18/18, flagged 5 consecutive runs.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "BEN",
+          "reason": "SELL order issued day_end 2026-05-28, executing at today's open. Momentum rank 17/18 confirmed multiple days (Rule 1). Unrealized loss -$9.31 \u2014 tax-loss priority. Pre-market flag only; no new order needed.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "CFG",
+          "reason": "SELL order issued day_end 2026-05-28, executing at today's open. Momentum rank 16/18 confirmed multiple days (Rule 1). Negligible gain $0.40 \u2014 loss-priority threshold met. Pre-market flag only.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "NTRS",
+          "reason": "SELL order issued day_end 2026-05-28, executing at today's open. Momentum rank 15/18 confirmed multiple days (Rule 1). Unrealized gain +$4.83 (+0.97%) \u2014 minimal tax impact; rule justifies realization. Pre-market flag only.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "ROST",
+          "reason": "SELL order issued day_end 2026-05-28, executing at today's open. Momentum rank 14/18 confirmed multiple days (Rule 1). Unrealized loss -$13.94 \u2014 tax-loss priority. Pre-market flag only.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "C",
+          "reason": "Momentum rank 13/18 \u2014 approaching top-30% boundary. 6M momentum 0.287 is below many peers. Not yet a confirmed 5-day breach of Rule 1. Monitor daily for rank deterioration. Unrealized loss -0.88%.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "EME",
+          "reason": "Largest unrealized loss in portfolio at -10.23% ($96.72). Momentum rank 11/18 is adequate but declining trend. Price $848.45 is $19.23 above MA50 $829.22 \u2014 no trend break yet but margin is thin. Watch for 3-consecutive-day MA50 breach (Rule 2).",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "WDC",
+          "reason": "Top momentum performer (rank 1/18, 6M +174%) but highest volatility in portfolio at 54.25% annualized. Monitor for parabolic conditions \u2014 Rule 4 profit-take triggers at >60% gain in <60 days. Current gain +10.09% since 2026-05-22 (7 days held). Well below Rule 4 threshold today.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "Momentum rank 7/18, price $417.99 well above MA50 $369.41 (+13.2%). Gain +8.96%. All four filters passing. No rule triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "AMAT",
+          "reason": "Momentum rank 3/18, price $452.99 above MA50 $393.29 (+15.2%). Gain +6.67%. Strong quality metrics. No rule triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "Momentum rank 6/18, price $889.42 well above MA50 $807.27 (+10.2%). Loss -3.53% but no sell rule triggered. Monitoring.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "FDX",
+          "reason": "Momentum rank 9/18, price $411.40 above MA50 $374.07 (+10.0%). Gain +4.67%. No rule triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "Momentum rank 5/18, price $363.65 above MA50 $315.79 (+15.2%). Gain +8.04%. Strong EPS growth 96.2%. No rule triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "KEYS",
+          "reason": "Momentum rank 2/18, price $339.13 above MA50 $326.88 (+3.7%). Loss -4.47% but momentum is strong and MA cushion exists. No rule triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "Momentum rank 8/18, price $249.30 well above MA50 $201.58 (+23.7%). Gain +10.11%. No rule triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "STLD",
+          "reason": "Momentum rank 10/18, price $260.75 well above MA50 $207.93 (+25.4%). Gain +7.67%. No rule triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "TPR",
+          "reason": "Momentum rank 12/18, price $145.39 above MA50 $142.22 (+2.2%). Gain +1.23%. Entered 2026-05-28 \u2014 very recent. MA50 cushion is thin; monitor. No rule triggered.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "maintain",
+      "cash_rationale": "Cash is 22.8% \u2014 well above the 5% bull-regime target, but this reflects pending sell executions (BNY, BEN, CFG, NTRS, ROST executing today). Post-execution cash will rise to approximately 28-30%. Maintaining current cash level today as a pre-market check cannot initiate new trades. The elevated cash is appropriate given narrowing breadth (58.8%, 8MA below 200MA) which reduces regime confidence. Cash deployment decisions deferred to next quarterly rebalance (July 1) or next day_end run after sell confirmations.",
+      "summary": "DAY START 2026-05-29: Pre-market flag-only \u2014 5 SELL orders (BNY/BEN/CFG/NTRS/ROST) queued for execution at open; WATCH flags on C, EME, WDC, TPR (thin MA cushion); regime remains bull but breadth at 58.8% with declining 8MA reduces confidence to 0.72.",
+      "usage": {
+        "input_tokens": 14363,
+        "output_tokens": 3342,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 4090
+      }
+    },
     {
       "id": "RUN-20260528-2254",
       "timestamp": "2026-05-28T22:54:37Z",
