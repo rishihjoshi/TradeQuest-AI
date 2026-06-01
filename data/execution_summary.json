@@ -1,13 +1,34 @@
 {
-  "timestamp": "2026-05-29T22:51:02Z",
-  "mode": "post_close",
-  "orders_placed": [],
+  "timestamp": "2026-06-01T19:13:00Z",
+  "mode": "market_open",
+  "orders_placed": [
+    {
+      "action": "SELL",
+      "symbol": "EME",
+      "qty": 1,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "VRT",
+      "qty": 1,
+      "status": "submitted"
+    }
+  ],
   "orders_skipped": [
     {
-      "symbol": "EME",
+      "symbol": "FDX",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "TPR",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "KEYS",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 16.68
+  "cash_pct_after": 21.79
 }
