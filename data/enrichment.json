@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-05-29",
+  "generated_at": "2026-06-01",
   "earnings_this_week": [],
   "macro_events_14d": [],
   "market_breadth": {
-    "date": "2026-05-28",
-    "breadth_raw": 0.6016,
-    "breadth_8ma": 0.5823,
-    "breadth_200ma": 0.5948,
-    "pct_above_200ma": "60.2%",
+    "date": "2026-05-29",
+    "breadth_raw": 0.5928,
+    "breadth_8ma": 0.5854,
+    "breadth_200ma": 0.5954,
+    "pct_above_200ma": "59.3%",
     "trend_above_200ma": false,
-    "interpretation": "HEALTHY \u2014 broad participation supports bull regime"
+    "interpretation": "NARROWING \u2014 selective rally, treat regime with caution"
   }
 }
