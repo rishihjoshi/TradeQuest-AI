@@ -1,7 +1,163 @@
 {
-  "last_run": "2026-06-01T23:15:37Z",
-  "last_type": "monthly",
+  "last_run": "2026-06-02T17:53:38Z",
+  "last_type": "day_start",
   "runs": [
+    {
+      "id": "RUN-20260602-1753",
+      "timestamp": "2026-06-02T17:53:38Z",
+      "type": "day_start",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio holds 17 positions with 21.8% cash (well above the 5% bull-regime target), reflecting incomplete execution of the June 1 rebalance \u2014 FDX, TPR, BEN, ROST, IBKR, and NTRS were all flagged SELL but FDX and TPR were blocked at execution. Multiple critical sell signals persist unresolved across 3+ consecutive runs. Regime reads bull at 82\u201395% confidence but breadth at 59.3% is at the lower edge of bull territory with a bearish 8MA trend, warranting caution.",
+      "regime": "bull",
+      "regime_confidence": 0.75,
+      "flags": [
+        "FDX: CRITICAL \u2014 SELL blocked at execution on 2026-06-01 (3rd consecutive SELL flag). momentum_rank=0, momentum_6m=0, momentum_12m=0, volatility=0.648 (exceeds 90th pct risk filter), pnl=-13.88%, MA50=null (unknown_ma status). All sell rules effectively triggered. Must execute next_open. Tax impact: loss of ~$54.54 \u2014 tax-loss harvest favorable.",
+        "TPR: CRITICAL \u2014 SELL blocked at execution on 2026-06-01 (3rd consecutive SELL flag). Price $138.81 below MA50 $142.37 (status=below_ma), momentum_rank=0, pnl=-3.35%. Trend break rule confirmed. Must execute next_open. Tax impact: loss of ~$19.24 \u2014 tax-loss harvest favorable.",
+        "BEN: CRITICAL \u2014 SELL issued 3 consecutive runs (2026-05-28, 2026-05-29, 2026-06-01). momentum_rank=16/18, momentum_6m=0.3629, pnl=-2.4%. Momentum decay rule active. Tax impact: loss of ~$14.44 \u2014 tax-loss harvest favorable. Persistent-flag escalation: 5 flags across runs.",
+        "ROST: CRITICAL \u2014 SELL issued 3 consecutive runs (2026-05-28, 2026-05-29, 2026-06-01). momentum_rank=12/18, momentum_6m=0.2935, pnl=-3.74%. Momentum decay confirmed. Tax impact: loss of ~$17.42 \u2014 tax-loss harvest favorable. Persistent-flag escalation: 5 flags across runs.",
+        "IBKR: URGENT \u2014 SELL issued on 2026-06-01. momentum_rank=18/18 (lowest in portfolio), momentum_6m=0.2564, pnl=+3.24% (small unrealized gain). Momentum decay rule triggered. Tax impact: small gain ~$16.68 \u2014 momentum rule justifies realization given rank=18/18 (bottom decile).",
+        "NTRS: URGENT \u2014 SELL issued on 2026-06-01, 2026-05-28 (3 flags total). momentum_rank=17/18, momentum_6m=0.2667, pnl=+0.96%. Momentum decay rule triggered. Tax impact: minimal gain ~$4.80 \u2014 rule justifies realization.",
+        "GOOGL: WATCH \u2014 momentum_rank=13/18, momentum_6m=0.2071 (lowest 6M score of held positions excluding zero-rank). Price $370.45 vs MA50 $347.57 (above MA, safe for now). 6M momentum at 0.2071 approaching threshold for decay rule. Flagged 3 consecutive runs.",
+        "C: WATCH \u2014 momentum_rank=14/18, momentum_6m=0.2498. Above MA50 ($129.09 vs $123.18). Small unrealized gain +2.63%. Flagged 3 consecutive runs. Not yet a sell but borderline on momentum decay.",
+        "KEYS: WATCH \u2014 Price $330.00 vs MA50 $329.00 (just $1 above MA50, margin of 0.30%). One bad day could trigger trend break rule. pnl=-7.04%. Monitor closely at open.",
+        "LRCX: PENDING \u2014 BUY order submitted 2026-06-01T23:14 UTC, awaiting fill confirmation. Do not re-issue. Confirm fill at open.",
+        "SECTOR CONCENTRATION: Financial Services holds BEN+C+IBKR+NTRS = 4 positions (~21.6% combined weight). If all sell signals execute, concentration resolves. Technology holds ADI+AMAT+JBL+KEYS+WDC = 5 positions (~22.7% combined). Monitor for over-concentration in tech post-rebalance.",
+        "CASH: Current cash 21.8% vs bull-regime target 5%. Elevated cash is partly due to blocked sells not yet generating new buy capacity, and approved buys (NVDA, META, GE) not yet executed. LRCX BUY is in-flight. Cash deployment should follow pending SELL executions.",
+        "CAT: WATCH \u2014 pnl=-6.11% ($865.60 vs avg cost $921.94). Momentum_rank=5, momentum_6m=0.5573 \u2014 strong momentum. Loss is likely tariff/macro noise on an otherwise strong momentum name. No sell rule triggered. Monitor for MA50 approach ($814.63, currently well above).",
+        "WDC: NOTE \u2014 pnl=+12.87% in 10 days (entry 2026-05-22). Approaching but not yet at profit-take threshold (needs >60% in <60 days). Momentum_rank=1, strongest in portfolio. Hold and monitor.",
+        "BREADTH: 59.3% stocks above 200MA with 8MA below 200MA (bearish trend). This is at the lower boundary of bull classification. Regime confidence reduced from 95% to 75% for this pre-market check. If breadth falls below 59%, regime should be reclassified to sideways."
+      ],
+      "decisions": [
+        {
+          "action": "SELL",
+          "symbol": "FDX",
+          "reason": "Persistent-flag escalation: SELL issued 3 consecutive runs, blocked at execution. momentum_rank=0, all momentum scores=0, volatility=0.648 exceeds 90th pct risk filter, MA status unknown. All four sell rules effectively triggered. Unrealized loss -$54.54 (-13.88%) \u2014 tax-loss harvest priority. No tax cost to realize.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "TPR",
+          "reason": "Persistent-flag escalation: SELL issued 3 consecutive runs, blocked at execution. Price $138.81 below MA50 $142.37 (trend_break rule active). momentum_rank=0. Unrealized loss -$19.24 (-3.35%) \u2014 tax-loss harvest priority. No tax cost to realize.",
+          "rule_triggered": "trend_break",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "BEN",
+          "reason": "Persistent-flag escalation: 5 flags across runs, SELL issued 3 consecutive days. momentum_rank=16/18 (bottom decile of portfolio), momentum_6m=0.3629 \u2014 below top 30% threshold confirmed over multiple runs. Unrealized loss -$14.44 (-2.40%) \u2014 tax-loss harvest favorable. Momentum decay rule triggered.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "ROST",
+          "reason": "Persistent-flag escalation: 5 flags across runs, SELL issued 3 consecutive days. momentum_rank=12/18, momentum_6m=0.2935 \u2014 below top 30% threshold confirmed over multiple runs. Unrealized loss -$17.42 (-3.74%) \u2014 tax-loss harvest favorable. Momentum decay rule triggered.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "IBKR",
+          "reason": "momentum_rank=18/18 (lowest in entire portfolio), momentum_6m=0.2564 well below top 30% threshold. Flagged on 2026-06-01. Small unrealized gain +$16.68 (+3.24%) \u2014 momentum decay rule justifies gain realization given rank is dead last in portfolio (estimated tax impact minimal at paper-trade scale).",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "NTRS",
+          "reason": "momentum_rank=17/18, momentum_6m=0.2667 below top 30% threshold, flagged 3 consecutive runs including 2026-06-01. Unrealized gain +$4.80 (+0.96%) \u2014 minimal. Momentum decay rule confirmed over multiple runs justifies realization of negligible gain.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "GOOGL",
+          "reason": "momentum_rank=13/18, momentum_6m=0.2071 \u2014 approaching but not yet confirmed below top 30% threshold over 5 trading days. Price $370.45 well above MA50 $347.57. Flagged 3 consecutive runs. Monitor for momentum decay confirmation. No sell rule triggered today.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "C",
+          "reason": "momentum_rank=14/18, momentum_6m=0.2498, flagged 3 consecutive runs. Price $129.09 above MA50 $123.18. Small gain +2.63%. No sell rule triggered today but momentum rank is borderline. If rank does not improve at next data refresh, momentum_decay rule may trigger.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "KEYS",
+          "reason": "Price $330.00 vs MA50 $329.00 \u2014 only $1.00 (0.30%) above the 50-day moving average. One weak open could trigger trend_break rule (requires 3 consecutive closes below MA50). Unrealized loss -7.04%. Strong momentum_rank=4 and 6M/12M momentum solid (0.7963/1.2212). Watch at open for any gap down.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "WDC",
+          "reason": "momentum_rank=1 (best in portfolio), momentum_6m=1.7392, momentum_12m=7.2471. pnl=+12.87% in 10 days \u2014 strong but below 60% profit-take threshold. All filters passing. Hold and monitor for profit-take rule approach.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "VRT",
+          "reason": "Entry 2026-06-01. momentum_rank=2, momentum_6m=0.909. Above MA50. New position, no sell signals. Hold.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "momentum_rank=5, momentum_6m=0.5573, momentum_12m=1.5564. Strong momentum despite -6.11% unrealized loss. Price $865.60 well above MA50 $814.63. Loss reflects entry timing, not momentum failure. Hold.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "AMAT",
+          "reason": "momentum_rank=6, pnl=+7.38%, above MA50. All filters passing. Hold.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "momentum_rank=7, pnl=+6.95%, above MA50. All filters passing. Hold.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "momentum_rank=9, pnl=+4.66%, above MA50. EPS growth 110.5%, revenue growth 37.2%. All filters passing. Hold.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "momentum_rank=10, pnl=+11.07%, above MA50. Strong fundamentals. All filters passing. Hold.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "STLD",
+          "reason": "momentum_rank=11, pnl=+8.02%, above MA50. All filters passing. Hold.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "decrease",
+      "cash_rationale": "Cash at 21.8% is significantly above the 5% bull-regime target. The pending SELL executions (FDX, TPR, BEN, ROST, IBKR, NTRS) will free up approximately $2,987 in additional capital. Combined with current $2,207 cash, approximately $5,194 will be available for the approved buys (NVDA, META, GE) plus the in-flight LRCX order. Cash should decrease toward the 5% target as the June quarterly rebalance buys are executed following confirmed sells.",
+      "summary": "Pre-market 2026-06-02: 6 SELL signals re-confirmed (FDX/TPR blocked execution escalated to urgent, BEN/ROST/IBKR/NTRS persistent momentum decay), KEYS flagged for MA50 proximity ($1 buffer), GOOGL/C on WATCH for borderline momentum \u2014 LRCX BUY pending fill confirmation.",
+      "usage": {
+        "input_tokens": 14477,
+        "output_tokens": 3690,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 4090
+      }
+    },
     {
       "id": "RUN-20260601-2315",
       "timestamp": "2026-06-01T23:15:37Z",

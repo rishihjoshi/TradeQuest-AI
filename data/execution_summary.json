@@ -1,24 +1,26 @@
 {
-  "timestamp": "2026-06-01T23:14:13Z",
-  "mode": "post_close",
+  "timestamp": "2026-06-02T17:54:31Z",
+  "mode": "market_open",
   "orders_placed": [
     {
+      "action": "SELL",
+      "symbol": "TPR",
+      "qty": 4,
+      "status": "submitted"
+    },
+    {
       "action": "BUY",
-      "symbol": "LRCX",
-      "qty": 1,
+      "symbol": "EOG",
+      "qty": 4,
       "status": "submitted"
     }
   ],
   "orders_skipped": [
     {
-      "symbol": "FDX",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "TPR",
+      "symbol": "LRCX",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 21.82
+  "cash_pct_after": 18.36
 }
