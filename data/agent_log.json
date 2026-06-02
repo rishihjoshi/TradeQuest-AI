@@ -1,7 +1,166 @@
 {
-  "last_run": "2026-06-02T17:53:38Z",
-  "last_type": "day_start",
+  "last_run": "2026-06-02T23:16:47Z",
+  "last_type": "day_end",
   "runs": [
+    {
+      "id": "RUN-20260602-2316",
+      "timestamp": "2026-06-02T23:16:47Z",
+      "type": "day_end",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is up +2.53% since inception vs SPY benchmark, but is carrying significant execution debt \u2014 6 positions (BEN, ROST, FDX, IBKR, NTRS, and now EOG/LRCX with data issues) have been flagged SELL across multiple consecutive runs without clean execution. The regime remains nominally bull (VIX 9.5, SPY above 200-MA, breadth 62%), but market breadth 8MA is crossing below 200MA, flagging a narrowing rally that warrants caution. Cash is elevated at 18.3% vs the 5% bull target, partly due to unexecuted sells creating portfolio drag \u2014 this needs resolution before deploying further capital.",
+      "regime": "bull",
+      "regime_confidence": 0.75,
+      "flags": [
+        "FDX: CRITICAL \u2014 SELL flagged 3+ consecutive runs (2026-06-01, 2026-06-02, now 2026-06-02 day_end). Momentum rank 10/18 \u2014 borderline but the persistent flag and -16.26% PnL make this a priority exit. Unrealized loss of -$63.90 \u2014 tax-loss harvest candidate. Re-issuing with next_open urgency.",
+        "BEN: CRITICAL \u2014 SELL flagged 5+ consecutive runs spanning 2026-05-29 through today. Momentum rank 16/18, well outside top 30%. Unrealized loss -$11.02 \u2014 tax-loss harvest. Execution delay is unacceptable; re-issuing with next_open urgency.",
+        "ROST: CRITICAL \u2014 SELL flagged 5+ consecutive runs. Momentum rank 12/18, below top 30% threshold. Unrealized loss -$18.60 \u2014 tax-loss harvest candidate. Re-issuing with next_open urgency.",
+        "IBKR: CRITICAL \u2014 SELL flagged 4+ consecutive runs. Momentum rank 15/18, well outside top 30%. Small unrealized gain +$17.64 \u2014 rule-triggered sell justified (momentum decay confirmed). Tax note: short-term gain, minimal impact given small size.",
+        "NTRS: CRITICAL \u2014 SELL flagged 4+ consecutive runs. Momentum rank 17/18, deeply outside top 30%. Small unrealized gain +$9.78 \u2014 rule-triggered sell justified. Tax note: short-term gain, small size.",
+        "EOG: CONCERN \u2014 Entered 2026-06-02, momentum_rank=18/18 (dead last in portfolio). 6M momentum 33.6%, 12M momentum 35.1% \u2014 likely below top 30% of S&P 500 universe. This position should not have been bought if it ranks last in momentum. Flagging for immediate review.",
+        "LRCX: CONCERN \u2014 momentum_rank=0 and momentum_6m/12m both show 0, indicating missing or unscored data. Entry was blocked at execution yesterday (agent log confirms 'blocked by agent approval or risk gate') but the position appears in portfolio. Forward P/E 42.1 also fails the valuation filter (>40 and need sector check). Needs data validation before confirming hold.",
+        "C: WATCH \u2014 Momentum rank 13/18, below top 30% threshold. However, position was entered 2026-05-26 and confirmation window (5 days) has not clearly been met with consistent data. PnL +4.31%, above MA. Flagging for continued monitoring \u2014 approaching sell trigger.",
+        "GOOGL: WATCH \u2014 Momentum rank 11/18, borderline. 6M momentum only 19.9% which is likely below top 30%. PnL -5.12%. Price above 50-day MA. Watching for confirmation of momentum decay over 5 trading days.",
+        "CASH: Cash at 18.3% vs 5% bull target \u2014 significantly over-allocated to cash. However, with 6 unresolved SELL orders and breadth narrowing, maintaining elevated cash until sells execute is prudent.",
+        "BREADTH: 8MA crossing below 200MA on breadth signal \u2014 early warning of regime deterioration. Not a sell signal but reduces bull regime confidence to 0.75 from 0.95."
+      ],
+      "decisions": [
+        {
+          "action": "SELL",
+          "symbol": "BEN",
+          "reason": "CRITICAL EXECUTION FAILURE \u2014 SELL flagged in 5+ consecutive runs (2026-05-29, 2026-05-29, 2026-06-01, 2026-06-01, 2026-06-02, now confirmed again). Momentum rank 16/18, confirmed well below top 30% threshold for multiple days. Unrealized loss -$11.02 (-1.83%) \u2014 tax-loss harvest priority. Rule 1 (momentum_decay) confirmed. No tax gain impact \u2014 realizing a loss.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "ROST",
+          "reason": "CRITICAL EXECUTION FAILURE \u2014 SELL flagged in 5+ consecutive runs. Momentum rank 12/18, below top 30% threshold confirmed over multiple sessions. Unrealized loss -$18.60 (-3.99%) \u2014 tax-loss harvest priority. Rule 1 (momentum_decay) confirmed. No adverse tax impact \u2014 realizing a loss.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "FDX",
+          "reason": "CRITICAL EXECUTION FAILURE \u2014 SELL flagged in 3+ consecutive runs (2026-06-01, 2026-06-02, now confirmed). Momentum rank 10/18 \u2014 borderline but persistent flag confirms decay. Unrealized loss -$63.90 (-16.26%) \u2014 largest loss in portfolio, highest priority tax-loss harvest. Rule 1 (momentum_decay) confirmed. Realizing a loss \u2014 no adverse tax impact.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "IBKR",
+          "reason": "CRITICAL \u2014 SELL flagged in 4+ consecutive runs. Momentum rank 15/18, well below top 30% threshold confirmed over multiple sessions. Small unrealized gain +$17.64 (+3.43%). Tax note: short-term gain but small dollar amount ($17.64) \u2014 rule 1 momentum_decay justifies realization. Position entered 2026-05-29; persistent momentum failure overrides tax preference.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "NTRS",
+          "reason": "CRITICAL \u2014 SELL flagged in 4+ consecutive runs. Momentum rank 17/18, one of the worst momentum scores in the portfolio \u2014 deeply outside top 30%. Small unrealized gain +$9.78 (+1.96%). Tax note: short-term gain, minimal amount \u2014 rule 1 momentum_decay (confirmed 5+ days) justifies realization. Sell losers first preference satisfied by BEN/ROST/FDX sells above.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "EOG",
+          "reason": "URGENT DATA CONCERN \u2014 EOG entered 2026-06-02 but shows momentum_rank=18/18 (dead last in portfolio). 6M momentum 33.6% and 12M momentum 35.1% likely fail the top 30% universe filter. This position appears to have been bought despite failing the primary momentum filter. Unrealized PnL -$0.36 \u2014 near-flat, no tax impact. Selling to prevent further holding of a position that likely should not have been entered.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "LRCX",
+          "reason": "DATA INVALID \u2014 momentum_rank=0 and momentum_6m/12m=0 indicates missing or unscored data; cannot confirm momentum filter compliance. Additionally, forward_pe=42.1 fails the valuation filter (>40) and sector-relative check needed. Position was blocked at execution on 2026-06-02 but appears in portfolio \u2014 possible erroneous entry. Until data can be validated and filter compliance confirmed, prudent to exit. Small unrealized gain +$10.65 (+3.29%). Tax note: short-term gain, small amount, data integrity issue justifies exit.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "C",
+          "reason": "Momentum rank 13/18, borderline below top 30% threshold. 6M momentum 22.5% is likely below top 30% of S&P 500 universe. PnL +4.31%, price above 50-day MA ($131.20 vs MA $123.57). Monitoring for 5-day confirmation of momentum decay before triggering Rule 1 sell. If rank confirmed below top 30% through next 2-3 sessions, escalate to SELL.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "GOOGL",
+          "reason": "Momentum rank 11/18, 6M momentum only 19.9% \u2014 likely below top 30% of S&P 500 universe. Flagged across 4 consecutive runs. PnL -5.12%, but price above 50-day MA ($362.95 vs $348.96). Approaching 5-day confirmation threshold for Rule 1 momentum_decay sell. Will escalate to SELL at next run if rank remains below top 30%.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "WDC",
+          "reason": "Momentum rank 1/18 (top performer in portfolio). 6M momentum 171.9%, 12M momentum 762% \u2014 extraordinary momentum. PnL +16.46%, price well above 50-day MA ($565.40 vs $402.77). EPS growth 482.9%, revenue growth 45.5% \u2014 quality confirmed. Not approaching 60% gain in <60 days threshold (16.46% in ~11 days). Strong hold.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "VRT",
+          "reason": "Momentum rank 2/18. 6M momentum 84.2%, 12M 207% \u2014 excellent. PnL +2.94%, above 50-day MA. EPS growth 135.7%, revenue growth 30.1%. Entered 2026-06-01, thesis intact. Forward PE 37.9 passes valuation filter. Hold.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "KEYS",
+          "reason": "Momentum rank 3/18. 6M momentum 77.5%, 12M 123.7% \u2014 strong momentum. PnL -2.38%, but price above 50-day MA ($346.57 vs $329.79). EPS growth 35.6%, revenue growth 31.5%. Loss is minor and momentum confirms ongoing thesis. Previously flagged for WATCH but momentum rank supports hold. Removing from concern list.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "Momentum rank 4/18. 6M momentum 52.6%, 12M 154.1% \u2014 strong. PnL -1.23%, price above 50-day MA ($910.60 vs $818.16). EPS growth 30.2%, revenue growth 22.2%. Small unrealized loss but momentum and quality filters both pass. Hold.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "AMAT",
+          "reason": "Momentum rank 5/18. 6M momentum 55.4%, 12M 151.2%. PnL +15.27%, well above 50-day MA. EPS growth 33.5%, revenue growth 11.4%. Not approaching profit-take threshold (15.27% gain, not >60% in <60 days). Strong hold.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "Momentum rank 6/18. 6M momentum 61.8%, 12M 103.1%. PnL +10.87%, above 50-day MA. EPS growth 96.2%, revenue growth 23.1%. Quality and momentum both strong. Hold.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "Momentum rank 7/18. 6M momentum 42.6%, 12M 109.6%. PnL +14.15%, well above 50-day MA. EPS growth 382.1%, revenue growth 21.3% \u2014 exceptional quality. Hold.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "Momentum rank 8/18. 6M momentum 50.6%, 12M 88.4%. PnL +10.01%, above 50-day MA. EPS growth 110.5%, revenue growth 37.2%. All filters passing. Hold.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "STLD",
+          "reason": "Momentum rank 9/18. 6M momentum 37.8%, 12M 89.3%. PnL +12.07%, well above 50-day MA. EPS growth 93.1%, revenue growth 19.1%. Quality and momentum solid. Hold.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "increase",
+      "cash_rationale": "Executing 7 SELL orders (BEN, ROST, FDX, IBKR, NTRS, EOG, LRCX) will raise cash from 18.3% to approximately 45-47% of portfolio. While the bull regime technically targets 5% cash, the execution of pending sells (many at losses) and the breadth narrowing signal (8MA below 200MA) justify holding elevated cash temporarily. After sells execute, cash will be redeployed into high-momentum candidates (WDC, VRT, AMAT tier) at the July quarterly rebalance on 2026-07-01. Do not deploy excess cash into new buys today given 7 concurrent sell orders \u2014 sequencing sells first is prudent risk management.",
+      "summary": "Day-end 2026-06-02: 7 SELL orders issued at next_open (BEN/ROST/FDX/IBKR/NTRS \u2014 persistent momentum decay, EOG \u2014 last-ranked momentum, LRCX \u2014 invalid data/valuation fail); 9 HOLDs confirmed (WDC/VRT/KEYS/CAT/AMAT/JBL/NUE/ADI/STLD momentum intact); C and GOOGL on WATCH approaching momentum sell threshold; regime bull at reduced 75% confidence on breadth narrowing signal.",
+      "usage": {
+        "input_tokens": 15187,
+        "output_tokens": 4183,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 4090
+      }
+    },
     {
       "id": "RUN-20260602-1753",
       "timestamp": "2026-06-02T17:53:38Z",

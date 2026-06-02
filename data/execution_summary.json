@@ -1,20 +1,7 @@
 {
-  "timestamp": "2026-06-02T17:54:31Z",
-  "mode": "market_open",
-  "orders_placed": [
-    {
-      "action": "SELL",
-      "symbol": "TPR",
-      "qty": 4,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "EOG",
-      "qty": 4,
-      "status": "submitted"
-    }
-  ],
+  "timestamp": "2026-06-02T23:15:32Z",
+  "mode": "post_close",
+  "orders_placed": [],
   "orders_skipped": [
     {
       "symbol": "LRCX",
@@ -22,5 +9,5 @@
     }
   ],
   "errors": [],
-  "cash_pct_after": 18.36
+  "cash_pct_after": 18.33
 }
