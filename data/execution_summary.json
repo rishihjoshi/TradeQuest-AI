@@ -1,13 +1,33 @@
 {
-  "timestamp": "2026-06-02T23:15:32Z",
-  "mode": "post_close",
-  "orders_placed": [],
-  "orders_skipped": [
+  "timestamp": "2026-06-03T18:10:33Z",
+  "mode": "market_open",
+  "orders_placed": [
     {
+      "action": "SELL",
+      "symbol": "EOG",
+      "qty": 4,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
       "symbol": "LRCX",
-      "reason": "blocked by agent approval or risk gate"
+      "qty": 1,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "NTRS",
+      "qty": 3,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "STX",
+      "qty": 1,
+      "status": "submitted"
     }
   ],
+  "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 18.33
+  "cash_pct_after": 22.76
 }
