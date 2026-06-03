@@ -1,7 +1,159 @@
 {
-  "last_run": "2026-06-03T18:09:43Z",
-  "last_type": "day_start",
+  "last_run": "2026-06-03T23:19:21Z",
+  "last_type": "day_end",
   "runs": [
+    {
+      "id": "RUN-20260603-2319",
+      "timestamp": "2026-06-03T23:19:21Z",
+      "type": "day_end",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio holds 16 positions worth ~$10,327 (+2.36% total PnL) against an initial capital of $9,864. Several previously flagged SELL positions (BEN, ROST, FDX, IBKR, C, GOOGL) remain in the portfolio despite 4-5 consecutive SELL flags, indicating persistent execution failures. The new additions (STX, VRT, WDC) show strong momentum credentials and are performing as expected. Market regime remains bull but breadth at 56.5% is in the 'narrowing' zone warranting caution \u2014 regime confidence trimmed to 70% from prior 93%.",
+      "regime": "bull",
+      "regime_confidence": 0.7,
+      "flags": [
+        "BEN: URGENT \u2014 SELL flagged 5+ consecutive runs (2026-05-29 through 2026-06-03). momentum_rank=16/18 (bottom decile of holdings), 6M momentum only 0.39 \u2014 well below top 30% threshold. Unrealized loss -5.05% \u2014 tax-loss harvest candidate. Execute immediately.",
+        "ROST: URGENT \u2014 SELL flagged 5+ consecutive runs. momentum_rank=18/18 (dead last). 6M momentum 0.2869, 12M 0.6128 \u2014 likely outside top 30% of full S&P 500 universe. Unrealized gain +0.51% (minimal tax impact). Execute immediately.",
+        "FDX: URGENT \u2014 SELL flagged 4+ consecutive runs. momentum_rank=12/18, 6M momentum 0.3393 \u2014 borderline but persistent. Unrealized loss -17.43% \u2014 strong tax-loss harvest candidate. Execute immediately.",
+        "IBKR: URGENT \u2014 SELL flagged 5+ consecutive runs. momentum_rank=15/18, 6M momentum 0.322 \u2014 likely outside top 30% of S&P 500 universe. Unrealized gain +1.33% (minimal tax impact). Execute immediately.",
+        "C: URGENT \u2014 SELL flagged 5+ consecutive runs. momentum_rank=17/18, 6M momentum 0.2591 \u2014 well below top 30% threshold. Unrealized gain +3.64% (small). Execute immediately.",
+        "GOOGL: URGENT \u2014 SELL flagged 5+ consecutive runs. momentum_rank=13/18, 6M momentum 0.2352 \u2014 likely outside top 30% of S&P 500 universe. Unrealized loss -6.55% \u2014 tax-loss harvest candidate. Execute immediately.",
+        "STX: NEW ENTRY \u2014 entered 2026-06-03. momentum_rank=2, exceptional momentum (6M: 1.867, 12M: 5.554). Weight 9.02% is high but within soft cap. Volatility 58.73% is elevated \u2014 watch for risk filter breach. Monitor closely.",
+        "WDC: momentum_rank=1, up +20.76% since 2026-05-22 entry (~12 days). Not yet at 60% profit-take threshold but advancing rapidly \u2014 watch for parabolic blow-off signal in coming sessions.",
+        "CAT: weight=8.94% approaching soft cap territory. momentum_rank=6, strong fundamentals. No sell rule triggered but monitor concentration.",
+        "CASH: current cash 22.9% vs bull regime target of 5%. After executing queued sells, cash will increase further. Deploy excess cash into high-ranking momentum candidates at next rebalance (2026-07-01) or sooner if strong entries emerge.",
+        "EME: BUY order submitted 2026-06-03 per market-open execution. EME not appearing in current holdings \u2014 likely pending fill. Do not re-issue BUY."
+      ],
+      "decisions": [
+        {
+          "action": "SELL",
+          "symbol": "BEN",
+          "reason": "URGENT: 5+ consecutive SELL flags without execution. momentum_rank=16/18 \u2014 confirmed well below top 30% threshold over multiple runs. 6M momentum 0.3899 is marginal at best within full S&P 500 context. Unrealized loss -5.05% (-$30.40) qualifies as tax-loss harvest \u2014 no gain realization concern. Rule 1 (momentum decay) confirmed \u22655 trading days.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "ROST",
+          "reason": "URGENT: 5+ consecutive SELL flags without execution. momentum_rank=18/18 \u2014 dead last in portfolio, strongly implies outside top 30% of 500-stock universe. 6M momentum 0.2869, 12M 0.6128. Unrealized gain +0.51% (+$2.36) \u2014 minimal tax impact, gain realization justified by persistent momentum failure. Rule 1 confirmed \u22655 trading days.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "FDX",
+          "reason": "URGENT: 4+ consecutive SELL flags without execution. momentum_rank=12/18, 6M momentum 0.3393 \u2014 likely outside top 30% of S&P 500 universe. Unrealized loss -17.43% (-$68.51) \u2014 strong tax-loss harvest candidate, offsets gains elsewhere. No gain realization concern. Rule 1 confirmed \u22654 trading days.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "IBKR",
+          "reason": "URGENT: 5+ consecutive SELL flags without execution. momentum_rank=15/18, 6M momentum 0.322 \u2014 likely below top 30% threshold in full universe context. Unrealized gain +1.33% (+$6.84) \u2014 minimal tax impact; gain realization justified by persistent confirmed momentum decay over 5+ runs. Rule 1 confirmed \u22655 trading days.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "C",
+          "reason": "URGENT: 5+ consecutive SELL flags without execution. momentum_rank=17/18, 6M momentum 0.2591 \u2014 well below top 30% threshold. Unrealized gain +3.64% (+$18.32) \u2014 small short-term gain; realization justified given persistent momentum failure confirmed over 5+ runs. Tax impact: minimal at this portfolio scale. Rule 1 confirmed \u22655 trading days.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "GOOGL",
+          "reason": "URGENT: 5+ consecutive SELL flags without execution. momentum_rank=13/18, 6M momentum 0.2352 \u2014 well below top 30% threshold in a 500-stock universe. Unrealized loss -6.55% (-$25.04) \u2014 tax-loss harvest candidate. No gain realization concern. Rule 1 confirmed \u22655 trading days.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "WDC",
+          "reason": "momentum_rank=1, strongest in portfolio. 6M return 1.8486, 12M return 7.9532 \u2014 exceptional. Up +20.76% since entry 2026-05-22 (~12 days). Not yet at 60% profit-take threshold. All four filters passing. Weight 5.68% is within normal range. Thesis intact \u2014 top momentum name with exceptional fundamentals (EPS growth +482.9%, revenue +45.5%).",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "STX",
+          "reason": "New entry 2026-06-03. momentum_rank=2, 6M return 1.867, 12M return 5.554 \u2014 extraordinary momentum. EPS growth +108.3%, revenue +44.1%. Forward P/E 35.4 within limit. Volatility 58.7% is elevated (watch risk filter). Price $932 well above 50-day MA $636.53. No sell rule triggered. Thesis strong.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "VRT",
+          "reason": "momentum_rank=3, 6M return 0.9033, 12M return 2.1259 \u2014 strong. EPS growth +135.7%, revenue +30.1%. Entry 2026-06-01, minor loss -1.67% within noise. Price $320 above 50-day MA $310.02. All filters passing. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "KEYS",
+          "reason": "momentum_rank=4, top tier. 6M return 0.8018, 12M return 1.2476 \u2014 strong. EPS growth +35.6%, revenue +31.5%. Minor loss -1.66% within noise. Price $349.10 above 50-day MA $331.17. All four filters passing. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "AMAT",
+          "reason": "momentum_rank=5, strong momentum. 6M return 0.6147, 12M return 1.6281. EPS growth +33.5%, revenue +11.4%. Up +17.9% since entry. Price $500.71 well above 50-day MA $401.93. All filters passing. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "momentum_rank=6, strong. 6M return 0.5992, 12M return 1.6529 \u2014 top tier. EPS growth +30.2%, revenue +22.2%. Price $923 well above 50-day MA $822.74. Weight 8.94% is elevated \u2014 watch for approach to 12% soft cap. Thesis intact but monitor concentration.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "momentum_rank=7, solid. 6M return 0.6066, 12M return 1.0094. EPS growth +96.2%, revenue +23.1%. Up +8.87% since entry. Price $366.44 above 50-day MA $324.22. All filters passing. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "momentum_rank=9, solid. 6M return 0.5289, 12M return 0.9074. EPS growth +110.5%, revenue +37.2%. Up +13.39% since entry. Price $435 above 50-day MA $377.74. All filters passing. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "momentum_rank=10, solid. 6M return 0.454, 12M return 0.9567. EPS growth +382.1% \u2014 extraordinary. Up +13.83% since entry. Price $257.73 well above 50-day MA $208.89. All filters passing. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "STLD",
+          "reason": "momentum_rank=11, solid. 6M return 0.4252, 12M return 0.7734. EPS growth +93.1%, revenue +19.1%. Up +10.88% since entry. Price $268.52 well above 50-day MA $215.55. All filters passing. Thesis intact.",
+          "rule_triggered": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "FDX",
+          "reason": "Note: FDX is also flagged SELL above. This WATCH is subordinate \u2014 SELL takes priority. Flagging for record that FDX has been in portfolio since 2026-05-04 with a -17.43% loss and deteriorating momentum. Execute SELL at next open.",
+          "rule_triggered": "momentum_decay",
+          "urgency": "next_open"
+        }
+      ],
+      "cash_action": "increase",
+      "cash_rationale": "Executing 6 SELL orders (BEN, ROST, FDX, IBKR, C, GOOGL) will raise cash from 22.9% to approximately 55-58% \u2014 well above the bull regime target of 5%. This is a temporary overshoot pending deployment into qualifying momentum candidates. The next quarterly rebalance is 2026-07-01; until then, in non-quarterly months, new buys require a qualifying opportunity meeting all four filters. The elevated cash also provides a buffer given breadth narrowing to 56.5% (borderline sideways signal) and the caution flag. Plan to deploy cash at the July quarterly rebalance into top-ranked new entrants.",
+      "summary": "Day-end 2026-06-03: Re-issuing 6 persistent SELL orders (BEN/ROST/FDX/IBKR/C/GOOGL \u2014 all flagged 4-5+ consecutive runs) at next_open urgency; 10 core momentum positions (WDC/STX/VRT/KEYS/AMAT/CAT/JBL/ADI/NUE/STLD) held with intact theses; regime bull at 70% confidence with breadth narrowing warranting caution.",
+      "usage": {
+        "input_tokens": 14872,
+        "output_tokens": 3633,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 4090
+      }
+    },
     {
       "id": "RUN-20260603-1809",
       "timestamp": "2026-06-03T18:09:43Z",
