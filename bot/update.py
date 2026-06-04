@@ -27,7 +27,7 @@ DATA_FILE        = REPO_ROOT / "data" / "portfolio.json"
 LOG_FILE         = REPO_ROOT / "data" / "agent_log.json"
 EXEC_SUMMARY_FILE = REPO_ROOT / "data" / "execution_summary.json"
 INITIAL_CAPITAL = 100_000
-TARGET_N = 17          # target number of holdings (15-20)
+TARGET_N = 10          # v2.2: top-conviction 10-12 positions only (was 17)
 CANDIDATES_CAP = 60    # max tickers to fetch fundamentals for
 
 # Alpaca credentials — read from env vars injected by GitHub Actions secrets
@@ -41,7 +41,11 @@ ALPACA_BASE_URL     = os.environ.get("ALPACA_BASE_URL", "https://paper-api.alpac
 MAX_ORDERS_PER_RUN  = 5     # max total orders (sells + buys) placed in a single run
 MAX_SELL_VALUE_PCT  = 0.30  # never liquidate more than 30% of portfolio in one run
 CASH_FLOOR_PCT      = 0.05  # always keep ≥5% of portfolio value as cash
-MAX_POSITION_PCT    = 0.08  # single position cap: 8% of portfolio value
+MAX_POSITION_PCT    = 0.10  # v2.2: single position cap raised to 10% (was 8%; 10-12 positions at 8-10% each)
+MAX_SECTOR_PCT      = 0.30  # v2.2: no single GICS sector may exceed 30% of portfolio
+
+# v2.2 quarterly months — only these months allow new BUY orders and Tier 2+ SELL exits
+QUARTERLY_MONTHS = {1, 4, 7, 10}  # Jan, Apr, Jul, Oct
 
 # Pre-market execution mode flag (set via MARKET_OPEN_RUN=true env var)
 MARKET_OPEN_RUN = os.environ.get("MARKET_OPEN_RUN", "").lower() == "true"
@@ -60,6 +64,41 @@ ISSUER_MAP: dict[str, str] = {
     "BF-A":  "BROWFORMAN",
     "BF-B":  "BROWFORMAN",
 }
+
+
+# ── v2.2 Helper utilities ─────────────────────────────────────
+
+def is_quarterly_month(dt: datetime | None = None) -> bool:
+    """Return True if the current month is a quarterly rebalance month (Jan/Apr/Jul/Oct).
+
+    v2.2: Only quarterly months allow new BUY orders and Tier 2/3 SELL exits.
+    Non-quarterly months are locked to Tier 1 (loss-harvest) sells only.
+    """
+    month = (dt or datetime.now()).month
+    return month in QUARTERLY_MONTHS
+
+
+def has_unrealized_gain(holding: dict) -> bool:
+    """Return True if the position has a positive unrealized PnL (the hold gate applies)."""
+    pnl = holding.get("pnl") or holding.get("pnl_pct", 0)
+    # Prefer dollar PnL for accuracy; fall back to pnl_pct if needed
+    try:
+        return float(pnl) > 0
+    except (TypeError, ValueError):
+        return False
+
+
+def check_sector_concentration(holdings: list[dict]) -> dict[str, float]:
+    """Return {sector: weight_sum} for sectors exceeding MAX_SECTOR_PCT.
+
+    Used at quarterly rebalance to flag or block over-concentrated sectors.
+    """
+    from collections import defaultdict
+    totals: dict[str, float] = defaultdict(float)
+    for h in holdings:
+        sector = h.get("sector", "Unknown")
+        totals[sector] += float(h.get("weight", 0))
+    return {s: w for s, w in totals.items() if w > MAX_SECTOR_PCT}
 
 
 # ── Safety guards ─────────────────────────────────────────────
@@ -1055,6 +1094,16 @@ def main():
         cash = alpaca_state["cash"]
         pv   = alpaca_state["portfolio_value"]
 
+        # ── v2.2 Quarterly lock + profit gate ────────────────────
+        # Determine whether this run is in a quarterly rebalance month.
+        # Non-quarterly months: only Tier 1 sells (unrealized loss positions) may execute.
+        # Quarterly months: full rebalance — buys and all approved sells may execute.
+        quarterly = is_quarterly_month()
+        if quarterly:
+            print("Quarter lock: QUARTERLY month — full rebalance allowed (buys + all Tier 1/2 sells).")
+        else:
+            print("Quarter lock: NON-QUARTERLY month — buys BLOCKED; only Tier 1 (loss) sells allowed.")
+
         # Determine rebalance orders: sell positions not in screened top-N, buy new entrants
         current_syms = {h["symbol"] for h in new_holdings}
         target_syms  = {s["symbol"] for s in screened[:TARGET_N]}
@@ -1062,16 +1111,52 @@ def main():
         to_buy_syms  = target_syms  - current_syms
 
         target_per = pv / TARGET_N if TARGET_N else 0
-        raw_sells = [
-            (h["symbol"], h["shares"])
-            for h in new_holdings if h["symbol"] in to_sell_syms
-        ]
-        raw_buys = [
-            (sym, max(1, int(min(target_per, pv * MAX_POSITION_PCT)
-                              / fundamentals.get(sym, {}).get("current_price", 1))))
-            for sym in to_buy_syms
-            if fundamentals.get(sym, {}).get("current_price", 0) > 0
-        ]
+
+        # Build sell list — apply profit gate in non-quarterly months:
+        # Only positions at a loss may be sold outside quarterly months (Tier 1 only).
+        holding_map = {h["symbol"]: h for h in new_holdings}
+        raw_sells: list[tuple] = []
+        quarterly_deferred: list[str] = []
+        for h in new_holdings:
+            if h["symbol"] not in to_sell_syms:
+                continue
+            if quarterly or not has_unrealized_gain(h):
+                # Quarterly month: all exits allowed.
+                # Non-quarterly: only losing positions (Tier 1 loss-harvest).
+                raw_sells.append((h["symbol"], h["shares"]))
+            else:
+                quarterly_deferred.append(h["symbol"])
+
+        if quarterly_deferred:
+            print(
+                f"  Hold gate: deferred profitable exit(s) to next quarterly — "
+                f"{', '.join(quarterly_deferred)} (unrealized gain; non-quarterly month)"
+            )
+
+        # Buys are BLOCKED in non-quarterly months (v2.2 Execution Lock).
+        if quarterly:
+            raw_buys = [
+                (sym, max(1, int(min(target_per, pv * MAX_POSITION_PCT)
+                                  / fundamentals.get(sym, {}).get("current_price", 1))))
+                for sym in to_buy_syms
+                if fundamentals.get(sym, {}).get("current_price", 0) > 0
+            ]
+        else:
+            raw_buys = []
+            if to_buy_syms:
+                print(
+                    f"  Quarter lock: BUY orders BLOCKED in non-quarterly month — "
+                    f"{', '.join(sorted(to_buy_syms))} deferred to next quarterly rebalance."
+                )
+
+        # Sector concentration check at quarterly rebalance (advisory)
+        if quarterly:
+            over_sector = check_sector_concentration(new_holdings)
+            for sector, weight in over_sector.items():
+                print(
+                    f"  Sector cap WARNING: {sector} at {weight:.1%} exceeds "
+                    f"{MAX_SECTOR_PCT:.0%} cap — review at rebalance."
+                )
 
         # Load what Claude approved and apply all risk limits before touching the broker.
         # Both pre-market and post-close runs execute "next_open" decisions.
@@ -1202,7 +1287,7 @@ def main():
     output = {
         "meta": {
             **data.get("meta", {}),
-            "strategy":       "TradeQuest AI Momentum Strategy v2.0",
+            "strategy":       "TradeQuest AI Momentum Strategy v2.2",
             "universe":       "S&P 500",
             "account_name":   "TradeQuest Paper",
             "mode":           "alpaca" if alpaca_state else "simulation",

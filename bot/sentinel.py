@@ -4,9 +4,14 @@
 Runs at 2:30 PM ET via sentinel.yml while the market is still open.
 Applies three hard rules autonomously, without calling Claude:
 
-  Rule 1 — Concentration: position weight > 2× MAX_POSITION_PCT (>16%) → SELL
+  Rule 1 — Concentration: position weight > 2× MAX_POSITION_PCT (>20%) → SELL
   Rule 2 — Trend break: price < 50-day MA for ≥ 3 consecutive agent runs → SELL
-  Rule 3 — Persistent flag: symbol flagged SELL in ≥ 5 consecutive runs → SELL
+  Rule 3 — Persistent loss flag: symbol flagged SELL in ≥ 5 consecutive runs
+            AND position is at a loss (unrealized PnL < 0) → SELL
+            NOTE (v2.2): profitable positions are NOT force-sold by Rule 3 —
+            the 12-month hold gate applies even to the sentinel. A profitable
+            position with persistent SELL flags defers to the next quarterly
+            rebalance, not to an intraday forced exit.
 
 Writes data/sentinel_orders.json with the sell list.
 update.py --sentinel reads that file and places Alpaca orders immediately.
@@ -23,10 +28,18 @@ DATA_FILE       = REPO_ROOT / "data" / "portfolio.json"
 LOG_FILE        = REPO_ROOT / "data" / "agent_log.json"
 SENTINEL_FILE   = REPO_ROOT / "data" / "sentinel_orders.json"
 
-MAX_POSITION_PCT        = 0.08   # must match update.py
-CONCENTRATION_THRESHOLD = MAX_POSITION_PCT * 2   # 16%
+MAX_POSITION_PCT        = 0.10   # v2.2: must match update.py (raised from 0.08)
+CONCENTRATION_THRESHOLD = MAX_POSITION_PCT * 2   # 20%
 TREND_BREAK_RUNS        = 3      # consecutive below-MA runs → sell
-PERSISTENT_FLAG_RUNS    = 5      # consecutive SELL flags without execution → override
+PERSISTENT_FLAG_RUNS    = 5      # consecutive SELL flags without execution → override (loss only)
+
+
+def has_unrealized_gain(holding: dict) -> bool:
+    """Return True if the position has a positive unrealized PnL (v2.2 hold gate)."""
+    try:
+        return float(holding.get("pnl") or holding.get("pnl_pct", 0)) > 0
+    except (TypeError, ValueError):
+        return False
 
 
 def load_portfolio() -> dict:
@@ -135,19 +148,28 @@ def check_rules(portfolio: dict, runs: list) -> list[dict]:
             continue
 
         # Rule 3 — Persistent flag: SELL flagged ≥ PERSISTENT_FLAG_RUNS consecutive runs
+        # v2.2 Hold Gate: Rule 3 only force-sells positions that are at a loss.
+        # Profitable positions with persistent SELL flags are NOT force-sold by the sentinel —
+        # they defer to the next quarterly rebalance per the 12-month hold gate.
         sell_flag_count = count_consecutive_sell_flags(runs, sym)
         if sell_flag_count >= PERSISTENT_FLAG_RUNS:
-            sells.append({
-                "symbol": sym,
-                "shares": shares,
-                "rule": "persistent_flag",
-                "reason": (
-                    f"Symbol flagged SELL/WATCH in {sell_flag_count} consecutive agent runs "
-                    f"without execution (≥ {PERSISTENT_FLAG_RUNS} threshold). "
-                    f"Forced exit — sentinel Rule 3."
-                ),
-            })
-            seen.add(sym)
+            if has_unrealized_gain(h):
+                print(
+                    f"sentinel: Rule 3 skipped for {sym} — {sell_flag_count} consecutive "
+                    f"flags but position is at a gain (hold gate active; defers to quarterly)."
+                )
+            else:
+                sells.append({
+                    "symbol": sym,
+                    "shares": shares,
+                    "rule": "persistent_flag",
+                    "reason": (
+                        f"Symbol flagged SELL/WATCH in {sell_flag_count} consecutive agent runs "
+                        f"without execution (≥ {PERSISTENT_FLAG_RUNS} threshold). "
+                        f"Position is at a loss — Tier 1 forced exit. Sentinel Rule 3."
+                    ),
+                })
+                seen.add(sym)
 
     return sells
 

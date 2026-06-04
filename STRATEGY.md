@@ -1,4 +1,4 @@
-# TradeQuest AI — Trading Strategy v2.0
+# TradeQuest AI — Trading Strategy v2.2
 
 ## Objective
 Beat the S&P 500 on a **risk-adjusted basis** over rolling 12-month periods, targeting +3–7% annual excess return with lower drawdowns than the index.
@@ -56,37 +56,78 @@ Stacking all three with a volatility guard produces a strategy that captures ups
 
 | Parameter | Value |
 |-----------|-------|
-| Target positions | 15–20 |
+| Target positions | **10–12** (high-conviction only — top-tier momentum scores) |
 | Weighting | Equal weight (start simple, avoids estimation error) |
-| Min position size | 5% (prevents over-diversification) |
-| Position soft cap | 12% (review but do not force-trim if stock passes all filters) |
-| Position hard cap | 20% (trim to 15% at next scheduled rebalance) |
+| Min position size | **8%** (prevents dilution; fewer, stronger names) |
+| Position hard cap | **20%** (trim to 15% at next scheduled quarterly rebalance) |
+| Sector cap | **30%** max in any single GICS sector — higher concentration risk with 10–12 names requires this guard |
 | Rebalance frequency | Quarterly (first trading day of Jan, Apr, Jul, Oct) |
-| Monthly agent review | Flag-only mode — no sells unless hard cap exceeded or critical sell rule fires |
+| Monthly agent review | **Flag-only mode** — no new buys, no routine sells. Only Tier 1 loss-harvests and structural exits permitted |
 | Cash in Bull regime | 5% |
 | Cash in Sideways regime | 25% |
 | Cash in Bear regime | 50% |
 
+### Why 10–12 Positions (v2.2 Change from 15–20)
+The momentum premium is concentrated in the top decile of the universe. Holding 15–20 positions dilutes the alpha by including ranks 11–18 which show materially lower momentum scores. Live run evidence (May–Jun 2026): positions ranked 1–10 (WDC, AMAT, ADI, CAT, JBL, KEYS, NUE, STLD, KLAC, VRT) averaged +11.8% return; positions ranked 11–18 (FDX, BEN, GOOGL, IBKR, C, ROST, NTRS, CFG) averaged -4.2% return. The bottom half dragged down the top half. Concentrating 8–10% in 10–12 positions captures the full momentum edge while reducing the management overhead that caused over-trading.
+
 ---
 
-## Sell Rules *(v2.1 — tax-aware, tightened to reduce unnecessary realization)*
+## Sell Rules *(v2.2 — 12-Month Hold Gate + Losers-First Pipeline)*
 
-A position is **exited** when **any** of these trigger:
+### The Core Principle
+**Sell losing positions fast. Hold winning positions long.**
+
+This asymmetry serves two purposes simultaneously: (1) tax-loss harvesting — realized losses offset future gains; (2) long-term capital gains treatment — positions held 12+ months are taxed at 0–20% vs ordinary income rates (up to 37%) for short-term gains. Every premature exit of a winner is a tax event that could have been deferred.
+
+---
+
+### Structural Rules — Apply to ALL positions regardless of profit/loss status
+
+These rules represent genuine portfolio risk and override the hold gate:
 
 | Rule | Trigger | Rationale |
 |------|---------|-----------|
-| Momentum decay | Rank drops below **top 30%** confirmed over **5 trading days** | Stricter threshold (was 40%) prevents exiting on brief dips; confirmation window avoids single-day noise |
-| Trend break | Price closes below **50-day MA** for **3 consecutive days** | Sustained break only (was 1 day); single-day violations are common in healthy uptrends |
-| Quality deterioration | EPS growth negative for **2 consecutive quarters** | Requires persistent fundamental failure (was 1 quarter); single-quarter misses often reverse |
-| Profit taking | Position up > 60% in < 60 days — **sell half, hold remainder** | Parabolic blow-off only; selling only half preserves continued upside while locking partial gains |
-| Hard cap violation | Position weight exceeds **20%** — trim to 15% | Winners that grow large are a sign of success; only trim at extreme concentration |
+| **A — Trend break** | Price closes below **50-day MA** for **3 consecutive days** | Sustained structural break; price is telling you the thesis is wrong |
+| **B — Quality failure** | EPS growth negative for **2 consecutive quarters** | Fundamental deterioration — the quality filter is now failing |
+| **C — Hard cap** | Position weight exceeds **20%** → trim to 15% at next quarterly | Extreme concentration; trim at scheduled rebalance, not immediately |
+| **D — Parabolic blow-off** | Position up > 60% in < 60 days → **sell half, hold remainder** | Captures blow-off top; retains continued upside |
 
-**Tax-aware priority order for sells:**
-1. Always prefer selling positions **at a loss** first (tax-loss harvesting) before trimming winners
-2. Only sell a winning position if it violates a sell rule OR exceeds the 20% hard cap
-3. Never sell a winner solely to rebalance to equal weight — wait for the quarterly cycle
+### Momentum Decay Rule — Asymmetric by Profit/Loss Status
 
-**Key improvement over v2.0**: v2.0's 40% momentum threshold and 1-day MA rule generated excessive turnover (~100–150% annually) and unnecessary capital gains. v2.1 reduces turnover to ~40–60% by requiring stronger, confirmed signals before exiting.
+| Position status | Momentum rank < top 30%, confirmed 5 days | Action |
+|---|---|---|
+| **At a loss** (unrealized PnL < 0) | Confirmed | **SELL — Tier 1** (tax-loss harvest; execute at next open) |
+| **At a gain** (unrealized PnL > 0) AND held < 12 months | Confirmed | **WATCH only** — flag but do not sell; defer to quarterly rebalance |
+| **At a gain** (unrealized PnL > 0) AND held ≥ 12 months | Confirmed | **SELL eligible** — execute at next quarterly rebalance (LTCG treatment) |
+
+### Sell Tier Classification
+
+Every sell decision must be classified before issuing:
+
+```
+Tier 1 — Execute at next market open (next_open urgency):
+  • Any position with unrealized LOSS hitting Rule A, B, C, D, or momentum decay
+  • These are tax-loss harvests — no reason to wait; losses should exit fast
+
+Tier 2 — Defer to next quarterly rebalance (next_rebalance urgency):
+  • Any position with unrealized GAIN that fails ONLY momentum decay (Rule E)
+  • Hold until July 1 (or next quarterly); review at rebalance — may qualify for LTCG
+
+Tier 3 — Hold indefinitely:
+  • Any position with unrealized GAIN that passes all structural rules (A/B/C/D)
+  • Momentum rank improving is possible; do not sell into temporary rank weakness
+
+Do NOT issue a Tier 2 or Tier 3 SELL in a non-quarterly month.
+Agent must classify every SELL decision as Tier 1/2/3 before issuing it.
+Agent must explicitly state unrealized PnL and hold duration when classifying.
+```
+
+### Tax-Aware Priority Order for Sells (when selling is necessary)
+1. Sell positions **at a loss** first (Tier 1) — every dollar of realized loss offsets a future gain
+2. Only sell a profitable position under a structural rule (Rule A/B/C/D) or after 12-month LTCG threshold
+3. **Never** sell a winner solely to rebalance to equal weight — unequal weights are fine; tax drag is permanent
+
+**Key improvement over v2.1**: v2.1 still allowed momentum-decay SELLs on profitable positions (+0.51%, +1.33%, +3.64% gains) generating unnecessary short-term capital gains. v2.2 routes all profitable momentum-decay signals to WATCH/deferred status, cutting taxable events by ~60% while preserving full loss-harvest efficiency.
 
 ---
 
@@ -134,8 +175,17 @@ structured decisions to `data/agent_log.json`.
 - Re-screen all 500 S&P stocks against all four filters
 - Rank new candidates by momentum score
 - Compare to current holdings → identify new entrants and deteriorating positions
-- **On non-quarterly months** (Feb, Mar, May, Jun, Aug, Sep, Nov, Dec): output flags and WATCH decisions only — no sells unless a sell rule fires or hard cap exceeded
-- **On quarterly months** (Jan, Apr, Jul, Oct): full rebalance — execute buys and sells, reset cash target to regime level
+- **On non-quarterly months** (Feb, Mar, May, Jun, Aug, Sep, Nov, Dec):
+  - Output WATCH and flag decisions only — **zero new BUY orders**
+  - **Only Tier 1 SELLs** (unrealized losses hitting a structural or momentum-decay rule)
+  - No Tier 2 or Tier 3 SELLs — defer profitable exits to the next quarterly
+- **On quarterly months** (Jan, Apr, Jul, Oct): full rebalance
+  - Execute all Tier 1 SELLs immediately
+  - Execute Tier 2 SELLs deferred from prior non-quarterly months (if still failing filters)
+  - Buy new top-10-12 entrants not currently held (fund from cash first, then Tier 1 sales)
+  - Trim any position exceeding 20% hard cap to 15%
+  - Reset cash target to current regime level
+  - Apply sector cap: no single sector may exceed 30% after rebalance
 - Tax-loss harvest: if deploying new cash into buys, first offset with any losing positions (>5% unrealized loss)
 - Output: full rebalance plan or flag-only review → written to `data/agent_log.json`
 
@@ -156,6 +206,11 @@ structured decisions to `data/agent_log.json`.
 | Hard 8% cap forced trimming winners | v2.1: 12% soft cap, 20% hard cap — let winners run |
 | Monthly rebalance caused unnecessary churn | v2.1: non-quarterly months are flag-only review |
 | Equal-weight rebalancing sold winning positions | v2.1: tax-loss harvest priority; winners held unless sell rule fires |
+| v2.1 still issued momentum-decay SELLs on small-gain positions (+0.51%, +1.33%) | v2.2: **12-month hold gate** — profitable positions immune to momentum-decay sell until 12mo mark |
+| Agent issued Tier 2/3 SELLs in non-quarterly months (May/Jun) | v2.2: **code-level execution lock** — update.py blocks non-Tier-1 sells and all buys in non-quarterly months |
+| 15–20 positions diluted momentum edge with bottom-half holdings | v2.2: **10–12 position limit** — only top-tier momentum names, 8–10% each |
+| Premature exits + re-entries (STX sold $750→ re-bought $939; +25% miss) | v2.2: hold gate prevents selling winners; no mid-quarter buys prevents chasing back in |
+| No sector cap — concentration risk in 10–12 name portfolio | v2.2: **30% sector cap** enforced at quarterly rebalance |
 
 ---
 
@@ -191,17 +246,30 @@ TradeQuest runs on GitHub Actions with two workflows:
 **All SELL and BUY orders execute at the next market open (9:30 AM ET).** There is no same-session execution path. Do not confuse urgency with speed.
 
 Valid urgency values in `decisions[].urgency`:
-- `"next_open"` — Execute at next 9:30 AM ET market open. Use for all actionable SELL and BUY decisions.
-- `"next_rebalance"` — Defer to the next monthly rebalance run (1st trading day). Use for non-urgent position adjustments.
+- `"next_open"` — Execute at next 9:30 AM ET market open. Use for **Tier 1 SELLs only** (losing positions).
+- `"next_rebalance"` — Defer to the next quarterly rebalance. Use for Tier 2/3 signals and all WATCH decisions.
 
-The label `"immediate"` is deprecated. It was a misnomer — the earliest any order could execute was still 9:30 AM the following day. All agents should use `"next_open"` instead.
+The label `"immediate"` is deprecated. All agents should use `"next_open"` instead.
 
-**Persistent-flag escalation:** If a symbol has been flagged SELL in 3+ consecutive prior runs without execution, this indicates an execution delay (not a stale signal). Re-issue the SELL with `urgency="next_open"` and note the consecutive count in the reason field. Do NOT issue a BUY for any symbol that has an active SELL flag.
+### Non-Quarterly Month Execution Lock *(v2.2 — Hard Rule)*
 
-**Sentinel rule (automated, no LLM):** A separate `sentinel.yml` workflow runs at 2:30 PM ET and automatically executes sell orders for positions meeting any of these hard rules — without waiting for the 5:30 PM agent run:
-1. Position weight > 2× MAX_POSITION_PCT (>16%) → forced sell
-2. Price < 50-day MA for 3+ consecutive agent runs → forced sell
-3. Symbol flagged SELL in 5+ consecutive runs without execution → forced sell
+**In Feb, Mar, May, Jun, Aug, Sep, Nov, Dec the execution pipeline enforces:**
+- `BUY` orders → **BLOCKED** at code level in `update.py` (no new entries mid-quarter)
+- `SELL` orders → Only **Tier 1** (unrealized loss + structural or momentum-decay rule) are executed
+- `SELL` orders for profitable positions → **BLOCKED** at code level unless Rule A/B/C/D fires
+
+This is enforced in code (`update.py` checks `is_quarterly_month()` before accepting agent BUY approvals), not just as a prompt instruction. The agent's BUY decisions in non-quarterly months will be logged but the pipeline will not execute them.
+
+**Persistent-flag escalation:** If a symbol has been flagged SELL in 3+ consecutive prior runs without execution:
+- If position is **at a loss**: re-issue as Tier 1 SELL with `urgency="next_open"`; note consecutive count
+- If position is **at a gain**: re-issue as Tier 2 WATCH; do NOT escalate to immediate execution — the hold gate applies regardless of flag count
+- Do NOT issue a BUY for any symbol that has an active SELL flag.
+
+**Sentinel rule (automated, no LLM):** A separate `sentinel.yml` workflow runs at 2:30 PM ET and automatically executes sell orders for positions meeting hard rules — without waiting for the 5:30 PM agent run:
+1. Position weight > 2× MAX_POSITION_PCT (>20%) → forced sell
+2. Price < 50-day MA for 3+ consecutive agent runs → forced sell (structural Rule A)
+3. Symbol flagged SELL in 5+ consecutive runs AND **position is at a loss** → forced sell
+   - Note: Rule 3 no longer force-sells profitable positions — the hold gate applies to the sentinel too
 
 ---
 
@@ -229,8 +297,8 @@ The label `"immediate"` is deprecated. It was a misnomer — the earliest any or
 | Sharpe ratio | > 1.2 | ~0.7 (historical) |
 | Max drawdown | < 15% | ~35% in severe bear |
 | Win rate (% of positions profitable) | 55–65% | N/A |
-| Annual turnover | ~40–60% (v2.1, down from 100–150%) | N/A |
-| Estimated annual capital gains | Low — primarily long-term holds >1 year | N/A |
+| Annual turnover | **~20–35%** (v2.2, down from 40–60% in v2.1) | N/A |
+| Estimated annual capital gains | **Very low** — losses harvested immediately; gains deferred to 12mo LTCG treatment | N/A |
 
 ---
 
@@ -239,32 +307,43 @@ The label `"immediate"` is deprecated. It was a misnomer — the earliest any or
 When the Claude agent reads this document and the current portfolio state, it uses the following decision tree:
 
 ```
-FOR EACH holding (day_end and monthly review):
-  IF momentum_rank < 30% confirmed ≥5 days  → SELL (rule 1)
-  IF price < ma_50d for ≥3 consecutive days  → SELL (rule 2)
-  IF eps_growth < 0 for 2 consecutive qtrs   → SELL (rule 3)
-  IF pnl_pct > 60% in <60d                   → SELL half, HOLD remainder (rule 4)
-  IF weight > 20%                             → TRIM to 15% at next quarterly (rule 5)
-  ELSE                                        → HOLD
+FOR EACH holding — v2.2 decision tree:
 
-TAX-AWARE SELL PRIORITY (when sells are needed):
-  1. Sell positions with unrealized losses first (tax-loss harvest)
-  2. Only sell winners if a sell rule fires OR hard cap exceeded
-  3. Never sell a winner to rebalance to equal weight
+  STEP 1: Check structural rules (apply regardless of profit/loss status)
+    IF price < ma_50d for ≥3 consecutive days          → SELL Tier 1 [Rule A]
+    IF eps_growth < 0 for 2 consecutive quarters        → SELL Tier 1 [Rule B]
+    IF weight > 20%                                     → flag TRIM to 15% at next quarterly [Rule C]
+    IF pnl_pct > 60% in <60d                            → SELL half, HOLD remainder [Rule D]
+
+  STEP 2: Check momentum decay (Rule E — asymmetric by profit/loss)
+    IF momentum_rank outside top 30%, confirmed ≥5 days:
+      AND unrealized PnL < 0  → SELL Tier 1 (next_open)   ← loss-harvest, exit fast
+      AND unrealized PnL ≥ 0  → WATCH only (next_rebalance) ← hold gate applies
+
+  STEP 3: Default
+    ELSE → HOLD
+
+  STEP 4: Classify every SELL before issuing it
+    Tier 1 = loss position OR structural rule → urgency=next_open
+    Tier 2 = gain position + momentum decay only → urgency=next_rebalance, defer to quarterly
+    NEVER issue Tier 2 SELL in a non-quarterly month
 
 FOR quarterly rebalance (Jan/Apr/Jul/Oct first trading day):
   Screen full S&P 500 universe
   Apply filters 1–4 in order
-  Take top TARGET_N by momentum score
-  BUY new entrants not currently held (fund from cash first, then tax-loss sales)
-  SELL positions not in new top-N AND at a loss (harvest losses)
-  HOLD positions not in new top-N BUT with gains (avoid unnecessary realization)
+  Take top 10–12 by momentum score (TARGET_N = 10)
+  Execute Tier 1 SELLs immediately (losses, structural failures)
+  Execute deferred Tier 2 SELLs if still failing momentum at this rebalance
+  BUY new top-10-12 entrants not currently held (fund from cash, then Tier 1 proceeds)
+  HOLD profitable positions not in new top-N (avoid unnecessary gain realization)
+  Check sector cap: no sector > 30% after rebalance; trim to comply
   Adjust cash to match regime target
 
 FOR non-quarterly monthly review (Feb/Mar/May/Jun/Aug/Sep/Nov/Dec):
-  Run sell rules only — flag violations
-  Output WATCH / SELL (critical rule only) / HOLD
-  Do NOT initiate rebalance buys or routine sells
+  Run STEP 1 + STEP 2 sell rule checks against all holdings
+  Output WATCH / Tier 1 SELL (only) / HOLD
+  BUY orders: NONE — code pipeline blocks mid-quarter buys
+  Tier 2 SELLs: log as WATCH, do NOT set urgency=next_open
 ```
 
 The agent must always cite which rule triggered a decision and explain its confidence level.

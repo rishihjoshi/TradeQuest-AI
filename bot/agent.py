@@ -52,28 +52,49 @@ Be specific about symbols and numbers. If nothing is flagged, say so clearly.
 TASK_DAY_END = """
 ## Your Task: DAY END — Post-Close Review (4:30 PM ET)
 
-The portfolio data has been updated with today's closing prices. Make definitive decisions.
+The portfolio data has been updated with today's closing prices. Make definitive decisions
+using the v2.2 two-tier sell framework.
 
-1. Check each holding against ALL four sell rules:
-   - Momentum rank > 40% of universe → SELL
-   - Price < 50-day MA → SELL
-   - EPS growth deteriorating → WATCH/SELL
-   - Position up >60% in <60 days → consider profit taking (parabolic blow-off only)
-2. For each flagged position, state the specific rule triggered
-3. For HOLDs, briefly confirm the thesis still holds
-4. Assess portfolio overall performance vs the strategy objectives
-5. Note any regime changes that would affect cash allocation
+### Step 1 — Check structural rules on ALL holdings (apply regardless of profit/loss):
+  - Rule A: Price < 50-day MA for ≥3 consecutive days    → SELL (Tier 1, urgency=next_open)
+  - Rule B: EPS growth negative for 2 consecutive qtrs   → SELL (Tier 1, urgency=next_open)
+  - Rule C: Position weight > 20%                        → flag TRIM at next quarterly
+  - Rule D: Position up >60% in <60 days                 → SELL half (Tier 1, urgency=next_open)
 
-Be decisive. Any clear sell-rule trigger should result in a SELL decision.
+### Step 2 — Check momentum decay (Rule E — ASYMMETRIC by profit/loss):
+  For each holding where momentum rank has been outside top 30% for ≥5 consecutive days:
+  - IF unrealized PnL < 0  → SELL Tier 1 (urgency=next_open) — tax-loss harvest
+  - IF unrealized PnL ≥ 0  → WATCH only (urgency=next_rebalance) — hold gate active
+
+### CRITICAL: The Hold Gate (v2.2 Core Rule)
+  Do NOT issue a SELL for a position with unrealized PnL > 0 due to momentum decay alone.
+  Profitable positions failing only Rule E must be classified as WATCH, not SELL.
+  Only Rules A, B, C, D can trigger a SELL on a profitable position.
+  State the position's unrealized PnL and entry date in EVERY sell/watch decision.
+
+### Step 3 — Classify every SELL before issuing:
+  sell_tier: "tier1" = loss position or structural rule → urgency=next_open
+  sell_tier: "tier2" = gain position + momentum decay only → urgency=next_rebalance
+
+### Step 4 — For HOLDs, briefly confirm the thesis still holds
+
+### Step 5 — Portfolio health assessment vs SPY and strategy objectives
 
 ## Urgency Semantics
-All SELL and BUY orders execute at the NEXT MARKET OPEN (9:30 AM ET) via the
-market-open workflow. Use urgency="next_open" for all actionable decisions.
-Use urgency="next_rebalance" only for decisions that should wait until the
-monthly rebalance run. There is no intraday execution path.
+- urgency="next_open"      → Tier 1 SELLs only (loss positions; structural rule violations)
+- urgency="next_rebalance" → Tier 2 WATCH/deferred SELLs; any BUY decisions
 
-If a symbol has been flagged SELL in 3 or more consecutive prior runs without
-being executed, note this explicitly in the reason field and set urgency="next_open".
+Note: BUY orders in non-quarterly months (Feb/Mar/May/Jun/Aug/Sep/Nov/Dec) are BLOCKED
+by the execution pipeline. You may log them as WATCH or flag, but do not set urgency=next_open
+for a BUY in a non-quarterly month. Today's month determines whether a quarterly rebalance
+is in effect.
+
+Quarterly months: January, April, July, October.
+
+If a symbol has been flagged Tier 1 SELL in 3+ consecutive runs without execution, re-issue
+with urgency="next_open" and note the consecutive count. If position is at a gain and only
+failing momentum decay, escalate to WATCH — do NOT force to next_open.
+
 Do NOT re-issue a BUY for any symbol currently flagged SELL.
 
 ## Friday Close Addition
@@ -89,20 +110,37 @@ the standard fields:
 """
 
 TASK_MONTHLY = """
-## Your Task: MONTHLY REBALANCE (First Trading Day of Month)
+## Your Task: MONTHLY REVIEW (First Trading Day of Month)
 
-This is the full monthly rebalance. Be thorough and decisive.
+FIRST: Determine if this is a quarterly rebalance month (Jan/Apr/Jul/Oct) or a
+non-quarterly review month (Feb/Mar/May/Jun/Aug/Sep/Nov/Dec). Today's month determines
+the scope of what you can recommend.
 
-1. Assess each current holding — which should stay, which should go?
-2. Based on the strategy filters, what types of stocks should be entering?
-3. Review the current cash allocation vs the regime target
-4. Make a complete rebalance plan:
-   - List all SELL decisions (with rule that triggered each)
-   - List all BUY candidates (with momentum/quality rationale)
-   - State target position count and cash level
-5. Identify any strategy drift or execution gaps from last month
+### IF NON-QUARTERLY MONTH (flag-only mode):
+  - Apply the v2.2 sell rules to each holding (structural rules + momentum decay)
+  - Issue Tier 1 SELLs ONLY (positions with unrealized loss hitting any sell rule)
+  - Issue WATCH for all Tier 2 signals (profitable positions with momentum decay)
+  - Do NOT recommend any BUY orders — the execution pipeline will block them anyway
+  - Do NOT recommend Tier 2 SELLs — defer to next quarterly
+  - Summarise: which positions are deteriorating and why; what to watch for July quarterly
 
-This output will drive actual Alpaca paper trading orders. Be specific about actions.
+### IF QUARTERLY MONTH (full rebalance):
+  1. Run ALL four sell rules against each holding (v2.2 decision tree)
+  2. Execute Tier 1 SELLs (loss positions: structural or momentum decay) at next_open
+  3. Review Tier 2 deferred signals from prior months — if still failing at this quarterly,
+     execute the SELL now (position may now qualify for LTCG if held 12+ months)
+  4. Screen universe for new top-10-12 by momentum score — identify BUY candidates
+  5. BUY new entrants not currently held (fund from cash, then Tier 1 proceeds)
+  6. Check sector concentration — no sector > 30% after rebalance; flag violations
+  7. State target position count (aim for 10), cash level target, and sector breakdown
+
+### Apply the Hold Gate in both modes:
+  - Never issue a SELL for a profitable position failing ONLY Rule E (momentum decay)
+  - Always state unrealized PnL and entry date in every sell or watch decision
+  - Classify every SELL as Tier 1 or Tier 2 in the sell_tier field
+
+This output will drive actual Alpaca paper trading orders on quarterly months only.
+On non-quarterly months, the execution pipeline ignores BUY decisions and Tier 2 SELLs.
 """
 
 TASK_MAP = {
@@ -127,8 +165,9 @@ Respond ONLY with valid JSON — no markdown fences, no prose outside the JSON:
     {
       "action": "HOLD|SELL|BUY|WATCH",
       "symbol": "TICKER",
-      "reason": "specific rule or rationale",
+      "reason": "specific rule or rationale — must state unrealized PnL and entry date for every SELL or WATCH",
       "rule_triggered": "momentum_decay|trend_break|quality_drop|profit_take|new_entry|null",
+      "sell_tier": "tier1|tier2|null",
       "urgency": "next_open|next_rebalance"
     }
   ],
@@ -136,6 +175,13 @@ Respond ONLY with valid JSON — no markdown fences, no prose outside the JSON:
   "cash_rationale": "why cash level should change or stay",
   "summary": "one sentence for the activity log headline"
 }
+
+Key rules for valid JSON output:
+- sell_tier must be "tier1" for any SELL with urgency=next_open
+- sell_tier must be "tier2" for any SELL or WATCH with urgency=next_rebalance on a profitable position
+- sell_tier must be "null" for HOLD, BUY, and HOLDs
+- Never set urgency=next_open for a profitable position with sell_tier=tier2
+- Never set action=BUY in a non-quarterly month (Feb/Mar/May/Jun/Aug/Sep/Nov/Dec)
 """
 
 
@@ -410,8 +456,13 @@ def run_agent(
                 # Strategy doc is static — cache it (5-min TTL, saves ~2k tokens/run)
                 "type": "text",
                 "text": (
-                    "You are TradeQuest AI, an autonomous momentum trading agent.\n"
+                    "You are TradeQuest AI, an autonomous momentum trading agent running strategy v2.2.\n"
                     "You strictly follow the strategy document below for all decisions.\n\n"
+                    "CORE v2.2 RULE — always enforce before any other decision:\n"
+                    "  • Profitable positions (unrealized PnL > 0) may NOT be sold due to momentum decay alone.\n"
+                    "  • Only structural rules (MA break, quality failure, hard cap, parabolic) can exit a winner.\n"
+                    "  • In non-quarterly months (Feb/Mar/May/Jun/Aug/Sep/Nov/Dec): no BUY decisions.\n"
+                    "  • Classify every SELL as tier1 (loss + any rule) or tier2 (gain + only momentum decay).\n\n"
                     f"## STRATEGY DOCUMENT\n\n{strategy}"
                 ),
                 "cache_control": {"type": "ephemeral"},
@@ -505,6 +556,21 @@ def write_log(log: dict, run_type: str, result: dict, usage: dict) -> dict:
     # Propagate parse_failed flag so load_agent_approvals() can skip this entry
     if result.get("parse_failed"):
         entry["parse_failed"] = True
+
+    # Count Tier 1 vs Tier 2 sell decisions for console summary
+    tier1_sells = sum(
+        1 for d in result.get("decisions", [])
+        if d.get("action") == "SELL" and d.get("sell_tier") == "tier1"
+    )
+    tier2_deferred = sum(
+        1 for d in result.get("decisions", [])
+        if d.get("action") in ("SELL", "WATCH") and d.get("sell_tier") == "tier2"
+    )
+    if tier1_sells or tier2_deferred:
+        entry["sell_tier_summary"] = {
+            "tier1_execute": tier1_sells,
+            "tier2_deferred": tier2_deferred,
+        }
 
     log.setdefault("runs", []).insert(0, entry)
     log["runs"]      = log["runs"][:90]   # keep ~3 months of history
