@@ -1,350 +1,560 @@
-# TradeQuest AI — Trading Strategy v2.2
+# TradeQuest AI — Master Strategy & System Document v3.0
 
-## Objective
-Beat the S&P 500 on a **risk-adjusted basis** over rolling 12-month periods, targeting +3–7% annual excess return with lower drawdowns than the index.
+**Version:** 3.0 | **Date:** June 2026 | **Status:** Live — Paper Trading (Alpaca)  
+**Supersedes:** STRATEGY.md v2.2, PRD.md, HLD.md, LLD.md (all retired)
 
 ---
 
-## The Edge — Why This Should Work
+> **For the AI Agent:** Everything in §1–§8 is your operating rulebook. Read it completely before making any decision. The strategy rules in §3–§6 are non-negotiable constraints, not suggestions.  
+> **For the Developer:** §9–§12 contain architecture, schemas, roadmap, and ops reference.
 
-Three independently documented market anomalies are stacked together:
+---
+
+## §1 — Objective & Edge
+
+**Mission:** Beat the S&P 500 on a risk-adjusted basis over rolling 12-month periods, targeting +3–7% annual excess return with lower drawdowns.
+
+### Why This Should Work
+
+Three independently documented market anomalies, stacked:
 
 | Anomaly | Source | Expected Edge |
-|---------|--------|--------------|
-| **Momentum premium** | Jegadeesh & Titman (1993) | Top decile stocks outperform bottom decile by ~10%/yr |
+|---|---|---|
+| **Momentum premium** | Jegadeesh & Titman (1993) | Top decile stocks outperform bottom by ~10%/yr |
 | **Quality premium** | Novy-Marx (2013) | High-profit firms consistently outperform |
 | **Regime-aware allocation** | Faber (2007) | Reducing equity in downtrends cuts drawdown 40–60% |
 
-Stacking all three with a volatility guard produces a strategy that captures upside momentum while avoiding the worst crashes.
+**Live evidence (May–Jun 2026):** Positions ranked 1–10 by momentum averaged +11.8% return; positions ranked 11–18 averaged -4.2%. This validates concentrating in the top tier and discarding the bottom.
+
+### Target Performance
+
+| Metric | Target | Current Status (Jun 2026) |
+|---|---|---|
+| Annual excess return vs SPY | +3% to +7% | Underperforming by ~3.3% (excess cash drag + premature exits) |
+| Sharpe ratio | > 1.2 | 0.0 (paper trade PnL not fully calculated) |
+| Max drawdown | < 15% | 0.09% (low — bull regime) |
+| Annual turnover | ~20–35% (v3) | ~430 legs/yr historically — v3 rules now enforce quarterly lock |
+| Win rate | 55–65% | 33.3% (stale data — realized PnL not populated in Alpaca mode) |
 
 ---
 
-## Universe
-**S&P 500 only** — large-cap, liquid, transparent. No micro-caps, no OTC, no ETFs.
+## §2 — Universe
 
-- ~500 stocks screened daily via Yahoo Finance
-- Survivorship bias is a known limitation (S&P index membership itself screens out failures)
+**S&P 500 only** — large-cap, liquid, no micro-caps, no OTC, no ETFs.
 
----
-
-## Filters (Applied in Order)
-
-### 1. Momentum Filter — Primary Driver
-- 6-month total return: must rank in **top 30%** of universe
-- 12-month total return: must rank in **top 30%** of universe
-- Score = average of both percentile ranks → ranked list of candidates
-- **Skip-month rule**: use price from 21 trading days ago as "current" to avoid 1-month reversal effect
-
-### 2. Quality Filter
-- EPS growth > 10% (trailing 12M or 3-year average)
-- Revenue growth > 8% (trailing 12M)
-- Rationale: filters out low-quality "junk momentum" — high-beta stocks with no earnings support that crash hardest in corrections
-
-### 3. Valuation Guard Rail
-- Forward P/E < 40
-- **OR** within the top 70% cheapest by sector (prevents systematically excluding entire high-multiple sectors like tech during genuine growth periods)
-- Rationale: avoids buying at extreme multiples that are vulnerable to multiple compression even if momentum is strong
-
-### 4. Risk Filter *(gap from v1 — now enforced)*
-- 30-day annualized volatility must be **below the 90th percentile** of the universe
-- Excludes the most volatile 10% of stocks
-- Rationale: high-volatility momentum names have fat left tails — they produce spectacular gains but also spectacular losses; equal-weighting them destroys portfolio Sharpe ratio
+- ~500 stocks screened daily via Yahoo Finance price data
+- Wikipedia scrape for constituent list; 33-ticker fallback on failure
+- Dual-class share dedup: `ISSUER_MAP` keeps highest-momentum ticker per issuer (GOOG/GOOGL → keep GOOG)
+- Known limitation: S&P membership screens out failures (survivorship bias)
 
 ---
 
-## Portfolio Construction
+## §3 — The Four Filters (Applied in Order)
 
-| Parameter | Value |
-|-----------|-------|
-| Target positions | **10–12** (high-conviction only — top-tier momentum scores) |
-| Weighting | Equal weight (start simple, avoids estimation error) |
-| Min position size | **8%** (prevents dilution; fewer, stronger names) |
-| Position hard cap | **20%** (trim to 15% at next scheduled quarterly rebalance) |
-| Sector cap | **30%** max in any single GICS sector — higher concentration risk with 10–12 names requires this guard |
-| Rebalance frequency | Quarterly (first trading day of Jan, Apr, Jul, Oct) |
-| Monthly agent review | **Flag-only mode** — no new buys, no routine sells. Only Tier 1 loss-harvests and structural exits permitted |
-| Cash in Bull regime | 5% |
-| Cash in Sideways regime | 25% |
-| Cash in Bear regime | 50% |
+### Filter 1 — Momentum (Primary Driver)
+- **6-month total return:** must rank in **top 30%** of universe
+- **12-month total return:** must rank in **top 30%** of universe
+- Combined momentum score = average of both percentile ranks → ranked candidate list
+- **Skip-month rule:** use price from 21 trading days ago as "current" (avoids 1-month reversal effect per Jegadeesh & Titman)
 
-### Why 10–12 Positions (v2.2 Change from 15–20)
-The momentum premium is concentrated in the top decile of the universe. Holding 15–20 positions dilutes the alpha by including ranks 11–18 which show materially lower momentum scores. Live run evidence (May–Jun 2026): positions ranked 1–10 (WDC, AMAT, ADI, CAT, JBL, KEYS, NUE, STLD, KLAC, VRT) averaged +11.8% return; positions ranked 11–18 (FDX, BEN, GOOGL, IBKR, C, ROST, NTRS, CFG) averaged -4.2% return. The bottom half dragged down the top half. Concentrating 8–10% in 10–12 positions captures the full momentum edge while reducing the management overhead that caused over-trading.
+### Filter 2 — Quality
+- EPS growth > **10%** (trailing 12M or 3-year average)
+- Revenue growth > **8%** (trailing 12M)
+- If data is `None` (yfinance missing) → stock **fails** the filter conservatively
+- Rationale: removes junk momentum — high-beta names with no earnings support that crash hardest
+
+### Filter 3 — Valuation Guard Rail
+- Forward P/E < **40**
+- **OR** within the top 70% cheapest by sector (prevents excluding entire high-multiple sectors like tech during genuine growth)
+- If forward P/E data is `None` → stock **passes** (relaxed fallback when data unavailable)
+
+### Filter 4 — Risk
+- 30-day annualised volatility must be **below the 90th percentile** of the universe
+- Excludes the most volatile 10% — fat left tails destroy Sharpe ratio on equal-weighted portfolios
+
+### Trend Gate (Entry Only)
+- New entries must have price **above their 50-day MA** at time of purchase
+- Prevents buying a stock that would immediately trigger the trend-break sell rule
+- Lenient when MA data is `None` (missing data → allow entry)
 
 ---
 
-## Sell Rules *(v2.2 — 12-Month Hold Gate + Losers-First Pipeline)*
+## §4 — Portfolio Construction
 
-### The Core Principle
+| Parameter | Value | Notes |
+|---|---|---|
+| **Target positions** | **10–12** | High-conviction only — top-tier momentum ranks |
+| **Weighting** | Equal weight | Avoids estimation error; rebalanced at quarterly |
+| **Min position size** | **8%** | Prevents dilution from over-diversification |
+| **Position hard cap** | **20%** | Trim to 15% at next quarterly rebalance |
+| **Sector cap** | **30%** max per GICS sector | Concentration guard for 10–12 name portfolio |
+| **Rebalance frequency** | Quarterly (Jan/Apr/Jul/Oct first trading day) | Full rotation |
+| **Non-quarterly months** | Flag-only — no new buys, Tier 1 sells only | Feb/Mar/May/Jun/Aug/Sep/Nov/Dec |
+| **Cash — Bull regime** | 5% | Fully deployed |
+| **Cash — Sideways regime** | 25% | Defensive tilt |
+| **Cash — Bear regime** | 50% | Capital preservation |
+
+**Why 10–12 not 15–20:** The momentum premium concentrates in the top decile. Positions ranked 11–18 in the live run dragged down returns by ~16% relative to positions ranked 1–10. Fewer, stronger names held longer captures the full alpha without the management overhead that caused over-trading.
+
+---
+
+## §5 — Sell Rules v3.0 (Tax-Efficient Asymmetric Framework)
+
+### Core Principle
 **Sell losing positions fast. Hold winning positions long.**
 
-This asymmetry serves two purposes simultaneously: (1) tax-loss harvesting — realized losses offset future gains; (2) long-term capital gains treatment — positions held 12+ months are taxed at 0–20% vs ordinary income rates (up to 37%) for short-term gains. Every premature exit of a winner is a tax event that could have been deferred.
+- Losses exit immediately → tax-loss harvesting, offsets future gains
+- Gains defer to 12+ months → long-term capital gains rates (0–20% vs 37% ordinary income)
+- Every premature winner exit is a permanent tax cost that cannot be recovered
 
 ---
 
-### Structural Rules — Apply to ALL positions regardless of profit/loss status
+### Structural Rules — Apply to ALL positions regardless of profit/loss
 
-These rules represent genuine portfolio risk and override the hold gate:
+| Rule | Trigger | Action | Notes |
+|---|---|---|---|
+| **A — Trend break** | Price < 50-day MA, **3 consecutive days** | SELL Tier 1 | Sustained structural break — not a single-day dip |
+| **B — Quality failure** | EPS growth negative, **2 consecutive quarters** | SELL Tier 1 | Persistent fundamental failure only |
+| **C — Hard cap** | Position weight > **20%** | Flag — TRIM to 15% at next quarterly | Winners growing large = success; only trim at extreme concentration |
+| **D — Parabolic blow-off** | Position up > **60% in < 60 days** | SELL **half**, hold remainder | Captures blow-off top; retains continued upside |
 
-| Rule | Trigger | Rationale |
-|------|---------|-----------|
-| **A — Trend break** | Price closes below **50-day MA** for **3 consecutive days** | Sustained structural break; price is telling you the thesis is wrong |
-| **B — Quality failure** | EPS growth negative for **2 consecutive quarters** | Fundamental deterioration — the quality filter is now failing |
-| **C — Hard cap** | Position weight exceeds **20%** → trim to 15% at next quarterly | Extreme concentration; trim at scheduled rebalance, not immediately |
-| **D — Parabolic blow-off** | Position up > 60% in < 60 days → **sell half, hold remainder** | Captures blow-off top; retains continued upside |
+### Momentum Decay Rule (Rule E) — Asymmetric by Profit/Loss
 
-### Momentum Decay Rule — Asymmetric by Profit/Loss Status
-
-| Position status | Momentum rank < top 30%, confirmed 5 days | Action |
+| Position status | Momentum rank outside top 30%, confirmed ≥5 days | Action |
 |---|---|---|
-| **At a loss** (unrealized PnL < 0) | Confirmed | **SELL — Tier 1** (tax-loss harvest; execute at next open) |
-| **At a gain** (unrealized PnL > 0) AND held < 12 months | Confirmed | **WATCH only** — flag but do not sell; defer to quarterly rebalance |
-| **At a gain** (unrealized PnL > 0) AND held ≥ 12 months | Confirmed | **SELL eligible** — execute at next quarterly rebalance (LTCG treatment) |
+| **At a loss** (PnL < 0) | Confirmed | **SELL Tier 1** — `urgency: next_open` — tax-loss harvest |
+| **At a gain** (PnL ≥ 0), held < 12 months | Confirmed | **WATCH only** — `urgency: next_rebalance` — hold gate active |
+| **At a gain** (PnL ≥ 0), held ≥ 12 months | Confirmed | **SELL eligible** at next quarterly rebalance (LTCG treatment) |
 
-### Sell Tier Classification
-
-Every sell decision must be classified before issuing:
+### Tier Classification (Required on Every SELL Decision)
 
 ```
-Tier 1 — Execute at next market open (next_open urgency):
-  • Any position with unrealized LOSS hitting Rule A, B, C, D, or momentum decay
-  • These are tax-loss harvests — no reason to wait; losses should exit fast
+Tier 1 → urgency: next_open
+  • Loss position hitting ANY rule (A, B, C, D, or E)
+  • These are tax-loss harvests — execute at next market open
 
-Tier 2 — Defer to next quarterly rebalance (next_rebalance urgency):
-  • Any position with unrealized GAIN that fails ONLY momentum decay (Rule E)
-  • Hold until July 1 (or next quarterly); review at rebalance — may qualify for LTCG
+Tier 2 → urgency: next_rebalance
+  • Gain position failing ONLY Rule E (momentum decay)
+  • Defer to next quarterly rebalance — may qualify for LTCG by then
+  • Do NOT issue Tier 2 SELLs in non-quarterly months
 
-Tier 3 — Hold indefinitely:
-  • Any position with unrealized GAIN that passes all structural rules (A/B/C/D)
-  • Momentum rank improving is possible; do not sell into temporary rank weakness
-
-Do NOT issue a Tier 2 or Tier 3 SELL in a non-quarterly month.
-Agent must classify every SELL decision as Tier 1/2/3 before issuing it.
-Agent must explicitly state unrealized PnL and hold duration when classifying.
+Tier 3 → HOLD
+  • Gain position passing all structural rules
+  • Momentum rank improvement is possible — do not sell into temporary weakness
 ```
 
-### Tax-Aware Priority Order for Sells (when selling is necessary)
-1. Sell positions **at a loss** first (Tier 1) — every dollar of realized loss offsets a future gain
-2. Only sell a profitable position under a structural rule (Rule A/B/C/D) or after 12-month LTCG threshold
-3. **Never** sell a winner solely to rebalance to equal weight — unequal weights are fine; tax drag is permanent
+**Agent must state unrealized PnL and entry date in every SELL or WATCH decision.**  
+**Agent must never sell a profitable position due to momentum decay alone.**
 
-**Key improvement over v2.1**: v2.1 still allowed momentum-decay SELLs on profitable positions (+0.51%, +1.33%, +3.64% gains) generating unnecessary short-term capital gains. v2.2 routes all profitable momentum-decay signals to WATCH/deferred status, cutting taxable events by ~60% while preserving full loss-harvest efficiency.
+### Tax-Aware Priority Order
+1. Sell positions **at a loss** first (Tier 1) — every realized loss offsets a future gain
+2. Only sell profitable positions under a structural rule (A/B/C/D) or after 12-month LTCG threshold
+3. **Never** sell a winner to rebalance to equal weight — unequal weights are acceptable; tax drag is permanent
 
 ---
 
-## Market Regime Detection
+## §6 — Market Regime Detection
 
-The agent monitors three signals daily to determine the market regime:
+Three signals, **2-of-3 must agree** before switching regime (prevents whipsawing):
 
 | Signal | Bull | Sideways | Bear |
-|--------|------|----------|------|
-| SPY price vs 200-day MA | Above | Within 3% | Below |
-| 30-day realized volatility | < 20% ann. | 20–28% | > 28% |
-| Market breadth (% of S&P above 200-MA) | > 60% | 40–60% | < 40% |
+|---|---|---|---|
+| SPY vs 200-day MA | Above | Within 3% | Below |
+| 30-day realized vol | < 20% ann. | 20–28% | > 28% |
+| Market breadth (% S&P above 200-MA) | > 60% | 40–60% | < 40% |
 
-Regime requires **2 of 3** signals to agree before switching — prevents whipsawing on a single bad day.
+### Breadth Calibration
 
-### Regime → Allocation
-
-```
-BULL     → 95% equity, 5% cash   → Full deployment
-SIDEWAYS → 75% equity, 25% cash  → Defensive tilt
-BEAR     → 50% equity, 50% cash  → Capital preservation
-```
-
-Regime change triggers rebalancing of the cash buffer within 3 trading days.
-
----
-
-## Agentic AI Layer
-
-Claude AI agent runs on two scheduled routines. Each run reads this strategy file, the
-current portfolio state, and the previous run's log (for continuity), then writes
-structured decisions to `data/agent_log.json`.
-
-### Day End (4:30 PM ET — post-close, Mon–Fri)
-**Purpose:** Daily close prices → run sell rules → place Alpaca paper trades if needed.
-- Update portfolio with closing prices (via `bot/update.py`)
-- Check all four sell rules against updated prices
-- Make HOLD / SELL decisions for positions
-- Place actual Alpaca paper trading orders for any sells
-- On Fridays: append a `weekly_summary` (week return vs SPY, key trades, Monday watchlist)
-- Output: decisions + trades → written to `data/agent_log.json`
-
-### Monthly Review (1st of month, 4:30 PM ET) — flag-only except on quarterly months
-**Purpose:** Re-screen universe, flag risks, execute only on critical signals.
-- Re-screen all 500 S&P stocks against all four filters
-- Rank new candidates by momentum score
-- Compare to current holdings → identify new entrants and deteriorating positions
-- **On non-quarterly months** (Feb, Mar, May, Jun, Aug, Sep, Nov, Dec):
-  - Output WATCH and flag decisions only — **zero new BUY orders**
-  - **Only Tier 1 SELLs** (unrealized losses hitting a structural or momentum-decay rule)
-  - No Tier 2 or Tier 3 SELLs — defer profitable exits to the next quarterly
-- **On quarterly months** (Jan, Apr, Jul, Oct): full rebalance
-  - Execute all Tier 1 SELLs immediately
-  - Execute Tier 2 SELLs deferred from prior non-quarterly months (if still failing filters)
-  - Buy new top-10-12 entrants not currently held (fund from cash first, then Tier 1 sales)
-  - Trim any position exceeding 20% hard cap to 15%
-  - Reset cash target to current regime level
-  - Apply sector cap: no single sector may exceed 30% after rebalance
-- Tax-loss harvest: if deploying new cash into buys, first offset with any losing positions (>5% unrealized loss)
-- Output: full rebalance plan or flag-only review → written to `data/agent_log.json`
-
----
-
-## Gaps Addressed (v1 → v2 → v2.1)
-
-| Gap identified | Fix |
-|----------------|-----|
-| No volatility filter — chased high-beta names | Added: exclude top 10% most volatile |
-| Sell only on momentum rank OR MA break | Added: quality deterioration + profit-taking rules |
-| Valuation too rigid (Fwd P/E < 40 excluded whole sectors) | Made relative: OR top 70% cheapest by sector |
-| No regime detection | Added: bull/sideways/bear with 3-signal confirmation |
-| No AI reasoning layer | Added: Claude agent runs 3x daily, reads this file, logs decisions |
-| Alpaca credentials hardcoded risk | Fixed: GitHub Secrets + env vars only |
-| XSS vulnerabilities in dashboard | Fixed: sanitize() on all innerHTML, CSP header, SRI on CDN |
-| High turnover (~100–150%/yr) generating capital gains | v2.1: quarterly rebalance, stricter sell thresholds, sell losers first |
-| Hard 8% cap forced trimming winners | v2.1: 12% soft cap, 20% hard cap — let winners run |
-| Monthly rebalance caused unnecessary churn | v2.1: non-quarterly months are flag-only review |
-| Equal-weight rebalancing sold winning positions | v2.1: tax-loss harvest priority; winners held unless sell rule fires |
-| v2.1 still issued momentum-decay SELLs on small-gain positions (+0.51%, +1.33%) | v2.2: **12-month hold gate** — profitable positions immune to momentum-decay sell until 12mo mark |
-| Agent issued Tier 2/3 SELLs in non-quarterly months (May/Jun) | v2.2: **code-level execution lock** — update.py blocks non-Tier-1 sells and all buys in non-quarterly months |
-| 15–20 positions diluted momentum edge with bottom-half holdings | v2.2: **10–12 position limit** — only top-tier momentum names, 8–10% each |
-| Premature exits + re-entries (STX sold $750→ re-bought $939; +25% miss) | v2.2: hold gate prevents selling winners; no mid-quarter buys prevents chasing back in |
-| No sector cap — concentration risk in 10–12 name portfolio | v2.2: **30% sector cap** enforced at quarterly rebalance |
-
----
-
-## Market Breadth Context
-
-When enrichment data is provided, use the breadth signal to calibrate regime_confidence:
-
-| Breadth (% S&P above 200-MA) | Implication |
+| Breadth reading | Implication |
 |---|---|
-| > 60% | Broad participation — supports bull regime; use full confidence |
-| 40–60% | Narrowing rally — treat regime classification with caution; consider sideways even if SPY is above 200-MA |
-| < 40% | Thin participation — strong bias toward sideways or bear regardless of SPY trend |
+| > 60% | Broad participation — full bull confidence |
+| 40–60% | **Narrowing rally** — treat regime with caution; consider sideways even if SPY above 200-MA |
+| < 40% | Thin participation — strong bias toward sideways/bear regardless of SPY headline |
 
-A market where SPY is above its 200-day MA but breadth is below 40% is a **narrow (late-cycle) bull** — maintain higher cash than the regime alone would suggest.
+A market where SPY is above its 200-day MA but breadth < 40% is a **narrow late-cycle bull** — maintain higher cash than the regime alone suggests. The breadth 8MA crossing below the 200MA is an early warning signal (reduce confidence, not an immediate sell).
 
-The breadth 8MA crossing below the 200MA is an early warning of deterioration, not an immediate sell signal, but should reduce regime_confidence.
-
-## Upcoming Earnings Awareness
-
-When enrichment data includes earnings announcements for current holdings:
-- A holding with earnings **within 3 days**: flag it with `WATCH` if not already a sell signal; note the earnings date in the reason
-- A holding with earnings **within 1 day (BMO tomorrow or AMC today)**: consider `WATCH` with urgency `next_open` unless a sell rule is already triggered
-- Do **not** sell solely because of an upcoming earnings — but do factor earnings risk into confidence levels
-- If already planning to SELL based on a rule, prefer executing **before** earnings, not after
-
-## Execution Pipeline & Urgency Semantics
-
-TradeQuest runs on GitHub Actions with two workflows:
-
-- **agent.yml** (5:30 PM ET Mon–Fri): Syncs Alpaca → enriches data → Claude makes decisions → commits state.
-- **market-open.yml** (9:30 AM ET Mon–Fri): Executes approved orders at market open.
-
-**All SELL and BUY orders execute at the next market open (9:30 AM ET).** There is no same-session execution path. Do not confuse urgency with speed.
-
-Valid urgency values in `decisions[].urgency`:
-- `"next_open"` — Execute at next 9:30 AM ET market open. Use for **Tier 1 SELLs only** (losing positions).
-- `"next_rebalance"` — Defer to the next quarterly rebalance. Use for Tier 2/3 signals and all WATCH decisions.
-
-The label `"immediate"` is deprecated. All agents should use `"next_open"` instead.
-
-### Non-Quarterly Month Execution Lock *(v2.2 — Hard Rule)*
-
-**In Feb, Mar, May, Jun, Aug, Sep, Nov, Dec the execution pipeline enforces:**
-- `BUY` orders → **BLOCKED** at code level in `update.py` (no new entries mid-quarter)
-- `SELL` orders → Only **Tier 1** (unrealized loss + structural or momentum-decay rule) are executed
-- `SELL` orders for profitable positions → **BLOCKED** at code level unless Rule A/B/C/D fires
-
-This is enforced in code (`update.py` checks `is_quarterly_month()` before accepting agent BUY approvals), not just as a prompt instruction. The agent's BUY decisions in non-quarterly months will be logged but the pipeline will not execute them.
-
-**Persistent-flag escalation:** If a symbol has been flagged SELL in 3+ consecutive prior runs without execution:
-- If position is **at a loss**: re-issue as Tier 1 SELL with `urgency="next_open"`; note consecutive count
-- If position is **at a gain**: re-issue as Tier 2 WATCH; do NOT escalate to immediate execution — the hold gate applies regardless of flag count
-- Do NOT issue a BUY for any symbol that has an active SELL flag.
-
-**Sentinel rule (automated, no LLM):** A separate `sentinel.yml` workflow runs at 2:30 PM ET and automatically executes sell orders for positions meeting hard rules — without waiting for the 5:30 PM agent run:
-1. Position weight > 2× MAX_POSITION_PCT (>20%) → forced sell
-2. Price < 50-day MA for 3+ consecutive agent runs → forced sell (structural Rule A)
-3. Symbol flagged SELL in 5+ consecutive runs AND **position is at a loss** → forced sell
-   - Note: Rule 3 no longer force-sells profitable positions — the hold gate applies to the sentinel too
-
----
-
-## Known Limitations & Honest Caveats
-
-1. **Earnings gap risk** — Momentum stocks holding into earnings can gap 10–20% overnight in either direction. Mitigated by quality filter (earnings growers rarely miss badly), not fully eliminated.
-
-2. **Sector concentration** — Momentum often over-concentrates in 1–2 sectors (e.g., tech in 2020–2021, energy in 2022). No hard sector cap in v2 — monitored but not forced.
-
-3. **Survivorship bias** — S&P 500 membership itself removes bankruptcies and failing companies. Real-world universe would include some failures.
-
-4. **Transaction costs** — Paper trading ignores bid-ask spread, market impact, and commissions. Real-world returns would be ~0.5–1.5% lower annually for this turnover rate.
-
-5. **Momentum crashes** — The momentum factor crashes hard and fast approximately once per decade (2009, 2020). The bear regime detection reduces exposure but does not eliminate it.
-
-6. **yfinance data quality** — Fundamental data (EPS growth, forward P/E) from yfinance can be stale or missing. The bot falls back to relaxed valuation rules when data is unavailable.
-
----
-
-## Target Performance vs S&P 500
-
-| Metric | Target | S&P 500 benchmark |
-|--------|--------|------------------|
-| Annual excess return | +3% to +7% | 0% (by definition) |
-| Sharpe ratio | > 1.2 | ~0.7 (historical) |
-| Max drawdown | < 15% | ~35% in severe bear |
-| Win rate (% of positions profitable) | 55–65% | N/A |
-| Annual turnover | **~20–35%** (v2.2, down from 40–60% in v2.1) | N/A |
-| Estimated annual capital gains | **Very low** — losses harvested immediately; gains deferred to 12mo LTCG treatment | N/A |
-
----
-
-## Decision Rules for the Agent
-
-When the Claude agent reads this document and the current portfolio state, it uses the following decision tree:
+### Regime → Cash Allocation
 
 ```
-FOR EACH holding — v2.2 decision tree:
+BULL     → 95% equity, 5% cash   (fully deployed)
+SIDEWAYS → 75% equity, 25% cash  (defensive tilt)
+BEAR     → 50% equity, 50% cash  (capital preservation)
+```
 
-  STEP 1: Check structural rules (apply regardless of profit/loss status)
-    IF price < ma_50d for ≥3 consecutive days          → SELL Tier 1 [Rule A]
-    IF eps_growth < 0 for 2 consecutive quarters        → SELL Tier 1 [Rule B]
-    IF weight > 20%                                     → flag TRIM to 15% at next quarterly [Rule C]
-    IF pnl_pct > 60% in <60d                            → SELL half, HOLD remainder [Rule D]
+Regime change triggers cash rebalancing within 3 trading days.
 
-  STEP 2: Check momentum decay (Rule E — asymmetric by profit/loss)
-    IF momentum_rank outside top 30%, confirmed ≥5 days:
-      AND unrealized PnL < 0  → SELL Tier 1 (next_open)   ← loss-harvest, exit fast
-      AND unrealized PnL ≥ 0  → WATCH only (next_rebalance) ← hold gate applies
+---
 
-  STEP 3: Default
-    ELSE → HOLD
+## §7 — Agent Decision Framework
 
-  STEP 4: Classify every SELL before issuing it
-    Tier 1 = loss position OR structural rule → urgency=next_open
-    Tier 2 = gain position + momentum decay only → urgency=next_rebalance, defer to quarterly
-    NEVER issue Tier 2 SELL in a non-quarterly month
+### Run Types
 
-FOR quarterly rebalance (Jan/Apr/Jul/Oct first trading day):
-  Screen full S&P 500 universe
-  Apply filters 1–4 in order
-  Take top 10–12 by momentum score (TARGET_N = 10)
-  Execute Tier 1 SELLs immediately (losses, structural failures)
-  Execute deferred Tier 2 SELLs if still failing momentum at this rebalance
-  BUY new top-10-12 entrants not currently held (fund from cash, then Tier 1 proceeds)
-  HOLD profitable positions not in new top-N (avoid unnecessary gain realization)
+| Run | When | Purpose | Trades Allowed |
+|---|---|---|---|
+| `day_end` | 5:30 PM ET Mon–Fri | Post-close sell-rule checks; definitive decisions | Tier 1 SELLs only (non-quarterly months) |
+| `day_start` | 9:00 AM ET Mon–Fri | Pre-market flag check; no trades | None |
+| `monthly` | 1st of month, 5:30 PM ET | Full rebalance on quarterly months; flag-only on others | Full (quarterly) or Tier 1 only (non-quarterly) |
+
+### Decision Tree (Execute in Order for Each Holding)
+
+```
+STEP 1 — Structural rules (ALL positions, regardless of profit/loss):
+  IF price < ma_50d for ≥3 consecutive days           → SELL Tier 1 [Rule A]
+  IF eps_growth < 0 for 2 consecutive quarters         → SELL Tier 1 [Rule B]
+  IF weight > 20%                                      → flag TRIM to 15% at quarterly [Rule C]
+  IF pnl_pct > 60% in <60d                             → SELL half, HOLD remainder [Rule D]
+
+STEP 2 — Momentum decay (Rule E — asymmetric):
+  IF momentum_rank outside top 30%, confirmed ≥5 days:
+    AND pnl < 0   → SELL Tier 1 (next_open)      ← loss-harvest, exit fast
+    AND pnl ≥ 0   → WATCH only (next_rebalance)  ← hold gate — do NOT sell
+
+STEP 3 — Default:
+  ELSE → HOLD
+
+STEP 4 — Classify every SELL before issuing:
+  sell_tier: "tier1" → urgency: next_open
+  sell_tier: "tier2" → urgency: next_rebalance, ONLY in quarterly months
+  NEVER issue tier2 in a non-quarterly month (Feb/Mar/May/Jun/Aug/Sep/Nov/Dec)
+
+FOR quarterly rebalance (Jan/Apr/Jul/Oct):
+  Screen full S&P 500 → apply all 4 filters → take top 10–12 by momentum score
+  Execute all Tier 1 SELLs immediately
+  Execute deferred Tier 2 SELLs if still failing filters at this rebalance date
+  BUY new top-10-12 entrants not currently held (cash first, then Tier 1 proceeds)
+  HOLD profitable positions not in new top-10 (avoid unnecessary gain realization)
   Check sector cap: no sector > 30% after rebalance; trim to comply
   Adjust cash to match regime target
 
 FOR non-quarterly monthly review (Feb/Mar/May/Jun/Aug/Sep/Nov/Dec):
-  Run STEP 1 + STEP 2 sell rule checks against all holdings
-  Output WATCH / Tier 1 SELL (only) / HOLD
-  BUY orders: NONE — code pipeline blocks mid-quarter buys
-  Tier 2 SELLs: log as WATCH, do NOT set urgency=next_open
+  Run STEPS 1–3 sell rules only
+  Issue Tier 1 SELLs (losses hitting any rule)
+  Issue WATCH for Tier 2 signals — set urgency: next_rebalance
+  BUY orders: NONE — pipeline blocks mid-quarter buys at code level
 ```
 
-The agent must always cite which rule triggered a decision and explain its confidence level.
-Whenever the agent issues a SELL decision on a position with an unrealized gain, it must explicitly note the estimated tax impact and confirm the rule justifies the gain realization.
+### Earnings Awareness
+
+- Holding with earnings **within 3 days**: flag as WATCH; note the date
+- Holding with earnings **within 1 day**: WATCH with urgency `next_open`
+- Do **not** sell solely because of upcoming earnings — factor earnings risk into confidence
+- If already planning to SELL for another reason, prefer executing **before** earnings
+
+### Persistent-Flag Escalation
+
+- Symbol flagged Tier 1 SELL in 3+ consecutive runs without execution → re-issue with `urgency: next_open`, note consecutive count in reason
+- Symbol flagged SELL but position is **at a gain** → escalate to WATCH, do NOT force to `next_open`
+- Do NOT issue a BUY for any symbol with an active SELL flag
+
+---
+
+## §8 — Execution Pipeline
+
+### Workflow Schedule
+
+| Workflow | Trigger | Action |
+|---|---|---|
+| `market-open.yml` | 9:30 AM ET Mon–Fri | Execute `next_open` orders from prior evening's agent run |
+| `agent.yml` | 5:30 PM ET Mon–Fri | Sync Alpaca → enrich → Claude decides → commit |
+| `sentinel.yml` | 2:30 PM ET Mon–Fri | Automated hard-rule sells (no LLM) |
+| `news-sentiment.yml` | 9:30 AM ET Mon + Thu | Claude Haiku news sentiment classification |
+
+**All orders execute at the next market open (9:30 AM ET).** There is no same-session execution path.
+
+### Urgency Values
+
+- `"next_open"` — Execute at next 9:30 AM via `market-open.yml`. Use for all Tier 1 SELLs.
+- `"next_rebalance"` — Defer to next monthly/quarterly. Use for Tier 2 WATCH and non-urgent signals.
+- `"immediate"` — **Deprecated.** Treated as `next_open` for backward compatibility.
+
+### Non-Quarterly Month Execution Lock (Code-Enforced)
+
+In Feb, Mar, May, Jun, Aug, Sep, Nov, Dec — `update.py` enforces at code level:
+- `BUY` orders → **BLOCKED** (not just the agent prompt — the pipeline rejects them)
+- Tier 2 SELL orders → **BLOCKED** (profitable positions with only momentum decay)
+- Tier 1 SELL orders → **ALLOWED** (loss positions with any rule trigger)
+
+This is enforced by `is_quarterly_month()` in `update.py`, not just agent instructions.
+
+### Sentinel Hard Rules (Automated — No LLM)
+
+Runs at 2:30 PM ET without waiting for the agent:
+
+| Rule | Trigger | Action |
+|---|---|---|
+| **Rule 1 — Concentration** | Position weight > 20% (2× `MAX_POSITION_PCT`) | Forced SELL |
+| **Rule 2 — Trend break** | Price < 50-day MA for ≥3 consecutive agent runs | Forced SELL |
+| **Rule 3 — Persistent flag** | SELL flagged ≥5 consecutive runs **AND position at a loss** | Forced SELL |
+
+**Rule 3 hold gate (v3):** The sentinel does NOT force-sell profitable positions. A winning position with persistent SELL flags defers to the next quarterly rebalance. Only loss positions are force-sold by Rule 3.
+
+### Hard Risk Limits (Code-Enforced in `update.py`)
+
+These cannot be overridden by the agent or any config:
+
+```python
+MAX_ORDERS_PER_RUN  = 5      # max total orders per run
+MAX_SELL_VALUE_PCT  = 0.30   # max 30% of portfolio liquidated per run
+CASH_FLOOR_PCT      = 0.05   # always keep ≥5% cash
+MAX_POSITION_PCT    = 0.10   # max 10% per position (v3, was 8%)
+MAX_SECTOR_PCT      = 0.30   # max 30% per GICS sector
+QUARTERLY_MONTHS    = {1,4,7,10}  # months where full rebalance is permitted
+```
+
+---
+
+## §9 — System Architecture
+
+### Technology Stack
+
+| Layer | Technology |
+|---|---|
+| Compute | GitHub Actions (ubuntu-latest, Python 3.14) |
+| Hosting | GitHub Pages (static, zero server cost) |
+| AI decisions | Anthropic Claude Sonnet 4.6 (prompt-cached) |
+| News sentiment | Anthropic Claude Haiku 4.5 |
+| Paper trading | Alpaca Markets paper API |
+| Market data | Yahoo Finance (`yfinance ≥1.0`) |
+| Enrichment | Financial Modeling Prep (FMP) free tier |
+| Market breadth | TraderMonty public CSV (no API key) |
+| Frontend charting | Chart.js 4.4 (SRI-pinned CDN) |
+| Data store | Git repository (JSON files — immutable audit trail) |
+| Secrets | GitHub Actions Secrets (never in repo or logs) |
+| Offline support | Service Worker (Cache API) |
+
+### System Diagram
+
+```
+┌──────────────────────────────────────────────────────────────────┐
+│                     EXTERNAL DATA SOURCES                        │
+│   Yahoo Finance · Wikipedia S&P 500 · Alpaca News API            │
+│   Financial Modeling Prep (FMP) · TraderMonty Breadth CSV        │
+└───────────────────────────┬──────────────────────────────────────┘
+                            │ fetched by GitHub Actions bots
+                            ▼
+┌──────────────────────────────────────────────────────────────────┐
+│                    GITHUB ACTIONS LAYER                          │
+│                                                                  │
+│  market-open.yml  9:30 AM ET                                     │
+│    ① agent.py (day_start)  — pre-market flag check               │
+│    ② update.py             — execute next_open orders            │
+│                                                                  │
+│  agent.yml  5:30 PM ET                                           │
+│    ① update.py  — prices, screen, Alpaca sync, portfolio.json   │
+│    ② enrich.py  — earnings, macro, breadth → enrichment.json    │
+│    ③ agent.py   — Claude Sonnet decisions → agent_log.json       │
+│                                                                  │
+│  sentinel.yml  2:30 PM ET                                        │
+│    ① sentinel.py — hard-rule sells (no LLM)                      │
+│    ② update.py --sentinel — place sentinel orders                │
+│                                                                  │
+│  news-sentiment.yml  9:30 AM ET Mon + Thu                        │
+│    ① news_sentiment.py — Haiku sentiment → news.json             │
+└───────────────────────────┬──────────────────────────────────────┘
+                            │ git commit + push
+                            ▼
+┌──────────────────────────────────────────────────────────────────┐
+│              GIT REPOSITORY  (source of truth)                   │
+│                                                                  │
+│  data/portfolio.json         Holdings, equity curve, trades      │
+│  data/agent_log.json         AI decision history (90 runs)       │
+│  data/news.json              Sentiment-tagged articles           │
+│  data/enrichment.json        Earnings + macro + breadth          │
+│  data/symbols.json           S&P 500 universe (search index)     │
+│  data/bars/{SYM}.json        1-year daily closes per holding     │
+│  data/sentinel_orders.json   Sentinel sell queue                 │
+│  data/execution_summary.json Last market-open execution result   │
+└───────────────────────────┬──────────────────────────────────────┘
+                            │ GitHub Pages serves static files
+                            ▼
+┌──────────────────────────────────────────────────────────────────┐
+│        PWA DASHBOARD  (GitHub Pages / offline-capable)           │
+│                                                                  │
+│  ◆ Portfolio   Equity curve · stat cards · holdings cards        │
+│  ⚡ Agent      AI run log · momentum heatmap · decision history  │
+│  📰 News       Sentiment-tagged articles per holding             │
+│  📋 Orders     Open + closed Alpaca orders · activity feed       │
+└──────────────────────────────────────────────────────────────────┘
+```
+
+### Bot Modules
+
+| File | Role | Runs in |
+|---|---|---|
+| `bot/update.py` | Price fetch, screening, Alpaca sync, order execution | `market-open.yml`, `agent.yml` |
+| `bot/enrich.py` | FMP earnings + macro events, TraderMonty breadth | `agent.yml` |
+| `bot/agent.py` | Claude Sonnet decision engine (reads this file prompt-cached) | `agent.yml`, `market-open.yml` |
+| `bot/sentinel.py` | Rule-based hard-sell checker (no LLM) | `sentinel.yml` |
+| `bot/news_sentiment.py` | Claude Haiku news classification | `news-sentiment.yml` |
+
+### Security Controls
+
+| Control | Implementation |
+|---|---|
+| No secrets in code | All API keys in GitHub Secrets, injected at runtime only |
+| Paper trading guard | `verify_paper_url()` crashes if `ALPACA_BASE_URL` doesn't contain `"paper"` |
+| Prompt injection defence | `_safe()` truncates + strips `\n`, `#`, `*`, `` ` ``, `\` from all external text |
+| XSS defence | `sanitize()` applied to all `innerHTML` assignments in frontend; CSP header set |
+| Risk limits | Hard-coded constants in `update.py`; cannot be overridden by agent or config |
+| Workflow injection | `run_type` from `workflow_dispatch` allowlisted against `^(day_end|monthly)$` |
+
+---
+
+## §10 — Data Reference
+
+### Key Data Files
+
+| File | Written by | Purpose |
+|---|---|---|
+| `data/portfolio.json` | `update.py` | Holdings, trades (last 50), equity curve, SPY benchmark, summary stats |
+| `data/agent_log.json` | `agent.py` | AI decisions, rolling 90-run window |
+| `data/enrichment.json` | `enrich.py` | Earnings calendar, macro events, market breadth |
+| `data/news.json` | `news_sentiment.py` | Sentiment-tagged articles for current holdings |
+| `data/bars/{SYM}.json` | `update.py` | 1-year daily closes per holding (chart data) |
+| `data/sentinel_orders.json` | `sentinel.py` | Sell queue for automated rule-based exits |
+| `data/execution_summary.json` | `update.py` | Last market-open execution feedback for agent continuity |
+
+### Agent Log Decision Schema
+
+Every decision in `agent_log.json → runs[].decisions[]`:
+
+```json
+{
+  "action": "HOLD | SELL | BUY | WATCH",
+  "symbol": "TICKER",
+  "reason": "specific rule — must include unrealized PnL and entry date for SELL/WATCH",
+  "rule_triggered": "momentum_decay | trend_break | quality_drop | profit_take | new_entry | null",
+  "sell_tier": "tier1 | tier2 | null",
+  "urgency": "next_open | next_rebalance"
+}
+```
+
+**Validation rules:**
+- `sell_tier: "tier1"` → `urgency` must be `"next_open"`
+- `sell_tier: "tier2"` → `urgency` must be `"next_rebalance"`; only valid in quarterly months
+- `action: "BUY"` → only valid in quarterly months (Feb/Mar/May/Jun/Aug/Sep/Nov/Dec blocked)
+
+### Holding Object Schema (inside `portfolio.json → holdings[]`)
+
+```json
+{
+  "symbol":         "TICKER",
+  "name":           "Company Name",
+  "sector":         "Technology",
+  "shares":         1,
+  "avg_cost":       0.0,
+  "current_price":  0.0,
+  "market_value":   0.0,
+  "weight":         0.042,
+  "pnl":            0.0,
+  "pnl_pct":        0.0,
+  "eps_growth":     null,
+  "revenue_growth": null,
+  "forward_pe":     null,
+  "volatility_30d": 0.0,
+  "entry_date":     "YYYY-MM-DD",
+  "ma_50d":         null,
+  "status":         "above_ma | below_ma | unknown_ma",
+  "momentum_rank":  1,
+  "momentum_6m":    0.0,
+  "momentum_12m":   0.0
+}
+```
+
+`null` means data was unavailable from yfinance — distinct from `0.0`. Agent uses `null` to distinguish missing data from confirmed-zero values.
+
+### Environment Variables (GitHub Secrets)
+
+| Variable | Used by | Purpose |
+|---|---|---|
+| `ANTHROPIC_API_KEY` | `agent.py`, `news_sentiment.py` | Claude API authentication |
+| `ALPACA_API_KEY` | `update.py`, `news_sentiment.py` | Alpaca account key |
+| `ALPACA_SECRET_KEY` | `update.py`, `news_sentiment.py` | Alpaca account secret |
+| `ALPACA_BASE_URL` | `update.py` | Must contain `"paper"` — live trading guard |
+| `ALPACA_ACCOUNT_NAME` | `update.py` | Display label only |
+| `FMP_API_KEY` | `enrich.py` | Financial Modeling Prep free tier |
+
+---
+
+## §11 — Roadmap
+
+### Phase 1 Status (Phase 1 = v1.0 → v2.2 era) — Largely Complete ✅
+
+| Feature | Status | Notes |
+|---|---|---|
+| Paper trading via Alpaca | ✅ Done | Full Alpaca py integration |
+| Claude Sonnet decision agent | ✅ Done | 3 run types, prompt-cached |
+| 4-filter screening pipeline | ✅ Done | Momentum → quality → valuation → risk |
+| Regime detection | ✅ Done | 3-signal 2-of-3 rule |
+| SPY benchmark overlay | ✅ Done | `spy_curve` in `portfolio.json` |
+| Real price bars per holding | ✅ Done | `data/bars/{SYM}.json` |
+| Market breadth enrichment | ✅ Done | TraderMonty CSV integration |
+| Earnings + macro calendar | ✅ Done | FMP API integration |
+| News sentiment | ✅ Done | Claude Haiku on Alpaca News |
+| Sentinel hard-rule engine | ✅ Done | `sentinel.py` + `sentinel.yml` |
+| Tax-efficient sell framework | ✅ Done | v3 Tier 1/2 + 12-month hold gate |
+| Quarterly execution lock | ✅ Done | `is_quarterly_month()` code-enforced |
+| **Strategy backtesting** | ❌ Pending | vectorbt 10-year backtest — highest priority |
+
+### Phase 2 — Enhanced Intelligence (Next Quarter)
+
+**Theme:** Better data in, better decisions out.
+
+| Feature | Tool | Impact |
+|---|---|---|
+| Strategy backtester | `vectorbt` + `quantstats` | Validate 10-year historical merit before trusting live capital |
+| Better fundamental data | Financial Datasets MCP or `finvizfinance` | Replace unreliable yfinance EPS/revenue data |
+| QuantStats HTML tearsheet | `quantstats` | Full performance report on each monthly rebalance |
+| Notification system | GitHub Actions webhook/email | Alert when agent flags a position or regime changes |
+| Alpaca MCP v2 | Official Alpaca MCP Server | Replace manual `alpaca-py` calls with 61-endpoint MCP |
+
+**Backtesting is the single highest-priority item.** Without it, the strategy is validated only on ~6 weeks of live paper trading during a strong bull market — not enough to claim statistical confidence. Target: S&P 500 10-year backtest with monthly rebalance, equal weight, top-30% momentum.
+
+### Phase 3 — Production-Ready (6–12 Months Out)
+
+| Feature | Notes |
+|---|---|
+| Live trading toggle | `LIVE_TRADING=true` env var; circuit breakers required before enabling |
+| Multi-agent orchestration | Specialist agents: screener, risk monitor, execution — each narrow scope |
+| TradingView MCP | Add RSI/MACD/Bollinger signals as an additional screening layer |
+| Real-time WebSocket feed | Alpaca WebSocket → replace static 30s polling with live price stream |
+| Options overlay | Protective puts during bear regime on top holdings |
+
+---
+
+## §12 — Known Limitations & Honest Caveats
+
+1. **Earnings gap risk** — Momentum stocks holding into earnings can gap ±10–20% overnight. Mitigated by quality filter (earnings growers rarely miss badly) but not eliminated. Agent flags earnings within 3 days as WATCH.
+
+2. **Sector concentration** — Momentum over-concentrates in 1–2 sectors (tech 2020–21, energy 2022). v3 adds a 30% sector cap at quarterly rebalance.
+
+3. **Survivorship bias** — S&P 500 membership removes bankruptcies and failing companies. Real-world universe would include some failures not captured in our screen.
+
+4. **yfinance data quality** — EPS growth and forward P/E from yfinance are frequently stale or missing (returned as `None`). The bot applies conservative fallbacks (`None` → fail quality filter; `None` forward P/E → pass valuation filter).
+
+5. **Transaction costs** — Paper trading ignores bid-ask spread, market impact, and commissions. Real-world returns would be ~0.5–1.5% lower annually at this turnover rate.
+
+6. **Momentum crash risk** — The momentum factor crashes hard approximately once per decade (2009, 2020). The bear regime reduces exposure to 50% equity but does not eliminate it. The hold gate and sector cap reduce concentration into the crash but cannot prevent it.
+
+7. **No backtesting yet** — All performance claims are based on ~6 weeks of live paper trading in a strong bull market (VIX ~9.6, SPY above 200-MA, breadth 62%). This is not a statistically valid validation period. Backtesting is Phase 2 priority #1.
+
+8. **Cash drag observed** — Live run showed 22.9% cash vs 5% bull target due to execution failures and excessive turnover generating re-investable cash faster than it was deployed. v3 quarterly lock and hold gate address the root causes.
+
+---
+
+## §13 — Evolution Log (v1 → v2 → v3)
+
+| Version | Key Changes |
+|---|---|
+| **v1.0** | Initial: momentum + quality filters, monthly rebalance, basic Alpaca integration |
+| **v2.0** | Added: volatility filter, regime detection, quality deterioration sell rule, profit-taking rule, AI agent with Claude Sonnet |
+| **v2.1** | Added: quarterly rebalance (was monthly), stricter sell thresholds (40%→30% momentum rank), 1-day→3-day MA break confirmation, tax-loss harvest priority, hard cap raised 8%→20% |
+| **v2.2** | Added: 12-month hold gate (profitable positions immune to momentum-decay sell), Tier 1/2 sell pipeline, code-level non-quarterly execution lock, TARGET_N 17→10, MAX_POSITION_PCT 8%→10%, 30% sector cap |
+| **v3.0** | **This document** — Consolidated all docs (PRD + HLD + LLD + STRATEGY) into single source of truth; updated all constants and rules to match live code; added live performance observations; updated Phase 2 roadmap (backtesting = #1 priority); retired stale separate documents |
+
+**Critical learnings from May–June 2026 live run that drove v3:**
+- Positions ranked 1–10 averaged +11.8% vs positions 11–18 at -4.2% → concentrate in top tier
+- STX sold at $750, re-entered at $939 (25% miss) → hold gate prevents this
+- 50 trades in 6 weeks (target: ~35 total for the year) → quarterly lock enforced in code
+- 22.9% cash vs 5% bull target → sell flags not clearing + no buy-in mechanism mid-quarter
+- GOOGL sold May 27 → re-bought May 29 (2-day round trip, no gain) → no mid-quarter buys
