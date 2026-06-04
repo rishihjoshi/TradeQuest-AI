@@ -1,15 +1,33 @@
 {
-  "timestamp": "2026-06-03T23:18:19Z",
-  "mode": "post_close",
+  "timestamp": "2026-06-04T16:34:58Z",
+  "mode": "market_open",
   "orders_placed": [
     {
-      "action": "BUY",
-      "symbol": "EME",
+      "action": "SELL",
+      "symbol": "FDX",
       "qty": 1,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "GOOGL",
+      "qty": 1,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "IBKR",
+      "qty": 6,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "ROST",
+      "qty": 2,
       "status": "submitted"
     }
   ],
   "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 22.9
+  "cash_pct_after": 22.84
 }
