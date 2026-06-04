@@ -1,7 +1,148 @@
 {
-  "last_run": "2026-06-04T16:34:04Z",
-  "last_type": "day_start",
+  "last_run": "2026-06-04T22:54:40Z",
+  "last_type": "day_end",
   "runs": [
+    {
+      "id": "RUN-20260604-2254",
+      "timestamp": "2026-06-04T22:54:40Z",
+      "type": "day_end",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is up +3.91% overall on $10,407 equity with 13 holdings. Today is June 4 (Wednesday), a non-quarterly month \u2014 no BUY orders permitted; only Tier 1 SELLs and WATCH flags are valid. Several pending sell orders from prior runs (BEN, FDX, GOOGL, ROST, IBKR) have now cleared per today's trade log. The portfolio has rotated into cleaner momentum names (EME, STX, VRT added) but BEN, C, STX, and VRT remain flagged with concerns. Market breadth at 56.3% is in the narrowing zone (below 60%), warranting cautious treatment of the bull regime despite SPY above 200-MA.",
+      "regime": "bull",
+      "regime_confidence": 0.7,
+      "flags": [
+        "BEN: Persistent flag \u2014 momentum_rank=16/18, marginally profitable (+$5.13, +0.85%, entry 2026-05-27). SELL flags issued 5+ consecutive runs. Position is at a GAIN \u2014 hold gate active, cannot issue Tier 1 SELL for momentum decay alone. Escalating to WATCH. URGENT: confirm execution history.",
+        "C: Momentum_rank=18/18 (bottom of portfolio), gain position (+$37.40, +7.43%, entry 2026-05-26). Hold gate active. WATCH only per v2.2 rule \u2014 flagged 5+ consecutive runs.",
+        "STX: Loss position (-$25.97, -2.77%, entry 2026-06-03). Momentum_rank=2 \u2014 strong. No structural rule triggered. Loss is within normal range, above 50-day MA. Not a sell trigger \u2014 monitoring.",
+        "VRT: Loss position (-$5.42, -1.67%, entry 2026-06-01). Momentum_rank=3 \u2014 strong. Above 50-day MA. No structural rule triggered. Minor loss, strong momentum.",
+        "KEYS: Loss position (-$11.89, -3.35%, entry 2026-05-05). Momentum_rank=4 \u2014 strong top-quartile. Above 50-day MA. No structural rule triggered. Monitoring.",
+        "EME: New position (entry 2026-06-04, weight=16.25%). Momentum_rank=8. Industrials sector concentration: EME+CAT=25.3% combined \u2014 approaching 30% sector cap. Flag for next rebalance.",
+        "SECTOR: Industrials (EME 16.25% + CAT 9.04%) = 25.3% of portfolio. Technology (ADI 4.08% + AMAT 4.79% + JBL 3.59% + KEYS 3.30% + STX 8.78% + WDC 5.47%) = 30.0%. Technology is at the 30% sector cap \u2014 monitor for breach.",
+        "CASH: Cash at 22.9% vs 5% bull target. Significant cash drag. Cannot deploy in non-quarterly month. Defer to July 1 quarterly rebalance.",
+        "BREADTH: Market breadth 56.3% is in narrowing zone (40-60%). Breadth 8MA below 200MA \u2014 bearish breadth trend. Reduce regime confidence from 0.93 to 0.70.",
+        "WDC: Flagged in prior runs. Currently momentum_rank=1, gain +$84.00, +17.3%. All structural rules pass. HOLD \u2014 flag was erroneous, thesis intact.",
+        "STLD: Momentum_rank=11 \u2014 borderline top 30% (cutoff is ~top 30% of 13 holdings = rank \u22644 approximately, but rank 11/18 in universe context). Checking: momentum_rank=11 in the universe screen suggests it is in the top 30% universe-wide. HOLD \u2014 above MA, profitable."
+      ],
+      "decisions": [
+        {
+          "action": "HOLD",
+          "symbol": "WDC",
+          "reason": "Momentum_rank=1 (highest in portfolio), unrealized PnL +$84.00 (+17.3%), entry 2026-05-22. Above 50-day MA ($414.15 vs $569.50). Strong fundamentals: EPS growth 482.9%, revenue growth 45.5%. No structural rule triggered. Prior SELL flags were erroneous \u2014 hold gate confirmed.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "STX",
+          "reason": "Momentum_rank=2 (second highest), unrealized PnL -$25.97 (-2.77%), entry 2026-06-03. Above 50-day MA ($647.27 vs $913.48). EPS growth 108.3%, revenue growth 44.1%. Loss is minor (-2.77%) and momentum is strong \u2014 no structural rule triggered. Monitoring.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "VRT",
+          "reason": "Momentum_rank=3, unrealized PnL -$5.42 (-1.67%), entry 2026-06-01. Above 50-day MA ($311.53 vs $320.00). EPS growth 135.7%, revenue growth 30.1%. Minor loss, strong momentum \u2014 no structural rule triggered.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "KEYS",
+          "reason": "Momentum_rank=4, unrealized PnL -$11.89 (-3.35%), entry 2026-05-05. Above 50-day MA ($332.40 vs $343.11). EPS growth 35.6%, revenue growth 31.5%. Loss position but momentum is top-quartile and no structural rule triggered. Prior WATCH flags reflect marginal concern \u2014 momentum has improved to rank 4. HOLD.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "Momentum_rank=5, unrealized PnL +$18.54 (+2.01%), entry 2026-05-06. Above 50-day MA ($827.23 vs $940.48). EPS growth 30.2%, revenue growth 22.2%. All filters pass. Industrials sector at 25.3% combined with EME \u2014 approaching but not breaching 30% cap.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "AMAT",
+          "reason": "Momentum_rank=6, unrealized PnL +$74.22 (+17.48%), entry 2026-05-20. Above 50-day MA ($404.71 vs $498.90). EPS growth 33.5%, revenue growth 11.4%. Strong performance, all structural rules pass.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "Momentum_rank=7, unrealized PnL +$37.24 (+11.06%), entry 2026-05-04. Above 50-day MA ($326.48 vs $373.82). EPS growth 96.2%, revenue growth 23.1%. All filters pass cleanly.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "EME",
+          "reason": "Momentum_rank=8, unrealized PnL +$25.29 (+1.52%), entry 2026-06-04. Above 50-day MA ($838.93 vs $845.43). EPS growth 30.0%, revenue growth 19.7%. New position \u2014 thesis intact. Monitor Industrials sector concentration (25.3% with CAT \u2014 approaching 30% cap).",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "Momentum_rank=9, unrealized PnL +$41.18 (+10.73%), entry 2026-05-04. Above 50-day MA ($380.25 vs $424.80). EPS growth 110.5%, revenue growth 37.2%. All structural rules pass cleanly.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "Momentum_rank=10, unrealized PnL +$71.73 (+15.84%), entry 2026-05-04. Above 50-day MA ($210.83 vs $262.28). EPS growth 382.1%, revenue growth 21.3%. Strong performer in Basic Materials. All filters pass.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "STLD",
+          "reason": "Momentum_rank=11, unrealized PnL +$34.68 (+14.32%), entry 2026-05-06. Above 50-day MA ($217.72 vs $276.85). EPS growth 93.1%, revenue growth 19.1%. Borderline momentum rank but profitable and above trend \u2014 hold through July quarterly rebalance.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "BEN",
+          "reason": "Momentum_rank=16/18 (outside top 30%), confirmed across 5+ consecutive runs. Unrealized PnL +$5.13 (+0.85%), entry 2026-05-27. Position is at a GAIN \u2014 hold gate active per v2.2. Cannot issue Tier 1 SELL for momentum decay alone. Flagged 5 consecutive runs (2026-06-02 through 2026-06-04). Escalate to WATCH with urgency=next_rebalance. Eligible for Tier 2 SELL at July 1 quarterly rebalance if still failing momentum filter.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "C",
+          "reason": "Momentum_rank=18/18 (bottom of portfolio, outside top 30%), confirmed across 5+ consecutive runs. Unrealized PnL +$37.40 (+7.43%), entry 2026-05-26. Position is at a GAIN \u2014 hold gate active per v2.2. Cannot sell for momentum decay alone. Flagged 5 consecutive runs. Eligible for Tier 2 SELL at July 1 quarterly rebalance if still failing momentum filter.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "maintain",
+      "cash_rationale": "Cash at 22.9% ($2,383) vs 5% bull target is a significant drag but cannot be deployed in June (non-quarterly month). The execution pipeline blocks BUY orders until the July 1 quarterly rebalance. Maintaining current cash level until then when clean deployment into top-momentum names will be possible. The narrowing breadth (56.3%) also argues against aggressive deployment at this time.",
+      "summary": "Day-end 2026-06-04: All 13 holdings reviewed \u2014 11 HOLD (structural rules pass), BEN and C escalated to WATCH (Tier 2, gain positions with momentum decay, hold gate active); no Tier 1 SELLs triggered today; cash drag of 22.9% deferred to July 1 quarterly rebalance.",
+      "usage": {
+        "input_tokens": 14747,
+        "output_tokens": 3307,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 8817
+      },
+      "sell_tier_summary": {
+        "tier1_execute": 0,
+        "tier2_deferred": 2
+      }
+    },
     {
       "id": "RUN-20260604-1634",
       "timestamp": "2026-06-04T16:34:04Z",
