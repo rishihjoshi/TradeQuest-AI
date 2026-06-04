@@ -19,7 +19,6 @@ update.py --sentinel reads that file and places Alpaca orders immediately.
 
 import json
 import sys
-from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 

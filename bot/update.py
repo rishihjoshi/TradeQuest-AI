@@ -1114,7 +1114,6 @@ def main():
 
         # Build sell list — apply profit gate in non-quarterly months:
         # Only positions at a loss may be sold outside quarterly months (Tier 1 only).
-        holding_map = {h["symbol"]: h for h in new_holdings}
         raw_sells: list[tuple] = []
         quarterly_deferred: list[str] = []
         for h in new_holdings:

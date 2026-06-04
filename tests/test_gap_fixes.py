@@ -1000,15 +1000,19 @@ class TestSentinelRuleEngine(unittest.TestCase):
     # ── Rule 1: Concentration ──────────────────────────────────────────────
 
     def test_rule1_concentration_triggers_sell(self):
-        """Position weight > 16% (2× 8%) must trigger a concentration sell."""
-        holdings = [{"symbol": "KLAC", "weight": 0.185, "shares": 1}]
+        """Position weight > 20% (2× 10%) must trigger a concentration sell.
+        v2.2: MAX_POSITION_PCT raised to 10%, so concentration threshold is now 20%.
+        """
+        holdings = [{"symbol": "KLAC", "weight": 0.22, "shares": 1}]  # 22% > 20% threshold
         sells = sentinel.check_rules(self._make_portfolio(holdings), [])
         syms = [s["symbol"] for s in sells]
         self.assertIn("KLAC", syms)
         self.assertEqual(sells[0]["rule"], "concentration")
 
     def test_rule1_below_threshold_does_not_trigger(self):
-        """Position weight ≤ 16% must NOT trigger concentration sell."""
+        """Position weight ≤ 20% must NOT trigger concentration sell.
+        v2.2: threshold is 2× MAX_POSITION_PCT = 2× 10% = 20%.
+        """
         holdings = [{"symbol": "ADI", "weight": 0.09, "shares": 2}]
         sells = sentinel.check_rules(self._make_portfolio(holdings), [])
         self.assertEqual(sells, [])
@@ -1073,6 +1077,91 @@ class TestSentinelRuleEngine(unittest.TestCase):
         ]
         sells = sentinel.check_rules(self._make_portfolio(holdings), [])
         self.assertEqual(sells, [])
+
+
+# ════════════════════════════════════════════════════════════════════════════
+# v2.2 — New helpers: is_quarterly_month, has_unrealized_gain, sentinel hold gate
+# ════════════════════════════════════════════════════════════════════════════
+class TestV22QuarterlyHelpers(unittest.TestCase):
+    """Tests for the three new v2.2 helper functions in update.py."""
+
+    def test_quarterly_months(self):
+        """Jan(1), Apr(4), Jul(7), Oct(10) must return True."""
+        from datetime import datetime
+        for month in (1, 4, 7, 10):
+            dt = datetime(2026, month, 1)
+            self.assertTrue(update.is_quarterly_month(dt),
+                            f"Month {month} should be a quarterly month")
+
+    def test_non_quarterly_months(self):
+        """Feb/Mar/May/Jun/Aug/Sep/Nov/Dec must return False."""
+        from datetime import datetime
+        for month in (2, 3, 5, 6, 8, 9, 11, 12):
+            dt = datetime(2026, month, 1)
+            self.assertFalse(update.is_quarterly_month(dt),
+                             f"Month {month} should NOT be a quarterly month")
+
+    def test_has_unrealized_gain_positive_pnl(self):
+        """Holding with positive dollar PnL must return True."""
+        self.assertTrue(update.has_unrealized_gain({"pnl": 50.0, "pnl_pct": 5.0}))
+
+    def test_has_unrealized_gain_negative_pnl(self):
+        """Holding with negative dollar PnL must return False."""
+        self.assertFalse(update.has_unrealized_gain({"pnl": -30.0, "pnl_pct": -3.0}))
+
+    def test_has_unrealized_gain_zero_pnl(self):
+        """Holding with exactly zero PnL must return False (not a gain)."""
+        self.assertFalse(update.has_unrealized_gain({"pnl": 0.0, "pnl_pct": 0.0}))
+
+    def test_has_unrealized_gain_missing_pnl_defaults_false(self):
+        """Holding with no pnl field must return False (safe default = treat as no gain)."""
+        self.assertFalse(update.has_unrealized_gain({}))
+        self.assertFalse(update.has_unrealized_gain({"symbol": "WDC"}))
+
+    def test_has_unrealized_gain_uses_pnl_pct_fallback(self):
+        """When pnl is None/missing, should fall back to pnl_pct."""
+        self.assertTrue(update.has_unrealized_gain({"pnl": None, "pnl_pct": 7.5}))
+        self.assertFalse(update.has_unrealized_gain({"pnl": None, "pnl_pct": -2.1}))
+
+
+class TestV22SentinelHoldGate(unittest.TestCase):
+    """v2.2: sentinel Rule 3 must NOT force-sell profitable positions."""
+
+    def _make_portfolio(self, holdings):
+        return {"holdings": holdings}
+
+    def _make_sell_runs(self, symbol, n):
+        return [{"run_type": "day_end", "decisions": [
+            {"action": "SELL", "symbol": symbol, "reason": "momentum decay",
+             "rule_triggered": "momentum_decay", "urgency": "next_open"}
+        ]} for _ in range(n)]
+
+    def test_rule3_skips_profitable_position(self):
+        """v2.2 hold gate: Rule 3 must NOT force-sell a position with positive PnL."""
+        # Position at a gain — 5 consecutive SELL flags should NOT trigger sentinel Rule 3
+        holdings = [{"symbol": "WDC", "weight": 0.06, "shares": 1, "pnl": 100.81, "pnl_pct": 20.76}]
+        runs = self._make_sell_runs("WDC", 5)
+        sells = sentinel.check_rules(self._make_portfolio(holdings), runs)
+        syms = [s["symbol"] for s in sells]
+        self.assertNotIn("WDC", syms, "Profitable position must NOT be force-sold by Rule 3 (hold gate)")
+
+    def test_rule3_fires_on_loss_position(self):
+        """v2.2: Rule 3 MUST fire for a position at a loss with 5+ consecutive flags."""
+        # Position at a loss — normal Rule 3 behaviour preserved
+        holdings = [{"symbol": "FDX", "weight": 0.06, "shares": 1, "pnl": -68.51, "pnl_pct": -17.43}]
+        runs = self._make_sell_runs("FDX", 5)
+        sells = sentinel.check_rules(self._make_portfolio(holdings), runs)
+        syms = [s["symbol"] for s in sells]
+        self.assertIn("FDX", syms, "Loss position must still be force-sold by Rule 3")
+        self.assertEqual(sells[0]["rule"], "persistent_flag")
+
+    def test_rule3_fires_on_zero_pnl_position(self):
+        """Zero PnL (flat position) is NOT a gain — Rule 3 should still fire."""
+        holdings = [{"symbol": "ROST", "weight": 0.06, "shares": 1, "pnl": 0.0, "pnl_pct": 0.0}]
+        runs = self._make_sell_runs("ROST", 5)
+        sells = sentinel.check_rules(self._make_portfolio(holdings), runs)
+        syms = [s["symbol"] for s in sells]
+        self.assertIn("ROST", syms, "Zero-gain position should be sellable by Rule 3")
 
 
 if __name__ == "__main__":
