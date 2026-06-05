@@ -1,7 +1,148 @@
 {
-  "last_run": "2026-06-04T22:54:40Z",
-  "last_type": "day_end",
+  "last_run": "2026-06-05T16:14:21Z",
+  "last_type": "day_start",
   "runs": [
+    {
+      "id": "RUN-20260605-1614",
+      "timestamp": "2026-06-05T16:14:21Z",
+      "type": "day_start",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio holds 13 positions worth $10,407 with 22.9% cash vs 5% bull target \u2014 significant cash drag persists. Market regime reads bull (VIX 9.3, SPY above 200-MA) but breadth at 56.3% is in the NARROWING zone and 8MA is below 200MA, warranting caution. The previous day's sells (ROST, IBKR, GOOGL, FDX) have executed, cleaning up the persistent flag backlog, but BEN and C remain flagged as WATCH (gain positions with momentum decay) and two loss positions (STX, VRT, KEYS) warrant continued monitoring.",
+      "regime": "bull",
+      "regime_confidence": 0.7,
+      "flags": [
+        "BEN: Persistent WATCH \u2014 momentum_rank=16/18, marginally profitable (+$5.13, +0.85%, entry 2026-05-27). Momentum decay confirmed across 5+ consecutive runs. Gain position \u2014 hold gate active, no sell until quarterly rebalance (2026-07-01). Risk: any price dip turns this to a loss, triggering Tier 1.",
+        "C: Persistent WATCH \u2014 momentum_rank=18/18 (dead last in portfolio), gain position (+$37.40, +7.43%, entry 2026-05-26). Above MA50 ($124.37), all structural rules pass. Tier 2 only \u2014 hold gate active. Flagged 5 consecutive runs.",
+        "STX: Loss position (-$25.97, -2.77%, entry 2026-06-03). Momentum_rank=2 \u2014 strong. Price $913.48 vs MA50 $647.27, well above MA. No structural sell rule triggered. Monitor for continued weakness given high volatility (0.5927) and recent entry.",
+        "VRT: Loss position (-$5.42, -1.67%, entry 2026-06-01). Momentum_rank=3 \u2014 strong. Price $320.00 vs MA50 $311.53 \u2014 above MA but narrow buffer (~2.7%). High volatility (0.5797). Watch MA50 proximity.",
+        "KEYS: Loss position (-$11.89, -3.35%, entry 2026-05-05). Momentum_rank=4 \u2014 strong. Price $343.11 vs MA50 $332.40 \u2014 above MA, ~3.2% buffer. No structural rule triggered but longest-held loss in portfolio.",
+        "EME: Weight=16.25% \u2014 approaching concentration risk territory (cap=20%). Entry 2026-06-04. Two shares held. Monitor weight; no action required yet but flag for quarterly trim if weight grows.",
+        "CAT: Weight=9.04% \u2014 near the 10% MAX_POSITION_PCT hard cap. Price $940.48, momentum_rank=5, strong fundamentals. No sell rule triggered but weight should be monitored intraday.",
+        "STX: Volatility=0.5927 (highest in portfolio) \u2014 near tail risk threshold. Combined with a loss position and recent entry, warrants elevated monitoring.",
+        "CASH: 22.9% cash vs 5% bull target \u2014 excess cash drag of ~17.9% of portfolio. No mid-quarter buys allowed (June is non-quarterly). Deployment must wait until 2026-07-01 quarterly rebalance.",
+        "BREADTH: 56.3% stocks above 200-MA with 8MA below 200MA \u2014 narrowing rally signal. Regime confidence reduced from 0.93 to 0.70. Bull regime intact but treat with caution.",
+        "SECTOR CONCENTRATION \u2014 Technology: ADI (4.1%) + AMAT (4.8%) + JBL (3.6%) + KEYS (3.3%) + STX (8.8%) + WDC (5.5%) = ~30.1% \u2014 at the 30% sector cap limit. Any further tech appreciation could breach the cap."
+      ],
+      "decisions": [
+        {
+          "action": "HOLD",
+          "symbol": "WDC",
+          "reason": "Momentum_rank=1, +$84.00 (+17.3%, entry 2026-05-22). All structural rules pass. Price $569.50 well above MA50 $414.15. Strong momentum (6m=2.02, 12m=8.02). Hold.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "STX",
+          "reason": "Loss position (-$25.97, -2.77%, entry 2026-06-03). Momentum_rank=2 \u2014 top tier. Price $913.48 vs MA50 $647.27 \u2014 well above MA. No structural sell rule triggered. Monitoring loss but momentum remains strong; hold per strategy.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "VRT",
+          "reason": "Loss position (-$5.42, -1.67%, entry 2026-06-01). Momentum_rank=3. Price $320.00 vs MA50 $311.53 \u2014 above MA but only 2.7% buffer. No sell rule triggered yet. Watch MA50 closely; if price closes below $311.53 for 1 day, begin 3-day MA break countdown.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "KEYS",
+          "reason": "Loss position (-$11.89, -3.35%, entry 2026-05-05). Momentum_rank=4. Price $343.11 vs MA50 $332.40 \u2014 above MA. No structural rule triggered. Momentum remains top-tier; hold.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "Momentum_rank=5, +$18.54 (+2.01%, entry 2026-05-06). Price $940.48 vs MA50 $827.23. Weight=9.04% approaching MAX_POSITION_PCT of 10%. All filters pass. Hold; monitor weight intraday.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "AMAT",
+          "reason": "Momentum_rank=6, +$74.22 (+17.48%, entry 2026-05-20). Price $498.90 vs MA50 $404.71. Strong momentum. All structural rules pass. Hold.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "Momentum_rank=7, +$37.24 (+11.06%, entry 2026-05-04). Price $373.82 vs MA50 $326.48. All structural rules pass. Hold.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "EME",
+          "reason": "Momentum_rank=8, +$25.29 (+1.52%, entry 2026-06-04). Price $845.43 vs MA50 $838.93 \u2014 above MA but very narrow buffer (0.77%). Weight=16.25%, approaching 20% hard cap. Recent entry; all structural rules pass. Monitor MA50 and weight closely.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "Momentum_rank=9, +$41.18 (+10.73%, entry 2026-05-04). Price $424.80 vs MA50 $380.25. All structural rules pass. Hold.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "Momentum_rank=10, +$71.73 (+15.84%, entry 2026-05-04). Price $262.28 vs MA50 $210.83. All structural rules pass. Hold.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "STLD",
+          "reason": "Momentum_rank=11, +$34.68 (+14.32%, entry 2026-05-06). Price $276.85 vs MA50 $217.72. All structural rules pass. Note: momentum_rank=11 is outside top 30% cutoff in an 18-stock universe (top 30% = ranks 1-5 approx), but position is profitable \u2014 hold gate active, no Tier 2 sell in non-quarterly month.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "BEN",
+          "reason": "Marginally profitable (+$5.13, +0.85%, entry 2026-05-27). Momentum_rank=16/18 \u2014 confirmed momentum decay across 5+ consecutive runs. Gain position: Tier 2 hold gate active \u2014 cannot sell in non-quarterly month (June). All structural rules pass (above MA50 $28.22, EPS growth 87.2%, no trend break). Defer to 2026-07-01 quarterly rebalance. Risk: any price decline below avg_cost $31.70 converts to loss, enabling Tier 1 exit.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "C",
+          "reason": "Profitable (+$37.40, +7.43%, entry 2026-05-26). Momentum_rank=18/18 \u2014 dead last, confirmed momentum decay across 5+ consecutive runs. Gain position: Tier 2 hold gate active \u2014 cannot sell in non-quarterly month (June). All structural rules pass (above MA50 $124.37). Defer to 2026-07-01 quarterly rebalance for LTCG evaluation. Held < 12 months.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "maintain",
+      "cash_rationale": "Cash at 22.9% vs 5% bull target is significantly elevated, but June is a non-quarterly month \u2014 no BUY orders permitted. Cash deployment is locked until the 2026-07-01 quarterly rebalance. Maintain current cash level and prepare a deployment plan for July 1st rebalance targeting 10-12 high-momentum positions.",
+      "summary": "Day-start 2026-06-05: 13 holdings reviewed \u2014 11 HOLD (all structural rules pass), BEN and C remain WATCH (Tier 2, gain positions with confirmed momentum decay, deferred to July quarterly rebalance); VRT and EME flagged for narrow MA50 buffers; tech sector at 30% cap limit; cash drag of 17.9% cannot be resolved until 2026-07-01.",
+      "usage": {
+        "input_tokens": 13875,
+        "output_tokens": 3004,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 8817
+      },
+      "sell_tier_summary": {
+        "tier1_execute": 0,
+        "tier2_deferred": 2
+      }
+    },
     {
       "id": "RUN-20260604-2254",
       "timestamp": "2026-06-04T22:54:40Z",

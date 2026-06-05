@@ -1,8 +1,21 @@
 {
-  "timestamp": "2026-06-04T22:53:41Z",
-  "mode": "post_close",
+  "timestamp": "2026-06-05T16:15:18Z",
+  "mode": "market_open",
   "orders_placed": [],
-  "orders_skipped": [],
+  "orders_skipped": [
+    {
+      "symbol": "VRT",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "BEN",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "STX",
+      "reason": "blocked by agent approval or risk gate"
+    }
+  ],
   "errors": [],
-  "cash_pct_after": 22.9
+  "cash_pct_after": 23.4
 }
