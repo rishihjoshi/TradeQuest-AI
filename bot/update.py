@@ -711,9 +711,9 @@ def handle_manual_order(client) -> None:
         print("handle_manual_order: ORDER_QTY missing or invalid — skipping.", file=sys.stderr)
         return
     # Safety cap: never place a single order for more than 10,000 shares
-    MAX_QTY = 10_000
-    if qty > MAX_QTY:
-        print(f"handle_manual_order: ORDER_QTY {qty} exceeds safety cap {MAX_QTY} — skipping.", file=sys.stderr)
+    max_qty = 10_000
+    if qty > max_qty:
+        print(f"handle_manual_order: ORDER_QTY {qty} exceeds safety cap {max_qty} — skipping.", file=sys.stderr)
         return
 
     side = OrderSide.BUY  if side_str == "buy"  else OrderSide.SELL
@@ -852,12 +852,12 @@ def fetch_fundamentals(symbols: list[str]) -> dict:
             }
 
     # ── Tier 2: FMP fallback for symbols with missing key fields ─
-    _FMP_KEY_FIELDS = ("eps_growth", "revenue_growth", "forward_pe", "ma_50d")
+    _fmp_key_fields = ("eps_growth", "revenue_growth", "forward_pe", "ma_50d")
 
     if FMP_API_KEY:
         missing = [
             sym for sym in symbols
-            if any(out.get(sym, {}).get(f) is None for f in _FMP_KEY_FIELDS)
+            if any(out.get(sym, {}).get(f) is None for f in _fmp_key_fields)
         ]
         if missing:
             capped = missing[:FMP_FALLBACK_CAP]
@@ -873,7 +873,7 @@ def fetch_fundamentals(symbols: list[str]) -> dict:
                     continue
                 entry = out.setdefault(sym, {})
                 filled_fields: list[str] = []
-                for field in _FMP_KEY_FIELDS:
+                for field in _fmp_key_fields:
                     if entry.get(field) is None and field in fmp_data:
                         entry[field] = fmp_data[field]
                         filled_fields.append(field)
@@ -892,7 +892,7 @@ def fetch_fundamentals(symbols: list[str]) -> dict:
     else:
         missing_count = sum(
             1 for sym in symbols
-            if any(out.get(sym, {}).get(f) is None for f in _FMP_KEY_FIELDS)
+            if any(out.get(sym, {}).get(f) is None for f in _fmp_key_fields)
         )
         if missing_count:
             print(
