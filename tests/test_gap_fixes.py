@@ -1164,5 +1164,193 @@ class TestV22SentinelHoldGate(unittest.TestCase):
         self.assertIn("ROST", syms, "Zero-gain position should be sellable by Rule 3")
 
 
+# ════════════════════════════════════════════════════════════════════════════
+# FMP Fallback — fetch_fmp_fundamentals + fetch_fundamentals dual-tier
+# ════════════════════════════════════════════════════════════════════════════
+class TestFMPFallback(unittest.TestCase):
+    """Tests for the FMP fallback in update.py fetch_fundamentals()."""
+
+    # ── _fmp_get ──────────────────────────────────────────────────────────
+
+    def test_fmp_get_returns_none_when_no_api_key(self):
+        """_fmp_get must return None immediately when FMP_API_KEY is empty."""
+        with patch.object(update, "FMP_API_KEY", ""):
+            result = update._fmp_get("quote", {"symbol": "AAPL"})
+        self.assertIsNone(result, "_fmp_get must short-circuit when API key absent")
+
+    def test_fmp_get_returns_none_on_429(self):
+        """_fmp_get must return None (not raise) when FMP returns 429 rate limit."""
+        mock_resp = MagicMock()
+        mock_resp.status_code = 429
+        with patch.object(update, "FMP_API_KEY", "test-key"):
+            with patch("update.requests.get", return_value=mock_resp):
+                result = update._fmp_get("quote", {"symbol": "AAPL"})
+        self.assertIsNone(result, "Rate-limited 429 must return None gracefully")
+
+    def test_fmp_get_returns_parsed_json(self):
+        """_fmp_get must return parsed JSON list on HTTP 200."""
+        mock_resp = MagicMock()
+        mock_resp.status_code = 200
+        mock_resp.json.return_value = [{"symbol": "AAPL", "price": 210.50}]
+        mock_resp.raise_for_status = MagicMock()
+        with patch.object(update, "FMP_API_KEY", "test-key"):
+            with patch("update.requests.get", return_value=mock_resp):
+                result = update._fmp_get("quote", {"symbol": "AAPL"})
+        self.assertIsInstance(result, list)
+        self.assertEqual(result[0]["price"], 210.50)
+
+    # ── fetch_fmp_fundamentals ─────────────────────────────────────────────
+
+    def test_fmp_fundamentals_extracts_price_and_ma50(self):
+        """fetch_fmp_fundamentals must extract current_price and ma_50d from quote."""
+        quote_resp = [{"price": 210.50, "priceAvg50": 195.30, "pe": 28.5}]
+        stmt_resp  = []  # no income statement → EPS/rev growth not filled
+
+        def fake_fmp_get(path, params):
+            if "quote" in path:
+                return quote_resp
+            return stmt_resp
+
+        with patch.object(update, "FMP_API_KEY", "test-key"):
+            with patch("update._fmp_get", side_effect=fake_fmp_get):
+                result = update.fetch_fmp_fundamentals("AAPL")
+
+        self.assertAlmostEqual(result["current_price"], 210.50)
+        self.assertAlmostEqual(result["ma_50d"], 195.30)
+        self.assertAlmostEqual(result["forward_pe"], 28.5)
+        self.assertEqual(result["pe_source"], "fmp_trailing")
+
+    def test_fmp_fundamentals_calculates_growth_rates(self):
+        """fetch_fmp_fundamentals must compute YoY EPS and revenue growth from income stmt."""
+        quote_resp = [{"price": 210.0, "priceAvg50": 190.0, "pe": 25.0}]
+        stmt_resp  = [
+            {"revenue": 100_000_000, "epsdiluted": 5.0},   # most recent year
+            {"revenue":  80_000_000, "epsdiluted": 4.0},   # prior year
+        ]
+
+        def fake_fmp_get(path, params):
+            if "quote" in path:
+                return quote_resp
+            return stmt_resp
+
+        with patch.object(update, "FMP_API_KEY", "test-key"):
+            with patch("update._fmp_get", side_effect=fake_fmp_get):
+                result = update.fetch_fmp_fundamentals("AAPL")
+
+        # revenue_growth = (100M / 80M - 1) * 100 = 25.0%
+        self.assertAlmostEqual(result["revenue_growth"], 25.0)
+        # eps_growth = (5.0 / 4.0 - 1) * 100 = 25.0%
+        self.assertAlmostEqual(result["eps_growth"], 25.0)
+
+    def test_fmp_fundamentals_returns_empty_when_no_api_key(self):
+        """fetch_fmp_fundamentals must return empty dict when FMP_API_KEY is absent."""
+        with patch.object(update, "FMP_API_KEY", ""):
+            result = update.fetch_fmp_fundamentals("AAPL")
+        self.assertEqual(result, {}, "No FMP key → empty dict, no API calls")
+
+    def test_fmp_fundamentals_handles_zero_prior_eps_gracefully(self):
+        """fetch_fmp_fundamentals must not divide by zero if prior EPS is 0."""
+        stmt_resp = [
+            {"revenue": 100_000_000, "epsdiluted": 5.0},
+            {"revenue":  80_000_000, "epsdiluted": 0.0},   # prior EPS = 0 → division would fail
+        ]
+        with patch.object(update, "FMP_API_KEY", "test-key"):
+            with patch("update._fmp_get", return_value=stmt_resp):
+                result = update.fetch_fmp_fundamentals("AAPL")
+        # eps_growth must NOT be set (would be division by zero)
+        self.assertNotIn("eps_growth", result,
+                         "Should not compute EPS growth when prior EPS = 0")
+
+    # ── fetch_fundamentals dual-tier ───────────────────────────────────────
+
+    def test_fmp_fallback_fills_none_fields(self):
+        """When yfinance returns None, fetch_fundamentals must fill fields from FMP."""
+        mock_ticker = MagicMock()
+        mock_ticker.info = {
+            "longName": "Apple Inc.", "sector": "Technology",
+            "earningsGrowth": None, "revenueGrowth": None,
+            "forwardPE": None, "fiftyDayAverage": None,
+            "currentPrice": 210.0,
+        }
+
+        fmp_data = {
+            "eps_growth": 22.5, "revenue_growth": 18.0,
+            "forward_pe": 27.3, "ma_50d": 195.50,
+            "pe_source": "fmp_trailing",
+        }
+
+        with patch.object(update.yf, "Ticker", return_value=mock_ticker):
+            with patch.object(update, "FMP_API_KEY", "test-key"):
+                with patch("update.fetch_fmp_fundamentals", return_value=fmp_data):
+                    result = update.fetch_fundamentals(["AAPL"])
+
+        aapl = result["AAPL"]
+        self.assertAlmostEqual(aapl["eps_growth"],      22.5)
+        self.assertAlmostEqual(aapl["revenue_growth"],  18.0)
+        self.assertAlmostEqual(aapl["forward_pe"],      27.3)
+        self.assertAlmostEqual(aapl["ma_50d"],         195.50)
+
+    def test_fmp_fallback_not_called_when_yfinance_complete(self):
+        """FMP must NOT be called when yfinance returns all key fields successfully."""
+        mock_ticker = MagicMock()
+        mock_ticker.info = {
+            "longName": "Apple Inc.", "sector": "Technology",
+            "earningsGrowth": 0.15, "revenueGrowth": 0.12,
+            "forwardPE": 28.0, "fiftyDayAverage": 195.0,
+            "currentPrice": 210.0,
+        }
+        with patch.object(update.yf, "Ticker", return_value=mock_ticker):
+            with patch.object(update, "FMP_API_KEY", "test-key"):
+                with patch("update.fetch_fmp_fundamentals") as mock_fmp:
+                    update.fetch_fundamentals(["AAPL"])
+        mock_fmp.assert_not_called()
+
+    def test_fmp_fallback_not_called_when_no_api_key(self):
+        """FMP fallback must be completely skipped when FMP_API_KEY is empty."""
+        mock_ticker = MagicMock()
+        mock_ticker.info = {
+            "longName": "Apple Inc.", "sector": "Technology",
+            "earningsGrowth": None, "revenueGrowth": None,
+            "forwardPE": None, "fiftyDayAverage": None,
+            "currentPrice": 0,
+        }
+        with patch.object(update.yf, "Ticker", return_value=mock_ticker):
+            with patch.object(update, "FMP_API_KEY", ""):
+                with patch("update.fetch_fmp_fundamentals") as mock_fmp:
+                    update.fetch_fundamentals(["AAPL"])
+        mock_fmp.assert_not_called()
+
+    def test_fmp_fallback_does_not_overwrite_existing_yfinance_data(self):
+        """FMP must not overwrite fields yfinance already populated."""
+        mock_ticker = MagicMock()
+        mock_ticker.info = {
+            "longName": "Apple Inc.", "sector": "Technology",
+            "earningsGrowth": 0.20,   # yfinance has this → should NOT be overwritten
+            "revenueGrowth": None,    # yfinance missing → FMP should fill
+            "forwardPE": None,
+            "fiftyDayAverage": None,
+            "currentPrice": 210.0,
+        }
+        fmp_data = {
+            "eps_growth": 99.9,        # FMP would give different value
+            "revenue_growth": 18.0,    # FMP fills this
+            "forward_pe": 27.0,
+            "ma_50d": 195.0,
+            "pe_source": "fmp_trailing",
+        }
+        with patch.object(update.yf, "Ticker", return_value=mock_ticker):
+            with patch.object(update, "FMP_API_KEY", "test-key"):
+                with patch("update.fetch_fmp_fundamentals", return_value=fmp_data):
+                    result = update.fetch_fundamentals(["AAPL"])
+
+        aapl = result["AAPL"]
+        # yfinance eps_growth (20%) must NOT be overwritten by FMP (99.9%)
+        self.assertAlmostEqual(aapl["eps_growth"], 20.0,
+                               msg="yfinance eps_growth must not be overwritten by FMP")
+        # FMP fills the missing revenue_growth
+        self.assertAlmostEqual(aapl["revenue_growth"], 18.0,
+                               msg="FMP must fill missing revenue_growth")
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

@@ -6,7 +6,12 @@ Two modes:
                  and account data, places real paper orders on rebalance days.
   Simulation   — No credentials: simulates portfolio from yfinance data.
 
-Market data always comes from Yahoo Finance (yfinance).
+Price & fundamentals data sources (in priority order):
+  1. Yahoo Finance (yfinance) — primary; free, no API key, fast bulk download.
+  2. Financial Modeling Prep (FMP) — fallback when yfinance returns None for
+     eps_growth, revenue_growth, forward_pe, or ma_50d.  Uses FMP_API_KEY
+     secret (250 free calls/day).  FMP is capped at FMP_FALLBACK_CAP symbols
+     per run to stay within the free-tier daily quota.
 """
 
 import io
@@ -36,6 +41,13 @@ ALPACA_ACCOUNT_NAME = os.environ.get("ALPACA_ACCOUNT_NAME", "TradeQuest Paper")
 ALPACA_API_KEY      = os.environ.get("ALPACA_API_KEY", "")
 ALPACA_SECRET_KEY   = os.environ.get("ALPACA_SECRET_KEY", "")
 ALPACA_BASE_URL     = os.environ.get("ALPACA_BASE_URL", "https://paper-api.alpaca.markets")
+
+# ── FMP (Financial Modeling Prep) — fallback data source ──────
+# Used when yfinance returns None for key fundamental fields.
+# Free tier: 250 API calls/day.  Each symbol uses ≤2 calls (quote + income-stmt).
+FMP_BASE          = "https://financialmodelingprep.com/stable"
+FMP_API_KEY       = os.environ.get("FMP_API_KEY", "")
+FMP_FALLBACK_CAP  = 30   # max symbols to query via FMP per run (= up to 60 API calls)
 
 # ── Hardcoded risk limits — never read from external config ───
 MAX_ORDERS_PER_RUN  = 5     # max total orders (sells + buys) placed in a single run
@@ -99,6 +111,105 @@ def check_sector_concentration(holdings: list[dict]) -> dict[str, float]:
         sector = h.get("sector", "Unknown")
         totals[sector] += float(h.get("weight", 0))
     return {s: w for s, w in totals.items() if w > MAX_SECTOR_PCT}
+
+
+# ── FMP fallback — fundamentals ───────────────────────────────
+
+def _fmp_get(path: str, params: dict) -> list | dict | None:
+    """Thin HTTP helper for FMP stable API — mirrors enrich.py pattern.
+
+    Returns parsed JSON (list or dict) or None on any error.
+    Silently skips the call when FMP_API_KEY is not set.
+    """
+    if not FMP_API_KEY:
+        return None
+    try:
+        r = requests.get(
+            f"{FMP_BASE}/{path}",
+            params={**params, "apikey": FMP_API_KEY},
+            timeout=15,
+        )
+        if r.status_code == 429:
+            print(f"  FMP rate-limit hit ({path}) — skipping fallback for this run.", file=sys.stderr)
+            return None
+        if r.status_code == 404:
+            return None
+        r.raise_for_status()
+        data = r.json()
+        return data if data else None
+    except Exception as e:
+        print(f"  FMP {path} error: {e}", file=sys.stderr)
+        return None
+
+
+def fetch_fmp_fundamentals(symbol: str) -> dict:
+    """Fetch fundamentals for ONE symbol from FMP as a yfinance fallback.
+
+    Makes up to 2 FMP API calls:
+      Call 1 — stable/quote
+        → current_price  (quote.price)
+        → ma_50d         (quote.priceAvg50)
+        → forward_pe     (quote.pe — NOTE: FMP 'pe' is trailing P/E TTM,
+                          not forward P/E. Stored with pe_source='fmp_trailing'
+                          so the agent/filter knows it's a proxy, not analyst estimate)
+
+      Call 2 — stable/income-statement?period=annual&limit=2
+        → eps_growth     = (eps_year0 / eps_year1 - 1) × 100   (YoY)
+        → revenue_growth = (revenue_year0 / revenue_year1 - 1) × 100 (YoY)
+
+    Returns a dict with only the fields that were successfully retrieved.
+    The caller merges this into the yfinance result, filling only None slots.
+    """
+    result: dict = {}
+
+    # ── Call 1: Quote → price, 50-day MA, trailing P/E ────────
+    quote_raw = _fmp_get("quote", {"symbol": symbol})
+    if quote_raw:
+        q = quote_raw[0] if isinstance(quote_raw, list) and quote_raw else quote_raw
+        if isinstance(q, dict):
+            price = q.get("price")
+            avg50 = q.get("priceAvg50")
+            pe    = q.get("pe")
+            if price and float(price) > 0:
+                result["current_price"] = round(float(price), 2)
+            if avg50 and float(avg50) > 0:
+                result["ma_50d"] = round(float(avg50), 2)
+            if pe and float(pe) > 0:
+                result["forward_pe"]  = round(float(pe), 1)
+                result["pe_source"]   = "fmp_trailing"  # agent transparency flag
+
+    # ── Call 2: Income statement → YoY EPS + revenue growth ───
+    stmt_raw = _fmp_get(
+        "income-statement",
+        {"symbol": symbol, "period": "annual", "limit": "2"},
+    )
+    if stmt_raw and isinstance(stmt_raw, list) and len(stmt_raw) >= 2:
+        curr = stmt_raw[0]   # most recent annual
+        prev = stmt_raw[1]   # prior year
+
+        # Revenue growth (YoY annual)
+        rev_c = curr.get("revenue")
+        rev_p = prev.get("revenue")
+        if rev_c is not None and rev_p is not None:
+            try:
+                rev_c_f, rev_p_f = float(rev_c), float(rev_p)
+                if rev_p_f != 0:
+                    result["revenue_growth"] = round((rev_c_f / rev_p_f - 1) * 100, 1)
+            except (TypeError, ValueError):
+                pass
+
+        # EPS growth (YoY annual) — prefer diluted EPS; fall back to net income per share
+        eps_c = curr.get("epsdiluted") or curr.get("netIncomePerShare")
+        eps_p = prev.get("epsdiluted") or prev.get("netIncomePerShare")
+        if eps_c is not None and eps_p is not None:
+            try:
+                eps_c_f, eps_p_f = float(eps_c), float(eps_p)
+                if eps_p_f != 0:
+                    result["eps_growth"] = round((eps_c_f / eps_p_f - 1) * 100, 1)
+            except (TypeError, ValueError):
+                pass
+
+    return result
 
 
 # ── Safety guards ─────────────────────────────────────────────
@@ -691,11 +802,28 @@ def detect_regime(spy: pd.Series) -> dict:
 
 # ── Fundamentals ──────────────────────────────────────────────
 def fetch_fundamentals(symbols: list[str]) -> dict:
-    print(f"Fetching fundamentals for {len(symbols)} candidates…")
-    out = {}
+    """Fetch fundamentals for all screened candidates.
+
+    Two-tier data pipeline:
+      Tier 1 (yfinance)  — primary source; free, no key, fast bulk via .info
+      Tier 2 (FMP API)   — fallback for symbols where yfinance returned None
+                           for any of: eps_growth, revenue_growth, forward_pe, ma_50d
+                           Capped at FMP_FALLBACK_CAP symbols per run to stay within
+                           the 250 free-tier daily API call limit.
+
+    FMP note on forward_pe: FMP's 'pe' is trailing P/E (TTM), not analyst-estimated
+    forward P/E. When FMP fills the forward_pe field, pe_source='fmp_trailing' is set
+    so downstream filters can note the distinction.  The filter still applies fpe < 40
+    — trailing P/E < 40 is a slightly more conservative cut than forward P/E < 40,
+    which is acceptable as a fallback.
+    """
+    print(f"Fetching fundamentals for {len(symbols)} candidates (yfinance primary, FMP fallback)…")
+    out: dict = {}
+
+    # ── Tier 1: yfinance ─────────────────────────────────────
     for sym in symbols:
         try:
-            info = yf.Ticker(sym).info
+            info    = yf.Ticker(sym).info
             eg_raw  = info.get("earningsGrowth")
             rg_raw  = info.get("revenueGrowth")
             fpe_raw = info.get("forwardPE")
@@ -709,10 +837,71 @@ def fetch_fundamentals(symbols: list[str]) -> dict:
                 "revenue_growth": round(rg_raw  * 100, 1) if rg_raw  is not None else None,
                 "forward_pe":     round(fpe_raw,      1)  if fpe_raw is not None else None,
                 "ma_50d":         round(ma_raw,        2)  if ma_raw  is not None else None,
-                "current_price":  round(info.get("currentPrice") or info.get("regularMarketPrice") or 0, 2),
+                "current_price":  round(
+                    info.get("currentPrice") or info.get("regularMarketPrice") or 0, 2
+                ),
+                "pe_source": "yfinance",
             }
         except Exception as e:
-            print(f"  {sym}: {e}", file=sys.stderr)
+            print(f"  yfinance {sym}: {e}", file=sys.stderr)
+            out[sym] = {
+                "name": sym, "sector": "Unknown",
+                "eps_growth": None, "revenue_growth": None,
+                "forward_pe": None, "ma_50d": None, "current_price": 0,
+                "pe_source": None,
+            }
+
+    # ── Tier 2: FMP fallback for symbols with missing key fields ─
+    _FMP_KEY_FIELDS = ("eps_growth", "revenue_growth", "forward_pe", "ma_50d")
+
+    if FMP_API_KEY:
+        missing = [
+            sym for sym in symbols
+            if any(out.get(sym, {}).get(f) is None for f in _FMP_KEY_FIELDS)
+        ]
+        if missing:
+            capped = missing[:FMP_FALLBACK_CAP]
+            skipped = len(missing) - len(capped)
+            print(
+                f"FMP fallback: {len(capped)} symbol(s) missing yfinance data"
+                + (f" ({skipped} skipped — FMP_FALLBACK_CAP={FMP_FALLBACK_CAP})" if skipped else "")
+            )
+            filled_count = 0
+            for sym in capped:
+                fmp_data = fetch_fmp_fundamentals(sym)
+                if not fmp_data:
+                    continue
+                entry = out.setdefault(sym, {})
+                filled_fields: list[str] = []
+                for field in _FMP_KEY_FIELDS:
+                    if entry.get(field) is None and field in fmp_data:
+                        entry[field] = fmp_data[field]
+                        filled_fields.append(field)
+                # Propagate FMP metadata flags
+                if "pe_source" in fmp_data and entry.get("pe_source") in (None, "yfinance"):
+                    entry["pe_source"] = fmp_data["pe_source"]
+                # Fill current_price if yfinance returned 0
+                if entry.get("current_price", 0) == 0 and fmp_data.get("current_price"):
+                    entry["current_price"] = fmp_data["current_price"]
+                if filled_fields:
+                    print(f"  FMP filled {sym}: {', '.join(filled_fields)}")
+                    filled_count += 1
+            print(f"FMP fallback complete — enriched {filled_count}/{len(capped)} symbol(s).")
+        else:
+            print("FMP fallback: all symbols have complete yfinance data — no FMP calls needed.")
+    else:
+        missing_count = sum(
+            1 for sym in symbols
+            if any(out.get(sym, {}).get(f) is None for f in _FMP_KEY_FIELDS)
+        )
+        if missing_count:
+            print(
+                f"Warning: {missing_count} symbol(s) have incomplete fundamentals "
+                f"(FMP_API_KEY not set — cannot use fallback). "
+                f"These will fail the quality filter conservatively.",
+                file=sys.stderr,
+            )
+
     return out
 
 

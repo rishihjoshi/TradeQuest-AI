@@ -59,6 +59,7 @@ jobs:
           ALPACA_API_KEY:      ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY:   ${{ secrets.ALPACA_SECRET_KEY }}
           ALPACA_BASE_URL:     ${{ secrets.ALPACA_BASE_URL }}
+          FMP_API_KEY:         ${{ secrets.FMP_API_KEY }}
         run: python bot/update.py
 
       - name: Fetch enrichment
