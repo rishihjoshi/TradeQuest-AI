@@ -728,11 +728,14 @@ class TradeQuestApp {
       const maCls   = h.status === 'above_ma' ? 'profit-cell' : 'loss-cell';
       const maText  = h.status === 'above_ma' ? '▲ Above MA50' : '▼ Below MA50';
       const shareLabel = `${shares} ${shares === 1 ? 'share' : 'shares'} · avg ${fmt$(h.avg_cost)}`;
+      // Yahoo Finance URL — safe: sym is already sanitized, letters/digits only
+      const yahooUrl = `https://finance.yahoo.com/quote/${sym}/`;
       return `
         <div class="pos-card" data-idx="${idx}" role="button" tabindex="0" aria-expanded="false">
           <div class="pos-main">
             <div class="pos-identity">
               <span class="pos-sym">${sym}</span>
+              ${name ? `<span class="pos-name" title="${name}">${name}</span>` : ''}
               <span class="pos-meta">${shareLabel}</span>
             </div>
             <canvas class="pos-sparkline" data-idx="${idx}" width="64" height="32"></canvas>
@@ -755,6 +758,12 @@ class TradeQuestApp {
             <div class="pos-detail-footer">
               <span class="muted-cell" style="font-size:0.7rem">Entry ${fmtDate(h.entry_date || '')}</span>
               <span class="pos-sector-chip">${sector}</span>
+              <a class="pos-yahoo-link"
+                 href="${yahooUrl}"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 aria-label="View ${sym} on Yahoo Finance"
+                 onclick="event.stopPropagation()">Yahoo Finance ↗</a>
               <button class="pos-trade-btn" onclick="event.stopPropagation();app.showTradeTicket({symbol:'${sym}',name:'${sanitize(h.name||h.sector||'')}',side:'buy',currentPrice:${h.current_price||h.avg_cost||0}})">Trade</button>
               <button class="pos-close-btn" onclick="event.stopPropagation();app.showTradeTicket({symbol:'${sym}',name:'${sanitize(h.name||h.sector||'')}',side:'sell',qty:${shares},currentPrice:${h.current_price||h.avg_cost||0}})">Close Position</button>
             </div>

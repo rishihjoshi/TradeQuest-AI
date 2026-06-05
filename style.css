@@ -405,6 +405,19 @@ button, a, [role="button"] {
   line-height: 1.2;
 }
 
+.pos-name {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-top: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+  letter-spacing: 0.01em;
+}
+
 .pos-meta {
   display: block;
   font-size: 0.68rem;
@@ -413,6 +426,7 @@ button, a, [role="button"] {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  opacity: 0.7;
 }
 
 /* Middle: sparkline */
@@ -518,6 +532,32 @@ button, a, [role="button"] {
 }
 
 .pos-trade-btn:hover { background: rgba(212,175,55,0.22); }
+
+/* Yahoo Finance external link in expanded card footer */
+.pos-yahoo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  background: rgba(108,163,241,0.08);
+  border: 1px solid rgba(108,163,241,0.25);
+  color: #6ca3f1;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+.pos-yahoo-link:hover,
+.pos-yahoo-link:focus-visible {
+  background: rgba(108,163,241,0.16);
+  border-color: rgba(108,163,241,0.45);
+  text-decoration: none;
+  outline: none;
+}
 
 /* ── Tables ────────────────────────────────────────────────── */
 .table-wrapper {
@@ -1456,10 +1496,13 @@ button, a, [role="button"] {
   .agent-summary-bar  { grid-template-columns: 1fr; }
   .momentum-heatmap   { grid-template-columns: repeat(3, 1fr); }
 
-  /* Stack "Trade" + "Close Position" buttons vertically */
+  /* Stack "Trade" + "Close Position" buttons vertically on mobile */
   .pos-detail-footer { flex-direction: column; gap: 6px; align-items: stretch; }
   .pos-trade-btn,
-  .pos-close-btn     { width: 100%; text-align: center; }
+  .pos-yahoo-link,
+  .pos-close-btn     { width: 100%; text-align: center; justify-content: center; }
+  /* Truncate company name a bit tighter on small screens */
+  .pos-name          { max-width: 120px; }
 }
 
 /* ── News Tab ──────────────────────────────────────────────── */
