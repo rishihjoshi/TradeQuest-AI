@@ -1,7 +1,147 @@
 {
-  "last_run": "2026-06-05T16:14:21Z",
-  "last_type": "day_start",
+  "last_run": "2026-06-05T22:42:56Z",
+  "last_type": "day_end",
   "runs": [
+    {
+      "id": "RUN-20260605-2242",
+      "timestamp": "2026-06-05T22:42:56Z",
+      "type": "day_end",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is at -0.24% total PnL against SPY's strong run (SPY up ~3.3% from starting value to Jun 5 close), representing meaningful underperformance. Several loss positions are accumulating \u2014 STX (-10.37%), VRT (-8.24%), KEYS (-7.09%) \u2014 all with zero momentum rank, while cash sits at 23.8% vs the 5% bull target. The regime remains bull (VIX 12.2, SPY above 200-MA) but breadth at 58.9% is narrowing, warranting caution. Multiple Tier 1 SELLs are persistently blocked from execution and need urgent clearing.",
+      "regime": "bull",
+      "regime_confidence": 0.7,
+      "flags": [
+        "STX: CRITICAL \u2014 loss position (-$97.37, -10.37%, entry 2026-06-03), momentum_rank=0 (zero score), sector Unknown, ma_50d null. Flagged 5+ consecutive runs. Blocked from execution yesterday. Re-issuing Tier 1 SELL with urgency=next_open. Consecutive flag count: 5+.",
+        "KEYS: CRITICAL \u2014 loss position (-$25.17, -7.09%, entry 2026-05-05), price $329.83 < ma_50d $332.40 (below_ma status), momentum_rank=0. Rule A (trend break) and Rule E (momentum decay on loss) both triggered. Flagged 4+ consecutive runs. Blocked from execution yesterday. Re-issuing Tier 1 SELL urgency=next_open.",
+        "VRT: URGENT \u2014 loss position (-$26.82, -8.24%, entry 2026-06-01), price $298.60 < ma_50d $311.53 (below_ma status), momentum_rank=0. Rule A and Rule E both triggered. Flagged 3+ consecutive runs. Blocked yesterday. Tier 1 SELL urgency=next_open.",
+        "EME: URGENT \u2014 loss position (-$30.69, -1.84%, entry 2026-06-04), price $817.44 < ma_50d $838.93 (below_ma status), momentum_rank=0. Rule A and Rule E triggered. Flagged 4+ consecutive runs. Blocked yesterday. Tier 1 SELL urgency=next_open.",
+        "BEN: Loss position (-$7.03, -1.17%, entry 2026-05-27), momentum_rank=13/18, flagged 5+ consecutive runs. Rule E triggered (momentum decay on loss). Tier 1 SELL urgency=next_open.",
+        "C: WATCH \u2014 gain position (+$22.24, +4.42%, entry 2026-05-26), momentum_rank=16/18. Rule E triggered but position is profitable \u2014 hold gate active. Tier 2 WATCH only, deferred to next quarterly rebalance (July 1).",
+        "WDC: gain position (+$19.51, +4.02%, entry 2026-05-22), momentum_rank=0, sector Unknown, ma_50d null. No MA data to confirm trend break. Momentum decay on profitable position \u2014 hold gate active. WATCH Tier 2.",
+        "CASH: 23.84% cash vs 5% bull target \u2014 severe cash drag persisting due to blocked executions. Resolution depends on Tier 1 orders executing tomorrow.",
+        "BREADTH: 58.9% at border of bull/sideways threshold (60%). Breadth 8MA below 200MA is a bearish breadth trend. Regime confidence reduced to 70%.",
+        "SECTOR CON: Industrials exposure (CAT + EME + VRT) = ~29.4% of portfolio \u2014 near 30% sector cap. If EME and VRT sell executes tomorrow, this resolves."
+      ],
+      "decisions": [
+        {
+          "action": "SELL",
+          "symbol": "STX",
+          "reason": "Loss position: unrealized PnL -$97.37 (-10.37%), entry 2026-06-03. Momentum_rank=0 (zero score, outside top 30% confirmed). Rule E triggered on loss position \u2014 tax-loss harvest. MA data unavailable (unknown_ma) but zero momentum rank and significant loss override. Flagged 5+ consecutive runs without execution \u2014 re-issuing with urgency=next_open. Consecutive flag count: 5.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "KEYS",
+          "reason": "Loss position: unrealized PnL -$25.17 (-7.09%), entry 2026-05-05. Price $329.83 < ma_50d $332.40 \u2014 status confirmed below_ma. Momentum_rank=0. Rule A (trend break) triggered \u2014 below MA, consistent with prior runs (flagged 4+ consecutive runs). Rule E also triggered (momentum decay on loss). Dual rule failure on loss position. Blocked from execution yesterday \u2014 re-issuing urgency=next_open. Consecutive flag count: 4.",
+          "rule_triggered": "trend_break",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "VRT",
+          "reason": "Loss position: unrealized PnL -$26.82 (-8.24%), entry 2026-06-01. Price $298.60 < ma_50d $311.53 \u2014 status confirmed below_ma. Momentum_rank=0. Rule A (trend break) triggered. Rule E (momentum decay on loss) also triggered. Flagged 3+ consecutive runs. Blocked from execution yesterday \u2014 re-issuing urgency=next_open. Consecutive flag count: 3.",
+          "rule_triggered": "trend_break",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "EME",
+          "reason": "Loss position: unrealized PnL -$30.69 (-1.84%), entry 2026-06-04. Price $817.44 < ma_50d $838.93 \u2014 status confirmed below_ma. Momentum_rank=0. Rule A (trend break) triggered. Rule E (momentum decay on loss) also triggered. Flagged 4+ consecutive runs. Blocked from execution yesterday \u2014 re-issuing urgency=next_open. Consecutive flag count: 4.",
+          "rule_triggered": "trend_break",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "BEN",
+          "reason": "Loss position: unrealized PnL -$7.03 (-1.17%), entry 2026-05-27. Momentum_rank=13 out of 18 \u2014 outside top 30% confirmed across 5+ consecutive runs. Rule E triggered on loss position \u2014 tax-loss harvest required. Price $31.33 > ma_50d $28.22 (above MA, so Rule A does not apply), but loss + momentum decay = Tier 1. Flagged 5+ consecutive runs. Consecutive flag count: 5.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "C",
+          "reason": "Gain position: unrealized PnL +$22.24 (+4.42%), entry 2026-05-26. Momentum_rank=16/18 \u2014 outside top 30%, confirmed 5+ consecutive runs. Rule E triggered but hold gate active: position is profitable and only failing momentum decay. Cannot issue SELL. Price $131.34 > ma_50d $124.37 (above MA \u2014 Rule A not triggered). Quality passes. WATCH only \u2014 deferred to next quarterly rebalance (2026-07-01). Consecutive flag count: 5.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "WDC",
+          "reason": "Gain position: unrealized PnL +$19.51 (+4.02%), entry 2026-05-22. Momentum_rank=0, sector Unknown, ma_50d null (unknown_ma). No MA data to confirm Rule A. EPS and revenue growth data null \u2014 conservative quality flag but cannot confirm failure. Momentum decay on profitable position \u2014 hold gate active. Cannot issue SELL. WATCH with deferred review at July quarterly rebalance. Note: zero momentum rank and unknown sector are concerns requiring data resolution.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "Loss position: unrealized PnL -$17.66 (-1.92%), entry 2026-05-06. Momentum_rank=1 (top rank in portfolio) \u2014 Rule E not triggered. Price $904.28 > ma_50d $827.23 (above MA \u2014 Rule A not triggered). EPS growth 30.2%, revenue growth 22.2% \u2014 quality passes (Rule B not triggered). Forward P/E 30.2 \u2014 valuation guard passes. Volatility 0.456 \u2014 within bounds. Strong momentum thesis intact. Small loss on high-momentum name is tolerable; no structural rule triggers exit.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "Gain position: +$16.74 (+4.37%), entry 2026-05-04. Momentum_rank=5 \u2014 top 30% confirmed. Price $400.36 > ma_50d $380.25 (above MA). EPS growth 110.5%, revenue growth 37.2% \u2014 quality strong. Forward P/E 27.2 \u2014 valuation passes. All structural rules pass. Thesis intact.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "AMAT",
+          "reason": "Gain position: +$23.33 (+5.49%), entry 2026-05-20. Momentum_rank=2 \u2014 top 30% confirmed. Price $448.01 > ma_50d $404.71 (above MA). EPS growth 33.5%, revenue growth 11.4% \u2014 quality passes. Forward P/E 28.0 \u2014 valuation passes. All structural rules pass. Semiconductor momentum thesis intact.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "Gain position: +$16.66 (+4.95%), entry 2026-05-04. Momentum_rank=3 \u2014 top 30% confirmed. Price $353.24 > ma_50d $326.48 (above MA). EPS growth 96.2%, revenue growth 23.1% \u2014 quality strong. Forward P/E 24.2 \u2014 valuation passes. All structural rules pass. Thesis intact.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "Gain position: +$55.95 (+12.36%), entry 2026-05-04. Momentum_rank=6 \u2014 top 30% confirmed. Price $254.39 > ma_50d $210.83 (above MA, well clear). EPS growth 382.1%, revenue growth 21.3% \u2014 quality exceptional. Forward P/E 15.8 \u2014 valuation very reasonable. No structural rules triggered. Strong winner \u2014 hold gate and Rule D check: up 12.36% in ~32 days, well below 60% threshold. Thesis intact.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "STLD",
+          "reason": "Gain position: +$26.33 (+10.87%), entry 2026-05-06. Momentum_rank=8 \u2014 top 30% confirmed. Price $268.50 > ma_50d $217.72 (above MA, well clear). EPS growth 93.1%, revenue growth 19.1% \u2014 quality strong. Forward P/E 15.3 \u2014 valuation attractive. No structural rules triggered. Steel sector momentum alongside NUE remains valid. Thesis intact.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "increase",
+      "cash_rationale": "Cash is at 23.84% vs 5% bull regime target, but this is primarily due to blocked Tier 1 sell proceeds not being redeployed (mid-quarter BUY lock prevents reinvestment until July 1 rebalance). Executing the 5 Tier 1 SELLs tomorrow (STX, KEYS, VRT, EME, BEN) will raise cash further to approximately 35-40%. This is acceptable given: (1) July 1 quarterly rebalance is 26 days away and will deploy cash into top-momentum names; (2) breadth is narrowing at 58.9%, justifying slightly more defensive posture; (3) the loss positions being exited are destroying value \u2014 freeing capital now preserves it for redeployment into strong names like CAT, AMAT, ADI at rebalance. Do not force mid-quarter buys. Maintain elevated cash until July 1.",
+      "summary": "Day-end 2026-06-05: 5 persistent Tier 1 SELLs re-issued urgency=next_open (STX -10.4%, KEYS -7.1%, VRT -8.2%, EME -1.8%, BEN -1.2%) \u2014 all blocked from yesterday's execution; 2 profitable WATCH positions (C, WDC) held under hold gate; 6 strong holdings confirmed HOLD (CAT, ADI, AMAT, JBL, NUE, STLD).",
+      "usage": {
+        "input_tokens": 14553,
+        "output_tokens": 3803,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 8817
+      },
+      "sell_tier_summary": {
+        "tier1_execute": 5,
+        "tier2_deferred": 2
+      }
+    },
     {
       "id": "RUN-20260605-1614",
       "timestamp": "2026-06-05T16:14:21Z",
