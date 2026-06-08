@@ -1,29 +1,32 @@
 {
-  "timestamp": "2026-06-05T22:41:52Z",
-  "mode": "post_close",
-  "orders_placed": [],
+  "timestamp": "2026-06-08T16:58:17Z",
+  "mode": "market_open",
+  "orders_placed": [
+    {
+      "action": "SELL",
+      "symbol": "BEN",
+      "qty": 19,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "EME",
+      "qty": 2,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "VRT",
+      "qty": 1,
+      "status": "submitted"
+    }
+  ],
   "orders_skipped": [
     {
-      "symbol": "EME",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "KEYS",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
       "symbol": "STX",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "BEN",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "VRT",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 23.84
+  "cash_pct_after": 48.45
 }
