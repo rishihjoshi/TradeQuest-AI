@@ -1,21 +1,8 @@
 {
-  "timestamp": "2026-06-08T22:56:43Z",
-  "mode": "post_close",
-  "orders_placed": [
-    {
-      "action": "SELL",
-      "symbol": "KEYS",
-      "qty": 1,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "STX",
-      "qty": 1,
-      "status": "submitted"
-    }
-  ],
+  "timestamp": "2026-06-09T16:19:50Z",
+  "mode": "market_open",
+  "orders_placed": [],
   "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 48.57
+  "cash_pct_after": 61.42
 }
