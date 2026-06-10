@@ -1,8 +1,13 @@
 {
-  "timestamp": "2026-06-10T16:49:16Z",
-  "mode": "market_open",
+  "timestamp": "2026-06-10T23:07:51Z",
+  "mode": "post_close",
   "orders_placed": [],
-  "orders_skipped": [],
+  "orders_skipped": [
+    {
+      "symbol": "WDC",
+      "reason": "blocked by agent approval or risk gate"
+    }
+  ],
   "errors": [],
-  "cash_pct_after": 61.19
+  "cash_pct_after": 61.43
 }
