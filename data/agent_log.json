@@ -1,7 +1,105 @@
 {
-  "last_run": "2026-06-11T17:06:49Z",
-  "last_type": "day_start",
+  "last_run": "2026-06-11T23:07:48Z",
+  "last_type": "day_end",
   "runs": [
+    {
+      "id": "RUN-20260611-2307",
+      "timestamp": "2026-06-11T23:07:48Z",
+      "type": "day_end",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is up +3.91% overall ($385.77 unrealized PnL) against a bull regime with 84% confidence. However, the critical structural issue remains: 59.8% cash ($6,158.79) vs a 5% bull-regime target \u2014 a massive drag on returns. WDC has been flagged for Tier 1 SELL for 5+ consecutive runs but current data shows PnL of +$52.91 (+10.9%), which means the hold gate now applies \u2014 this is NOT a loss position and cannot be force-sold on momentum decay alone. AMAT, C, and WDC all show momentum_rank=0 (data anomaly) requiring careful interpretation.",
+      "regime": "bull",
+      "regime_confidence": 0.84,
+      "flags": [
+        "WDC: CRITICAL DATA CONFLICT \u2014 previously flagged Tier 1 SELL as loss position, but current portfolio shows PnL=+$52.91 (+10.9%), entry 2026-05-22. Hold gate now applies. momentum_rank=0 (data anomaly, may be stale). Cannot execute Tier 1 SELL on a profitable position for momentum decay alone. Escalating to WATCH.",
+        "AMAT: momentum_rank=0, eps_growth=null, revenue_growth=null, forward_pe=null \u2014 all data missing. Status unknown_ma. PnL=+$132.84 (+31.28%), entry 2026-05-20. Hold gate active. Watching for structural rule triggers only.",
+        "C: momentum_rank=0, all fundamentals null, status unknown_ma. PnL=+$49.16 (+9.77%), entry 2026-05-26. Hold gate active. WATCH maintained.",
+        "CAT: loss position, PnL=-$24.31 (-2.64%), entry 2026-05-06. momentum_rank=2 (top tier \u2014 well within top 30%). All structural rules passing. No sell trigger \u2014 holding.",
+        "CASH: 59.8% cash vs 5% bull-regime target. $6,158.79 idle. Cannot deploy mid-quarter (June = non-quarterly month). Next deployment window: July 1 quarterly rebalance.",
+        "BREADTH: 59.5% above 200-MA (below 60% threshold) with 8MA below 200MA \u2014 narrowing rally signal. Treat bull regime with caution despite 84% confidence.",
+        "SECTOR: ADI + AMAT + JBL in Technology/Unknown sectors \u2014 concentration manageable at current weights (~12.3%). No sector cap breach detected.",
+        "DATA QUALITY: AMAT, C, WDC all show sector=Unknown, momentum_rank=0, zero momentum scores \u2014 likely yfinance data fetch failures. These zeros should NOT be interpreted as confirmed momentum failure; treat as null/missing."
+      ],
+      "decisions": [
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "Strong fundamentals: EPS growth 110.5%, revenue growth 37.2%, forward P/E 27.9. momentum_rank=5 (top 30%). Price above 50-day MA ($412.13 vs MA $389.52). Unrealized PnL=+$28.51 (+7.43%), entry 2026-05-04. All structural rules passing. Thesis intact.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "AMAT",
+          "reason": "All fundamental and momentum data missing (null/zero) \u2014 likely yfinance data failure, not confirmed momentum collapse. Treating momentum_rank=0 as data anomaly. Unrealized PnL=+$132.84 (+31.28%), entry 2026-05-20. Hold gate active \u2014 profitable position cannot be sold on momentum decay alone. MA status unknown. No structural rules (A/B/C/D) can be confirmed due to missing data. Monitoring for structural rule triggers at next quarterly rebalance (Jul 1).",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "C",
+          "reason": "Momentum_rank=0 and all fundamentals null \u2014 data quality issue, not confirmed failure. Persistently flagged across 5+ runs. Unrealized PnL=+$49.16 (+9.77%), entry 2026-05-26. Hold gate active \u2014 profitable position with only momentum decay signal (unconfirmed due to data gaps) cannot be sold. No MA data to check Rule A. Deferring to July 1 quarterly rebalance for full structural review with clean data.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "Loss position (-$24.31, -2.64%), entry 2026-05-06, but momentum_rank=2 \u2014 top tier, no momentum decay. Price above 50-day MA ($897.63 vs MA $847.82) \u2014 Rule A not triggered. EPS growth 30.2%, revenue growth 22.2% \u2014 quality intact, Rule B not triggered. Weight 8.72% \u2014 below 20% hard cap. No structural sell rules triggered. Hold loss with strong momentum and quality.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "Strong position: EPS growth 96.2%, revenue growth 23.1%, forward P/E 25.7. momentum_rank=4 (top 30%). Price above 50-day MA ($376.89 vs MA $335.93). Unrealized PnL=+$40.31 (+11.98%), entry 2026-05-04. All structural rules passing. Thesis intact.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "Exceptional fundamentals: EPS growth 382.1%, revenue growth 21.3%, forward P/E 15.7. momentum_rank=6 (top 30%). Price well above 50-day MA ($260.90 vs MA $219.89). Unrealized PnL=+$68.97 (+15.23%), entry 2026-05-04. All structural rules passing. Thesis strongly intact.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "STLD",
+          "reason": "Solid fundamentals: EPS growth 93.1%, revenue growth 19.1%, forward P/E 15.6. momentum_rank=8 (top 30%). Price above 50-day MA ($279.55 vs MA $227.53). Unrealized PnL=+$37.38 (+15.43%), entry 2026-05-06. All structural rules passing. Steel sector thesis intact alongside NUE.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "WDC",
+          "reason": "ESCALATION from prior Tier 1 SELL flags: current portfolio data shows PnL=+$52.91 (+10.9%), entry 2026-05-22 \u2014 hold gate now applies. Prior Tier 1 SELL flags were issued under assumption of loss position; current data contradicts this. Momentum_rank=0 (data anomaly, all scores zero) and MA status unknown \u2014 cannot confirm structural rules A or B. Cannot execute Tier 1 SELL on profitable position for momentum decay alone. Deferring to July 1 quarterly rebalance for full structural review. Volatility 70.97% is elevated \u2014 flag for review.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "maintain",
+      "cash_rationale": "59.8% cash is far above the 5% bull-regime target but June is a non-quarterly month \u2014 BUYs are pipeline-blocked. Cash cannot be deployed until July 1 quarterly rebalance. Maintaining current cash level involuntarily until next quarterly window. Priority action at July rebalance: deploy $4,000-5,000 into top-ranked momentum names to approach the 95% equity target.",
+      "summary": "Day end Jun 11: WDC escalated from Tier 1 SELL to WATCH (position now profitable at +$52.91, hold gate applies); AMAT/C maintained WATCH Tier 2; ADI/JBL/NUE/STLD/CAT all HOLD with structural rules passing; $6,158 cash drag persists until July 1 quarterly rebalance.",
+      "usage": {
+        "input_tokens": 12831,
+        "output_tokens": 2428,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 8817
+      },
+      "sell_tier_summary": {
+        "tier1_execute": 0,
+        "tier2_deferred": 3
+      }
+    },
     {
       "id": "RUN-20260611-1706",
       "timestamp": "2026-06-11T17:06:49Z",
