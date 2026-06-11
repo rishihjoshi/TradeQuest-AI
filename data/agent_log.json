@@ -1,7 +1,104 @@
 {
-  "last_run": "2026-06-10T23:08:45Z",
-  "last_type": "day_end",
+  "last_run": "2026-06-11T17:06:49Z",
+  "last_type": "day_start",
   "runs": [
+    {
+      "id": "RUN-20260611-1706",
+      "timestamp": "2026-06-11T17:06:49Z",
+      "type": "day_start",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is in bull regime with 79% confidence, supported by VIX at 13.0, SPY above 200-MA, and breadth at 61.3% \u2014 just above the 60% healthy threshold though the 8MA is trending below the 200MA, indicating softening breadth momentum. The portfolio is severely under-invested at 61.4% cash vs a 5% bull-regime target, with only 8 positions held and $6,158 idle that cannot be deployed until the July quarterly rebalance. WDC remains the sole loss position requiring Tier 1 action, blocked from execution yesterday \u2014 this must clear today.",
+      "regime": "bull",
+      "regime_confidence": 0.78,
+      "flags": [
+        "WDC: Tier 1 SELL blocked again yesterday (order skipped by risk gate) \u2014 loss position (-$9.50, -1.96%), sector=Unknown, eps_growth=null, revenue_growth=null, ma_50d=null, momentum_rank=0, volatility_30d=69.2% \u2014 fails quality, risk, momentum, and MA filters; 5+ consecutive flags; must execute at next open",
+        "C: momentum_rank=15, confirmed outside top 30% for 5+ consecutive runs \u2014 but PnL=+$30.40 (+6.04%), entry 2026-05-26, held <12 months; WATCH only per Rule E hold gate \u2014 no sell action in non-quarterly month",
+        "CAT: loss position (-$65.78, -7.13%), entry 2026-05-06 \u2014 however momentum_rank=2 (strong) and price is above MA50 ($856.16 vs $839.66); no structural sell rule triggered; monitor closely as largest loss in portfolio",
+        "CASH: 61.4% cash vs 5% bull-regime target \u2014 $6,158 idle; cannot deploy mid-quarter (June is non-quarterly); must address at July 1 quarterly rebalance",
+        "SECTOR CON: Technology holdings (ADI + AMAT + JBL) represent approximately 12.3% of total portfolio value, well within 30% cap \u2014 no immediate concentration risk, but sector skew should be reviewed at July rebalance",
+        "BREADTH: 8MA trending below 200MA despite current breadth at 61.3% \u2014 early warning signal; not actionable but warrants reduced confidence in bull regime persistence",
+        "AMAT: volatility_30d=59.7%, approaching risk filter threshold; momentum_rank=1 with +$67.32 gain (+15.85%) \u2014 no sell rule triggered, but elevated vol warrants monitoring against the 90th percentile threshold"
+      ],
+      "decisions": [
+        {
+          "action": "SELL",
+          "symbol": "WDC",
+          "reason": "Loss position: unrealized PnL = -$9.50 (-1.96%), entry 2026-05-22. Fails quality filter (eps_growth=null, revenue_growth=null), fails risk filter (volatility_30d=69.2%), fails momentum filter (rank=0), MA status unknown. Sector=Unknown. Tier 1 SELL per Rule E (momentum decay, loss position) and Rule B-adjacent (quality failure via null data conservative treatment). Fifth consecutive flagging. Prior day's execution was blocked \u2014 re-issuing with urgency next_open. This is a tax-loss harvest candidate with no redeeming data quality signal.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "C",
+          "reason": "Unrealized PnL = +$30.40 (+6.04%), entry 2026-05-26. momentum_rank=15, confirmed outside top 30% for 5+ consecutive runs. However, position is at a gain and held <12 months \u2014 Rule E hold gate applies: WATCH only, defer to next_rebalance (July 1). Price ($133.38) is above MA50 ($125.57), no trend break. Quality filters pass (EPS +56.1%, Rev +15.9%). Cannot issue Tier 2 SELL in non-quarterly month (June). Maintain WATCH.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "Loss position (-$65.78, -7.13%, entry 2026-05-06) but momentum_rank=2 (strong, top 30%), price $856.16 above MA50 $839.66 (Rule A not triggered), EPS growth +30.2% and revenue growth +22.2% (quality intact), forward P/E 28.4 (valuation passes). No structural sell rule triggered. The loss is a mark-to-market drawdown on a fundamentally strong, high-momentum position. HOLD \u2014 do not sell a loss position that still passes all four filters.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "AMAT",
+          "reason": "Strong position: unrealized PnL = +$67.32 (+15.85%), entry 2026-05-20. momentum_rank=1 (top of universe), price $492.00 well above MA50 $412.01. Quality passes (EPS +33.5%, Rev +11.4%). Volatility_30d=59.7% is elevated \u2014 monitor against 90th percentile threshold but no breach confirmed. No structural rule triggered. HOLD.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "PnL = +$4.38 (+1.14%), entry 2026-05-04. momentum_rank=4, price $388.00 above MA50 $385.78 (narrow margin \u2014 monitor). Quality strong (EPS +110.5%, Rev +37.2%). Forward P/E 26.6. No rules triggered. HOLD.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "PnL = +$15.78 (+4.69%), entry 2026-05-04. momentum_rank=3, price $352.36 above MA50 $331.80. Quality strong (EPS +96.2%, Rev +23.1%). No rules triggered. HOLD.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "PnL = +$48.15 (+10.63%), entry 2026-05-04. momentum_rank=5, price $250.49 above MA50 $216.35. Quality exceptional (EPS +382.1%, Rev +21.3%). No rules triggered. HOLD.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "STLD",
+          "reason": "PnL = +$26.44 (+10.92%), entry 2026-05-06. momentum_rank=6, price $268.61 above MA50 $223.62. Quality strong (EPS +93.1%, Rev +19.1%). No rules triggered. HOLD.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "maintain",
+      "cash_rationale": "Cash at 61.4% is drastically above the 5% bull-regime target but cannot be deployed in June (non-quarterly month \u2014 BUY orders are code-blocked). Maintaining current cash level until July 1 quarterly rebalance, at which point the full rebalance should deploy approximately $5,500+ into 4-6 new top-momentum positions to reach the ~10-12 position target and approach the 95% equity / 5% cash bull-regime allocation.",
+      "summary": "Day start Jun 11: WDC Tier 1 SELL re-issued for next_open (5th consecutive flag, loss position, all filters failing); C maintained WATCH Tier 2 (profitable, hold gate active); all other 6 holdings HOLD with no structural rules triggered; 61.4% cash remains idle until July 1 rebalance.",
+      "usage": {
+        "input_tokens": 12147,
+        "output_tokens": 2203,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 8817
+      },
+      "sell_tier_summary": {
+        "tier1_execute": 1,
+        "tier2_deferred": 1
+      }
+    },
     {
       "id": "RUN-20260610-2308",
       "timestamp": "2026-06-10T23:08:45Z",
