@@ -1,7 +1,104 @@
 {
-  "last_run": "2026-06-16T18:17:58Z",
-  "last_type": "day_start",
+  "last_run": "2026-06-16T23:04:44Z",
+  "last_type": "day_end",
   "runs": [
+    {
+      "id": "RUN-20260616-2304",
+      "timestamp": "2026-06-16T23:04:44Z",
+      "type": "day_end",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Bull regime confirmed at 89% confidence with VIX 14.5, SPY above 200-MA, and breadth at 62.7% \u2014 all three signals aligned bullish. All 8 holdings remain profitable (total unrealized PnL +$613.32, +6.22%), with no structural sell rules triggered across the portfolio. The critical issue remains severe cash drag at 58.53% vs the 5% bull-regime target, but mid-quarter buys are pipeline-blocked until the July 1 quarterly rebalance.",
+      "regime": "bull",
+      "regime_confidence": 0.89,
+      "flags": [
+        "CASH: 58.53% cash vs 5% bull-regime target \u2014 severe underinvestment persists; July 1 quarterly rebalance is the earliest opportunity to deploy capital into top-momentum names (5+ consecutive flags)",
+        "AMAT: momentum_rank=0 due to data pipeline failure (5+ consecutive runs); position is profitable (+$146.83, +34.57%, entry 2026-05-20); unknown_ma status \u2014 cannot confirm Rule A; hold gate active, WATCH maintained",
+        "C: momentum_rank=0 due to data pipeline failure (5+ consecutive runs); position is profitable (+$68.84, +13.68%, entry 2026-05-26); unknown_ma status \u2014 cannot confirm Rule A; hold gate active, WATCH maintained",
+        "WDC: momentum_rank=0 due to data pipeline failure (6+ consecutive runs); position is profitable (+$205.20, +42.27%, entry 2026-05-22); unknown_ma status; volatility_30d=0.8406 \u2014 approaching top-10% vol threshold; hold gate active, WATCH maintained",
+        "STLD: momentum_rank=11 \u2014 outside top-30% threshold for 4+ consecutive runs; position is profitable (+$32.12, +13.26%, entry 2026-05-06); price $274.29 well above MA $233.36 (Rule A clear); no structural rule triggered; hold gate active, WATCH maintained",
+        "SECTOR CON: Technology sector (ADI + JBL + AMAT) ~13.8% of total portfolio by weight; Basic Materials (NUE + STLD) ~7.5% \u2014 no sector cap breach at current invested weights; note sector caps apply to invested weights which are suppressed by extreme cash drag (5+ consecutive flags)",
+        "WDC VOLATILITY: volatility_30d=0.8406 is extremely elevated; risk filter (below 90th percentile) may be breached \u2014 monitor at July 1 rebalance for potential risk-filter failure"
+      ],
+      "decisions": [
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "All structural rules clear: price $416.07 above MA $233.36 (Rule A pass), EPS growth +110.5% (Rule B pass), weight 3.95% (Rule C pass), PnL +8.46% in 43 days (Rule D pass \u2014 not >60% in <60d), momentum_rank=6 (top 30% pass \u2014 Rule E not triggered). Thesis intact: strong semi analog momentum, quality filters passing, bull regime support.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "AMAT",
+          "reason": "Unrealized PnL +$146.83 (+34.57%), entry 2026-05-20. momentum_rank=0 due to data pipeline failure \u2014 5+ consecutive runs with zeroed momentum data; this is a data artifact not a confirmed momentum failure. Rule A cannot be evaluated (ma_50d=null, status=unknown_ma). No quality data available (eps_growth=null, revenue_growth=null). Per v2.2 hold gate: position is profitable, no structural rule (A/B/C/D) can be confirmed triggered; Rule E cannot be confirmed as genuine momentum decay vs data failure. Maintaining WATCH; deferring to July 1 quarterly rebalance for full re-evaluation with clean data.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "C",
+          "reason": "Unrealized PnL +$68.84 (+13.68%), entry 2026-05-26. momentum_rank=0 due to data pipeline failure \u2014 5+ consecutive runs with zeroed momentum data; data artifact not confirmed decay. Rule A cannot be evaluated (ma_50d=null, status=unknown_ma). No quality data (eps_growth=null). Per v2.2 hold gate: profitable position, no structural rule confirmed triggered. Maintaining WATCH; defer to July 1 quarterly rebalance.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "All structural rules clear: price $945.56 well above MA $859.54 (Rule A pass), EPS growth +30.2% positive (Rule B pass), weight 8.99% (Rule C pass), PnL +2.56% in 41 days (Rule D pass), momentum_rank=3 (top 30% pass \u2014 Rule E not triggered). Thesis intact: strong industrial momentum with 12M return of 144.6%, quality metrics solid. Prior flag (3 runs) resolved \u2014 momentum rank holding top-3.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "All structural rules clear: price $375.51 above MA $342.75 (Rule A pass), EPS growth +96.2% (Rule B pass), weight 3.57% (Rule C pass), PnL +11.57% in 43 days (Rule D pass), momentum_rank=4 (top 30% pass). Thesis intact: strong tech-adjacent momentum, excellent quality metrics, valuation reasonable at 25.4x forward PE.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "All structural rules clear: price $259.08 above MA $225.31 (Rule A pass), EPS growth +382.1% (Rule B pass \u2014 exceptional), weight 4.92% (Rule C pass), PnL +14.43% in 43 days (Rule D pass), momentum_rank=8 (top 30% pass \u2014 rank 8 of ~500 = top 1.6%). Thesis intact: materials momentum with extraordinary earnings growth, low forward PE 15.6x provides value buffer.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "STLD",
+          "reason": "Unrealized PnL +$32.12 (+13.26%), entry 2026-05-06. momentum_rank=11 \u2014 outside top-30% threshold (top 150 of ~500) for 4+ consecutive confirmed runs; Rule E momentum decay signal active. However position is profitable, so v2.2 hold gate applies: CANNOT sell due to momentum decay alone. Rule A clear (price $274.29 >> MA $233.36). Rule B clear (EPS growth +93.1%). Rule C clear (weight 2.61%). Rule D clear (not >60% in <60d). No structural rule triggered. Deferring to July 1 quarterly rebalance \u2014 if still outside top-30% at that date, eligible for Tier 2 SELL with LTCG consideration (held ~56 days by July 1, not yet 12 months).",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "WDC",
+          "reason": "Unrealized PnL +$205.20 (+42.27%), entry 2026-05-22. momentum_rank=0 due to data pipeline failure \u2014 6+ consecutive runs; data artifact not confirmed decay. Rule A cannot be evaluated (ma_50d=null, unknown_ma). No quality data (eps_growth=null). Volatility_30d=0.8406 is extremely high \u2014 risk filter breach possible but cannot confirm 90th percentile threshold without universe comparison. Per v2.2 hold gate: profitable position, no structural rule (A/B/C/D) confirmed triggered. Maintaining WATCH; flag elevated volatility for priority review at July 1 rebalance \u2014 risk filter failure could become Rule-based exit.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "maintain",
+      "cash_rationale": "Cash at 58.53% is severely above the 5% bull-regime target, but this is a non-quarterly month (June) \u2014 the execution pipeline blocks all BUY orders until July 1. Cash cannot be reduced mid-quarter per strategy rules. The July 1 quarterly rebalance is 11 trading days away and is the correct vehicle to deploy capital into the top-10 momentum names. No action warranted today; flagging for priority deployment at next quarterly.",
+      "summary": "Jun 16 day_end: bull regime confirmed (89%), all 8 holdings profitable with no structural sell rules triggered; 4 WATCHes maintained (AMAT, C, WDC on data-pipeline zeros, STLD on momentum decay); cash drag at 58.53% persists pending July 1 quarterly rebalance deployment.",
+      "usage": {
+        "input_tokens": 12807,
+        "output_tokens": 2611,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 8817
+      },
+      "sell_tier_summary": {
+        "tier1_execute": 0,
+        "tier2_deferred": 4
+      }
+    },
     {
       "id": "RUN-20260616-1817",
       "timestamp": "2026-06-16T18:17:58Z",
