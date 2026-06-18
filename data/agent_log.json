@@ -1,7 +1,106 @@
 {
-  "last_run": "2026-06-17T22:58:56Z",
-  "last_type": "day_end",
+  "last_run": "2026-06-18T16:46:03Z",
+  "last_type": "day_start",
   "runs": [
+    {
+      "id": "RUN-20260618-1646",
+      "timestamp": "2026-06-18T16:46:03Z",
+      "type": "day_start",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is in a healthy bull regime (84% confidence, breadth 64.1%) with all 8 holdings profitable (+$689.71 unrealized PnL, +6.99% total). The critical structural issue remains severe cash drag at 58.11% vs 5% bull-regime target \u2014 $6,158 is sitting idle while the bull market runs. Three positions (AMAT, C, WDC) have persistent data pipeline failures (momentum_rank=0) that are suppressing accurate filter assessments, and STLD has been borderline on momentum rank for 5+ consecutive runs.",
+      "regime": "bull",
+      "regime_confidence": 0.84,
+      "flags": [
+        "CASH: 58.11% cash ($6,158.79) vs 5% bull-regime target \u2014 severe cash drag persists for 5+ consecutive runs; next quarterly rebalance (2026-07-01) is the earliest opportunity to deploy capital into top-momentum names",
+        "AMAT: momentum_rank=0 for 6+ consecutive runs \u2014 data pipeline failure masking true rank; position +42.93% (+$182.32, entry 2026-05-20); no structural sell rule triggered; WATCH maintained pending pipeline fix",
+        "C: momentum_rank=0 for 6+ consecutive runs \u2014 data pipeline failure; position +14.64% (+$73.68, entry 2026-05-26); no structural sell rule triggered; WATCH maintained",
+        "WDC: momentum_rank=0 for 7+ consecutive runs \u2014 data pipeline failure; position +51.59% (+$250.49, entry 2026-05-22); volatility_30d=0.8385 is extremely elevated (above 90th pct threshold \u2014 Rule 4 risk flag); hold gate active as position is profitable; WATCH maintained",
+        "STLD: momentum_rank=9 for 5+ consecutive runs \u2014 borderline outside top-30% threshold; position +8.58% (+$20.77, entry 2026-05-06); above MA50 ($262.94 vs $235.32); quality passes (EPS +93.1%, Rev +19.1%); WATCH maintained",
+        "WDC VOLATILITY: volatility_30d=0.8385 significantly exceeds typical 90th-percentile threshold \u2014 Risk Filter (Filter 4) concern; position is profitable so hold gate applies; flag for quarterly review on 2026-07-01",
+        "SECTOR CONCENTRATION: Basic Materials holds NUE + STLD = 2 positions; Technology holds ADI + JBL = 2 positions; with only 8 holdings and 58% cash the portfolio is significantly under-deployed relative to bull-regime targets",
+        "NUE: momentum_rank=8 \u2014 approaching watch threshold (top 30% cutoff typically ~rank 5-6 in a 20-name screened list); position +11.56% (+$52.37, entry 2026-05-04); above MA50 ($252.60 vs $227.10); quality strong (EPS +382.1%); monitor for further rank deterioration",
+        "PARABOLIC WATCH \u2014 WDC: up 51.59% since entry 2026-05-22 (27 calendar days) \u2014 approaching Rule D parabolic threshold (>60% in <60 days); if price reaches ~$776 (+60% from $485.50 cost basis), Rule D triggers half-position sell"
+      ],
+      "decisions": [
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "Strong position: +8.57% (+$32.88, entry 2026-05-04), above MA50 ($416.50 vs $397.30), momentum_rank=7 within top 30%, quality excellent (EPS +110.5%, Rev +37.2%), forward P/E 28.1 well below 40 cap. No structural sell rule triggered.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "AMAT",
+          "reason": "Position profitable +42.93% (+$182.32, entry 2026-05-20). momentum_rank=0 for 6+ consecutive runs \u2014 confirmed data pipeline failure, not genuine momentum decay. MA50 data also unavailable (unknown_ma status). All quality/valuation data null. Cannot apply Rule E or Rule A without reliable data. Hold gate active \u2014 profitable position immune to momentum-decay sell. Maintain WATCH pending data pipeline resolution at quarterly rebalance 2026-07-01.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "C",
+          "reason": "Position profitable +14.64% (+$73.68, entry 2026-05-26). momentum_rank=0 for 6+ consecutive runs \u2014 data pipeline failure. MA50 null, quality data null. Hold gate active \u2014 profitable position cannot be sold on momentum decay alone. Maintain WATCH; reassess at quarterly rebalance 2026-07-01.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "Solid position: +3.69% (+$33.98, entry 2026-05-06), above MA50 ($955.92 vs $864.03 \u2014 strong 10.6% buffer), momentum_rank=2 (top tier), quality excellent (EPS +30.2%, Rev +22.2%), forward P/E 31.8. No structural sell rule triggered. Highest weight at 9.02% \u2014 below 20% hard cap.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "Strong position: +12.84% (+$43.22, entry 2026-05-04), above MA50 ($379.80 vs $344.91), momentum_rank=4, quality strong (EPS +96.2%, Rev +23.1%), forward P/E 25.4. No structural sell rule triggered.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "Good position: +11.56% (+$52.37, entry 2026-05-04), above MA50 ($252.60 vs $227.10), momentum_rank=8 \u2014 still within top 30% but declining; quality exceptional (EPS +382.1%, Rev +21.3%), forward P/E 15.2. Monitor rank \u2014 if rank deteriorates below top 30% for 5+ consecutive days, Rule E WATCH would apply. No action today.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "STLD",
+          "reason": "Position profitable +8.58% (+$20.77, entry 2026-05-06). momentum_rank=9 confirmed outside top-30% for 5+ consecutive runs \u2014 Rule E threshold met. However, position is at a gain, so hold gate applies: cannot sell on momentum decay alone (Rule E, PnL \u2265 0). Above MA50 ($262.94 vs $235.32), quality intact (EPS +93.1%, Rev +19.1%). Defer to quarterly rebalance 2026-07-01 for LTCG-eligible exit evaluation.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "WDC",
+          "reason": "Position profitable +51.59% (+$250.49, entry 2026-05-22). momentum_rank=0 for 7+ consecutive runs \u2014 data pipeline failure. Volatility_30d=0.8385 is extremely elevated (Risk Filter concern). MA50 unavailable. PARABOLIC ALERT: at $735.99 vs avg_cost $485.50, position is up 51.59% in ~27 days \u2014 approaching Rule D threshold of >60% in <60 days. If price reaches ~$776 (+60% from cost), Rule D triggers mandatory half-position sell regardless of profit status. Hold gate active for momentum-decay component. Monitor intraday for Rule D parabolic trigger.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "decrease",
+      "cash_rationale": "Cash at 58.11% ($6,158.79) is massively above the 5% bull-regime target. No new buys are permitted in June (non-quarterly month \u2014 execution lock enforced). Cash reduction must wait until the quarterly rebalance on 2026-07-01 (July is a quarterly month), at which point the full S&P 500 screen should be run and capital deployed into top-10-12 momentum names to reach ~95% equity exposure as required by bull-regime allocation.",
+      "summary": "Jun 18 day_start: bull regime 84%, all 8 holdings profitable, no structural sell rules triggered \u2014 4 WATCHes maintained (AMAT/C/WDC data pipeline failures, STLD momentum decay hold-gated), WDC approaching Rule D parabolic threshold at +51.59%, severe cash drag of 58% to be addressed at Jul 1 quarterly rebalance",
+      "usage": {
+        "input_tokens": 12098,
+        "output_tokens": 2462,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 8817
+      },
+      "sell_tier_summary": {
+        "tier1_execute": 0,
+        "tier2_deferred": 4
+      }
+    },
     {
       "id": "RUN-20260617-2258",
       "timestamp": "2026-06-17T22:58:56Z",
