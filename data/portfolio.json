@@ -37,7 +37,7 @@
     "avg_loss_pct": -0.6,
     "sharpe_ratio": 0.0,
     "max_drawdown_pct": 0.09,
-    "last_updated": "2026-06-19T16:19:22Z"
+    "last_updated": "2026-06-19T22:32:00Z"
   },
   "filter_status": {
     "momentum": {
@@ -646,7 +646,7 @@
       "eps_growth": 96.2,
       "revenue_growth": 23.1,
       "forward_pe": 25.2,
-      "volatility_30d": 0.4925,
+      "volatility_30d": 0.4847,
       "entry_date": "2026-05-04",
       "ma_50d": 348.65,
       "status": "above_ma",
@@ -712,7 +712,7 @@
       "eps_growth": null,
       "revenue_growth": null,
       "forward_pe": null,
-      "volatility_30d": 0.8505,
+      "volatility_30d": 0.8411,
       "entry_date": "2026-05-22",
       "ma_50d": null,
       "status": "unknown_ma",

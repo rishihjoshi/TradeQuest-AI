@@ -1,7 +1,104 @@
 {
-  "last_run": "2026-06-19T16:18:36Z",
-  "last_type": "day_start",
+  "last_run": "2026-06-19T22:32:48Z",
+  "last_type": "day_end",
   "runs": [
+    {
+      "id": "RUN-20260619-2232",
+      "timestamp": "2026-06-19T22:32:48Z",
+      "type": "day_end",
+      "model": "claude-sonnet-4-6",
+      "assessment": "All 8 holdings are profitable with total unrealized PnL of +$714.87 (+7.25%). Bull regime confirmed at 87% confidence with healthy breadth at 60.9% above 200-day MA. The critical issue remains severe cash drag at 57.97% vs the 5% bull-regime target \u2014 nearly $6,159 is sitting idle while the portfolio is significantly underdeployed. Data pipeline failures continue for AMAT, C, and WDC (momentum_rank=0) but all three are deeply profitable, so hold gate applies. July 1 quarterly rebalance is 12 days away and is the appropriate vehicle to deploy cash and rotate positions.",
+      "regime": "bull",
+      "regime_confidence": 0.87,
+      "flags": [
+        "CASH: 57.97% cash ($6,158.79) vs 5% bull-regime target \u2014 severe drag, 6th consecutive flag. July 1 quarterly rebalance is the correct deployment mechanism \u2014 no mid-quarter buys permitted in June.",
+        "AMAT: momentum_rank=0 for 8+ consecutive runs (data pipeline failure, not actual decay) \u2014 position up +$192.43 (+45.31%) from 2026-05-20 entry, hold gate active, WATCH maintained.",
+        "C: momentum_rank=0 for 7+ consecutive runs (data pipeline failure) \u2014 position up +$69.12 (+13.74%) from 2026-05-26 entry, hold gate active, WATCH maintained.",
+        "WDC: momentum_rank=0 for 8+ consecutive runs (data pipeline failure) \u2014 position up +$260.73 (+53.70%) from 2026-05-22 entry, hold gate active. Volatility_30d=0.8411 is substantially elevated (flagged 6 consecutive runs) but no structural MA break confirmed (ma_50d=null). WATCH maintained.",
+        "WDC VOLATILITY: volatility_30d=0.8411 annualized \u2014 top 10% risk threshold likely breached. No forced exit without MA data to confirm Rule A. Sentinel will auto-check Rule A on next run.",
+        "STLD: momentum_rank=11 (outside top 30%) for 5+ consecutive days \u2014 position up +$7.74 (+3.20%) from 2026-05-06 entry, hold gate active per Rule E asymmetry, WATCH maintained.",
+        "SECTOR CONCENTRATION: Basic Materials (NUE + STLD) at ~6.9% combined \u2014 within 30% cap. Technology (ADI + JBL + AMAT) at ~17.4% \u2014 within cap. No breach. Monitor at July rebalance."
+      ],
+      "decisions": [
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "Analog Devices above 50-day MA ($434.46 vs MA $400.81), momentum_rank=8 (top 30% confirmed), EPS growth 110.5%, revenue growth 37.2%, forward P/E 29.4 \u2014 all filters passing. Unrealized PnL +$50.84 (+13.25%) from 2026-05-04 entry. Thesis intact.",
+          "rule_triggered": null,
+          "sell_tier": null,
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "AMAT",
+          "reason": "momentum_rank=0 for 8+ consecutive runs \u2014 assessed as data pipeline failure, not confirmed momentum decay. Position up +$192.43 (+45.31%) from 2026-05-20 entry. Hold gate active \u2014 profitable position may not be sold on momentum decay alone (Rule E). No MA data available (status=unknown_ma), no quality data (eps_growth=null, revenue_growth=null) \u2014 cannot confirm Rules A or B. Volatility_30d=0.6708 elevated but below WDC level. Approaching Rule D threshold (+45.31% in ~30 days vs 60% trigger). Monitor closely for parabolic blow-off.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "C",
+          "reason": "momentum_rank=0 for 7+ consecutive runs \u2014 assessed as data pipeline failure. Position up +$69.12 (+13.74%) from 2026-05-26 entry. Hold gate active \u2014 profitable position with only momentum decay signal (Rule E). No MA data (status=unknown_ma), no quality data available. No structural rules triggered. Defer to July 1 quarterly rebalance for full screening.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "Caterpillar above 50-day MA ($985.82 vs MA $872.94), momentum_rank=3 (strong top 30%), EPS growth 30.2%, revenue growth 22.2%, forward P/E 32.8 \u2014 all filters passing. Unrealized PnL +$63.88 (+6.93%) from 2026-05-06 entry. Largest position at 9.28% weight \u2014 well within 20% hard cap. Thesis intact.",
+          "rule_triggered": null,
+          "sell_tier": null,
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "Jabil above 50-day MA ($371.88 vs MA $348.65), momentum_rank=4 (top 30%), EPS growth 96.2%, revenue growth 23.1%, forward P/E 25.2 \u2014 all filters passing. Unrealized PnL +$35.30 (+10.49%) from 2026-05-04 entry. Thesis intact.",
+          "rule_triggered": null,
+          "sell_tier": null,
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "Nucor above 50-day MA ($243.83 vs MA $229.92), momentum_rank=7 (top 30%), EPS growth 382.1%, revenue growth 21.3%, forward P/E 14.7 \u2014 all filters passing. Unrealized PnL +$34.83 (+7.69%) from 2026-05-04 entry. Thesis intact.",
+          "rule_triggered": null,
+          "sell_tier": null,
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "STLD",
+          "reason": "momentum_rank=11 for 5+ consecutive days \u2014 outside top 30% threshold, confirmed momentum decay. However position is at a gain: unrealized PnL +$7.74 (+3.20%) from 2026-05-06 entry. Hold gate active per Rule E asymmetry \u2014 profitable positions may not be sold on momentum decay alone. Rule A: price $249.91 above MA $238.42 \u2014 no trend break. Rules B/D: not triggered. Flagging for review at July 1 quarterly rebalance where exit may be warranted if still outside top 30%.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "WDC",
+          "reason": "momentum_rank=0 for 8+ consecutive runs (data pipeline failure). Position up +$260.73 (+53.70%) from 2026-05-22 entry \u2014 approaching Rule D parabolic threshold (60% gain in <60 days). Hold gate active on momentum decay. Rule A cannot be confirmed (ma_50d=null, status=unknown_ma). Volatility_30d=0.8411 is materially elevated \u2014 flagged 6 consecutive runs \u2014 but no hard-cap breach (weight=7.02%). Critical watch: if gain reaches +60% (price ~$776.80) Rule D triggers \u2014 SELL HALF at next_open. Continue monitoring daily.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "maintain",
+      "cash_rationale": "Cash at 57.97% is severely above the 5% bull-regime target but June is a non-quarterly month \u2014 BUY orders are blocked by the execution pipeline. The correct and only mechanism to deploy this cash is the July 1 quarterly rebalance (12 days away). At that point, full screening will identify top 10-12 momentum names and deploy capital systematically. Forcing mid-quarter purchases would violate the quarterly lock that was implemented specifically to prevent the over-trading pattern (50 trades in 6 weeks) that caused this cash drag in the first place. Maintain until July 1.",
+      "summary": "Jun 19 day_end: bull regime 87%, all 8 holdings profitable (+$714.87), no Tier 1 sell signals \u2014 WDC approaching Rule D parabolic threshold at +53.70%, 3 WATCH flags on data-pipeline failures (AMAT/C/WDC), STLD WATCH on momentum decay \u2014 cash deployment deferred to July 1 quarterly rebalance.",
+      "usage": {
+        "input_tokens": 12881,
+        "output_tokens": 2490,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 8817
+      },
+      "sell_tier_summary": {
+        "tier1_execute": 0,
+        "tier2_deferred": 4
+      }
+    },
     {
       "id": "RUN-20260619-1618",
       "timestamp": "2026-06-19T16:18:36Z",
