@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-06-18T23:18:26Z",
-  "mode": "post_close",
+  "timestamp": "2026-06-19T16:19:22Z",
+  "mode": "market_open",
   "orders_placed": [],
   "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 57.89
+  "cash_pct_after": 57.97
 }
