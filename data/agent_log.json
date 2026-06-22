@@ -1,7 +1,105 @@
 {
-  "last_run": "2026-06-19T22:32:48Z",
-  "last_type": "day_end",
+  "last_run": "2026-06-22T18:05:22Z",
+  "last_type": "day_start",
   "runs": [
+    {
+      "id": "RUN-20260622-1805",
+      "timestamp": "2026-06-22T18:05:22Z",
+      "type": "day_start",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is fully profitable across all 8 holdings (+$714.87 unrealized, +7.25%) in a confirmed bull regime (87% confidence, breadth 60.9%, VIX 14.7). The critical structural issue remains the severe cash drag at 57.97% vs the 5% bull-regime target \u2014 only $4,465 of ~$10,624 is deployed. AMAT, C, and WDC continue to show momentum_rank=0 due to a confirmed data pipeline failure (not actual momentum deterioration), while WDC is approaching Rule D parabolic threshold at +53.70% gain in ~29 days.",
+      "regime": "bull",
+      "regime_confidence": 0.87,
+      "flags": [
+        "CASH: 57.97% cash ($6,158.79) vs 5% bull-regime target \u2014 severe drag persisting 7th consecutive run; no mid-quarter buys permitted until Jul 1 quarterly rebalance",
+        "WDC: +53.70% gain since entry 2026-05-22 (~29 days) \u2014 approaching Rule D parabolic threshold (60% in <60 days); monitor closely today, threshold could be breached intraday",
+        "AMAT: momentum_rank=0 for 9+ consecutive runs \u2014 confirmed data pipeline failure, not actual decay; position profitable at +$192.43 (+45.31%) since 2026-05-20; no action warranted",
+        "C: momentum_rank=0 for 8+ consecutive runs \u2014 confirmed data pipeline failure; position profitable at +$69.12 (+13.74%) since 2026-05-26; no action warranted",
+        "WDC VOLATILITY: volatility_30d=0.8411 annualized \u2014 exceeds 90th percentile risk threshold (Rule: risk filter); position profitable at +$260.73 (+53.70%), structural rule not yet triggered but elevated tail risk",
+        "STLD: momentum_rank=11 \u2014 outside top 30% threshold; position profitable at +$7.74 (+3.20%) since 2026-05-06; June is non-quarterly month, WATCH only, no Tier 2 sell permitted",
+        "SECTOR CONCENTRATION: Technology (ADI + AMAT + JBL) represents approximately 13.5% of total portfolio value but 32.6% of invested equity \u2014 above 30% sector cap on invested basis; flag for correction at Jul 1 rebalance",
+        "DATA PIPELINE: AMAT, C, WDC all show sector=Unknown, eps_growth=null, revenue_growth=null, forward_pe=null, ma_50d=null \u2014 enrichment data missing for 3 of 8 holdings; quality and MA checks cannot be fully evaluated for these positions"
+      ],
+      "decisions": [
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "All filters passing: momentum_rank=8 (top 30%), EPS growth +110.5%, revenue growth +37.2%, forward P/E 29.4, price above 50-day MA ($434.46 vs $400.81), volatility within bounds. Unrealized PnL +$50.84 (+13.25%) since 2026-05-04. No sell rules triggered.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "AMAT",
+          "reason": "momentum_rank=0 for 9+ consecutive runs \u2014 confirmed data pipeline failure, not actual momentum decay. Position profitable at +$192.43 (+45.31%) since 2026-05-20. Structural rules (A/B/C/D) cannot be fully evaluated due to missing MA, EPS, revenue data. Hold gate active: profitable position cannot be sold on momentum decay alone. Deferring to Jul 1 quarterly rebalance for data resolution and full evaluation. Approaching Rule D parabolic watch level.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "C",
+          "reason": "momentum_rank=0 for 8+ consecutive runs \u2014 confirmed data pipeline failure, not actual decay. Position profitable at +$69.12 (+13.74%) since 2026-05-26. MA and quality data unavailable. Hold gate active: profitable position immune to momentum decay sell. Monitor for structural rule triggers at Jul 1 rebalance.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "Strong position: momentum_rank=3, EPS growth +30.2%, revenue growth +22.2%, forward P/E 32.8, price well above 50-day MA ($985.82 vs $872.94). Unrealized PnL +$63.88 (+6.93%) since 2026-05-06. All four filters passing. No sell rules triggered.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "All filters passing: momentum_rank=4, EPS growth +96.2%, revenue growth +23.1%, forward P/E 25.2, price above 50-day MA ($371.88 vs $348.65). Unrealized PnL +$35.30 (+10.49%) since 2026-05-04. No sell rules triggered.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "All filters passing: momentum_rank=7 (within top 30%), EPS growth +382.1%, revenue growth +21.3%, forward P/E 14.7, price above 50-day MA ($243.83 vs $229.92). Unrealized PnL +$34.83 (+7.69%) since 2026-05-04. No sell rules triggered.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "STLD",
+          "reason": "momentum_rank=11 \u2014 outside top 30% threshold, confirmed across multiple runs (5+ days). Position profitable at +$7.74 (+3.20%) since 2026-05-06. Hold gate active: profitable position cannot be sold on momentum decay alone in a non-quarterly month. June is non-quarterly; Tier 2 sell blocked by code. Structural rules not triggered (price $249.91 vs MA $238.42 \u2014 above MA, EPS +93.1%, revenue +19.1%). Deferring to Jul 1 quarterly rebalance for evaluation.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "WDC",
+          "reason": "Position profitable at +$260.73 (+53.70%) since 2026-05-22 (~29 days). Approaching Rule D parabolic threshold (60% gain in <60 days) \u2014 currently at 53.70% with ~31 days remaining in the window. momentum_rank=0 is confirmed data pipeline failure. volatility_30d=0.8411 exceeds 90th percentile risk threshold but this is a monitoring flag, not a structural sell trigger by itself. MA data unavailable. No structural rule yet triggered. If price reaches approximately $776 today (+4% from $746.23), Rule D threshold would be breached \u2014 monitor intraday. Hold gate active for momentum decay.",
+          "rule_triggered": "profit_take",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "maintain",
+      "cash_rationale": "Cash at 57.97% is a severe drag vs 5% bull-regime target, but June is a non-quarterly month and BUY orders are code-blocked. No Tier 1 SELL proceeds can be redeployed mid-quarter. The cash imbalance will be corrected at the Jul 1 quarterly rebalance when new BUY orders can deploy the idle capital into the top 10-12 momentum names. No cash action is available or permitted today.",
+      "summary": "Jun 20 day_start: bull regime 87%, all 8 holdings profitable (+$714.87), WDC approaching Rule D parabolic threshold at +53.70% \u2014 watch for ~$776 trigger intraday; no Tier 1 sell signals active, cash drag persists at 57.97% pending Jul 1 rebalance.",
+      "usage": {
+        "input_tokens": 12129,
+        "output_tokens": 2259,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 8817
+      },
+      "sell_tier_summary": {
+        "tier1_execute": 0,
+        "tier2_deferred": 4
+      }
+    },
     {
       "id": "RUN-20260619-2232",
       "timestamp": "2026-06-19T22:32:48Z",
