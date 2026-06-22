@@ -1,7 +1,285 @@
 {
-  "generated_at": "2026-06-18T16:46:14Z",
+  "generated_at": "2026-06-22T17:59:20Z",
   "article_count": 30,
   "articles": [
+    {
+      "id": "60008042",
+      "headline": "Micron Stock Climbs Over 3% In Pre-Market: What's Going On?",
+      "summary": "Micron stock rose after Bernstein lifted its price target to $1,300, citing strong memory pricing and AI-driven HBM demand.",
+      "url": "https://www.benzinga.com/markets/tech/26/06/60008042/micron-stock-climbs-over-3-in-pre-market-whats-going-on",
+      "author": "Namrata Sen",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "META",
+        "MU",
+        "SSNLF",
+        "WDC"
+      ],
+      "created_at": "2026-06-22T09:46:09Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst upgrade with higher price target and positive outlook on memory pricing and AI demand."
+    },
+    {
+      "id": "60019969",
+      "headline": "Western Digital Joins Micron\u2019s AI Memory Rally As Chip Demand Supercharges Storage Stocks",
+      "summary": "Western Digital stock rallied on Monday as an aggressive Wall Street upgrade for rival Micron boosted the entire AI data storage sector.",
+      "url": "https://www.benzinga.com/markets/tech/26/06/60019969/western-digital-joins-microns-ai-memory-rally-as-chip-demand-supercharges-storage-stocks",
+      "author": "Anusuya Lahiri",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "BLCV",
+        "CTEF",
+        "DRAM",
+        "MU",
+        "WDC"
+      ],
+      "created_at": "2026-06-22T15:34:23Z",
+      "sentiment": "bull",
+      "confidence": 0.92,
+      "reason": "Stock rallied on positive sector sentiment driven by AI memory demand and competitor upgrade."
+    },
+    {
+      "id": "60019816",
+      "headline": "Why Is Caterpillar Stock Surging On Monday?",
+      "summary": "Caterpillar shares surged past the $1,000 threshold on Monday following news of a massive power project with Chevron and Microsoft.",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/06/60019816/why-is-caterpillar-stock-surging-on-monday",
+      "author": "Kaustubh Bagalkote",
+      "source": "benzinga",
+      "symbols": [
+        "CAT",
+        "CVX",
+        "GEV",
+        "MSFT"
+      ],
+      "created_at": "2026-06-22T15:30:48Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Massive power project partnership with major companies drives stock above $1,000 threshold."
+    },
+    {
+      "id": "60018915",
+      "headline": "Nvidia Isn't The Only Potential Winner From SpaceX's $85 Billion IPO",
+      "summary": "SpaceX&39;s $85 billion IPO could benefit far more than Nvidia. Here&39;s a look at the suppliers tied to Starlink, xAI, AI infrastructure, aerospace materials, data center...",
+      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/06/60018915/nvidia-not-only-potential-winner-from-spacex-85-billion-ipo",
+      "author": "Surbhi Jain",
+      "source": "benzinga",
+      "symbols": [
+        "ACM",
+        "ANET",
+        "APH",
+        "ATI",
+        "BE",
+        "CAT",
+        "CPSH",
+        "CSTM",
+        "DELL",
+        "FLEX",
+        "GEV",
+        "HXL",
+        "NVDA",
+        "SMCI",
+        "SPCX",
+        "STM",
+        "TEL",
+        "TSLA",
+        "TXN",
+        "VRT"
+      ],
+      "created_at": "2026-06-22T15:10:40Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "SpaceX IPO expected to benefit multiple suppliers including Nvidia and others in aerospace/AI sectors."
+    },
+    {
+      "id": "60013031",
+      "headline": "Wells Fargo Maintains Overweight on Applied Materials, Raises Price Target to $715",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/06/60013031/wells-fargo-maintains-overweight-applied-materials-raises-price-target-715",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "AMAT"
+      ],
+      "created_at": "2026-06-22T13:13:26Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Overweight rating maintained with raised price target signals strong positive outlook"
+    },
+    {
+      "id": "60011182",
+      "headline": "Morgan Stanley Maintains Equal-Weight on Steel Dynamics, Raises Price Target to $270",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/06/60011182/morgan-stanley-maintains-equal-weight-steel-dynamics-raises-price-target-270",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "STLD"
+      ],
+      "created_at": "2026-06-22T12:11:36Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Price target increase signals analyst confidence, though Equal-Weight rating suggests limited upside potential."
+    },
+    {
+      "id": "60010751",
+      "headline": "Morgan Stanley Maintains Equal-Weight on Nucor, Raises Price Target to $258",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/06/60010751/morgan-stanley-maintains-equal-weight-nucor-raises-price-target-258",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "NUE"
+      ],
+      "created_at": "2026-06-22T12:00:11Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Equal-weight rating with price target increase shows mixed outlook; upgrade in target offset by non-bullish rating."
+    },
+    {
+      "id": "60010635",
+      "headline": "Why Is SanDisk Stock Surging Monday?",
+      "summary": "SanDisk (SNDK) stock hits new 52-week high as BofA raises its price target to $2,100 amid a worsening global NAND flash shortage.",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/06/60010635/why-is-sandisk-stock-surging-monday",
+      "author": "Kaustubh Bagalkote",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "AMZN",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "SNDK",
+        "WDC"
+      ],
+      "created_at": "2026-06-22T11:55:00Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "52-week high hit with analyst price target raise amid supply shortage."
+    },
+    {
+      "id": "60010620",
+      "headline": "'Citi Plans Baltic Hub on NATO Frontier Leading Defense Boom' - Bloomberg",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/06/60010620/citi-plans-baltic-hub-nato-frontier-leading-defense-boom-bloomberg",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "C"
+      ],
+      "created_at": "2026-06-22T11:53:35Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Citi's Baltic hub expansion signals confidence in regional growth amid NATO defense spending increases."
+    },
+    {
+      "id": "60010378",
+      "headline": "5 Stocks In The Spotlight Last Week:  Wall Street's Most Accurate Analysts Weigh In",
+      "summary": "Wall Street analysts make daily stock picks, but not all have good track records. Benzinga&39;s API provides high-quality ratings from top analysts.",
+      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/06/60010378/5-stocks-in-the-spotlight-last-week-wall-streets-most-accurate-analysts-weigh-in-9",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "JBL",
+        "LRCX",
+        "MU"
+      ],
+      "created_at": "2026-06-22T11:42:14Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Article discusses analyst ratings methodology without expressing positive or negative views on specific stocks."
+    },
+    {
+      "id": "60005624",
+      "headline": "DRAM ETF Assets Hit $21 Billion AUM, But Key Risks May Lead To A Reversal",
+      "summary": "The fast-growing DRAM ETF has soared and crossed the $21 billion assets under management, but it faces some major risks",
+      "url": "https://www.benzinga.com/markets/equities/26/06/60005624/dram-etf-assets-hit-21-billion-aum-but-key-risks-may-lead-to-a-reversal",
+      "author": "Crispus Nyaga",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "DRAM",
+        "MU",
+        "SNDK",
+        "WDC"
+      ],
+      "created_at": "2026-06-21T18:40:54Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Growth is positive but balanced by significant risks mentioned, creating mixed outlook."
+    },
+    {
+      "id": "60004657",
+      "headline": "Micron Is Up 285% So Far This Year. Will It Surge or Crash After Earnings?",
+      "summary": "Micron stock has jumped by 285% this year, helped by the ongoing memory chip shortage. Its earnings reports will be crucial.",
+      "url": "https://www.benzinga.com/markets/equities/26/06/60004657/micron-is-up-285-so-far-this-year-will-it-surge-or-crash-after-earnings",
+      "author": "Crispus Nyaga",
+      "source": "benzinga",
+      "symbols": [
+        "MU",
+        "WDC"
+      ],
+      "created_at": "2026-06-20T20:48:50Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Large gains acknowledged but earnings outcome uncertain; headline poses open question about future direction."
+    },
+    {
+      "id": "60004635",
+      "headline": "Top BofA Analyst Explains Why Sandisk Has More Upside After 4,755% Surge",
+      "summary": "Sandisk stock has soared since its spin off, and analysts at Bank of America believe that it has more upside to go in the near term.",
+      "url": "https://www.benzinga.com/markets/equities/26/06/60004635/top-bofa-analyst-explains-why-sandisk-has-more-upside-after-4755-surge",
+      "author": "Crispus Nyaga",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "MU",
+        "NVDA",
+        "SNDK",
+        "WDC"
+      ],
+      "created_at": "2026-06-20T20:14:35Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst expects more upside after massive surge; positive outlook from major institution."
+    },
+    {
+      "id": "60004198",
+      "headline": "Benzinga Bulls And Bears: SpaceX, SanDisk, Palantir \u2014 And Markets Volatile In Shortened Week",
+      "summary": "Benzinga examined the prospects for many investors\u2019 favorite stocks over the last week \u2014 here\u2019s a look at some of our top stories.",
+      "url": "https://www.benzinga.com/markets/market-summary/26/06/60004198/benzinga-bulls-and-bears-spacex-sandisk-palantir-and-markets-volatile-in-shortened-week",
+      "author": "Benzinga Senior Editor",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "ASTS",
+        "CRML",
+        "GPUS",
+        "IBM",
+        "LAC",
+        "MNTS",
+        "MP",
+        "MU",
+        "PLTR",
+        "PPTA",
+        "RDW",
+        "SIDU",
+        "SNDK",
+        "SPCE",
+        "SPCX",
+        "TSLA",
+        "USAR",
+        "UUUU",
+        "WDC"
+      ],
+      "created_at": "2026-06-20T12:02:06Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Article reviews multiple stocks with mixed prospects during volatile trading week."
+    },
     {
       "id": "53284204",
       "headline": "Goldman Sachs Maintains Buy on Jabil, Raises Price Target to $482",
@@ -43,9 +321,9 @@
         "JBL"
       ],
       "created_at": "2026-06-18T15:22:34Z",
-      "sentiment": "neutral",
+      "sentiment": "bull",
       "confidence": 0.75,
-      "reason": "Neutral rating maintained despite price target increase suggests cautious optimism."
+      "reason": "Price target raise indicates improved outlook despite neutral rating maintenance."
     },
     {
       "id": "53279077",
@@ -60,7 +338,7 @@
       "created_at": "2026-06-18T14:42:49Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Strong Q3 earnings, raised guidance, and analyst price target increases signal positive momentum."
+      "reason": "Strong Q3 earnings, raised guidance, and analyst upgrades signal positive momentum."
     },
     {
       "id": "53278448",
@@ -85,8 +363,8 @@
       ],
       "created_at": "2026-06-18T14:31:38Z",
       "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Headline suggests significant upside potential of 44% rally for Micron with positive analyst forecasts."
+      "confidence": 0.85,
+      "reason": "Headline suggests significant upside potential for Micron with 44% rally prediction and positive analyst revisions."
     },
     {
       "id": "53277786",
@@ -101,7 +379,7 @@
       "created_at": "2026-06-18T14:20:33Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, indicating positive outlook for stock"
+      "reason": "Analyst maintains buy rating and raises price target, signaling positive outlook."
     },
     {
       "id": "53275837",
@@ -116,7 +394,7 @@
       "created_at": "2026-06-18T13:50:02Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Strong Buy rating with price target increase signals positive outlook"
+      "reason": "Strong Buy rating maintained with significant price target increase signals confidence in stock growth"
     },
     {
       "id": "53274181",
@@ -130,8 +408,8 @@
       ],
       "created_at": "2026-06-18T13:13:34Z",
       "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Overweight rating maintained despite price target reduction, indicating continued positive outlook"
+      "confidence": 0.75,
+      "reason": "Overweight rating maintained despite price target reduction, indicating positive long-term outlook."
     },
     {
       "id": "53274118",
@@ -161,7 +439,7 @@
       "created_at": "2026-06-18T13:06:24Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Overweight rating maintained with price target raise signals positive outlook for Citigroup stock"
+      "reason": "Overweight rating maintained and price target raised signals positive outlook for Citigroup stock."
     },
     {
       "id": "53273135",
@@ -174,9 +452,9 @@
         "STLD"
       ],
       "created_at": "2026-06-18T12:47:08Z",
-      "sentiment": "bull",
+      "sentiment": "bear",
       "confidence": 0.85,
-      "reason": "Overweight rating indicates positive outlook despite lower price target adjustment."
+      "reason": "Price target lowered despite maintaining overweight rating, indicating reduced upside potential."
     },
     {
       "id": "53271453",
@@ -190,7 +468,7 @@
       ],
       "created_at": "2026-06-18T11:45:33Z",
       "sentiment": "bear",
-      "confidence": 0.75,
+      "confidence": 0.85,
       "reason": "Price target lowered indicates reduced bullish outlook despite neutral rating maintained."
     },
     {
@@ -207,7 +485,7 @@
       "created_at": "2026-06-18T10:23:58Z",
       "sentiment": "bear",
       "confidence": 0.85,
-      "reason": "DOJ probe into bank activities creates legal/regulatory risk and potential compliance costs."
+      "reason": "DOJ scrutiny of banks' Iran transactions poses regulatory and reputational risks."
     },
     {
       "id": "53269458",
@@ -222,7 +500,7 @@
       "created_at": "2026-06-18T09:59:30Z",
       "sentiment": "neutral",
       "confidence": 0.95,
-      "reason": "Article is comparative analysis without clear positive or negative tone toward ADI."
+      "reason": "Comparative analysis article without directional bias or performance claims."
     },
     {
       "id": "53265035",
@@ -237,7 +515,7 @@
       "created_at": "2026-06-17T20:45:37Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Article highlights past gains from owning ADI stock, implying strong historical performance."
+      "reason": "Article highlights long-term wealth creation from ADI stock ownership, implying strong historical performance."
     },
     {
       "id": "53264586",
@@ -252,272 +530,7 @@
       "created_at": "2026-06-17T20:33:58Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Strong Q2 earnings guidance indicates solid operational performance and profitability."
-    },
-    {
-      "id": "53264564",
-      "headline": "Nucor Guides Q2 2026 GAAP EPS Of $4.70-$4.80, Adj EPS $4.50-$4.60, Says Earnings In Q2 Of 2026 Are Expected To Increase Across All 3 Of Our Operating Segments As Compared To Q1 2026, With The Largest ",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/06/53264564/nucor-guides-q2-2026-gaap-eps-of-4-70-4-80-adj-eps-4-50-4-60-says-earnings-in-q2-of-2026-are-expecte",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "NUE"
-      ],
-      "created_at": "2026-06-17T20:33:04Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Nucor guides higher Q2 2026 EPS with earnings increases across all operating segments."
-    },
-    {
-      "id": "53260578",
-      "headline": "Citigroup Maintains Buy on Applied Materials, Raises Price Target to $710",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/06/53260578/citigroup-maintains-buy-on-applied-materials-raises-price-target-to-710",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "AMAT"
-      ],
-      "created_at": "2026-06-17T18:48:34Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, indicating positive outlook for Applied Materials stock."
-    },
-    {
-      "id": "53258383",
-      "headline": "Small Caps Near Record Highs, Robinhood Rallies 12%: Stock Market Today",
-      "summary": "U.S. stocks traded higher by midday Wednesday, with semiconductor equipment names and small caps leading the tape, as investors held their fire ahead of Kevin Warsh\u2018s first interest-rate decision as Federal Reserve chair, due at 2 p.m. ET.",
-      "url": "https://www.benzinga.com/markets/equities/26/06/53258383/russell-2000-small-caps-near-records-ahead-fed-meeting-robinhood-jumps-deutsche-bank-upgrad",
-      "author": "Piero Cingari",
-      "source": "benzinga",
-      "symbols": [
-        "AMAT",
-        "BTCUSD",
-        "CBOE",
-        "CCC",
-        "CME",
-        "CVNA",
-        "DIA",
-        "ENTG",
-        "FRMI",
-        "HOOD",
-        "IWM",
-        "KMX",
-        "NDAQ",
-        "QQQ",
-        "RARE",
-        "SMH",
-        "SOXX",
-        "SPCX",
-        "SRPT",
-        "VOO",
-        "XLE",
-        "XLI",
-        "XLK"
-      ],
-      "created_at": "2026-06-17T17:33:03Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Small caps near records, Robinhood up 12%, stocks trading higher with strong sector leadership."
-    },
-    {
-      "id": "53257837",
-      "headline": "Applied Materials Advances AI Wearables With SENZ Platform",
-      "summary": "Applied Materials unveils SENZ, an integrated AI smart glasses platform combining optics and light engines.",
-      "url": "https://www.benzinga.com/trading-ideas/movers/26/06/53257837/applied-materials-advances-ai-wearables-with-senz-platform",
-      "author": "Lekha Gupta",
-      "source": "benzinga",
-      "symbols": [
-        "AMAT",
-        "PRCS",
-        "PSI",
-        "SOXX",
-        "XLK"
-      ],
-      "created_at": "2026-06-17T17:17:01Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "New AI platform launch demonstrates innovation and positions company in growing wearables market."
-    },
-    {
-      "id": "53253679",
-      "headline": "Jabil CEO Says AI Infrastructure Demand Remains 'Extremely Strong'",
-      "summary": "Jabil (NYSE: JBL) stock jumps after beating Q3 earnings expectations and raising its full-year 2026 guidance.",
-      "url": "https://www.benzinga.com/markets/earnings/26/06/53253679/jabil-ceo-says-ai-infrastructure-demand-remains-extremely-strong",
-      "author": "Anusuya Lahiri",
-      "source": "benzinga",
-      "symbols": [
-        "JBL"
-      ],
-      "created_at": "2026-06-17T15:18:41Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong AI demand, earnings beat, and raised guidance signal robust growth outlook."
-    },
-    {
-      "id": "53250744",
-      "headline": "Jabil Posts Upbeat Q3 Results, Joins Uniqure, Braiin And Other Big Stocks Moving Higher On Wednesday",
-      "summary": "U.S. stocks rose, with the Dow Jones gaining 200 points on Wed. Jabil Inc (JBL) shares surged 9.8% after beating earnings &amp; revenue estimates. Other big gainers included QURE, CLPT, JLHL, BRAI, LZB, HQ, SHAZ, WNC, RXT, ARQQ, and MFI.",
-      "url": "https://www.benzinga.com/trading-ideas/movers/26/06/53250744/jabil-posts-upbeat-q3-results-joins-uniqure-braiin-and-other-big-stocks-moving-higher-on-wednesday",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "AEHR",
-        "AMAT",
-        "ARQQ",
-        "BRAI",
-        "CLPT",
-        "CRDO",
-        "EOSE",
-        "FRMI",
-        "HQ",
-        "JBL",
-        "JLHL",
-        "LZB",
-        "MFI",
-        "NTLA",
-        "QURE",
-        "RARE",
-        "RXT",
-        "SHAZ",
-        "WNC"
-      ],
-      "created_at": "2026-06-17T14:11:37Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Jabil beat earnings & revenue estimates with 9.8% share surge."
-    },
-    {
-      "id": "53248622",
-      "headline": "Jabil Reports Q3 2026 Results: Full Earnings Call Transcript",
-      "summary": " ",
-      "url": "https://www.benzinga.com/insights/news/26/06/53248622/jabil-reports-q3-2026-results-full-earnings-call-transcript",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "JBL"
-      ],
-      "created_at": "2026-06-17T13:36:52Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Earnings report release is factual disclosure without positive or negative language indicators."
-    },
-    {
-      "id": "53247325",
-      "headline": "This Asian Country Is 1% The Size Of The US \u2014 And It Just Delivered 11x The S&P 500's Returns",
-      "summary": "South Korea&39;s EWY ETF has rocketed 112% in 2026 \u2014 10x the S&amp;P 500 \u2014 as SK Hynix and Samsung ride the AI memory super-cycle. Here&39;s what&39;s driving the rally.",
-      "url": "https://www.benzinga.com/markets/tech/26/06/53247325/south-korea-etf-ewy-112-percent-ai-memory-boom-2026",
-      "author": "Piero Cingari",
-      "source": "benzinga",
-      "symbols": [
-        "EWT",
-        "EWY",
-        "MU",
-        "NVDA",
-        "SNDK",
-        "SPY",
-        "WDC"
-      ],
-      "created_at": "2026-06-17T12:52:43Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong outperformance driven by AI memory demand benefiting major chipmakers SK Hynix and Samsung."
-    },
-    {
-      "id": "53247250",
-      "headline": "Top 3 Tech Stocks That May Collapse This Quarter",
-      "summary": "June 17, 2026: 3 overbought IT stocks with high momentum, RSI values above 70. WDC, RAL, and HQ have all seen significant gains in recent days.",
-      "url": "https://www.benzinga.com/trading-ideas/short-ideas/26/06/53247250/top-3-tech-stocks-that-may-collapse-this-quarter-2",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "HQ",
-        "RAL",
-        "WDC"
-      ],
-      "created_at": "2026-06-17T12:48:08Z",
-      "sentiment": "bear",
-      "confidence": 0.95,
-      "reason": "Article warns of potential collapse in overbought tech stocks with excessive momentum indicators."
-    },
-    {
-      "id": "53245384",
-      "headline": "Jabil Raises FY2026 Adj EPS Guidance from $12.25 to $12.70 vs $12.38 Est; Raises FY2026 Sales Guidance from $34.000B to $35.000B",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/06/53245384/jabil-raises-fy2026-adj-eps-guidance-from-12-25-to-12-70-vs-12-38-est-raises-fy2026-sales-guidance-f",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "JBL"
-      ],
-      "created_at": "2026-06-17T11:38:02Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Jabil raised both EPS and sales guidance, beating expectations with strong forward projections."
-    },
-    {
-      "id": "53245351",
-      "headline": "Jabil Sees Q4 GAAP EPS $3.24-$3.64 vs $3.01 Est",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/06/53245351/jabil-sees-q4-gaap-eps-3-24-3-64-vs-3-01-est",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "JBL"
-      ],
-      "created_at": "2026-06-17T11:37:21Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Q4 GAAP EPS guidance midpoint of $3.44 significantly exceeds $3.01 estimate"
-    },
-    {
-      "id": "53245256",
-      "headline": "Jabil Sees Q4 Adj EPS $3.80-$4.20 vs $3.72 Est; Sees Sales $9.200B-$10.000B vs $8.974B Est",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/06/53245256/jabil-sees-q4-adj-eps-3-80-4-20-vs-3-72-est-sees-sales-9-200b-10-000b-vs-8-974b-est",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "JBL"
-      ],
-      "created_at": "2026-06-17T11:36:49Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Q4 EPS and sales guidance both exceed analyst estimates, signaling strong operational performance."
-    },
-    {
-      "id": "53245226",
-      "headline": "Jabil Q3 Adj. EPS $3.16 Beats $3.10 Estimate, Sales $8.751B Beat $8.605B Estimate",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/earnings/26/06/53245226/jabil-q3-adj-eps-3-16-beats-3-10-estimate-sales-8-751b-beat-8-605b-estimate",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "JBL"
-      ],
-      "created_at": "2026-06-17T11:35:53Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Jabil beat both EPS and revenue estimates, demonstrating strong operational performance."
-    },
-    {
-      "id": "53244863",
-      "headline": "Earnings Scheduled For June 17, 2026",
-      "summary": " ",
-      "url": "https://www.benzinga.com/insights/earnings/26/06/53244863/earnings-scheduled-for-june-17-2026",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "JBL",
-        "KMX",
-        "SB",
-        "SWBI"
-      ],
-      "created_at": "2026-06-17T11:11:13Z",
-      "sentiment": "neutral",
-      "confidence": 0.95,
-      "reason": "Earnings announcement date is factual information with no performance implications."
+      "reason": "Strong Q2 earnings guidance demonstrates solid operational performance and profitability."
     }
   ]
 }
