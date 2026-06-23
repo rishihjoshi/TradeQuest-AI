@@ -1,7 +1,103 @@
 {
-  "last_run": "2026-06-23T16:10:41Z",
-  "last_type": "day_start",
+  "last_run": "2026-06-23T22:47:16Z",
+  "last_type": "day_end",
   "runs": [
+    {
+      "id": "RUN-20260623-2247",
+      "timestamp": "2026-06-23T22:47:16Z",
+      "type": "day_end",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio remains fully profitable (+$584.49, +5.93%) in a bull regime (81% confidence, breadth 62%), but suffers a critical structural problem: 58.69% cash vs 5% bull-regime target. All 8 holdings are above water, with WDC (+39.86%) and AMAT (+37.91%) as standout performers. AMAT, C, and WDC continue to show momentum_rank=0 (confirmed data pipeline failure, not real momentum decay), so the hold gate protects all three profitable positions from momentum-decay sells. July 1 quarterly rebalance is the next action window to deploy the cash drag and rotate the portfolio.",
+      "regime": "bull",
+      "regime_confidence": 0.81,
+      "flags": [
+        "CASH: 58.69% cash ($6,158.79) vs 5% bull-regime target \u2014 severe deployment gap persists for 5+ consecutive runs; full deployment requires July 1 quarterly rebalance BUYs",
+        "WDC: momentum_rank=0 for 10+ consecutive runs \u2014 confirmed data pipeline failure, NOT momentum decay; PnL +$193.50 (+39.86%) since 2026-05-22 (~32 days); approaching Rule D parabolic threshold (+60% in <60 days) at current trajectory \u2014 monitor closely through July 1",
+        "AMAT: momentum_rank=0 for 10+ consecutive runs \u2014 confirmed data pipeline failure; PnL +$160.98 (+37.91%) since 2026-05-20; hold gate active, no sell action warranted",
+        "C: momentum_rank=0 for 9+ consecutive runs \u2014 confirmed data pipeline failure; PnL +$76.72 (+15.25%) since 2026-05-26; hold gate active",
+        "WDC VOLATILITY: volatility_30d=0.8789 annualized \u2014 well above 90th percentile risk threshold; position is profitable so no forced exit, but elevated risk noted ahead of quarterly rebalance",
+        "SECTOR CONCENTRATION: Technology (ADI + JBL + AMAT*) and Basic Materials (NUE + STLD) each approaching meaningful concentration; verify sector caps at July 1 rebalance (*AMAT sector listed as Unknown, likely Technology)"
+      ],
+      "decisions": [
+        {
+          "action": "HOLD",
+          "symbol": "ADI",
+          "reason": "Above 50-day MA ($409.24 vs MA $402.69), momentum_rank=8 (top 30%), EPS growth 110.5%, revenue growth 37.2%, forward P/E 27.6 \u2014 all filters passing. Unrealized PnL +$25.62 (+6.68%) since 2026-05-04. Thesis intact.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "AMAT",
+          "reason": "momentum_rank=0 for 10+ consecutive runs \u2014 confirmed data pipeline failure (eps_growth, revenue_growth, ma_50d all null), NOT genuine momentum decay. Unrealized PnL +$160.98 (+37.91%) since 2026-05-20. Hold gate active: profitable position cannot be sold on momentum decay alone (Rule E). No structural rule (A/B/C/D) triggerable without MA data. Defer to July 1 quarterly rebalance for full evaluation with corrected data.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "C",
+          "reason": "momentum_rank=0 for 9+ consecutive runs \u2014 confirmed data pipeline failure (eps_growth, revenue_growth, ma_50d all null). Unrealized PnL +$76.72 (+15.25%) since 2026-05-26. Hold gate active: profitable position cannot be sold on momentum decay alone (Rule E). No MA data available to assess Rule A. Defer to July 1 quarterly rebalance.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "Strongest momentum in portfolio: rank=2, 6M return +56.16%, 12M return +146.7%. Above 50-day MA ($985.25 vs MA $877.65) with wide cushion. EPS growth 30.2%, revenue growth 22.2%, forward P/E 32.7 \u2014 all filters passing. Unrealized PnL +$63.31 (+6.87%) since 2026-05-06. Thesis intact and compelling.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "momentum_rank=3, above 50-day MA ($372.99 vs MA $350.33). EPS growth 27.6%, revenue growth 11.8%, forward P/E 22.3 \u2014 all filters passing. Unrealized PnL +$36.41 (+10.82%) since 2026-05-04. Thesis intact.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "momentum_rank=6, above 50-day MA ($239.63 vs MA $231.14). EPS growth 382.1%, revenue growth 21.3%, forward P/E 14.2 \u2014 all filters passing. Unrealized PnL +$26.43 (+5.84%) since 2026-05-04. Note: Basic Materials sector concentration with STLD warrants monitoring at July 1 rebalance. Thesis intact.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "STLD",
+          "reason": "momentum_rank=7, above 50-day MA ($243.69 vs MA $239.64) with narrow cushion ($4.05). EPS growth 93.1%, revenue growth 19.1%, forward P/E 13.3 \u2014 all filters passing. Unrealized PnL +$1.52 (+0.63%) since 2026-05-06 \u2014 very thin gain. Monitor MA cushion closely; any sustained break below $239.64 for 3 days would trigger Rule A Tier 1 SELL. Thesis marginally intact.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "WDC",
+          "reason": "momentum_rank=0 for 10+ consecutive runs \u2014 confirmed data pipeline failure (eps_growth, revenue_growth, ma_50d all null). Unrealized PnL +$193.50 (+39.86%) since 2026-05-22 (~32 days). Hold gate active: profitable position immune to momentum-decay sell (Rule E). CRITICAL WATCH: at current trajectory, WDC is approaching Rule D parabolic threshold (+60% in <60 days); currently +39.86% in 32 days \u2014 needs +20.14% more in 28 remaining days to trigger. volatility_30d=0.8789 is extreme. If Rule D triggers, sell HALF at next_open (Tier 1 structural). Monitor daily through July 1 rebalance.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "decrease",
+      "cash_rationale": "Cash at 58.69% ($6,158.79) is massively above the 5% bull-regime target. This represents the primary drag on performance vs SPY. However, June is a non-quarterly month \u2014 BUYs are pipeline-blocked until July 1 quarterly rebalance. Cash reduction must wait for the July 1 rebalance where new top-10-12 momentum candidates can be purchased. No cash action is executable today; the directive is to prepare a full deployment plan for July 1.",
+      "summary": "Jun 23 day_end: bull regime 81%, all 8 holdings profitable (+$584.49), no Tier 1 SELLs triggered \u2014 AMAT/C/WDC WATCH maintained (data pipeline failure, hold gate active), WDC Rule D parabolic monitoring elevated, cash deployment deferred to July 1 quarterly rebalance.",
+      "usage": {
+        "input_tokens": 12915,
+        "output_tokens": 2368,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 8817
+      },
+      "sell_tier_summary": {
+        "tier1_execute": 0,
+        "tier2_deferred": 3
+      }
+    },
     {
       "id": "RUN-20260623-1610",
       "timestamp": "2026-06-23T16:10:41Z",
