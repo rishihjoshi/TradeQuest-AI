@@ -1,7 +1,105 @@
 {
-  "last_run": "2026-06-26T22:45:57Z",
-  "last_type": "day_end",
+  "last_run": "2026-06-29T16:46:16Z",
+  "last_type": "day_start",
   "runs": [
+    {
+      "id": "RUN-20260629-1646",
+      "timestamp": "2026-06-29T16:46:16Z",
+      "type": "day_start",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Bull regime confirmed at 78% confidence with breadth at 62.7% supporting broad participation. Portfolio holds 8 positions all in profit under the hold gate, but 59.16% cash is a severe drag vs the 5% bull-regime target \u2014 the primary structural issue. Next quarterly rebalance is July 1, which is 2 trading days away and will be the first opportunity to deploy capital and resolve persistent pipeline failures on ADI, AMAT, WDC, and C.",
+      "regime": "bull",
+      "regime_confidence": 0.78,
+      "flags": [
+        "CASH: 59.16% cash ($6,158.79) vs 5% bull-regime target \u2014 severe deployment gap persisting 5+ runs; July 1 quarterly rebalance is the mandatory resolution event",
+        "AMAT: +48.11% unrealized gain in 37 days (entry 2026-05-20 at $424.68, current $629.00) \u2014 approaching Rule D parabolic threshold of +60% in <60 days; currently at 80% of the trigger threshold; monitor intraday for acceleration toward $679 (+60%); no MA50 data available (unknown_ma status), momentum_rank=0 (pipeline failure)",
+        "ADI: price $384.72 is 5.3% below 50-day MA $406.48 (below_ma status) \u2014 currently Day 2+ of consecutive below-MA closes; if confirmed below MA again at today's close this could reach 3-consecutive-day Rule A trigger; unrealized PnL +$1.10 (+0.29%) \u2014 hold gate applies, but structural trend break imminent",
+        "WDC: momentum_rank=0 confirmed pipeline failure (10+ consecutive runs); no MA50, no EPS/revenue data; +$101.50 (+20.91%) unrealized gain (entry 2026-05-22 at $485.50, current $587.00) \u2014 hold gate active; volatility_30d=0.9549 is high; flag for quality assessment at July 1 rebalance",
+        "C: momentum_rank=0 confirmed pipeline failure (9+ consecutive runs); no MA50, no EPS/revenue data; +$63.92 (+12.71%) unrealized gain (entry 2026-05-26 at $125.78, current $141.76) \u2014 hold gate active; flag for full screen at July 1 rebalance",
+        "SECTOR CON: Basic Materials has NUE + STLD = $479.56 + $245.49 = $725.05 / $10,409.70 = ~7.0% of total portfolio \u2014 within 30% sector cap; Technology has ADI + JBL = $384.72 + $358.60 = $743.32 / $10,409.70 = ~7.1%; no sector breach currently but note three 'Unknown' sector holdings (AMAT, C, WDC) obscure true sector concentration \u2014 resolve sector metadata at July 1",
+        "STLD: momentum_rank=3, above MA50 ($245.49 vs $242.74), +$3.32 (+1.37%) \u2014 lowest gain in portfolio; Basic Materials concentration with NUE; no immediate rule trigger but weakest position by PnL; monitor into rebalance",
+        "JULY 1 REBALANCE: Next quarterly rebalance in 2 trading days \u2014 prepare for full S&P 500 screen, pipeline data fixes for AMAT/WDC/C/ADI momentum_rank=0 issues, and deployment of $6,158.79 cash into top-10-12 momentum names"
+      ],
+      "decisions": [
+        {
+          "action": "WATCH",
+          "symbol": "AMAT",
+          "reason": "Unrealized PnL +$204.32 (+48.11%), entry 2026-05-20. Approaching Rule D parabolic threshold: +60% in <60 days triggers half-sell. At $629, the Rule D trigger price is ~$679 (+60% from $424.68 entry). Currently 37 days in \u2014 Rule D window is open until day 60 (approx Jul 19). No MA50 data and momentum_rank=0 are pipeline failures. Hold gate active \u2014 no sell on momentum alone. Watch for price approach to $679 intraday.",
+          "rule_triggered": "profit_take",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "ADI",
+          "reason": "Unrealized PnL +$1.10 (+0.29%), entry 2026-05-04. Price $384.72 is 5.3% below MA50 $406.48 (below_ma status). Rule A requires 3 consecutive days below MA50. This is at minimum Day 2 of consecutive below-MA closes based on prior runs. If today's close confirms another below-MA day, Rule A structural trigger will be met. Position is barely profitable \u2014 hold gate applies but Rule A (structural) can override hold gate regardless of profit. Flag for tonight's day_end run to assess consecutive count.",
+          "rule_triggered": "trend_break",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "WDC",
+          "reason": "Unrealized PnL +$101.50 (+20.91%), entry 2026-05-22. momentum_rank=0 is a confirmed pipeline failure (10+ consecutive runs) \u2014 not a confirmed momentum decay signal. No MA50 data (unknown_ma). Hold gate active on profitable position. Volatility_30d=0.9549 is elevated. Cannot confirm Rule A (no MA data), Rule E (pipeline failure vs true rank), Rule B (no EPS data). Defer all decisions to July 1 quarterly rebalance when pipeline data should resolve.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "C",
+          "reason": "Unrealized PnL +$63.92 (+12.71%), entry 2026-05-26. momentum_rank=0 is a confirmed pipeline failure (9+ consecutive runs). No MA50 data (unknown_ma). Hold gate active on profitable position. Cannot confirm any structural rule trigger due to missing data. Defer to July 1 quarterly rebalance.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "Unrealized PnL +$77.56 (+8.41%), entry 2026-05-06. momentum_rank=1 (top rank in portfolio), price $999.50 above MA50 $890.83 (+12.2% cushion), EPS growth 30.2%, revenue growth 22.2%, forward P/E 33.1 \u2014 all filters passing. No rule triggers. Strongest fundamental position in portfolio.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "Unrealized PnL +$26.73 (+5.90%), entry 2026-05-04. momentum_rank=2, price $239.78 above MA50 $234.41 (+2.3% cushion \u2014 thin but above). EPS growth 382.1%, revenue growth 21.3%, forward P/E 14.1 \u2014 strong fundamentals. Thin MA cushion worth monitoring but no rule trigger today.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "STLD",
+          "reason": "Unrealized PnL +$3.32 (+1.37%), entry 2026-05-06. momentum_rank=3, price $245.49 above MA50 $242.74 (+1.1% cushion \u2014 very thin). EPS growth 93.1%, revenue growth 19.1%, forward P/E 13.3 \u2014 passes all filters. Minimal MA cushion flags as early warning but no rule trigger today.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "Unrealized PnL +$22.02 (+6.54%), entry 2026-05-04. momentum_rank=5, price $358.60 above MA50 $354.50 (+1.2% cushion \u2014 thin). EPS growth 27.6%, revenue growth 11.8%, forward P/E 21.4 \u2014 all filters passing. Thin MA cushion noted but no rule trigger.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "decrease",
+      "cash_rationale": "59.16% cash ($6,158.79) is massively above the 5% bull-regime target. This is not actionable today \u2014 June is a non-quarterly month and BUY orders are pipeline-blocked. The July 1 quarterly rebalance (2 trading days away) is the mandatory deployment event. Cash should be reduced to ~5% of portfolio via new position entries at the July 1 rebalance. No intra-day cash action is possible or appropriate today.",
+      "summary": "Jun 27 day_start: bull regime 78%, all 8 holdings profitable under hold gate \u2014 ADI approaching Rule A (3-consecutive below-MA) trigger, AMAT at 48.11% gain approaching Rule D parabolic at $679; July 1 quarterly rebalance in 2 days is the critical deployment event for $6,158 cash.",
+      "usage": {
+        "input_tokens": 12255,
+        "output_tokens": 2514,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 8817
+      },
+      "sell_tier_summary": {
+        "tier1_execute": 0,
+        "tier2_deferred": 4
+      }
+    },
     {
       "id": "RUN-20260626-2245",
       "timestamp": "2026-06-26T22:45:57Z",
