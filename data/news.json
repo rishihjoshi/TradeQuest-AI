@@ -1,7 +1,345 @@
 {
-  "generated_at": "2026-06-25T16:04:26Z",
+  "generated_at": "2026-06-29T16:44:54Z",
   "article_count": 30,
   "articles": [
+    {
+      "id": "60159948",
+      "headline": "Cantor Fitzgerald Maintains Overweight on Western Digital, Raises Price Target to $900",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/06/60159948/cantor-fitzgerald-maintains-overweight-western-digital-raises-price-target-900",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "WDC"
+      ],
+      "created_at": "2026-06-29T14:39:24Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Overweight rating maintained with price target raised to $900 signals strong positive outlook."
+    },
+    {
+      "id": "60158581",
+      "headline": "Cantor Fitzgerald Maintains Overweight on Applied Materials, Raises Price Target to $850",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/06/60158581/cantor-fitzgerald-maintains-overweight-applied-materials-raises-price-target-850",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "AMAT"
+      ],
+      "created_at": "2026-06-29T14:16:55Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains overweight rating and raises price target, indicating confidence in stock appreciation."
+    },
+    {
+      "id": "60158499",
+      "headline": "Cantor Fitzgerald Maintains Overweight on Analog Devices, Raises Price Target to $550",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/06/60158499/cantor-fitzgerald-maintains-overweight-analog-devices-raises-price-target-550",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "ADI"
+      ],
+      "created_at": "2026-06-29T14:15:23Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains overweight rating and raises price target, signaling confidence in future growth."
+    },
+    {
+      "id": "60154823",
+      "headline": "Applied Materials To Rally Around 20%? Here Are 10 Top Analyst Forecasts For Monday",
+      "summary": "Top Wall Street analysts upgraded and downgraded several top companies, including Applied Materials, Robinhood, Liquidia, Airbnb, Praxis, Alnylam, and Uniqure.",
+      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/06/60154823/applied-materials-to-rally-around-20-here-are-10-top-analyst-forecasts-for-monday",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "ABNB",
+        "ALNY",
+        "AMAT",
+        "HOOD",
+        "LQDA",
+        "MCD",
+        "MKSI",
+        "MSGE",
+        "PRAX",
+        "QURE"
+      ],
+      "created_at": "2026-06-29T13:05:05Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Headline suggests potential 20% rally for Applied Materials with top analyst forecasts indicating upgrades."
+    },
+    {
+      "id": "60154164",
+      "headline": "Keybanc Maintains Overweight on Applied Materials, Raises Price Target to $750",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/06/60154164/keybanc-maintains-overweight-applied-materials-raises-price-target-750",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "AMAT"
+      ],
+      "created_at": "2026-06-29T12:49:15Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains overweight rating and raises price target, signaling confidence in stock appreciation."
+    },
+    {
+      "id": "60139041",
+      "headline": "Software ETFs Are Finally Catching An AI Tailwind",
+      "summary": "Software ETFs surged while semiconductor funds fell as investors broadened the AI trade beyond chipmakers to enterprise software companies.",
+      "url": "https://www.benzinga.com/etfs/sector-etfs/26/06/60139041/software-etfs-are-finally-catching-an-ai-tailwind",
+      "author": "Chandrima Sanyal",
+      "source": "benzinga",
+      "symbols": [
+        "ADI",
+        "APP",
+        "ASAN",
+        "BB",
+        "FDN",
+        "GWRE",
+        "IGV",
+        "INTA",
+        "MCHP",
+        "MPWR",
+        "NOW",
+        "ON",
+        "PLTR",
+        "SMH",
+        "SOXX",
+        "TER",
+        "WDAY",
+        "XLK",
+        "XSW"
+      ],
+      "created_at": "2026-06-26T19:18:43Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Software ETFs surging and AI trade broadening to enterprise software signals positive momentum."
+    },
+    {
+      "id": "60138639",
+      "headline": "Wells Fargo Maintains Overweight on Applied Materials, Raises Price Target to $740",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/06/60138639/wells-fargo-maintains-overweight-applied-materials-raises-price-target-740",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "AMAT"
+      ],
+      "created_at": "2026-06-26T19:03:34Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Overweight rating maintained with raised price target indicates positive outlook"
+    },
+    {
+      "id": "60133015",
+      "headline": "Chip Rout Drags Nasdaq 100, Oil Sinks Below $69: Stock Market Today",
+      "summary": "Semiconductors cratered Friday, dragging the stock market lower, while health care and software led a rotation and oil sank below $69",
+      "url": "https://www.benzinga.com/markets/equities/26/06/60133015/semiconductor-chipmaker-stocks-fall-nasdaq-100-oil-crude-sinks-69-markets-friday",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "ASTS",
+        "DIA",
+        "ENTG",
+        "FDS",
+        "GDX",
+        "GLW",
+        "IBB",
+        "IGV",
+        "IWM",
+        "LITE",
+        "MAN",
+        "MORN",
+        "MRNA",
+        "MU",
+        "ON",
+        "QQQ",
+        "SMH",
+        "SYNA",
+        "VOO",
+        "WDC"
+      ],
+      "created_at": "2026-06-26T16:22:08Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Semiconductor sector cratering and oil sinking indicate negative market momentum and economic weakness."
+    },
+    {
+      "id": "60132582",
+      "headline": "Truist Securities Maintains Buy on Citigroup, Raises Price Target to $158",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/06/60132582/truist-securities-maintains-buy-citigroup-raises-price-target-158",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "C"
+      ],
+      "created_at": "2026-06-26T16:12:44Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains buy rating and raises price target, signaling positive outlook for Citigroup stock."
+    },
+    {
+      "id": "60131412",
+      "headline": "B. Riley Securities Maintains Buy on Applied Materials, Raises Price Target to $790",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/06/60131412/b-riley-securities-maintains-buy-applied-materials-raises-price-target-790",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "AMAT"
+      ],
+      "created_at": "2026-06-26T15:40:11Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains Buy rating and raises price target, indicating positive outlook for Applied Materials."
+    },
+    {
+      "id": "60131374",
+      "headline": "Jefferies Maintains Buy on Applied Materials, Raises Price Target to $770",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/06/60131374/jefferies-maintains-buy-applied-materials-raises-price-target-770",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "AMAT"
+      ],
+      "created_at": "2026-06-26T15:39:17Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains buy rating and raises price target, signaling confidence in stock appreciation."
+    },
+    {
+      "id": "60128618",
+      "headline": "The Memory Oligopoly: How Micron And 6 Other Names Now Set The Price For The AI Race",
+      "summary": "Micron&39;s blowout earnings cap a year in which seven memory makers \u2014 the de-facto oligopoly behind DRAM and HBM \u2014 took control of what the AI race pays.",
+      "url": "https://www.benzinga.com/markets/tech/26/06/60128618/memory-cartel-micron-ai-prices",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "MU",
+        "NVDA",
+        "SNDK",
+        "STX",
+        "WDC"
+      ],
+      "created_at": "2026-06-26T14:42:15Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Micron's blowout earnings and oligopoly pricing power position it favorably in the lucrative AI race."
+    },
+    {
+      "id": "60120463",
+      "headline": "Applied Materials Shares Rise 9% To Intraday High After Key Trading Signal",
+      "summary": "A key trading signal flashed for Applied Materials shares at a price of $612.34, after which AMAT rose over 9% to an intraday high.",
+      "url": "https://www.benzinga.com/Opinion/26/06/60120463/applied-materials-shares-rise-over-9-percent-after-key-trading-signal",
+      "author": "TradePulse",
+      "source": "benzinga",
+      "symbols": [
+        "AMAT"
+      ],
+      "created_at": "2026-06-26T10:01:57Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Key trading signal triggered sharp 9% intraday rally to new highs."
+    },
+    {
+      "id": "60108692",
+      "headline": "Micron Rallies 15%, Apple Sinks 6% On Memory Costs: Stock Market Today",
+      "summary": "Micron&39;s blowout earnings powered memory and chip stocks higher, but the broad stock market rally stalled by midday as S&amp;P 500 slipped.",
+      "url": "https://www.benzinga.com/markets/equities/26/06/60108692/micron-rallies-apple-sinks-stock-market-thursday",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "AMAT",
+        "AMZN",
+        "AYI",
+        "BTCUSD",
+        "DE",
+        "DELL",
+        "DIA",
+        "DUOL",
+        "ESTC",
+        "GLD",
+        "GLW",
+        "GOOGL",
+        "IGV",
+        "IWM",
+        "JEF",
+        "JPM",
+        "META",
+        "MS",
+        "MSFT",
+        "MSTR",
+        "MU",
+        "NVDA",
+        "QCOM",
+        "QQQ",
+        "SMH",
+        "SNDK",
+        "TECH",
+        "VOO",
+        "XLB",
+        "XLC",
+        "XLE",
+        "XLI",
+        "XLK",
+        "XLP",
+        "XLV",
+        "XLY"
+      ],
+      "created_at": "2026-06-25T18:14:16Z",
+      "sentiment": "neutral",
+      "confidence": 0.5,
+      "reason": ""
+    },
+    {
+      "id": "60109753",
+      "headline": "10 Information Technology Stocks Whale Activity In Today\u2019s Session",
+      "summary": "This whale alert can help traders discover the next big trading opportunities. Whales are entities with large sums of money and we track their transactions here at Benzinga on our options activity scanner. Traders often",
+      "url": "https://www.benzinga.com/markets/options/26/06/60109753/10-information-technology-stocks-whale-activity-today-s-session",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "AMAT",
+        "INTC",
+        "MRVL",
+        "MSTR",
+        "MU",
+        "PLTR",
+        "SNDK",
+        "TSM",
+        "WULF"
+      ],
+      "created_at": "2026-06-25T17:35:22Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Article reports whale activity tracking without directional bias or price predictions."
+    },
+    {
+      "id": "60107652",
+      "headline": "Why Is Seagate Technology Stock Surging On Thursday?",
+      "summary": "Seagate Technology stock climbs following Micron&39;s blowout earnings and reports of a sector-wide structural memory supply crunch.",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/06/60107652/why-is-seagate-technology-stock-surging-on-thursday",
+      "author": "Kaustubh Bagalkote",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "STX",
+        "WDC"
+      ],
+      "created_at": "2026-06-25T16:48:25Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Strong earnings from competitor Micron and sector-wide supply shortage signal positive industry dynamics."
+    },
     {
       "id": "60105019",
       "headline": "'Japan Steelmaker JFE Eyes U.S. Joint Ventures, India Growth: CFO; Company Sees Opportunities In High-Grade Steel, Value-Added Products' - Nikkei Asia",
@@ -15,7 +353,7 @@
       "created_at": "2026-06-25T15:50:45Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Expansion plans in U.S. and India with focus on high-margin products signal growth optimism."
+      "reason": "JFE's expansion plans into U.S. ventures and India growth, plus focus on high-grade steel, signal positive growth opportunities."
     },
     {
       "id": "60095501",
@@ -30,7 +368,7 @@
       "created_at": "2026-06-25T13:01:31Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "New product suite for advanced 3D chip architectures positions AMAT to capture growing demand in next-gen semiconductor manufacturing."
+      "reason": "New product suite for advanced 3D chip architectures positions AMAT well for future semiconductor demand."
     },
     {
       "id": "60095061",
@@ -47,7 +385,7 @@
       "created_at": "2026-06-25T12:44:40Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "All three AI memory stocks show strong 2026 rallies with Micron offering attractive valuation"
+      "reason": "Strong 2026 rallies and positive performance comparison suggest optimistic market outlook for AI memory stocks."
     },
     {
       "id": "60094351",
@@ -93,7 +431,7 @@
       "created_at": "2026-06-25T12:14:38Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Stock surging 13% on sector-wide positive momentum from strong memory chip earnings"
+      "reason": "13% premarket surge driven by positive sector momentum from Micron's strong earnings."
     },
     {
       "id": "60090918",
@@ -114,7 +452,7 @@
       "created_at": "2026-06-25T09:52:08Z",
       "sentiment": "bull",
       "confidence": 0.75,
-      "reason": "Micron's blockbuster earnings and higher S&P 500 open expectation signal positive market momentum."
+      "reason": "Micron's blockbuster earnings and expected higher S&P 500 open signal positive market momentum."
     },
     {
       "id": "60090642",
@@ -131,7 +469,7 @@
       "created_at": "2026-06-25T09:28:45Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Strong earnings beat, positive guidance, and significant premarket stock surge signal strong investor confidence."
+      "reason": "Strong earnings beat and robust forward guidance with significant premarket surge signals positive investor sentiment."
     },
     {
       "id": "60088616",
@@ -149,7 +487,7 @@
       "created_at": "2026-06-25T04:04:59Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Strong peer earnings signal positive memory market cycle benefiting storage companies."
+      "reason": "Strong earnings signal industry-wide memory demand recovery, driving competitors' share prices higher."
     },
     {
       "id": "60088161",
@@ -168,7 +506,7 @@
       "created_at": "2026-06-25T01:31:51Z",
       "sentiment": "neutral",
       "confidence": 0.85,
-      "reason": "Article mentions stocks are trending without indicating positive or negative performance."
+      "reason": "Article mentions stocks are trending without providing positive or negative fundamental information."
     },
     {
       "id": "60086631",
@@ -194,7 +532,7 @@
       "created_at": "2026-06-24T21:05:38Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "MEI shares surged 14.7% in after-market trading on Q4 earnings announcement."
+      "reason": "Stock surged 14.7% in after-market trading following Q4 earnings announcement."
     },
     {
       "id": "60086491",
@@ -211,8 +549,8 @@
       ],
       "created_at": "2026-06-24T20:57:27Z",
       "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Strong Q3 earnings and positive spillover effect across memory and storage sector."
+      "confidence": 0.95,
+      "reason": "Strong Q3 earnings at Micron drive positive momentum across memory/storage sector stocks."
     },
     {
       "id": "60072313",
@@ -227,7 +565,7 @@
       "created_at": "2026-06-24T14:30:25Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, indicating confidence in stock appreciation."
+      "reason": "Analyst maintains buy rating and raises price target, signaling confidence in ADI's future performance."
     },
     {
       "id": "60067802",
@@ -249,7 +587,7 @@
       "created_at": "2026-06-24T12:59:44Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Analyst upgrade of Nucor indicates positive outlook and increased confidence in the stock."
+      "reason": "Analyst upgrade for Nucor signals positive outlook and bullish sentiment from Wall Street experts."
     },
     {
       "id": "60067670",
@@ -265,352 +603,6 @@
       "sentiment": "bull",
       "confidence": 0.95,
       "reason": "Analyst maintains overweight rating and raises price target, signaling positive outlook"
-    },
-    {
-      "id": "60064427",
-      "headline": "Keybanc Upgrades Nucor to Overweight, Announces $274 Price Target",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/06/60064427/keybanc-upgrades-nucor-overweight-announces-274-price-target",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "NUE"
-      ],
-      "created_at": "2026-06-24T10:26:11Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Upgrade to Overweight with $274 price target indicates analyst confidence in Nucor's future performance."
-    },
-    {
-      "id": "60060583",
-      "headline": "Here's How Much $1000 Invested In Citigroup 5 Years Ago Would Be Worth Today",
-      "summary": "Citigroup (NYSE:C) has outperformed the market over the past 5 years by 3.78% on an annualized basis producing an average annual return of 15.18%. Currently, Citigroup has a market capitalization of $245.61 billion.",
-      "url": "https://www.benzinga.com/news/26/06/60060583/here-s-how-much-1000-invested-citigroup-5-years-ago-would-be-worth-today",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "C"
-      ],
-      "created_at": "2026-06-23T22:30:40Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Strong 5-year outperformance with 15.18% annualized returns demonstrates solid financial performance."
-    },
-    {
-      "id": "60059003",
-      "headline": "Micron's Run Isn't Over: Bank Of America Sees 40% More Upside",
-      "summary": "Bank of America raised Micron&39;s price target to $1,500, implying 40% upside, as analysts see AI-driven memory shortages, pricing power and long-term supply agreements fueling a multi-year semiconductor boom.",
-      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/06/60059003/micron-technology-stock-bank-of-america-1500-price-target-rally-earnings-semiconductor-memory",
-      "author": "Piero Cingari",
-      "source": "benzinga",
-      "symbols": [
-        "ALAB",
-        "AMAT",
-        "ARM",
-        "CRDO",
-        "INTC",
-        "KLAC",
-        "LRCX",
-        "MKSI",
-        "MRVL",
-        "MU",
-        "NVDA",
-        "TER"
-      ],
-      "created_at": "2026-06-23T20:45:07Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "BofA raises price target 40%, cites AI demand, pricing power and long-term contracts"
-    },
-    {
-      "id": "60051651",
-      "headline": "South Korea's Tech Rout Spills Into US Semiconductor ETFs Ahead Of Micron's Make-Or-Break Report",
-      "summary": "South Korea&39;s tech sell-off rattles US semiconductor ETFs as Micron earnings approach, raising questions about AI-driven memory demand.",
-      "url": "https://www.benzinga.com/etfs/sector-etfs/26/06/60051651/south-koreas-tech-rout-spills-into-us-semiconductor-etfs-ahead-of-microns-make-or-break-report",
-      "author": "Chandrima Sanyal",
-      "source": "benzinga",
-      "symbols": [
-        "AMAT",
-        "FTXL",
-        "LRCX",
-        "MRVL",
-        "MU",
-        "QCOM",
-        "SMH",
-        "SNDK",
-        "SOXX",
-        "STX",
-        "TER",
-        "WDC",
-        "XSD"
-      ],
-      "created_at": "2026-06-23T17:10:16Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Tech sell-off and uncertainty about AI memory demand pressures semiconductor stocks ahead of critical earnings."
-    },
-    {
-      "id": "60050661",
-      "headline": "Chip Bloodbath Hits Nasdaq 100 As South Korea Plunges: Stock Market Today",
-      "summary": "A global semiconductor sell-off hammered the Nasdaq on Tuesday, but a rotation into defensives and small caps kept the Dow green.",
-      "url": "https://www.benzinga.com/markets/equities/26/06/60050661/chip-selloff-south-korea-memory-bloodbath-micron-nasdaq-100-wall-street",
-      "author": "Piero Cingari",
-      "source": "benzinga",
-      "symbols": [
-        "AMAT",
-        "AXON",
-        "BBWI",
-        "BRBR",
-        "CCL",
-        "DIA",
-        "EWY",
-        "FDX",
-        "GDX",
-        "GEV",
-        "GLW",
-        "GOOGL",
-        "IBB",
-        "IWM",
-        "JETS",
-        "KBH",
-        "KIE",
-        "KLAC",
-        "LRCX",
-        "MRVL",
-        "MU",
-        "NET",
-        "NOW",
-        "NVDA",
-        "ON",
-        "PBW",
-        "QQQ",
-        "RBRK",
-        "SMH",
-        "SNDK",
-        "VKTX",
-        "VOO",
-        "VRT",
-        "XLK",
-        "XLP",
-        "XLRE",
-        "XLV"
-      ],
-      "created_at": "2026-06-23T16:45:55Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Global semiconductor sell-off hammered Nasdaq, indicating negative market pressure on chip stocks."
-    },
-    {
-      "id": "60046788",
-      "headline": "Micron Stock Is Set For A 14% Swing This Week: History Says Big Beats Haven't Been Enough",
-      "summary": "Micron earnings will soon arrive, with options pricing a 14% move. The stock fell after six of the last eight reports.",
-      "url": "https://www.benzinga.com/markets/large-cap/26/06/60046788/micron-earnings-preview-option-implied-move-history-stock-reactions",
-      "author": "Piero Cingari",
-      "source": "benzinga",
-      "symbols": [
-        "MU",
-        "SNDK",
-        "WDC"
-      ],
-      "created_at": "2026-06-23T15:13:55Z",
-      "sentiment": "bear",
-      "confidence": 0.75,
-      "reason": "Historical pattern shows stock fell after 75% of recent earnings, suggesting negative sentiment despite large expected move."
-    },
-    {
-      "id": "60042676",
-      "headline": "Wells Fargo Maintains Overweight on Caterpillar, Raises Price Target to $1155",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/06/60042676/wells-fargo-maintains-overweight-caterpillar-raises-price-target-1155",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "CAT"
-      ],
-      "created_at": "2026-06-23T13:55:05Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains overweight rating and raises price target, signaling positive outlook"
-    },
-    {
-      "id": "60040547",
-      "headline": "Micron Technology To $1,500? Here Are 10 Top Analyst Forecasts For Tuesday",
-      "summary": "Top Wall Street analysts changed their outlook on top names. Complete view of changes, incl. upgrades/downgrades, on analyst ratings page.",
-      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/06/60040547/micron-technology-to-1500-here-are-10-top-analyst-forecasts-for-tuesday",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "AMAT",
-        "AVAV",
-        "BBBY",
-        "BE",
-        "BWIN",
-        "DFTX",
-        "MU",
-        "SNPS",
-        "TER",
-        "ZBRA"
-      ],
-      "created_at": "2026-06-23T13:08:23Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Headline suggests significant upside potential with $1,500 price target for Micron Technology."
-    },
-    {
-      "id": "60039325",
-      "headline": "B of A Securities Maintains Buy on Applied Materials, Raises Price Target to $720",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/06/60039325/b-securities-maintains-buy-applied-materials-raises-price-target-720",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "AMAT"
-      ],
-      "created_at": "2026-06-23T12:33:44Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Buy rating maintained with raised price target signals analyst confidence in stock appreciation"
-    },
-    {
-      "id": "60029438",
-      "headline": "SanDisk's AI-Driven Surge Brings These ETFs In Focus As Memory Shortage Fears Grow",
-      "summary": "ETFs with large holdings in memory giant SNDK are poised to gain as NAND shortages, soaring data center demand, fuel the storage supercycle narrative.",
-      "url": "https://www.benzinga.com/etfs/sector-etfs/26/06/60029438/sandisks-ai-driven-surge-brings-these-etfs-in-focus-as-memory-shortage-fears-grow",
-      "author": "Chandrima Sanyal",
-      "source": "benzinga",
-      "symbols": [
-        "AMZN",
-        "FCLD",
-        "FPX",
-        "GOOGL",
-        "KWIN",
-        "META",
-        "MSFT",
-        "SNDK",
-        "WDC"
-      ],
-      "created_at": "2026-06-22T19:59:16Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "AI-driven surge, NAND shortages, and soaring data center demand support storage supercycle narrative."
-    },
-    {
-      "id": "60029258",
-      "headline": "GOOGL, MSFT Plunge Up To 6% On Monday: What Is Going On With AI Hyperscalers?",
-      "summary": "AI CapEx fears have Big Tech sliding, but David Katz is using the selloff to buy more. Find out why he&39;s bullish on hyperscalers and cautious on chips.",
-      "url": "https://www.benzinga.com/markets/prediction-markets/26/06/60029258/googl-msft-plunge-up-to-6-on-monday-what-is-going-on-with-ai-hyperscalers",
-      "author": "Daragh Thomas",
-      "source": "benzinga",
-      "symbols": [
-        "AMAT",
-        "AMZN",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "MU",
-        "NVDA",
-        "QCOM",
-        "SPCX",
-        "TXN"
-      ],
-      "created_at": "2026-06-22T19:54:39Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Expert buying dip despite selloff; underlying bullish view on hyperscalers despite near-term fears."
-    },
-    {
-      "id": "60027045",
-      "headline": "Micron Earnings And An IPO Put This ETF Back In The Spotlight With 190% Gains",
-      "summary": "Micron upcoming earnings and a potential SK Hynix Nasdaq IPO are fueling interest in DRAM ETF as investors seek the next AI trade beyond Nvidia.",
-      "url": "https://www.benzinga.com/etfs/sector-etfs/26/06/60027045/dram-etf-micron-earnings-sk-hynix-ipo",
-      "author": "Chandrima Sanyal",
-      "source": "benzinga",
-      "symbols": [
-        "DRAM",
-        "MU",
-        "NVDA",
-        "SMH",
-        "SNDK",
-        "SOXX",
-        "STX",
-        "WDC"
-      ],
-      "created_at": "2026-06-22T18:46:26Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Positive catalysts (earnings, IPO) and strong ETF performance driving investor interest in semiconductor sector."
-    },
-    {
-      "id": "60026331",
-      "headline": "Stock Of The Day: When Will Western Digital Reverse?",
-      "summary": "Western Digital (WDC) shares are extremely overbought. This means they may reverse and go lower. Some would sell when the trend reverses.",
-      "url": "https://www.benzinga.com/trading-ideas/technicals/26/06/60026331/stock-of-the-day-when-will-western-digital-reverse",
-      "author": "Mark Putrino",
-      "source": "benzinga",
-      "symbols": [
-        "WDC"
-      ],
-      "created_at": "2026-06-22T18:20:57Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Stock is overbought with expectations of reversal and potential downside movement."
-    },
-    {
-      "id": "60008042",
-      "headline": "Micron Stock Climbs Over 3% In Pre-Market: What's Going On?",
-      "summary": "Micron stock rose after Bernstein lifted its price target to $1,300, citing strong memory pricing and AI-driven HBM demand.",
-      "url": "https://www.benzinga.com/markets/tech/26/06/60008042/micron-stock-climbs-over-3-in-pre-market-whats-going-on",
-      "author": "Namrata Sen",
-      "source": "benzinga",
-      "symbols": [
-        "AAPL",
-        "META",
-        "MU",
-        "SSNLF",
-        "WDC"
-      ],
-      "created_at": "2026-06-22T09:46:09Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst upgrade with higher price target due to strong pricing and AI demand tailwinds."
-    },
-    {
-      "id": "60019969",
-      "headline": "Western Digital Joins Micron\u2019s AI Memory Rally As Chip Demand Supercharges Storage Stocks",
-      "summary": "Western Digital stock rallied on Monday as an aggressive Wall Street upgrade for rival Micron boosted the entire AI data storage sector.",
-      "url": "https://www.benzinga.com/markets/tech/26/06/60019969/western-digital-joins-microns-ai-memory-rally-as-chip-demand-supercharges-storage-stocks",
-      "author": "Anusuya Lahiri",
-      "source": "benzinga",
-      "symbols": [
-        "AAPL",
-        "BLCV",
-        "CTEF",
-        "DRAM",
-        "MU",
-        "WDC"
-      ],
-      "created_at": "2026-06-22T15:34:23Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Stock rallied on sector upgrade; AI memory demand driving positive momentum across storage stocks."
-    },
-    {
-      "id": "60019816",
-      "headline": "Why Is Caterpillar Stock Surging On Monday?",
-      "summary": "Caterpillar shares surged past the $1,000 threshold on Monday following news of a massive power project with Chevron and Microsoft.",
-      "url": "https://www.benzinga.com/trading-ideas/movers/26/06/60019816/why-is-caterpillar-stock-surging-on-monday",
-      "author": "Kaustubh Bagalkote",
-      "source": "benzinga",
-      "symbols": [
-        "CAT",
-        "CVX",
-        "GEV",
-        "MSFT"
-      ],
-      "created_at": "2026-06-22T15:30:48Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Massive power project partnership with major corporations drives stock surge past $1,000."
     }
   ]
 }
