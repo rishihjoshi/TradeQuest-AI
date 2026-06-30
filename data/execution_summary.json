@@ -1,14 +1,7 @@
 {
-  "timestamp": "2026-06-30T16:08:36Z",
-  "mode": "market_open",
-  "orders_placed": [
-    {
-      "action": "SELL",
-      "symbol": "STLD",
-      "qty": 1,
-      "status": "submitted"
-    }
-  ],
+  "timestamp": "2026-06-30T22:50:04Z",
+  "mode": "post_close",
+  "orders_placed": [],
   "orders_skipped": [
     {
       "symbol": "NUE",
@@ -16,5 +9,5 @@
     }
   ],
   "errors": [],
-  "cash_pct_after": 60.21
+  "cash_pct_after": 60.27
 }
