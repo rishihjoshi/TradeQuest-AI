@@ -1,7 +1,106 @@
 {
-  "last_run": "2026-06-29T22:37:35Z",
-  "last_type": "day_end",
+  "last_run": "2026-06-30T16:07:27Z",
+  "last_type": "day_start",
   "runs": [
+    {
+      "id": "RUN-20260630-1607",
+      "timestamp": "2026-06-30T16:07:27Z",
+      "type": "day_start",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is in a bull regime with healthy breadth (65.1% above 200-MA), but sits at a critical 58.3% cash position vs the 5% bull target \u2014 the dominant issue entering today. Only 2 of 8 holdings pass the momentum filter, with multiple positions (ADI, NUE, STLD) confirmed below their 50-day MAs. The July 1 quarterly rebalance is tomorrow, which is the correct venue for addressing the cash deployment gap and rotating stale positions.",
+      "regime": "bull",
+      "regime_confidence": 0.83,
+      "flags": [
+        "CASH: 58.3% cash ($6,158.79) vs 5% bull-regime target \u2014 July 1 quarterly rebalance tomorrow is the correct deployment window; no mid-quarter buys permitted today",
+        "AMAT: Rule D parabolic sell flagged \u2014 +63.64% gain in 40 days (entry 2026-05-20 at $424.68); SELL half order issued last evening, awaiting next_open execution; do NOT re-issue today",
+        "STLD: Tier 1 SELL blocked yesterday \u2014 loss position (-$5.02, -2.07%, entry 2026-05-06), momentum_rank=0, below 50-day MA ($237.15 vs MA $243.76); order was blocked by agent approval gate, persistent flag 5+ consecutive runs",
+        "ADI: Below 50-day MA ($387.95 vs MA $407.26) confirmed multiple sessions, momentum_rank=0 \u2014 profitable (+$4.33, +1.13%, entry 2026-05-04); structural trend break watch continues; Rule A nearing 3-consecutive-day threshold",
+        "NUE: Below 50-day MA ($228.58 vs MA $235.41) confirmed multiple sessions, momentum_rank=0 \u2014 barely profitable (+$4.33, +0.96%, entry 2026-05-04); Rule A trend break watch, same pattern as ADI",
+        "WDC: momentum_rank=0, volatility_30d=0.9995 (near 90th percentile risk boundary), unknown MA status \u2014 large gain (+$165.74, +34.14%, entry 2026-05-22); hold gate active as profitable position; monitor at July 1 rebalance",
+        "C: momentum_rank=0, unknown MA status \u2014 profitable (+$66.84, +13.29%, entry 2026-05-26); hold gate active; assess at July 1 rebalance",
+        "SECTOR: Basic Materials concentration (NUE + STLD) both failing momentum and below MA \u2014 both flagged for action at July 1 rebalance",
+        "JULY 1 REBALANCE TOMORROW: Full quarterly rebalance \u2014 all deferred Tier 2 WATCHes become eligible; full S&P 500 screen should run; cash deployment from 58.3% toward 5% target is the primary objective"
+      ],
+      "decisions": [
+        {
+          "action": "WATCH",
+          "symbol": "AMAT",
+          "reason": "Rule D parabolic SELL (half position) was issued last evening for next_open execution \u2014 order should execute at today's open. Do NOT re-issue. Monitor fill. Remaining half position (+$270.25, +63.64%, entry 2026-05-20) held per Rule D framework. MA data unknown.",
+          "rule_triggered": "profit_take",
+          "sell_tier": "null",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "STLD",
+          "reason": "Loss position (-$5.02, -2.07%, entry 2026-05-06). Momentum_rank=0 confirmed 5+ consecutive runs (Rule E loss position = Tier 1). Below 50-day MA ($237.15 vs MA $243.76) \u2014 Rule A trend break also applies. Tier 1 SELL was blocked yesterday by execution gate. Re-issuing for next_open. This is a non-quarterly month but Tier 1 SELLs on loss positions are always permitted.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "ADI",
+          "reason": "Price $387.95 below 50-day MA $407.26 \u2014 below_ma status confirmed multiple consecutive sessions, approaching Rule A 3-day trigger threshold. Momentum_rank=0 confirmed. However position is profitable (+$4.33, +1.13%, entry 2026-05-04) \u2014 hold gate prevents Tier 2 momentum-decay sell. Rule A trend break is a structural rule that CAN exit a winner, but 3-consecutive-day confirmation must be fully met. Deferring to July 1 quarterly rebalance for full evaluation. Will escalate to Tier 1 SELL tomorrow if Rule A is confirmed.",
+          "rule_triggered": "trend_break",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "NUE",
+          "reason": "Price $228.58 below 50-day MA $235.41 \u2014 below_ma status confirmed multiple consecutive sessions, same pattern as ADI. Momentum_rank=0 confirmed. Position barely profitable (+$4.33, +0.96%, entry 2026-05-04) \u2014 hold gate applies to momentum decay alone, but Rule A trend break is structural. July 1 rebalance is tomorrow \u2014 defer Rule A confirmation to that session for proper structural assessment.",
+          "rule_triggered": "trend_break",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "WDC",
+          "reason": "Momentum_rank=0, unknown MA status, volatility_30d=0.9995 (near 90th percentile risk ceiling). Profitable (+$165.74, +34.14%, entry 2026-05-22, held ~38 days). Hold gate fully active \u2014 profitable position with only momentum decay cannot be sold in non-quarterly month. July 1 rebalance tomorrow will determine if structural rules apply. Flag volatility_30d for risk filter check at rebalance.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "C",
+          "reason": "Momentum_rank=0, unknown MA status. Profitable (+$66.84, +13.29%, entry 2026-05-26, held ~34 days). Hold gate active \u2014 defer to July 1 quarterly rebalance for full filter evaluation. No structural rules triggered at this time.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "Momentum_rank=1 (top tier), above 50-day MA ($1033.19 vs MA $895.37), profitable (+$111.25, +12.07%, entry 2026-05-06). Passes quality (EPS +30.2%, Rev +22.2%) and valuation (fwd P/E 34.3). Best-positioned holding in portfolio \u2014 no action required.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "Momentum_rank=3, above 50-day MA ($373.58 vs MA $355.58), profitable (+$37.00, +10.99%, entry 2026-05-04). Passes quality (EPS +27.6%, Rev +11.8%) and valuation (fwd P/E 22.3). Solid holding \u2014 no action required.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "decrease",
+      "cash_rationale": "Cash at 58.3% ($6,158.79) is dramatically above the 5% bull-regime target. July 1 quarterly rebalance tomorrow is the correct and only permitted venue to deploy this cash via new BUY orders from the full S&P 500 momentum screen. STLD Tier 1 SELL today will add a small amount (~$237) but the primary deployment mechanism is tomorrow's quarterly rebalance. No mid-quarter buys are permitted today per strategy rules.",
+      "summary": "Jun 30 day_start: Re-issuing Tier 1 SELL for STLD (loss, blocked yesterday); monitoring AMAT Rule D half-sell for open execution; ADI and NUE approaching Rule A 3-day MA break trigger \u2014 full resolution at July 1 quarterly rebalance tomorrow where 58.3% cash deployment is the critical priority.",
+      "usage": {
+        "input_tokens": 12373,
+        "output_tokens": 2269,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 8817
+      },
+      "sell_tier_summary": {
+        "tier1_execute": 1,
+        "tier2_deferred": 0
+      }
+    },
     {
       "id": "RUN-20260629-2237",
       "timestamp": "2026-06-29T22:37:35Z",
