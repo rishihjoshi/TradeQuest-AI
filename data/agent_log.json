@@ -1,7 +1,104 @@
 {
-  "last_run": "2026-07-01T16:07:17Z",
-  "last_type": "day_start",
+  "last_run": "2026-07-01T22:47:54Z",
+  "last_type": "monthly",
   "runs": [
+    {
+      "id": "RUN-20260701-2247",
+      "timestamp": "2026-07-01T22:47:54Z",
+      "type": "monthly",
+      "model": "claude-sonnet-4-6",
+      "assessment": "July 1 is a quarterly rebalance month \u2014 full rebalance authority is active. The portfolio has executed the bulk of the July rebalance (BNY, GS, MS bought; AMAT, NUE, STLD sold) but cash remains severely elevated at 44.1% vs the 5% bull target. Five additional orders (TXN, CSCO, IBKR, ANET, BEN) were placed this morning but are not yet reflected in holdings \u2014 these are pending fills. The regime remains firmly bull (SPY above 200-MA, breadth 62%, VIX 15.5) so the priority is deploying cash into high-momentum names while applying structural sell rules to the remaining holdings.",
+      "regime": "bull",
+      "regime_confidence": 0.86,
+      "flags": [
+        "ADI: Price $390.20 vs MA50 $408.53 \u2014 4.5% below 50-day MA, momentum_rank=0 (data missing). Unrealized PnL +$6.58 (+1.71%), entry 2026-05-04. Rule A trend break \u2014 need to confirm consecutive day count. With missing momentum data and sustained MA breach, this is a structural concern. WATCH.",
+        "WDC: momentum_rank=0 (data missing), sector=Unknown, MA unknown, volatility_30d=1.0095 (extreme \u2014 above 90th pct). Unrealized PnL +$116.22 (+23.94%), entry 2026-05-22. Volatility breach is a structural risk filter failure. Profitable position \u2014 hold gate applies for momentum decay, but extreme volatility (Rule risk filter) warrants close attention.",
+        "C: sector=Unknown, momentum_rank=0 (data missing), MA unknown, eps_growth=null, revenue_growth=null. Unrealized PnL +$57.40 (+11.41%), entry 2026-05-26. All data fields missing \u2014 cannot confirm quality, momentum, or trend status. Profitable position under hold gate \u2014 WATCH.",
+        "CASH: 44.1% cash vs 5% bull target \u2014 severely under-deployed. Five orders placed at today's open (TXN, CSCO, IBKR, ANET, BEN) are pending fills but not yet in holdings. If those fills complete, cash should drop substantially. Monitor post-fill cash level and assess whether additional buys are needed.",
+        "SECTOR: Financial Services (BNY + GS + MS) = ~27.8% of portfolio \u2014 approaching 30% cap. New financial buys should be avoided until next quarter.",
+        "BNY/GS/MS: All entered 2026-07-01, all showing small unrealized losses (<1%) which is normal for same-day entries. No sell rules triggered \u2014 monitor momentum confirmation over coming weeks.",
+        "PENDING ORDERS: TXN, CSCO, IBKR, ANET, BEN submitted at open on 2026-07-01 \u2014 do NOT re-issue these orders. Await fill confirmation before assessing those positions."
+      ],
+      "decisions": [
+        {
+          "action": "SELL",
+          "symbol": "ADI",
+          "reason": "Rule A trend break confirmed: price $390.20 is 4.5% below 50-day MA $408.53, flagged across multiple consecutive runs (2026-06-29 through 2026-07-01 = 3+ consecutive agent runs below MA). Momentum_rank=0 (data missing \u2014 treated conservatively as failing). Unrealized PnL +$6.58 (+1.71%), entry 2026-05-04. Position is at a gain but Rule A (structural trend break, 3 consecutive days below MA) is a structural rule that overrides the hold gate \u2014 the hold gate only blocks momentum-decay-only sells (Rule E) on profitable positions. Rule A applies regardless of profit/loss. Tier 1 SELL at next open.",
+          "rule_triggered": "trend_break",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "BNY",
+          "reason": "Entered 2026-07-01 as part of quarterly rebalance. Momentum_rank=7, above 50-day MA ($146.02 vs MA $138.80), quality metrics strong (EPS +41.8%, revenue +13.4%), forward P/E 14.9. Small unrealized loss of -$7.98 (-0.78%) is noise from same-day entry. No sell rules triggered. HOLD.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "C",
+          "reason": "All fundamental data fields null (eps_growth, revenue_growth, forward_pe, momentum_rank=0, MA unknown, sector=Unknown). Cannot confirm quality filter passage \u2014 conservative treatment means quality is unverified. Unrealized PnL +$57.40 (+11.41%), entry 2026-05-26. Profitable position \u2014 hold gate prevents momentum-decay sell. However, persistent data failure means this position cannot be confirmed as meeting strategy filters. WATCH with urgency next_rebalance \u2014 if data remains unavailable at October quarterly, evaluate for exit. Do not sell today as no structural rule is confirmed triggered.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "Momentum_rank=1 (top of universe), price $994.20 well above MA50 $905.99 (+9.7%), EPS growth +30.2%, revenue +22.2%, forward P/E 32.9 (below 40 threshold), volatility 0.528 within bounds. Unrealized PnL +$72.26 (+7.84%), entry 2026-05-06. All four filters passing. Strong structural hold \u2014 Rule D check: +7.84% gain in ~56 days, well below 60% threshold. HOLD.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "GS",
+          "reason": "Entered 2026-07-01 as part of quarterly rebalance. Momentum_rank=9, above 50-day MA ($1019.61 vs MA $995.00), quality strong (EPS +24.2%, revenue +14.5%), forward P/E 15.4. Small unrealized loss -$8.28 (-0.81%) is same-day noise. No sell rules triggered. HOLD.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "Momentum_rank=3, price $375.34 above MA50 $358.12 (+4.8%), EPS growth +27.6%, revenue +11.8%, forward P/E 22.4, volatility 0.457. Unrealized PnL +$38.76 (+11.52%), entry 2026-05-04. All filters passing. Rule D check: +11.52% in ~58 days \u2014 below 60% threshold. Strong position, HOLD.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "MS",
+          "reason": "Entered 2026-07-01 as part of quarterly rebalance. Momentum_rank=8, above 50-day MA ($211.85 vs MA $202.93), quality strong (EPS +31.9%, revenue +16.3%), forward P/E 16.5. Small unrealized loss -$3.16 (-0.37%) is same-day noise. No sell rules triggered. HOLD.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "WDC",
+          "reason": "Volatility_30d=1.0095 which is extreme and almost certainly above the 90th percentile risk threshold (universe 90th pct is typically ~0.40-0.50 annualized). Momentum_rank=0 (data missing), sector=Unknown, MA unknown. Unrealized PnL +$116.22 (+23.94%), entry 2026-05-22. Hold gate applies \u2014 this is a profitable position and momentum decay alone (Rule E) cannot trigger a sell. However, extreme volatility is a structural risk filter concern. Rule D check: +23.94% in ~40 days \u2014 approaching but not yet at 60% in 60 days threshold; monitor closely. WATCH for October rebalance review \u2014 if volatility remains extreme and data continues missing, evaluate exit at quarterly.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "decrease",
+      "cash_rationale": "Cash is 44.1% vs 5% bull target \u2014 critically under-deployed. The five orders placed this morning (TXN, CSCO, IBKR, ANET, BEN) should bring cash down significantly once filled. After the ADI sell proceeds clear, remaining cash should be deployed into top-momentum names at the next available opportunity within the quarterly month. Target: reduce cash to 5-10% range. Financial Services sector is approaching the 30% cap (BNY+GS+MS ~27.8%) so new buys should focus on Technology, Industrials, or other sectors.",
+      "summary": "July quarterly rebalance day: SELL ADI (Rule A trend break, tier1, next_open); WATCH C and WDC (profitable positions with data gaps, defer to October quarterly); HOLD CAT, JBL, BNY, GS, MS \u2014 all structurally sound; cash 44.1% remains critically above 5% bull target pending fills of 5 open orders placed at today's open.",
+      "usage": {
+        "input_tokens": 13225,
+        "output_tokens": 2554,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 8817
+      },
+      "sell_tier_summary": {
+        "tier1_execute": 1,
+        "tier2_deferred": 2
+      }
+    },
     {
       "id": "RUN-20260701-1607",
       "timestamp": "2026-07-01T16:07:17Z",
@@ -10986,26 +11083,6 @@
       "usage": {
         "input_tokens": 2193,
         "output_tokens": 1164,
-        "cache_read_tokens": 0,
-        "cache_write_tokens": 2477
-      }
-    },
-    {
-      "id": "RUN-20260424-2138",
-      "timestamp": "2026-04-24T21:38:58Z",
-      "type": "day_start",
-      "model": "claude-sonnet-4-6",
-      "assessment": "{\n  \"assessment\": \"The portfolio is in excellent shape with a 16.43% total return, 1.84 Sharpe ratio, and all 17 positions above their 50-day MAs. Market regime is confirmed Bull (78% confidence) with VIX at 16.4, positive 200-day MA trend, and 64% breadth \u2014 all three signals aligned. Two positions warrant pre-market attention: COST fails the valuation filter (Forward P/E 48.2 exceeds the <40 threshold and must be verified against sector-relative rule) and HD/UNH show the weakest momentum in the book with ranks 17 and 16 respectively, approaching the top-40% sell threshold.\",\n  \"regime\": \"bull\",\n  \"regime_confidence\": 0.78,\n  \"flags\": [\n    \"COST: Forward P/E of 48.2 exceeds the hard cap of 40 \u2014 valuation filter status shows only 15/17 passing, and COST is a likely culprit; must confirm it qualifies via the sector-relative rule (top 70% cheapest in Consumer Staples) before next rebalance\",\n    \"HD: Momentum rank 17 (lowest in portfolio), 6M momentum 0.15 / 12M 0.26 \u2014 weakest momentum profile in the book; approaching the top-40% sell threshold boundary and should be watched closely at next rebalance on 2026-05-01\",\n    \"UNH: Momentum rank 16, 6M momentum 0.16 / 12M 0.28 \u2014 second-weakest momentum; EPS growth 12% is only marginally above the 10% quality threshold, creating dual deterioration risk if next earnings disappoint\",\n    \"PANW: 12M momentum rank at 0.40 exactly \u2014 sitting on the boundary of the top-40% sell trigger (Rule 1: momentum_rank > 40% triggers sell); any further decay today would cross the exit threshold\",\n    \"NOW: 12M momentum 0.38, rank 12 \u2014 momentum is decelerating and approaching the lower tier of the portfolio; not at sell threshold yet but trending in the wrong direction\",\n    \"CDNS: 12M momentum 0.36, rank 13 \u2014 similar deceleration pattern to NOW; monitor alongside for potential rank compression at May rebalance\",\n    \"GEV: 30-day volatility at 0.42 is the highest in the portfolio and is the second-highest reading overall (NVDA at 0.38); while below the 90th percentile threshold, elevated vol on a position held only since 2026-04-01 warrants monitoring \u2014 a single down day could disproportionately impact it\",\n    \"NVDA: 30-day volatility 0.38 is elevated relative to peers; position is +18.25% in ~112 days \u2014 not yet triggering the profit-take rule (>40% in <90 days) but trajectory should be watched if momentum accelerates\",\n    \"SECTOR CONCENTRATION: Technology sector holds 9 of 17 positions (NVDA, CRWD, AVGO, TSM, ORCL, MSFT, PANW, NOW, CDNS) representing approximately 53% of invested capital \u2014 well above any single-sector comfort level; no hard cap in strategy v2 but this concentration is a known risk per the strategy document and should be flagged for the May rebalance review\"\n  ],\n  \"decisions\": [\n    {\n      \"action\": \"HOLD\",\n      \"symbol\": \"NVDA\",\n      \"reason\": \"Rank 1, momentum strong, price $934.2 vs MA50 $887.3 (+5.3% above), EPS +82%, Rev +122%, Fwd P/E 35.2. No sell rule triggered. PnL +18.25% in 112 days \u2014 not yet approaching 40%/90-day profit-take trigger.\",\n      \"rule_triggered\": \"null\",\n      \"urgency\": \"next_rebalance\"\n    },\n    {\n      \"action\": \"HOLD\",\n      \"symbol\": \"META\",\n      \"reason\": \"Rank 2, price $512.8 vs MA50 $488.6 (+4.9% above), EPS +48%, Rev +22%, Fwd P/E 28.4. All filters passing. No sell rule triggered.\",\n      \"rule_triggered\": \"null\",\n      \"urgency\": \"next_rebalance\"\n    },\n    {\n      \"action\": \"HOLD\",\n      \"symbol\": \"GEV\",\n      \"reason\": \"Rank 3, strongest 12M momentum in portfolio (1.12), price $186.3 vs MA50 $162.4 (+14.7% above), EPS +92%. PnL +25.37% in 22 days \u2014 well short of 40%/90-day trigger. Elevated vol (0.42) noted but below 90th pct threshold.\",\n      \"rule_triggered\": \"null\",\n      \"urgency\": \"next_rebalance\"\n    },\n    {\n      \"action\": \"HOLD\",\n      \"symbol\": \"CRWD\",\n      \"reason\": \"Rank 4, price $248.6 vs MA50 $232.8 (+6.8% above), EPS +35%, Rev +28%, Fwd P/E 38.4. All filters passing. No sell rule triggered.\",\n      \"rule_triggered\": \"null\",\n      \"urgency\": \"next_rebalance\"\n    },\n    {\n      \"action\": \"HOLD\",\n      \"symbol\": \"AVGO\",\n      \"reason\": \"Rank 5, price $1048.6 vs MA50 $996.4 (+5.2% above), EPS +28%, Rev +42%, Fwd P/E 26.8. All filters passing. No sell rule triggered.\",\n      \"rule_triggered\": \"null\",\n      \"urgency\": \"next_rebalance\"\n    },\n    {\n      \"action\": \"HOLD\",\n      \"symbol\": \"AMZN\",\n      \"reason\": \"Rank 6, price $228.6 vs MA50 $214.8 (+6.4% above), EPS +62%, Rev +18%, Fwd P/E 38.6. All filters passing. No sell rule triggered.\",\n      \"rule_triggered\": \"null\",\n      \"urgency\": \"next_rebalance\"\n    },\n    {\n      \"action\": \"HOLD\",\n      \"symbol\": \"TSM\",\n      \"reason\": \"Rank 7, price $172.4 vs MA50 $162.3 (+6.2% above), EPS +42%, Rev +34%, Fwd P/E 22.4. All filters passing. No sell rule triggered.\",\n      \"rule_triggered\": \"null\",\n      \"urgency\": \"next_rebalance\"\n    },\n    {\n      \"action\": \"HOLD\",\n      \"symbol\": \"GOOGL\",\n      \"reason\": \"Rank 8, price $178.5 vs MA50 $168.9 (+5.7% above), EPS +38%, Rev +15%, Fwd P/E 24.2. All filters passing. No sell rule triggered.\",\n      \"rule_triggered\": \"null\",\n      \"urgency\": \"next_rebalance\"\n    },\n    {\n      \"action\": \"HOLD\",\n      \"symbol\": \"ORCL\",\n      \"reason\": \"Rank 9, price $198.2 vs MA50 $186",
-      "regime": "unknown",
-      "regime_confidence": 0,
-      "flags": [],
-      "decisions": [],
-      "cash_action": "maintain",
-      "cash_rationale": "",
-      "summary": "Agent ran (day_start) \u2014 response parse failed",
-      "usage": {
-        "input_tokens": 9048,
-        "output_tokens": 1800,
         "cache_read_tokens": 0,
         "cache_write_tokens": 2477
       }
