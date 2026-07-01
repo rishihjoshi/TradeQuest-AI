@@ -1,13 +1,52 @@
 {
-  "timestamp": "2026-06-30T22:50:04Z",
-  "mode": "post_close",
-  "orders_placed": [],
+  "timestamp": "2026-07-01T16:08:35Z",
+  "mode": "market_open",
+  "orders_placed": [
+    {
+      "action": "SELL",
+      "symbol": "AMAT",
+      "qty": 1,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "NUE",
+      "qty": 2,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "MS",
+      "qty": 4,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "GS",
+      "qty": 1,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "BNY",
+      "qty": 7,
+      "status": "submitted"
+    }
+  ],
   "orders_skipped": [
     {
-      "symbol": "NUE",
+      "symbol": "ADI",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "C",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "WDC",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 60.27
+  "cash_pct_after": 43.84
 }
