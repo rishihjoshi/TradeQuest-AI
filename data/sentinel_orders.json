@@ -1,5 +1,12 @@
 {
-  "timestamp": "2026-06-30T20:28:57Z",
-  "sells": [],
-  "count": 0
+  "timestamp": "2026-07-01T20:24:14Z",
+  "sells": [
+    {
+      "symbol": "ADI",
+      "shares": 1,
+      "rule": "trend_break",
+      "reason": "Price below 50-day MA for 3 consecutive agent runs (\u2265 3 threshold). Forced exit \u2014 sentinel Rule 2."
+    }
+  ],
+  "count": 1
 }
