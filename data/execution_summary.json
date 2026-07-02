@@ -1,45 +1,25 @@
 {
-  "timestamp": "2026-07-01T22:47:04Z",
-  "mode": "post_close",
+  "timestamp": "2026-07-02T15:43:05Z",
+  "mode": "market_open",
   "orders_placed": [
     {
       "action": "BUY",
-      "symbol": "TXN",
+      "symbol": "JCI",
       "qty": 3,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "CSCO",
-      "qty": 8,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "IBKR",
-      "qty": 11,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "ANET",
-      "qty": 6,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "BEN",
-      "qty": 5,
       "status": "submitted"
     }
   ],
   "orders_skipped": [
     {
-      "symbol": "C",
+      "symbol": "BEN",
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "ADI",
+      "symbol": "JBL",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "C",
       "reason": "blocked by agent approval or risk gate"
     },
     {
@@ -48,5 +28,5 @@
     }
   ],
   "errors": [],
-  "cash_pct_after": 44.07
+  "cash_pct_after": 5.13
 }

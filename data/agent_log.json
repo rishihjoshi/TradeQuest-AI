@@ -1,7 +1,104 @@
 {
-  "last_run": "2026-07-01T22:47:54Z",
-  "last_type": "monthly",
+  "last_run": "2026-07-02T15:42:20Z",
+  "last_type": "day_start",
   "runs": [
+    {
+      "id": "RUN-20260702-1542",
+      "timestamp": "2026-07-02T15:42:20Z",
+      "type": "day_start",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is in bull regime with 62% breadth and VIX at 15.5, but severely cash-heavy at 44.1% vs the 5% bull target following yesterday's quarterly rebalance buys (TXN, CSCO, IBKR, ANET, BEN) which appear pending fill \u2014 those 5 positions do not yet appear in holdings, suggesting orders are in-flight. The 8 confirmed holdings show mixed momentum quality: CAT and JBL are strong performers above MA50, while ADI remains structurally broken below its 50-day MA and WDC/C carry data gaps that prevent proper rule evaluation. Financial Services sector concentration (BNY + GS + MS) is approaching the 30% sector cap.",
+      "regime": "bull",
+      "regime_confidence": 0.86,
+      "flags": [
+        "ADI: Price $390.20 is 4.5% below MA50 $408.53 \u2014 trend break Rule A active, persistently flagged across 5+ consecutive runs, SELL was issued yesterday (tier1, next_open) \u2014 URGENT: confirm this order executed; unrealized PnL +$6.58 (+1.71%), entry 2026-05-04",
+        "WDC: momentum_rank=0 (data missing), sector=Unknown, MA50=null \u2014 data gaps prevent Rule A/E evaluation; position is profitable (+$116.22, +23.94%, entry 2026-05-22); volatility_30d=1.01 which exceeds 90th percentile threshold \u2014 potential Rule D risk filter violation; persistently flagged 5+ runs",
+        "C: momentum_rank=0 (data missing), sector=Unknown, MA50=null, eps_growth=null \u2014 no rule evaluation possible; profitable (+$57.40, +11.41%, entry 2026-05-26); persistently flagged 5+ runs, WATCH status maintained",
+        "SECTOR: Financial Services (BNY ~9.8% + GS ~9.8% + MS ~8.2%) = ~27.8% of current confirmed holdings \u2014 if pending buys (TXN/CSCO/IBKR/ANET/BEN) fill and portfolio expands, sector % will dilute; monitor after fills confirm",
+        "CASH: 44.1% cash vs 5% bull regime target \u2014 5 buy orders placed yesterday (TXN, CSCO, IBKR, ANET, BEN) are pending fill per execution summary; do NOT re-issue these orders; cash should normalize once fills confirm",
+        "PENDING FILLS: TXN, CSCO, IBKR, ANET, BEN were submitted at yesterday's market open \u2014 these do not appear in current holdings, suggesting fills may not yet be reflected in portfolio.json; verify Alpaca fill status before any action",
+        "ADI EXECUTION GAP: ADI SELL was issued tier1/next_open on 2026-07-01 but ADI still appears in holdings \u2014 investigate whether the sell order was blocked or failed to execute"
+      ],
+      "decisions": [
+        {
+          "action": "WATCH",
+          "symbol": "ADI",
+          "reason": "Rule A trend break \u2014 price $390.20 is 4.5% below MA50 $408.53, flagged across 5+ consecutive runs. SELL tier1 was issued yesterday but ADI remains in portfolio \u2014 execution appears to have failed. Unrealized PnL +$6.58 (+1.71%), entry 2026-05-04. This is a day_start run so no trade is issued here, but this is URGENT \u2014 the evening agent must re-issue SELL tier1 at next_open if ADI is still held and below MA50.",
+          "rule_triggered": "trend_break",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "WDC",
+          "reason": "Data gaps (momentum_rank=0, MA50=null, sector=Unknown) prevent full rule evaluation. Volatility_30d=1.0095 is extremely high and likely exceeds the 90th percentile risk threshold (Rule D equivalent). Position profitable: unrealized PnL +$116.22 (+23.94%), entry 2026-05-22. Structural rules cannot be confirmed as passing \u2014 defer to October quarterly rebalance for exit decision per hold gate. Monitor for MA data restoration.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "C",
+          "reason": "Persistent data gaps \u2014 eps_growth=null, revenue_growth=null, forward_pe=null, MA50=null, momentum_rank=0, sector=Unknown. Quality filter cannot be evaluated. Position profitable: unrealized PnL +$57.40 (+11.41%), entry 2026-05-26. Hold gate applies \u2014 no SELL permitted on profitable position without confirmed structural rule trigger. Defer to October rebalance.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "Strong momentum rank 1, price $994.20 well above MA50 $905.99 (+9.7%), 6M momentum +57.9%, 12M +136.9%. All filters passing. PnL +$72.26 (+7.84%), entry 2026-05-06. No sell rules triggered.",
+          "rule_triggered": null,
+          "sell_tier": null,
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBL",
+          "reason": "Momentum rank 3, price $375.34 above MA50 $358.12 (+4.8%). Quality strong (EPS +27.6%, rev +11.8%), forward P/E 22.4. PnL +$38.76 (+11.52%), entry 2026-05-04. No sell rules triggered.",
+          "rule_triggered": null,
+          "sell_tier": null,
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "BNY",
+          "reason": "New position entered 2026-07-01 at quarterly rebalance. Momentum rank 7, above MA50 ($146.02 vs $138.80). Quality solid (EPS +41.8%, rev +13.4%). Small loss -$7.98 (-0.78%) \u2014 insufficient duration and magnitude to trigger any sell rule. Hold.",
+          "rule_triggered": null,
+          "sell_tier": null,
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "GS",
+          "reason": "New position entered 2026-07-01. Momentum rank 9, above MA50 ($1019.61 vs $995.00). Quality solid (EPS +24.2%, rev +14.5%). Negligible loss -$8.28 (-0.81%) \u2014 day-1 noise. Hold.",
+          "rule_triggered": null,
+          "sell_tier": null,
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "MS",
+          "reason": "New position entered 2026-07-01. Momentum rank 8, above MA50 ($211.85 vs $202.93). Quality solid (EPS +31.9%, rev +16.3%). Negligible loss -$3.16 (-0.37%) \u2014 day-1 noise. Hold.",
+          "rule_triggered": null,
+          "sell_tier": null,
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "decrease",
+      "cash_rationale": "Cash at 44.1% is severely above the 5% bull regime target. Five buy orders (TXN, CSCO, IBKR, ANET, BEN) were submitted yesterday and should reduce cash once fills confirm \u2014 do not take additional action until fill status is verified. If any orders were rejected or unfilled, the evening agent should investigate and resubmit within the 5-order-per-run limit at the next quarterly rebalance opportunity (July is still valid as a quarterly month).",
+      "summary": "Day-start pre-market check: ADI execution gap flagged as urgent (SELL tier1 unexecuted), 5 pending buy fills await confirmation, WDC/C held on data-gap WATCH, CAT/JBL/GS/BNY/MS all HOLD \u2014 bull regime intact at 86% confidence.",
+      "usage": {
+        "input_tokens": 12750,
+        "output_tokens": 2182,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 8817
+      },
+      "sell_tier_summary": {
+        "tier1_execute": 0,
+        "tier2_deferred": 2
+      }
+    },
     {
       "id": "RUN-20260701-2247",
       "timestamp": "2026-07-01T22:47:54Z",
@@ -11041,48 +11138,6 @@
       "usage": {
         "input_tokens": 2193,
         "output_tokens": 961,
-        "cache_read_tokens": 0,
-        "cache_write_tokens": 2477
-      }
-    },
-    {
-      "id": "RUN-20260427-1550",
-      "timestamp": "2026-04-27T15:50:24Z",
-      "type": "day_start",
-      "model": "claude-sonnet-4-6",
-      "assessment": "Portfolio is early-stage with only 2 holdings (TSLA and AAPL) and a critically underdeployed equity position at 40.86% invested versus the 95% bull-regime target \u2014 cash sits at 59.14% against a 5% target. Both positions are technically healthy (above 50-day MA, strong momentum ranks), but TSLA raises quality and valuation concerns with 0% EPS growth and a forward P/E of 82.1, and AAPL shows revenue growth of only 4% which fails the quality filter threshold of 8%. Market regime is confirmed bull (VIX 18.2, positive MA200 trend, breadth 63%) with 0.78 confidence.",
-      "regime": "bull",
-      "regime_confidence": 0.78,
-      "flags": [
-        "TSLA: EPS growth reported as 0% \u2014 fails quality filter (requires >10%); forward P/E of 82.1 also fails the absolute valuation guard rail (<40); confirm whether sector-relative valuation (top 70% by Consumer Discretionary) rescues this position before next rebalance",
-        "TSLA: Despite 0% EPS growth, revenue growth of 13% is solid \u2014 quality filter is split-failing; one more quarter of sub-5% EPS growth would trigger Rule 3 (quality deterioration) sell",
-        "AAPL: Revenue growth of 4% fails the quality filter threshold of 8% \u2014 position is currently passing momentum and valuation screens but failing quality; this is a borderline hold that should be reviewed at monthly rebalance on 2026-05-01",
-        "PORTFOLIO: Equity exposure is 40.86% vs. bull-regime target of 95% \u2014 the portfolio is severely underdeployed; next rebalance on 2026-05-01 should screen and add 13-18 additional positions to reach target of 15-20 holdings at correct weights",
-        "AAPL: Position weight is 2.7% \u2014 below the minimum position size floor of 5%; this is a structural issue from insufficient capital allocation, not a sell signal, but flags the need for rebalancing",
-        "TSLA: Position weight is 38.1% \u2014 well above the 8% maximum position size cap; this represents extreme concentration risk and must be addressed at next rebalance"
-      ],
-      "decisions": [
-        {
-          "action": "WATCH",
-          "symbol": "TSLA",
-          "reason": "Price is $376.30 vs 50-day MA of $248.50 \u2014 well above trend line, no trend break. Momentum rank #1 in portfolio. However, 0% EPS growth is a quality concern and forward P/E of 82.1 exceeds the absolute <40 threshold. No sell rules triggered today but quality deterioration rule (Rule 3) is at risk if EPS growth remains below 5% for a second consecutive quarter. Additionally, position weight of 38.1% far exceeds the 8% max \u2014 structural overweight to be corrected at rebalance.",
-          "rule_triggered": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "AAPL",
-          "reason": "Price is $271.06 vs 50-day MA of $215.30 \u2014 comfortably above trend, no trend break. Momentum rank #2. EPS growth of 12% passes quality filter but revenue growth of 4% fails the 8% threshold \u2014 position is technically failing the quality filter on one of two criteria. Forward P/E of 26.2 is well within valuation guard rail. No immediate sell rule triggered but quality filter failure warrants close monitoring into next rebalance. Position weight of 2.7% is below the 5% minimum floor.",
-          "rule_triggered": "null",
-          "urgency": "next_rebalance"
-        }
-      ],
-      "cash_action": "decrease",
-      "cash_rationale": "Cash is at 59.14% versus the bull-regime target of 5%. The portfolio is massively underdeployed relative to strategy parameters. While no action is taken pre-market today, the monthly rebalance on 2026-05-01 must aggressively deploy capital into 13-18 new qualifying positions. The current cash level is not a deliberate defensive posture \u2014 it reflects an incomplete portfolio build. No intraday cash action warranted today (pre-market, no trades placed), but cash reduction is the clear directive for the upcoming rebalance.",
-      "summary": "Pre-market check complete \u2014 no sell rules triggered on TSLA or AAPL, but both positions carry filter concerns (TSLA quality/valuation, AAPL revenue growth), and portfolio is critically underdeployed at 41% equity vs. 95% bull-regime target ahead of the May 1 rebalance.",
-      "usage": {
-        "input_tokens": 2193,
-        "output_tokens": 1164,
         "cache_read_tokens": 0,
         "cache_write_tokens": 2477
       }
