@@ -1,14 +1,10 @@
 {
-  "timestamp": "2026-07-02T22:37:06Z",
-  "mode": "post_close",
+  "timestamp": "2026-07-03T15:35:55Z",
+  "mode": "market_open",
   "orders_placed": [],
   "orders_skipped": [
     {
-      "symbol": "WDC",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "C",
+      "symbol": "JCI",
       "reason": "blocked by agent approval or risk gate"
     },
     {
@@ -16,15 +12,15 @@
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "JCI",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
       "symbol": "BEN",
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "ANET",
+      "symbol": "WDC",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "C",
       "reason": "blocked by agent approval or risk gate"
     },
     {

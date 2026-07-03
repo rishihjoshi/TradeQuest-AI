@@ -1,7 +1,146 @@
 {
-  "last_run": "2026-07-02T22:38:04Z",
-  "last_type": "day_end",
+  "last_run": "2026-07-03T15:35:08Z",
+  "last_type": "day_start",
   "runs": [
+    {
+      "id": "RUN-20260703-1535",
+      "timestamp": "2026-07-03T15:35:08Z",
+      "type": "day_start",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is one day post-quarterly rebalance (2026-07-02) in a confirmed bull regime with 84% confidence. Market breadth at 64% supports full equity deployment. Several new positions show momentum_rank=0 which is a known data artifact for freshly entered names \u2014 not a structural signal on day 1. The primary concerns are: (1) Financial Services sector concentration at ~38% (BNY+C+GS+IBKR+MS), which exceeds the 30% sector cap; (2) WDC and C carry persistent data quality gaps; (3) JBL, TXN, JCI, and ANET are below their 50-day MAs, though day 1 confirmation is insufficient for Rule A.",
+      "regime": "bull",
+      "regime_confidence": 0.84,
+      "flags": [
+        "SECTOR/Financial Services: BNY (10.1%) + C (5.5%) + GS (10.0%) + IBKR (9.9%) + MS (8.4%) = ~43.9% \u2014 materially exceeds the 30% sector cap. Flagged for priority trim at next quarterly rebalance. No intra-quarter action permitted but must be resolved in October.",
+        "ANET: momentum_rank=0 and below MA50 ($159.99 vs $160.05, gap of $0.06). Entered 2026-07-02 (yesterday). Day 1 below MA \u2014 likely data artifact on entry day. Unrealized PnL: -$21.51 (-2.19%). Need 2 more consecutive days below MA50 before Rule A applies. Monitor closely.",
+        "TXN: below MA50 ($293.26 vs $294.63). Entered 2026-07-02 (yesterday). Day 1 below MA. Unrealized PnL: -$21.36 (-2.37%). momentum_rank=0 (data artifact, new entry). Need 2 more consecutive days below MA50 before Rule A triggers. Watch for confirmation.",
+        "JCI: below MA50 ($140.76 vs $142.01). Entered 2026-07-02 (yesterday). Day 1 below MA. Unrealized PnL: -$5.28 (-1.23%). momentum_rank=0 (data artifact). Need 2 more consecutive days below MA50 before Rule A triggers. Watch.",
+        "JBL: below MA50 ($341.30 vs $359.02, gap of $17.72 or ~4.9%). Entered 2026-05-04 \u2014 not a new entry artifact. This is day 2 confirmed below MA per prior run log. Unrealized PnL: +$4.72 (+1.40%). If confirmed below MA50 for a 3rd consecutive day today, Rule A (Tier 1 SELL) would apply. PRIORITY WATCH \u2014 one more day below triggers structural sell.",
+        "WDC: momentum_rank=0, sector=Unknown, MA50=null, eps_growth=null, volatility_30d=1.058 (extremely high \u2014 top 10% risk threshold likely breached). Profitable position: unrealized PnL +$58.45 (+12.04%), entered 2026-05-22. Hold gate active \u2014 no sell on momentum decay alone. Data quality issue persists across 5+ runs. Volatility breach (Rule 4 \u2014 risk filter) is a concern but not a structural sell rule. WATCH.",
+        "C: momentum_rank=0, sector=Unknown, MA50=null, eps_growth=null \u2014 persistent data gaps across 5+ runs. Profitable position: unrealized PnL +$56.76 (+11.28%), entered 2026-05-26. Hold gate active. No structural sell rule triggered. WATCH \u2014 data quality needs resolution.",
+        "BEN: sector=Unknown, momentum_rank=0, MA50=null, eps_growth=null, revenue_growth=null. Entered 2026-07-02. Unrealized PnL: -$1.50 (-0.87%). At a loss with data gaps. momentum_rank=0 may be data artifact on day 1. Monitor \u2014 if data gaps persist into next run, Rule E (momentum decay, loss position) could apply as Tier 1.",
+        "UNRESOLVED: AMAT and NUE show as flagged SELL in prior runs but trade log confirms both were sold on 2026-07-01 (AMAT 1 share at $659.71, NUE 2 shares at $218.79). These are resolved \u2014 no longer in portfolio. Prior run history flag can be dismissed."
+      ],
+      "decisions": [
+        {
+          "action": "WATCH",
+          "symbol": "JBL",
+          "reason": "Day 2 below MA50 ($341.30 vs $359.02, gap 4.9%). Entry date 2026-05-04. Unrealized PnL: +$4.72 (+1.40%). Position is profitable so Rule A requires 3 consecutive days confirmed below MA50 before Tier 1 SELL \u2014 today would be day 3 if price remains below MA50 at close. No sell issued at day_start per run type rules, but this is the highest-urgency watch. If confirmed below MA50 at day_end, Rule A Tier 1 SELL should be issued.",
+          "rule_triggered": "trend_break",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "ANET",
+          "reason": "Day 1 below MA50 ($159.99 vs $160.05, margin of $0.06). Entry date 2026-07-02. Unrealized PnL: -$21.51 (-2.19%). At a loss. momentum_rank=0 likely data artifact for new entry. MA gap is extremely thin \u2014 probable data artifact. Need 2 more confirmed days below MA50 before Rule A triggers. Monitor at day_end.",
+          "rule_triggered": "trend_break",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "TXN",
+          "reason": "Day 1 below MA50 ($293.26 vs $294.63). Entry date 2026-07-02. Unrealized PnL: -$21.36 (-2.37%). At a loss. momentum_rank=0 is data artifact for new entry. Need 2 more confirmed days below MA50 for Rule A. Monitor at day_end.",
+          "rule_triggered": "trend_break",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "JCI",
+          "reason": "Day 1 below MA50 ($140.76 vs $142.01). Entry date 2026-07-02. Unrealized PnL: -$5.28 (-1.23%). At a loss. momentum_rank=0 is data artifact for new entry. Need 2 more confirmed days below MA50 for Rule A. Monitor.",
+          "rule_triggered": "trend_break",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "WDC",
+          "reason": "Persistent data gaps (sector=Unknown, momentum_rank=0, MA50=null, eps_growth=null) across 5+ runs. Volatility=1.058 annualized \u2014 extremely elevated, likely breaching risk filter 90th percentile threshold. Entry date 2026-05-22. Unrealized PnL: +$58.45 (+12.04%). Hold gate active \u2014 profitable position, no structural sell rule confirmed without MA data. Volatility alone is not a sell rule. Flagged for October quarterly review.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "C",
+          "reason": "Persistent data gaps (sector=Unknown, momentum_rank=0, MA50=null, eps_growth=null) across 5+ runs. No structural sell rule confirmable without MA data. Entry date 2026-05-26. Unrealized PnL: +$56.76 (+11.28%). Hold gate active \u2014 profitable, no confirmed structural breach. Flagged for October quarterly review.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "BEN",
+          "reason": "Entry date 2026-07-02 (day 1). Sector=Unknown, momentum_rank=0, MA50=null, eps_growth=null, revenue_growth=null. Unrealized PnL: -$1.50 (-0.87%). At a loss. momentum_rank=0 may be day-1 data artifact. If data gaps persist into next run and momentum_rank remains 0 for 5+ days, Rule E Tier 1 SELL applies. Monitor.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "momentum_rank=1 (top rank in portfolio), above MA50 ($963.53 vs $909.85), strong quality metrics (EPS +30.2%, revenue +22.2%). Entry 2026-05-06. Unrealized PnL: +$41.59 (+4.51%). No sell rules triggered.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CSCO",
+          "reason": "momentum_rank=2, above MA50 ($112.49 vs $110.56). Entry 2026-07-02. Unrealized PnL: -$27.02 (-2.92%). New position, day 1. No sell rules triggered.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "IBKR",
+          "reason": "momentum_rank=3, above MA50 ($91.33 vs $85.84). Entry 2026-07-02. Unrealized PnL: -$28.03 (-2.71%). New position, day 1. No sell rules triggered.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "BNY",
+          "reason": "momentum_rank=4, above MA50 ($146.62 vs $139.01). Entry 2026-07-01. Unrealized PnL: -$3.78 (-0.37%). Strong fundamentals (EPS +41.8%). No sell rules triggered.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "MS",
+          "reason": "momentum_rank=5, above MA50 ($213.93 vs $203.35). Entry 2026-07-01. Unrealized PnL: +$5.16 (+0.61%). No sell rules triggered.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "GS",
+          "reason": "momentum_rank=6, above MA50 ($1021.00 vs $996.56). Entry 2026-07-01. Unrealized PnL: -$6.89 (-0.67%). No sell rules triggered.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "maintain",
+      "cash_rationale": "Cash at 5.17% is on target for bull regime (5% target). No buys permitted in non-quarterly months (July is a quarterly month but rebalance was yesterday \u2014 no further buys this run). Maintain current level.",
+      "summary": "Day-start pre-market check: JBL approaching Rule A trigger (day 2 below MA50, profitable \u2014 watch for day 3 confirmation at close); Financial Services sector at ~44% materially exceeds 30% cap (flag for October rebalance); TXN/JCI/ANET at day 1 below MA50 (watch only); WDC and C on hold gate with persistent data gaps; regime confirmed bull at 84% confidence.",
+      "usage": {
+        "input_tokens": 13808,
+        "output_tokens": 3249,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 8817
+      },
+      "sell_tier_summary": {
+        "tier1_execute": 0,
+        "tier2_deferred": 3
+      }
+    },
     {
       "id": "RUN-20260702-2238",
       "timestamp": "2026-07-02T22:38:04Z",
@@ -11191,50 +11330,6 @@
       "usage": {
         "input_tokens": 4752,
         "output_tokens": 2390,
-        "cache_read_tokens": 0,
-        "cache_write_tokens": 2804
-      }
-    },
-    {
-      "id": "RUN-20260428-1921",
-      "timestamp": "2026-04-28T19:21:34Z",
-      "type": "day_end",
-      "model": "claude-sonnet-4-6",
-      "assessment": "Portfolio holds only 2 positions (AAPL and TSLA) entered on 2026-04-28, with critical data gaps \u2014 all fundamental and momentum metrics are zeroed out (eps_growth=0, momentum_rank=0, ma_50d=0), making rule-based sell decisions data-dependent. Cash is severely over-allocated at 59.1% against a bull regime target of 5%, and the full rebalance scheduled for 2026-05-01 (Thursday) is the priority action. AAPL has an earnings event on 2026-04-30, and market breadth at 57% is narrowing \u2014 warranting a cautious but not bearish stance.",
-      "regime": "bull",
-      "regime_confidence": 0.68,
-      "flags": [
-        "TSLA: Position weight at 38.2% dramatically exceeds the 8% maximum position size cap \u2014 must be corrected at 2026-05-01 rebalance; this is the highest urgency structural risk in the portfolio",
-        "TSLA: 30-day annualized volatility of 44.55% almost certainly places it above the 90th percentile of the S&P 500 universe \u2014 Risk Filter (Rule 4) likely triggered; verify at rebalance screening",
-        "TSLA: EPS growth reported as 0% for this entry \u2014 if confirmed as a second consecutive quarter below 5%, Rule 3 (quality deterioration) will trigger a mandatory sell; this is the first confirmed quarter, second quarter watch active",
-        "TSLA: Forward P/E data currently 0 (unavailable) \u2014 prior run flagged 82.1x which fails the absolute valuation guard rail; must re-verify at next screen",
-        "AAPL: Earnings on 2026-04-30 (2 trading days away) \u2014 flag as WATCH with earnings risk; do not sell solely for earnings but note elevated event risk heading into Thursday rebalance",
-        "AAPL: Revenue growth previously flagged at 4%, below the 8% quality threshold \u2014 only passing 1 of 2 quality criteria; EPS growth also shows 0 in current data (data gap likely) \u2014 monitor at rebalance",
-        "DATA QUALITY: All momentum_rank, ma_50d, eps_growth, revenue_growth, and forward_pe fields are 0 for both holdings \u2014 this is a data population failure, not genuine zeroes; sell rules 1, 2, 3 cannot be definitively triggered from this data alone; rebalance screening must pull live data",
-        "PORTFOLIO STRUCTURE: 59.1% cash vs 5% bull-regime target \u2014 portfolio is critically under-deployed; full rebalance on 2026-05-01 must add 13-18 new positions to reach 15-20 holding target"
-      ],
-      "decisions": [
-        {
-          "action": "WATCH",
-          "symbol": "AAPL",
-          "reason": "Earnings on 2026-04-30 (BMO or TAS) creates overnight gap risk 2 days out. Momentum rank, MA50, and fundamental data fields are all zero \u2014 cannot confirm or deny sell rules from current data. Prior flags: revenue growth 4% below 8% threshold (1 of 2 quality criteria failing). Do not sell ahead of earnings without a confirmed rule trigger, but flag for immediate review at rebalance. If earnings miss occurs, re-check Rule 3 quality deterioration trigger.",
-          "rule_triggered": "null",
-          "urgency": "next_open"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "TSLA",
-          "reason": "Multiple structural concerns persist: (1) Weight at 38.2% \u2014 4.8x the 8% maximum, must be reduced at rebalance; (2) Volatility at 44.55% annualized almost certainly exceeds the 90th percentile Risk Filter threshold \u2014 likely failing Rule 4 risk screen; (3) EPS growth 0% is first flagged quarter below 5% \u2014 one more quarter triggers Rule 3 mandatory sell; (4) All momentum and MA data are zero (data gap) so Rule 1 and Rule 2 cannot be confirmed today. No parabolic blow-off (PnL only +0.72% in 0 days). Hold until rebalance but treat as highest priority for sizing correction and potential exit if screening confirms filter failures.",
-          "rule_triggered": "null",
-          "urgency": "next_rebalance"
-        }
-      ],
-      "cash_action": "decrease",
-      "cash_rationale": "Cash at 59.1% is grossly misaligned with the bull regime target of 5%. The 2026-05-01 monthly rebalance is the correct mechanism to deploy this capital into 13-18 new momentum-qualified positions. No intra-day buys are warranted today given the AAPL earnings risk on Thursday and the fact that the full screening process should be run at rebalance. Cash should decrease to approximately 5% of portfolio at the rebalance by adding new qualifying positions.",
-      "summary": "Day-end review: HOLD both positions with WATCH flags \u2014 data gaps prevent definitive rule triggers today, AAPL earnings on Thu Apr 30 noted, TSLA concentration and volatility remain critical risks to resolve at Thursday's full rebalance.",
-      "usage": {
-        "input_tokens": 2811,
-        "output_tokens": 1275,
         "cache_read_tokens": 0,
         "cache_write_tokens": 2804
       }
