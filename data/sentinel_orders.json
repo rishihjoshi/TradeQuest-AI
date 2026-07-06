@@ -1,5 +1,24 @@
 {
-  "timestamp": "2026-07-03T19:57:23Z",
-  "sells": [],
-  "count": 0
+  "timestamp": "2026-07-06T20:23:27Z",
+  "sells": [
+    {
+      "symbol": "JBL",
+      "shares": 1,
+      "rule": "trend_break",
+      "reason": "Price below 50-day MA for 4 consecutive agent runs (\u2265 3 threshold). Forced exit \u2014 sentinel Rule 2."
+    },
+    {
+      "symbol": "JCI",
+      "shares": 3,
+      "rule": "trend_break",
+      "reason": "Price below 50-day MA for 3 consecutive agent runs (\u2265 3 threshold). Forced exit \u2014 sentinel Rule 2."
+    },
+    {
+      "symbol": "TXN",
+      "shares": 3,
+      "rule": "trend_break",
+      "reason": "Price below 50-day MA for 3 consecutive agent runs (\u2265 3 threshold). Forced exit \u2014 sentinel Rule 2."
+    }
+  ],
+  "count": 3
 }
