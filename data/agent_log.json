@@ -1,7 +1,142 @@
 {
-  "last_run": "2026-07-03T22:34:28Z",
-  "last_type": "day_end",
+  "last_run": "2026-07-06T16:38:45Z",
+  "last_type": "day_start",
   "runs": [
+    {
+      "id": "RUN-20260706-1638",
+      "timestamp": "2026-07-06T16:38:45Z",
+      "type": "day_start",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is in bull regime (84% confidence) with healthy breadth at 64% of S&P 500 stocks above 200-day MA. However, 6 positions are showing structural concerns \u2014 JBL, TXN, and JCI are on Day 2 of MA50 breach approaching the Rule A Day 3 trigger threshold, while BEN has a pending Tier 1 SELL from last evening's run that was blocked at execution. July is a quarterly month so full rebalance rules apply, but this is a day_start pre-market check \u2014 flagging only.",
+      "regime": "bull",
+      "regime_confidence": 0.84,
+      "flags": [
+        "JBL: CRITICAL \u2014 Day 2 below MA50 ($341.30 vs $359.18, -4.97% gap). If today closes below $359.18, this triggers Rule A Day 3 \u2014 Tier 1 SELL at next_open. At a GAIN (+$4.72, +1.40%, entered 2026-05-04). Hold gate applies \u2014 profitable, so only structural Rule A can force exit.",
+        "TXN: CRITICAL \u2014 Day 2 below MA50 ($293.08 vs $295.83, -0.93% gap). Rule A Day 3 trigger imminent. At a LOSS (-$21.90, -2.43%, entered 2026-07-02). Loss position \u2014 Rule A Day 3 confirmation today means Tier 1 SELL.",
+        "JCI: CRITICAL \u2014 Day 2 below MA50 ($140.76 vs $142.03, -0.89% gap). Rule A Day 3 trigger imminent. At a LOSS (-$5.28, -1.23%, entered 2026-07-02). Loss position \u2014 Rule A Day 3 confirmation today means Tier 1 SELL.",
+        "BEN: PENDING SELL \u2014 Tier 1 SELL was issued last evening but blocked at execution. momentum_rank=0, MA unknown, at a LOSS (-$1.50, -0.87%, entered 2026-07-02). Sell order needs to clear today. This is the 3rd+ consecutive flag \u2014 persistent flag escalation applies.",
+        "C: WATCH \u2014 momentum_rank=0, MA unknown (no data), but at a GAIN (+$56.76, +11.28%, entered 2026-05-26). Hold gate active \u2014 momentum decay alone cannot trigger sell on a profitable position. No structural rule confirmed. Continue monitoring.",
+        "WDC: WATCH \u2014 momentum_rank=0, MA unknown (no data), at a GAIN (+$53.50, +11.02%, entered 2026-05-22). Same as C \u2014 hold gate active. volatility_30d=1.058 is extremely high (likely above 90th percentile) which could trigger Risk filter failure, but no confirmed Rule A/B. Watch for structural trigger.",
+        "ANET: WATCH \u2014 momentum_rank=3 (passing), but was flagged in prior runs. Currently at a LOSS (-$21.51, -2.19%, entered 2026-07-02). Price $159.99 vs MA50 $159.80 \u2014 essentially at the MA. A close below $159.80 starts Day 1 Rule A clock.",
+        "SECTOR/Financial Services: BNY (10.09%) + GS (10.04%) + IBKR (9.88%) + MS (8.41%) + C (5.50%) = 43.92% in Financial Services \u2014 significantly above the 30% sector cap. This was flagged previously. No new buys can address this until next rebalance, but the cap breach is structural. Flag for next quarterly review action.",
+        "WDC volatility: volatility_30d=1.058 annualized is far above normal \u2014 likely fails Risk Filter 4 (90th percentile vol). Should be evaluated for removal at next rebalance opportunity."
+      ],
+      "decisions": [
+        {
+          "action": "WATCH",
+          "symbol": "JBL",
+          "reason": "Day 2 below MA50 ($341.30 vs MA50 $359.18, gap -4.97%). Rule A requires 3 consecutive days below MA50 to trigger Tier 1 SELL. If today's close remains below $359.18, Day 3 is confirmed and a Tier 1 SELL must be issued in tonight's day_end run. Position at a GAIN (+$4.72, +1.40%, entered 2026-05-04) \u2014 hold gate means only Rule A structural breach can exit this winner. Monitoring for Day 3 confirmation.",
+          "rule_triggered": "trend_break",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "TXN",
+          "reason": "Day 2 below MA50 ($293.08 vs MA50 $295.83, gap -0.93%). At a LOSS (-$21.90, -2.43%, entered 2026-07-02). Rule A Day 3 trigger imminent \u2014 if close remains below MA50 today, Tier 1 SELL fires tonight. Loss position so no hold gate protection.",
+          "rule_triggered": "trend_break",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "JCI",
+          "reason": "Day 2 below MA50 ($140.76 vs MA50 $142.03, gap -0.89%). At a LOSS (-$5.28, -1.23%, entered 2026-07-02). Rule A Day 3 trigger imminent \u2014 if close remains below MA50 today, Tier 1 SELL fires tonight. Loss position so no hold gate protection.",
+          "rule_triggered": "trend_break",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "BEN",
+          "reason": "Tier 1 SELL previously issued (day_end 2026-07-03) but blocked at execution. momentum_rank=0, MA unknown, quality data null (conservative fail). At a LOSS (-$1.50, -0.87%, entered 2026-07-02). This is the 4th+ consecutive flag \u2014 persistent flag escalation: re-issue with urgency next_open in tonight's day_end run if still held. Pre-market check only \u2014 no action issued here.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "C",
+          "reason": "momentum_rank=0 confirmed multiple days, MA unknown (no data). At a GAIN (+$56.76, +11.28%, entered 2026-05-26). Hold gate fully active \u2014 profitable position cannot be sold on momentum decay alone. No structural Rule A/B/D triggered. Continue holding. Flag for quarterly rebalance evaluation.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "WDC",
+          "reason": "momentum_rank=0, MA unknown, volatility_30d=1.058 (extreme \u2014 likely fails Risk Filter 4). At a GAIN (+$53.50, +11.02%, entered 2026-05-22). Hold gate active \u2014 profitable position cannot be exited on momentum decay or risk filter alone without structural Rule A/B confirmation. Flag for quarterly rebalance.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "ANET",
+          "reason": "Price $159.99 essentially at MA50 $159.80 \u2014 Day 1 threshold. At a LOSS (-$21.51, -2.19%, entered 2026-07-02). If today closes below $159.80, Day 1 Rule A clock starts. momentum_rank=3 (passing top 30%). Quality strong (EPS +25%, Rev +35.1%). Watch closely.",
+          "rule_triggered": "trend_break",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CAT",
+          "reason": "momentum_rank=1 (top of universe), price $963.53 well above MA50 $913.11 (+5.5%). At a GAIN (+$41.59, +4.51%, entered 2026-05-06). All filters passing. No sell rule triggered.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CSCO",
+          "reason": "momentum_rank=2, price $112.69 above MA50 $111.02. At a LOSS (-$25.42, -2.74%, entered 2026-07-02). No sell rule triggered \u2014 loss is recent (2 days), no MA breach, quality strong.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "IBKR",
+          "reason": "momentum_rank=4, price $91.33 above MA50 $86.07 (+6.1%). At a LOSS (-$28.03, -2.71%, entered 2026-07-02). No sell rule triggered \u2014 recent entry, above MA, strong quality.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "BNY",
+          "reason": "momentum_rank=5, price $146.62 above MA50 $139.19 (+5.3%). At a LOSS (-$3.78, -0.37%, entered 2026-07-01). No sell rule triggered. Quality excellent (EPS +41.8%).",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "MS",
+          "reason": "momentum_rank=6, price $213.93 above MA50 $203.85 (+4.9%). At a GAIN (+$5.16, +0.61%, entered 2026-07-01). No sell rule triggered.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "GS",
+          "reason": "momentum_rank=7, price $1,021.00 above MA50 $998.45 (+2.3%). At a LOSS (-$6.89, -0.67%, entered 2026-07-01). No sell rule triggered. Quality strong.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "maintain",
+      "cash_rationale": "Cash at 5.17% is essentially at the 5% bull regime target. No buys are permitted in July until the next quarterly rebalance cycle action (already in July \u2014 the Jul 1 rebalance has occurred). Pending Tier 1 SELLs on BEN (and potentially TXN/JCI/JBL if Rule A Day 3 confirms today) will generate proceeds that should be redeployed at next rebalance. Maintain current cash level.",
+      "summary": "Pre-market Day Start: JBL/TXN/JCI approaching Rule A Day 3 MA50 breach trigger; BEN pending Tier 1 SELL re-issuance; Financial Services sector at ~44% vs 30% cap flagged; bull regime confirmed at 84% with healthy 64% breadth.",
+      "usage": {
+        "input_tokens": 13843,
+        "output_tokens": 3059,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 8817
+      }
+    },
     {
       "id": "RUN-20260703-2234",
       "timestamp": "2026-07-03T22:34:28Z",
@@ -11372,26 +11507,6 @@
       "usage": {
         "input_tokens": 9547,
         "output_tokens": 2901,
-        "cache_read_tokens": 0,
-        "cache_write_tokens": 2804
-      }
-    },
-    {
-      "id": "RUN-20260429-2232",
-      "timestamp": "2026-04-29T22:32:00Z",
-      "type": "day_end",
-      "model": "claude-sonnet-4-6",
-      "assessment": "{\n  \"assessment\": \"Portfolio is newly reconstituted (all positions entered 2026-04-28 or 2026-04-29) with a -0.3% unrealized P&L on initial capital of $9,864. The critical structural problem remains: TSLA still shows as a holding at 38% weight despite being flagged SELL last run and a sell order confirmed executed on 2026-04-23 \u2014 this appears to be a data/reconciliation issue that must be resolved at the 2026-05-01 rebalance. Market regime has improved to bull (VIX 17.1, SPY above 200-MA, breadth now 62%), though the breadth 8MA remaining below 200MA warrants continued caution. AAPL earnings tomorrow (TAS) represent the most urgent single-stock risk requiring a decision tonight.\",\n  \"regime\": \"bull\",\n  \"regime_confidence\": 0.72,\n  \"flags\": [\n    \"TSLA: CRITICAL \u2014 Position still appears in portfolio at 38% weight ($3,734) despite confirmed SELL order executed 2026-04-23 at $375; this is a data reconciliation failure; physical position must be verified and sold immediately at next open if still held; zero fundamental data available (EPS=0, momentum_rank=0, vol=44.5%) \u2014 every sell rule would trigger if data were present\",\n    \"AAPL: WATCH URGENT \u2014 Earnings 2026-04-30 TAS (tomorrow after close/today after session); EPS est $1.92; position is small (2.75% weight, $269.77) but all fundamental data missing (EPS=0, momentum_rank=0, ma_50d=0); cannot confirm momentum or quality filters are passing; vol_30d=23.2% is elevated; recommend SELL before earnings given inability to confirm thesis\",\n    \"TPR: SELL \u2014 Price $141.60 is BELOW 50-day MA of $148.01 (Rule 2: trend_break); only 1 day into position but rule is unambiguous; momentum_rank=12 (top 12% \u2014 passing Rule 1) and quality metrics strong (EPS +94%, Rev +14%) but MA breach is a hard sell trigger\",\n    \"JBL: WATCH \u2014 volatility_30d = 48.35%, which is extremely elevated and likely above the 90th percentile threshold (Risk Filter); position entered yesterday; momentum is strong (rank #2, 6M +58%, 12M +128%) and quality excellent (EPS +96%, Rev +23%) but vol filter may disqualify; flag for rebalance review on 2026-05-01\",\n    \"ADI: WATCH \u2014 volatility_30d = 37.86%, potentially near or above 90th percentile threshold; strong fundamentals (EPS +117%, Rev +30%) and momentum (rank #3); flag for vol filter check at rebalance\",\n    \"BREADTH: 8MA below 200MA despite breadth now at 62% \u2014 narrowing rally early warning; regime confidence capped at 72% rather than full 80%; maintain vigilance on cash allocation\",\n    \"CASH: Currently 13.7% vs 5% target for bull regime \u2014 excess cash from TSLA sale and pending reconciliation; should be deployed at 2026-05-01 rebalance into quality momentum names\"\n  ],\n  \"decisions\": [\n    {\n      \"action\": \"SELL\",\n      \"symbol\": \"TSLA\",\n      \"reason\": \"Position weight 38% is 4.8x maximum 8% cap (concentration breach); volatility_30d=44.5% almost certainly above 90th percentile (Risk Filter/Rule 4 violation); zero fundamental data available preventing quality or momentum confirmation; previously flagged SELL multiple consecutive runs; sell order purportedly executed 2026-04-23 but position persists \u2014 must liquidate immediately\",\n      \"rule_triggered\": \"trend_break\",\n      \"urgency\": \"immediate\"\n    },\n    {\n      \"action\": \"SELL\",\n      \"symbol\": \"TPR\",\n      \"reason\": \"Rule 2 triggered: current price $141.60 is below 50-day MA of $148.01 (-4.3% below MA); trend break confirmed on day 1 of holding; no grace period for new positions \u2014 the MA rule is absolute per strategy document\",\n      \"rule_triggered\": \"trend_break\",\n      \"urgency\": \"next_open\"\n    },\n    {\n      \"action\": \"SELL\",\n      \"symbol\": \"AAPL\",\n      \"reason\": \"Earnings tomorrow (2026-04-30 TAS) creates binary gap risk; strategy states 'if already planning to SELL based on a rule, prefer executing before earnings'; zero fundamental data (EPS=0, revenue_growth=0, momentum_rank=0, ma_50d=0) means cannot confirm any of the four filters are passing; position was already under WATCH from prior run; with no confirmable thesis and earnings imminent, sell before earnings exposure\",\n      \"rule_triggered\": \"momentum_decay\",\n      \"urgency\": \"next_open\"\n    },\n    {\n      \"action\": \"HOLD\",\n      \"symbol\": \"ADI\",\n      \"reason\": \"Rule 1: momentum_rank=3 (top 3% \u2014 well within top 30%). Rule 2: price $387.46 above 50-day MA $339.95 (+14%). Rule 3: EPS growth 116.7% >> 5% threshold. Rule 4: PnL only +1% in 1 day \u2014 no blow-off. Concern: vol_30d=37.86% may approach 90th percentile; flag for rebalance review but insufficient data to confirm breach today. Thesis holds.\",\n      \"rule_triggered\": \"null\",\n      \"urgency\": \"next_rebalance\"\n    },\n    {\n      \"action\": \"HOLD\",\n      \"symbol\": \"BK\",\n      \"reason\": \"Rule 1: momentum_rank=17 (top 17% \u2014 passing). Rule 2: price $132.27 above 50-day MA $122.27 (+8.2%). Rule 3: EPS growth 41.8% well above 5% floor. Rule 4: PnL -1.24% \u2014 no blow-off. Vol 19.7% is low. Financial sector quality momentum holding. Thesis intact.\",\n      \"rule_triggered\": \"null\",\n      \"urgency\": \"next_rebalance\"\n    },\n    {\n      \"action\": \"HOLD\",\n      \"symbol\": \"CFG\",\n      \"reason\": \"Rule 1: momentum_rank=13 (top 13%). Rule 2: price $64.40 above 50-day MA $61.36 (+5%). Rule 3: EPS growth 46.8% strong. Rule 4: PnL -0.68% \u2014 no blow-off. Vol 22.9% acceptable. Fwd P/E 10.1 extremely attractive valuation. Thesis holds.\",\n      \"rule_triggered\": \"null\",\n      \"urgency\": \"next_rebalance\"\n    },\n    {\n      \"action\": \"HOLD\",\n      \"symbol\": \"FDX\",\n      \"reason\": \"Rule 1: momentum_rank=4 (top 4%). Rule 2: price $388.59 above 50-day MA $370.83 (+4.8%). Rule 3: EPS growth 17.3% above 5% floor. Rule 4: PnL -1.13% \u2014 no blow-off. Quality metrics pass (Rev +8.3% meets threshold exactly). Thesis intact.\",\n      \"rule_triggered\": \"null\",\n      \"urgency\": \"next_rebalance\"\n    },\n    {\n      \"action\": \"HOLD\",\n      \"symbol\": \"GOOG\",\n      \"reason\": \"Rule 1: momentum_rank=8 (top 8%). Rule 2: price $371.00 above 50-day MA $310.18 (+19.6%). Rule 3: EPS growth 31.1%, revenue 18% \u2014 both strong. Rule 4: PnL +6.64% in 1 day, well below 60% threshold. Best performer in portfolio today. Thesis strongly intact.\",\n      \"rule_triggered\": \"null\",\n      \"urgency\": \"next_rebalance\"\n    },\n    {\n      \"action\": \"WATCH\",\n      \"symbol\": \"JBL\",\n      \"reason\": \"Rules 1-4 all pass: rank #2, price $333.86 vs MA $278.76 (+19.8%), EPS +96%, PnL -0.81%. Single concern: vol_30d=48.35% is very likely above 90th percentile Risk Filter threshold. Cannot confirm breach without universe comparison but this is flagged for mandatory rebalance review on 2026-05-01. If vol confirmed above 90th pct, this becomes a SELL at rebalance.\",\n      \"rule_triggered\": \"null\",\n      \"urgency\": \"next_rebalance\"\n    },\n    {\n      \"action\": \"HOLD\",\n      \"symbol\": \"NTRS\",\n      \"reason\": \"Rule 1: momentum_rank=9 (top 9%). Rule 2: price $164.13 above 50-day MA $146.56 (+12%). Rule 3: EPS growth 42.6% well above floor. Rule 4: PnL -1.55% \u2014 no blow-off. Vol 32% is elevated but within bounds. Quality financial holding. Thesis intact.\",\n      \"rule_triggered\": \"null\",\n      \"urgency\": \"next_rebalance\"\n    },\n    {\n      \"action\": \"HOLD\",\n      \"symbol\": \"NUE\",\n      \"reason\": \"Rule 1: momentum_rank=5 (top 5%). Rule 2: price $222.39 above 50-day MA $179.49 (+23.9%). Rule 3: EPS growth 382.1% exceptional. Rule 4: PnL -1.78% \u2014 no blow-off. Basic materials momentum with steel supercycle thesis. Thesis intact.\",\n      \"rule_triggered\": \"null\",\n      \"urgency\": \"next_rebalance\"\n    },\n    {\n      \"action\": \"HOLD\",\n      \"symbol\": \"ROST\",\n      \"reason\": \"Rule 1: momentum_rank=10 (top 10%). Rule 2: price $222",
-      "regime": "unknown",
-      "regime_confidence": 0,
-      "flags": [],
-      "decisions": [],
-      "cash_action": "maintain",
-      "cash_rationale": "",
-      "summary": "Agent ran (day_end) \u2014 response parse failed",
-      "usage": {
-        "input_tokens": 9297,
-        "output_tokens": 2500,
         "cache_read_tokens": 0,
         "cache_write_tokens": 2804
       }
