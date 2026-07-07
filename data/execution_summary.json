@@ -1,15 +1,32 @@
 {
-  "timestamp": "2026-07-07T20:24:22Z",
+  "timestamp": "2026-07-07T22:37:30Z",
   "mode": "post_close",
   "orders_placed": [
     {
       "action": "SELL",
-      "symbol": "BNY",
+      "symbol": "JBL",
       "qty": 1,
       "status": "submitted"
     }
   ],
-  "orders_skipped": [],
+  "orders_skipped": [
+    {
+      "symbol": "GS",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "ANET",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "C",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "WDC",
+      "reason": "blocked by agent approval or risk gate"
+    }
+  ],
   "errors": [],
-  "cash_pct_after": 21.45
+  "cash_pct_after": 21.42
 }
