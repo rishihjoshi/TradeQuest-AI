@@ -1,12 +1,5 @@
 {
-  "timestamp": "2026-07-07T20:24:21Z",
-  "sells": [
-    {
-      "symbol": "BNY",
-      "shares": 1,
-      "rule": "concentration",
-      "reason": "Position weight 21.7% exceeds 2\u00d7 MAX_POSITION_PCT (20%). Forced exit \u2014 sentinel Rule 1."
-    }
-  ],
-  "count": 1
+  "timestamp": "2026-07-08T20:02:53Z",
+  "sells": [],
+  "count": 0
 }
