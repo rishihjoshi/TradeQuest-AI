@@ -1,23 +1,21 @@
 {
-  "timestamp": "2026-07-07T22:37:30Z",
-  "mode": "post_close",
+  "timestamp": "2026-07-08T15:44:21Z",
+  "mode": "market_open",
   "orders_placed": [
     {
       "action": "SELL",
       "symbol": "JBL",
       "qty": 1,
       "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "FRT",
+      "qty": 8,
+      "status": "submitted"
     }
   ],
   "orders_skipped": [
-    {
-      "symbol": "GS",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "ANET",
-      "reason": "blocked by agent approval or risk gate"
-    },
     {
       "symbol": "C",
       "reason": "blocked by agent approval or risk gate"
@@ -25,8 +23,12 @@
     {
       "symbol": "WDC",
       "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "GS",
+      "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 21.42
+  "cash_pct_after": 19.73
 }
