@@ -1,554 +1,581 @@
 {
-  "generated_at": "2026-07-06T16:33:32Z",
+  "generated_at": "2026-07-09T16:13:56Z",
   "article_count": 30,
   "articles": [
     {
-      "id": "60285100",
-      "headline": "Evercore ISI Group Maintains Outperform on Goldman Sachs Group, Raises Price Target to $1075",
+      "id": "60363751",
+      "headline": "UBS Maintains Neutral on Federal Realty Investment, Raises Price Target to $127",
       "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60285100/evercore-isi-group-maintains-outperform-goldman-sachs-group-raises-price-target-1075",
+      "url": "https://www.benzinga.com/news/26/07/60363751/ubs-maintains-neutral-federal-realty-investment-raises-price-target-127",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "GS"
+        "FRT"
       ],
-      "created_at": "2026-07-06T16:14:42Z",
+      "created_at": "2026-07-09T15:37:47Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Neutral rating maintained despite price target increase suggests cautious optimism with limited upside potential."
+    },
+    {
+      "id": "60357096",
+      "headline": "Barclays Maintains Overweight on Interactive Brokers Group, Raises Price Target to $108",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60357096/barclays-maintains-overweight-interactive-brokers-group-raises-price-target-108",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "IBKR"
+      ],
+      "created_at": "2026-07-09T13:35:41Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Analyst maintains outperform rating and raises price target, signaling positive outlook for GS stock."
+      "reason": "Overweight rating and price target increase signal positive outlook for Interactive Brokers Group"
     },
     {
-      "id": "60282368",
-      "headline": "Goldman Sachs Maintains Neutral on Morgan Stanley, Raises Price Target to $233",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60282368/goldman-sachs-maintains-neutral-morgan-stanley-raises-price-target-233",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "MS"
-      ],
-      "created_at": "2026-07-06T15:01:39Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Price target raise signals positive outlook despite neutral rating maintenance."
-    },
-    {
-      "id": "60282215",
-      "headline": "EXCLUSIVE: Caterpillar Stock The \u2018Gold Standard\u2019 For AI, Market Expert Says \u2018Pick And Shovels\u2019 Play For Data Centers",
-      "summary": "Caterpillar stock has soared in 2026, a move that could be connected to the AI trade. Here&39;s what one market expert tells Benzinga.",
-      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/07/60282215/caterpillar-stock-gold-standard-for-ai-market-expert-says-pick-and-shovels-play-for-data-centers",
-      "author": "Chris Katje",
-      "source": "benzinga",
-      "symbols": [
-        "CAT",
-        "DY",
-        "FIX",
-        "MTZ",
-        "URI"
-      ],
-      "created_at": "2026-07-06T14:58:17Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Expert calls CAT the 'gold standard' for AI with 'pick and shovels' positioning for data centers."
-    },
-    {
-      "id": "60279920",
-      "headline": "Terawulf, Ceva, Western Digital And Other Big Stocks Moving Higher On Monday",
-      "summary": "Stocks mixed, Dow falls 100 points. Terawulf Inc (NASDAQ: WULF) rises after lease deal. Other big gainers: OFIX, AXTI, SHAZ, IREN, CEVA, IMOS, CRDO, HUT, BFLY, CHRN, BE, ALAB, SIMO.",
-      "url": "https://www.benzinga.com/news/26/07/60279920/terawulf-ceva-western-digital-and-other-big-stocks-moving-higher-on-monday",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "ALAB",
-        "AMD",
-        "AXTI",
-        "BE",
-        "BFLY",
-        "CEVA",
-        "CHRN",
-        "CIFR",
-        "CRDO",
-        "CRWD",
-        "DELL",
-        "HUT",
-        "IMOS",
-        "IREN",
-        "OFIX",
-        "SHAZ",
-        "SIMO",
-        "WDC",
-        "WULF"
-      ],
-      "created_at": "2026-07-06T14:07:44Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Multiple stocks rising including WULF on lease deal and other notable gainers despite mixed market."
-    },
-    {
-      "id": "60279061",
-      "headline": "Why Is Western Digital Stock Surging Monday?",
-      "summary": "Western Digital (WDC) stock jumps 7.8% as the AI memory boom reignites. Get the latest on earnings estimates and market catalysts.",
-      "url": "https://www.benzinga.com/trading-ideas/movers/26/07/60279061/why-is-western-digital-stock-surging-monday",
+      "id": "60355369",
+      "headline": "Why Is Sandisk Stock Gaining Thursday?",
+      "summary": "Sandisk (SNDK) climbs 2.3% premarket, holding its long-term uptrend. Here are the key support, resistance, and RSI levels to track now.",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/07/60355369/why-is-sandisk-stock-gaining-thursday-2",
       "author": "Kaustubh Bagalkote",
       "source": "benzinga",
       "symbols": [
-        "WDC"
-      ],
-      "created_at": "2026-07-06T13:52:08Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Stock surging 7.8% on AI memory boom reignition signals strong positive market momentum."
-    },
-    {
-      "id": "60277725",
-      "headline": "SpaceX's Gwynne Shotwell Pledges SpaceX Stock for 2 Million Children Through Trump Accounts",
-      "summary": "Gwynne Shotwell, President of SpaceX, and her husband will donate shares to Trump Accounts for 2 million children in lower-income areas.",
-      "url": "https://www.benzinga.com/personal-finance/management/26/07/60277725/spacexs-gwynne-shotwell-pledges-spacex-stock-for-2-million-children-through-trump-accounts",
-      "author": "Shomik Sen Bhattacharjee",
-      "source": "benzinga",
-      "symbols": [
-        "BAC",
-        "GS",
-        "JPM",
-        "MS",
-        "SPCX"
-      ],
-      "created_at": "2026-07-06T13:25:07Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Stock donation pledge is charitable but doesn't impact SpaceX's business operations or financials."
-    },
-    {
-      "id": "60277203",
-      "headline": "Morgan Stanley Investment Management Invests In Greenlight Electricity Centre; Financial Terms Undisclosed",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60277203/morgan-stanley-investment-management-invests-greenlight-electricity-centre-financial-terms-undisclos",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "MS"
-      ],
-      "created_at": "2026-07-06T13:03:20Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Major investment from Morgan Stanley in Greenlight signals confidence in growth potential."
-    },
-    {
-      "id": "60276830",
-      "headline": "JP Morgan Maintains Overweight on Citigroup, Raises Price Target to $149",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60276830/jp-morgan-maintains-overweight-citigroup-raises-price-target-149",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "C"
-      ],
-      "created_at": "2026-07-06T12:52:47Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Overweight rating and price target raise indicate positive outlook for Citigroup stock."
-    },
-    {
-      "id": "60275036",
-      "headline": "How To Earn $500 A Month From Citigroup Stock Ahead Of Q2 Earnings",
-      "summary": "Citigroup has an annual dividend yield of 1.71%. So, how can investors take advantage of its dividend yield and pocket a regular $500 monthly?",
-      "url": "https://www.benzinga.com/trading-ideas/dividends/26/07/60275036/how-to-earn-500-a-month-from-citigroup-stock-ahead-of-q2-earnings-2",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "C"
-      ],
-      "created_at": "2026-07-06T11:46:46Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Article highlights dividend income opportunity and positive yield from Citigroup stock."
-    },
-    {
-      "id": "60272276",
-      "headline": "5 Stocks In The Spotlight:  Wall Street's Most Accurate Analysts Weigh In",
-      "summary": "U.S. stocks mixed, Dow at record high. S&amp;P 500 up 1.8%, Dow surges 2% for the week. Analyst ratings on Benzinga Pro can outperform market.",
-      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/07/60272276/5-stocks-in-the-spotlight-wall-streets-most-accurate-analysts-weigh-in-9",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "AMD",
         "MU",
         "SNDK",
-        "TSLA",
-        "TXN"
+        "WDC"
       ],
-      "created_at": "2026-07-06T09:50:04Z",
+      "created_at": "2026-07-09T12:54:35Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Record highs, strong weekly gains, and positive analyst ratings indicate bullish market sentiment."
+      "reason": "Stock climbing in premarket with confirmed long-term uptrend support."
     },
     {
-      "id": "60272263",
-      "headline": "Citi Joins London Precious Metals Clearing Group, Expands Gold And Silver Settlement Services In London",
+      "id": "60353488",
+      "headline": "Why Is Caterpillar Stock Gaining Thursday?",
+      "summary": "Caterpillar ($CAT) acquires Skycatch to boost AI-powered mining tech. Stock ticks up in premarket trading. Read the full details.",
+      "url": "https://www.benzinga.com/m-a/26/07/60353488/why-is-caterpillar-stock-gaining-thursday",
+      "author": "Akanksha Bakshi",
+      "source": "benzinga",
+      "symbols": [
+        "CAT",
+        "DIA",
+        "VIS",
+        "XLI"
+      ],
+      "created_at": "2026-07-09T11:57:30Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Acquisition of AI mining tech and premarket stock gains signal positive market reception."
+    },
+    {
+      "id": "60352048",
+      "headline": "CORRECTION: Caterpillar Acquires SkyCatch; Financial Terms Not Disclosed",
       "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60272263/citi-joins-london-precious-metals-clearing-group-expands-gold-and-silver-settlement-services-london",
+      "url": "https://www.benzinga.com/m/26/07/60352048/correction-caterpillar-acquires-skycatch-financial-terms-not-disclosed",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "C"
+        "CAT"
       ],
-      "created_at": "2026-07-06T09:47:25Z",
+      "created_at": "2026-07-09T10:49:45Z",
       "sentiment": "bull",
-      "confidence": 0.82,
-      "reason": "Citi's expansion of precious metals settlement services strengthens market position and capabilities."
-    },
-    {
-      "id": "60272231",
-      "headline": "Vicore Partners with Citi to Expand Respiratory Drug Access to American Investors, Citi Named Depositary Bank For Vicore Pharma\u2019s US Shares",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60272231/vicore-partners-citi-expand-respiratory-drug-access-american-investors-citi-named-depositary-bank-vi",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "C"
-      ],
-      "created_at": "2026-07-06T09:45:43Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Partnership with major bank expands market access and legitimizes Vicore's respiratory drug platform"
-    },
-    {
-      "id": "60270075",
-      "headline": "Goldman Sachs Names Top Undervalued Stocks to Buy Today",
-      "summary": "Goldman Sachs analysts have revealed some top undervalued stocks worth buying today, including popular names like NetEase and O&39;Reilly",
-      "url": "https://www.benzinga.com/markets/equities/26/07/60270075/goldman-sachs-names-top-undervalued-stocks-to-buy-today",
-      "author": "Crispus Nyaga",
-      "source": "benzinga",
-      "symbols": [
-        "GS",
-        "NTES",
-        "ORLY",
-        "TW"
-      ],
-      "created_at": "2026-07-05T22:06:06Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Goldman Sachs recommends undervalued stocks as buying opportunities, signaling positive outlook."
-    },
-    {
-      "id": "60268467",
-      "headline": "Benzinga Bulls and Bears: AeroVironment, Reddit, Oracle \u2014 And Stocks End Week on High Note",
-      "summary": "Benzinga examined the prospects for many investors\u2019 favorite stocks over the last week \u2014 here\u2019s a look at some of our top stories.",
-      "url": "https://www.benzinga.com/markets/market-summary/26/07/60268467/benzinga-bulls-and-bears-aerovironment-reddit-oracle-and-stocks-end-week-on-high-note",
-      "author": "Benzinga Senior Editor",
-      "source": "benzinga",
-      "symbols": [
-        "AVAV",
-        "CAT",
-        "CMCSA",
-        "DIS",
-        "DJT",
-        "FLY",
-        "GOOGL",
-        "LUNR",
-        "META",
-        "MSFT",
-        "MU",
-        "NKE",
-        "NVDA",
-        "ORCL",
-        "RDDT",
-        "SMCI",
-        "TSLA",
-        "VOYG",
-        "YELP"
-      ],
-      "created_at": "2026-07-04T13:20:57Z",
-      "sentiment": "bull",
-      "confidence": 0.72,
-      "reason": "Positive market momentum indicated by 'stocks end week on high note' and bulls analysis."
-    },
-    {
-      "id": "60266615",
-      "headline": "10 Industrials Stocks Whale Activity In Today\u2019s Session",
-      "summary": "This whale alert can help traders discover the next big trading opportunities. Whales are entities with large sums of money and we track their transactions here at Benzinga on our options activity scanner. Traders often",
-      "url": "https://www.benzinga.com/markets/options/26/07/60266615/10-industrials-stocks-whale-activity-today-s-session",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "AGX",
-        "BA",
-        "BE",
-        "CAR",
-        "CAT",
-        "FCEL",
-        "RKLB",
-        "UAL",
-        "UBER",
-        "UPS"
-      ],
-      "created_at": "2026-07-03T17:35:24Z",
-      "sentiment": "neutral",
       "confidence": 0.75,
-      "reason": "Article reports whale activity tracking without indicating positive or negative price implications."
+      "reason": "Strategic acquisition expands Caterpillar's capabilities in drone technology and data analytics."
     },
     {
-      "id": "60266614",
-      "headline": "10 Information Technology Stocks Whale Activity In Today\u2019s Session",
-      "summary": "This whale alert can help traders discover the next big trading opportunities. Whales are entities with large sums of money and we track their transactions here at Benzinga on our options activity scanner. Traders often",
-      "url": "https://www.benzinga.com/markets/options/26/07/60266614/10-information-technology-stocks-whale-activity-today-s-session",
-      "author": "Benzinga Insights",
+      "id": "60351603",
+      "headline": "Trump Accounts Could Attract $100 Billion in New Private Commitments, Brad Gerstner Predicts: 'We Have Tens of Billions\u2026 We Haven't Announced'",
+      "summary": "Brad Gerstner predicts Trump Accounts will attract $100 billion in new private commitments over the next year.",
+      "url": "https://www.benzinga.com/news/financing/26/07/60351603/trump-accounts-could-attract-100-billion-in-new-private-commitments-brad-gerstner-predicts-we-have-tens-of-billions-we-havent-announced",
+      "author": "Tanya Rawat",
       "source": "benzinga",
       "symbols": [
-        "AAPL",
-        "ANET",
-        "BB",
-        "IREN",
-        "MSTR",
-        "MU",
-        "NBIS",
-        "NOK",
-        "NOW",
-        "NVDA"
-      ],
-      "created_at": "2026-07-03T17:35:24Z",
-      "sentiment": "neutral",
-      "confidence": 0.7,
-      "reason": "Article reports whale activity tracking without expressing positive or negative outlook on stocks."
-    },
-    {
-      "id": "60266007",
-      "headline": "Here\u2019s How Much You Would Have Made Owning Cisco Systems Stock In The Last 10 Years",
-      "summary": "Cisco Systems (NASDAQ:CSCO) has outperformed the market over the past 10 years by 1.12% on an annualized basis producing an average annual return of 14.64%. Currently, Cisco Systems has a market capitalization of",
-      "url": "https://www.benzinga.com/news/26/07/60266007/here-s-how-much-you-would-have-made-owning-cisco-systems-stock-last-10-years",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "CSCO"
-      ],
-      "created_at": "2026-07-03T14:30:50Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Stock outperformed market with 14.64% average annual return over 10 years."
-    },
-    {
-      "id": "60265925",
-      "headline": "Here's How Much $1000 Invested In Goldman Sachs Group 5 Years Ago Would Be Worth Today",
-      "summary": "Goldman Sachs Group (NYSE:GS) has outperformed the market over the past 5 years by 11.06% on an annualized basis producing an average annual return of 22.52%. Currently, Goldman Sachs Group has a market capitalization",
-      "url": "https://www.benzinga.com/news/26/07/60265925/here-s-how-much-1000-invested-goldman-sachs-group-5-years-ago-would-be-worth-today",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "GS"
-      ],
-      "created_at": "2026-07-03T14:01:06Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "GS outperformed market by 11.06% annually with 22.52% average annual return over 5 years."
-    },
-    {
-      "id": "60265538",
-      "headline": "Brent Crude Could Sink to $60 a Barrel by Year-End Despite 'Temporary Flare-Ups' Between US and Iran, Citi Analysts Say",
-      "summary": "Citi sees Brent crude falling to $60 by year-end, saying U.S.-Iran &39;conflict fatigue&39; will keep the truce intact.",
-      "url": "https://www.benzinga.com/markets/commodities/26/07/60265538/brent-crude-could-sink-to-60-a-barrel-by-year-end-despite-temporary-flare-ups-between-us-and-iran-citi-analysts-say",
-      "author": "Namrata Sen",
-      "source": "benzinga",
-      "symbols": [
-        "MS"
-      ],
-      "created_at": "2026-07-03T11:43:02Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Forecast of significant crude price decline to $60/barrel signals bearish outlook for oil markets."
-    },
-    {
-      "id": "60264966",
-      "headline": "Michael Burry's Bearish Bet On Caterpillar Sparks Debate\u2014 Analyst Says the 'Big Short' Investor is Missing the 'Structural Theme'",
-      "summary": "Michael Burry shorts Caterpillar, but an analyst said his bearish bet overlooks AI infrastructure demand driving the stock higher.",
-      "url": "https://www.benzinga.com/markets/tech/26/07/60264966/michael-burrys-bearish-bet-on-caterpillar-sparks-debate-analyst-says-the-big-short-investor-is-missing-the-structural-theme",
-      "author": "Namrata Sen",
-      "source": "benzinga",
-      "symbols": [
-        "CAT",
-        "NVDA",
-        "SOXX",
-        "TSLA"
-      ],
-      "created_at": "2026-07-03T09:06:57Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Analyst contradicts bearish bet, highlighting positive AI infrastructure demand driving CAT higher."
-    },
-    {
-      "id": "60263990",
-      "headline": "Why Is Avis Budget Group (CAR) Stock Trending Overnight? (CORRECTED)",
-      "summary": "Avis Budget Group shares were unchanged in after-hours trading after gaining 11.23% during the regular session.",
-      "url": "https://www.benzinga.com/markets/equities/26/07/60263990/why-is-avis-budget-group-car-stock-trending-overnight",
-      "author": "Mohd Haider",
-      "source": "benzinga",
-      "symbols": [
-        " MS",
-        " RY",
-        "CAR",
-        "JPM",
-        "MS",
-        "RY",
-        "WFC"
-      ],
-      "created_at": "2026-07-03T04:34:57Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Stock gained 11.23% during regular session, indicating strong positive momentum."
-    },
-    {
-      "id": "60263893",
-      "headline": "Donald Trump Signals Confidence Elon Musk Will Donate SpaceX Stock to Trump Accounts: 'I Have a Very Good Relationship With Elon'",
-      "summary": "President Donald Trump said he believes Elon Musk will donate Space Exploration Technologies Corp stock to the Trump Accounts program.",
-      "url": "https://www.benzinga.com/markets/tech/26/07/60263893/trump-says-he-thinks-elon-musk-will-donate-spacex-stock-to-trump-accounts",
-      "author": "Ananya Gairola",
-      "source": "benzinga",
-      "symbols": [
+        "BK",
+        "BLK",
         "BNY",
+        "CMCSA",
         "DELL",
         "HOOD",
         "JPM",
         "MU",
         "SOFI",
         "SPCX",
-        "TSLA"
+        "V"
       ],
-      "created_at": "2026-07-03T03:28:07Z",
-      "sentiment": "neutral",
-      "confidence": 0.7,
-      "reason": "Statement about potential donation lacks concrete financial impact on SpaceX operations or valuation."
+      "created_at": "2026-07-09T10:21:32Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Prediction of $100B in new commitments signals strong growth potential and market confidence."
     },
     {
-      "id": "60262263",
-      "headline": "$100 Invested In Citigroup 5 Years Ago Would Be Worth This Much Today",
-      "summary": "Citigroup (NYSE:C) has outperformed the market over the past 5 years by 4.0% on an annualized basis producing an average annual return of 15.46%. Currently, Citigroup has a market capitalization of $238.61 billion.",
-      "url": "https://www.benzinga.com/news/26/07/60262263/100-invested-citigroup-5-years-ago-would-be-worth-much-today",
-      "author": "Benzinga Insights",
+      "id": "60350061",
+      "headline": "Jeff Bezos' SpaceX Rival Blue Origin Seeks $10 Billion Raise at $130 Billion Valuation: Report",
+      "summary": "Blue Origin seeks $10B in funding, raising its valuation to $130B as Jeff Bezos turns to outside investors in billionaire space race.",
+      "url": "https://www.benzinga.com/news/space/26/07/60350061/jeff-bezos-spacex-rival-blue-origin-seeks-10-billion-raise-at-130-billion-valuation-report",
+      "author": "Badar Shaikh",
+      "source": "benzinga",
+      "symbols": [
+        "MS",
+        "SPCX"
+      ],
+      "created_at": "2026-07-09T07:54:10Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Massive funding raise and high valuation reflect strong investor confidence in Blue Origin's growth prospects."
+    },
+    {
+      "id": "60349185",
+      "headline": "Why Is Arista Networks (ANET) Stock Trending Overnight?",
+      "summary": "Arista Networks shares rose 8.76% during regular trading and moved slightly higher after hours, with the stock trading near its 52-week high.",
+      "url": "https://www.benzinga.com/markets/equities/26/07/60349185/why-is-arista-networks-anet-stock-trending-overnight",
+      "author": "Mohd Haider",
+      "source": "benzinga",
+      "symbols": [
+        " MS",
+        "ANET",
+        "META",
+        "MS",
+        "MSFT",
+        "ORCL"
+      ],
+      "created_at": "2026-07-09T04:53:59Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Strong intraday gains of 8.76% and continued after-hours momentum near 52-week highs."
+    },
+    {
+      "id": "60349096",
+      "headline": "Trump Accounts Customer Growth 'Faster' Than America's 'Most Successful and Dynamic' Tech Companies, Says Robinhood CEO Vlad Tenev",
+      "summary": "Robinhood CEO Vlad Tenev said Trump Accounts is adding customers faster than many major U.S. tech companies.",
+      "url": "https://www.benzinga.com/markets/tech/26/07/60349096/robinhood-ceo-vlad-tenev-says-trump-accounts-customer-growth-is-faster-than-americas-most-successful-tech-companies",
+      "author": "Radhika Anilkumar Nadig",
+      "source": "benzinga",
+      "symbols": [
+        "BLK",
+        "BNY",
+        "CMCSA",
+        "DELL",
+        "HOOD",
+        "JPM",
+        "MU",
+        "SOFI",
+        "SPCX",
+        "V"
+      ],
+      "created_at": "2026-07-09T04:08:14Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Strong customer growth metrics for Trump Accounts compared to major tech companies indicates positive business momentum for Robinhood."
+    },
+    {
+      "id": "60349008",
+      "headline": "TeraWulf (WULF) Stock Is Trending After Hours: Here's What You Should Know",
+      "summary": "TeraWulf shares rose 2.06% in after-hours trading after Morgan Stanley raised its price target to $72 while maintaining an Overweight rating.",
+      "url": "https://www.benzinga.com/markets/equities/26/07/60349008/terawulf-wulf-stock-is-trending-after-hours-heres-what-you-should-know",
+      "author": "Mohd Haider",
+      "source": "benzinga",
+      "symbols": [
+        " MS",
+        "IYW",
+        "MS",
+        "WULF",
+        "XLK"
+      ],
+      "created_at": "2026-07-09T03:27:57Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Morgan Stanley raised price target to $72 with Overweight rating, driving 2.06% after-hours gain."
+    },
+    {
+      "id": "60343044",
+      "headline": "Warren Presses Citi CEO On Reported Acquisition Plans, Raises Concerns Over Systemic Risk",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60343044/warren-presses-citi-ceo-reported-acquisition-plans-raises-concerns-over-systemic-risk",
+      "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
         "C"
       ],
-      "created_at": "2026-07-02T21:30:53Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Strong 5-year outperformance with 15.46% annualized returns exceeding market by 4.0%"
-    },
-    {
-      "id": "60261106",
-      "headline": "Here's How Much $1000 Invested In Jabil 5 Years Ago Would Be Worth Today",
-      "summary": "Jabil (NYSE:JBL) has outperformed the market over the past 5 years by 31.54% on an annualized basis producing an average annual return of 43.0%. Currently, Jabil has a market capitalization of $35.76 billion.  Buying",
-      "url": "https://www.benzinga.com/news/26/07/60261106/here-s-how-much-1000-invested-jabil-5-years-ago-would-be-worth-today",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "JBL"
-      ],
-      "created_at": "2026-07-02T20:45:43Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong outperformance vs market with 43% average annual return over 5 years"
-    },
-    {
-      "id": "60256219",
-      "headline": "Blue Owl Records $4.7 Billion In Redemption Requests As Private Credit Pressure Lingers",
-      "summary": "For the second quarter in a row, Blue Owl Capital saw a large influx of redemption requests in two of its private credit funds.",
-      "url": "https://www.benzinga.com/markets/private-markets/26/07/60256219/blue-owl-records-4-7-billion-in-redemption-requests-as-private-credit-pressure-lingers",
-      "author": "Caroline Ryan",
-      "source": "benzinga",
-      "symbols": [
-        "APO",
-        "GS",
-        "OWL"
-      ],
-      "created_at": "2026-07-02T18:32:47Z",
+      "created_at": "2026-07-08T18:23:07Z",
       "sentiment": "bear",
       "confidence": 0.85,
-      "reason": "Large redemption requests signal investor concern about fund performance and liquidity pressure."
+      "reason": "Warren's concerns over systemic risk and acquisition scrutiny signal regulatory pressure on Citi."
     },
     {
-      "id": "60254266",
-      "headline": "10 Industrials Stocks Whale Activity In Today\u2019s Session",
+      "id": "60342567",
+      "headline": "SanDisk and Micron Risk Profit Squeeze from Chinese Memory Threat",
+      "summary": "Citi Wealth notes that China&39;s domestic memory is gaining recognition, posing risk to incumbent vendors like Micron, SanDisk, Western Digital.",
+      "url": "https://www.benzinga.com/markets/tech/26/07/60342567/sandisk-and-micron-risk-profit-squeeze-from-chinese-memory-threat",
+      "author": "Erica Kollmann",
+      "source": "benzinga",
+      "symbols": [
+        "MU",
+        "SNDK",
+        "WDC"
+      ],
+      "created_at": "2026-07-08T18:08:42Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Chinese competition threatens profit margins for Micron and SanDisk"
+    },
+    {
+      "id": "60341363",
+      "headline": "6 Financials Stocks Whale Activity In Today\u2019s Session",
       "summary": "This whale alert can help traders discover the next big trading opportunities. Whales are entities with large sums of money and we track their transactions here at Benzinga on our options activity scanner. Traders will",
-      "url": "https://www.benzinga.com/markets/options/26/07/60254266/10-industrials-stocks-whale-activity-today-s-session",
+      "url": "https://www.benzinga.com/markets/options/26/07/60341363/6-financials-stocks-whale-activity-today-s-session",
       "author": "Benzinga Insights",
       "source": "benzinga",
       "symbols": [
-        "AVAV",
-        "BE",
-        "CAT",
-        "ETN",
-        "GWW",
-        "JCI",
-        "LUNR",
-        "MOD",
-        "POWL",
-        "UPS"
+        "CIA",
+        "COIN",
+        "GS",
+        "JPM",
+        "SCHW",
+        "XYZ"
       ],
-      "created_at": "2026-07-02T17:35:22Z",
+      "created_at": "2026-07-08T17:35:09Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Whale activity typically signals informed institutional interest and potential trading opportunities."
+    },
+    {
+      "id": "60341361",
+      "headline": "10 Information Technology Stocks With Whale Alerts In Today\u2019s Session",
+      "summary": "This whale alert can help traders discover the next big trading opportunities. Whales are entities with large sums of money and we track their transactions here at Benzinga on our options activity scanner. Traders often",
+      "url": "https://www.benzinga.com/markets/options/26/07/60341361/10-information-technology-stocks-whale-alerts-today-s-session",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "ANET",
+        "CBRS",
+        "DELL",
+        "INTC",
+        "MSFT",
+        "MU",
+        "NVDA",
+        "ORCL",
+        "SMCI"
+      ],
+      "created_at": "2026-07-08T17:35:08Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Article reports whale trading activity without indicating positive or negative market direction."
+    },
+    {
+      "id": "60329250",
+      "headline": "Susquehanna Maintains Neutral on Western Digital, Raises Price Target to $500",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60329250/susquehanna-maintains-neutral-western-digital-raises-price-target-500",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "WDC"
+      ],
+      "created_at": "2026-07-08T12:37:45Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Price target raise signals analyst confidence despite neutral rating, indicating upside potential."
+    },
+    {
+      "id": "60326366",
+      "headline": "Chamath Palihapitiya Explains Why He Would Pick SPCX Over OpenAI, Anthropic",
+      "summary": "Chamath Palihapitiya backs Elon Musk&39;s SpaceX in AI race over competitors like OpenAI and Anthropic in the AI race.",
+      "url": "https://www.benzinga.com/markets/tech/26/07/60326366/chamath-palihapitiya-explains-why-he-would-pick-spcx-over-openai-anthropic",
+      "author": "Badar Shaikh",
+      "source": "benzinga",
+      "symbols": [
+        "INTC",
+        "MS",
+        "SPCX"
+      ],
+      "created_at": "2026-07-08T10:41:38Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Prominent investor publicly endorses SpaceX over major AI competitors, signaling confidence in its AI capabilities."
+    },
+    {
+      "id": "60324168",
+      "headline": "SpaceX Doubles Prices for Starlink Aviation Plans, Raises Hardware Cost to $200,000",
+      "summary": "SpaceX increases the prices of Starlink satellite internet service&39;s Aviation plans amid bullish Morgan Stanley bet.",
+      "url": "https://www.benzinga.com/markets/tech/26/07/60324168/spacex-doubles-prices-for-starlink-aviation-plans-raises-hardware-cost-to-200000",
+      "author": "Badar Shaikh",
+      "source": "benzinga",
+      "symbols": [
+        "ARKK",
+        "MS",
+        "SPCX"
+      ],
+      "created_at": "2026-07-08T07:41:54Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Price increases signal strong demand and confidence in Starlink Aviation's market value."
+    },
+    {
+      "id": "60323028",
+      "headline": "Ross Gerber Says Chip Sell Off 'a Gift' for Those That Want to Retire Even as SK Hynix US Debut Nears: 'Captured by Very Short-Term Thinking'",
+      "summary": "Ross Gerber calls chip selloff &34;a gift&34; for long-term investors ahead of SK Hynix&39;s $29B U.S. listing this week.",
+      "url": "https://www.benzinga.com/markets/tech/26/07/60323028/ross-gerber-says-chip-sell-off-a-gift-for-those-that-want-to-retire-even-as-sk-hynix-us-debut-nears-captured-by-very-short-term-thinking",
+      "author": "Radhika Anilkumar Nadig",
+      "source": "benzinga",
+      "symbols": [
+        "AVGO",
+        "MU",
+        "NVDA",
+        "SNDK",
+        "WDC"
+      ],
+      "created_at": "2026-07-08T02:47:29Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Expert calls selloff a gift for long-term investors, positive on SK Hynix US debut"
+    },
+    {
+      "id": "60316074",
+      "headline": "EXCLUSIVE: Alphabet Replaces Verizon, Here\u2019s Who Market Expert Jay Woods Says Could Leave Dow Jones Next",
+      "summary": "A market expert tells Benzinga why the recent Dow Jones Industrial Average change is good and what stock could be next to change.",
+      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/07/60316074/alphabet-replaces-verizon-market-expert-jay-woods-says-could-leave-dow-jones-next",
+      "author": "Chris Katje",
+      "source": "benzinga",
+      "symbols": [
+        "CAT",
+        "DIA",
+        "GOOG",
+        "GOOGL",
+        "GS",
+        "NKE",
+        "SPCX",
+        "VZ"
+      ],
+      "created_at": "2026-07-07T17:55:12Z",
       "sentiment": "neutral",
       "confidence": 0.65,
-      "reason": "Article reports whale activity tracking without indicating bullish or bearish directional bias."
+      "reason": "Article discusses index composition changes without clear positive or negative implications for Alphabet."
     },
     {
-      "id": "60252571",
-      "headline": "Here\u2019s How Much You Would Have Made Owning Texas Instruments Stock In The Last 15 Years",
-      "summary": "Texas Instruments (NASDAQ:TXN) has outperformed the market over the past 15 years by 3.6% on an annualized basis producing an average annual return of 15.68%. Currently, Texas Instruments has a market capitalization of",
-      "url": "https://www.benzinga.com/news/26/07/60252571/here-s-how-much-you-would-have-made-owning-texas-instruments-stock-last-15-years",
+      "id": "60315513",
+      "headline": "10 Industrials Stocks Whale Activity In Today\u2019s Session",
+      "summary": "This whale alert can help traders discover the next big trading opportunities. Whales are entities with large sums of money and we track their transactions here at Benzinga on our options activity scanner. Traders will",
+      "url": "https://www.benzinga.com/markets/options/26/07/60315513/10-industrials-stocks-whale-activity-today-s-session",
       "author": "Benzinga Insights",
       "source": "benzinga",
       "symbols": [
-        "TXN"
+        "BE",
+        "CAT",
+        "CPRT",
+        "GE",
+        "NMM",
+        "PWR",
+        "RKLB",
+        "UAL",
+        "UPS",
+        "VRT"
       ],
-      "created_at": "2026-07-02T16:45:48Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Strong historical outperformance with 15.68% annualized returns over 15 years demonstrates consistent value creation."
+      "created_at": "2026-07-07T17:35:09Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Article reports whale activity without indicating bullish or bearish directional bias."
     },
     {
-      "id": "60251042",
-      "headline": "Caterpillar Investing Initial $5M Under Its 5-Year, $100M Building The Future Workforce Initiative Across Texas For Advanced Production, Industry Technician Jobs",
+      "id": "60315082",
+      "headline": "Chip Rout Drags Nasdaq 100 Lower, Oil Climbs: Stock Market Today",
+      "summary": "A deepening chipmaker slide pulls all major U.S. indexes lower Tuesday while oil climbs on a Strait of Hormuz strike and defensive sectors led the tape.",
+      "url": "https://www.benzinga.com/markets/equities/26/07/60315082/chip-rout-samsung-earnings-nasdaq-100-oil-climbs-hormuz-stock-market-tuesday",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "AMAT",
+        "BE",
+        "DIA",
+        "DOCN",
+        "FIG",
+        "GDX",
+        "GEV",
+        "GNRC",
+        "IBB",
+        "INTC",
+        "IWM",
+        "KIE",
+        "LNG",
+        "LRCX",
+        "MBGL",
+        "MIDD",
+        "MRVL",
+        "MU",
+        "NET",
+        "NIQ",
+        "PBW",
+        "QQQ",
+        "RIVN",
+        "RNG",
+        "SMH",
+        "SNDK",
+        "SSNLF",
+        "TAN",
+        "TER",
+        "VICR",
+        "VKTX",
+        "VNQ",
+        "VOO",
+        "WDC",
+        "XLE",
+        "XLI",
+        "XLK",
+        "XLRE",
+        "XLU",
+        "XLV",
+        "XME",
+        "XOP"
+      ],
+      "created_at": "2026-07-07T17:20:32Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Chip sector decline drags major indexes lower despite oil gains and defensive sector strength."
+    },
+    {
+      "id": "60313837",
+      "headline": "Jim Cramer\u2019s Take: GEV, CAT, INTC Still Have Room \u2014 But Today Is A Punisher",
+      "summary": "&34;Mad Money&34; host Jim Cramer notes Tuesday&39;s brutal rotation for INTC, GEV, CAT as uptrends remain intact long-term.",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/07/60313837/jim-cramer-take-gev-cat-intc-have-room-today-is-a-punisher",
+      "author": "Erica Kollmann",
+      "source": "benzinga",
+      "symbols": [
+        "CAT",
+        "GEV",
+        "INTC"
+      ],
+      "created_at": "2026-07-07T16:49:09Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Cramer notes uptrends remain intact despite short-term pullback, suggesting long-term bullish outlook."
+    },
+    {
+      "id": "60311982",
+      "headline": "Western Digital Stock Drops 8.5%: Why Samsung\u2019s Profit Surge Triggered a Tech Selloff",
+      "summary": "Western Digital (NASDAQ: WDC) stock tumbled nearly 9% following a broader tech selloff sparked by a classic &34;sell-the-news&34; profit-taking reaction to Samsung&39;s blockbuster earnings guidance.",
+      "url": "https://www.benzinga.com/markets/tech/26/07/60311982/western-digital-stock-drops-8-5-why-samsungs-profit-surge-triggered-a-tech-selloff",
+      "author": "Anusuya Lahiri",
+      "source": "benzinga",
+      "symbols": [
+        "AFOS",
+        "CTEF",
+        "DRAM",
+        "SSNLF",
+        "WDC"
+      ],
+      "created_at": "2026-07-07T16:06:57Z",
+      "sentiment": "bear",
+      "confidence": 0.95,
+      "reason": "WDC stock dropped 8.5% due to profit-taking selloff triggered by Samsung's earnings."
+    },
+    {
+      "id": "60308450",
+      "headline": "B of A Securities Maintains Buy on Citigroup, Raises Price Target to $176",
       "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60251042/caterpillar-investing-initial-5m-under-its-5-year-100m-building-future-workforce-initiative-across-t",
+      "url": "https://www.benzinga.com/news/26/07/60308450/b-securities-maintains-buy-citigroup-raises-price-target-176",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "CAT"
+        "C"
       ],
-      "created_at": "2026-07-02T16:06:22Z",
+      "created_at": "2026-07-07T14:38:01Z",
       "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Caterpillar's $100M workforce investment demonstrates long-term commitment to growth and operational expansion."
+      "confidence": 0.95,
+      "reason": "Buy rating maintained with raised price target signals positive outlook for Citigroup stock"
     },
     {
-      "id": "60246924",
-      "headline": "Pembina Pipeline, Morgan Stanley Infrastructure Partners, Kineticor Asset Management Announce ~$4B Greenlight Electricity Centre Project Gets All Required Regulatory Nods, Expected In-service Data In ",
+      "id": "60308349",
+      "headline": "B of A Securities Maintains Buy on Goldman Sachs Group, Raises Price Target to $1150",
       "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60246924/pembina-pipeline-morgan-stanley-infrastructure-partners-kineticor-asset-management-announce-4b-green",
+      "url": "https://www.benzinga.com/news/26/07/60308349/b-securities-maintains-buy-goldman-sachs-group-raises-price-target-1150",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "MS",
-        "PBA",
-        "TSX:PPL"
+        "GS"
       ],
-      "created_at": "2026-07-02T14:31:21Z",
+      "created_at": "2026-07-07T14:36:14Z",
       "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Major $4B infrastructure project receives all regulatory approvals, clearing path to service and revenue generation."
+      "confidence": 0.95,
+      "reason": "Analyst maintains buy rating and raises price target, signaling positive outlook."
     },
     {
-      "id": "60242595",
-      "headline": "Jabil Files Prospectus For Offering Mixed Shelf; Terms Undisclosed",
+      "id": "60308250",
+      "headline": "B of A Securities Maintains Buy on Morgan Stanley, Raises Price Target to $250",
       "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60242595/jabil-files-prospectus-offering-mixed-shelf-terms-undisclosed",
+      "url": "https://www.benzinga.com/news/26/07/60308250/b-securities-maintains-buy-morgan-stanley-raises-price-target-250",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "JBL"
+        "MS"
       ],
-      "created_at": "2026-07-02T12:40:32Z",
+      "created_at": "2026-07-07T14:34:36Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Buy rating maintained with raised price target indicates positive outlook"
+    },
+    {
+      "id": "60307427",
+      "headline": "Wall Street Welcomes SK Hynix: Will Micron And SanDisk Foot The Bill?",
+      "summary": "SK Hynix plans its U.S. listing, joining other memory stocks in the AI boom. Existing winners may be sold to fund the newcomer.",
+      "url": "https://www.benzinga.com/markets/tech/26/07/60307427/wall-street-welcomes-sk-hynix-will-micron-and-sandisk-foot-the-bill",
+      "author": "Erica Kollmann",
+      "source": "benzinga",
+      "symbols": [
+        "DRAM",
+        "MU",
+        "SNDK",
+        "STX",
+        "WDC"
+      ],
+      "created_at": "2026-07-07T14:19:26Z",
+      "sentiment": "bear",
+      "confidence": 0.75,
+      "reason": "SK Hynix listing may dilute market share and investor capital away from Micron and SanDisk."
+    },
+    {
+      "id": "60306980",
+      "headline": "Cisco Partners With World Wide Technology On $230M U.S. Army GEMSS 2.1 IT Modernization Agreement",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60306980/cisco-partners-world-wide-technology-230m-u-s-army-gemss-2-1-it-modernization-agreement",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "CSCO"
+      ],
+      "created_at": "2026-07-07T14:11:07Z",
+      "sentiment": "bull",
+      "confidence": 0.92,
+      "reason": "Major $230M government contract win demonstrates strong enterprise demand and validates Cisco's IT modernization solutions"
+    },
+    {
+      "id": "60305027",
+      "headline": "UBS Maintains Neutral on Citigroup, Raises Price Target to $150",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60305027/ubs-maintains-neutral-citigroup-raises-price-target-150",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "C"
+      ],
+      "created_at": "2026-07-07T13:37:52Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Price target increase signals positive outlook despite neutral rating maintenance."
+    },
+    {
+      "id": "60304982",
+      "headline": "UBS Maintains Neutral on Goldman Sachs Group, Raises Price Target to $1120",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60304982/ubs-maintains-neutral-goldman-sachs-group-raises-price-target-1120",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "GS"
+      ],
+      "created_at": "2026-07-07T13:37:20Z",
       "sentiment": "neutral",
       "confidence": 0.85,
-      "reason": "Filing a shelf offering is routine corporate procedure with no clear positive or negative implications."
+      "reason": "Neutral rating maintained despite price target increase suggests cautious optimism."
     }
   ]
 }
