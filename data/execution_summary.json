@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-07-09T16:14:36Z",
-  "mode": "market_open",
+  "timestamp": "2026-07-09T22:50:10Z",
+  "mode": "post_close",
   "orders_placed": [
     {
       "action": "SELL",
@@ -10,18 +10,14 @@
     },
     {
       "action": "BUY",
-      "symbol": "MNST",
-      "qty": 9,
+      "symbol": "WST",
+      "qty": 1,
       "status": "submitted"
     }
   ],
   "orders_skipped": [
     {
-      "symbol": "WDC",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "C",
+      "symbol": "ANET",
       "reason": "blocked by agent approval or risk gate"
     },
     {
@@ -33,10 +29,14 @@
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "ANET",
+      "symbol": "C",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "WDC",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 8.43
+  "cash_pct_after": 8.47
 }
