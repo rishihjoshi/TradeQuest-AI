@@ -1,16 +1,16 @@
 {
-  "timestamp": "2026-07-09T22:50:10Z",
-  "mode": "post_close",
+  "timestamp": "2026-07-10T15:58:16Z",
+  "mode": "market_open",
   "orders_placed": [
     {
       "action": "SELL",
-      "symbol": "JBL",
-      "qty": 1,
+      "symbol": "BEN",
+      "qty": 2,
       "status": "submitted"
     },
     {
-      "action": "BUY",
-      "symbol": "WST",
+      "action": "SELL",
+      "symbol": "JBL",
       "qty": 1,
       "status": "submitted"
     }
@@ -38,5 +38,5 @@
     }
   ],
   "errors": [],
-  "cash_pct_after": 8.47
+  "cash_pct_after": 11.91
 }
