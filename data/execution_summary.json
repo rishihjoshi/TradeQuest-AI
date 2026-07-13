@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-07-13T16:06:48Z",
-  "mode": "market_open",
+  "timestamp": "2026-07-13T22:27:35Z",
+  "mode": "post_close",
   "orders_placed": [
     {
       "action": "SELL",
@@ -10,22 +10,26 @@
     },
     {
       "action": "BUY",
-      "symbol": "JCI",
-      "qty": 7,
+      "symbol": "BEN",
+      "qty": 11,
       "status": "submitted"
     }
   ],
   "orders_skipped": [
     {
+      "symbol": "ANET",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
       "symbol": "FRT",
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "WDC",
+      "symbol": "TXN",
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "ANET",
+      "symbol": "WDC",
       "reason": "blocked by agent approval or risk gate"
     },
     {
@@ -34,5 +38,5 @@
     }
   ],
   "errors": [],
-  "cash_pct_after": 8.53
+  "cash_pct_after": 8.52
 }
