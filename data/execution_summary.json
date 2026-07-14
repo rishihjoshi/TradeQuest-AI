@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-07-14T15:10:32Z",
-  "mode": "market_open",
+  "timestamp": "2026-07-14T22:30:43Z",
+  "mode": "post_close",
   "orders_placed": [
     {
       "action": "SELL",
@@ -9,33 +9,21 @@
       "status": "submitted"
     },
     {
-      "action": "SELL",
-      "symbol": "TXN",
-      "qty": 3,
+      "action": "BUY",
+      "symbol": "NTAP",
+      "qty": 6,
       "status": "submitted"
     },
     {
       "action": "BUY",
-      "symbol": "SPG",
+      "symbol": "NTRS",
       "qty": 1,
       "status": "submitted"
     }
   ],
   "orders_skipped": [
     {
-      "symbol": "WST",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "BEN",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "FRT",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "ANET",
+      "symbol": "WDC",
       "reason": "blocked by agent approval or risk gate"
     },
     {
@@ -43,10 +31,26 @@
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "WDC",
+      "symbol": "ANET",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "FRT",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "BEN",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "C",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "WST",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 17.74
+  "cash_pct_after": 17.84
 }

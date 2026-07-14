@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-07-13",
+  "generated_at": "2026-07-14",
   "earnings_this_week": [
     {
       "symbol": "C",
       "date": "2026-07-14",
       "timing": "TAS",
-      "eps_estimate": 2.72
+      "eps_estimate": 2.74
     },
     {
       "symbol": "GS",
@@ -16,11 +16,11 @@
   ],
   "macro_events_14d": [],
   "market_breadth": {
-    "date": "2026-07-10",
-    "breadth_raw": 0.674,
-    "breadth_8ma": 0.6569,
-    "breadth_200ma": 0.6063,
-    "pct_above_200ma": "67.4%",
+    "date": "2026-07-13",
+    "breadth_raw": 0.68,
+    "breadth_8ma": 0.6635,
+    "breadth_200ma": 0.6073,
+    "pct_above_200ma": "68.0%",
     "trend_above_200ma": true,
     "interpretation": "HEALTHY \u2014 broad participation supports bull regime"
   }
