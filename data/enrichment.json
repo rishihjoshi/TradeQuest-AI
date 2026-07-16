@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-15",
+  "generated_at": "2026-07-16",
   "earnings_this_week": [],
   "macro_events_14d": [],
   "market_breadth": {
-    "date": "2026-07-14",
-    "breadth_raw": 0.668,
-    "breadth_8ma": 0.6645,
-    "breadth_200ma": 0.6079,
-    "pct_above_200ma": "66.8%",
+    "date": "2026-07-15",
+    "breadth_raw": 0.6733,
+    "breadth_8ma": 0.6674,
+    "breadth_200ma": 0.6081,
+    "pct_above_200ma": "67.3%",
     "trend_above_200ma": true,
     "interpretation": "HEALTHY \u2014 broad participation supports bull regime"
   }
