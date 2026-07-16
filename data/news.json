@@ -1,439 +1,379 @@
 {
-  "generated_at": "2026-07-13T16:02:32Z",
+  "generated_at": "2026-07-16T15:18:45Z",
   "article_count": 30,
   "articles": [
     {
-      "id": "60419822",
-      "headline": "Big Bank Earnings Preview: Bank of America, JPMorgan Stocks Starting to Rally \u2014 Will This Laggard Be Next?",
-      "summary": "6 big U.S. banks report quarterly financial results this week. A look at recent earnings history and key items to watch.",
-      "url": "https://www.benzinga.com/trading-ideas/previews/26/07/60419822/big-bank-earnings-preview-bank-of-america-jpmorgan-stocks-starting-to-rally-will-this-laggard-be-next",
-      "author": "Chris Katje",
-      "source": "benzinga",
-      "symbols": [
-        "BAC",
-        "C",
-        "DIA",
-        "GS",
-        "JPM",
-        "MS",
-        "WFC",
-        "XLF"
-      ],
-      "created_at": "2026-07-13T15:47:05Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Rally mention and positive earnings preview suggest bullish market expectations for major banks."
-    },
-    {
-      "id": "60418536",
-      "headline": "Critical 4 Hours Ahead, Korea And Iran Drive Selling In US Stocks",
-      "summary": "    Important Data Ahead    Please click here for an enlarged chart of Direxion Daily Semiconductor Bull 3X ETF (NYSE:SOXL).    Note the following:     Semiconductors are the leading sector that has been driving the",
-      "url": "https://www.benzinga.com/Opinion/26/07/60418536/critical-4-hours-ahead-korea-and-iran-drive-selling-in-us-markets",
-      "author": "The Arora Report",
-      "source": "benzinga",
-      "symbols": [
-        "AAPL",
-        "AMD",
-        "AMZN",
-        "BAC",
-        "BTCUSD",
-        "C",
-        "DRAM",
-        "GOOG",
-        "GS",
-        "JPM",
-        "META",
-        "MSFT",
-        "MU",
-        "NVDA",
-        "QQQ",
-        "SKHY",
-        "SNDK",
-        "SOXL",
-        "SPY",
-        "SSNLF",
-        "STX",
-        "TSLA",
-        "TSM",
-        "USO",
-        "WDC",
-        "WFC"
-      ],
-      "created_at": "2026-07-13T15:10:12Z",
-      "sentiment": "bear",
-      "confidence": 0.75,
-      "reason": "Article warns of critical market conditions with geopolitical tensions driving selling pressure in US stocks."
-    },
-    {
-      "id": "60418479",
-      "headline": "Western Digital Stock Drops: Why an Aggressive SK Hynix Reversal Is Shaking Up the Chip Sector",
-      "summary": "Western Digital (NASDAQ: WDC) stock fell over 6% on Monday as memory-chip sentiment cooled following a post-IPO profit-taking reversal in SK Hynix.",
-      "url": "https://www.benzinga.com/trading-ideas/movers/26/07/60418479/western-digital-stock-drops-sk-hynix-reversal-is-shaking-up-chip-sector",
-      "author": "Anusuya Lahiri",
-      "source": "benzinga",
-      "symbols": [
-        "AFOS",
-        "CTEF",
-        "DRAM",
-        "SKHYV",
-        "WDC"
-      ],
-      "created_at": "2026-07-13T15:08:54Z",
-      "sentiment": "bear",
-      "confidence": 0.95,
-      "reason": "WDC stock dropped 6% amid cooling chip sector sentiment and SK Hynix reversal."
-    },
-    {
-      "id": "60417933",
-      "headline": "Oppenheimer Maintains Outperform on Caterpillar, Raises Price Target to $1105",
+      "id": "60501161",
+      "headline": "RBC Capital Maintains Sector Perform on Bank of New York Mellon, Raises Price Target to $168",
       "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60417933/oppenheimer-maintains-outperform-caterpillar-raises-price-target-1105",
+      "url": "https://www.benzinga.com/news/26/07/60501161/rbc-capital-maintains-sector-perform-bank-new-york-mellon-raises-price-target-168",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "CAT"
+        "BNY"
       ],
-      "created_at": "2026-07-13T14:58:59Z",
+      "created_at": "2026-07-16T15:07:54Z",
       "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Outperform rating maintained with raised price target indicates strong positive outlook for Caterpillar."
+      "confidence": 0.75,
+      "reason": "Price target raise signals analyst confidence despite maintaining sector perform rating."
     },
     {
-      "id": "60414741",
-      "headline": "Reported Earlier: 'Saudi Tech Firm NourNet Is Said to Pick Goldman, HSBC for IPO' - Bloomberg",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60414741/reported-earlier-saudi-tech-firm-nournet-said-pick-goldman-hsbc-ipo-bloomberg",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "GS",
-        "HSBC"
-      ],
-      "created_at": "2026-07-13T13:50:16Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "IPO announcement with major investment banks signals growth and market confidence in NourNet."
-    },
-    {
-      "id": "60411047",
-      "headline": "Porch Group, Micron And Other Big Stocks Moving Lower In Monday\u2019s Pre-Market Session",
-      "summary": "U.S. stock futures lower, Porch Group Inc (NASDAQ: PRCH) downgraded, pre-market trading sees several other stocks declining.",
-      "url": "https://www.benzinga.com/trading-ideas/movers/26/07/60411047/porch-group-micron-and-other-big-stocks-moving-lower-in-mondays-pre-market-session",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "AVR",
-        "COHU",
-        "DCX",
-        "FIZZ",
-        "GMM",
-        "JLHL",
-        "KEP",
-        "MU",
-        "PLBL",
-        "PRCH",
-        "SNDK",
-        "TOP",
-        "TRIP",
-        "VCRE",
-        "WDC",
-        "YSG"
-      ],
-      "created_at": "2026-07-13T12:03:06Z",
-      "sentiment": "bear",
-      "confidence": 0.95,
-      "reason": "Downgrade and pre-market decline signal negative investor sentiment toward PRCH."
-    },
-    {
-      "id": "60410370",
-      "headline": "How To Earn $500 A Month From Morgan Stanley Stock Ahead Of Q2 Earnings",
-      "summary": "Morgan Stanley (NYSE:MS) will release Q2 earnings on July 15. Analysts expect $2.81/share, up from $2.13 last year. Dividend yield is 1.80%.",
-      "url": "https://www.benzinga.com/trading-ideas/dividends/26/07/60410370/how-to-earn-500-a-month-from-morgan-stanley-stock-ahead-of-q2-earnings",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "MS"
-      ],
-      "created_at": "2026-07-13T11:40:33Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "EPS growth expected and article focuses on income generation opportunity from dividends."
-    },
-    {
-      "id": "60408751",
-      "headline": "Cisco President Says 'the Future Will Likely Have More Jobs' as AI Could Create More Work Than It Eliminates",
-      "summary": "Patel predicts AI will create more jobs than it eliminates in the next 5 years, but workers must adapt or risk being left behind.",
-      "url": "https://www.benzinga.com/markets/tech/26/07/60408751/cisco-president-says-the-future-will-likely-have-more-jobs-as-ai-could-create-more-work-than-it-eliminates",
-      "author": "Snigdha Gairola",
-      "source": "benzinga",
-      "symbols": [
-        "CSCO"
-      ],
-      "created_at": "2026-07-13T10:40:07Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Positive outlook on AI job creation suggests optimism about economic growth and workforce expansion."
-    },
-    {
-      "id": "60408392",
-      "headline": "5 Stock Picks Last Week From Wall Street's Most Accurate Analysts",
-      "summary": "US stocks closed higher on Friday with the Dow Jones gaining 150 points. S&amp;P 500 and Nasdaq also rose. Analyst ratings can be used as trading indicators to outperform the market.",
-      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/07/60408392/5-stock-picks-last-week-from-wall-streets-most-accurate-analysts-32",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "AMAT",
-        "APH",
-        "FTK",
-        "INTC",
-        "WDC"
-      ],
-      "created_at": "2026-07-13T10:16:17Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Market gains and analyst picks suggest positive momentum and outperformance potential."
-    },
-    {
-      "id": "60405656",
-      "headline": "Bank Earnings Week: Goldman, JPMorgan, Citi, BofA, Morgan Stanley Set to Deliver a Profit Bonanza",
-      "summary": "Top US banks like Goldman Sachs, JPMorgan, Citi, Bank of America, and Morgan Stanley are expected to report strong earnings this week",
-      "url": "https://www.benzinga.com/markets/equities/26/07/60405656/bank-earnings-week-goldman-jpmorgan-citi-bofa-morgan-stanley-set-to-deliver-a-profit-bonanza",
-      "author": "Crispus Nyaga",
-      "source": "benzinga",
-      "symbols": [
-        "BAC",
-        "C",
-        "GS",
-        "JPM",
-        "MS",
-        "WFC"
-      ],
-      "created_at": "2026-07-12T21:31:27Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Strong earnings expectations for major banks signal robust financial performance and market confidence."
-    },
-    {
-      "id": "60405615",
-      "headline": "Top S&P 500 Stocks to Watch This Week: Goldman Sachs, Netflix, GE Aerospace",
-      "summary": "Here are the top S&amp;P 500 Index stocks to watch this week, including popular names like Goldman Sachs, Netflix and GE Aerospace.",
-      "url": "https://www.benzinga.com/markets/market-summary/26/07/60405615/top-sp-500-stocks-to-watch-this-week-goldman-sachs-netflix-ge-aerospace",
-      "author": "Crispus Nyaga",
-      "source": "benzinga",
-      "symbols": [
-        "GE",
-        "GS",
-        "NFLX",
-        "SPCX"
-      ],
-      "created_at": "2026-07-12T20:56:02Z",
-      "sentiment": "neutral",
-      "confidence": 0.95,
-      "reason": "Article simply lists stocks to watch without expressing positive or negative outlook."
-    },
-    {
-      "id": "60405605",
-      "headline": "Citi Analysts Name Three Tech Stocks to Buy Ahead of Earnings",
-      "summary": "Citi analysts believe that some of the top tech stocks to buy ahead of earnings are companies like Figma, Microsoft, and Palantir.",
-      "url": "https://www.benzinga.com/markets/equities/26/07/60405605/citi-analysts-name-three-tech-stocks-to-buy-ahead-of-earnings",
-      "author": "Crispus Nyaga",
-      "source": "benzinga",
-      "symbols": [
-        "C",
-        "FIG",
-        "MS",
-        "MSFT",
-        "PLTR"
-      ],
-      "created_at": "2026-07-12T20:51:27Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Analyst buy recommendations on major tech stocks ahead of earnings is positive"
-    },
-    {
-      "id": "60405549",
-      "headline": "S&P 500 Index Forms Highly Bullish Pattern as Analysts Warn of Earnings Bubble",
-      "summary": "The S&amp;P 500 Index has formed the highly bullish chart pattern as Wall Street analysts have warned of a potential earnings bubble",
-      "url": "https://www.benzinga.com/markets/equities/26/07/60405549/sp-500-index-forms-highly-bullish-pattern-as-analysts-warn-of-earnings-bubble",
-      "author": "Crispus Nyaga",
-      "source": "benzinga",
-      "symbols": [
-        "FDS",
-        "GS",
-        "JPM",
-        "MS",
-        "MU",
-        "VOO"
-      ],
-      "created_at": "2026-07-12T19:31:09Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Bullish technical pattern offset by earnings bubble warning creates mixed signals."
-    },
-    {
-      "id": "60405405",
-      "headline": "SpaceX Stock Hits All-Time Low as Analysts Predict a 65% Surge",
-      "summary": "SpaceX stock has tumbled to a record low as top Wall Street analysts predict a 65% surge in the near term, pointing to its strong growth.",
-      "url": "https://www.benzinga.com/markets/equities/26/07/60405405/spacex-stock-hits-all-time-low-as-analysts-predict-a-65-surge",
-      "author": "Crispus Nyaga",
-      "source": "benzinga",
-      "symbols": [
-        "C",
-        "GS",
-        "MORN",
-        "MS",
-        "SPCX",
-        "TSLA",
-        "WFC"
-      ],
-      "created_at": "2026-07-12T16:51:11Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Analysts predict 65% surge despite current low, indicating strong growth potential."
-    },
-    {
-      "id": "60404635",
-      "headline": "Top Analyst Reveals Why Citigroup is a Top Bank Stock Ahead of Earnings",
-      "summary": "Josh Brown, a top Wall Street analyst, has explained why Citigroup stock is his best banking group ahead of its earnings",
-      "url": "https://www.benzinga.com/markets/equities/26/07/60404635/top-analyst-reveals-why-citigroup-is-a-top-bank-stock-ahead-of-earnings",
-      "author": "Crispus Nyaga",
-      "source": "benzinga",
-      "symbols": [
-        "C"
-      ],
-      "created_at": "2026-07-12T02:04:35Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Top analyst endorsement as 'best banking group' ahead of earnings signals positive outlook."
-    },
-    {
-      "id": "60404475",
-      "headline": "Dow Jones Index Braces for Volatility Ahead of Earnings Season, CPI, US-Iran Tensions",
-      "summary": "The Dow Jones Index has braced for volatility as investors wait for the earnings season, US CPI data, and the US-iran tensions",
-      "url": "https://www.benzinga.com/markets/equities/26/07/60404475/dow-jones-index-braces-for-volatility-ahead-of-earnings-season-cpi-us-iran-tensions",
-      "author": "Crispus Nyaga",
-      "source": "benzinga",
-      "symbols": [
-        "BAC",
-        "C",
-        "DJI",
-        "FDS",
-        "GS",
-        "JPM",
-        "WFC"
-      ],
-      "created_at": "2026-07-11T20:04:35Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Mixed outlook with upcoming catalysts creating uncertainty rather than clear directional bias."
-    },
-    {
-      "id": "60398726",
-      "headline": "Blue Owl Saw Investor Exodus After UBS Flaged Rising Private Credit Default Risk",
-      "summary": "Blue Owl faced a surge in withdrawal requests that intensified after a UBS research note raised alarms about stress in private credit.",
-      "url": "https://www.benzinga.com/markets/private-markets/26/07/60398726/blue-owl-saw-investor-exodus-after-ubs-flaged-rising-private-credit-default-risk",
-      "author": "Caroline Ryan",
-      "source": "benzinga",
-      "symbols": [
-        "APO",
-        "GS",
-        "OWL"
-      ],
-      "created_at": "2026-07-10T19:15:24Z",
-      "sentiment": "bear",
-      "confidence": 0.95,
-      "reason": "Investor exodus and rising default risk concerns negatively impact Blue Owl's reputation and assets under management."
-    },
-    {
-      "id": "60395454",
-      "headline": "6 Industrials Stocks With Whale Alerts In Today\u2019s Session",
-      "summary": "This whale alert can help traders discover the next big trading opportunities. Whales are entities with large sums of money and we track their transactions here at Benzinga on our options activity scanner. Traders will",
-      "url": "https://www.benzinga.com/markets/options/26/07/60395454/6-industrials-stocks-whale-alerts-today-s-session",
+      "id": "60500740",
+      "headline": "Rep. Jonathan Jackson Has Bought Up to $30K Worth Of Hilton Worldwide Holdings Stock: Here\u2019s What You Should Know",
+      "summary": "An official report on July 15, 2026 reveals Representative Jonathan Jackson&39;s recent purchase of Hilton Worldwide Holdings (NYSE:HLT) stock, valued between $2,002 and $30,000. The transaction took place on June 15,",
+      "url": "https://www.benzinga.com/government/26/07/60500740/rep-jonathan-jackson-has-bought-30k-worth-hilton-worldwide-holdings-stock-here-s-what-you-should-kno",
       "author": "Benzinga Insights",
       "source": "benzinga",
       "symbols": [
-        "AGX",
-        "BE",
-        "CAT",
-        "GE",
-        "GEV",
-        "UBER"
+        "HLT",
+        "MSFT",
+        "SPG",
+        "V"
       ],
-      "created_at": "2026-07-10T17:35:06Z",
+      "created_at": "2026-07-16T15:00:22Z",
       "sentiment": "neutral",
-      "confidence": 0.7,
-      "reason": "Article describes whale activity tracking tool without expressing positive or negative outlook on stocks."
+      "confidence": 0.85,
+      "reason": "Congressional stock purchase is informational without clear positive or negative implications for HLT."
     },
     {
-      "id": "60382176",
-      "headline": "CRCL Surges 12% on Regulatory Approval by OCC: Here's What It Means for Circle",
-      "summary": "Circle stock jumps 12% after OCC approval for a national trust bank, boosting USDC oversight and institutional custody plans.",
-      "url": "https://www.benzinga.com/crypto/cryptocurrency/26/07/60382176/crcl-surges-12-on-regulatory-approval-by-occ-heres-what-it-means-for-circle",
-      "author": "Parshwa Turakhiya",
-      "source": "benzinga",
-      "symbols": [
-        "COIN",
-        "CRCL",
-        "HOOD",
-        "MS",
-        "XRPUSD"
-      ],
-      "created_at": "2026-07-10T13:37:53Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Regulatory approval from OCC enables institutional custody and USDC oversight expansion"
-    },
-    {
-      "id": "60380698",
-      "headline": "Wells Fargo Maintains Overweight on Western Digital, Raises Price Target to $730",
+      "id": "60500656",
+      "headline": "Wells Fargo Maintains Overweight on Arista Networks, Raises Price Target to $200",
       "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60380698/wells-fargo-maintains-overweight-western-digital-raises-price-target-730",
+      "url": "https://www.benzinga.com/news/26/07/60500656/wells-fargo-maintains-overweight-arista-networks-raises-price-target-200",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "WDC"
+        "ANET"
       ],
-      "created_at": "2026-07-10T12:37:28Z",
+      "created_at": "2026-07-16T14:59:26Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Analyst maintains overweight rating and raises price target, signaling positive outlook for Western Digital"
+      "reason": "Analyst upgrade with raised price target signals strong positive outlook for Arista Networks stock."
     },
     {
-      "id": "60379721",
-      "headline": "Nvidia, Citigroup, Live Nation And A Real Estate Stock: CNBC\u2019s \u2018Final Trades\u2019",
-      "summary": "CBRE Group shares rose 0.8% to close at $141.06 on Thursday while Nvidia shares fell 0.7% to settle at $202.78 during the session.",
-      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/07/60379721/nvidia-citigroup-live-nation-and-a-real-estate-stock-cnbcs-final-trades",
-      "author": "Avi Kapoor",
+      "id": "60500240",
+      "headline": "Wells Fargo Maintains Equal-Weight on Bank of New York Mellon, Raises Price Target to $162",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60500240/wells-fargo-maintains-equal-weight-bank-new-york-mellon-raises-price-target-162",
+      "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "C",
-        "CBRE",
-        "LYV",
-        "NVDA"
+        "BNY"
       ],
-      "created_at": "2026-07-10T11:58:16Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "created_at": "2026-07-16T14:51:02Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Price target raise indicates positive outlook despite maintaining Equal-Weight rating."
     },
     {
-      "id": "60376640",
-      "headline": "Morgan Stanley Infrastructure Partners To Acquire Majority Stake In Nicollin Environmental, Family To Retain Ownership Alongside MSIP",
+      "id": "60500099",
+      "headline": "Wells Fargo Maintains Equal-Weight on Morgan Stanley, Raises Price Target to $240",
       "summary": "",
-      "url": "https://www.benzinga.com/quote/MS",
+      "url": "https://www.benzinga.com/news/26/07/60500099/wells-fargo-maintains-equal-weight-morgan-stanley-raises-price-target-240",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
         "MS"
       ],
-      "created_at": "2026-07-10T07:20:16Z",
+      "created_at": "2026-07-16T14:47:26Z",
       "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Strategic acquisition by major investment firm signals confidence in company value and growth potential"
+      "confidence": 0.75,
+      "reason": "Price target raise to $240 is positive despite equal-weight rating maintenance."
     },
     {
-      "id": "60376593",
-      "headline": "Reported Earlier, Siam Commercial Bank Becomes First Global Client To Go Live With Citi's 24/7 USD Clearing And Token Services, Enabling Near Real-Time Cross-Border USD Payments",
+      "id": "60498942",
+      "headline": "Stifel Maintains Buy on Monster Beverage, Raises Price Target to $105",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60498942/stifel-maintains-buy-monster-beverage-raises-price-target-105",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "MNST"
+      ],
+      "created_at": "2026-07-16T14:23:57Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains buy rating and raises price target, signaling confidence in stock upside."
+    },
+    {
+      "id": "60497289",
+      "headline": "Barclays Maintains Overweight on Bank of New York Mellon, Raises Price Target to $178",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60497289/barclays-maintains-overweight-bank-new-york-mellon-raises-price-target-178",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "BNY"
+      ],
+      "created_at": "2026-07-16T13:56:19Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Maintained overweight rating with raised price target indicates positive outlook and increased profit potential."
+    },
+    {
+      "id": "60493917",
+      "headline": "Barclays Maintains Overweight on Morgan Stanley, Raises Price Target to $262",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60493917/barclays-maintains-overweight-morgan-stanley-raises-price-target-262",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "MS"
+      ],
+      "created_at": "2026-07-16T12:31:08Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Overweight rating maintained with price target increase signals positive outlook"
+    },
+    {
+      "id": "60493513",
+      "headline": "Goldman Sachs CEO David Solomon Says He\u2019s a \u2018Huge Optimist\u2019 on the US Economy Over the Next 7 Years \u2014 and AI is the Biggest Reason Why",
+      "summary": "Goldman Sachs CEO David Solomon says the U.S. economy remains solid and AI will drive long-term growth despite geopolitical risks.",
+      "url": "https://www.benzinga.com/markets/macro-economic-events/26/07/60493513/goldman-sachs-ceo-david-solomon-says-hes-a-huge-optimist-on-the-us-economy-over-the-next-7-years-and-ai-is-the-biggest-reason-why",
+      "author": "Tanya Rawat",
+      "source": "benzinga",
+      "symbols": [
+        "GS",
+        "JPM"
+      ],
+      "created_at": "2026-07-16T12:18:14Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "CEO expresses strong optimism on US economy and identifies AI as major growth driver."
+    },
+    {
+      "id": "60493019",
+      "headline": "Frequency Electronics Posts Weak Q4 Results, Joins AST SpaceMobile And Other Big Stocks Moving Lower In Thursday\u2019s Pre-Market Session",
+      "summary": "US stock futures mixed, Dow futures up 0.2%. Frequency Electronics (FEIM) shares down 8.3% after reporting Q4 losses. Other stocks also lower in pre-market.",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/07/60493019/frequency-electronics-posts-weak-q4-results-joins-ast-spacemobile-and-other-big-stocks-moving-lower-in-thursdays-pre-market-session",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "ARI",
+        "ASTS",
+        "AXTI",
+        "COHR",
+        "CRMD",
+        "ELVA",
+        "FEIM",
+        "NVVE",
+        "SKHY",
+        "SNDK",
+        "WDC"
+      ],
+      "created_at": "2026-07-16T12:02:43Z",
+      "sentiment": "bear",
+      "confidence": 0.95,
+      "reason": "Q4 losses and 8.3% share decline signal weak financial performance"
+    },
+    {
+      "id": "60492742",
+      "headline": "Keefe, Bruyette & Woods Maintains Outperform on Bank of New York Mellon, Raises Price Target to $177",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60492742/keefe-bruyette-woods-maintains-outperform-bank-new-york-mellon-raises-price-target-177",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "BNY"
+      ],
+      "created_at": "2026-07-16T11:58:28Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Outperform rating maintained with raised price target signals analyst confidence in BNY Mellon's growth prospects."
+    },
+    {
+      "id": "60492632",
+      "headline": "Keefe, Bruyette & Woods Maintains Outperform on Morgan Stanley, Raises Price Target to $250",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60492632/keefe-bruyette-woods-maintains-outperform-morgan-stanley-raises-price-target-250",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "MS"
+      ],
+      "created_at": "2026-07-16T11:52:25Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains positive rating and raises price target, signaling confidence in stock appreciation."
+    },
+    {
+      "id": "60491122",
+      "headline": "'US lawmakers urge Trump administration to ban Chinese memory chips' - Financial Times",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60491122/us-lawmakers-urge-trump-administration-ban-chinese-memory-chips-financial-times",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "FXI",
+        "MU",
+        "SNDK",
+        "STX",
+        "WDC"
+      ],
+      "created_at": "2026-07-16T10:58:11Z",
+      "sentiment": "bull",
+      "confidence": 0.72,
+      "reason": "Potential ban on Chinese memory chips could benefit US chipmakers like Micron and Intel."
+    },
+    {
+      "id": "60490230",
+      "headline": "Elon Musk Reacts to Jamie Dimon's \u2018Einstein\u2019 Praise With Two-Word Reply as Viral Post Hails His SpaceX and Tesla Legacy",
+      "summary": "Elon Musk thanks Jamie Dimon for comparing him to Einstein in a post about JP Morgan CEO&39;s praise for Tesla&39;s work.",
+      "url": "https://www.benzinga.com/markets/tech/26/07/60490230/elon-musk-reacts-to-jamie-dimons-einstein-praise-with-two-word-reply-as-viral-post-hails-his-spacex-and-tesla-legacy",
+      "author": "Shomik Sen Bhattacharjee",
+      "source": "benzinga",
+      "symbols": [
+        "BAC",
+        "GS",
+        "JPM",
+        "MS",
+        "SPCX",
+        "TSLA"
+      ],
+      "created_at": "2026-07-16T10:10:53Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Positive comparison to Einstein and praise for Tesla's work generates favorable sentiment."
+    },
+    {
+      "id": "60488754",
+      "headline": "Dow Jumps 150 Points Following Producer Inflation Data: Investor Sentiment Improves, Fear & Greed Index In \u2018Neutral\u2019 Zone",
+      "summary": "U.S. stocks gain, led by Amazon and Alphabet. Apple hits record high. Aehr Test Systems and Morgan Stanley report strong earnings. PPI data cools inflation fears.",
+      "url": "https://www.benzinga.com/markets/market-summary/26/07/60488754/dow-jumps-150-points-following-producer-inflation-data-investor-sentiment-improves-fear-greed-index-in-neutral-zone",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "ABT",
+        "AEHR",
+        "AMZN",
+        "GE",
+        "GOOG",
+        "GOOGL",
+        "MS",
+        "UNH"
+      ],
+      "created_at": "2026-07-16T07:17:10Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Strong earnings reports, record highs, tech leadership, and cooling inflation data drive positive market momentum."
+    },
+    {
+      "id": "60488342",
+      "headline": "Reported Earlier, Jabil Opens 417,000-Square-Foot Intelligent Logistics Hub In Penang, Featuring AI-Enabled Automation And Digital Twin Capabilities",
+      "summary": "",
+      "url": "https://www.benzinga.com/quote/JBL",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "JBL"
+      ],
+      "created_at": "2026-07-16T06:12:41Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "New intelligent logistics hub with AI automation and digital twin capabilities demonstrates operational expansion and modernization."
+    },
+    {
+      "id": "60488274",
+      "headline": "Bank of New York Mellon Q2 2026 Earnings Call Transcript",
+      "summary": "Bank of New York Mellon (NYSE:BNY) held its second-quarter earnings conference call on Wednesday. Below is the complete transcript from the call. Benzinga APIs provide real-time access to earnings call transcripts and",
+      "url": "https://www.benzinga.com/news/26/07/60488274/bank-new-york-mellon-q2-2026-earnings-call-transcript",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "BNY"
+      ],
+      "created_at": "2026-07-16T06:04:10Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Article is a factual report of earnings call transcript with no evaluative language or performance indicators."
+    },
+    {
+      "id": "60487919",
+      "headline": "Bernie Sanders Says Trump 'Lied' About 10% Credit Card Rate Cap, Points to Big Banks Making Billions Charging 25-30% Interest Rates",
+      "summary": "Bernie Sanders said Trump lied about his 10% credit card rate promise as major banks continued profiting from high interest rates.",
+      "url": "https://www.benzinga.com/news/politics/26/07/60487919/bernie-sanders-says-trump-lied-about-10-credit-card-rate-cap-points-to-big-banks-making-billions-charging-25-30-interest-rates",
+      "author": "Radhika Anilkumar Nadig",
+      "source": "benzinga",
+      "symbols": [
+        "BAC",
+        "C",
+        "GS",
+        "JPM",
+        "WFC"
+      ],
+      "created_at": "2026-07-16T04:46:58Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Criticism of unfulfilled promises and focus on bank profiteering creates negative sentiment for financial sector stocks."
+    },
+    {
+      "id": "60486294",
+      "headline": "Wildfire Smoke Spurs Fresh Demand for Masks, Putting 3M, Other Stocks In Focus",
+      "summary": "Wildfire smoke is causing unhealthy air quality in parts of North America. N95 masks and air purifiers are recommended for protection.",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/07/60486294/wildfire-smoke-spurs-fresh-demand-for-masks-putting-3m-other-stocks-in-focus",
+      "author": "Erica Kollmann",
+      "source": "benzinga",
+      "symbols": [
+        "CARR",
+        "JCI",
+        "MMM",
+        "UL",
+        "WHR"
+      ],
+      "created_at": "2026-07-15T21:03:07Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Wildfire smoke increases demand for N95 masks and air purifiers, benefiting 3M and similar companies."
+    },
+    {
+      "id": "60485037",
+      "headline": "Jabil Announces $1.5B Buyback Plan",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60485037/jabil-announces-1-5b-buyback-plan",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "JBL"
+      ],
+      "created_at": "2026-07-15T20:11:00Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Share buyback signals management confidence and typically supports stock price through reduced share count."
+    },
+    {
+      "id": "60483340",
+      "headline": "Western Digital Stock Tumbles as CXMT Targets $10 Billion Shanghai IPO",
+      "summary": "Western Digital shares are sliding Wednesday as a landmark IPO filing from a Chinese memory rival stoked fears of a powerful new competitor.",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/07/60483340/western-digital-stock-tumbles-as-cxmt-targets-10-billion-shanghai-ipo",
+      "author": "Evette Mitkov",
+      "source": "benzinga",
+      "symbols": [
+        "WDC"
+      ],
+      "created_at": "2026-07-15T19:14:52Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Chinese competitor's $10B IPO filing threatens Western Digital's market position and competitiveness."
+    },
+    {
+      "id": "60482145",
+      "headline": "Goldman Sachs Crushes Records, but This Analyst Warns the Party Is Over",
+      "summary": "Goldman Sachs hits a 52-week high after crushing Q2 earnings, but Citizens warns the stock&39;s massive rally may limit future upside.",
+      "url": "https://www.benzinga.com/analyst-stock-ratings/analyst-color/26/07/60482145/goldman-sachs-crushes-records-but-this-analyst-warns-the-party-is-over",
+      "author": "Lekha Gupta",
+      "source": "benzinga",
+      "symbols": [
+        "GS"
+      ],
+      "created_at": "2026-07-15T18:39:28Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Strong earnings offset by analyst warning of limited future upside potential."
+    },
+    {
+      "id": "60481070",
+      "headline": "Citigroup\u00a0Credit\u00a0Card\u00a0Charge-Offs 2.25 % In June;\u00a0Credit\u00a0Card\u00a0Delinquency Rate 1.30% At June\u00a0End",
       "summary": "",
       "url": "https://www.benzinga.com/quote/C",
       "author": "Benzinga Newsdesk",
@@ -441,139 +381,161 @@
       "symbols": [
         "C"
       ],
-      "created_at": "2026-07-10T07:06:33Z",
-      "sentiment": "bull",
+      "created_at": "2026-07-15T18:13:54Z",
+      "sentiment": "neutral",
       "confidence": 0.85,
-      "reason": "Citi gains competitive advantage as first to offer 24/7 USD clearing with tokenization, enabling faster cross-border payments."
+      "reason": "Charge-off and delinquency rates are factual metrics without clear positive or negative implications."
     },
     {
-      "id": "60376314",
-      "headline": "Morgan Stanley Says AI Productivity Boom Could Keep Interest Rates Above Post-2008 Levels",
-      "summary": "Morgan Stanley said AI could keep U.S. rates above post-financial crisis levels if it boosts productivity without major job losses.",
-      "url": "https://www.benzinga.com/markets/economic-data/26/07/60376314/morgan-stanley-says-ai-productivity-boom-could-keep-interest-rates-above-post-2008-levels",
-      "author": "Radhika Anilkumar Nadig",
-      "source": "benzinga",
-      "symbols": [
-        "MS"
-      ],
-      "created_at": "2026-07-10T06:29:57Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "AI productivity boom supports higher rates, indicating economic strength and growth potential"
-    },
-    {
-      "id": "60375902",
-      "headline": "CCC Intelligent Solutions Stock Rallies 13% Overnight: Here's What's Going On",
-      "summary": "CCC Intelligent Solutions shares surged 13.01% after hours after the company reportedly explored a potential sale.",
-      "url": "https://www.benzinga.com/markets/equities/26/07/60375902/ccc-intelligent-solutions-stock-rallies-13-overnight-heres-whats-going-on",
-      "author": "Mohd Haider",
-      "source": "benzinga",
-      "symbols": [
-        "CCC",
-        "MS"
-      ],
-      "created_at": "2026-07-10T05:21:00Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Stock surge on potential sale exploration signals positive market sentiment and acquisition interest."
-    },
-    {
-      "id": "60371599",
-      "headline": "Western Digital Stock Lifts Following Micron's $250 Billion Investment",
-      "summary": "Western Digital shares are rising Thursday as developments lift memory chip enthusiasm, boosting storage and semiconductor names broadly.",
-      "url": "https://www.benzinga.com/trading-ideas/movers/26/07/60371599/western-digital-stock-lifts-following-microns-250-billion-investment",
-      "author": "Evette Mitkov",
-      "source": "benzinga",
-      "symbols": [
-        "META",
-        "MU",
-        "WDC"
-      ],
-      "created_at": "2026-07-09T19:14:42Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Positive industry catalyst from Micron's investment boosts sector enthusiasm and Western Digital shares."
-    },
-    {
-      "id": "60370973",
-      "headline": "'Goldman Bans Staff Prediction Markets Bets on Finance, Politics' - Bloomberg News",
+      "id": "60480082",
+      "headline": "BMO Capital Maintains Market Perform on Goldman Sachs Group, Raises Price Target to $1190",
       "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60370973/goldman-bans-staff-prediction-markets-bets-finance-politics-bloomberg-news",
+      "url": "https://www.benzinga.com/news/26/07/60480082/bmo-capital-maintains-market-perform-goldman-sachs-group-raises-price-target-1190",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
         "GS"
       ],
-      "created_at": "2026-07-09T18:53:12Z",
-      "sentiment": "neutral",
+      "created_at": "2026-07-15T17:45:59Z",
+      "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Regulatory restriction on internal betting markets; no direct impact on Goldman's business or financial performance."
+      "reason": "Price target raised despite maintaining Market Perform rating, suggesting analyst sees upside potential."
     },
     {
-      "id": "60369943",
-      "headline": "SK Hynix 7X Oversubscription Boosts Semi Stocks; Earnings Season Ahead; Oil Pulls Back After Iran Attacks",
-      "summary": "    Buying In Semis    Please click here for an enlarged chart of Direxion Daily Semiconductor Bull 3X ETF (NYSE:SOXL).    Note the following:     Semiconductors are the leading sector that has been driving the stock",
-      "url": "https://www.benzinga.com/Opinion/26/07/60369943/sk-hynix-7x-oversubscription-boosts-semi-stocks-earnings-season-ahead-oil-pulls-back-after-iran-attacks",
-      "author": "The Arora Report",
+      "id": "60479700",
+      "headline": "10 Financials Stocks With Whale Alerts In Today\u2019s Session",
+      "summary": "This whale alert can help traders discover the next big trading opportunities. Whales are entities with large sums of money and we track their transactions here at Benzinga on our options activity scanner. Traders will",
+      "url": "https://www.benzinga.com/markets/options/26/07/60479700/10-financials-stocks-whale-alerts-today-s-session",
+      "author": "Benzinga Insights",
       "source": "benzinga",
       "symbols": [
-        "AAPL",
-        "AMZN",
-        "BAC",
-        "BTCUSD",
-        "C",
-        "DAL",
-        "GOOG",
+        "BX",
         "GS",
+        "HAPN",
+        "HOOD",
         "JPM",
-        "META",
+        "OWL",
+        "PYPL",
+        "USB",
+        "V",
+        "XYZ"
+      ],
+      "created_at": "2026-07-15T17:35:21Z",
+      "sentiment": "bull",
+      "confidence": 0.72,
+      "reason": "Whale alerts indicate large institutional interest in financial stocks, suggesting potential trading opportunities."
+    },
+    {
+      "id": "60479088",
+      "headline": "JPMorgan, Goldman Sachs, BlackRock, Vanguard Tokenize Real Stocks for the First Time",
+      "summary": "DTCC completes its first live blockchain trades in tokenized stocks and Treasurys with JPMorgan, BlackRock and nearly 40 institutions.",
+      "url": "https://www.benzinga.com/crypto/cryptocurrency/26/07/60479088/jpmorgan-goldman-sachs-blackrock-vanguard-tokenize-real-stocks-for-the-first-time",
+      "author": "Parshwa Turakhiya",
+      "source": "benzinga",
+      "symbols": [
+        "BLK",
+        "CRCL",
+        "GS",
+        "HOOD",
+        "JPM",
+        "MS",
         "MSFT",
-        "MU",
-        "NVDA",
+        "NDAQ",
         "QQQ",
-        "SOXL",
+        "SPY"
+      ],
+      "created_at": "2026-07-15T17:17:14Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Major financial institutions successfully completing first live blockchain trades signals innovation progress and market adoption."
+    },
+    {
+      "id": "60478486",
+      "headline": "Memory-Chip Selloff Drags Nasdaq 100 Lower, SanDisk Sinks 13%: Stock Market Today",
+      "summary": "A brutal semiconductor and memory selloff dragged the Nasdaq and tech sector lower, even as soft June PPI and strong bank earnings steadied the broader tape.",
+      "url": "https://www.benzinga.com/markets/market-summary/26/07/60478486/memory-chip-selloff-wednesday-nasdaq-100-sandisk-plunges-wednesday-market-news",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "AAOI",
+        "ALM",
+        "BILL",
+        "BLK",
+        "DELL",
+        "DIA",
+        "GOOGL",
+        "IWM",
+        "JPM",
+        "KMX",
+        "LITE",
+        "MS",
+        "MU",
+        "PYPL",
+        "QQQ",
+        "SMH",
+        "SNDK",
+        "SOXX",
         "SPY",
-        "TSLA",
-        "USO",
-        "WFC"
+        "VOO",
+        "WDC",
+        "XLB",
+        "XLC",
+        "XLE",
+        "XLF",
+        "XLI",
+        "XLK",
+        "XLY",
+        "ZG"
       ],
-      "created_at": "2026-07-09T18:24:40Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "SK Hynix strong oversubscription and semiconductor sector strength indicate positive momentum."
+      "created_at": "2026-07-15T17:01:58Z",
+      "sentiment": "bear",
+      "confidence": 0.95,
+      "reason": "Memory-chip selloff and SanDisk's 13% decline signal weakness in semiconductor sector."
     },
     {
-      "id": "60368089",
-      "headline": "Morgan Stanley Maintains Equal-Weight on West Pharmaceutical Servs, Raises Price Target to $365",
+      "id": "60477343",
+      "headline": "Citigroup Delivers \u2018Rare Clean Sweep\u2019 With Best Quarterly Revenue in a Decade, Says Analyst",
+      "summary": "Citigroup share price rose after strong Q2 results and positive analyst ratings. Revenue grew and expenses expected to increase slightly.",
+      "url": "https://www.benzinga.com/analyst-stock-ratings/analyst-color/26/07/60477343/citigroup-delivers-rare-clean-sweep-with-best-quarterly-revenue-in-a-decade-says-analyst",
+      "author": "Priya Nigam",
+      "source": "benzinga",
+      "symbols": [
+        "C"
+      ],
+      "created_at": "2026-07-15T16:32:21Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Strong Q2 results, best quarterly revenue in decade, and positive analyst ratings drove share price gains."
+    },
+    {
+      "id": "60476588",
+      "headline": "Morgan Stanley Says AI Spending Boom Is Only 10%-15% Complete",
+      "summary": "Morgan Stanley tops Q2 2026 estimates with record $21.35B revenue and $3.46 EPS, driven by surging investment banking and equity trading.",
+      "url": "https://www.benzinga.com/markets/earnings/26/07/60476588/morgan-stanley-says-ai-spending-boom-is-only-10-15-complete",
+      "author": "Vandana Singh",
+      "source": "benzinga",
+      "symbols": [
+        "MS"
+      ],
+      "created_at": "2026-07-15T16:12:51Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Record revenue and EPS beat estimates; AI spending boom only 10-15% complete signals sustained growth."
+    },
+    {
+      "id": "60475603",
+      "headline": "RBC Capital Reiterates Outperform on Citigroup, Maintains $150 Price Target",
       "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60368089/morgan-stanley-maintains-equal-weight-west-pharmaceutical-servs-raises-price-target-365",
+      "url": "https://www.benzinga.com/news/26/07/60475603/rbc-capital-reiterates-outperform-citigroup-maintains-150-price-target",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "WST"
+        "C"
       ],
-      "created_at": "2026-07-09T17:34:19Z",
+      "created_at": "2026-07-15T15:47:54Z",
       "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Price target raise signals analyst confidence despite neutral rating, suggesting upside potential."
-    },
-    {
-      "id": "60366809",
-      "headline": "CNBC Halftime Report Final Trades: Citigroup, Nvidia, CBRE Group, Live Nation Entertainment",
-      "summary": "",
-      "url": "https://www.benzinga.com/quote/CBRE",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "C",
-        "CBRE",
-        "LYV",
-        "NVDA"
-      ],
-      "created_at": "2026-07-09T17:01:12Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Final trades segment mentions multiple stocks without clear directional bias or market-moving news."
+      "confidence": 0.95,
+      "reason": "Outperform rating and maintained $150 price target indicates positive outlook for Citigroup stock."
     }
   ]
 }
