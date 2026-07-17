@@ -1,7 +1,191 @@
 {
-  "last_run": "2026-07-16T22:30:29Z",
-  "last_type": "day_end",
+  "last_run": "2026-07-17T14:59:03Z",
+  "last_type": "day_start",
   "runs": [
+    {
+      "id": "RUN-20260717-1459",
+      "timestamp": "2026-07-17T14:59:03Z",
+      "type": "day_start",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is in bull regime with 85% confidence, supported by 67.3% breadth and SPY above 200-MA. However, the portfolio contains a critical structural anomaly \u2014 JBL shows -15 shares (short position at -44.4% weight) that was submitted for closure yesterday but may still be pending fill. Cash stands at 26.4% vs 5% bull target, indicating significant under-deployment. Multiple Tier 1 sell candidates (C, JCI, WDC) were blocked at execution yesterday and remain unresolved.",
+      "regime": "bull",
+      "regime_confidence": 0.85,
+      "flags": [
+        "JBL: CRITICAL \u2014 Short position of -15 shares at -44.4% weight persists. SELL 1 JBL was submitted at market open 2026-07-16 but portfolio still shows -15 shares. This anomalous short must be fully closed. 5+ consecutive SELL flags. Requires urgent investigation \u2014 order may not be filling correctly.",
+        "C: URGENT Tier 1 SELL pending \u2014 Price $131.80 below 50-day MA $133.68 (Rule A trend break). Blocked from execution yesterday. PnL +$24.08 (+4.79%) but Rule A structural sell applies regardless. Entry 2026-07-07. Flagged 3 consecutive runs.",
+        "JCI: URGENT Tier 1 SELL pending \u2014 Price $141.40 below 50-day MA $141.99 (Rule A trend break, 3+ days). Blocked yesterday. PnL -$18.62 (-1.85%), entry 2026-07-13. Loss position. Flagged multiple runs.",
+        "WDC: URGENT Tier 1 SELL pending \u2014 Momentum rank=0 (5+ days), sector Unknown, EPS/revenue data null (conservative fail). PnL -$24.39 (-5.02%), entry 2026-07-07. Volatility 114.68% annualized \u2014 extreme risk. Blocked yesterday.",
+        "NTRS: Blocked from execution yesterday despite Tier 1 flag from prior run. PnL -$0.01 (-0.01%), momentum rank=11 (outside top 30% by rank threshold \u2014 watch). Entry 2026-07-15. Weight only 1.81% \u2014 undersized position.",
+        "ANET: WATCH \u2014 Momentum rank=0 (5+ consecutive days), sector Unknown, EPS/revenue null. PnL +$27.75 (+2.83%), entry 2026-07-07. Profitable \u2014 structural sell rules only apply. No MA data available (unknown_ma). Flagged 5 consecutive runs. Hold gate active \u2014 cannot sell on momentum decay alone.",
+        "FRT: WATCH \u2014 Momentum rank=0 (5+ days), sector Unknown, EPS/revenue null. PnL +$35.90 (+3.70%), entry 2026-07-08. Profitable \u2014 hold gate active. No MA data available. Flagged 5 consecutive runs.",
+        "SPG: WATCH \u2014 Momentum rank=0 (3+ days), sector Unknown, EPS/revenue null. PnL +$7.21 (+3.26%), entry 2026-07-14. Profitable \u2014 hold gate active. No MA data available.",
+        "IBKR: Monitor \u2014 PnL -$21.32 (-1.89%), entry 2026-07-02. Momentum rank=3 (top 30% passing). Price $92.10 above MA $88.82. Rule E not yet triggered \u2014 momentum holding. Watch if rank drops further.",
+        "NTAP: WATCH \u2014 PnL -$91.20 (-8.69%), entry 2026-07-15. Momentum rank=2 (passing top 30%). Price $159.69 above MA $149.10. Significant loss position but momentum rank currently inside top 30% \u2014 Rule E not triggered. Monitor closely; if rank exits top 30% for 5 days with loss, Tier 1 SELL applies.",
+        "WST: Flagged in prior runs. PnL -$2.53 (-0.69%), entry 2026-07-10. Momentum rank=7 (passing). Price $362.44 above MA $329.35. No structural trigger active \u2014 monitor.",
+        "SECTOR CONCENTRATION: Financial Services holds BNY, C, GS, IBKR, BEN, MS, NTRS = 7 positions. Combined weight approximately 55%+ \u2014 significantly exceeds 30% sector cap. This is a critical concentration risk requiring attention at next rebalance.",
+        "CASH: 26.4% cash vs 5% bull regime target \u2014 21.4% excess cash drag. Multiple blocked orders contributing. Resolution depends on clearing pending sell orders and re-deploying.",
+        "GS: Flagged in prior runs but no structural trigger visible. PnL +$68.95 (+6.71%), entry 2026-07-07. Momentum rank=9 (passing), price $1,096.84 above MA $1,021.78. Hold gate active \u2014 no sell warranted."
+      ],
+      "decisions": [
+        {
+          "action": "WATCH",
+          "symbol": "JBL",
+          "reason": "CRITICAL ANOMALY \u2014 Short position of -15 shares at -44.4% weight. SELL submitted 2026-07-16 but position not closed. PnL shown as +$244.09 (+5.03%) from short but this is an erroneous short, not an intentional strategy position. Entered 2026-05-04. Must be fully closed \u2014 flagged 5+ consecutive runs. Day-start run cannot issue trades, flagging for immediate escalation.",
+          "rule_triggered": "trend_break",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "C",
+          "reason": "Rule A trend break \u2014 Price $131.80 below 50-day MA $133.68, flagged 3+ consecutive runs. Tier 1 SELL. Unrealized PnL +$24.08 (+4.79%), entry 2026-07-07. Rule A (structural) overrides hold gate \u2014 profitable position exits on trend break. Blocked yesterday; re-issuing with urgency next_open.",
+          "rule_triggered": "trend_break",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "JCI",
+          "reason": "Rule A trend break \u2014 Price $141.40 below 50-day MA $141.99, confirmed 3+ consecutive days. Loss position: unrealized PnL -$18.62 (-1.85%), entry 2026-07-13. Tier 1 SELL. Blocked yesterday; re-issuing.",
+          "rule_triggered": "trend_break",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "WDC",
+          "reason": "Rule E momentum decay \u2014 rank=0 for 5+ consecutive days. Loss position: unrealized PnL -$24.39 (-5.02%), entry 2026-07-07. Sector Unknown, EPS/revenue null (conservative fail). Volatility 114.68% annualized \u2014 extreme. Tier 1 SELL. Blocked yesterday; re-issuing.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "ANET",
+          "reason": "Momentum rank=0 for 5+ consecutive days, sector Unknown, EPS/revenue data null. Profitable position: unrealized PnL +$27.75 (+2.83%), entry 2026-07-07. Hold gate active \u2014 cannot sell profitable position on momentum decay alone. No MA data to confirm structural break. Defer to next quarterly rebalance (Oct 2026).",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "FRT",
+          "reason": "Momentum rank=0 for 5+ consecutive days, sector Unknown, EPS/revenue null. Profitable position: unrealized PnL +$35.90 (+3.70%), entry 2026-07-08. Hold gate active. No MA data available. Defer to next quarterly rebalance.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "SPG",
+          "reason": "Momentum rank=0 for 3+ consecutive days, sector Unknown, EPS/revenue null. Profitable position: unrealized PnL +$7.21 (+3.26%), entry 2026-07-14. Hold gate active. No MA data available. Defer to next quarterly rebalance.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NTAP",
+          "reason": "Loss position: unrealized PnL -$91.20 (-8.69%), entry 2026-07-15. Momentum rank=2 (inside top 30% \u2014 Rule E not triggered). Price $159.69 above MA $149.10. No structural sell rule active. Monitor closely \u2014 significant loss but momentum rank passing.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "IBKR",
+          "reason": "Loss position: unrealized PnL -$21.32 (-1.89%), entry 2026-07-02. Momentum rank=3 (top 30% passing). Price $92.10 above MA $88.82. No sell rule triggered. Monitor if momentum rank deteriorates.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "WST",
+          "reason": "Small loss: unrealized PnL -$2.53 (-0.69%), entry 2026-07-10. Momentum rank=7 (passing top 30%). Price $362.44 above MA $329.35. No structural trigger. Previously flagged but no active rule applies today.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "BNY",
+          "reason": "Strong winner: unrealized PnL +$93.82 (+9.06%), entry 2026-07-01. Momentum rank=10 (passing). Price $161.25 above MA $142.22. Quality passing (EPS +41.8%, Rev +13.4%). Hold.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "GS",
+          "reason": "Winner: unrealized PnL +$68.95 (+6.71%), entry 2026-07-07. Momentum rank=9 (passing). Price $1,096.84 above MA $1,021.78. Quality strong (EPS +92.3%, Rev +42.5%). Hold.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "MS",
+          "reason": "Winner: unrealized PnL +$23.44 (+2.76%), entry 2026-07-07. Momentum rank=5 (passing). Price $218.50 above MA $209.20. Quality passing (EPS +31.9%, Rev +16.3%). Hold.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "MNST",
+          "reason": "Winner: unrealized PnL +$31.68 (+3.65%), entry 2026-07-09. Momentum rank=8 (passing). Price $99.98 above MA $90.32. Quality passing (EPS +28.9%, Rev +26.9%). Hold.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ROST",
+          "reason": "Winner: unrealized PnL +$14.64 (+3.25%), entry 2026-07-15. Momentum rank=4 (passing). Price $232.72 above MA $223.92. Quality strong (EPS +37.4%, Rev +20.6%). Hold.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "JBHT",
+          "reason": "Small winner: unrealized PnL +$10.96 (+1.87%), entry 2026-07-16. Momentum rank=1 (top ranked). Price $298.66 above MA $270.50. Quality strong (EPS +45.6%, Rev +19.4%). New position, hold.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "BEN",
+          "reason": "Small winner: unrealized PnL +$6.06 (+1.68%), entry 2026-07-14. Momentum rank=6 (passing). Price $33.30 above MA $32.19. Quality passing (EPS +87.2%, Rev +8.7%). Hold.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NTRS",
+          "reason": "Near-flat: unrealized PnL -$0.01 (-0.01%), entry 2026-07-15. Momentum rank=11 (borderline \u2014 watch if deteriorates further). Price $188.52 above MA $171.33. Quality passing. Very small position (1.81% weight). No structural trigger today.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "decrease",
+      "cash_rationale": "Cash at 26.4% significantly exceeds the 5% bull regime target. Once the blocked Tier 1 SELLs (C, JCI, WDC) execute and the JBL short anomaly is resolved, proceeds should be monitored. However, July is a quarterly month \u2014 new buys are permitted if top-ranked candidates are identified at next rebalance. Sector concentration in Financial Services (est. 55%+ vs 30% cap) must be resolved before adding more equity. Cash should decrease toward target via disciplined rebalancing, not forced mid-session buys.",
+      "summary": "Jul 17 day_start: Re-flagging Tier 1 SELLs for C (Rule A), JCI (Rule A), WDC (Rule E loss) and JBL short anomaly closure \u2014 all blocked at yesterday's execution; ANET/FRT/SPG remain Tier 2 WATCH with hold gate active; Financial Services sector concentration (~55%) flagged as critical imbalance for quarterly rebalance attention.",
+      "usage": {
+        "input_tokens": 15772,
+        "output_tokens": 4019,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 8817
+      },
+      "sell_tier_summary": {
+        "tier1_execute": 3,
+        "tier2_deferred": 3
+      }
+    },
     {
       "id": "RUN-20260716-2230",
       "timestamp": "2026-07-16T22:30:29Z",
@@ -11400,142 +11584,6 @@
       "usage": {
         "input_tokens": 13948,
         "output_tokens": 3685,
-        "cache_read_tokens": 0,
-        "cache_write_tokens": 3614
-      }
-    },
-    {
-      "id": "RUN-20260514-1651",
-      "timestamp": "2026-05-14T16:51:55Z",
-      "type": "day_end",
-      "model": "claude-sonnet-4-6",
-      "assessment": "Portfolio is up +4.04% overall in a bull regime with VIX at 10.9 and SPY well above 200-MA, but breadth at 54.8% is narrowing (below prior 60% threshold) with 8MA below 200MA \u2014 this is a late-stage or narrow bull. KLAC at 18.3% and STX at 15.7% both exceed the 12% soft cap and have very high volatility (47% and 52% respectively), creating outsized concentration risk. FDX continues to appear in the portfolio despite multiple SELL orders having been issued \u2014 this is an urgent execution gap that must be resolved. The C order was blocked by risk gate again today and remains at minimal 1.2% weight.",
-      "regime": "bull",
-      "regime_confidence": 0.72,
-      "flags": [
-        "FDX: URGENT \u2014 SELL order issued on 2026-05-13 (multiple runs) not confirmed executed. Status now shows 'above_ma' at $379.68 vs MA $369.54 \u2014 MA rule technically no longer firing, BUT momentum_rank=16 (top 30% cutoff requires rank \u2264 ~5 in a 15-stock portfolio context; relative to full S&P universe, 6M rank 0.431 = 43rd percentile, BELOW top 30% threshold). Momentum decay rule fires. Confirm sell.",
-        "KLAC: Weight 18.3% \u2014 well above 20% hard cap approach; 12% soft cap already breached. Volatility 47.2% is elevated. Momentum rank=7, still passing, but concentration risk is extreme for a $10K portfolio with 1 share of a $1,892 stock. Flag for trim at next quarterly (July) unless weight hits 20%.",
-        "STX: Weight 15.7% \u2014 above 12% soft cap. Volatility 51.9% is very high, likely above 90th percentile. Momentum rank=2 (top of universe, 6M +183%, 12M +680%). Strong momentum but extreme concentration and volatility. Watch closely.",
-        "NEM: Volatility 50.98% very high, likely above 90th percentile risk filter threshold. Momentum rank=15 (6M rank 0.298 = below top 30% cutoff). 6M momentum at 29.8th percentile \u2014 borderline fail on primary momentum filter. Flag for momentum decay review.",
-        "BEN: Momentum rank=17 (6M rank 0.457 = 45.7th percentile \u2014 BELOW top 30% cutoff). Revenue growth 8.7% barely clears 8% threshold. This position is at risk of failing momentum filter. Watch.",
-        "C: Order blocked again by risk gate. Position at 1.2% weight (-1.55% unrealized loss). Investigate execution block \u2014 if systemic issue with Alpaca approval, this position will remain stranded at undersized weight.",
-        "CAT: Weight 8.84%, momentum rank=5. Volatility 42.7% is elevated but within range. No sell rule triggered but flagging elevated vol.",
-        "BREADTH: 54.8% stocks above 200MA with 8MA below 200MA \u2014 narrowing rally. Regime confidence reduced from 0.94 reported in portfolio meta to 0.72 here. Bull regime maintained but with caution.",
-        "CASH: At 0.12% ($12) \u2014 effectively zero. Bull target is 5%. After FDX sell ($380) this would bring cash to ~3.8%. Acceptable range, no urgent action beyond FDX execution."
-      ],
-      "decisions": [
-        {
-          "action": "SELL",
-          "symbol": "FDX",
-          "reason": "URGENT unresolved sell. Momentum rank=16 in portfolio (6M rank 0.431 = 43rd percentile of S&P universe \u2014 BELOW top 30% threshold). Confirmed over multiple days. Rule 1 (momentum decay) fires. Position at -3.4% loss ($-13.35) \u2014 tax-loss harvest priority supports selling loser. No gain tax impact. This order has been outstanding since 2026-05-13 and must execute at next open.",
-          "rule_triggered": "momentum_decay",
-          "urgency": "next_open"
-        },
-        {
-          "action": "SELL",
-          "symbol": "NEM",
-          "reason": "6M momentum rank 0.298 = 29.8th percentile \u2014 technically just below the top 30% cutoff, now confirmed over multiple flagging periods (flagged 5+ runs). Additionally, volatility at 50.98% is very likely above the 90th percentile risk filter threshold, which independently would have excluded this position. Position at -2.31% unrealized loss (-$16.47) \u2014 tax-loss harvest priority applies. Selling loser first is correct tax priority. Strategy requires 2+ of these signals; both momentum decay and risk filter failure are present.",
-          "rule_triggered": "momentum_decay",
-          "urgency": "next_open"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "BEN",
-          "reason": "6M momentum rank 0.457 = 45.7th percentile \u2014 below top 30% cutoff. However, 12M rank 0.583 is above cutoff. Strategy uses average of both: (45.7+58.3)/2 = 52% \u2192 below top 30%. Requires 5-trading-day confirmation before SELL. This is day 1 of formal monitoring under rule 1. Revenue growth 8.7% barely clears quality bar. Flag for SELL if rank confirmation holds through next 4 trading days.",
-          "rule_triggered": "momentum_decay",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "KLAC",
-          "reason": "Weight 18.3% significantly above 12% soft cap, approaching 20% hard cap. Volatility 47.2% is high. Momentum rank=7, 6M/12M both strong \u2014 no sell rule fires on fundamentals. Per strategy: hard cap is 20% (trim to 15% at next quarterly). Monitor weight daily. If price rises another ~11% from here ($1,891 \u2192 ~$2,100), hard cap triggers mandatory trim. No action today but flag is escalated.",
-          "rule_triggered": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "STX",
-          "reason": "Weight 15.7% above 12% soft cap. Volatility 51.9% very high. However, momentum rank=2 (top of entire universe), 6M +183%, 12M +680% \u2014 strongest momentum in portfolio by far. Strategy says 'let winners run' and only trim at 20% hard cap. Per v2.1: do not force-trim winners. Watch for hard cap approach. No sell rule fires.",
-          "rule_triggered": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "ADI",
-          "reason": "Momentum rank=8 (top 30% confirmed), price $425.62 vs MA $352.92 (well above), EPS growth +116.7%, revenue growth +30.4%, forward P/E 32.2. All four filters pass. Up +10.95% since May 4 entry. Thesis intact \u2014 high-quality semiconductor momentum.",
-          "rule_triggered": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "C",
-          "reason": "Momentum rank=21 (6M rank 0.247 = 24.7th percentile \u2014 below top 30%). However, 12M rank 0.683 = 68.3rd percentile. Average = 46.5th percentile \u2014 below top 30% threshold. This is day 1 of potential momentum decay monitoring. Order was blocked by risk gate today. Keeping as HOLD pending execution investigation, but escalating to WATCH status internally.",
-          "rule_triggered": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "CAT",
-          "reason": "Momentum rank=5 (strong), price $914.74 vs MA $774.73 (well above), EPS growth +30.2%, revenue growth +22.2%. All filters pass. Small unrealized loss (-0.78%) on recent entry. Volatility 42.7% is elevated but below 90th percentile concern level. Thesis holds.",
-          "rule_triggered": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "CSCO",
-          "reason": "Post-earnings surge \u2014 up +20.56% since May 11 entry ($95.73 \u2192 $115.41). Entry was May 11, today is May 14 = 3 trading days held. Profit-take rule (>60% in <60 days) not triggered at +20.56%. Momentum rank=10, price well above 50-MA ($84.46). Earnings now known (AMC May 13 \u2014 results in). No sell rule fires. Strong hold.",
-          "rule_triggered": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "EME",
-          "reason": "Momentum rank=14 (6M rank 0.444 = 44.4th percentile \u2014 borderline below top 30%). 12M rank 0.961 = 96.1th percentile. Average = 70.3th percentile \u2014 ABOVE top 30% cutoff (i.e., rank > 70% = top 30%). All quality filters pass. Price $925.27 vs MA $801.87 \u2014 well above. Small loss -2.1%. No sell rule fires. Monitor momentum rank.",
-          "rule_triggered": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "GOOGL",
-          "reason": "Momentum rank=11 (6M rank 0.376 = 37.6th percentile \u2014 above top 30% cutoff). 12M rank 1.517 = exceptional. EPS growth +82%, revenue growth +21.8%, forward P/E 27.7. Price $399.87 vs MA $328.86. Up +7.0%. All filters pass. Thesis intact.",
-          "rule_triggered": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "JBL",
-          "reason": "Momentum rank=6 (strong, top tier). Price $352.36 vs MA $297.39 (well above). EPS growth +96.2%, revenue growth +23.1%. Forward P/E 24.2. Up +4.69%. Volatility 45.4% is elevated but not yet confirmed above 90th percentile. All core filters pass.",
-          "rule_triggered": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "KEYS",
-          "reason": "Momentum rank=4 (strong), price $361.49 vs MA $315.55 (well above). EPS growth +68%, revenue growth +23.3%. Lowest volatility among flagged names at 29.75%. Up +1.83%. Clean hold \u2014 all four filters passing.",
-          "rule_triggered": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "NUE",
-          "reason": "Momentum rank=9. Price $232.86 vs MA $190.41 (well above). EPS growth +382.1%, revenue growth +21.3%. Lowest volatility in portfolio at 28.8%. Up +2.85%. Excellent quality metrics. Clean hold.",
-          "rule_triggered": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "STLD",
-          "reason": "Momentum rank=13 (6M rank 0.548 = 54.8th percentile \u2014 above top 30%). 12M rank 0.755. EPS growth +93.1%, revenue growth +19.1%. Price $234.39 vs MA $198.12. Small loss -3.21%. All filters pass. Peer to NUE in steel sector \u2014 hold.",
-          "rule_triggered": "null",
-          "urgency": "next_rebalance"
-        }
-      ],
-      "cash_action": "increase",
-      "cash_rationale": "Current cash is effectively 0.12% ($12), well below the 5% bull target. Executing SELL on FDX (~$380) and NEM (~$696) will raise cash to approximately 10-11% of portfolio \u2014 above the 5% bull target but acceptable given narrowing breadth (54.8%, 8MA below 200MA). Do not redeploy immediately; hold the FDX/NEM proceeds as buffer until next quarterly rebalance (June 1 monthly review), then assess whether breadth has recovered above 60% before buying replacements. Excess cash above 5% provides a small hedge against the narrowing breadth signal.",
-      "summary": "DAY END 2026-05-14 (Wednesday): SELL FDX (momentum decay, urgent unresolved) and NEM (momentum decay + likely risk filter fail, tax-loss harvest) at next open; WATCH BEN (momentum rank approaching sell threshold, day 1 of 5-day confirmation); WATCH KLAC/STX for weight concentration; regime remains Bull at reduced confidence 0.72 due to narrowing breadth (54.8%, 8MA below 200MA).",
-      "usage": {
-        "input_tokens": 13687,
-        "output_tokens": 3704,
         "cache_read_tokens": 0,
         "cache_write_tokens": 3614
       }
