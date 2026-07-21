@@ -1,10 +1,16 @@
 {
-  "timestamp": "2026-07-20T22:31:14Z",
-  "mode": "post_close",
+  "timestamp": "2026-07-21T15:24:41Z",
+  "mode": "market_open",
   "orders_placed": [
     {
       "action": "SELL",
       "symbol": "JBL",
+      "qty": 1,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "NTRS",
       "qty": 1,
       "status": "submitted"
     }
@@ -15,11 +21,7 @@
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "SPG",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "NTRS",
+      "symbol": "GWW",
       "reason": "blocked by agent approval or risk gate"
     },
     {
@@ -27,10 +29,10 @@
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "BEN",
+      "symbol": "SPG",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 44.41
+  "cash_pct_after": 52.88
 }
