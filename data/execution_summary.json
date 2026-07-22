@@ -1,27 +1,19 @@
 {
-  "timestamp": "2026-07-22T15:22:30Z",
-  "mode": "market_open",
+  "timestamp": "2026-07-22T22:34:03Z",
+  "mode": "post_close",
   "orders_placed": [
-    {
-      "action": "SELL",
-      "symbol": "GWW",
-      "qty": 1,
-      "status": "submitted"
-    },
     {
       "action": "SELL",
       "symbol": "JBL",
       "qty": 1,
       "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "NTRS",
-      "qty": 5,
-      "status": "submitted"
     }
   ],
   "orders_skipped": [
+    {
+      "symbol": "MNST",
+      "reason": "blocked by agent approval or risk gate"
+    },
     {
       "symbol": "FRT",
       "reason": "blocked by agent approval or risk gate"
@@ -31,14 +23,10 @@
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "MNST",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
       "symbol": "ANET",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 61.01
+  "cash_pct_after": 60.24
 }
