@@ -535,9 +535,76 @@ def run_agent(
     return result, usage
 
 
+# ── Decision normalization (F8 — code-level spec conformance) ──
+
+QUARTERLY_MONTHS = {1, 4, 7, 10}   # Jan/Apr/Jul/Oct — must match update.py
+
+
+def _is_quarterly(dt: datetime | None = None) -> bool:
+    return (dt or datetime.now()).month in QUARTERLY_MONTHS
+
+
+def normalize_decisions(decisions: list, run_type: str, quarterly: bool | None = None) -> list:
+    """Enforce STRATEGY §5/§7 at the code level, independent of what the prompt produced (F8).
+
+    Historically the model drifted from the spec: SELLs missing sell_tier, the deprecated
+    urgency='immediate', day_start runs issuing trades, and BUYs in non-quarterly months. The
+    prompt alone did not stop it, so we normalize deterministically here before logging:
+
+      1. urgency 'immediate' → 'next_open' (deprecated label).
+      2. day_start is flag-only → any SELL/BUY becomes WATCH (no pre-market trades).
+      3. Non-quarterly month → BUY becomes HOLD (the pipeline blocks it anyway).
+      4. Every SELL carries a sell_tier; when omitted it is inferred from urgency
+         (next_rebalance → tier2, else tier1), and urgency is kept consistent with the tier.
+
+    The original action is preserved in `_original_action` for audit.
+    """
+    if quarterly is None:
+        quarterly = _is_quarterly()
+    out: list = []
+    for raw in decisions or []:
+        d = dict(raw)
+        action = str(d.get("action", "")).upper()
+
+        if d.get("urgency") == "immediate":            # 1
+            d["urgency"] = "next_open"
+
+        if run_type == "day_start" and action in ("SELL", "BUY"):   # 2
+            d["_original_action"] = action
+            d["action"]    = "WATCH"
+            d["urgency"]   = "next_rebalance"
+            d["sell_tier"] = "null"
+            d["reason"]    = f"[day_start flag-only] {d.get('reason', '')}".strip()
+            out.append(d)
+            continue
+
+        if action == "BUY" and not quarterly:          # 3
+            d["_original_action"] = action
+            d["action"]    = "HOLD"
+            d["urgency"]   = "next_rebalance"
+            d["sell_tier"] = "null"
+            d["reason"]    = f"[non-quarterly: BUY deferred to rebalance] {d.get('reason', '')}".strip()
+            out.append(d)
+            continue
+
+        if action == "SELL":                           # 4
+            tier = d.get("sell_tier")
+            if tier in (None, "", "null"):
+                tier = "tier2" if d.get("urgency") == "next_rebalance" else "tier1"
+                d["sell_tier"] = tier
+            d["urgency"] = "next_open" if tier == "tier1" else "next_rebalance"
+
+        out.append(d)
+    return out
+
+
 # ── Log writing ───────────────────────────────────────────────
 
 def write_log(log: dict, run_type: str, result: dict, usage: dict) -> dict:
+    # F8: enforce spec conformance on the decisions before they are logged or read by the pipeline.
+    result = dict(result)
+    result["decisions"] = normalize_decisions(result.get("decisions", []), run_type)
+
     entry = {
         "id":               f"RUN-{datetime.now().strftime('%Y%m%d-%H%M')}",
         "timestamp":        datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),

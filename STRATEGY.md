@@ -28,9 +28,9 @@ Three independently documented market anomalies, stacked:
 
 ### Target Performance
 
-| Metric | Target | Current Status (Jun 2026) |
+| Metric | Target | Current Status (Jul 2026) |
 |---|---|---|
-| Annual excess return vs SPY | +3% to +7% | Underperforming by ~3.3% (excess cash drag + premature exits) |
+| Annual excess return vs SPY | +3% to +7% | 90-day: **−2.66pp** vs SPY (+0.72% vs +3.38%). Root cause = execution, not selection: a 40–61% cash drag from the throttled Jul-1 rebalance + a runaway JBL short. Fixed in v3.1. |
 | Sharpe ratio | > 1.2 | 0.0 (paper trade PnL not fully calculated) |
 | Max drawdown | < 15% | 0.09% (low — bull regime) |
 | Annual turnover | ~20–35% (v3) | ~430 legs/yr historically — v3 rules now enforce quarterly lock |
@@ -88,13 +88,15 @@ Three independently documented market anomalies, stacked:
 | **Min position size** | **8%** | Prevents dilution from over-diversification |
 | **Position hard cap** | **20%** | Trim to 15% at next quarterly rebalance |
 | **Sector cap** | **30%** max per GICS sector | Concentration guard for 10–12 name portfolio |
-| **Rebalance frequency** | Quarterly (Jan/Apr/Jul/Oct first trading day) | Full rotation |
+| **Rebalance frequency** | Quarterly (Jan/Apr/Jul/Oct first trading day) | Full rotation, **completed in one run** (v3.1) |
 | **Non-quarterly months** | Flag-only — no new buys, Tier 1 sells only | Feb/Mar/May/Jun/Aug/Sep/Nov/Dec |
 | **Cash — Bull regime** | 5% | Fully deployed |
 | **Cash — Sideways regime** | 25% | Defensive tilt |
 | **Cash — Bear regime** | 50% | Capital preservation |
 
 **Why 10–12 not 15–20:** The momentum premium concentrates in the top decile. Positions ranked 11–18 in the live run dragged down returns by ~16% relative to positions ranked 1–10. Fewer, stronger names held longer captures the full alpha without the management overhead that caused over-trading.
+
+**Equal-weight sizing is dollar-based (v3.1):** each target position is sized to a **dollar** target (`min(deployable/N, 20% cap)`), never to a fixed share count divided by price. Price-driven sizing let a single expensive share (e.g. STX ~$913) become an oversized position while the best-ranked names stayed tiny — in the Jun-2026 book this cost ~1.5pp vs equal weight.
 
 ---
 
@@ -106,6 +108,20 @@ Three independently documented market anomalies, stacked:
 - Losses exit immediately → tax-loss harvesting, offsets future gains
 - Gains defer to 12+ months → long-term capital gains rates (0–20% vs 37% ordinary income)
 - Every premature winner exit is a permanent tax cost that cannot be recovered
+
+### Long-Only Invariant (v3.1 — Non-Negotiable)
+
+**The system is long-only. It never sells more shares than it holds and never opens a short.**
+
+- Every SELL is clamped at the execution layer to the quantity actually held; a position that is
+  flat or already short is **never re-sold**.
+- Orders with a non-positive price are rejected (a bad/zero price fetch must not place a trade).
+- A short position, if one ever appears, is closed by an explicit **buy-to-cover** true-up — never
+  by the daily sell loop.
+
+**Why:** In Jul 2026, JBL trend-broke below its 50-day MA and was re-sold on every run. With no
+held-quantity clamp, Alpaca opened and then extended a naked short to −22 shares (−70% of the book,
+unbounded loss risk). Execution correctness outranks every signal rule. See `POSTMORTEM.md` Finding 1.
 
 ---
 
@@ -293,13 +309,25 @@ Runs at 2:30 PM ET without waiting for the agent:
 These cannot be overridden by the agent or any config:
 
 ```python
-MAX_ORDERS_PER_RUN  = 5      # max total orders per run
-MAX_SELL_VALUE_PCT  = 0.30   # max 30% of portfolio liquidated per run
+# Daily / sentinel (non-rebalance) runs — tight throttles against panic churn
+MAX_ORDERS_PER_RUN  = 5      # max total orders per DAILY run
+MAX_SELL_VALUE_PCT  = 0.30   # max 30% of portfolio liquidated per DAILY run
 CASH_FLOOR_PCT      = 0.05   # always keep ≥5% cash
 MAX_POSITION_PCT    = 0.10   # max 10% per position (v3, was 8%)
-MAX_SECTOR_PCT      = 0.30   # max 30% per GICS sector
+MAX_SECTOR_PCT      = 0.30   # max 30% per GICS sector — ENFORCED (trim), not advisory (v3.1)
 QUARTERLY_MONTHS    = {1,4,7,10}  # months where full rebalance is permitted
+
+# Quarterly rebalance runs — wide budget so the full rotation finishes in ONE session (v3.1)
+REBALANCE_MAX_ORDERS   = 24    # a full top-10-12 rotation (sells + buys) in one run
+REBALANCE_MAX_SELL_PCT = 1.00  # a quarterly rotation may sell the entire stale book
 ```
+
+**One-run rebalance rule (v3.1):** a quarterly rebalance uses `REBALANCE_MAX_ORDERS` /
+`REBALANCE_MAX_SELL_PCT`, not the daily 5-order / 30%-sell throttles. The daily throttles applied to
+the Jul-2026 quarterly rebalance stretched it over ~12 trading days and parked **40–61% of the book
+in cash** through a rising market — that cash drag, not stock selection, was the entire quarter's
+underperformance. The sector cap (`MAX_SECTOR_PCT`) is now **enforced at rebalance** — over-weight
+sectors are trimmed by dropping the lowest-ranked buys — rather than only printing a warning.
 
 ---
 
@@ -551,6 +579,7 @@ Every decision in `agent_log.json → runs[].decisions[]`:
 | **v2.1** | Added: quarterly rebalance (was monthly), stricter sell thresholds (40%→30% momentum rank), 1-day→3-day MA break confirmation, tax-loss harvest priority, hard cap raised 8%→20% |
 | **v2.2** | Added: 12-month hold gate (profitable positions immune to momentum-decay sell), Tier 1/2 sell pipeline, code-level non-quarterly execution lock, TARGET_N 17→10, MAX_POSITION_PCT 8%→10%, 30% sector cap |
 | **v3.0** | **This document** — Consolidated all docs (PRD + HLD + LLD + STRATEGY) into single source of truth; updated all constants and rules to match live code; added live performance observations; updated Phase 2 roadmap (backtesting = #1 priority); retired stale separate documents |
+| **v3.1** | **Execution-correctness release** (see `POSTMORTEM.md`). Added: (1) **long-only invariant** — SELLs clamped to held qty, no shorts, reject non-positive prices (fixes the JBL −22 runaway short); (2) **one-run quarterly rebalance** — `REBALANCE_MAX_ORDERS`/`REBALANCE_MAX_SELL_PCT` replace the 5-order/30% throttle for rebalance runs (fixes the 40–61% cash drag); (3) **sector cap enforced** (trim) instead of advisory; (4) **dollar-target equal-weight sizing** (fixes price-driven over-sizing); (5) one-time `bot/rebalance_trueup.py` to reconcile the broken book; (6) dedicated **Cash card** on the dashboard; (7) **P&L/Sharpe tracking fixed** — `compute_realized_pnl` (average-cost) + `compute_risk_metrics` populate realized P&L, win rate, Sharpe, max drawdown; (8) **agent spec conformance in code** — `normalize_decisions` requires `sell_tier`, drops `immediate`, makes day_start flag-only, blocks non-quarterly BUYs. |
 
 **Critical learnings from May–June 2026 live run that drove v3:**
 - Positions ranked 1–10 averaged +11.8% vs positions 11–18 at -4.2% → concentrate in top tier

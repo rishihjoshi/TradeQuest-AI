@@ -50,11 +50,18 @@ FMP_API_KEY       = os.environ.get("FMP_API_KEY", "")
 FMP_FALLBACK_CAP  = 30   # max symbols to query via FMP per run (= up to 60 API calls)
 
 # ── Hardcoded risk limits — never read from external config ───
-MAX_ORDERS_PER_RUN  = 5     # max total orders (sells + buys) placed in a single run
-MAX_SELL_VALUE_PCT  = 0.30  # never liquidate more than 30% of portfolio in one run
+MAX_ORDERS_PER_RUN  = 5     # max total orders (sells + buys) placed in a DAILY (non-rebalance) run
+MAX_SELL_VALUE_PCT  = 0.30  # daily runs: never liquidate more than 30% of portfolio in one run
 CASH_FLOOR_PCT      = 0.05  # always keep ≥5% of portfolio value as cash
 MAX_POSITION_PCT    = 0.10  # v2.2: single position cap raised to 10% (was 8%; 10-12 positions at 8-10% each)
 MAX_SECTOR_PCT      = 0.30  # v2.2: no single GICS sector may exceed 30% of portfolio
+
+# v3.1: a quarterly rebalance must complete the full rotation in ONE run — the daily 5-order /
+# 30%-sell throttles turned the Jul-2026 rebalance into a 12-day grind that parked 40-60% in cash.
+# Rebalance runs therefore use a wider budget; daily/sentinel runs keep the tight defaults.
+REBALANCE_MAX_ORDERS   = 24    # enough for a full top-10-12 rotation (sells + buys) in one session
+REBALANCE_MAX_SELL_PCT = 1.00  # a full quarterly rotation may sell the entire stale book
+CASH_DEPLOY_BAND       = 0.03  # deploy idle cash when cash% exceeds (target + this band)
 
 # v2.2 quarterly months — only these months allow new BUY orders and Tier 2+ SELL exits
 QUARTERLY_MONTHS = {1, 4, 7, 10}  # Jan, Apr, Jul, Oct
@@ -286,20 +293,28 @@ def apply_risk_limits(
     cash:    float,
     agent_sell_approvals: set[str],
     prices:  dict[str, float] | None = None,
+    max_orders:   int | None = None,
+    max_sell_pct: float | None = None,
 ) -> tuple[list[tuple], list[tuple]]:
     """
     Gate and cap sell + buy lists before they reach the broker.
 
     Rules applied in order:
     1. SELL only what the agent explicitly approved (immediate/next_open).
-    2. Total sell value ≤ MAX_SELL_VALUE_PCT of portfolio (dollar-accurate).
-    3. Total orders ≤ MAX_ORDERS_PER_RUN.
+    2. Total sell value ≤ max_sell_pct of portfolio (dollar-accurate).
+    3. Total orders ≤ max_orders.
     4. BUY only if enough cash remains above CASH_FLOOR_PCT floor.
     5. Each BUY capped at MAX_POSITION_PCT of portfolio value (dollar-accurate).
+
+    Daily/sentinel runs pass the tight defaults (MAX_ORDERS_PER_RUN / MAX_SELL_VALUE_PCT).
+    Quarterly rebalance runs pass the wider REBALANCE_* budgets so the full rotation completes
+    in a single session instead of grinding out over many days (v3.1).
     """
     prices       = prices or {}
+    max_orders   = MAX_ORDERS_PER_RUN   if max_orders   is None else max_orders
+    max_sell_pct = MAX_SELL_VALUE_PCT   if max_sell_pct is None else max_sell_pct
     cash_floor   = pv * CASH_FLOOR_PCT
-    max_sell_val = pv * MAX_SELL_VALUE_PCT
+    max_sell_val = pv * max_sell_pct
     max_pos_val  = pv * MAX_POSITION_PCT
 
     # 1. Gate sells behind agent approval.
@@ -337,9 +352,9 @@ def apply_risk_limits(
             running_sell_val += order_val
 
     # 3. Total order cap
-    sell_budget = min(len(capped_sells), MAX_ORDERS_PER_RUN)
+    sell_budget = min(len(capped_sells), max_orders)
     capped_sells = capped_sells[:sell_budget]
-    buy_budget   = max(0, MAX_ORDERS_PER_RUN - sell_budget)
+    buy_budget   = max(0, max_orders - sell_budget)
 
     # 4 & 5. Cash floor + position size cap on buys (dollar-accurate)
     available_cash = cash - cash_floor  # never spend below floor
@@ -468,12 +483,55 @@ def alpaca_positions_to_holdings(
     return holdings
 
 
+def compute_realized_pnl(orders) -> dict[str, tuple]:
+    """Reconstruct realized P&L per SELL order via the average-cost method (F7).
+
+    Alpaca order objects carry fills but no per-lot realized P&L, so we replay the filled
+    orders chronologically, maintaining a running (qty, avg_cost) per symbol. On each SELL we
+    realise (fill_price - avg_cost) × qty against the basis built from prior BUYs.
+
+    Returns {order_id: (pnl, pnl_pct)}. A SELL whose basis isn't in the order window (the
+    opening BUYs predate the fetched history) yields (None, None) rather than a misleading zero.
+
+    Limitation: Alpaca returns a bounded order window (recent closed + open), so cost basis for
+    very old lots may be unavailable. It self-heals as the window rolls forward.
+    """
+    filled = [o for o in orders if float(getattr(o, "filled_qty", 0) or 0) > 0]
+
+    def _ts(o):
+        return str(getattr(o, "filled_at", None) or getattr(o, "created_at", None) or "")
+
+    basis: dict[str, dict] = {}          # symbol -> {"qty": float, "avg": float}
+    realized: dict[str, tuple] = {}      # order_id -> (pnl, pnl_pct)
+    for o in sorted(filled, key=_ts):
+        sym   = o.symbol
+        qty   = float(o.filled_qty or 0)
+        price = float(o.filled_avg_price or 0)
+        pos   = basis.setdefault(sym, {"qty": 0.0, "avg": 0.0})
+        if o.side.value == "buy":
+            new_qty = pos["qty"] + qty
+            if new_qty > 0:
+                pos["avg"] = (pos["qty"] * pos["avg"] + qty * price) / new_qty
+            pos["qty"] = new_qty
+        else:  # sell → realise against average cost
+            avg = pos["avg"]
+            if avg > 0 and price > 0:
+                realized[str(o.id)] = (round((price - avg) * qty, 2),
+                                       round((price / avg - 1) * 100, 2))
+            else:
+                realized[str(o.id)] = (None, None)
+            pos["qty"] = max(0.0, pos["qty"] - qty)   # long-only: never track negative basis
+    return realized
+
+
 def alpaca_orders_to_trades(orders) -> list[dict]:
     """Map Alpaca Order objects → portfolio.json trades format.
 
     Includes both filled orders and pending (accepted/open) orders.
     Pending orders show price=0 and reason='Pending — awaiting market open'.
+    Realized P&L on SELL trades is reconstructed via average-cost (compute_realized_pnl).
     """
+    realized = compute_realized_pnl(orders)
     trades = []
     for o in orders:
         filled_qty = float(o.filled_qty or 0)
@@ -485,6 +543,7 @@ def alpaca_orders_to_trades(orders) -> list[dict]:
         action     = "BUY" if o.side.value == "buy" else "SELL"
 
         if filled_qty > 0:
+            pnl, pnl_pct = realized.get(str(o.id), (None, None)) if action == "SELL" else (None, None)
             trades.append({
                 "id":       f"ALP-{str(o.id)[:8].upper()}",
                 "date":     date_str,
@@ -494,8 +553,8 @@ def alpaca_orders_to_trades(orders) -> list[dict]:
                 "shares":   filled_qty,
                 "price":    round(fill_price, 2),
                 "value":    round(filled_qty * fill_price, 2),
-                "pnl":      None,
-                "pnl_pct":  None,
+                "pnl":      pnl,
+                "pnl_pct":  pnl_pct,
                 "reason":   "Alpaca paper trade — momentum rebalance",
                 "type":     "market",
             })
@@ -527,6 +586,12 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
     Enforces CASH_FLOOR_PCT: stops buying if remaining cash would fall below floor.
     Idempotency guard: skips symbols that already have an open order today to prevent
     duplicate submissions from concurrent workflow runs.
+
+    Long-only invariant (v3.1): this is the last line of defence against the runaway-short
+    bug — every SELL is clamped to the quantity actually held, and a symbol that is flat or
+    already short is never sold. Orders with a non-positive price are also rejected. Without
+    this, a symbol that trend-breaks every day (e.g. JBL, Jul 2026) is re-sold each run and
+    Alpaca opens/extends a naked short with unbounded loss.
     """
     from alpaca.trading.requests import MarketOrderRequest, GetOrdersRequest
     from alpaca.trading.enums import OrderSide, TimeInForce, QueryOrderStatus
@@ -534,6 +599,14 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
     prices     = prices or {}
     cash_floor = pv * CASH_FLOOR_PCT
     placed = []
+
+    # Long-only guard: fetch current positions so we never sell more than we own.
+    held_qty: dict[str, float] = {}
+    try:
+        for pos in client.get_all_positions():
+            held_qty[str(getattr(pos, "symbol", "")).upper()] = float(getattr(pos, "qty", 0) or 0)
+    except Exception as e:
+        print(f"  Warning: could not fetch positions for long-only guard: {e}", file=sys.stderr)
 
     # Build set of symbols already having an open/pending order today (idempotency guard)
     today_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
@@ -548,9 +621,29 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
         print(f"  Warning: could not fetch open orders for idempotency check: {e}", file=sys.stderr)
 
     for sym, shares in to_sell:
-        qty = max(1, int(shares))
         if sym.upper() in already_ordered:
             print(f"  Idempotency: SELL {sym} already has an open order today — skipped")
+            continue
+        # Long-only clamp: never sell more than held; never open/extend a short.
+        # A symbol we don't hold (held is None, or ≤ 0) is NEVER sold — selling it would
+        # open a short. If the position fetch failed entirely (empty map), this conservatively
+        # blocks all sells for the run (safe: they retry next run) rather than risk a short.
+        held = held_qty.get(sym.upper())
+        requested = int(shares)
+        if held is None:
+            print(f"  Long-only guard: {sym} has no position on record — SELL skipped (no short)")
+            continue
+        sellable = int(held)
+        if sellable <= 0:
+            print(f"  Long-only guard: {sym} not held (qty {held:g}) — SELL skipped (no short)")
+            continue
+        qty = sellable if requested <= 0 else min(requested, sellable)
+        if qty <= 0:
+            print(f"  Long-only guard: {sym} computed qty {qty} ≤ 0 — SELL skipped")
+            continue
+        price = prices.get(sym.upper(), 0.0)
+        if price <= 0:
+            print(f"  Price guard: {sym} has non-positive price ({price}) — SELL skipped")
             continue
         try:
             client.submit_order(MarketOrderRequest(
@@ -570,7 +663,10 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
             print(f"  Idempotency: BUY {sym} already has an open order today — skipped")
             continue
         price    = prices.get(sym.upper(), 0.0)
-        est_cost = qty * price if price > 0 else qty * 1
+        if price <= 0:
+            print(f"  Price guard: {sym} has non-positive price ({price}) — BUY skipped")
+            continue
+        est_cost = qty * price
         if cash - est_cost < cash_floor:
             print(f"  Risk gate: cash floor — skipping BUY {sym} (cash ${cash:,.0f} near floor ${cash_floor:,.0f})")
             continue
@@ -1052,6 +1148,37 @@ def update_equity_curve(curve: list, pv: float) -> list:
     return curve[-90:]   # keep ~3 months of daily points
 
 
+def compute_risk_metrics(curve: list) -> dict:
+    """Sharpe ratio + max drawdown from the equity curve (F7).
+
+    Sharpe = annualised mean daily return / annualised stdev (risk-free ≈ 0 for a paper account).
+    Returns {} when the curve is too short to be meaningful (< 3 points) so callers keep the
+    previous value rather than emitting a noisy or zero metric.
+    """
+    values = [float(p["value"]) for p in curve if p.get("value")]
+    if len(values) < 3:
+        return {}
+    rets = [values[i] / values[i - 1] - 1 for i in range(1, len(values)) if values[i - 1]]
+    if not rets:
+        return {}
+    mean = sum(rets) / len(rets)
+    var  = sum((r - mean) ** 2 for r in rets) / len(rets)
+    std  = var ** 0.5
+    sharpe = (mean / std) * math.sqrt(252) if std > 0 else 0.0
+
+    peak = values[0]
+    max_dd = 0.0
+    for v in values:
+        peak = max(peak, v)
+        if peak > 0:
+            max_dd = min(max_dd, v / peak - 1)   # most-negative decline from a running peak
+
+    return {
+        "sharpe_ratio":     round(sharpe, 2),
+        "max_drawdown_pct": round(abs(max_dd) * 100, 2),
+    }
+
+
 def build_spy_curve(equity_curve: list, spy: "pd.Series", initial_capital: float) -> list:
     """Build SPY benchmark curve normalized to the same start value as the portfolio.
 
@@ -1299,19 +1426,31 @@ def main():
         to_sell_syms = current_syms - target_syms
         to_buy_syms  = target_syms  - current_syms
 
-        target_per = pv / TARGET_N if TARGET_N else 0
+        # v3.1: equal-weight dollar target per position (deploy to CASH_FLOOR_PCT).
+        # Sizing by dollars — not by shares/price — so an expensive single share (e.g. STX ~$913)
+        # no longer becomes an oversized position while the best-ranked names stay tiny.
+        n_target   = TARGET_N if TARGET_N else 1
+        deployable = pv * (1 - CASH_FLOOR_PCT)
+        target_per = min(deployable / n_target, pv * MAX_POSITION_PCT)
 
         # Build sell list — apply profit gate in non-quarterly months:
         # Only positions at a loss may be sold outside quarterly months (Tier 1 only).
+        # Long-only clamp: only sell positive holdings; a flat/short qty is never re-sold here.
         raw_sells: list[tuple] = []
         quarterly_deferred: list[str] = []
         for h in new_holdings:
             if h["symbol"] not in to_sell_syms:
                 continue
+            held = int(h.get("shares", 0) or 0)
+            if held <= 0:
+                # Flat or short (e.g. a runaway JBL short) — never sell more; leave the cover
+                # to the true-up / explicit short-close path, not the rebalance re-sell loop.
+                print(f"  Long-only guard: {h['symbol']} held qty {held} ≤ 0 — not re-sold in rebalance")
+                continue
             if quarterly or not has_unrealized_gain(h):
                 # Quarterly month: all exits allowed.
                 # Non-quarterly: only losing positions (Tier 1 loss-harvest).
-                raw_sells.append((h["symbol"], h["shares"]))
+                raw_sells.append((h["symbol"], held))
             else:
                 quarterly_deferred.append(h["symbol"])
 
@@ -1322,13 +1461,17 @@ def main():
             )
 
         # Buys are BLOCKED in non-quarterly months (v2.2 Execution Lock).
+        # v3.1: buys sized to the equal-weight dollar target (target_per), not to a fixed
+        # 1-share minimum, so capital is actually deployed toward the 5% cash floor.
         if quarterly:
-            raw_buys = [
-                (sym, max(1, int(min(target_per, pv * MAX_POSITION_PCT)
-                                  / fundamentals.get(sym, {}).get("current_price", 1))))
-                for sym in to_buy_syms
-                if fundamentals.get(sym, {}).get("current_price", 0) > 0
-            ]
+            raw_buys = []
+            for sym in to_buy_syms:
+                price = fundamentals.get(sym, {}).get("current_price", 0) or 0
+                if price <= 0:
+                    continue
+                qty = int(target_per // price)
+                if qty >= 1:
+                    raw_buys.append((sym, qty))
         else:
             raw_buys = []
             if to_buy_syms:
@@ -1337,14 +1480,28 @@ def main():
                     f"{', '.join(sorted(to_buy_syms))} deferred to next quarterly rebalance."
                 )
 
-        # Sector concentration check at quarterly rebalance (advisory)
-        if quarterly:
-            over_sector = check_sector_concentration(new_holdings)
-            for sector, weight in over_sector.items():
-                print(
-                    f"  Sector cap WARNING: {sector} at {weight:.1%} exceeds "
-                    f"{MAX_SECTOR_PCT:.0%} cap — review at rebalance."
-                )
+        # ── F4: enforce the sector cap at quarterly rebalance (v3.1 — was advisory-only) ──
+        # Drop the lowest-ranked buy candidates from any sector that would breach MAX_SECTOR_PCT.
+        if quarterly and raw_buys:
+            rank_of = {s["symbol"]: s["momentum_rank"] for s in screened}
+            sector_val: dict[str, float] = {}
+            for h in new_holdings:
+                if int(h.get("shares", 0) or 0) > 0 and h["symbol"] not in to_sell_syms:
+                    sec = h.get("sector", "Unknown")
+                    sector_val[sec] = sector_val.get(sec, 0.0) + float(h.get("market_value", 0))
+            cap_val = pv * MAX_SECTOR_PCT
+            kept_buys: list[tuple] = []
+            # Add best-ranked buys first so a sector keeps its strongest names when trimming.
+            for sym, qty in sorted(raw_buys, key=lambda sb: rank_of.get(sb[0], 9999)):
+                sec   = fundamentals.get(sym, {}).get("sector", "Unknown")
+                price = fundamentals.get(sym, {}).get("current_price", 0) or 0
+                add_val = qty * price
+                if sector_val.get(sec, 0.0) + add_val > cap_val:
+                    print(f"  Sector cap: dropping BUY {sym} — {sec} would exceed {MAX_SECTOR_PCT:.0%}")
+                    continue
+                sector_val[sec] = sector_val.get(sec, 0.0) + add_val
+                kept_buys.append((sym, qty))
+            raw_buys = kept_buys
 
         # Load what Claude approved and apply all risk limits before touching the broker.
         # Both pre-market and post-close runs execute "next_open" decisions.
@@ -1356,8 +1513,15 @@ def main():
             sym: fundamentals.get(sym, {}).get("current_price", 0.0)
             for sym in to_buy_syms
         })
+        # v3.1: a quarterly rebalance completes the full rotation in one run (wide budget);
+        # daily/non-quarterly runs keep the tight MAX_ORDERS_PER_RUN / 30%-sell throttles.
+        if quarterly:
+            run_max_orders, run_max_sell_pct = REBALANCE_MAX_ORDERS, REBALANCE_MAX_SELL_PCT
+        else:
+            run_max_orders, run_max_sell_pct = MAX_ORDERS_PER_RUN, MAX_SELL_VALUE_PCT
         to_sell, to_buy = apply_risk_limits(
-            raw_sells, raw_buys, pv, cash, agent_approvals["SELL"], price_map
+            raw_sells, raw_buys, pv, cash, agent_approvals["SELL"], price_map,
+            max_orders=run_max_orders, max_sell_pct=run_max_sell_pct,
         )
 
         exec_placed:  list[tuple] = []
@@ -1435,6 +1599,9 @@ def main():
     curve     = update_equity_curve(data.get("equity_curve", []), pv)
     initial   = data.get("meta", {}).get("initial_capital", INITIAL_CAPITAL)
     spy_curve = build_spy_curve(curve, spy, initial)
+
+    # F7: refresh Sharpe + max drawdown from the freshly-extended equity curve.
+    summary.update(compute_risk_metrics(curve))
 
     # ── 7. Filter status ───────────────────────────────────────
     # In Alpaca mode holdings come from live positions (may include non-screened stocks),
