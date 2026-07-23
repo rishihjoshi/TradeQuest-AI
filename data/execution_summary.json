@@ -1,22 +1,18 @@
 {
-  "timestamp": "2026-07-23T15:34:20Z",
-  "mode": "market_open",
+  "timestamp": "2026-07-23T22:31:56Z",
+  "mode": "post_close",
   "orders_placed": [],
   "orders_skipped": [
-    {
-      "symbol": "BEN",
-      "reason": "blocked by agent approval or risk gate"
-    },
     {
       "symbol": "NTRS",
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "JBL",
+      "symbol": "BEN",
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "FRT",
+      "symbol": "ANET",
       "reason": "blocked by agent approval or risk gate"
     },
     {
@@ -24,10 +20,10 @@
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "ANET",
+      "symbol": "FRT",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 61.38
+  "cash_pct_after": 61.55
 }
