@@ -519,8 +519,13 @@ class TradeQuestApp {
     ddEl.textContent = s.total_trades === 0 ? '—' : fmtPct(s.max_drawdown_pct, false);
     ddEl.className   = 'stat-value loss';
 
-    $('cashPct').textContent =
-      `Cash: ${fmt$(s.cash)} (${(Number.isFinite(s.cash_pct) ? s.cash_pct : 0).toFixed(1)}%)`;
+    // Dedicated Cash card — cash on hand plus % of portfolio and $ invested.
+    const cashPct = Number.isFinite(s.cash_pct) ? s.cash_pct : 0;
+    $('cashValue').textContent = fmt$(s.cash);
+    // Flag an over-target cash drag (bull target is 5%) so idle cash is visible at a glance.
+    $('cashValue').className   = `stat-value ${cashPct > 15 ? 'loss' : ''}`;
+    $('cashSub').innerHTML =
+      `${cashPct.toFixed(1)}% of portfolio · ${fmt$(s.invested)} invested`;
   }
 
   // ── Upcoming Catalysts Banner ─────────────────────────────
