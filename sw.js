@@ -1,4 +1,9 @@
-const CACHE = 'tradequest-v14';
+// IMPORTANT: bump this version string on EVERY change to the app shell (index.html, app.js,
+// style.css, manifest, icons). The shell is served cache-first, so old assets are only purged
+// when this version changes. v14→v15: Cash card added (index.html #cashPct removed → #cashValue/
+// #cashSub) — without this bump, clients served a fresh index.html but a stale cached app.js and
+// crashed on $('cashPct').
+const CACHE = 'tradequest-v15';
 const SHELL = [
   './index.html',
   './style.css',

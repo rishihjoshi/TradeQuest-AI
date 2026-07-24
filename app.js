@@ -520,12 +520,20 @@ class TradeQuestApp {
     ddEl.className   = 'stat-value loss';
 
     // Dedicated Cash card — cash on hand plus % of portfolio and $ invested.
+    // Guard each node: during a service-worker update the cached app.js and freshly-fetched
+    // index.html can momentarily disagree on which elements exist. A missing node must degrade
+    // gracefully, never throw and take down the whole dashboard render.
     const cashPct = Number.isFinite(s.cash_pct) ? s.cash_pct : 0;
-    $('cashValue').textContent = fmt$(s.cash);
-    // Flag an over-target cash drag (bull target is 5%) so idle cash is visible at a glance.
-    $('cashValue').className   = `stat-value ${cashPct > 15 ? 'loss' : ''}`;
-    $('cashSub').innerHTML =
-      `${cashPct.toFixed(1)}% of portfolio · ${fmt$(s.invested)} invested`;
+    const cashValueEl = $('cashValue');
+    if (cashValueEl) {
+      cashValueEl.textContent = fmt$(s.cash);
+      // Flag an over-target cash drag (bull target is 5%) so idle cash is visible at a glance.
+      cashValueEl.className = `stat-value ${cashPct > 15 ? 'loss' : ''}`;
+    }
+    const cashSubEl = $('cashSub');
+    if (cashSubEl) {
+      cashSubEl.innerHTML = `${cashPct.toFixed(1)}% of portfolio · ${fmt$(s.invested)} invested`;
+    }
   }
 
   // ── Upcoming Catalysts Banner ─────────────────────────────
