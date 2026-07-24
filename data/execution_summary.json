@@ -1,41 +1,17 @@
 {
-  "timestamp": "2026-07-24T15:15:15Z",
-  "mode": "market_open",
+  "timestamp": "2026-07-24T22:34:44Z",
+  "mode": "post_close",
   "orders_placed": [
     {
-      "action": "SELL",
-      "symbol": "BEN",
-      "qty": 11,
-      "status": "submitted"
-    },
-    {
       "action": "BUY",
-      "symbol": "NUE",
+      "symbol": "STLD",
       "qty": 3,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "CASY",
-      "qty": 1,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "CSX",
-      "qty": 18,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "GE",
-      "qty": 2,
       "status": "submitted"
     }
   ],
   "orders_skipped": [
     {
-      "symbol": "IBKR",
+      "symbol": "SPG",
       "reason": "blocked by agent approval or risk gate"
     },
     {
@@ -47,7 +23,15 @@
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "SPG",
+      "symbol": "GS",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "ROST",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "WST",
       "reason": "blocked by agent approval or risk gate"
     },
     {
@@ -55,14 +39,10 @@
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "GS",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "ROST",
+      "symbol": "IBKR",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 33.19
+  "cash_pct_after": 31.55
 }
