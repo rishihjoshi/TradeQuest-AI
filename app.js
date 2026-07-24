@@ -524,15 +524,36 @@ class TradeQuestApp {
     // index.html can momentarily disagree on which elements exist. A missing node must degrade
     // gracefully, never throw and take down the whole dashboard render.
     const cashPct = Number.isFinite(s.cash_pct) ? s.cash_pct : 0;
+
+    // Short-sale proceeds inflate the raw cash figure: a short hands you cash today but you owe
+    // the shares back. Surface that IOU so the cash number is not read as free dry powder.
+    const shortMV = (this.data.holdings || [])
+      .reduce((sum, h) => sum + (h.market_value < 0 ? h.market_value : 0), 0);
+    const hasShort = shortMV < 0;
+
     const cashValueEl = $('cashValue');
     if (cashValueEl) {
       cashValueEl.textContent = fmt$(s.cash);
-      // Flag an over-target cash drag (bull target is 5%) so idle cash is visible at a glance.
-      cashValueEl.className = `stat-value ${cashPct > 15 ? 'loss' : ''}`;
+      // Red when over the 5% bull target OR when a short is inflating the figure.
+      cashValueEl.className = `stat-value ${(cashPct > 15 || hasShort) ? 'loss' : ''}`;
+    }
+    const cashLabelEl = $('cashLabel');
+    if (cashLabelEl) {
+      cashLabelEl.textContent = hasShort ? 'Cash · incl. IOU' : 'Cash';
     }
     const cashSubEl = $('cashSub');
     if (cashSubEl) {
-      cashSubEl.innerHTML = `${cashPct.toFixed(1)}% of portfolio · ${fmt$(s.invested)} invested`;
+      if (hasShort) {
+        // e.g. "61.4% · incl. $7,085 short proceeds (IOU) · $-970 free"
+        const freeCash = s.cash + shortMV;   // shortMV is negative → subtracts the IOU
+        cashSubEl.innerHTML =
+          `${cashPct.toFixed(1)}% · incl. ${fmt$(Math.abs(shortMV))} short proceeds (IOU) · ` +
+          `${fmt$(freeCash)} free`;
+        cashSubEl.className = 'stat-sub loss';
+      } else {
+        cashSubEl.innerHTML = `${cashPct.toFixed(1)}% of portfolio · ${fmt$(s.invested)} invested`;
+        cashSubEl.className = 'stat-sub';
+      }
     }
   }
 

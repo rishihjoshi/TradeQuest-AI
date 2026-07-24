@@ -259,7 +259,7 @@ button, a, [role="button"] {
 /* ── Stat Cards ────────────────────────────────────────────── */
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: var(--gap);
 }
 
@@ -1292,6 +1292,7 @@ button, a, [role="button"] {
 .stats-grid .stat-card:nth-child(3) { animation-delay: 0.09s; }
 .stats-grid .stat-card:nth-child(4) { animation-delay: 0.12s; }
 .stats-grid .stat-card:nth-child(5) { animation-delay: 0.15s; }
+.stats-grid .stat-card:nth-child(6) { animation-delay: 0.18s; }
 
 /* ── Tab Navigation ─────────────────────────────────────────── */
 .tab-bar {
@@ -1431,7 +1432,7 @@ button, a, [role="button"] {
 
   /* ── Stats: single horizontal scroll row (saves ~170px vs 2-col grid) ── */
   .stats-grid {
-    grid-template-columns: repeat(5, minmax(120px, 1fr));
+    grid-template-columns: repeat(6, minmax(120px, 1fr));
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
@@ -1492,7 +1493,7 @@ button, a, [role="button"] {
 
 @media (max-width: 380px) {
   /* keep horizontal scroll, just slightly narrower cards */
-  .stats-grid { grid-template-columns: repeat(5, minmax(108px, 1fr)); }
+  .stats-grid { grid-template-columns: repeat(6, minmax(108px, 1fr)); }
   .agent-summary-bar  { grid-template-columns: 1fr; }
   .momentum-heatmap   { grid-template-columns: repeat(3, 1fr); }
 
