@@ -3,7 +3,7 @@
 // when this version changes. v14→v15: Cash card added (index.html #cashPct removed → #cashValue/
 // #cashSub) — without this bump, clients served a fresh index.html but a stale cached app.js and
 // crashed on $('cashPct').
-const CACHE = 'tradequest-v15';
+const CACHE = 'tradequest-v16';
 const SHELL = [
   './index.html',
   './style.css',
