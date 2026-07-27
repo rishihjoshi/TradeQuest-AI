@@ -1,7 +1,386 @@
 {
-  "generated_at": "2026-07-23T15:34:10Z",
+  "generated_at": "2026-07-27T15:57:49Z",
   "article_count": 30,
   "articles": [
+    {
+      "id": "60698865",
+      "headline": "Evercore ISI Group Maintains Outperform on West Pharmaceutical Servs, Raises Price Target to $425",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60698865/evercore-isi-group-maintains-outperform-west-pharmaceutical-servs-raises-price-target-425",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "WST"
+      ],
+      "created_at": "2026-07-27T14:51:09Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains outperform rating and raises price target, signaling positive outlook for West Pharmaceutical."
+    },
+    {
+      "id": "60688523",
+      "headline": "Stock Market Today: S&P 500, Dow Jones, Nasdaq 100 Futures Rise as US-Iran Halt Retaliatory Strikes\u2014Microchip Technology, AMD, Nucor in Focus (UPDATED)",
+      "summary": "U.S. stock futures were rising on Monday, as the Dow Jones, S&amp;P 500 and Nasdaq 100 indices advanced, following Friday&39;s mixed close.",
+      "url": "https://www.benzinga.com/markets/equities/26/07/60688523/stock-market-today-sp-500-dow-jones-futures-rise-as-us-iran-halt-retaliatory-strikes-microchip-technology-amd-nucor-in-focus",
+      "author": "Rishabh Mishra",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "AMD",
+        "AMZN",
+        "BTCUSD",
+        "CLS",
+        "MCHP",
+        "META",
+        "MSFT",
+        "NUE",
+        "QQQ",
+        "SAFT",
+        "SPY"
+      ],
+      "created_at": "2026-07-27T12:57:49Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Stock futures rising across major indices following geopolitical de-escalation reduces risk sentiment."
+    },
+    {
+      "id": "60689441",
+      "headline": "AI Was Supposed to Shrink Workforces. Now Employers Say They Need More People",
+      "summary": "Big companies are hiring again as employers rethink AI\u2019s limits and seek workers who can operate alongside the technology.",
+      "url": "https://www.benzinga.com/markets/tech/26/07/60689441/ai-was-supposed-to-shrink-workforces-now-employers-say-they-need-more-people",
+      "author": "Tanya Rawat",
+      "source": "benzinga",
+      "symbols": [
+        "AMZN",
+        "BAH",
+        "CSX",
+        "GOOG",
+        "GOOGL",
+        "RHI",
+        "SNA"
+      ],
+      "created_at": "2026-07-27T10:24:07Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Increased hiring and workforce expansion signals business growth and optimism about AI implementation prospects."
+    },
+    {
+      "id": "60688079",
+      "headline": "Northern Trust Selected To Provide Fund Administration Services To $27B Alternative Asset Manager Dawson Partners",
+      "summary": "",
+      "url": "https://www.benzinga.com/quote/NTRS",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "NTRS"
+      ],
+      "created_at": "2026-07-27T08:09:05Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Northern Trust wins significant $27B fund administration contract, demonstrating business expansion and client confidence."
+    },
+    {
+      "id": "60687939",
+      "headline": "Dow Gains Over 200 Points But Records Weekly Loss: Investor Sentiment Edges Higher, But Greed Index Remains in 'Fear' Zone",
+      "summary": "The CNN Fear and Greed index improved, but remained in Fear zone on Friday. US stocks mixed, with Dow gaining 200 points.",
+      "url": "https://www.benzinga.com/markets/market-summary/26/07/60687939/dow-gains-over-200-points-but-records-weekly-loss-investor-sentiment-edges-higher-but-greed-index-remains-in-fear-zone",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "AXP",
+        "CLS",
+        "FFIV",
+        "NUE",
+        "VZ"
+      ],
+      "created_at": "2026-07-27T07:26:37Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Positive intraday gains offset by weekly losses and persistent fear sentiment."
+    },
+    {
+      "id": "60687674",
+      "headline": "Nucor, Celestica And 3 Stocks To Watch Heading Into Monday",
+      "summary": "U.S. stock futures higher, NUE, MCBS, CLS, MCHP, FFIV expected to release earnings today. Benzinga Pro and premarket coverage available.",
+      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/07/60687674/nucor-celestica-and-3-stocks-to-watch-heading-into-monday",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "CLS",
+        "FFIV",
+        "MCBS",
+        "MCHP",
+        "NUE"
+      ],
+      "created_at": "2026-07-27T06:51:24Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Article lists stocks to watch for earnings without expressing positive or negative outlook."
+    },
+    {
+      "id": "60687521",
+      "headline": "Nucor Gears Up For Q2 Print; Here Are The Recent Forecast Changes From Wall Street's Most Accurate Analysts",
+      "summary": "Nucor Corporation (NYSE: NUE) will report Q2 earnings on July 27. Analysts expect $4.53 EPS and $10.31B revenue.",
+      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/07/60687521/nucor-gears-up-for-q2-print-here-are-the-recent-forecast-changes-from-wall-streets-most-accurate-analysts",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "NUE"
+      ],
+      "created_at": "2026-07-27T06:21:40Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Earnings preview with analyst expectations provided; no forward guidance or performance commentary"
+    },
+    {
+      "id": "60679503",
+      "headline": "Citigroup Maintains Neutral on CSX, Raises Price Target to $54",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60679503/citigroup-maintains-neutral-csx-raises-price-target-54",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "CSX"
+      ],
+      "created_at": "2026-07-24T19:03:52Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Maintained neutral rating despite price target increase suggests modest positive outlook with cautious stance."
+    },
+    {
+      "id": "60663907",
+      "headline": "How To Earn $500 A Month From Nucor Stock Ahead Of Q2 Earnings",
+      "summary": "Nucor will release Q2 earnings on Monday, July 27. To earn $500 per month or $6,000 annually from dividends alone, here&39;s what you do.",
+      "url": "https://www.benzinga.com/trading-ideas/dividends/26/07/60663907/how-to-earn-500-a-month-from-nucor-stock-ahead-of-q2-earnings-2",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "NUE"
+      ],
+      "created_at": "2026-07-24T12:02:21Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Article promotes dividend income potential from Nucor stock, implying confidence in its earnings and dividend sustainability."
+    },
+    {
+      "id": "60657238",
+      "headline": "'Goldman Offers Way to Trade AI Junk Bonds $250 Million at a Time' - Bloomberg",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60657238/goldman-offers-way-trade-ai-junk-bonds-250-million-time-bloomberg",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "GS",
+        "JPM"
+      ],
+      "created_at": "2026-07-23T20:52:55Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Goldman's new $250M AI junk bond trading offering expands market access and liquidity"
+    },
+    {
+      "id": "60653286",
+      "headline": "Bernstein Maintains Outperform on GE Aerospace, Raises Price Target to $421",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60653286/bernstein-maintains-outperform-ge-aerospace-raises-price-target-421",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "GE"
+      ],
+      "created_at": "2026-07-23T19:23:32Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains positive rating and raises price target, indicating upside potential."
+    },
+    {
+      "id": "60651842",
+      "headline": "JP Morgan Maintains Overweight on CSX, Raises Price Target to $58",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60651842/jp-morgan-maintains-overweight-csx-raises-price-target-58",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "CSX"
+      ],
+      "created_at": "2026-07-23T18:39:29Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Overweight rating and raised price target indicate positive outlook for CSX stock."
+    },
+    {
+      "id": "60651447",
+      "headline": "Goldman Backs Clarity Act as Democrats Says It 'Falls Short' and Warren Says 'Dead on Arrival'",
+      "summary": "Goldman CEO Solomon backs the revised Clarity Act as Senate Democrats call it dead on arrival and JPMorgan&39;s Dimon vows to fight it.",
+      "url": "https://www.benzinga.com/crypto/cryptocurrency/26/07/60651447/goldman-backs-clarity-act-as-democrats-says-it-falls-short-and-warren-says-dead-on-arrival",
+      "author": "Parshwa Turakhiya",
+      "source": "benzinga",
+      "symbols": [
+        "COIN",
+        "GS",
+        "JPM"
+      ],
+      "created_at": "2026-07-23T18:28:30Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Democratic opposition and 'dead on arrival' declaration overshadow Goldman's support"
+    },
+    {
+      "id": "60651071",
+      "headline": "B of A Securities Maintains Buy on CSX, Raises Price Target to $56",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60651071/b-securities-maintains-buy-csx-raises-price-target-56",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "CSX"
+      ],
+      "created_at": "2026-07-23T18:17:33Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains buy rating and raises price target, signaling positive outlook."
+    },
+    {
+      "id": "60650400",
+      "headline": "Why Is Super Micro Computer Stock Surging on Thursday?",
+      "summary": "Super Micro Computer Inc. (NASDAQ: SMCI) stock surged following preliminary Q4 updates highlighting expanded gross margins and $60 billion in new AI orders.",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/07/60650400/why-is-super-micro-computer-stock-surging-on-thursday",
+      "author": "Kaustubh Bagalkote",
+      "source": "benzinga",
+      "symbols": [
+        "ANET",
+        "DELL",
+        "SMCI",
+        "VRT"
+      ],
+      "created_at": "2026-07-23T17:59:11Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Expanded gross margins and $60B in new AI orders signal strong financial performance and growth."
+    },
+    {
+      "id": "60649897",
+      "headline": "Morgan Stanley Maintains Underweight on Northern Trust, Raises Price Target to $173",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60649897/morgan-stanley-maintains-underweight-northern-trust-raises-price-target-173",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "NTRS"
+      ],
+      "created_at": "2026-07-23T17:44:39Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Underweight rating conflicts with price target increase, showing mixed analyst view."
+    },
+    {
+      "id": "60648990",
+      "headline": "TD Cowen Maintains Buy on CSX, Raises Price Target to $54",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60648990/td-cowen-maintains-buy-csx-raises-price-target-54",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "CSX"
+      ],
+      "created_at": "2026-07-23T17:19:09Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains buy rating and raises price target, signaling confidence in stock appreciation."
+    },
+    {
+      "id": "60648881",
+      "headline": "Brent Tops $100, Alphabet, Tesla Sink Nasdaq 100: Stock Market Today",
+      "summary": "Stocks slide Thursday as Brent crude breaks $100 and the 10-year yield hits an 18-month high, while Alphabet and Tesla earnings revive AI-spending doubts.",
+      "url": "https://www.benzinga.com/markets/equities/26/07/60648881/brent-tops-100-alphabet-tesla-sink-nasdaq-100-stock-market-today",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "AAL",
+        "ACI",
+        "ALLE",
+        "AMZN",
+        "CLF",
+        "DIA",
+        "FDN",
+        "GDX",
+        "GOOG",
+        "GOOGL",
+        "GS",
+        "HOOD",
+        "IWM",
+        "JETS",
+        "LMT",
+        "MEDP",
+        "META",
+        "MOH",
+        "MSFT",
+        "QQQ",
+        "QS",
+        "ROL",
+        "TMO",
+        "TSLA",
+        "URI",
+        "VOO",
+        "XLC",
+        "XLE",
+        "XLI",
+        "XLK",
+        "XLV",
+        "XLY",
+        "XOP",
+        "XRT"
+      ],
+      "created_at": "2026-07-23T17:16:10Z",
+      "sentiment": "bear",
+      "confidence": 0.95,
+      "reason": "Stocks decline amid rising oil prices, yields, and negative earnings from major tech giants."
+    },
+    {
+      "id": "60648523",
+      "headline": "BMO Capital Maintains Market Perform on CSX, Raises Price Target to $52",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60648523/bmo-capital-maintains-market-perform-csx-raises-price-target-52",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "CSX"
+      ],
+      "created_at": "2026-07-23T17:08:25Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Maintained rating with raised price target suggests modest positive bias but cautious outlook."
+    },
+    {
+      "id": "60645591",
+      "headline": "RBC Capital Maintains Outperform on CSX, Raises Price Target to $54",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60645591/rbc-capital-maintains-outperform-csx-raises-price-target-54",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "CSX"
+      ],
+      "created_at": "2026-07-23T15:53:58Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains positive rating and raises price target, signaling confidence in stock appreciation."
+    },
+    {
+      "id": "60644432",
+      "headline": "West Pharmaceutical CEO Highlights GLP-1 And Biologics Momentum",
+      "summary": "West Pharmaceutical reported Q2 earnings and revenue beat, higher 2026 guidance, and continued strength in GLP-1 and HVP products.",
+      "url": "https://www.benzinga.com/markets/earnings/26/07/60644432/west-pharmaceutical-ceo-highlights-glp-1-and-biologics-momentum",
+      "author": "Vandana Singh",
+      "source": "benzinga",
+      "symbols": [
+        "WST"
+      ],
+      "created_at": "2026-07-23T15:32:26Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Revenue beat, raised guidance, and strong momentum in high-growth GLP-1 and biologics segments."
+    },
     {
       "id": "60643628",
       "headline": "RBC Capital Downgrades Northern Trust to Sector Perform, Maintains Price Target to $178",
@@ -15,7 +394,7 @@
       "created_at": "2026-07-23T15:12:21Z",
       "sentiment": "bear",
       "confidence": 0.85,
-      "reason": "Downgrade from buy to sector perform indicates reduced conviction despite maintaining price target."
+      "reason": "Downgrade to Sector Perform indicates reduced conviction despite maintaining price target."
     },
     {
       "id": "60641117",
@@ -28,9 +407,24 @@
         "NTRS"
       ],
       "created_at": "2026-07-23T14:25:21Z",
-      "sentiment": "bull",
+      "sentiment": "neutral",
       "confidence": 0.75,
-      "reason": "Price target raise indicates positive outlook despite maintaining equal-weight rating"
+      "reason": "Equal-weight rating maintained despite price target increase suggests modest positive but cautious outlook."
+    },
+    {
+      "id": "60640850",
+      "headline": "Barclays Maintains Overweight on CSX, Raises Price Target to $60",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60640850/barclays-maintains-overweight-csx-raises-price-target-60",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "CSX"
+      ],
+      "created_at": "2026-07-23T14:20:45Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains positive rating and raises price target, signaling confidence in stock upside."
     },
     {
       "id": "60639975",
@@ -45,7 +439,23 @@
       "created_at": "2026-07-23T14:08:19Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Overweight rating maintained with price target raised signals strong positive outlook"
+      "reason": "Overweight rating and raised price target indicate positive outlook for Federal Realty Investment Trust."
+    },
+    {
+      "id": "60637212",
+      "headline": "GE Aerospace Receives Order From National Airlines To Acquire One GE90-110B, Six CF6-80C2 Engines For Boeing 777F/747F Cargo Jets",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60637212/ge-aerospace-receives-order-national-airlines-acquire-one-ge90-110b-six-cf6-80c2-engines-boeing-777f",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "BA",
+        "GE"
+      ],
+      "created_at": "2026-07-23T13:28:57Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "New engine order from major airline customer demonstrates continued demand for GE Aerospace products"
     },
     {
       "id": "60637170",
@@ -59,8 +469,8 @@
       ],
       "created_at": "2026-07-23T13:27:04Z",
       "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Price target raise indicates analyst confidence in Northern Trust's growth prospects."
+      "confidence": 0.85,
+      "reason": "Price target raise signals analyst confidence in Northern Trust's future performance."
     },
     {
       "id": "60637033",
@@ -75,7 +485,22 @@
       "created_at": "2026-07-23T13:22:54Z",
       "sentiment": "neutral",
       "confidence": 0.85,
-      "reason": "Article provides earnings call transcript without commentary on performance or outlook."
+      "reason": "Earnings call transcript publication is factual reporting without explicit positive or negative indicators."
+    },
+    {
+      "id": "60635494",
+      "headline": "Evercore ISI Group Maintains In-Line on CSX, Raises Price Target to $51",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/07/60635494/evercore-isi-group-maintains-line-csx-raises-price-target-51",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "CSX"
+      ],
+      "created_at": "2026-07-23T12:49:17Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Price target raise indicates positive outlook despite maintaining in-line rating."
     },
     {
       "id": "60634665",
@@ -93,615 +518,7 @@
       "created_at": "2026-07-23T12:27:07Z",
       "sentiment": "bull",
       "confidence": 0.75,
-      "reason": "Doubled margins demonstrate operational excellence and profitability improvements despite revenue shortfall."
-    },
-    {
-      "id": "60632637",
-      "headline": "Earnings Scheduled For July 23, 2026",
-      "summary": "Companies Reporting Before The Bell \u2022 Altisource Portfolio (NASDAQ:ASPS) is estimated to report quarterly earnings at $0.18 per share on revenue of $42.90 million.  \u2022 Dime Commercial (NYSE:DCOM) is expected to report",
-      "url": "https://www.benzinga.com/news/earnings/26/07/60632637/earnings-scheduled-july-23-2026",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "AAL",
-        "ABCB",
-        "ACI",
-        "ACU",
-        "ALLE",
-        "AMAL",
-        "AMBP",
-        "AMP",
-        "AMTB",
-        "APPF",
-        "ARGX",
-        "ASB",
-        "ASPS",
-        "ATRC",
-        "AVBH",
-        "BFH",
-        "BFST",
-        "BPOP",
-        "BWFG",
-        "BWMX",
-        "BX",
-        "BY",
-        "BYD",
-        "CIVB",
-        "CLF",
-        "CMCSA",
-        "CNOB",
-        "COCO",
-        "COLB",
-        "CUBI",
-        "CX",
-        "DCOM",
-        "DECK",
-        "DGX",
-        "DLR",
-        "DOV",
-        "DOW",
-        "EBC",
-        "ENVA",
-        "ESQ",
-        "EW",
-        "FCFS",
-        "FCNCA",
-        "FCX",
-        "FIBK",
-        "FISI",
-        "FIX",
-        "FPH",
-        "FRBA",
-        "FRST",
-        "FSV",
-        "GBCI",
-        "HBAN",
-        "HFWA",
-        "HIG",
-        "HOG",
-        "HON",
-        "HTH",
-        "HZO",
-        "IBCP",
-        "IMAX",
-        "INFY",
-        "INTC",
-        "JAKK",
-        "KN",
-        "KNSL",
-        "KRNY",
-        "LADR",
-        "LAZ",
-        "LMT",
-        "LODE",
-        "LVWR",
-        "MBLY",
-        "MSBI",
-        "MXL",
-        "MYFW",
-        "NDAQ",
-        "NEM",
-        "NOK",
-        "NSC",
-        "NVCR",
-        "ORC",
-        "ORI",
-        "OVV",
-        "PCG",
-        "PECO",
-        "PINE",
-        "POOL",
-        "R",
-        "RELX",
-        "REXR",
-        "RHI",
-        "RNG",
-        "ROP",
-        "RTX",
-        "SAM",
-        "SAP",
-        "SBFG",
-        "SCHL",
-        "SHBI",
-        "SHG",
-        "SIGI",
-        "SKYW",
-        "SLM",
-        "SMMT",
-        "SNA",
-        "SRCE",
-        "SSB",
-        "SSNC",
-        "STBA",
-        "STM",
-        "TECK",
-        "THRM",
-        "TMO",
-        "TMUS",
-        "TSCO",
-        "TTE",
-        "TV",
-        "UNP",
-        "USCB",
-        "UVE",
-        "VC",
-        "VLY",
-        "VRSN",
-        "WKC",
-        "WSFS",
-        "WST",
-        "WTBA"
-      ],
-      "created_at": "2026-07-23T11:11:51Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Article merely announces upcoming earnings dates with estimated figures, containing no evaluative language."
-    },
-    {
-      "id": "60630894",
-      "headline": "West Pharmaceutical Servs Raises FY2026 Adj EPS Guidance from $8.40-$8.75 to $8.85-$9.05 vs $8.61 Est; Raises FY2026 Sales Guidance from $3.295B-$3.350B to $3.345B-$3.380B vs $3.332B Est",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60630894/west-pharmaceutical-servs-raises-fy2026-adj-eps-guidance-8-40-8-75-8-85-9-05-vs-8-61-est-raises-fy20",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "WST"
-      ],
-      "created_at": "2026-07-23T10:09:09Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "West Pharma raised both EPS and sales guidance above estimates, signaling strong operational momentum."
-    },
-    {
-      "id": "60630884",
-      "headline": "West Pharmaceutical Servs Raises FY2026 GAAP EPS Guidance from $8.15-$8.50 to $8.85-$9.05 vs $8.41 Est",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60630884/west-pharmaceutical-servs-raises-fy2026-gaap-eps-guidance-8-15-8-50-8-85-9-05-vs-8-41-est",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "WST"
-      ],
-      "created_at": "2026-07-23T10:08:28Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Raised FY2026 EPS guidance above estimates, indicating strong operational performance and confidence."
-    },
-    {
-      "id": "60630845",
-      "headline": "West Pharmaceutical Servs Sees Q3 Adj EPS $2.14-$2.24 vs $2.12 Est; Sees Sales $820.000M-$835.000M vs $815.707M Est",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60630845/west-pharmaceutical-servs-sees-q3-adj-eps-2-14-2-24-vs-2-12-est-sees-sales-820-000m-835-000m-vs-815-",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "WST"
-      ],
-      "created_at": "2026-07-23T10:08:06Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Q3 EPS and sales guidance both exceed analyst estimates, signaling strong operational performance."
-    },
-    {
-      "id": "60630833",
-      "headline": "West Pharmaceutical Servs Q2 Adj. EPS $2.37 Beats $2.08 Estimate, Sales $872.300M Beat $838.586M Estimate",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/earnings/26/07/60630833/west-pharmaceutical-servs-q2-adj-eps-2-37-beats-2-08-estimate-sales-872-300m-beat-838-586m-estimate",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "WST"
-      ],
-      "created_at": "2026-07-23T10:07:55Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong Q2 earnings beat with EPS exceeding estimate by 14% and sales outperforming by 4%"
-    },
-    {
-      "id": "60626337",
-      "headline": "UPDATE: Northern Trust Q2 Adj. EPS $2.97 Beats $2.71 Estimate, Sales $2.698B Beat $2.417B Estimate",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/earnings/26/07/60626337/update-northern-trust-q2-adj-eps-2-97-beats-2-71-estimate-sales-2-698b-beat-2-417b-estimate",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "NTRS"
-      ],
-      "created_at": "2026-07-22T21:15:03Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "EPS and sales both significantly beat estimates, indicating strong operational performance."
-    },
-    {
-      "id": "60625590",
-      "headline": "Goldman Sachs Wants Its Wealthy Clients in on the Next SpaceX Before It Goes Public",
-      "summary": "Goldman Sachs is expanding its push into private markets with the launch of a new platform giving access to high-profile private companies.",
-      "url": "https://www.benzinga.com/markets/private-markets/26/07/60625590/goldman-sachs-wants-its-wealthy-clients-in-on-the-next-spacex-before-it-goes-public",
-      "author": "Caroline Ryan",
-      "source": "benzinga",
-      "symbols": [
-        "GS"
-      ],
-      "created_at": "2026-07-22T20:54:08Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Goldman Sachs expanding private market access signals confidence in high-growth companies like SpaceX."
-    },
-    {
-      "id": "60618008",
-      "headline": "BMO Capital Maintains Outperform on Interactive Brokers Group, Raises Price Target to $110",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60618008/bmo-capital-maintains-outperform-interactive-brokers-group-raises-price-target-110",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "IBKR"
-      ],
-      "created_at": "2026-07-22T17:48:37Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Maintained outperform rating and raised price target signals strong positive outlook."
-    },
-    {
-      "id": "60608137",
-      "headline": "Northern Trust Q2 2026 Earnings Call: Complete Transcript",
-      "summary": "On Wednesday, Northern Trust (NASDAQ:NTRS) discussed second-quarter financial results during its earnings call. The full transcript is provided below. Benzinga APIs provide real-time access to earnings call transcripts",
-      "url": "https://www.benzinga.com/news/26/07/60608137/northern-trust-q2-2026-earnings-call-complete-transcript",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "NTRS"
-      ],
-      "created_at": "2026-07-22T14:04:23Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Earnings call transcript publication provides factual information without positive or negative indicators."
-    },
-    {
-      "id": "60604969",
-      "headline": "Barclays Maintains Overweight on Interactive Brokers Group, Raises Price Target to $114",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60604969/barclays-maintains-overweight-interactive-brokers-group-raises-price-target-114",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "IBKR"
-      ],
-      "created_at": "2026-07-22T12:55:31Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Overweight rating with raised price target signals positive outlook and confidence in stock appreciation."
-    },
-    {
-      "id": "60604850",
-      "headline": "Argus Research Maintains Buy on Bank of New York Mellon, Raises Price Target to $180",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60604850/argus-research-maintains-buy-bank-new-york-mellon-raises-price-target-180",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "BNY"
-      ],
-      "created_at": "2026-07-22T12:48:13Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains Buy rating and raises price target, signaling positive outlook for BNY Mellon stock."
-    },
-    {
-      "id": "60604168",
-      "headline": "Nvidia, Goldman Sachs, UnitedHealth and an Energy Stock on CNBC\u2019s \u2018Final Trades\u2019",
-      "summary": "NVIDIA, UnitedHealth, Goldman Sachs, Diamondback Energy all saw positive stock growth as announced on CNBC&39;s Halftime Report.",
-      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/07/60604168/nvidia-goldman-sachs-unitedhealth-and-an-energy-stock-on-cnbcs-final-trades",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "FANG",
-        "GS",
-        "NVDA",
-        "UNH"
-      ],
-      "created_at": "2026-07-22T12:32:58Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "All mentioned stocks showed positive growth, indicating bullish sentiment across multiple sectors."
-    },
-    {
-      "id": "60603938",
-      "headline": "AEGIS Hedging Solutions Agrees To Be Acquired By Private Equity At Goldman Sachs Alternatives; Financial Terms Undisclosed",
-      "summary": "",
-      "url": "https://www.benzinga.com/m/26/07/60603938/aegis-hedging-solutions-agrees-be-acquired-private-equity-goldman-sachs-alternatives-financial-terms",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "GS"
-      ],
-      "created_at": "2026-07-22T12:25:08Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Acquisition by prestigious Goldman Sachs-backed PE firm signals strong valuation and growth prospects."
-    },
-    {
-      "id": "60603620",
-      "headline": "Synchrony Financial To Rally Around 25%? Here Are 10 Top Analyst Forecasts For Wednesday",
-      "summary": "Top analysts change outlook on top names. Baird, Canaccord Genuity, Needham, Stifel, Truist Securities raise price targets. See analyst ratings.",
-      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/07/60603620/synchrony-financial-to-rally-around-25-here-are-10-top-analyst-forecasts-for-wednesday",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "ABBV",
-        "AGNC",
-        "ANET",
-        "CALX",
-        "CRWV",
-        "DOCN",
-        "FN",
-        "LCUT",
-        "PD",
-        "SYF",
-        "TDOC",
-        "UTZ",
-        "ZION"
-      ],
-      "created_at": "2026-07-22T12:06:55Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Multiple top analysts raised price targets with 25% rally potential noted."
-    },
-    {
-      "id": "60602326",
-      "headline": "Earnings Scheduled For July 22, 2026",
-      "summary": "Companies Reporting Before The Bell \u2022 Northern Trust (NASDAQ:NTRS) is expected to report quarterly earnings at $3.45 per share on revenue of $2.35 billion.  \u2022 Old National Bancorp (NASDAQ:ONB) is projected to report",
-      "url": "https://www.benzinga.com/news/earnings/26/07/60602326/earnings-scheduled-july-22-2026",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "ARR",
-        "AVB",
-        "BANR",
-        "BDN",
-        "BKU",
-        "BMI",
-        "CALM",
-        "CASH",
-        "CATY",
-        "CBAN",
-        "CCI",
-        "CCS",
-        "CME",
-        "CSX",
-        "CVBF",
-        "CYH",
-        "EFSC",
-        "EGBN",
-        "EGP",
-        "ELS",
-        "EPRT",
-        "EQNR",
-        "EQR",
-        "FAF",
-        "FBNC",
-        "FBP",
-        "FR",
-        "FRME",
-        "FSBC",
-        "FULT",
-        "GEV",
-        "GGG",
-        "GL",
-        "GOOG",
-        "GOOGL",
-        "GSHD",
-        "GTY",
-        "HBNC",
-        "HCSG",
-        "HYFT",
-        "IBM",
-        "IRDM",
-        "KALU",
-        "KMI",
-        "KNX",
-        "LBRT",
-        "LOB",
-        "LUV",
-        "LVS",
-        "MCO",
-        "MEDP",
-        "MMLP",
-        "MOH",
-        "NOW",
-        "NTRS",
-        "NTST",
-        "NVEC",
-        "NWFL",
-        "OBK",
-        "OII",
-        "ONB",
-        "OSBC",
-        "OTIS",
-        "OTLY",
-        "PFBC",
-        "PHM",
-        "PKG",
-        "PM",
-        "PNFP",
-        "QCRH",
-        "QS",
-        "RCI",
-        "RDY",
-        "RELL",
-        "RGP",
-        "RJF",
-        "RLI",
-        "RNR",
-        "ROL",
-        "RPM",
-        "RS",
-        "SAN",
-        "SEIC",
-        "SF",
-        "SLG",
-        "SON",
-        "STC",
-        "T",
-        "TCBI",
-        "TCBX",
-        "TDY",
-        "TEL",
-        "TNL",
-        "TSLA",
-        "TXN",
-        "URI",
-        "UVSP",
-        "VTMX",
-        "WAB",
-        "WCN",
-        "WEX",
-        "WH"
-      ],
-      "created_at": "2026-07-22T11:11:30Z",
-      "sentiment": "neutral",
-      "confidence": 0.95,
-      "reason": "Article merely reports scheduled earnings dates without forward guidance or performance commentary."
-    },
-    {
-      "id": "60601757",
-      "headline": "Northern Trust Q2 EPS $4.23 Misses $4.58 Estimate, Sales $2.698B Beat $2.417B Estimate",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/earnings/26/07/60601757/northern-trust-q2-eps-4-23-misses-4-58-estimate-sales-2-698b-beat-2-417b-estimate",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "NTRS"
-      ],
-      "created_at": "2026-07-22T10:59:14Z",
-      "sentiment": "neutral",
-      "confidence": 0.65,
-      "reason": "Missed earnings estimate but beat revenue expectations, creating mixed signals."
-    },
-    {
-      "id": "60601676",
-      "headline": "Needham Maintains Buy on Arista Networks, Raises Price Target to $200",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60601676/needham-maintains-buy-arista-networks-raises-price-target-200",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "ANET"
-      ],
-      "created_at": "2026-07-22T10:56:16Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst upgrade with higher price target signals strong conviction in positive outlook."
-    },
-    {
-      "id": "60598714",
-      "headline": "Dyne Therapeutics Stock Tumbles After Hours: Here's Why",
-      "summary": "Dyne Therapeutics stock fell after hours after pricing an upsized $375M public offering of common stock.",
-      "url": "https://www.benzinga.com/markets/equities/26/07/60598714/dyne-therapeutics-stock-tumbles-after-hours-heres-why",
-      "author": "Tanya Rawat",
-      "source": "benzinga",
-      "symbols": [
-        "DYN",
-        "JEF",
-        "MS",
-        "RJF"
-      ],
-      "created_at": "2026-07-22T05:52:23Z",
-      "sentiment": "bear",
-      "confidence": 0.92,
-      "reason": "Stock tumbled after pricing a large dilutive offering, signaling shareholder value concerns."
-    },
-    {
-      "id": "60596812",
-      "headline": "Full Transcript: Interactive Brokers Group Q2 2026 Earnings Call",
-      "summary": "On Tuesday, Interactive Brokers Group (NASDAQ:IBKR) discussed second-quarter financial results during its earnings call. The full transcript is provided below. This transcript is brought to you by Benzinga APIs. For",
-      "url": "https://www.benzinga.com/news/26/07/60596812/full-transcript-interactive-brokers-group-q2-2026-earnings-call",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "IBKR"
-      ],
-      "created_at": "2026-07-21T21:31:08Z",
-      "sentiment": "neutral",
-      "confidence": 0.95,
-      "reason": "Transcript publication without performance details or commentary indicates factual reporting only."
-    },
-    {
-      "id": "60595068",
-      "headline": "OpenAI Appoints Bank Of New Mellon CEO Robin Vince, Nubank Chairman David Velez To Its Board",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60595068/openai-appoints-bank-new-mellon-ceo-robin-vince-nubank-chairman-david-velez-its-board",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "BNY",
-        "MSFT",
-        "NU"
-      ],
-      "created_at": "2026-07-21T20:27:47Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Appointment of experienced banking executives strengthens OpenAI's board and governance structure."
-    },
-    {
-      "id": "60594782",
-      "headline": "Interactive Brokers Stock Climbs as Q2 Earnings Come in Ahead of Expectations",
-      "summary": "Interactive Brokers Group reports second-quarter financial results after the market close on Tuesday. Here&39;s a rundown of the report.",
-      "url": "https://www.benzinga.com/markets/earnings/26/07/60594782/interactive-brokers-stock-climbs-as-q2-earnings-come-in-ahead-of-expectations",
-      "author": "Adam Eckert",
-      "source": "benzinga",
-      "symbols": [
-        "IBKR"
-      ],
-      "created_at": "2026-07-21T20:17:44Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Q2 earnings exceeded expectations, driving stock price increase."
-    },
-    {
-      "id": "60593875",
-      "headline": "Interactive Brokers Gr Q2 Adj. EPS $0.69 Beats $0.64 Estimate, Sales $1.896B Beat $1.748B Estimate",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/earnings/26/07/60593875/interactive-brokers-gr-q2-adj-eps-0-69-beats-0-64-estimate-sales-1-896b-beat-1-748b-estimate",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "IBKR"
-      ],
-      "created_at": "2026-07-21T20:01:31Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "EPS and revenue both beat estimates significantly, indicating strong operational performance."
-    },
-    {
-      "id": "60590833",
-      "headline": "'Goldman Sachs creates private markets platform as rich investors seek the next SpaceX and Stripe' - CNBC",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60590833/goldman-sachs-creates-private-markets-platform-rich-investors-seek-next-spacex-and-stripe-cnbc",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "GS"
-      ],
-      "created_at": "2026-07-21T18:31:56Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Goldman Sachs expanding into high-growth private markets signals confidence in sector and attracts wealthy capital."
-    },
-    {
-      "id": "60589309",
-      "headline": "Piper Sandler Maintains Overweight on Simon Property Group, Raises Price Target to $285",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60589309/piper-sandler-maintains-overweight-simon-property-group-raises-price-target-285",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "SPG"
-      ],
-      "created_at": "2026-07-21T17:45:34Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Overweight rating maintained with price target increase signals positive outlook"
+      "reason": "Doubled margins demonstrate operational leverage and profitability improvement despite revenue headwinds, positive for AI infrastructure."
     }
   ]
 }
