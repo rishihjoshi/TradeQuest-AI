@@ -1,25 +1,33 @@
 {
-  "timestamp": "2026-07-24T22:34:44Z",
-  "mode": "post_close",
+  "timestamp": "2026-07-27T16:00:47Z",
+  "mode": "market_open",
   "orders_placed": [
     {
+      "action": "SELL",
+      "symbol": "IBKR",
+      "qty": 12,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "WST",
+      "qty": 1,
+      "status": "submitted"
+    },
+    {
       "action": "BUY",
-      "symbol": "STLD",
-      "qty": 3,
+      "symbol": "BEN",
+      "qty": 29,
       "status": "submitted"
     }
   ],
   "orders_skipped": [
     {
-      "symbol": "SPG",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
       "symbol": "ANET",
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "NTRS",
+      "symbol": "BNY",
       "reason": "blocked by agent approval or risk gate"
     },
     {
@@ -31,18 +39,18 @@
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "WST",
+      "symbol": "NTRS",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "GE",
       "reason": "blocked by agent approval or risk gate"
     },
     {
       "symbol": "FRT",
       "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "IBKR",
-      "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 31.55
+  "cash_pct_after": 28.33
 }
