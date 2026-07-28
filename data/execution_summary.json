@@ -1,39 +1,10 @@
 {
-  "timestamp": "2026-07-28T15:44:30Z",
-  "mode": "market_open",
-  "orders_placed": [
-    {
-      "action": "SELL",
-      "symbol": "CSX",
-      "qty": 18,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "LUV",
-      "qty": 21,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "FFIV",
-      "qty": 2,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "WST",
-      "qty": 1,
-      "status": "submitted"
-    }
-  ],
+  "timestamp": "2026-07-28T22:34:06Z",
+  "mode": "post_close",
+  "orders_placed": [],
   "orders_skipped": [
     {
-      "symbol": "JBHT",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "BNY",
+      "symbol": "ANET",
       "reason": "blocked by agent approval or risk gate"
     },
     {
@@ -41,19 +12,11 @@
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "MS",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "ANET",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
       "symbol": "GE",
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "GS",
+      "symbol": "BNY",
       "reason": "blocked by agent approval or risk gate"
     },
     {
@@ -61,10 +24,22 @@
       "reason": "blocked by agent approval or risk gate"
     },
     {
+      "symbol": "JBHT",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "MS",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
       "symbol": "ROST",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "GS",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 16.29
+  "cash_pct_after": 16.42
 }
