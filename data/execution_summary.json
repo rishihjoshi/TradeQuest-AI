@@ -1,29 +1,14 @@
 {
-  "timestamp": "2026-07-29T15:32:44Z",
-  "mode": "market_open",
-  "orders_placed": [
-    {
-      "action": "SELL",
-      "symbol": "JBHT",
-      "qty": 2,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "MS",
-      "qty": 4,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "CSX",
-      "qty": 19,
-      "status": "submitted"
-    }
-  ],
+  "timestamp": "2026-07-29T22:29:29Z",
+  "mode": "post_close",
+  "orders_placed": [],
   "orders_skipped": [
     {
-      "symbol": "ROST",
+      "symbol": "FRT",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "BEN",
       "reason": "blocked by agent approval or risk gate"
     },
     {
@@ -31,11 +16,11 @@
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "WST",
+      "symbol": "FFIV",
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "NTRS",
+      "symbol": "ROST",
       "reason": "blocked by agent approval or risk gate"
     },
     {
@@ -43,18 +28,14 @@
       "reason": "blocked by agent approval or risk gate"
     },
     {
+      "symbol": "NTRS",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
       "symbol": "GS",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "FFIV",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "FRT",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 20.22
+  "cash_pct_after": 20.24
 }
