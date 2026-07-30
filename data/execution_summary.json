@@ -1,51 +1,19 @@
 {
-  "timestamp": "2026-07-30T15:34:33Z",
-  "mode": "market_open",
+  "timestamp": "2026-07-30T22:36:28Z",
+  "mode": "post_close",
   "orders_placed": [
     {
       "action": "SELL",
-      "symbol": "ANET",
-      "qty": 6,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "FFIV",
+      "symbol": "GE",
       "qty": 2,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "GS",
-      "qty": 1,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "LUV",
-      "qty": 21,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "NTRS",
-      "qty": 5,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "HUM",
-      "qty": 2,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "APH",
-      "qty": 5,
       "status": "submitted"
     }
   ],
   "orders_skipped": [
+    {
+      "symbol": "BNY",
+      "reason": "blocked by agent approval or risk gate"
+    },
     {
       "symbol": "ROST",
       "reason": "blocked by agent approval or risk gate"
@@ -55,18 +23,10 @@
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "BNY",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "WST",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
       "symbol": "SPG",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 51.9
+  "cash_pct_after": 51.89
 }
