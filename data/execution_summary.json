@@ -1,27 +1,10 @@
 {
-  "timestamp": "2026-07-31T15:39:47Z",
-  "mode": "market_open",
-  "orders_placed": [
-    {
-      "action": "BUY",
-      "symbol": "VLO",
-      "qty": 3,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "FFIV",
-      "qty": 2,
-      "status": "submitted"
-    }
-  ],
+  "timestamp": "2026-07-31T22:32:51Z",
+  "mode": "post_close",
+  "orders_placed": [],
   "orders_skipped": [
     {
-      "symbol": "ROST",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "SPG",
+      "symbol": "HUM",
       "reason": "blocked by agent approval or risk gate"
     },
     {
@@ -29,18 +12,22 @@
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "FRT",
+      "symbol": "SPG",
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "CSX",
+      "symbol": "FRT",
       "reason": "blocked by agent approval or risk gate"
     },
     {
       "symbol": "BNY",
       "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "ROST",
+      "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 41.92
+  "cash_pct_after": 42.13
 }
