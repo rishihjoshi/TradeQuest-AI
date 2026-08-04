@@ -1,24 +1,13 @@
 {
-  "timestamp": "2026-08-04T15:58:17Z",
-  "mode": "market_open",
-  "orders_placed": [
-    {
-      "action": "SELL",
-      "symbol": "MNST",
-      "qty": 9,
-      "status": "submitted"
-    }
-  ],
+  "timestamp": "2026-08-04T22:35:49Z",
+  "mode": "post_close",
+  "orders_placed": [],
   "orders_skipped": [
     {
       "symbol": "HUM",
       "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "CSX",
-      "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 52.33
+  "cash_pct_after": 52.09
 }
