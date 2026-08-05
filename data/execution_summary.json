@@ -1,13 +1,15 @@
 {
-  "timestamp": "2026-08-04T22:35:49Z",
-  "mode": "post_close",
-  "orders_placed": [],
-  "orders_skipped": [
+  "timestamp": "2026-08-05T15:40:56Z",
+  "mode": "market_open",
+  "orders_placed": [
     {
+      "action": "SELL",
       "symbol": "HUM",
-      "reason": "blocked by agent approval or risk gate"
+      "qty": 2,
+      "status": "submitted"
     }
   ],
+  "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 52.09
+  "cash_pct_after": 60.4
 }
