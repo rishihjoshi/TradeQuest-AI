@@ -1,15 +1,8 @@
 {
-  "timestamp": "2026-08-05T15:40:56Z",
-  "mode": "market_open",
-  "orders_placed": [
-    {
-      "action": "SELL",
-      "symbol": "HUM",
-      "qty": 2,
-      "status": "submitted"
-    }
-  ],
+  "timestamp": "2026-08-05T22:35:12Z",
+  "mode": "post_close",
+  "orders_placed": [],
   "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 60.4
+  "cash_pct_after": 59.71
 }
