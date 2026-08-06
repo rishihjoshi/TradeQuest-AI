@@ -1,7 +1,262 @@
 {
-  "generated_at": "2026-08-03T15:59:55Z",
+  "generated_at": "2026-08-06T15:59:32Z",
   "article_count": 30,
   "articles": [
+    {
+      "id": "60992183",
+      "headline": "Amphenol Announces 2-For-1 Stock Split, Effective August 17",
+      "summary": "",
+      "url": "https://www.benzinga.com/quote/APH",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "APH"
+      ],
+      "created_at": "2026-08-06T12:14:38Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Stock split typically signals management confidence and improves accessibility for retail investors."
+    },
+    {
+      "id": "60991915",
+      "headline": "NetApp Acquires JetStream Software For Undisclosed Sum",
+      "summary": "",
+      "url": "https://www.benzinga.com/m/26/08/60991915/netapp-acquires-jetstream-software-undisclosed-sum",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "NTAP"
+      ],
+      "created_at": "2026-08-06T12:10:12Z",
+      "sentiment": "bull",
+      "confidence": 0.72,
+      "reason": "Strategic acquisition expands NetApp's cloud data management capabilities and market reach."
+    },
+    {
+      "id": "60977473",
+      "headline": "Here\u2019s How Much You Would Have Made Owning Ross Stores Stock In The Last 10 Years",
+      "summary": "Ross Stores (NASDAQ:ROST) has outperformed the market over the past 10 years by 1.9% on an annualized basis producing an average annual return of 15.33%. Currently, Ross Stores has a market capitalization of $83.54",
+      "url": "https://www.benzinga.com/news/26/08/60977473/here-s-how-much-you-would-have-made-owning-ross-stores-stock-last-10-years",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "ROST"
+      ],
+      "created_at": "2026-08-05T21:15:49Z",
+      "sentiment": "bull",
+      "confidence": 0.92,
+      "reason": "Strong 10-year outperformance with 15.33% annualized returns demonstrates consistent market beating performance."
+    },
+    {
+      "id": "60970921",
+      "headline": "$1000 Invested In Amphenol 10 Years Ago Would Be Worth This Much Today",
+      "summary": "Amphenol (NYSE:APH) has outperformed the market over the past 10 years by 14.18% on an annualized basis producing an average annual return of 27.61%. Currently, Amphenol has a market capitalization of $211.72 billion.",
+      "url": "https://www.benzinga.com/news/26/08/60970921/1000-invested-amphenol-10-years-ago-would-be-worth-much-today",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "APH"
+      ],
+      "created_at": "2026-08-05T20:15:31Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Strong 10-year outperformance with 27.61% annual returns significantly exceeds market expectations."
+    },
+    {
+      "id": "60965945",
+      "headline": "Citigroup Maintains Neutral on Federal Realty Investment, Raises Price Target to $130",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/60965945/citigroup-maintains-neutral-federal-realty-investment-raises-price-target-130",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "FRT"
+      ],
+      "created_at": "2026-08-05T19:09:49Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Price target raise signals improved outlook despite neutral rating stance."
+    },
+    {
+      "id": "60929620",
+      "headline": "Did the Coldcard Hack Just Hand Spot Bitcoin ETFs Their Strongest Bull Case Yet?",
+      "summary": "The Coldcard hack is reshaping the Bitcoin custody debate; Bloomberg&39;s Eric Balchunas says it could drive more investors to spot Bitcoin ETFs.",
+      "url": "https://www.benzinga.com/etfs/specialty-etfs/26/08/60929620/coldcard-hack-investors-spot-bitcoin-etfs",
+      "author": "Chandrima Sanyal",
+      "source": "benzinga",
+      "symbols": [
+        "ARKB",
+        "BITB",
+        "BNY",
+        "BTC",
+        "BTCO",
+        "BTCW",
+        "BTGO",
+        "COIN",
+        "EZBC",
+        "FBTC",
+        "GBTC",
+        "GEMI",
+        "HODL",
+        "IBIT"
+      ],
+      "created_at": "2026-08-04T20:12:19Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Coldcard hack may drive institutional investors to safer spot Bitcoin ETFs as custody solution."
+    },
+    {
+      "id": "60924914",
+      "headline": "Mizuho Maintains Neutral on Valero Energy, Raises Price Target to $300",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/60924914/mizuho-maintains-neutral-valero-energy-raises-price-target-300",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "VLO"
+      ],
+      "created_at": "2026-08-04T18:51:54Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Price target raise to $300 signals analyst confidence despite neutral rating."
+    },
+    {
+      "id": "60924769",
+      "headline": "JP Morgan Maintains Overweight on Bank of New York Mellon, Raises Price Target to $159",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/60924769/jp-morgan-maintains-overweight-bank-new-york-mellon-raises-price-target-159",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "BNY"
+      ],
+      "created_at": "2026-08-04T18:48:46Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "JP Morgan maintains overweight rating and raises price target, signaling confidence in BNY Mellon's prospects."
+    },
+    {
+      "id": "60898091",
+      "headline": "'Trump administration drafting ban on Chinese data center devices, sources say' - Reuters Exclusive",
+      "summary": "",
+      "url": "https://www.benzinga.com/quote/OCC",
+      "author": "Benzinga News-desk",
+      "source": "benzinga",
+      "symbols": [
+        "AAOI",
+        "APH",
+        "CIEN",
+        "COHR",
+        "FN",
+        "FXI",
+        "GLW",
+        "LITE",
+        "MXL",
+        "OCC",
+        "SPY"
+      ],
+      "created_at": "2026-08-04T10:07:18Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Ban on Chinese data center devices would restrict supply chain options and increase costs for US tech companies."
+    },
+    {
+      "id": "60904497",
+      "headline": "Galaxy Digital Announces Strategic Collaboration With BNY To Support Staking On BNY's Digital Asset Custody Platform, Subject To Regulatory Review",
+      "summary": "",
+      "url": "https://www.benzinga.com/quote/BNY",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "BNY",
+        "GLXY"
+      ],
+      "created_at": "2026-08-04T12:34:32Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Strategic partnership with major financial institution BNY expands Galaxy Digital's staking services and market reach."
+    },
+    {
+      "id": "60903836",
+      "headline": "Dick's Sporting, TransDigm, Steel Dynamics And A Financial Stock: CNBC\u2019s \u2018Final Trades\u2019",
+      "summary": "Stephen Weiss recommends DICK&39;S Sporting Goods, Inc. as a good investment. TransDigm Group, Apollo Global Management, and Steel Dynamics also favored.",
+      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/08/60903836/dicks-sporting-transdigm-steel-dynamics-and-a-financial-stock-cnbcs-final-trades",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "APO",
+        "DKS",
+        "STLD",
+        "TDG"
+      ],
+      "created_at": "2026-08-04T12:20:03Z",
+      "sentiment": "bull",
+      "confidence": 0.92,
+      "reason": "Multiple stocks recommended as good investments by analyst on CNBC"
+    },
+    {
+      "id": "60903492",
+      "headline": "Steel Dynamics Appoints CFO Theresa E. Wagler As President, CEO, Effective Jan. 1, 2027, Succeeding Mark D. Millett, Who Will Transition To Executive Chairman; Richard A. Poinsatte Named CFO, Succeedi",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/60903492/steel-dynamics-appoints-cfo-theresa-e-wagler-president-ceo-effective-jan-1-2027-succeeding-mark-d-mi",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "STLD"
+      ],
+      "created_at": "2026-08-04T12:09:50Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Leadership succession announcement is neither inherently positive nor negative for near-term stock performance."
+    },
+    {
+      "id": "60885479",
+      "headline": "Citigroup Maintains Buy on West Pharmaceutical Servs, Raises Price Target to $412",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/60885479/citigroup-maintains-buy-west-pharmaceutical-servs-raises-price-target-412",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "WST"
+      ],
+      "created_at": "2026-08-03T18:52:44Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains buy rating and raises price target, signaling confidence in stock upside."
+    },
+    {
+      "id": "60883624",
+      "headline": "TD Cowen Maintains Hold on Valero Energy, Raises Price Target to $350",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/60883624/td-cowen-maintains-hold-valero-energy-raises-price-target-350",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "VLO"
+      ],
+      "created_at": "2026-08-03T17:57:56Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Price target raise signals improved outlook despite maintaining Hold rating."
+    },
+    {
+      "id": "60881861",
+      "headline": "CNBC Halftime Report Final Trades: Dick's Sporting Goods, Transdigm Group, Apollo Global Management, Steel Dynamics",
+      "summary": "",
+      "url": "https://www.benzinga.com/quote/APO",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "APO",
+        "DKS",
+        "STLD",
+        "TDG"
+      ],
+      "created_at": "2026-08-03T17:01:40Z",
+      "sentiment": "neutral",
+      "confidence": 0.65,
+      "reason": "Final trades segment mentions multiple stocks without clear directional bias or fundamental news."
+    },
     {
       "id": "60875524",
       "headline": "Evercore ISI Group Maintains Underperform on Franklin Resources, Raises Price Target to $36",
@@ -15,7 +270,7 @@
       "created_at": "2026-08-03T14:28:24Z",
       "sentiment": "bear",
       "confidence": 0.75,
-      "reason": "Underperform rating maintained despite price target increase suggests limited upside potential."
+      "reason": "Underperform rating maintained despite price target increase suggests analyst sees limited upside."
     },
     {
       "id": "60865298",
@@ -35,7 +290,7 @@
       "created_at": "2026-08-03T09:45:24Z",
       "sentiment": "bull",
       "confidence": 0.75,
-      "reason": "Positive market movement and focus on accurate analyst picks suggests optimistic outlook."
+      "reason": "Positive market movement and focus on accurate analyst picks suggests confidence in selected stocks."
     },
     {
       "id": "60858683",
@@ -50,7 +305,7 @@
       "created_at": "2026-07-31T21:58:06Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "UBS maintains buy rating and raises price target, indicating positive outlook for Valero Energy stock."
+      "reason": "UBS maintains buy rating and raises price target, signaling positive outlook"
     },
     {
       "id": "60850178",
@@ -73,23 +328,8 @@
       ],
       "created_at": "2026-07-31T17:35:15Z",
       "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Whale alerts indicate large institutional activity, suggesting potential trading opportunities and market interest."
-    },
-    {
-      "id": "60847686",
-      "headline": "TD Cowen Maintains Hold on Humana, Raises Price Target to $370",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60847686/td-cowen-maintains-hold-humana-raises-price-target-370",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "HUM"
-      ],
-      "created_at": "2026-07-31T16:45:56Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Hold rating maintained despite price target increase suggests mixed outlook."
+      "confidence": 0.72,
+      "reason": "Whale activity alerts suggest large institutional interest and potential trading opportunities in consumer discretionary stocks."
     },
     {
       "id": "60840686",
@@ -104,7 +344,7 @@
       "created_at": "2026-07-31T14:21:38Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Wells Fargo maintains overweight rating and raises price target, indicating positive outlook on Valero Energy."
+      "reason": "Wells Fargo maintains overweight rating and raises price target, indicating positive outlook for Valero Energy."
     },
     {
       "id": "60834543",
@@ -119,7 +359,7 @@
       "created_at": "2026-07-31T12:26:15Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Overweight rating with raised price target indicates positive outlook for Valero Energy"
+      "reason": "Overweight rating maintained with price target increase signals strong positive outlook"
     },
     {
       "id": "60834436",
@@ -134,7 +374,7 @@
       "created_at": "2026-07-31T12:24:43Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "EPS and sales both significantly beat estimates, indicating strong operational performance."
+      "reason": "Strong EPS and revenue beats with significant sales outperformance indicate solid operational performance."
     },
     {
       "id": "60833106",
@@ -149,7 +389,7 @@
       "created_at": "2026-07-31T11:31:48Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Raised upper end of FY2026 FFO guidance, signaling improved operational performance"
+      "reason": "Raised upper end of FY2026 FFO guidance above consensus estimate, signaling improved operational outlook."
     },
     {
       "id": "60833093",
@@ -163,38 +403,8 @@
       ],
       "created_at": "2026-07-31T11:31:37Z",
       "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Federal Realty exceeded both FFO and sales estimates, demonstrating strong operational performance."
-    },
-    {
-      "id": "60832914",
-      "headline": "Barclays Maintains Equal-Weight on Humana, Raises Price Target to $407",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60832914/barclays-maintains-equal-weight-humana-raises-price-target-407",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "HUM"
-      ],
-      "created_at": "2026-07-31T11:28:31Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Price target raise signals analyst confidence in upside potential despite maintaining equal-weight rating."
-    },
-    {
-      "id": "60823666",
-      "headline": "UBS Maintains Neutral on Humana, Raises Price Target to $405",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60823666/ubs-maintains-neutral-humana-raises-price-target-405",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "HUM"
-      ],
-      "created_at": "2026-07-30T20:38:58Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "UBS raised price target to $405, indicating upside potential despite maintaining neutral rating."
+      "confidence": 0.92,
+      "reason": "FFO and sales both beat estimates, indicating strong operational performance"
     },
     {
       "id": "60822901",
@@ -209,7 +419,7 @@
       "created_at": "2026-07-30T20:27:51Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "UBS maintains buy rating and raises price target, indicating positive outlook for Amphenol stock."
+      "reason": "UBS maintains buy rating and raises price target, signaling positive outlook for Amphenol"
     },
     {
       "id": "60817303",
@@ -224,7 +434,7 @@
       "created_at": "2026-07-30T19:05:13Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Analyst maintains positive rating and raises price target, signaling confidence in stock upside"
+      "reason": "Outperform rating maintained with price target raised signals analyst confidence in upside potential."
     },
     {
       "id": "60815218",
@@ -239,7 +449,7 @@
       "created_at": "2026-07-30T18:19:59Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, signaling confidence in stock upside"
+      "reason": "Analyst maintains buy rating and raises price target, signaling positive outlook"
     },
     {
       "id": "60805734",
@@ -257,51 +467,6 @@
       "reason": "Analyst maintains buy rating and raises price target, signaling positive outlook"
     },
     {
-      "id": "60800712",
-      "headline": "Evercore ISI Group Upgrades Humana to Outperform, Raises Price Target to $480",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60800712/evercore-isi-group-upgrades-humana-outperform-raises-price-target-480",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "HUM"
-      ],
-      "created_at": "2026-07-30T13:54:35Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Upgrade to Outperform with raised price target signals analyst confidence in stock upside."
-    },
-    {
-      "id": "60800303",
-      "headline": "Guggenheim Maintains Buy on Humana, Raises Price Target to $471",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60800303/guggenheim-maintains-buy-humana-raises-price-target-471",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "HUM"
-      ],
-      "created_at": "2026-07-30T13:50:14Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, signaling confidence in stock upside."
-    },
-    {
-      "id": "60797634",
-      "headline": "US Insurer Humana Is Exiting More Medicare Advantage Plans in 2027\u2014 Here's Who Could Be Affected",
-      "summary": "Humana plans more Medicare Advantage plan exits in 2027 as it targets a 3% margin and reshapes its portfolio.",
-      "url": "https://www.benzinga.com/news/health-care/26/07/60797634/humana-medicare-advantage-plan-exits-2027",
-      "author": "Tanya Rawat",
-      "source": "benzinga",
-      "symbols": [
-        "HUM"
-      ],
-      "created_at": "2026-07-30T12:55:30Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Exit of Medicare Advantage plans signals business contraction and reduced revenue despite margin targeting."
-    },
-    {
       "id": "60796398",
       "headline": "Apple, Steel Dynamics, CBRE Group And More: CNBC\u2019s \u2018Final Trades\u2019",
       "summary": "Kevin Simpson chose Steel Dynamics as his final trade, supported by strong Q2 sales. Stephen Weiss recommended U.S. 10 Year Treasury, Joseph Terranova picked Apple ahead of earnings, and Bryn Talkington chose CBRE Group with better-than-expected earnings results.",
@@ -316,26 +481,7 @@
       "created_at": "2026-07-30T12:26:27Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Multiple analysts recommend stocks with positive catalysts: Steel Dynamics strong Q2, Apple pre-earnings optimism, CBRE better-than-expected results."
-    },
-    {
-      "id": "60794333",
-      "headline": "This Humana Analyst Is No Longer Bullish; Here Are Top 5 Downgrades For Thursday",
-      "summary": "Analysts change outlook on top names, including PAY, MAS, FVRR, HUM, and SITE. See their ratings and price targets on Benzinga&39;s analyst ratings page.",
-      "url": "https://www.benzinga.com/analyst-stock-ratings/downgrades/26/07/60794333/this-humana-analyst-is-no-longer-bullish-here-are-top-5-downgrades-for-thursday",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "FVRR",
-        "HUM",
-        "MAS",
-        "PAY",
-        "SITE"
-      ],
-      "created_at": "2026-07-30T11:35:22Z",
-      "sentiment": "bear",
-      "confidence": 0.95,
-      "reason": "Analyst downgrade on Humana indicates reduced confidence in the stock's near-term prospects."
+      "reason": "Multiple positive picks based on strong earnings and sales performance across mentioned stocks."
     },
     {
       "id": "60790932",
@@ -350,172 +496,7 @@
       "created_at": "2026-07-30T10:31:34Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Strong Q2 earnings beat with EPS exceeding estimate by 24% and sales surpassing by 14%"
-    },
-    {
-      "id": "60789605",
-      "headline": "Raymond James Downgrades Humana to Market Perform",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60789605/raymond-james-downgrades-humana-market-perform",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "HUM"
-      ],
-      "created_at": "2026-07-30T10:02:06Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Downgrade from Raymond James signals reduced confidence in Humana's near-term performance."
-    },
-    {
-      "id": "60771950",
-      "headline": "9 Consumer Discretionary Stocks With Whale Alerts In Today\u2019s Session",
-      "summary": "This whale alert can help traders discover the next big trading opportunities. Whales are entities with large sums of money and we track their transactions here at Benzinga on our options activity scanner. Traders often",
-      "url": "https://www.benzinga.com/markets/options/26/07/60771950/9-consumer-discretionary-stocks-whale-alerts-today-s-session",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "AMZN",
-        "BABA",
-        "BKNG",
-        "CVNA",
-        "GME",
-        "HD",
-        "RH",
-        "ROST",
-        "TSLA"
-      ],
-      "created_at": "2026-07-29T17:35:16Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Whale alerts indicate large institutional activity, suggesting potential trading opportunities and market confidence."
-    },
-    {
-      "id": "60771129",
-      "headline": "Oil Spikes 7%, Nasdaq 100 Sinks Before Fed: Stock Market Today",
-      "summary": "Crude surges 7% as Trump vows strikes on Iran and stocks slide ahead of the Fed&39;s decision, with earnings crushing Parsons, Lennox, Watsco and Vertiv.",
-      "url": "https://www.benzinga.com/markets/equities/26/07/60771129/oil-surge-us-iran-trump-nasdaq-100-drops-fed-interest-rate-decision-markets-wednesday",
-      "author": "Piero Cingari",
-      "source": "benzinga",
-      "symbols": [
-        "AAON",
-        "ADP",
-        "AMAT",
-        "APH",
-        "AVTR",
-        "CTSH",
-        "DIA",
-        "EXLS",
-        "GRMN",
-        "INTC",
-        "IWM",
-        "KLAC",
-        "LAD",
-        "LII",
-        "MANH",
-        "MDLZ",
-        "META",
-        "MSFT",
-        "MU",
-        "PBW",
-        "PSN",
-        "QQQ",
-        "SKHY",
-        "SNDK",
-        "V",
-        "VFC",
-        "VOO",
-        "VRT",
-        "WSO",
-        "XLB",
-        "XLE",
-        "XLI",
-        "XLK",
-        "XLP",
-        "XLV"
-      ],
-      "created_at": "2026-07-29T17:16:30Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Nasdaq 100 sinking, negative earnings for multiple stocks outweigh oil spike gains."
-    },
-    {
-      "id": "60770735",
-      "headline": "Humana's Strong Quarter Fails To Impress",
-      "summary": "HUM stock drops premarket: Humana beats Q2 estimates, but fails to impress as industry peers raise expectations.",
-      "url": "https://www.benzinga.com/markets/earnings/26/07/60770735/humanas-strong-quarter-fails-to-impress",
-      "author": "Vandana Singh",
-      "source": "benzinga",
-      "symbols": [
-        "HUM",
-        "UNH"
-      ],
-      "created_at": "2026-07-29T17:05:20Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Stock dropped despite beating Q2 estimates, indicating market disappointment versus peer performance."
-    },
-    {
-      "id": "60770549",
-      "headline": "CNBC Halftime Report Final Trades: Steel Dynamics, Apple, CBRE Group",
-      "summary": "",
-      "url": "https://www.benzinga.com/quote/STLD",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "AAPL",
-        "CBRE",
-        "STLD"
-      ],
-      "created_at": "2026-07-29T17:01:13Z",
-      "sentiment": "neutral",
-      "confidence": 0.45,
-      "reason": "Final trades segment mentions multiple stocks without clear directional bias or specific news."
-    },
-    {
-      "id": "60767467",
-      "headline": "Wells Fargo Maintains Overweight on Nucor, Raises Price Target to $297",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60767467/wells-fargo-maintains-overweight-nucor-raises-price-target-297",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "NUE"
-      ],
-      "created_at": "2026-07-29T15:49:11Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Price target raise and overweight rating maintain positive outlook for Nucor stock"
-    },
-    {
-      "id": "60761313",
-      "headline": "BMO Capital Maintains Outperform on Nucor, Raises Price Target to $295",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60761313/bmo-capital-maintains-outperform-nucor-raises-price-target-295",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "NUE"
-      ],
-      "created_at": "2026-07-29T13:59:20Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains positive rating and raises price target, signaling confidence in stock"
-    },
-    {
-      "id": "60757759",
-      "headline": "Barclays Maintains Overweight on Nucor, Raises Price Target to $295",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60757759/barclays-maintains-overweight-nucor-raises-price-target-295",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "NUE"
-      ],
-      "created_at": "2026-07-29T12:26:38Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains overweight rating and raises price target, indicating positive outlook for Nucor stock."
+      "reason": "EPS significantly beat estimates 24% and sales exceeded by 14%, strong operational performance."
     }
   ]
 }
