@@ -1,8 +1,15 @@
 {
-  "timestamp": "2026-08-05T22:35:12Z",
+  "timestamp": "2026-08-07T01:04:22Z",
   "mode": "post_close",
-  "orders_placed": [],
+  "orders_placed": [
+    {
+      "action": "SELL",
+      "symbol": "FRT",
+      "qty": 8,
+      "status": "submitted"
+    }
+  ],
   "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 59.71
+  "cash_pct_after": 61.1
 }
