@@ -1,7 +1,126 @@
 {
-  "generated_at": "2026-08-06T15:59:32Z",
+  "generated_at": "2026-08-10T14:34:42Z",
   "article_count": 30,
   "articles": [
+    {
+      "id": "61077553",
+      "headline": "$1000 Invested In Jabil 15 Years Ago Would Be Worth This Much Today",
+      "summary": "Jabil (NYSE:JBL) has outperformed the market over the past 15 years by 9.32% on an annualized basis producing an average annual return of 22.58%. Currently, Jabil has a market capitalization of $36.47 billion.  Buying",
+      "url": "https://www.benzinga.com/news/26/08/61077553/1000-invested-jabil-15-years-ago-would-be-worth-much-today",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "JBL"
+      ],
+      "created_at": "2026-08-10T14:30:18Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Strong long-term outperformance with 22.58% annualized returns significantly exceeding market"
+    },
+    {
+      "id": "61072430",
+      "headline": "Simon Property Earnings Are Imminent; These Most Accurate Analysts Revise Forecasts Ahead Of Earnings Call",
+      "summary": "Simon Property Group, Inc (NYSE: SPG) to report Q2 earnings on 8/10, expected to be $1.57/share. Analysts maintain various ratings for the stock.",
+      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/08/61072430/simon-property-earnings-are-imminent-these-most-accurate-analysts-revise-forecasts-ahead-of-earnings-call-2",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "SPG"
+      ],
+      "created_at": "2026-08-10T12:22:19Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Earnings announcement with maintained analyst ratings shows no directional bias."
+    },
+    {
+      "id": "61071961",
+      "headline": "This NetApp Analyst Is No Longer Bearish; Here Are Top 5 Upgrades For Monday",
+      "summary": "Wall Street analysts upgraded PTGX, LECO, and JHX. See analyst ratings and price targets for these stocks.",
+      "url": "https://www.benzinga.com/analyst-stock-ratings/upgrades/26/08/61071961/this-netapp-analyst-is-no-longer-bearish-here-are-top-5-upgrades-for-monday",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "DKS",
+        "JHX",
+        "LECO",
+        "NTAP",
+        "PTGX",
+        "PZZA",
+        "RGNX"
+      ],
+      "created_at": "2026-08-10T12:07:46Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "NetApp analyst upgrade from bearish stance signals improved outlook; multiple upgrades indicate positive momentum."
+    },
+    {
+      "id": "61070346",
+      "headline": "Morgan Stanley Upgrades NetApp to Equal-Weight, Raises Price Target to $173",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/61070346/morgan-stanley-upgrades-netapp-equal-weight-raises-price-target-173",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "NTAP"
+      ],
+      "created_at": "2026-08-10T11:30:29Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Price target raise signals positive outlook despite neutral rating weight"
+    },
+    {
+      "id": "61064247",
+      "headline": "Simon Property Group Stock: What to Expect Ahead of Q2 Earnings",
+      "summary": "This Simon Property Group stock forecast explains what to expect ahead of its second quarter earnings on Monday this week",
+      "url": "https://www.benzinga.com/markets/equities/26/08/61064247/simon-property-group-stock-what-to-expect-ahead-of-q2-earnings",
+      "author": "Crispus Nyaga",
+      "source": "benzinga",
+      "symbols": [
+        "NVDA",
+        "SPG",
+        "VNQ"
+      ],
+      "created_at": "2026-08-09T21:21:36Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Article is informational about upcoming earnings with no clear positive or negative outlook indicated."
+    },
+    {
+      "id": "61016171",
+      "headline": "If You Invested $100 In Nucor Stock 10 Years Ago, You Would Have This Much Today",
+      "summary": "Nucor (NYSE:NUE) has outperformed the market over the past 10 years by 4.47% on an annualized basis producing an average annual return of 17.92%. Currently, Nucor has a market capitalization of $63.05 billion.  Buying",
+      "url": "https://www.benzinga.com/news/26/08/61016171/if-you-invested-100-nucor-stock-10-years-ago-you-would-have-much-today",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "NUE"
+      ],
+      "created_at": "2026-08-06T20:00:36Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Nucor significantly outperformed market with 17.92% annualized returns over 10 years."
+    },
+    {
+      "id": "61013105",
+      "headline": "7 Back-to-School Stocks to Buy Now",
+      "summary": "As we head into the back half of summer, a lot of stocks start to lose steam. Beginning around the second week of August, the seasonal picture has historically turned more bearish than bullish.    But one seasonal trend",
+      "url": "https://www.benzinga.com/opinion/26/08/61013105/7-back-to-school-stocks-to-buy-now",
+      "author": "Tom Gentile",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "BBY",
+        "FIVE",
+        "ROST",
+        "TGT",
+        "TJX",
+        "WMT"
+      ],
+      "created_at": "2026-08-06T18:42:51Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Article recommends buying back-to-school stocks, indicating positive outlook for sector"
+    },
     {
       "id": "60992183",
       "headline": "Amphenol Announces 2-For-1 Stock Split, Effective August 17",
@@ -15,7 +134,7 @@
       "created_at": "2026-08-06T12:14:38Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Stock split typically signals management confidence and improves accessibility for retail investors."
+      "reason": "Stock splits are generally viewed positively as they increase accessibility and signal management confidence in future growth."
     },
     {
       "id": "60991915",
@@ -29,8 +148,8 @@
       ],
       "created_at": "2026-08-06T12:10:12Z",
       "sentiment": "bull",
-      "confidence": 0.72,
-      "reason": "Strategic acquisition expands NetApp's cloud data management capabilities and market reach."
+      "confidence": 0.75,
+      "reason": "Strategic acquisition expands NetApp's product portfolio and capabilities in software solutions."
     },
     {
       "id": "60977473",
@@ -45,7 +164,7 @@
       "created_at": "2026-08-05T21:15:49Z",
       "sentiment": "bull",
       "confidence": 0.92,
-      "reason": "Strong 10-year outperformance with 15.33% annualized returns demonstrates consistent market beating performance."
+      "reason": "Stock outperformed market with strong 15.33% annualized returns over 10 years."
     },
     {
       "id": "60970921",
@@ -60,22 +179,7 @@
       "created_at": "2026-08-05T20:15:31Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Strong 10-year outperformance with 27.61% annual returns significantly exceeds market expectations."
-    },
-    {
-      "id": "60965945",
-      "headline": "Citigroup Maintains Neutral on Federal Realty Investment, Raises Price Target to $130",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/60965945/citigroup-maintains-neutral-federal-realty-investment-raises-price-target-130",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "FRT"
-      ],
-      "created_at": "2026-08-05T19:09:49Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Price target raise signals improved outlook despite neutral rating stance."
+      "reason": "Strong 10-year outperformance with 27.61% annualized returns and massive market cap growth."
     },
     {
       "id": "60929620",
@@ -103,7 +207,7 @@
       "created_at": "2026-08-04T20:12:19Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Coldcard hack may drive institutional investors to safer spot Bitcoin ETFs as custody solution."
+      "reason": "Coldcard hack may drive investors toward spot Bitcoin ETFs as safer custody alternative."
     },
     {
       "id": "60924914",
@@ -118,7 +222,7 @@
       "created_at": "2026-08-04T18:51:54Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Price target raise to $300 signals analyst confidence despite neutral rating."
+      "reason": "Price target raised to $300 despite neutral rating suggests upside potential and improved outlook."
     },
     {
       "id": "60924769",
@@ -133,7 +237,7 @@
       "created_at": "2026-08-04T18:48:46Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "JP Morgan maintains overweight rating and raises price target, signaling confidence in BNY Mellon's prospects."
+      "reason": "JP Morgan maintains overweight rating and raises price target, indicating positive outlook."
     },
     {
       "id": "60898091",
@@ -158,7 +262,7 @@
       "created_at": "2026-08-04T10:07:18Z",
       "sentiment": "bear",
       "confidence": 0.85,
-      "reason": "Ban on Chinese data center devices would restrict supply chain options and increase costs for US tech companies."
+      "reason": "Potential ban on Chinese data center devices could disrupt supply chains and increase costs for US tech companies."
     },
     {
       "id": "60904497",
@@ -174,7 +278,7 @@
       "created_at": "2026-08-04T12:34:32Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Strategic partnership with major financial institution BNY expands Galaxy Digital's staking services and market reach."
+      "reason": "Strategic partnership with major bank BNY expands staking services and custody platform reach."
     },
     {
       "id": "60903836",
@@ -191,8 +295,8 @@
       ],
       "created_at": "2026-08-04T12:20:03Z",
       "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Multiple stocks recommended as good investments by analyst on CNBC"
+      "confidence": 0.85,
+      "reason": "Multiple stocks recommended as good investments by analyst Stephen Weiss"
     },
     {
       "id": "60903492",
@@ -206,8 +310,8 @@
       ],
       "created_at": "2026-08-04T12:09:50Z",
       "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Leadership succession announcement is neither inherently positive nor negative for near-term stock performance."
+      "confidence": 0.75,
+      "reason": "Leadership transition announced; no information on strategic direction or financial impact provided."
     },
     {
       "id": "60885479",
@@ -222,7 +326,7 @@
       "created_at": "2026-08-03T18:52:44Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, signaling confidence in stock upside."
+      "reason": "Analyst maintains buy rating and raises price target, signaling confidence in stock appreciation."
     },
     {
       "id": "60883624",
@@ -237,7 +341,7 @@
       "created_at": "2026-08-03T17:57:56Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Price target raise signals improved outlook despite maintaining Hold rating."
+      "reason": "Price target raise indicates improved outlook despite maintaining Hold rating."
     },
     {
       "id": "60881861",
@@ -255,7 +359,7 @@
       "created_at": "2026-08-03T17:01:40Z",
       "sentiment": "neutral",
       "confidence": 0.65,
-      "reason": "Final trades segment mentions multiple stocks without clear directional bias or fundamental news."
+      "reason": "Final trades segment mentions multiple stocks without directional bias or specific price targets."
     },
     {
       "id": "60875524",
@@ -270,7 +374,7 @@
       "created_at": "2026-08-03T14:28:24Z",
       "sentiment": "bear",
       "confidence": 0.75,
-      "reason": "Underperform rating maintained despite price target increase suggests analyst sees limited upside."
+      "reason": "Underperform rating indicates negative outlook despite price target increase."
     },
     {
       "id": "60865298",
@@ -288,9 +392,9 @@
         "QCOM"
       ],
       "created_at": "2026-08-03T09:45:24Z",
-      "sentiment": "bull",
+      "sentiment": "neutral",
       "confidence": 0.75,
-      "reason": "Positive market movement and focus on accurate analyst picks suggests confidence in selected stocks."
+      "reason": "Article highlights accurate analysts' picks without revealing specific recommendations or performance data."
     },
     {
       "id": "60858683",
@@ -305,7 +409,7 @@
       "created_at": "2026-07-31T21:58:06Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "UBS maintains buy rating and raises price target, signaling positive outlook"
+      "reason": "UBS maintains buy rating and raises price target, signaling confidence in stock appreciation."
     },
     {
       "id": "60850178",
@@ -328,8 +432,8 @@
       ],
       "created_at": "2026-07-31T17:35:15Z",
       "sentiment": "bull",
-      "confidence": 0.72,
-      "reason": "Whale activity alerts suggest large institutional interest and potential trading opportunities in consumer discretionary stocks."
+      "confidence": 0.75,
+      "reason": "Whale activity tracking suggests large institutional interest in consumer discretionary stocks."
     },
     {
       "id": "60840686",
@@ -344,7 +448,7 @@
       "created_at": "2026-07-31T14:21:38Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Wells Fargo maintains overweight rating and raises price target, indicating positive outlook for Valero Energy."
+      "reason": "Overweight rating and price target increase signals strong bullish outlook"
     },
     {
       "id": "60834543",
@@ -359,7 +463,7 @@
       "created_at": "2026-07-31T12:26:15Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Overweight rating maintained with price target increase signals strong positive outlook"
+      "reason": "Overweight rating and raised price target indicate positive outlook for Valero Energy stock."
     },
     {
       "id": "60834436",
@@ -374,37 +478,7 @@
       "created_at": "2026-07-31T12:24:43Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Strong EPS and revenue beats with significant sales outperformance indicate solid operational performance."
-    },
-    {
-      "id": "60833106",
-      "headline": "Federal Realty Investment Raises FY2026 FFO Guidance from $7.46-$7.55 to $7.48-$7.56 vs $7.52 Est",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60833106/federal-realty-investment-raises-fy2026-ffo-guidance-7-46-7-55-7-48-7-56-vs-7-52-est",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "FRT"
-      ],
-      "created_at": "2026-07-31T11:31:48Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Raised upper end of FY2026 FFO guidance above consensus estimate, signaling improved operational outlook."
-    },
-    {
-      "id": "60833093",
-      "headline": "Federal Realty Investment Q2 FFO $1.88 Beats $1.85 Estimate, Sales $335.706M Beat $332.647M Estimate",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/earnings/26/07/60833093/federal-realty-investment-q2-ffo-1-88-beats-1-85-estimate-sales-335-706m-beat-332-647m-estimate",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "FRT"
-      ],
-      "created_at": "2026-07-31T11:31:37Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "FFO and sales both beat estimates, indicating strong operational performance"
+      "reason": "EPS and sales significantly beat estimates, demonstrating strong financial performance."
     },
     {
       "id": "60822901",
@@ -419,7 +493,7 @@
       "created_at": "2026-07-30T20:27:51Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "UBS maintains buy rating and raises price target, signaling positive outlook for Amphenol"
+      "reason": "Buy rating maintained with price target increase signals analyst confidence in stock appreciation."
     },
     {
       "id": "60817303",
@@ -434,69 +508,7 @@
       "created_at": "2026-07-30T19:05:13Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Outperform rating maintained with price target raised signals analyst confidence in upside potential."
-    },
-    {
-      "id": "60815218",
-      "headline": "Citigroup Maintains Buy on Amphenol, Raises Price Target to $210",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60815218/citigroup-maintains-buy-amphenol-raises-price-target-210",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "APH"
-      ],
-      "created_at": "2026-07-30T18:19:59Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, signaling positive outlook"
-    },
-    {
-      "id": "60805734",
-      "headline": "Truist Securities Maintains Buy on Amphenol, Raises Price Target to $215",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/07/60805734/truist-securities-maintains-buy-amphenol-raises-price-target-215",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "APH"
-      ],
-      "created_at": "2026-07-30T15:07:01Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, signaling positive outlook"
-    },
-    {
-      "id": "60796398",
-      "headline": "Apple, Steel Dynamics, CBRE Group And More: CNBC\u2019s \u2018Final Trades\u2019",
-      "summary": "Kevin Simpson chose Steel Dynamics as his final trade, supported by strong Q2 sales. Stephen Weiss recommended U.S. 10 Year Treasury, Joseph Terranova picked Apple ahead of earnings, and Bryn Talkington chose CBRE Group with better-than-expected earnings results.",
-      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/07/60796398/apple-steel-dynamics-cbre-group-and-more-cnbcs-final-trades",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "AAPL",
-        "CBRE",
-        "STLD"
-      ],
-      "created_at": "2026-07-30T12:26:27Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Multiple positive picks based on strong earnings and sales performance across mentioned stocks."
-    },
-    {
-      "id": "60790932",
-      "headline": "Valero Energy Q2 Adj. EPS $12.54 Beats $10.12 Estimate, Sales $44.476B Beat $39.059B Estimate",
-      "summary": "",
-      "url": "https://www.benzinga.com/quote/VLO",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "VLO"
-      ],
-      "created_at": "2026-07-30T10:31:34Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "EPS significantly beat estimates 24% and sales exceeded by 14%, strong operational performance."
+      "reason": "Analyst maintains positive rating and raises price target, indicating confidence in stock appreciation."
     }
   ]
 }
