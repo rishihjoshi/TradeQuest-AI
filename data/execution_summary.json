@@ -1,21 +1,20 @@
 {
-  "timestamp": "2026-08-07T22:05:50Z",
-  "mode": "post_close",
-  "orders_placed": [],
+  "timestamp": "2026-08-10T14:39:28Z",
+  "mode": "market_open",
+  "orders_placed": [
+    {
+      "action": "SELL",
+      "symbol": "CSX",
+      "qty": 19,
+      "status": "submitted"
+    }
+  ],
   "orders_skipped": [
     {
-      "symbol": "FFIV",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "CSX",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "CASY",
+      "symbol": "SPG",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 71.24
+  "cash_pct_after": 79.36
 }
