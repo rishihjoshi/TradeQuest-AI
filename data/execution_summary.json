@@ -1,20 +1,8 @@
 {
-  "timestamp": "2026-08-10T14:39:28Z",
-  "mode": "market_open",
-  "orders_placed": [
-    {
-      "action": "SELL",
-      "symbol": "CSX",
-      "qty": 19,
-      "status": "submitted"
-    }
-  ],
-  "orders_skipped": [
-    {
-      "symbol": "SPG",
-      "reason": "blocked by agent approval or risk gate"
-    }
-  ],
+  "timestamp": "2026-08-17T21:50:27Z",
+  "mode": "post_close",
+  "orders_placed": [],
+  "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 79.36
+  "cash_pct_after": 100.0
 }
