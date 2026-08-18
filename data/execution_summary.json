@@ -1,41 +1,70 @@
 {
-  "timestamp": "2026-08-18T16:01:45Z",
+  "timestamp": "2026-08-18T16:12:12Z",
   "mode": "post_close",
   "orders_placed": [
     {
       "action": "BUY",
       "symbol": "VLO",
-      "qty": 0.726668,
+      "qty": 0.725826,
       "status": "dry_run"
     },
     {
       "action": "BUY",
       "symbol": "MPC",
-      "qty": 0.601625,
+      "qty": 0.602391,
       "status": "dry_run"
     },
     {
       "action": "BUY",
       "symbol": "PSX",
-      "qty": 0.938466,
+      "qty": 0.937934,
       "status": "dry_run"
     },
     {
       "action": "BUY",
       "symbol": "BNY",
-      "qty": 0.813215,
+      "qty": 0.813761,
       "status": "dry_run"
     },
     {
       "action": "BUY",
-      "symbol": "KEYS",
-      "qty": 2.835968,
+      "symbol": "NUE",
+      "qty": 0.587303,
+      "status": "dry_run"
+    },
+    {
+      "action": "BUY",
+      "symbol": "CF",
+      "qty": 0.865421,
+      "status": "dry_run"
+    },
+    {
+      "action": "BUY",
+      "symbol": "ROST",
+      "qty": 0.996739,
+      "status": "dry_run"
+    },
+    {
+      "action": "BUY",
+      "symbol": "NTRS",
+      "qty": 0.984271,
+      "status": "dry_run"
+    },
+    {
+      "action": "BUY",
+      "symbol": "CASY",
+      "qty": 1.092527,
       "status": "dry_run"
     }
   ],
-  "orders_skipped": [],
+  "orders_skipped": [
+    {
+      "symbol": "JBL",
+      "reason": "blocked by agent approval or risk gate"
+    }
+  ],
   "errors": [],
-  "cash_pct_after": 32.25,
+  "cash_pct_after": 32.29,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
