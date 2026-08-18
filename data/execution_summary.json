@@ -1,41 +1,41 @@
 {
-  "timestamp": "2026-08-18T15:55:06Z",
+  "timestamp": "2026-08-18T16:01:45Z",
   "mode": "post_close",
   "orders_placed": [
     {
       "action": "BUY",
       "symbol": "VLO",
-      "qty": 1.0,
+      "qty": 0.726668,
       "status": "dry_run"
     },
     {
       "action": "BUY",
       "symbol": "MPC",
-      "qty": 1.0,
+      "qty": 0.601625,
       "status": "dry_run"
     },
     {
       "action": "BUY",
       "symbol": "PSX",
-      "qty": 1.0,
+      "qty": 0.938466,
       "status": "dry_run"
     },
     {
       "action": "BUY",
       "symbol": "BNY",
-      "qty": 1.0,
+      "qty": 0.813215,
       "status": "dry_run"
     },
     {
       "action": "BUY",
-      "symbol": "NUE",
-      "qty": 1.0,
+      "symbol": "KEYS",
+      "qty": 2.835968,
       "status": "dry_run"
     }
   ],
   "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 32.24,
+  "cash_pct_after": 32.25,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
