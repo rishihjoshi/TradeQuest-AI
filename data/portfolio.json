@@ -5,15 +5,15 @@
     "account_name": "TradeQuest Paper",
     "mode": "alpaca",
     "initial_capital": 9864.11,
-    "last_rebalance": "2026-08-17",
+    "last_rebalance": "2026-08-18",
     "next_rebalance": "2026-09-01",
     "market_regime": "bull",
-    "regime_confidence": 0.9,
+    "regime_confidence": 0.88,
     "regime_indicators": {
-      "vix": 12.4,
+      "vix": 12.7,
       "ma200_trend": "positive",
       "breadth_pct": 0.62,
-      "description": "Strong uptrend. SPY above 200-MA, realized vol ~12."
+      "description": "Strong uptrend. SPY above 200-MA, realized vol ~13."
     },
     "equity_exposure": 0.95,
     "cash_target": 0.05,
@@ -37,7 +37,7 @@
     "avg_loss_pct": -3.3,
     "sharpe_ratio": 0.3,
     "max_drawdown_pct": 11.96,
-    "last_updated": "2026-08-17T21:50:27Z"
+    "last_updated": "2026-08-18T14:08:00Z"
   },
   "filter_status": {
     "momentum": {
@@ -377,6 +377,10 @@
     {
       "date": "Aug 17",
       "value": 10000
+    },
+    {
+      "date": "Aug 18",
+      "value": 10000
     }
   ],
   "spy_curve": [
@@ -669,8 +673,8 @@
       "value": 10708
     },
     {
-      "date": "Aug 17",
-      "value": 10703
+      "date": "Aug 18",
+      "value": 10654
     }
   ],
   "benchmark": [
@@ -963,8 +967,8 @@
       "value": 10708
     },
     {
-      "date": "Aug 17",
-      "value": 10703
+      "date": "Aug 18",
+      "value": 10654
     }
   ],
   "holdings": [],
