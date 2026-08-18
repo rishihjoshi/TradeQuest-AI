@@ -249,3 +249,46 @@ class TestKeepSetSemantics(unittest.TestCase):
         sweep = update.plan_residual_sweep(holdings, {"ROST"}, 3_000.0, 9_995.91,
                                            {"ROST": 237.99})
         self.assertTrue(sweep, "leftover cash must be able to reach a held name")
+
+
+# ════════════════════════════════════════════════════════════════════════════
+# Bug 4 — layered planners produced two orders for one symbol
+# ════════════════════════════════════════════════════════════════════════════
+class TestOrderConsolidation(unittest.TestCase):
+    """Top-up + sweep for the same name became two orders; the second was dropped.
+
+    The idempotency guard is right to fire — it stops duplicate submissions from concurrent
+    runs. The planner should simply not produce duplicates. On 2026-08-18 the guard dropped six
+    such orders and stranded ~$257.
+    """
+
+    def test_repeated_symbols_are_summed(self):
+        merged = dict(update.consolidate_orders([("VLO", 0.7258), ("VLO", 0.1234)]))
+        self.assertAlmostEqual(merged["VLO"], 0.8492, places=4)
+
+    def test_one_entry_per_symbol(self):
+        out = update.consolidate_orders([("VLO", 1), ("MPC", 1), ("VLO", 1), ("VLO", 1)])
+        self.assertEqual(len(out), 2)
+        self.assertEqual([s for s, _ in out], ["VLO", "MPC"], "first-seen order is preserved")
+
+    def test_distinct_symbols_are_untouched(self):
+        orders = [("VLO", 0.7), ("MPC", 0.6), ("PSX", 0.9)]
+        self.assertEqual(update.consolidate_orders(orders), orders)
+
+    def test_empty_input_is_handled(self):
+        self.assertEqual(update.consolidate_orders([]), [])
+
+    def test_zero_and_negative_totals_are_dropped(self):
+        self.assertEqual(update.consolidate_orders([("VLO", 0.0)]), [])
+        self.assertEqual(update.consolidate_orders([("VLO", 1.0), ("VLO", -1.0)]), [])
+
+    def test_the_live_duplicate_set_collapses_to_nine_orders(self):
+        """8 top-ups + 1 slot fill + a 6-name sweep = 15 raw, 9 real."""
+        topups = [(s, 0.8) for s in ("VLO", "MPC", "PSX", "BNY", "NUE", "CF", "ROST", "NTRS")]
+        fills = [("CASY", 1.09)]
+        sweep = [(s, 0.05) for s in ("VLO", "MPC", "PSX", "BNY", "NUE", "CF")]
+        out = update.consolidate_orders(topups + fills + sweep)
+        self.assertEqual(len(out), 9)
+        self.assertAlmostEqual(dict(out)["VLO"], 0.85, places=4,
+                               msg="the swept remainder must survive, not be dropped")
+        self.assertAlmostEqual(dict(out)["ROST"], 0.8, places=4)
