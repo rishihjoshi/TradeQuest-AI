@@ -148,3 +148,104 @@ class TestDeploymentOrderBudget(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+# ════════════════════════════════════════════════════════════════════════════
+# Bug 3 — the sweep double-counted room against orders already planned
+# ════════════════════════════════════════════════════════════════════════════
+class TestSweepAccountsForPending(unittest.TestCase):
+    """The 2026-08-18 shadow run queued VLO, MPC, PSX and BNY twice.
+
+    The idempotency guard absorbed all four, so nothing reached the broker — but an execution
+    guard should not be covering for a planning error, and on a run where those symbols had no
+    prior order the duplicates would have gone through.
+    """
+
+    PV = 9_995.91
+
+    @staticmethod
+    def _h(sym, mv, price):
+        return {"symbol": sym, "shares": 2, "current_price": price, "market_value": mv,
+                "sector": "Energy"}
+
+    def test_a_name_already_being_topped_up_is_not_re_proposed(self):
+        holdings = [self._h("VLO", 696.73, 348.64)]
+        topup = update.size_shares(949.61 - 696.73, 348.64)
+        sweep = update.plan_residual_sweep(
+            holdings, {"VLO"}, 3_224.54, self.PV, {"VLO": 348.64},
+            pending=[("VLO", topup)])
+        placed = 696.73 + topup * 348.64 + sum(q * 348.64 for _, q in sweep)
+        self.assertLessEqual(placed, self.PV * update.MAX_POSITION_PCT + 0.01,
+                             "top-up plus sweep must not exceed the position cap")
+
+    def test_a_position_already_planned_to_cap_gets_no_sweep(self):
+        holdings = [self._h("VLO", 696.73, 348.64)]
+        to_cap = update.size_shares(self.PV * update.MAX_POSITION_PCT - 696.73, 348.64)
+        self.assertEqual(update.plan_residual_sweep(
+            holdings, {"VLO"}, 3_224.54, self.PV, {"VLO": 348.64},
+            pending=[("VLO", to_cap)]), [])
+
+    def test_without_pending_the_sweep_still_works(self):
+        """Backwards compatible: omitting `pending` behaves as before."""
+        holdings = [self._h("VLO", 696.73, 348.64)]
+        self.assertTrue(update.plan_residual_sweep(
+            holdings, {"VLO"}, 3_224.54, self.PV, {"VLO": 348.64}))
+
+    def test_pending_for_an_unrelated_symbol_does_not_block(self):
+        holdings = [self._h("VLO", 696.73, 348.64)]
+        self.assertTrue(update.plan_residual_sweep(
+            holdings, {"VLO"}, 3_224.54, self.PV, {"VLO": 348.64, "MPC": 364.48},
+            pending=[("MPC", 1.0)]))
+
+
+# ════════════════════════════════════════════════════════════════════════════
+# Top-ups follow HELD names, not just the current top-10 screen
+# ════════════════════════════════════════════════════════════════════════════
+class TestKeepSetSemantics(unittest.TestCase):
+    """Five holdings moved 5-7 rank places overnight and stopped receiving top-ups.
+
+    That is the noise the churn dampers exist to ignore. Having decided to hold a name, leaving
+    it under-weight while sitting on idle cash is cash drag by another route: a ten-name book
+    where five are deliberately light is not equal weight. The set that receives capital is
+    therefore "names we are keeping", not "names in today's top ten".
+    """
+
+    @staticmethod
+    def _keep_syms(target_syms, holdings, selling_syms):
+        """Mirrors the keep_syms expression in update.main()."""
+        return target_syms | {
+            h["symbol"] for h in holdings
+            if float(h.get("shares", 0) or 0) > 0 and h["symbol"] not in selling_syms
+        }
+
+    def _book(self):
+        return [{"symbol": "VLO", "shares": 2, "market_value": 696.73},   # rank 1  - in top 10
+                {"symbol": "ROST", "shares": 3, "market_value": 712.63},  # rank 17 - held only
+                {"symbol": "JBL", "shares": 2, "market_value": 689.36}]   # rank 15 - held only
+
+    def test_held_names_outside_the_top_ten_are_included(self):
+        keep = self._keep_syms({"VLO", "KEYS"}, self._book(), set())
+        self.assertIn("ROST", keep)
+        self.assertIn("JBL", keep)
+
+    def test_current_top_ten_names_are_still_included(self):
+        self.assertIn("VLO", self._keep_syms({"VLO", "KEYS"}, self._book(), set()))
+
+    def test_an_unheld_target_name_is_included_for_the_slot_fill(self):
+        self.assertIn("KEYS", self._keep_syms({"VLO", "KEYS"}, self._book(), set()))
+
+    def test_a_name_queued_to_sell_is_excluded(self):
+        """Never add to a position we are exiting this same run."""
+        keep = self._keep_syms({"VLO"}, self._book(), {"ROST"})
+        self.assertNotIn("ROST", keep)
+
+    def test_a_short_is_never_topped_up(self):
+        book = [{"symbol": "JBL", "shares": -22, "market_value": -7571}]
+        self.assertNotIn("JBL", self._keep_syms(set(), book, set()))
+
+    def test_the_sweep_can_reach_held_names_too(self):
+        holdings = [{"symbol": "ROST", "shares": 3, "current_price": 237.99,
+                     "market_value": 712.63, "sector": "Consumer Cyclical"}]
+        sweep = update.plan_residual_sweep(holdings, {"ROST"}, 3_000.0, 9_995.91,
+                                           {"ROST": 237.99})
+        self.assertTrue(sweep, "leftover cash must be able to reach a held name")

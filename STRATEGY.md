@@ -335,7 +335,12 @@ SELL can never open a short.
 **Cash reaches its target through three ordered steps**, each bounded by `MAX_POSITION_PCT`,
 `MAX_SECTOR_PCT` and the cash floor:
 
-1. **Equal-weight sizing** — every target name to its dollar target.
+1. **Equal-weight sizing** — every *kept* name to its dollar target. "Kept" means the current
+   top-N **plus** any held position that passed the exit test, minus anything queued to SELL.
+   Ranks are noisy: on 2026-08-19 five holdings moved 5–7 places overnight (NUE 6→12, ROST
+   10→17). The churn dampers exist so that noise does not trigger action — and having decided to
+   hold a name, leaving it under-weight while sitting on idle cash is the same drag by another
+   route. A ten-name book where five are deliberately light is not equal weight.
 2. **Slot fill** — any *unfilled* target slot is filled, in any month. The quarterly lock stops
    mid-quarter **rotation**; an empty slot is not rotation, it is an allocation already decided and
    never completed. Leaving it open caps exposure at `(held / TARGET_N) × MAX_POSITION_PCT` — the
