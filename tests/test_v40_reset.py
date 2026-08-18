@@ -360,3 +360,38 @@ class TestArchive(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+# ════════════════════════════════════════════════════════════════════════════
+# G7 — inception deployment: an empty book must not wait for the quarterly
+# ════════════════════════════════════════════════════════════════════════════
+class TestInceptionDeployment(unittest.TestCase):
+    """A fresh account bootstrapped on 18 Aug would otherwise hold 100% cash until 1 Oct."""
+
+    def test_empty_book_with_cash_is_an_inception_run(self):
+        self.assertTrue(update.is_inception_deployment([], 10_000.0, 10_000.0))
+
+    def test_a_single_long_position_ends_inception(self):
+        """Narrow by design: a partially-held book still waits for the quarterly."""
+        holdings = [{"symbol": "VLO", "shares": 3, "market_value": 900}]
+        self.assertFalse(update.is_inception_deployment(holdings, 9_000.0, 10_000.0))
+
+    def test_a_short_alone_does_not_block_inception(self):
+        """Shorts are cleared by COVER; they must not pin the book out of its first deployment."""
+        holdings = [{"symbol": "JBL", "shares": -22, "market_value": -7571}]
+        self.assertTrue(update.is_inception_deployment(holdings, 10_000.0, 10_000.0))
+
+    def test_no_deployable_cash_is_not_an_inception_run(self):
+        self.assertFalse(update.is_inception_deployment([], 0.0, 10_000.0))
+
+    def test_cash_at_or_below_the_floor_does_not_trigger(self):
+        floor = 10_000.0 * update.CASH_FLOOR_PCT
+        self.assertFalse(update.is_inception_deployment([], floor, 10_000.0))
+        self.assertTrue(update.is_inception_deployment([], floor + 1, 10_000.0))
+
+    def test_zero_portfolio_value_is_not_an_inception_run(self):
+        self.assertFalse(update.is_inception_deployment([], 0.0, 0.0))
+
+    def test_the_real_new_account_state_qualifies(self):
+        """$10,000 / 100% cash / 0 holdings — the actual generation-2 opening book."""
+        self.assertTrue(update.is_inception_deployment([], 10_000.0, 10_000.0))
