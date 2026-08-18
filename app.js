@@ -1538,7 +1538,12 @@ class TradeQuestApp {
       const h = this.data.holdings.find(hh => hh.symbol === symbol);
       if (h) this.tradeState.currentPrice = h.current_price || 0;
     }
-    this.tradeState.buyingPower = this.data?.summary?.cash || 0;
+    // Size against deployable cash, not the raw broker figure: with a short open, `cash`
+    // includes short-sale proceeds the account owes back (JBL made $7,566 look spendable
+    // when ~$0 actually was). Fall back to `cash` for portfolio.json written before v3.2.
+    const s = this.data?.summary || {};
+    this.tradeState.buyingPower = Number.isFinite(s.deployable_cash) ? s.deployable_cash
+                                                                    : (s.cash || 0);
     this.updateTradePreview();
     requestAnimationFrame(() => $('tradeQty')?.focus());
   }

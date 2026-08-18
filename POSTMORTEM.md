@@ -172,3 +172,159 @@ All figures come from `origin/main` data as of 2026-07-23:
   = −22, `spy_curve` last point $10,197, `equity_curve` peak $10,699 (Jun 22).
 - `data/agent_log.json` → 90 runs (45 day_start, 43 day_end, 2 monthly); JBL = 20 SELL decisions
   Jul 6–22; 149 SELLs missing `sell_tier`; 35 `urgency:"immediate"`.
+
+---
+
+# Addendum — v3.1 → v3.2 Review (Aug 17, 2026)
+
+**The gap widened after v3.1 shipped, and the system was dead for a week when this review ran.**
+
+| Metric | Jul 23 (v3.1 shipped) | Aug 10 (last data) |
+|---|---|---|
+| Portfolio | $9,937 | **$9,533.72** |
+| SPY benchmark | $10,225 | **$10,724** |
+| Gap vs SPY | −$288 (−2.8pp) | **−$1,190 (−11.1pp)** |
+| Reported cash | 61.4% | **79.36% ($7,565.93)** |
+| JBL | −22 sh | **−22 sh, −$7,571 MV, −79.4% weight, −$557 unrealized** |
+| Win rate | — | **12.5%** (1W / 7L attributed of 50 trades), Sharpe −0.33, max DD 11.96% |
+
+v3.1's long-only clamp **did work** — JBL was not sold again after 2026-07-22. But the true-up was
+never executed, and four deeper faults were never addressed.
+
+### Finding 8 — CRITICAL: v3.1 converted a runaway short into a *deadlocked* short
+
+Every path that could close JBL was blocked:
+
+1. `update.py` long-only guard — `held ≤ 0` → SELL skipped (correct, but it means "do nothing").
+2. `to_buy_syms = target_syms − current_syms` — JBL **is** in `current_syms` (a position, just
+   negative), so it was structurally never a BUY candidate.
+3. Buys blocked entirely in non-quarterly months.
+4. `agent.normalize_decisions` rewrote `BUY → HOLD` off-quarter, so the agent could not even
+   *express* a cover.
+
+From 2026-08-07 the agent emitted `JBL / SELL / tier1 / "BUY-TO-COVER MANDATORY — long-only
+invariant breach"` on **every run**. Because a cover had to be encoded as `action=SELL`, the
+execution layer read it as a sell and skipped it. The right instruction was untranslatable into an
+order — the May TSLA deadlock repeating with new plumbing.
+
+**Lesson: a prevention rule without a restoration rule converts a runaway failure into a frozen one.**
+
+**Fixed (v3.2):** first-class `COVER` action in the agent schema, exempt from the quarterly lock and
+the day_start flag-only rule; an explicit cover path in `update.py` **and** in the sentinel, bypassing
+the quarterly lock, sector cap, order budget, approval gate and cash floor. See STRATEGY §5.
+
+### Finding 9 — CRITICAL: an LLM billing failure froze order execution for 7 days
+
+Every `TradeQuest Agent` and `TradeQuest Market Open` run failed from 2026-08-10 to 2026-08-17:
+
+```
+anthropic.BadRequestError: 400 — 'Your credit balance is too low to access the Anthropic API.'
+```
+
+`market-open.yml` ran `agent.py` (an **advisory** day_start flag check) as step 1 and `update.py`
+(actual order execution) as step 2. `agent.py` exited 1 → the job aborted → orders never executed.
+`TradeQuest Sentinel` was the only green workflow — the only one that makes no LLM call. Nothing
+alerted, so the book sat unmanaged for a week with an open naked short.
+
+**Fixed (v3.2):** `continue-on-error` on the advisory step; `agent.py` catches API errors, writes a
+degraded log entry and exits 0; `if: always()` on both commit steps (a later failure was discarding
+a perfectly good `portfolio.json` refresh); failure-notification issues via
+`.github/scripts/notify_failure.sh`.
+
+### Finding 10 — CRITICAL: `account.cash` includes short proceeds — the real performance story
+
+`alpaca_read_state` read `float(account.cash)` verbatim. That figure includes ~$7,571 of JBL
+short-sale proceeds the account does not own.
+
+- Reported cash: **$7,565.93 (79.36%)** · True deployable: **~$0**
+- Long $9,539 − short $7,571 = **$1,968 net = 20.6% of equity**
+
+A book at ~21% net exposure cannot track a market that rallied ~5% since Jul 23. The dashboard's
+"79% cash drag" was not idle capital; it was a short cancelling out the long book. It was also a
+live bomb: `apply_risk_limits` computed `available_cash = cash − pv·0.05 ≈ $7,090`, which would have
+been deployed at the next quarterly against money that isn't there → ~180% gross exposure.
+
+**Fixed (v3.2):** `compute_deployable_cash()` = `cash − Σ|market_value of shorts|`, used by every
+risk gate, by the sentinel, and by the dashboard trade panel. `summary` now also reports
+`deployable_cash`, `short_proceeds`, `long_exposure_pct`, `net_exposure_pct`, `long_only_breach`.
+
+### Finding 11 — The asymmetric ratchet: sells allowed daily, buys blocked for 3 months
+
+Non-quarterly months permitted Tier-1 loss-harvest SELLs but blocked **all** BUYs, so the book could
+only shrink between quarterly rebalances. August is the clean demonstration — 4 sells, 0 buys:
+
+```
+Aug 4  SELL MNST 9      Aug 7  SELL FRT 8
+Aug 5  SELL HUM 2       Aug 10 SELL CSX 19
+```
+
+With the profit gate (losers sold now, winners deferred) this is a systematic
+*sell-losers / never-redeploy* ratchet — the inverse of a momentum strategy. **This**, not the
+per-run order throttle v3.1 addressed, is the real cash-drag engine.
+
+**Fixed (v3.2):** redeployment carve-out — top-ups into names already inside the top-N are allowed in
+any month once deployable cash exceeds `CASH_FLOOR_PCT + CASH_DEPLOY_BAND` (8%). New entrants remain
+quarterly-only. `CASH_DEPLOY_BAND` had been defined since v3.1 and never used; this is what it was
+declared for.
+
+### Finding 12 — Daily screen driving a quarterly strategy (Finding 6, quantified)
+
+`to_sell_syms` was recomputed every run against a freshly-ranked top-10 with no hysteresis, no
+minimum hold and no re-entry cooldown:
+
+| Symbol | Bought | Sold | Re-bought | Damage |
+|---|---|---|---|---|
+| FFIV | Jul 28 @ $412.75 | Jul 30 @ $389.88 | Jul 31 @ $401.62 | −$45.74 realized, re-entered higher |
+| CSX | Jul 24 @ $53.16 (18) | Jul 28 @ $51.75 | Jul 29 @ $50.61 (19) | −$25.38 realized |
+| WST | Jul 24 | Jul 27 @ $326.28 | Jul 28 @ $338.14 | re-entered $11.86/sh worse |
+| NTRS | Jul 22 @ $179.52 | Jul 30 @ $179.77 | — | round trip for ~$0 |
+
+The agent's own ranks show the instability: CSX was rank 18 on Aug 7 and rank 21 on Aug 10; STLD was
+rank 10 then 17. That is the origin of `win_rate 0.125` / `avg_loss_pct −3.3%`.
+
+**Fixed (v3.2):** rank hysteresis (`EXIT_RANK_MULTIPLE = 1.5` — enter at ≤10, exit at >15),
+`MIN_HOLD_DAYS = 10` (waived on a 50-day MA break so Rule A is never delayed), and
+`REENTRY_COOLDOWN_DAYS = 10`. Replayed against the Aug-10 book, NUE (rank 12) and STLD (rank 13) are
+now held where the old symmetric diff would have sold both.
+
+### Finding 13 — Metrics understated their own sample size
+
+`total_trades: 50` but only 8 carried an attributed P&L (1 win / 7 losses) — `win_rate` was computed
+over those 8. `alpaca_read_state` fetched closed orders with a flat `limit=50`, silently truncating
+the history `compute_realized_pnl` needs to pair fills. Separately, `meta.next_rebalance` advertised
+`2026-09-01` while new-entrant buys were actually locked until Oct 1, and `meta.strategy` still read
+"v2.2" / `strategy_version: "2.1"` against v3.1 code.
+
+**Fixed (v3.2):** paginated `fetch_closed_orders()`; `summary.attributed_trades` reports the real
+denominator; `next_quarterly_date()` reports the true unlock date; version strings bumped to v3.2.
+
+---
+
+## Remediation Status (v3.2)
+
+| ID | Finding | Status |
+|---|---|---|
+| **F11** | COVER path — restore the long-only invariant automatically (update.py + sentinel + agent schema) | ✅ v3.2 |
+| **F12** | Decouple advisory LLM step from order execution; degrade to exit 0; `if: always()` commits; failure alerts | ✅ v3.2 |
+| **F13** | `deployable_cash` excludes short proceeds across all risk gates + dashboard | ✅ v3.2 |
+| **F14** | Long-only breach alarm (`long_only_breach` in execution_summary + console banner) | ✅ v3.2 |
+| **F15** | Redeployment carve-out for top-N top-ups in non-quarterly months | ✅ v3.2 |
+| **F16** | Churn dampers: rank hysteresis, minimum hold, re-entry cooldown | ✅ v3.2 |
+| **F17** | Paginated order history + `attributed_trades`; correct `next_rebalance`; version strings | ✅ v3.2 |
+| **F6** | Missing-data entry gate (APH/SPG hold null sector/MA/rank and passed the screen) | ⬜ still open |
+| **F9** | Prompt-cache hit rate | ⬜ still open |
+| **F10** | Backtest harness | ⬜ still open |
+
+**Still requires a human:** top up the Anthropic API credit balance (nothing runs until then), then
+run `python bot/rebalance_trueup.py --dry-run` during market hours and `--execute` to remediate the
+whole book at once. The v3.2 COVER path will otherwise close JBL on the first successful run.
+
+## How to Reproduce These Numbers
+
+All figures come from `origin/main` data as of 2026-08-17:
+- `data/portfolio.json` → `summary` (pv $9,533.72, cash $7,565.93 / 79.36%, win_rate 0.125,
+  sharpe −0.33, max_drawdown 11.96%), `holdings[JBL]` = −22 sh / −$7,571.30 / weight −0.7942,
+  `equity_curve` and `spy_curve` last points $9,534 vs $10,724.
+- `data/agent_log.json` → JBL flagged `SELL/tier1` "BUY-TO-COVER MANDATORY" on every day_end run
+  from 2026-08-07; `WATCH` with the same text on every day_start run.
+- `gh run list` → every Agent and Market Open run failed from 2026-08-10 onward; Sentinel green.

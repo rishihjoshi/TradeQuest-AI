@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      issues: write
 
     steps:
       - name: Checkout repo
@@ -77,7 +78,11 @@ jobs:
           ALPACA_BASE_URL:     ${{ secrets.ALPACA_BASE_URL }}
         run: python bot/agent.py
 
+      # v3.2: always commit. "Update portfolio" runs before "Run agent", so a failure in a
+      # later step used to discard a perfectly good portfolio.json refresh — which is why
+      # data/ went stale on 2026-08-10 while update.py itself was fine.
       - name: Commit results
+        if: always()
         run: |
           git config user.name "TradeQuest Bot"
           git config user.email "actions@github.com"
@@ -89,3 +94,10 @@ jobs:
             git pull --rebase origin HEAD
             git push -u origin HEAD
           fi
+
+      # v3.2: a silent 7-day outage must not recur. Opens (or reuses) a tracking issue.
+      - name: Notify on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash .github/scripts/notify_failure.sh "TradeQuest Agent"

@@ -109,19 +109,36 @@ Three independently documented market anomalies, stacked:
 - Gains defer to 12+ months → long-term capital gains rates (0–20% vs 37% ordinary income)
 - Every premature winner exit is a permanent tax cost that cannot be recovered
 
-### Long-Only Invariant (v3.1 — Non-Negotiable)
+### Long-Only Invariant (v3.2 — Non-Negotiable)
 
-**The system is long-only. It never sells more shares than it holds and never opens a short.**
+**The system is long-only. It never sells more shares than it holds and never opens a short —
+and when a short does exist, it closes it automatically.**
+
+**Prevention (v3.1):**
 
 - Every SELL is clamped at the execution layer to the quantity actually held; a position that is
   flat or already short is **never re-sold**.
 - Orders with a non-positive price are rejected (a bad/zero price fetch must not place a trade).
-- A short position, if one ever appears, is closed by an explicit **buy-to-cover** true-up — never
-  by the daily sell loop.
+
+**Restoration (v3.2) — an invariant needs a way back, not only a way to stop:**
+
+- Any holding with negative shares generates a **COVER** order (buy-to-close the full short) on the
+  next run, from `update.py` *and* from the sentinel.
+- COVER **bypasses** the quarterly lock, the sector cap, the per-run order budget, the agent-approval
+  gate, and the cash floor. Restoring an invariant is not a discretionary trade, and the cover is
+  funded by short proceeds already in the account.
+- COVER is a first-class agent action (`action: "COVER"`, `rule_triggered: "long_only_breach"`) and
+  is exempt from the `day_start` flag-only rule and the non-quarterly `BUY → HOLD` rewrite.
+- Any open short sets `long_only_breach: true` in `execution_summary.json` and prints a loud banner.
+- `bot/rebalance_trueup.py` remains the manual path for remediating the whole book at once.
 
 **Why:** In Jul 2026, JBL trend-broke below its 50-day MA and was re-sold on every run. With no
 held-quantity clamp, Alpaca opened and then extended a naked short to −22 shares (−70% of the book,
-unbounded loss risk). Execution correctness outranks every signal rule. See `POSTMORTEM.md` Finding 1.
+unbounded loss risk). v3.1's clamp stopped the short growing but left it **unclosable**: the guard
+skips SELL when held ≤ 0, a short symbol is never a buy candidate, and buys are blocked outside
+quarterly months. From 2026-08-07 the agent flagged "BUY-TO-COVER MANDATORY" on every run with no
+order it could produce, and the position stayed open. A prevention rule without a restoration rule
+converts a runaway failure into a frozen one. See `POSTMORTEM.md` Findings 1 and 8.
 
 ---
 
@@ -286,11 +303,38 @@ FOR non-quarterly monthly review (Feb/Mar/May/Jun/Aug/Sep/Nov/Dec):
 ### Non-Quarterly Month Execution Lock (Code-Enforced)
 
 In Feb, Mar, May, Jun, Aug, Sep, Nov, Dec — `update.py` enforces at code level:
-- `BUY` orders → **BLOCKED** (not just the agent prompt — the pipeline rejects them)
+- `BUY` orders for **new entrants** → **BLOCKED** (not just the agent prompt — the pipeline rejects them)
+- `BUY` orders that **redeploy into existing top-N holdings** → **ALLOWED** (v3.2, see below)
+- `COVER` orders → **ALWAYS ALLOWED** (long-only invariant restoration, see §5)
 - Tier 2 SELL orders → **BLOCKED** (profitable positions with only momentum decay)
 - Tier 1 SELL orders → **ALLOWED** (loss positions with any rule trigger)
 
 This is enforced by `is_quarterly_month()` in `update.py`, not just agent instructions.
+
+**Redeployment carve-out (v3.2 — fixes the ratchet).** Blocking *all* buys while allowing Tier 1
+sells made the book able only to shrink for up to three months at a time. Aug 2026 is the clean
+demonstration: 4 sells (MNST, HUM, FRT, CSX) and 0 buys, with the proceeds idle in a rising market.
+Combined with the profit gate — losers sold now, winners deferred — that is a systematic
+*sell-losers / never-redeploy* ratchet, the inverse of a momentum strategy.
+
+So in any month, when **deployable** cash exceeds `CASH_FLOOR_PCT + CASH_DEPLOY_BAND` (5% + 3% = 8%),
+positions already inside the top-N are topped up toward their equal-weight dollar target. New
+entrants still wait for the quarterly. This preserves the v2.2 intent (no discretionary new bets
+between rebalances) without letting the book bleed exposure.
+
+### Churn Dampers (v3.2)
+
+The screen re-ranks **daily** while the strategy rebalances **quarterly**. Recomputing exits from a
+fresh top-N every run churned names oscillating around the rank boundary — FFIV was bought
+2026-07-28 at \$412.75, sold 07-30 at \$389.88 (−\$45.74) and re-bought 07-31 at \$401.62; CSX and
+WST did the same. Three dampers now apply to **rank-based exits only** (structural Rules A–E and
+sentinel exits are unaffected):
+
+| Damper | Constant | Behaviour |
+|---|---|---|
+| **Rank hysteresis** | `EXIT_RANK_MULTIPLE = 1.5` | Enter at rank ≤ `TARGET_N` (10); exit only at rank > 15 |
+| **Minimum hold** | `MIN_HOLD_DAYS = 10` | A rank-based exit needs the position to be ≥10 days old — **waived** if price is below the 50-day MA (a real trend break must not be delayed) |
+| **Re-entry cooldown** | `REENTRY_COOLDOWN_DAYS = 10` | A symbol sold within 10 days cannot be re-bought |
 
 ### Sentinel Hard Rules (Automated — No LLM)
 
@@ -320,7 +364,19 @@ QUARTERLY_MONTHS    = {1,4,7,10}  # months where full rebalance is permitted
 # Quarterly rebalance runs — wide budget so the full rotation finishes in ONE session (v3.1)
 REBALANCE_MAX_ORDERS   = 24    # a full top-10-12 rotation (sells + buys) in one run
 REBALANCE_MAX_SELL_PCT = 1.00  # a quarterly rotation may sell the entire stale book
+
+# v3.2 — churn dampers and the redeployment trigger
+CASH_DEPLOY_BAND      = 0.03   # redeploy once deployable cash > CASH_FLOOR_PCT + this
+EXIT_RANK_MULTIPLE    = 1.5    # enter at rank ≤ TARGET_N, exit only at rank > TARGET_N × 1.5
+MIN_HOLD_DAYS         = 10     # min age for a rank-based exit (waived on an MA break)
+REENTRY_COOLDOWN_DAYS = 10     # a symbol sold this recently cannot be re-bought
 ```
+
+**Cash is measured as `deployable_cash`, not `account.cash` (v3.2).** Alpaca's `cash` field includes
+short-sale proceeds — money the account must give back. With the JBL short open the account reported
+\$7,566 cash / 79.4% on a \$9,534 book while the true deployable figure was ~\$0 and the book was
+already ~100% long. Every risk gate and the dashboard trade panel now size against
+`cash − Σ|market_value of shorts|`.
 
 **One-run rebalance rule (v3.1):** a quarterly rebalance uses `REBALANCE_MAX_ORDERS` /
 `REBALANCE_MAX_SELL_PCT`, not the daily 5-order / 30%-sell throttles. The daily throttles applied to

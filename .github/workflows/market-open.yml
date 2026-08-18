@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      issues: write
 
     steps:
       - name: Checkout repo
@@ -30,7 +31,11 @@ jobs:
       # RUN_TYPE=day_start → flag-only mode, no trade decisions, logs to agent_log.json.
       # This surfaces early warnings (e.g., approaching MA breaks) and is now visible
       # in the Agent tab — previously this step was entirely missing from the workflow.
+      # v3.2: this step is ADVISORY ONLY and must never gate order execution. On 2026-08-10
+      # an exhausted Anthropic credit balance made it exit 1, aborting the job before the
+      # "Execute next_open orders" step ran — the book froze for 7 days with an open short.
       - name: Pre-market agent check (day_start)
+        continue-on-error: true
         env:
           ANTHROPIC_API_KEY:   ${{ secrets.ANTHROPIC_API_KEY }}
           ALPACA_ACCOUNT_NAME: ${{ secrets.ALPACA_ACCOUNT_NAME }}
@@ -54,6 +59,7 @@ jobs:
         run: python bot/update.py
 
       - name: Commit results
+        if: always()
         run: |
           git config user.name "TradeQuest Bot"
           git config user.email "actions@github.com"
@@ -65,3 +71,10 @@ jobs:
             git pull --rebase origin HEAD
             git push -u origin HEAD
           fi
+
+      # v3.2: a silent 7-day outage must not recur. Opens (or reuses) a tracking issue.
+      - name: Notify on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash .github/scripts/notify_failure.sh "TradeQuest Market Open"
