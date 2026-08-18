@@ -217,6 +217,29 @@ def size_shares(dollars: float, price: float, fractional: bool | None = None) ->
     return qty if qty * price >= MIN_ORDER_NOTIONAL else 0.0
 
 
+def consolidate_orders(orders: list[tuple]) -> list[tuple]:
+    """Merge repeated symbols into one order each, preserving first-seen order (v4.1).
+
+    The planners are layered on purpose -- equal-weight top-up, then slot fill, then residual
+    sweep -- so the same symbol can legitimately appear twice: topped up to its 9.5% target by
+    one pass and nudged toward the 10% cap by another. Two orders for one symbol in one run then
+    hit the idempotency guard, which drops the second and strands that cash.
+
+    The guard is right to fire (it exists to stop duplicate submissions from concurrent runs);
+    the planner should simply not produce duplicates. On 2026-08-18 this left ~$257 undeployed
+    across six names.
+    """
+    merged: dict[str, float] = {}
+    order: list[str] = []
+    for sym, qty in orders:
+        if sym not in merged:
+            order.append(sym)
+            merged[sym] = 0.0
+        merged[sym] += float(qty)
+    return [(sym, round(merged[sym], FRACTIONAL_DECIMALS)) for sym in order
+            if merged[sym] > 0]
+
+
 def plan_residual_sweep(holdings: list[dict], target_symbols: set[str], deployable_cash: float,
                         pv: float, prices: dict[str, float],
                         rank_of: dict[str, int] | None = None,
@@ -2255,6 +2278,9 @@ def main():
                 raw_buys.extend(sweep)
 
             deploying_cash = bool(topups or fills or sweep)
+
+        # One order per symbol per run. The layered planners above can each touch the same name.
+        raw_buys = consolidate_orders(raw_buys)
 
         # v3.2 re-entry cooldown: never re-buy a name sold within REENTRY_COOLDOWN_DAYS.
         if raw_buys:
