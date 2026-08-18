@@ -219,7 +219,8 @@ def size_shares(dollars: float, price: float, fractional: bool | None = None) ->
 
 def plan_residual_sweep(holdings: list[dict], target_symbols: set[str], deployable_cash: float,
                         pv: float, prices: dict[str, float],
-                        rank_of: dict[str, int] | None = None) -> list[tuple]:
+                        rank_of: dict[str, int] | None = None,
+                        pending: list[tuple] | None = None) -> list[tuple]:
     """Put leftover cash to work after the equal-weight pass (v4.1).
 
     Runs as a backstop, not the primary mechanism: fractional sizing should already land each
@@ -237,6 +238,15 @@ def plan_residual_sweep(holdings: list[dict], target_symbols: set[str], deployab
 
     cap = pv * MAX_POSITION_PCT
     rank_of = rank_of or {}
+
+    # Room must be measured net of orders already planned this run. Without this the sweep
+    # re-proposes a name that is mid-top-up -- it sees the stale market_value, thinks there is
+    # still room, and queues a duplicate. The idempotency guard silently absorbed four such
+    # duplicates on 2026-08-18; an execution guard should not be covering for a planning error.
+    pending_value: dict[str, float] = {}
+    for sym, qty in (pending or []):
+        px = prices.get(sym.upper(), 0.0)
+        pending_value[sym] = pending_value.get(sym, 0.0) + qty * px
     eligible = [h for h in holdings
                 if h.get("symbol") in target_symbols and float(h.get("shares", 0) or 0) > 0]
     eligible.sort(key=lambda h: rank_of.get(h["symbol"], 9999))
@@ -245,7 +255,7 @@ def plan_residual_sweep(holdings: list[dict], target_symbols: set[str], deployab
     for h in eligible:
         sym = h["symbol"]
         price = prices.get(sym.upper(), h.get("current_price", 0)) or 0
-        room = cap - float(h.get("market_value", 0) or 0)
+        room = cap - float(h.get("market_value", 0) or 0) - pending_value.get(sym, 0.0)
         spend = min(room, budget)
         if spend <= 0:
             continue
@@ -2193,10 +2203,21 @@ def main():
         deployable_pct = (deployable_cash / pv) if pv else 0.0
         if not quarterly and deployable_pct > deploy_trigger:
             selling_syms = {s for s, _ in raw_sells}
+            # v4.1: top-ups follow the names we are KEEPING, not just the current top-10 screen.
+            # Ranks are noisy day to day -- on 2026-08-19 five holdings moved 5-7 places overnight
+            # (NUE 6->12, ROST 10->17) -- and the churn dampers exist precisely so that noise does
+            # not trigger action. Having decided to hold a name, leaving it under-weight while
+            # sitting on idle cash is the same drag by another route: a book of ten names where
+            # five are deliberately light is not equal weight. A name queued to SELL is excluded,
+            # so this never adds to a position we are exiting.
+            keep_syms = target_syms | {
+                h["symbol"] for h in new_holdings
+                if float(h.get("shares", 0) or 0) > 0 and h["symbol"] not in selling_syms
+            }
             topups: list[tuple] = []
             for h in sorted(new_holdings, key=lambda x: rank_of.get(x["symbol"], 9999)):
                 sym = h["symbol"]
-                if sym in selling_syms or sym not in target_syms:
+                if sym in selling_syms or sym not in keep_syms:
                     continue
                 price = h.get("current_price", 0) or 0
                 gap   = target_per - float(h.get("market_value", 0) or 0)
@@ -2225,8 +2246,9 @@ def main():
             # Residual sweep: anything fractional sizing could not place (non-fractionable
             # symbols, price drift) goes to the best-ranked names still under their cap.
             committed = sum(q * price_map.get(s.upper(), 0) for s, q in raw_buys)
-            sweep = plan_residual_sweep(new_holdings, target_syms,
-                                        deployable_cash - committed, pv, price_map, rank_of)
+            sweep = plan_residual_sweep(new_holdings, keep_syms,
+                                        deployable_cash - committed, pv, price_map, rank_of,
+                                        pending=raw_buys)
             if sweep:
                 print(f"  Residual sweep: placing leftover cash into "
                       f"{', '.join(s for s, _ in sweep)}")
