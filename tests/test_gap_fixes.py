@@ -3,6 +3,10 @@
 Each test class corresponds to one named gap fix.
 Tests use only stdlib — no alpaca/anthropic packages required.
 """
+# pylint: disable=protected-access,unused-argument,missing-class-docstring,missing-function-docstring
+# Test-suite patterns, not defects: tests exercise module internals (_fmp_get); stub
+# signatures must match the real API even when a test ignores a parameter; and the
+# test method name is the documentation.
 import json
 import sys
 import types
@@ -85,21 +89,15 @@ class TestFetchFundamentalsNoneSentinel(unittest.TestCase):
 class TestQualityFilterNoneHandling(unittest.TestCase):
 
     def _screen(self, eg, rg, fpe):
-        """Run screening logic for one candidate with given fundamentals."""
-        import pandas as pd
+        """Run the quality/valuation gates for one candidate.
+
+        Momentum and volatility are not modelled here: this helper starts from a symbol that
+        has already cleared them, so the assertions isolate how None fundamentals are handled.
+        """
         fundamentals = {"SYM": {
             "eps_growth": eg, "revenue_growth": rg, "forward_pe": fpe,
             "current_price": 100.0, "name": "Test", "sector": "Test",
         }}
-        idx = pd.Index(["SYM"])
-        mom6  = pd.Series([0.8],  index=idx, name="mom_6m")
-        mom12 = pd.Series([0.8],  index=idx, name="mom_12m")
-        vol30 = pd.Series([0.15], index=idx, name="vol_30d")
-        vol_90th = 0.5
-
-        mom_score = (mom6.rank(pct=True) + mom12.rank(pct=True)) / 2
-        # Only "SYM" qualifies on momentum
-        candidates = ["SYM"]
 
         q_pass = v_pass = 0
         screened = []
@@ -136,7 +134,7 @@ class TestQualityFilterNoneHandling(unittest.TestCase):
         self.assertEqual(v, 1)
 
     def test_high_pe_fails_valuation(self):
-        screened, q, v = self._screen(eg=20.0, rg=15.0, fpe=45.0)
+        screened, _q, _v = self._screen(eg=20.0, rg=15.0, fpe=45.0)
         self.assertEqual(len(screened), 0, "High P/E should fail valuation")
 
 
@@ -152,7 +150,7 @@ class TestLoadAgentApprovals(unittest.TestCase):
         """Default call loads 'next_open' decisions (and legacy 'immediate' as next_open).
         'immediate' is a deprecated label — both are treated as execute-at-market-open.
         """
-        import tempfile, os
+        import tempfile
         with tempfile.TemporaryDirectory() as td:
             log_path = Path(td) / "agent_log.json"
             self._write_log(log_path, [{
@@ -558,9 +556,9 @@ class TestCalcMomentumSkipMonth(unittest.TestCase):
 
     def test_skip_month_numerator_differs_from_today(self):
         """Mom score must differ when today's price != 21-day-ago price."""
-        import pandas as pd, numpy as np
+        import pandas as pd
         prices = self._make_prices(300)
-        mom6, mom12 = update.calc_momentum(prices)
+        mom6, _mom12 = update.calc_momentum(prices)
         # The 21-day-ago price is 150.0 (drop happened), today is also 150 —
         # but 21 days ago was in the flat zone too.  The key test: the result
         # must be computed from iloc[-21], not iloc[-1].
@@ -577,7 +575,7 @@ class TestCalcMomentumSkipMonth(unittest.TestCase):
 
     def test_skip_month_uses_21_day_lookback(self):
         """iloc[-21] price change must propagate into mom score."""
-        import pandas as pd, numpy as np
+        import pandas as pd
         prices = self._make_prices(300)
         prices_modified = prices.copy()
         # Change price exactly 21 trading days ago — should shift the score.
@@ -597,7 +595,7 @@ class TestCalcMomentumSkipMonth(unittest.TestCase):
             index=pd.date_range("2026-01-01", periods=5, freq="B"),
         )
         try:
-            mom6, mom12 = update.calc_momentum(prices)
+            _mom6, _mom12 = update.calc_momentum(prices)
         except IndexError:
             self.fail("calc_momentum raised IndexError on short price history")
 
@@ -925,7 +923,7 @@ class TestWriteExecutionSummary(unittest.TestCase):
             )
             out_path = data_dir / "execution_summary.json"
             self.assertTrue(out_path.exists())
-            with open(out_path) as f:
+            with open(out_path, encoding="utf-8") as f:
                 payload = json.load(f)
         orders = payload["orders_placed"]
         self.assertEqual(len(orders), 2)
@@ -945,7 +943,7 @@ class TestWriteExecutionSummary(unittest.TestCase):
                 cash_pct_after=None,
                 data_dir=data_dir,
             )
-            with open(data_dir / "execution_summary.json") as f:
+            with open(data_dir / "execution_summary.json", encoding="utf-8") as f:
                 payload = json.load(f)
         self.assertEqual(len(payload["orders_placed"]),  0)
         self.assertEqual(len(payload["orders_skipped"]), 1)
@@ -954,10 +952,10 @@ class TestWriteExecutionSummary(unittest.TestCase):
         self.assertIsNone(payload["cash_pct_after"])
 
     def test_timestamp_is_utc_iso(self):
-        import tempfile, re
+        import tempfile
         with tempfile.TemporaryDirectory() as td:
             update.write_execution_summary([], [], [], None, Path(td))
-            with open(Path(td) / "execution_summary.json") as f:
+            with open(Path(td) / "execution_summary.json", encoding="utf-8") as f:
                 payload = json.load(f)
         # e.g. "2026-05-11T13:45:00Z"
         self.assertRegex(payload["timestamp"], r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z")
@@ -969,7 +967,7 @@ class TestWriteExecutionSummary(unittest.TestCase):
                 placed=[("SELL", "AAPL", 3)], skipped=[], errors=[], cash_pct_after=None,
                 data_dir=Path(td),
             )
-            with open(Path(td) / "execution_summary.json") as f:
+            with open(Path(td) / "execution_summary.json", encoding="utf-8") as f:
                 payload = json.load(f)
         self.assertEqual(payload["orders_placed"][0]["status"], "submitted")
 

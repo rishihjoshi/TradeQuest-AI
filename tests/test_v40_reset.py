@@ -10,6 +10,11 @@ Covers the machinery that makes account generation 2 safe to start:
 
 Stdlib + mocks only — no live alpaca/anthropic packages required.
 """
+# pylint: disable=protected-access,unused-argument,missing-class-docstring,missing-function-docstring
+# Test-suite patterns, not defects: tests exercise module internals (_fmp_get); stub
+# signatures must match the real API even when a test ignores a parameter; and the
+# test method name is the documentation.
+import ast
 import json
 import re
 import sys
@@ -100,11 +105,12 @@ class TestDocCodeConsistency(unittest.TestCase):
                 )
 
     def test_quarterly_months_match(self):
-        raw = self._documented("QUARTERLY_MONTHS")
-        # The regex stops at the first space; rebuild the full literal from the doc.
+        # The scalar regex stops at the first space; rebuild the full set literal from the doc.
         m = re.search(r"QUARTERLY_MONTHS\s*=\s*(\{[^}]*\})", self.doc)
-        self.assertIsNotNone(m, raw)
-        self.assertEqual(eval(m.group(1)), update.QUARTERLY_MONTHS)  # noqa: S307 - fixed literal
+        self.assertIsNotNone(m, "QUARTERLY_MONTHS is not documented in STRATEGY.md §8")
+        # literal_eval, not eval: this parses a file, and a doc should never be able to
+        # execute code just because a test reads it.
+        self.assertEqual(ast.literal_eval(m.group(1)), update.QUARTERLY_MONTHS)
 
     def test_strategy_version_is_v4(self):
         self.assertEqual(update.STRATEGY_VERSION, "4.0")

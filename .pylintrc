@@ -1,0 +1,33 @@
+# Pylint configuration for TradeQuest AI.
+#
+# Tests import bot modules via a sys.path insert (bot/ is not a package), so pylint must be
+# told where they live -- otherwise linting tests/ in isolation reports a spurious E0401
+# "unable to import update", which would look like a blocking error in the dev pipeline.
+
+[MAIN]
+init-hook = 'import sys; sys.path.insert(0, "bot")'
+
+[MESSAGES CONTROL]
+# C0301 line-too-long   -- the 100-col limit here is deliberate and consistent.
+# C0103 invalid-name    -- short financial identifiers (pv, mv, eq, spy) read better than
+#                          expanded names in this domain.
+# R0801 duplicate-code  -- test files intentionally repeat mock fixtures so each suite is
+#                          self-contained and readable in isolation.
+# W0718 broad-except    -- INTENTIONAL and load-bearing. Every broad handler wraps a network
+#                          or broker call where the requirement is "degrade, don't crash"
+#                          (STRATEGY.md Directive 8). An exhausted API credit balance taking
+#                          down order execution for 7 days is exactly what narrowing these
+#                          would risk reintroducing. Each one reports to stdout or stderr --
+#                          none silently swallow, which is verified in review.
+# C0415 import-outside-toplevel -- REQUIRED. alpaca/anthropic imports live inside functions so
+#                          these modules import cleanly without those packages installed, which
+#                          is what lets the test suite stub them and run with zero broker deps.
+# C0413 wrong-import-position -- the sys.path insert must execute before bot modules import.
+# C0302 too-many-lines  -- update.py is large; tracked as a standing refactor item, not a gate.
+disable = C0301, C0103, R0801, W0718, C0415, C0413, C0302
+
+[DESIGN]
+max-args = 10
+max-locals = 40
+max-statements = 120
+max-branches = 40

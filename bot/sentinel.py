@@ -65,7 +65,13 @@ def count_consecutive_sell_flags(runs: list, symbol: str) -> int:
     """Count how many consecutive recent runs flagged `symbol` as SELL."""
     count = 0
     for run in runs:
-        if run.get("run_type") not in ("day_end", "monthly", "day_start"):
+        # agent.py writes this field as "type"; "run_type" is accepted for older//external
+        # entries. Reading only "run_type" made this filter skip EVERY run, so the count was
+        # always 0 and sentinel Rule 3 never fired once between Apr and Aug 2026 --
+        # a documented risk control that silently did nothing. update.load_agent_approvals
+        # already reads it defensively; this now matches.
+        run_type = run.get("run_type") or run.get("type", "")
+        if run_type not in ("day_end", "monthly", "day_start"):
             continue
         decisions = run.get("decisions", [])
         flagged = any(

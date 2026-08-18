@@ -13,3 +13,9 @@ venv/
 # OS
 .DS_Store
 Thumbs.db
+
+# Coverage artifacts
+.coverage
+coverage.xml
+htmlcov/
+.pytest_cache/

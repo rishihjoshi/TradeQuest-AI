@@ -10,6 +10,10 @@ Covers the failures found in the 2026-08-17 review (see POSTMORTEM.md "v3.1 → 
 
 Stdlib + mocks only — no live alpaca/anthropic packages required.
 """
+# pylint: disable=protected-access,unused-argument,missing-class-docstring,missing-function-docstring
+# Test-suite patterns, not defects: tests exercise module internals (_fmp_get); stub
+# signatures must match the real API even when a test ignores a parameter; and the
+# test method name is the documentation.
 import sys
 import types
 import unittest
