@@ -315,7 +315,34 @@ EXIT_RANK_MULTIPLE     = 1.5
 MIN_HOLD_DAYS          = 10
 REENTRY_COOLDOWN_DAYS  = 10
 MAX_BREACH_RUNS        = 3      # breach persistence before trading halts
+FRACTIONAL_SHARES      = True   # size in fractional shares, not whole ones
+FRACTIONAL_DECIMALS    = 6
+MIN_ORDER_NOTIONAL     = 1.00   # skip dust orders the broker would reject
 ```
+
+**Sizing is fractional (v4.1).** Whole-share sizing always rounds *down*, and the error scales with
+share price — so the most expensive names, often the highest-momentum ones, end up the most
+under-weight. The generation-2 inception run asked for \$950 of VLO at \$348.64, got 2 shares
+(\$697), and repeated that across nine names: **66% deployed, 34% cash against a 5% target.** No gate
+caused it; arithmetic did. `size_shares()` is the single sizing primitive and never spends more than
+the dollars it is given.
+
+Fractional sizing requires the execution clamp to work in float. `int(held)` would strand the
+remainder of every position — hold 2.7278 shares, exit "all", sell 2, keep 0.7278 that no sell rule
+can ever reach. The clamp still enforces the invariant that matters: **never more than held**, so a
+SELL can never open a short.
+
+**Cash reaches its target through three ordered steps**, each bounded by `MAX_POSITION_PCT`,
+`MAX_SECTOR_PCT` and the cash floor:
+
+1. **Equal-weight sizing** — every target name to its dollar target.
+2. **Slot fill** — any *unfilled* target slot is filled, in any month. The quarterly lock stops
+   mid-quarter **rotation**; an empty slot is not rotation, it is an allocation already decided and
+   never completed. Leaving it open caps exposure at `(held / TARGET_N) × MAX_POSITION_PCT` — the
+   inception book ran 9 of 10 names after the sector cap dropped APA and so could not exceed 90%
+   invested. The sector cap now **backfills** at rebalance rather than shrinking the book.
+3. **Residual sweep** — a backstop for what fractional cannot place: a non-fractionable symbol, price
+   drift between sizing and execution. Best-ranked names first.
 
 These values are asserted against this table by `tests/test_v40_reset.py`. Every prior version of
 this document drifted from the code; that test is what stops v4.0 doing it again.

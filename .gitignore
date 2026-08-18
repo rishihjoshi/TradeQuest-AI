@@ -19,3 +19,6 @@ Thumbs.db
 coverage.xml
 htmlcov/
 .pytest_cache/
+
+# Scratch patch helpers
+.tmp-patch/
