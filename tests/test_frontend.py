@@ -8,6 +8,10 @@ Test approach: parse app.js template-literal output for expected HTML patterns.
 This is a structural / contract test — it catches regressions in the rendered HTML
 without needing a browser or DOM runtime.
 """
+# pylint: disable=protected-access,unused-argument,missing-class-docstring,missing-function-docstring
+# Test-suite patterns, not defects: tests exercise module internals (_fmp_get); stub
+# signatures must match the real API even when a test ignores a parameter; and the
+# test method name is the documentation.
 import re
 import unittest
 from pathlib import Path

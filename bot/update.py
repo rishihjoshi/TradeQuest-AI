@@ -20,7 +20,7 @@ import math
 import os
 import sys
 import time
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timezone
 from pathlib import Path
 
 import pandas as pd
@@ -63,6 +63,15 @@ REBALANCE_MAX_ORDERS   = 24    # enough for a full top-10-12 rotation (sells + b
 REBALANCE_MAX_SELL_PCT = 1.00  # a full quarterly rotation may sell the entire stale book
 CASH_DEPLOY_BAND       = 0.03  # deploy idle cash when cash% exceeds (target + this band)
 
+# v3.2: the screen re-ranks DAILY but the strategy rebalances QUARTERLY. Recomputing exits from a
+# fresh top-N every run churned names oscillating around the boundary — FFIV was bought 2026-07-28
+# at $412.75, sold 07-30 at $389.88 (-$45.74) and re-bought 07-31 at $401.62; CSX and WST did the
+# same. That churn is the source of the 12.5% win rate. Three dampers, applied to RANK-BASED exits
+# only (structural sell rules and sentinel exits are unaffected):
+EXIT_RANK_MULTIPLE    = 1.5  # enter at rank ≤ TARGET_N, exit only at rank > TARGET_N × this
+MIN_HOLD_DAYS         = 10   # a rank-based exit needs the position to be at least this old
+REENTRY_COOLDOWN_DAYS = 10   # a symbol sold this recently cannot be re-bought
+
 # v2.2 quarterly months — only these months allow new BUY orders and Tier 2+ SELL exits
 QUARTERLY_MONTHS = {1, 4, 7, 10}  # Jan, Apr, Jul, Oct
 
@@ -72,6 +81,26 @@ MARKET_OPEN_RUN = os.environ.get("MARKET_OPEN_RUN", "").lower() == "true"
 # Sentinel execution mode: reads sentinel_orders.json and places those sells immediately.
 # Set via --sentinel CLI flag or SENTINEL_RUN=true env var.
 SENTINEL_RUN = "--sentinel" in sys.argv or os.environ.get("SENTINEL_RUN", "").lower() == "true"
+
+# ── v4.0 fresh-start + safety flags ─────────────────────────────────
+# Shadow mode: run the whole pipeline (screen, decide, gate, build orders) and record what WOULD
+# be submitted, without sending anything to the broker. Used to validate a new account for a few
+# sessions before letting it trade — the Apr–Aug 2026 account lost a quarter to execution bugs
+# that a handful of dry runs would have surfaced immediately.
+DRY_RUN = os.environ.get("DRY_RUN", "").lower() == "true"
+
+# One-time bootstrap for a NEW broker account. Seeds initial_capital from the account's real
+# equity instead of inheriting the previous generation's figure. `initial_capital` is sticky
+# (compute_summary preserves it across runs) and build_spy_curve normalises the benchmark to it,
+# so inheriting a stale value silently corrupts both P&L and the SPY comparison forever.
+RESET_PORTFOLIO = os.environ.get("RESET_PORTFOLIO", "").lower() == "true"
+
+# Kill switch: consecutive runs an invariant breach may persist before discretionary trading
+# halts. The Apr–Aug 2026 failure was not that a breach occurred — it was that it PERSISTED,
+# unnoticed, for four months. Persistence is therefore itself the alarm.
+MAX_BREACH_RUNS = 3
+
+STRATEGY_VERSION = "4.0"
 
 # Known dual-class share pairs: maps each ticker to a canonical issuer ID.
 # Screener keeps only the highest-momentum ticker per issuer.
@@ -97,6 +126,87 @@ def is_quarterly_month(dt: datetime | None = None) -> bool:
     return month in QUARTERLY_MONTHS
 
 
+def bootstrap_fresh_portfolio(state: dict, account_name: str,
+                              dt: datetime | None = None) -> dict:
+    """Seed a brand-new portfolio.json from a brand-new broker account (v4.0).
+
+    Why this exists: `initial_capital` is STICKY — compute_summary preserves it across every run,
+    and build_spy_curve normalises the SPY benchmark to it. Carrying the previous generation's
+    figure ($9,864.11) onto a new account would silently anchor all P&L and corrupt the benchmark
+    comparison permanently. So the fresh start reads the account's real equity instead.
+
+    Raises InvariantBreach if the account is not actually fresh — this wipes history, so it must
+    never run against a book that already holds anything.
+    """
+    positions = state.get("positions") or []
+    orders    = state.get("orders") or []
+    if positions:
+        raise InvariantBreach(
+            f"RESET_PORTFOLIO refused: account holds {len(positions)} position(s) "
+            f"({', '.join(str(getattr(p, 'symbol', '?')) for p in positions[:5])}). "
+            f"Reset is only for an empty, newly created account."
+        )
+    if orders:
+        raise InvariantBreach(
+            f"RESET_PORTFOLIO refused: account has {len(orders)} order(s) in its history. "
+            f"Reset is only for an empty, newly created account."
+        )
+
+    equity = float(state.get("portfolio_value") or 0)
+    if equity <= 0:
+        raise InvariantBreach(f"RESET_PORTFOLIO refused: account equity is ${equity:,.2f}.")
+
+    today = (dt or datetime.now()).strftime("%Y-%m-%d")
+    print("\n" + "=" * 68)
+    print("  FRESH START — seeding a new portfolio from live account equity")
+    print(f"  Account        : {account_name}")
+    print(f"  Initial capital: ${equity:,.2f}   (read from the broker, not inherited)")
+    print(f"  Inception      : {today}")
+    print("=" * 68 + "\n")
+
+    return {
+        "meta": {
+            "strategy":         f"TradeQuest AI Momentum Strategy v{STRATEGY_VERSION}",
+            "strategy_version": STRATEGY_VERSION,
+            "account_name":     account_name,
+            "account_generation": 2,
+            "inception_date":   today,
+            "initial_capital":  round(equity, 2),
+            "mode":             "alpaca",
+            "universe":         "S&P 500",
+        },
+        "summary": {
+            "initial_capital": round(equity, 2),
+            "cash":            round(equity, 2),
+            "portfolio_value": round(equity, 2),
+        },
+        "filter_status": {},
+        "equity_curve":  [],
+        "spy_curve":     [],
+        "benchmark":     [],
+        "holdings":      [],
+        "trades":        [],
+    }
+
+
+def next_quarterly_date(dt: datetime | None = None) -> str:
+    """First day of the next quarterly rebalance month (Jan/Apr/Jul/Oct), as YYYY-MM-DD.
+
+    The old "1st of next month" value was wrong whenever the next month was not quarterly —
+    portfolio.json advertised next_rebalance 2026-09-01 while new-entrant buys were in fact
+    locked until 2026-10-01.
+    """
+    now = dt or datetime.now()
+    year, month = now.year, now.month
+    for _ in range(12):
+        month += 1
+        if month > 12:
+            month, year = 1, year + 1
+        if month in QUARTERLY_MONTHS:
+            return f"{year:04d}-{month:02d}-01"
+    return now.strftime("%Y-%m-%d")   # unreachable while QUARTERLY_MONTHS is non-empty
+
+
 def has_unrealized_gain(holding: dict) -> bool:
     """Return True if the position has a positive unrealized PnL (the hold gate applies)."""
     pnl = holding.get("pnl") or holding.get("pnl_pct", 0)
@@ -105,6 +215,70 @@ def has_unrealized_gain(holding: dict) -> bool:
         return float(pnl) > 0
     except (TypeError, ValueError):
         return False
+
+
+# ── v3.2 churn dampers ────────────────────────────────────────
+
+def days_held(holding: dict, today: datetime | None = None) -> int | None:
+    """Calendar days since entry_date, or None when the date is missing/unparseable."""
+    raw = holding.get("entry_date")
+    if not raw:
+        return None
+    try:
+        entry = datetime.strptime(str(raw)[:10], "%Y-%m-%d")
+    except ValueError:
+        return None
+    return ((today or datetime.now()) - entry).days
+
+
+def should_exit_on_rank(holding: dict, rank: int | None,
+                        target_n: int = TARGET_N, today: datetime | None = None) -> tuple[bool, str]:
+    """Decide a RANK-BASED exit under the v3.2 hysteresis band. Returns (exit?, reason).
+
+    Entry happens at rank ≤ target_n but exit only past target_n × EXIT_RANK_MULTIPLE, so a
+    name drifting around the boundary is held instead of round-tripped. A position younger
+    than MIN_HOLD_DAYS is held regardless — UNLESS it has broken its 50-day MA, which is a
+    genuine trend break (Rule A) and must not be delayed by a churn damper.
+    """
+    exit_threshold = int(target_n * EXIT_RANK_MULTIPLE)
+
+    if rank is None or rank <= 0:
+        reason = "unranked (dropped out of the screen universe)"
+    elif rank > exit_threshold:
+        reason = f"rank {rank} > exit threshold {exit_threshold}"
+    else:
+        return False, f"rank {rank} within hysteresis band (exit at >{exit_threshold})"
+
+    if holding.get("status") == "below_ma":
+        return True, f"{reason}; below 50-day MA — min-hold waived"
+
+    held_days = days_held(holding, today)
+    if held_days is not None and held_days < MIN_HOLD_DAYS:
+        return False, (f"{reason} BUT held only {held_days}d "
+                       f"(min {MIN_HOLD_DAYS}d) and above MA — exit deferred")
+    return True, reason
+
+
+def in_reentry_cooldown(symbol: str, trades: list[dict], today: datetime | None = None) -> int | None:
+    """Days since the most recent SELL of `symbol`, if still inside the cooldown window.
+
+    Returns None when the symbol is free to buy. Blocks the buy→sell→re-buy round trips
+    (FFIV, CSX, WST in Jul 2026) that realized losses and re-entered at a worse price.
+    """
+    now = today or datetime.now()
+    for t in trades or []:
+        if str(t.get("action", "")).upper() != "SELL":
+            continue
+        if str(t.get("symbol", "")).upper() != symbol.upper():
+            continue
+        try:
+            sold = datetime.strptime(str(t.get("date", ""))[:10], "%Y-%m-%d")
+        except ValueError:
+            continue
+        age = (now - sold).days
+        if age < REENTRY_COOLDOWN_DAYS:
+            return age
+    return None
 
 
 def check_sector_concentration(holdings: list[dict]) -> dict[str, float]:
@@ -403,6 +577,121 @@ def _alpaca_client():
         return None
 
 
+def short_positions(positions) -> list:
+    """Return positions with a negative quantity — a long-only invariant breach."""
+    return [p for p in (positions or []) if float(getattr(p, "qty", 0) or 0) < 0]
+
+
+def compute_deployable_cash(cash: float, positions) -> float:
+    """Cash that is genuinely available to spend (v3.2).
+
+    Alpaca's `account.cash` INCLUDES the proceeds of any short sale — money the account
+    does not own and must give back when the short is covered. With the JBL short open
+    (-22 sh, ~-$7,571) the account reported $7,566 cash / 79.4% on a $9,534 book while the
+    true deployable figure was ~$0 and the book was already ~100% long. Sizing buys off
+    the raw number would have authorized ~$7,090 of purchases against phantom money.
+
+    Deployable = raw cash − Σ|market_value| of every short position. Never returns < 0.
+    """
+    short_liability = sum(
+        abs(float(getattr(p, "market_value", 0) or 0)) for p in short_positions(positions)
+    )
+    return max(0.0, cash - short_liability)
+
+
+# ── v4.0 invariant gate + kill switch ──────────────────────────────
+
+class InvariantBreach(Exception):
+    """Raised when broker state violates a rule the strategy treats as inviolable."""
+
+
+def assert_invariants(state: dict, holdings: list[dict] | None = None) -> list[str]:
+    """Single chokepoint every order path passes through. Returns a list of breach strings.
+
+    This is the structural answer to the Apr–Aug 2026 failure. The system already had the rule
+    "long-only" written down in three documents; what it lacked was one place that checked. Every
+    caller (rebalance, sentinel, manual order, true-up) runs this before touching the broker.
+
+    Deliberately returns breaches rather than raising: the COVER path must still be allowed to run
+    precisely BECAUSE there is a breach. Raising here would make the invariant unfixable, which is
+    the exact deadlock v3.2 had to undo.
+    """
+    breaches: list[str] = []
+    pv = float(state.get("portfolio_value") or 0)
+
+    for pos in state.get("positions", []) or []:
+        sym = str(getattr(pos, "symbol", "?")).upper()
+        qty = float(getattr(pos, "qty", 0) or 0)
+        mv  = float(getattr(pos, "market_value", 0) or 0)
+        if qty < 0:
+            breaches.append(f"{sym}: short position ({qty:g} shares, ${mv:,.2f})")
+        if pv and abs(mv) > pv * MAX_POSITION_PCT * 2:
+            breaches.append(
+                f"{sym}: position ${abs(mv):,.2f} exceeds 2x the "
+                f"{MAX_POSITION_PCT:.0%} cap ({abs(mv)/pv:.1%} of book)"
+            )
+
+    deployable = state.get("deployable_cash")
+    if deployable is not None and float(deployable) < 0:
+        breaches.append(f"deployable cash is negative (${float(deployable):,.2f})")
+
+    # Sector concentration is checked against holdings when available (positions carry no sector).
+    if holdings and pv:
+        sector_val: dict[str, float] = {}
+        for h in holdings:
+            if float(h.get("shares", 0) or 0) > 0:
+                sec = h.get("sector") or "Unknown"
+                sector_val[sec] = sector_val.get(sec, 0.0) + float(h.get("market_value", 0) or 0)
+        for sec, val in sector_val.items():
+            if val > pv * MAX_SECTOR_PCT:
+                breaches.append(f"sector {sec} at {val/pv:.1%} exceeds the {MAX_SECTOR_PCT:.0%} cap")
+
+    return breaches
+
+
+def reconcile_positions(state: dict, holdings: list[dict]) -> list[str]:
+    """Compare broker truth against portfolio.json. Divergence is reported, never traded through."""
+    broker = {
+        str(getattr(p, "symbol", "")).upper(): float(getattr(p, "qty", 0) or 0)
+        for p in state.get("positions", []) or []
+    }
+    local = {
+        str(h.get("symbol", "")).upper(): float(h.get("shares", 0) or 0)
+        for h in holdings or []
+    }
+    diffs: list[str] = []
+    for sym in sorted(set(broker) | set(local)):
+        b, l = broker.get(sym), local.get(sym)
+        if b is None:
+            diffs.append(f"{sym}: in portfolio.json ({l:g}) but not at broker")
+        elif l is None:
+            diffs.append(f"{sym}: at broker ({b:g}) but not in portfolio.json")
+        elif abs(b - l) > 1e-6:
+            diffs.append(f"{sym}: broker {b:g} vs portfolio.json {l:g}")
+    return diffs
+
+
+def read_breach_streak(data_dir: Path) -> int:
+    """Consecutive prior runs that ended with an unresolved invariant breach."""
+    path = data_dir / "execution_summary.json"
+    if not path.exists():
+        return 0
+    try:
+        with open(path, encoding="utf-8") as f:
+            return int(json.load(f).get("breach_streak", 0) or 0)
+    except (OSError, ValueError, TypeError):
+        return 0
+
+
+def trading_halted(breaches: list[str], streak: int) -> bool:
+    """True once a breach has survived MAX_BREACH_RUNS runs — persistence is the alarm.
+
+    A halt stops DISCRETIONARY orders only. Covers are always permitted, because covering is what
+    clears the breach; halting them would recreate the JBL deadlock under a different name.
+    """
+    return bool(breaches) and streak >= MAX_BREACH_RUNS
+
+
 def alpaca_read_state(client) -> dict | None:
     """Fetch account summary, open positions, closed orders, and pending open orders."""
     try:
@@ -411,17 +700,48 @@ def alpaca_read_state(client) -> dict | None:
 
         account        = client.get_account()
         positions      = client.get_all_positions()
-        orders_closed  = client.get_orders(GetOrdersRequest(status=QueryOrderStatus.CLOSED, limit=50))
-        orders_open    = client.get_orders(GetOrdersRequest(status=QueryOrderStatus.OPEN,   limit=20))
+        # v3.2: paginate closed orders so compute_realized_pnl can pair full history.
+        # The old flat limit=50 silently truncated it — 50 trades were recorded but only
+        # 8 ever got a pnl attributed, which is why win_rate read 0.125 off 8 samples.
+        orders_closed  = fetch_closed_orders(client)
+        orders_open    = client.get_orders(GetOrdersRequest(status=QueryOrderStatus.OPEN, limit=20))
+
+        cash = float(account.cash)
         return {
             "portfolio_value": float(account.portfolio_value),
-            "cash":            float(account.cash),
+            "cash":            cash,
+            "deployable_cash": compute_deployable_cash(cash, positions),
+            "shorts":          short_positions(positions),
             "positions":       positions,
             "orders":          list(orders_closed) + list(orders_open),
         }
     except Exception as e:
         print(f"Warning: Alpaca state fetch failed ({e}).", file=sys.stderr)
         return None
+
+
+def fetch_closed_orders(client, page_size: int = 500, max_orders: int = 2000) -> list:
+    """Page through closed orders newest-first so realized-P&L attribution sees real history."""
+    from alpaca.trading.requests import GetOrdersRequest
+    from alpaca.trading.enums import QueryOrderStatus
+
+    collected: list = []
+    until = None
+    while len(collected) < max_orders:
+        req = GetOrdersRequest(
+            status=QueryOrderStatus.CLOSED, limit=page_size, direction="desc", until=until
+        )
+        batch = list(client.get_orders(req))
+        if not batch:
+            break
+        collected.extend(batch)
+        if len(batch) < page_size:
+            break
+        # Walk backwards from the oldest order in this page.
+        until = getattr(batch[-1], "submitted_at", None) or getattr(batch[-1], "created_at", None)
+        if until is None:
+            break
+    return collected[:max_orders]
 
 
 def alpaca_positions_to_holdings(
@@ -580,9 +900,10 @@ def alpaca_orders_to_trades(orders) -> list[dict]:
 
 def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
                          pv: float, cash: float,
-                         prices: dict[str, float] | None = None) -> list[tuple]:
+                         prices: dict[str, float] | None = None,
+                         to_cover: list[tuple] | None = None) -> list[tuple]:
     """
-    Submit market orders to Alpaca paper trading. Sells first to free cash.
+    Submit market orders to Alpaca paper trading. Covers first, then sells, then buys.
     Enforces CASH_FLOOR_PCT: stops buying if remaining cash would fall below floor.
     Idempotency guard: skips symbols that already have an open order today to prevent
     duplicate submissions from concurrent workflow runs.
@@ -592,6 +913,11 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
     already short is never sold. Orders with a non-positive price are also rejected. Without
     this, a symbol that trend-breaks every day (e.g. JBL, Jul 2026) is re-sold each run and
     Alpaca opens/extends a naked short with unbounded loss.
+
+    Cover path (v3.2): `to_cover` closes existing shorts and RESTORES that invariant. Covers
+    run before everything else and are exempt from the cash floor — a cover is funded by the
+    short proceeds already sitting in the account, so blocking it on a cash test would leave
+    the position permanently stuck (exactly what happened to JBL from Jul to Aug 2026).
     """
     from alpaca.trading.requests import MarketOrderRequest, GetOrdersRequest
     from alpaca.trading.enums import OrderSide, TimeInForce, QueryOrderStatus
@@ -599,6 +925,21 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
     prices     = prices or {}
     cash_floor = pv * CASH_FLOOR_PCT
     placed = []
+
+    def submit(symbol: str, quantity: int, side, label: str) -> None:
+        """The one and only path to the broker. DRY_RUN stops here and nowhere else.
+
+        Keeping shadow mode at a single chokepoint means a future branch cannot accidentally
+        bypass it — every order type (cover, sell, buy) must come through this function.
+        `label` is passed explicitly because the broker enum has no readable repr, and the
+        whole value of shadow mode is a plan a human can actually review.
+        """
+        if DRY_RUN:
+            print(f"  [DRY-RUN] would submit {label} {quantity} {symbol} — not sent")
+            return
+        client.submit_order(MarketOrderRequest(
+            symbol=symbol, qty=quantity, side=side, time_in_force=TimeInForce.DAY,
+        ))
 
     # Long-only guard: fetch current positions so we never sell more than we own.
     held_qty: dict[str, float] = {}
@@ -619,6 +960,29 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
                 already_ordered.add(str(getattr(o, "symbol", "")).upper())
     except Exception as e:
         print(f"  Warning: could not fetch open orders for idempotency check: {e}", file=sys.stderr)
+
+    # ── Covers first (v3.2): restore the long-only invariant before anything else ──
+    for sym, shares in (to_cover or []):
+        key = sym.upper()
+        if key in already_ordered:
+            print(f"  Idempotency: COVER {sym} already has an open order today — skipped")
+            continue
+        held = held_qty.get(key)
+        if held is None or held >= 0:
+            print(f"  Cover guard: {sym} is not short (qty {held}) — COVER skipped")
+            continue
+        # Never buy back more than the outstanding short, or the cover flips us long.
+        qty = min(int(shares), int(abs(held)))
+        if qty <= 0:
+            print(f"  Cover guard: {sym} computed qty {qty} ≤ 0 — COVER skipped")
+            continue
+        try:
+            submit(sym, qty, OrderSide.BUY, "COVER")
+            print(f"  ⇧ COVER {qty:>5} {sym} (buy-to-close short — long-only restored)")
+            placed.append(("COVER", sym, qty))
+            already_ordered.add(key)
+        except Exception as e:
+            print(f"  ✗ COVER {sym}: {e}", file=sys.stderr)
 
     for sym, shares in to_sell:
         if sym.upper() in already_ordered:
@@ -646,11 +1010,7 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
             print(f"  Price guard: {sym} has non-positive price ({price}) — SELL skipped")
             continue
         try:
-            client.submit_order(MarketOrderRequest(
-                symbol=sym, qty=qty,
-                side=OrderSide.SELL,
-                time_in_force=TimeInForce.DAY,
-            ))
+            submit(sym, qty, OrderSide.SELL, "SELL")
             print(f"  ↓ SELL {qty:>5} {sym}")
             placed.append(("SELL", sym, qty))
             already_ordered.add(sym.upper())
@@ -671,11 +1031,7 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
             print(f"  Risk gate: cash floor — skipping BUY {sym} (cash ${cash:,.0f} near floor ${cash_floor:,.0f})")
             continue
         try:
-            client.submit_order(MarketOrderRequest(
-                symbol=sym, qty=qty,
-                side=OrderSide.BUY,
-                time_in_force=TimeInForce.DAY,
-            ))
+            submit(sym, qty, OrderSide.BUY, "BUY")
             print(f"  ↑ BUY  {qty:>5} {sym}")
             placed.append(("BUY", sym, qty))
             already_ordered.add(sym.upper())
@@ -691,6 +1047,11 @@ def write_execution_summary(
     errors: list[str],
     cash_pct_after: float | None,
     data_dir: Path,
+    long_only_breach: bool = False,
+    breaches: list[str] | None = None,
+    breach_streak: int = 0,
+    halted: bool = False,
+    dry_run: bool = False,
 ) -> None:
     """Write data/execution_summary.json so agent.py can report what actually ran.
 
@@ -701,17 +1062,26 @@ def write_execution_summary(
     placed  — list of (action, symbol, qty) tuples from alpaca_place_orders()
     skipped — list of {"symbol": ..., "reason": ...} dicts for blocked orders
     errors  — list of plain-string error messages
+    long_only_breach — True when a short was open at the start of this run (v3.2)
     """
     payload = {
         "timestamp":      datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "mode":           "market_open" if MARKET_OPEN_RUN else "post_close",
         "orders_placed":  [
-            {"action": a, "symbol": s, "qty": q, "status": "submitted"}
+            {"action": a, "symbol": s, "qty": q,
+             "status": "dry_run" if dry_run else "submitted"}
             for a, s, q in placed
         ],
         "orders_skipped": skipped,
         "errors":         errors,
         "cash_pct_after": round(cash_pct_after, 2) if cash_pct_after is not None else None,
+        "long_only_breach": bool(long_only_breach),
+        # v4.0 — the kill switch reads breach_streak back on the next run. A breach that
+        # persists is what halts trading; a single bad run is not enough to stop the system.
+        "invariant_breaches": breaches or [],
+        "breach_streak":      int(breach_streak),
+        "trading_halted":     bool(halted),
+        "dry_run":            bool(dry_run),
     }
     out_path = data_dir / "execution_summary.json"
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -825,6 +1195,32 @@ def handle_manual_order(client) -> None:
                                    time_in_force=tif, stop_price=float(sp_str))
         else:
             req = MarketOrderRequest(symbol=sym, qty=qty, side=side, time_in_force=tif)
+
+        if side == OrderSide.SELL:
+            # Long-only: a manual SELL may never exceed the held quantity. Without this the
+            # manual hatch is a way around the invariant that the rest of the system enforces.
+            held = 0
+            try:
+                for pos in client.get_all_positions():
+                    if str(getattr(pos, "symbol", "")).upper() == sym:
+                        held = int(float(getattr(pos, "qty", 0) or 0))
+                        break
+            except Exception as e:
+                print(f"handle_manual_order: position check failed ({e}) — SELL blocked.",
+                      file=sys.stderr)
+                return
+            if held <= 0:
+                print(f"handle_manual_order: {sym} not held (qty {held}) — SELL blocked (no short).",
+                      file=sys.stderr)
+                return
+            if qty > held:
+                print(f"handle_manual_order: clamping SELL {qty} → {held} (held quantity).")
+                qty = held
+                req = MarketOrderRequest(symbol=sym, qty=qty, side=side, time_in_force=tif)
+
+        if DRY_RUN:
+            print(f"  [DRY-RUN] would place manual {side_str.upper()} {qty} {sym} ({type_str}) — not sent")
+            return
 
         order = client.submit_order(req)
         print(f"Manual order placed: {side_str.upper()} {qty} {sym} ({type_str}) → id={order.id}")
@@ -1103,10 +1499,19 @@ def reconcile(screened: list[dict], fundamentals: dict,
 
 
 # ── Summary ───────────────────────────────────────────────────
-def compute_summary(holdings, cash, existing_summary, all_trades) -> dict:
+def compute_summary(holdings, cash, existing_summary, all_trades,
+                    deployable_cash: float | None = None) -> dict:
     invested  = sum(h["market_value"] for h in holdings)
     pv        = invested + cash
     initial   = (existing_summary or {}).get("initial_capital", INITIAL_CAPITAL)
+
+    # v3.2: `cash` is the raw broker figure and includes short-sale proceeds (an IOU, not
+    # spendable). The dashboard already annotates that. What was missing is an explicit
+    # deployable figure for the risk gates and the manual-trade panel to size against.
+    short_mv = sum(h["market_value"] for h in holdings if h.get("shares", 0) < 0)
+    if deployable_cash is None:
+        deployable_cash = max(0.0, cash + short_mv)   # short_mv is negative
+    long_mv  = sum(h["market_value"] for h in holdings if h.get("shares", 0) > 0)
 
     unrealized = sum(h["pnl"] for h in holdings)
     realized   = sum(t["pnl"] for t in all_trades
@@ -1121,6 +1526,13 @@ def compute_summary(holdings, cash, existing_summary, all_trades) -> dict:
         "portfolio_value":  round(pv, 2),
         "cash":             round(cash, 2),
         "cash_pct":         round(cash / pv * 100, 2) if pv else 0,
+        # v3.2 — the figures the risk gates and the trade panel must size against.
+        "deployable_cash":     round(deployable_cash, 2),
+        "deployable_cash_pct": round(deployable_cash / pv * 100, 2) if pv else 0,
+        "short_proceeds":      round(abs(short_mv), 2),
+        "long_exposure_pct":   round(long_mv / pv * 100, 2) if pv else 0,
+        "net_exposure_pct":    round(invested / pv * 100, 2) if pv else 0,
+        "long_only_breach":    short_mv < 0,
         "invested":         round(invested, 2),
         "total_pnl":        round(unrealized + realized, 2),
         "total_pnl_pct":    round((unrealized + realized) / initial * 100, 2) if initial else 0,
@@ -1128,6 +1540,10 @@ def compute_summary(holdings, cash, existing_summary, all_trades) -> dict:
         "unrealized_pnl":   round(unrealized, 2),
         "win_rate":         round(len(wins) / len(sells), 3) if sells else prev.get("win_rate", 0),
         "total_trades":     len(all_trades),
+        # v3.2: win_rate is computed over SELLs that carry an attributed P&L, not over
+        # total_trades. Reporting only "50 trades / 12.5% win rate" implied a 50-trade
+        # sample when the real denominator was 8. Surface the denominator explicitly.
+        "attributed_trades": len(sells),
         "winning_trades":   len(wins),
         "losing_trades":    len(losses),
         "avg_win_pct":      round(sum(t["pnl_pct"] for t in wins)  / len(wins),   1) if wins   else prev.get("avg_win_pct", 0),
@@ -1251,8 +1667,9 @@ def run_sentinel() -> None:
         print("sentinel mode: could not read Alpaca state — aborting.", file=sys.stderr)
         return
 
-    pv   = alpaca_state["portfolio_value"]
-    cash = alpaca_state["cash"]
+    pv              = alpaca_state["portfolio_value"]
+    cash            = alpaca_state["cash"]
+    deployable_cash = alpaca_state.get("deployable_cash", cash)
 
     # Build sell list from sentinel rules — bypass the agent approval gate (rules are hard)
     raw_sells = [(s["symbol"], s["shares"]) for s in sells_raw]
@@ -1261,13 +1678,41 @@ def run_sentinel() -> None:
         for pos in alpaca_state.get("positions", [])
     }
 
+    # v3.2: the sentinel makes no LLM call, so it is the one path that stays alive through an
+    # API outage (it was the only green workflow during the Aug 2026 credit exhaustion) — and
+    # it runs during market hours. Covering shorts here means an open long-only breach gets
+    # closed even when the agent and market-open pipelines are both down.
+    to_cover: list[tuple] = [
+        (str(p.symbol).upper(), int(abs(float(p.qty or 0))))
+        for p in short_positions(alpaca_state.get("positions", []))
+    ]
+    for sym, qty in to_cover:
+        print(f"sentinel mode: LONG-ONLY BREACH — covering {qty} {sym}")
+
     # Pass sentinel symbols as pre-approved; apply_risk_limits handles the 30% sell cap
     # and will internally detect overweight positions to bypass that cap for them.
     sentinel_syms = {s["symbol"].upper() for s in sells_raw}
-    gated_sells, _ = apply_risk_limits(raw_sells, [], pv, cash, sentinel_syms, price_map)
+    gated_sells, _ = apply_risk_limits(
+        raw_sells, [], pv, deployable_cash, sentinel_syms, price_map
+    )
 
-    print(f"sentinel mode: placing {len(gated_sells)} sell order(s) via Alpaca")
-    placed = alpaca_place_orders(client, gated_sells, [], pv, cash, price_map)
+    # v4.0: the sentinel runs the same invariant gate. It is the one path that stayed alive
+    # through the Aug 2026 outage, so it must not be the one path without a safety check.
+    breaches      = assert_invariants(alpaca_state)
+    prior_streak  = read_breach_streak(REPO_ROOT / "data")
+    breach_streak = (prior_streak + 1) if breaches else 0
+    halted        = trading_halted(breaches, breach_streak)
+    if breaches:
+        print(f"sentinel mode: INVARIANT BREACH (run {breach_streak}/{MAX_BREACH_RUNS}) — "
+              + "; ".join(breaches))
+    if halted and gated_sells:
+        print(f"sentinel mode: kill switch — suppressing {len(gated_sells)} sell(s); covers proceed.")
+        gated_sells = []
+
+    print(f"sentinel mode: placing {len(to_cover)} cover(s) + {len(gated_sells)} sell order(s) via Alpaca")
+    placed = alpaca_place_orders(
+        client, gated_sells, [], pv, deployable_cash, price_map, to_cover=to_cover
+    )
 
     executed_syms = {sym.upper() for _, sym, _ in placed}
     exec_placed: list[tuple] = placed
@@ -1277,7 +1722,10 @@ def run_sentinel() -> None:
         if s["symbol"].upper() not in executed_syms
     ]
     cash_pct = round(cash / pv * 100, 2) if pv else None
-    write_execution_summary(exec_placed, exec_skipped, [], cash_pct, REPO_ROOT / "data")
+    write_execution_summary(exec_placed, exec_skipped, [], cash_pct, REPO_ROOT / "data",
+                            long_only_breach=bool(to_cover),
+                            breaches=breaches, breach_streak=breach_streak,
+                            halted=halted, dry_run=DRY_RUN)
     print("sentinel mode: execution complete.")
 
 
@@ -1286,8 +1734,12 @@ def main():
         run_sentinel()
         return
 
-    # Load existing state
-    if DATA_FILE.exists():
+    if DRY_RUN:
+        print("SHADOW MODE (DRY_RUN=true) — orders will be computed and logged, never submitted.")
+
+    # Load existing state. RESET_PORTFOLIO replaces `data` later, once the broker is reachable
+    # and its real equity can be read (see the alpaca branch below).
+    if DATA_FILE.exists() and not RESET_PORTFOLIO:
         with open(DATA_FILE, encoding="utf-8") as f:
             data = json.load(f)
     else:
@@ -1399,6 +1851,14 @@ def main():
         # Guard: refuse to run against a live (non-paper) endpoint
         verify_paper_url()
 
+        # ── v4.0 one-time fresh start ───────────────────────────────
+        # Runs only with RESET_PORTFOLIO=true, and only against a genuinely empty account.
+        if RESET_PORTFOLIO:
+            data = bootstrap_fresh_portfolio(alpaca_state, ALPACA_ACCOUNT_NAME)
+            existing_holdings = []
+            existing_trades   = []
+            cash              = data["summary"]["cash"]
+
         # Build existing holdings map for entry_date preservation
         existing_map = {h["symbol"]: h for h in existing_holdings}
 
@@ -1407,8 +1867,57 @@ def main():
             alpaca_state["positions"], fundamentals, screened_ranks, vol30, existing_map
         )
 
-        cash = alpaca_state["cash"]
-        pv   = alpaca_state["portfolio_value"]
+        cash            = alpaca_state["cash"]
+        deployable_cash = alpaca_state.get("deployable_cash", cash)
+        pv              = alpaca_state["portfolio_value"]
+
+        # Trade history is needed BEFORE order placement so the v3.2 re-entry cooldown can
+        # see recent sells. It is recomputed after the orders land.
+        all_trades = alpaca_orders_to_trades(alpaca_state["orders"])
+
+        # ── v4.0 invariant gate ───────────────────────────────────
+        # One chokepoint, checked before any order is built. A breach does NOT stop the run —
+        # covers must still fire, because covering is what clears it. What a breach does is start
+        # a streak, and a streak that survives MAX_BREACH_RUNS halts discretionary trading.
+        breaches     = assert_invariants(alpaca_state, new_holdings)
+        prior_streak = read_breach_streak(REPO_ROOT / "data")
+        breach_streak = (prior_streak + 1) if breaches else 0
+        halted        = trading_halted(breaches, breach_streak)
+
+        if breaches:
+            print("\n" + "!" * 68)
+            print(f"  INVARIANT BREACH — run {breach_streak} of {MAX_BREACH_RUNS} before halt")
+            for b in breaches:
+                print(f"    • {b}")
+            if halted:
+                print("  TRADING HALTED — discretionary orders suppressed; COVER still permitted.")
+                print("  Remediate with: python bot/rebalance_trueup.py --dry-run")
+            print("!" * 68 + "\n")
+
+        divergences = reconcile_positions(alpaca_state, existing_holdings)
+        if divergences:
+            print("  Reconciliation: broker and portfolio.json disagree —")
+            for d in divergences[:10]:
+                print(f"    • {d}")
+
+        # ── v3.2 long-only breach alarm ──────────────────────────
+        # A long-only strategy holding a short is a system-down condition, not a data point.
+        # This is the alarm that was missing while JBL sat at -22 shares for four months.
+        shorts = alpaca_state.get("shorts") or []
+        if shorts:
+            print("\n" + "!" * 68)
+            print("  LONG-ONLY INVARIANT BREACH — short position(s) open")
+            for p in shorts:
+                sym = str(getattr(p, "symbol", "?")).upper()
+                q   = float(getattr(p, "qty", 0) or 0)
+                mv  = float(getattr(p, "market_value", 0) or 0)
+                pct = f" ({mv / pv * 100:.1f}% of portfolio)" if pv else ""
+                print(f"    {sym}: {q:g} shares, market value ${mv:,.2f}{pct}")
+            print(f"  Raw broker cash ${cash:,.2f} includes short proceeds; "
+                  f"deployable is ${deployable_cash:,.2f}.")
+            print("  A cover order is queued below. To remediate the whole book at once, run:")
+            print("    python bot/rebalance_trueup.py --dry-run")
+            print("!" * 68 + "\n")
 
         # ── v2.2 Quarterly lock + profit gate ────────────────────
         # Determine whether this run is in a quarterly rebalance month.
@@ -1420,11 +1929,26 @@ def main():
         else:
             print("Quarter lock: NON-QUARTERLY month — buys BLOCKED; only Tier 1 (loss) sells allowed.")
 
-        # Determine rebalance orders: sell positions not in screened top-N, buy new entrants
-        current_syms = {h["symbol"] for h in new_holdings}
+        # ── F3 (v3.2): explicit COVER path — the way out of the JBL deadlock ──────
+        # v3.1 stopped the short from GROWING but left no way to CLOSE it: the long-only
+        # guard skips SELL when held ≤ 0; a short symbol is in current_syms so it is never a
+        # buy candidate; and buys are blocked outside quarterly months. The agent flagged
+        # "BUY-TO-COVER MANDATORY" on every run from 2026-08-07 with no order it could produce.
+        # Restoring an invariant is not a discretionary trade, so covers bypass the quarterly
+        # lock, the sector cap, the agent-approval gate and the per-run order budget.
+        to_cover: list[tuple] = []
+        for h in new_holdings:
+            held = int(h.get("shares", 0) or 0)
+            if held < 0:
+                to_cover.append((h["symbol"], abs(held)))
+                print(f"  COVER: BUY {abs(held)} {h['symbol']} — restore long-only invariant "
+                      f"(bypasses quarterly lock and order caps)")
+
+        # Determine rebalance orders using the v3.2 hysteresis band rather than a symmetric
+        # top-N diff. Shorts are excluded from both lists — they are handled by to_cover.
+        current_syms = {h["symbol"] for h in new_holdings if int(h.get("shares", 0) or 0) > 0}
         target_syms  = {s["symbol"] for s in screened[:TARGET_N]}
-        to_sell_syms = current_syms - target_syms
-        to_buy_syms  = target_syms  - current_syms
+        rank_of      = {s["symbol"]: s["momentum_rank"] for s in screened}
 
         # v3.1: equal-weight dollar target per position (deploy to CASH_FLOOR_PCT).
         # Sizing by dollars — not by shares/price — so an expensive single share (e.g. STX ~$913)
@@ -1433,38 +1957,48 @@ def main():
         deployable = pv * (1 - CASH_FLOOR_PCT)
         target_per = min(deployable / n_target, pv * MAX_POSITION_PCT)
 
-        # Build sell list — apply profit gate in non-quarterly months:
-        # Only positions at a loss may be sold outside quarterly months (Tier 1 only).
-        # Long-only clamp: only sell positive holdings; a flat/short qty is never re-sold here.
+        # Build sell list. Two gates stack on top of the rank test:
+        #   • hysteresis + min-hold (v3.2) — kills the boundary churn
+        #   • profit gate (v2.2)          — outside quarterly months only losers may exit
         raw_sells: list[tuple] = []
         quarterly_deferred: list[str] = []
+        churn_deferred: list[str] = []
         for h in new_holdings:
-            if h["symbol"] not in to_sell_syms:
-                continue
             held = int(h.get("shares", 0) or 0)
             if held <= 0:
-                # Flat or short (e.g. a runaway JBL short) — never sell more; leave the cover
-                # to the true-up / explicit short-close path, not the rebalance re-sell loop.
-                print(f"  Long-only guard: {h['symbol']} held qty {held} ≤ 0 — not re-sold in rebalance")
+                continue   # shorts and flats are handled by to_cover, never re-sold here
+            do_exit, why = should_exit_on_rank(h, rank_of.get(h["symbol"]))
+            if not do_exit:
+                if h["symbol"] not in target_syms:
+                    churn_deferred.append(f"{h['symbol']} ({why})")
                 continue
             if quarterly or not has_unrealized_gain(h):
                 # Quarterly month: all exits allowed.
                 # Non-quarterly: only losing positions (Tier 1 loss-harvest).
                 raw_sells.append((h["symbol"], held))
+                print(f"  Exit: {h['symbol']} — {why}")
             else:
                 quarterly_deferred.append(h["symbol"])
 
+        if churn_deferred:
+            print(f"  Churn damper: held despite being outside the top {TARGET_N} — "
+                  f"{'; '.join(churn_deferred)}")
         if quarterly_deferred:
             print(
                 f"  Hold gate: deferred profitable exit(s) to next quarterly — "
                 f"{', '.join(quarterly_deferred)} (unrealized gain; non-quarterly month)"
             )
 
-        # Buys are BLOCKED in non-quarterly months (v2.2 Execution Lock).
-        # v3.1: buys sized to the equal-weight dollar target (target_per), not to a fixed
-        # 1-share minimum, so capital is actually deployed toward the 5% cash floor.
+        # ── Buy list ──────────────────────────────────────────────────────────────
+        # New ENTRANTS remain quarterly-only (v2.2 Execution Lock, unchanged).
+        # v3.2 adds REDEPLOYMENT: topping up names already inside the top-N is allowed in any
+        # month once deployable cash drifts above the floor + CASH_DEPLOY_BAND. Without this
+        # the book could only shrink between quarterlies — Aug 2026 ran 4 sells and 0 buys,
+        # which is the real cash-drag engine, not the per-run order throttle v3.1 addressed.
+        to_buy_syms = target_syms - current_syms
+        raw_buys: list[tuple] = []
+
         if quarterly:
-            raw_buys = []
             for sym in to_buy_syms:
                 price = fundamentals.get(sym, {}).get("current_price", 0) or 0
                 if price <= 0:
@@ -1472,21 +2006,54 @@ def main():
                 qty = int(target_per // price)
                 if qty >= 1:
                     raw_buys.append((sym, qty))
-        else:
-            raw_buys = []
-            if to_buy_syms:
-                print(
-                    f"  Quarter lock: BUY orders BLOCKED in non-quarterly month — "
-                    f"{', '.join(sorted(to_buy_syms))} deferred to next quarterly rebalance."
-                )
+        elif to_buy_syms:
+            print(
+                f"  Quarter lock: new-entrant BUYs BLOCKED in non-quarterly month — "
+                f"{', '.join(sorted(to_buy_syms))} deferred to next quarterly rebalance."
+            )
+
+        deploy_trigger = CASH_FLOOR_PCT + CASH_DEPLOY_BAND
+        deployable_pct = (deployable_cash / pv) if pv else 0.0
+        if not quarterly and deployable_pct > deploy_trigger:
+            selling_syms = {s for s, _ in raw_sells}
+            topups: list[tuple] = []
+            for h in sorted(new_holdings, key=lambda x: rank_of.get(x["symbol"], 9999)):
+                sym = h["symbol"]
+                if sym in selling_syms or sym not in target_syms:
+                    continue
+                price = h.get("current_price", 0) or 0
+                gap   = target_per - float(h.get("market_value", 0) or 0)
+                if price <= 0 or gap <= price:
+                    continue
+                qty = int(gap // price)
+                if qty >= 1:
+                    topups.append((sym, qty))
+            if topups:
+                print(f"  Cash deploy: {deployable_pct:.1%} deployable > trigger "
+                      f"{deploy_trigger:.1%} — topping up {len(topups)} top-{TARGET_N} name(s) "
+                      f"toward ${target_per:,.0f} each")
+                raw_buys.extend(topups)
+
+        # v3.2 re-entry cooldown: never re-buy a name sold within REENTRY_COOLDOWN_DAYS.
+        if raw_buys:
+            filtered: list[tuple] = []
+            for sym, qty in raw_buys:
+                age = in_reentry_cooldown(sym, all_trades)
+                if age is not None:
+                    print(f"  Cooldown: {sym} was sold {age}d ago "
+                          f"(< {REENTRY_COOLDOWN_DAYS}d) — BUY skipped")
+                    continue
+                filtered.append((sym, qty))
+            raw_buys = filtered
 
         # ── F4: enforce the sector cap at quarterly rebalance (v3.1 — was advisory-only) ──
         # Drop the lowest-ranked buy candidates from any sector that would breach MAX_SECTOR_PCT.
         if quarterly and raw_buys:
             rank_of = {s["symbol"]: s["momentum_rank"] for s in screened}
             sector_val: dict[str, float] = {}
+            exiting_syms = {s for s, _ in raw_sells}
             for h in new_holdings:
-                if int(h.get("shares", 0) or 0) > 0 and h["symbol"] not in to_sell_syms:
+                if int(h.get("shares", 0) or 0) > 0 and h["symbol"] not in exiting_syms:
                     sec = h.get("sector", "Unknown")
                     sector_val[sec] = sector_val.get(sec, 0.0) + float(h.get("market_value", 0))
             cap_val = pv * MAX_SECTOR_PCT
@@ -1519,8 +2086,10 @@ def main():
             run_max_orders, run_max_sell_pct = REBALANCE_MAX_ORDERS, REBALANCE_MAX_SELL_PCT
         else:
             run_max_orders, run_max_sell_pct = MAX_ORDERS_PER_RUN, MAX_SELL_VALUE_PCT
+        # v3.2: risk gates size against DEPLOYABLE cash, not the raw broker figure — with a
+        # short open, account.cash includes proceeds the account must give back.
         to_sell, to_buy = apply_risk_limits(
-            raw_sells, raw_buys, pv, cash, agent_approvals["SELL"], price_map,
+            raw_sells, raw_buys, pv, deployable_cash, agent_approvals["SELL"], price_map,
             max_orders=run_max_orders, max_sell_pct=run_max_sell_pct,
         )
 
@@ -1528,9 +2097,19 @@ def main():
         exec_skipped: list[dict]  = []
         exec_errors:  list[str]   = []
 
-        if to_sell or to_buy:
-            print(f"Rebalance: {len(to_sell)} sells, {len(to_buy)} buys (after risk gates)")
-            exec_placed = alpaca_place_orders(client, to_sell, to_buy, pv, cash, price_map)
+        if halted and (to_sell or to_buy):
+            for sym, _ in to_sell + to_buy:
+                exec_skipped.append({"symbol": sym, "reason": "trading halted — unresolved invariant breach"})
+            print(f"  Kill switch: suppressing {len(to_sell)} sell(s) and {len(to_buy)} buy(s) — "
+                  f"breach unresolved for {breach_streak} runs. COVER orders still proceed.")
+            to_sell, to_buy = [], []
+
+        if to_cover or to_sell or to_buy:
+            print(f"Rebalance: {len(to_cover)} covers, {len(to_sell)} sells, "
+                  f"{len(to_buy)} buys (after risk gates)")
+            exec_placed = alpaca_place_orders(
+                client, to_sell, to_buy, pv, deployable_cash, price_map, to_cover=to_cover
+            )
             # Brief pause then re-fetch: during-hours fills settle in <1s;
             # after-hours orders appear as pending in the open-orders list.
             time.sleep(3)
@@ -1539,9 +2118,10 @@ def main():
                 new_holdings = alpaca_positions_to_holdings(
                     refreshed["positions"], fundamentals, screened_ranks, vol30, existing_map
                 )
-                cash = refreshed["cash"]
-                pv   = refreshed["portfolio_value"]
-                all_trades = alpaca_orders_to_trades(refreshed["orders"])
+                cash            = refreshed["cash"]
+                deployable_cash = refreshed.get("deployable_cash", cash)
+                pv              = refreshed["portfolio_value"]
+                all_trades      = alpaca_orders_to_trades(refreshed["orders"])
             else:
                 all_trades = alpaca_orders_to_trades(alpaca_state["orders"])
         else:
@@ -1557,13 +2137,17 @@ def main():
         write_execution_summary(
             exec_placed, exec_skipped, exec_errors,
             cash_pct_now, REPO_ROOT / "data",
+            long_only_breach=bool(shorts),
+            breaches=breaches, breach_streak=breach_streak,
+            halted=halted, dry_run=DRY_RUN,
         )
 
         # Handle manual order triggered via workflow_dispatch inputs
         handle_manual_order(client)
 
-        # Trades from Alpaca order history
-        all_trades = alpaca_orders_to_trades(alpaca_state["orders"])
+        # NOTE: all_trades is already set above — from the post-order refresh when one
+        # succeeded, otherwise from the pre-order state. Recomputing it from the stale
+        # alpaca_state here would discard orders placed moments ago.
 
         # Recalculate weights on current holdings
         total_mv = sum(h["market_value"] for h in new_holdings)
@@ -1571,7 +2155,8 @@ def main():
         for h in new_holdings:
             h["weight"] = round(h["market_value"] / denom, 4)
 
-        summary = compute_summary(new_holdings, cash, data.get("summary"), all_trades)
+        summary = compute_summary(new_holdings, cash, data.get("summary"), all_trades,
+                                  deployable_cash=deployable_cash)
 
     # ── 5b. Simulation mode (no Alpaca credentials) ────────────
     else:
@@ -1637,18 +2222,20 @@ def main():
     }
 
     # ── 8. Write portfolio.json ────────────────────────────────
-    today      = datetime.now().strftime("%Y-%m-%d")
-    next_month = (datetime.now().replace(day=1) + timedelta(days=32)).replace(day=1).strftime("%Y-%m-%d")
+    today = datetime.now().strftime("%Y-%m-%d")
     output = {
         "meta": {
             **data.get("meta", {}),
-            "strategy":       "TradeQuest AI Momentum Strategy v2.2",
+            "strategy":         f"TradeQuest AI Momentum Strategy v{STRATEGY_VERSION}",
+            "strategy_version": STRATEGY_VERSION,
             "universe":       "S&P 500",
-            "account_name":   "TradeQuest Paper",
+            "account_name":   ALPACA_ACCOUNT_NAME,
             "mode":           "alpaca" if alpaca_state else "simulation",
             "initial_capital": data.get("meta", {}).get("initial_capital", INITIAL_CAPITAL),
             "last_rebalance": today,
-            "next_rebalance": next_month,
+            # v3.2: was "1st of next month", which advertised 2026-09-01 while new entrants
+            # actually stay locked until the next QUARTERLY month (Oct). Report the real date.
+            "next_rebalance": next_quarterly_date(),
             **regime_info,
         },
         "summary":       summary,

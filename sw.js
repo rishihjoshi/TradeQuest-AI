@@ -3,7 +3,8 @@
 // when this version changes. v14→v15: Cash card added (index.html #cashPct removed → #cashValue/
 // #cashSub) — without this bump, clients served a fresh index.html but a stale cached app.js and
 // crashed on $('cashPct').
-const CACHE = 'tradequest-v16';
+// v16→v17: trade panel sizes against summary.deployable_cash instead of raw cash (v3.2).
+const CACHE = 'tradequest-v17';
 const SHELL = [
   './index.html',
   './style.css',

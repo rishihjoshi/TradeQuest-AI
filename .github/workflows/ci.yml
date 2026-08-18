@@ -1,0 +1,73 @@
+name: CI
+
+# WHY THIS EXISTS
+# The repo had 278 tests and nothing that ran them. No workflow was triggered by a push or a
+# pull request, so the suite was documentation rather than a gate. That is how
+# sentinel.count_consecutive_sell_flags() shipped reading a key agent.py never writes: the
+# filter skipped every run, Rule 3 never fired for four months, and no signal existed to say so.
+#
+# This job is deliberately cheap and has no secrets. The test suite stubs alpaca and anthropic,
+# so it needs no broker or model credentials and cannot place an order.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Lint, scan, test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405  # v6.2.0
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: bot/requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r bot/requirements.txt
+          pip install pylint bandit pip-audit pytest pytest-cov
+
+      # Gate 1 — code review. Errors and warnings fail the build; conventions do not.
+      - name: Pylint (errors and warnings only)
+        run: python -m pylint bot/ tests/ --disable=C,R --score=n
+
+      # Gate 2 — security. Any finding at any severity fails.
+      - name: Bandit
+        run: python -m bandit -r bot/ tests/ -ll -q
+
+      - name: Dependency CVE scan
+        run: python -m pip_audit -r bot/requirements.txt
+
+      # Gate 3 — tests. Zero failures, zero errors.
+      - name: Unit tests
+        run: python -m pytest tests/ -q --tb=short
+
+      - name: Coverage
+        run: python -m pytest tests/ -q --cov=bot --cov-report=term
+
+      # The document has drifted from the code in every prior version (v3.0 documented an 8%
+      # position cap against 10% in code). This makes that drift a build failure.
+      - name: STRATEGY.md matches the code
+        run: python -m pytest tests/test_v40_reset.py -k DocCodeConsistency -q
+
+      # The archived generation-1 book is a regression fixture: current code replayed against it
+      # must still cover the JBL short and still see ~$0 deployable cash.
+      - name: Archive replays correctly
+        run: python -m pytest tests/test_v40_reset.py -k Archive -q

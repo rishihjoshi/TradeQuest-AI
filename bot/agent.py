@@ -53,7 +53,7 @@ TASK_DAY_END = """
 ## Your Task: DAY END — Post-Close Review (4:30 PM ET)
 
 The portfolio data has been updated with today's closing prices. Make definitive decisions
-using the v2.2 two-tier sell framework.
+using the v4.0 two-tier sell framework.
 
 ### Step 1 — Check structural rules on ALL holdings (apply regardless of profit/loss):
   - Rule A: Price < 50-day MA for ≥3 consecutive days    → SELL (Tier 1, urgency=next_open)
@@ -66,7 +66,7 @@ using the v2.2 two-tier sell framework.
   - IF unrealized PnL < 0  → SELL Tier 1 (urgency=next_open) — tax-loss harvest
   - IF unrealized PnL ≥ 0  → WATCH only (urgency=next_rebalance) — hold gate active
 
-### CRITICAL: The Hold Gate (v2.2 Core Rule)
+### CRITICAL: The Hold Gate (Core Rule)
   Do NOT issue a SELL for a position with unrealized PnL > 0 due to momentum decay alone.
   Profitable positions failing only Rule E must be classified as WATCH, not SELL.
   Only Rules A, B, C, D can trigger a SELL on a profitable position.
@@ -117,15 +117,17 @@ non-quarterly review month (Feb/Mar/May/Jun/Aug/Sep/Nov/Dec). Today's month dete
 the scope of what you can recommend.
 
 ### IF NON-QUARTERLY MONTH (flag-only mode):
-  - Apply the v2.2 sell rules to each holding (structural rules + momentum decay)
+  - Apply the v4.0 sell rules to each holding (structural rules + momentum decay)
   - Issue Tier 1 SELLs ONLY (positions with unrealized loss hitting any sell rule)
   - Issue WATCH for all Tier 2 signals (profitable positions with momentum decay)
-  - Do NOT recommend any BUY orders — the execution pipeline will block them anyway
+  - Do NOT recommend NEW-ENTRANT BUYs — the pipeline blocks them off-quarter.
+    Redeployment top-ups into existing top-N holdings are handled by the pipeline,
+    and COVER for any short is always required (see Directive 1).
   - Do NOT recommend Tier 2 SELLs — defer to next quarterly
-  - Summarise: which positions are deteriorating and why; what to watch for July quarterly
+  - Summarise: which positions are deteriorating and why; what to watch for at the next quarterly
 
 ### IF QUARTERLY MONTH (full rebalance):
-  1. Run ALL four sell rules against each holding (v2.2 decision tree)
+  1. Run ALL four sell rules against each holding (STRATEGY §5.2 decision tree)
   2. Execute Tier 1 SELLs (loss positions: structural or momentum decay) at next_open
   3. Review Tier 2 deferred signals from prior months — if still failing at this quarterly,
      execute the SELL now (position may now qualify for LTCG if held 12+ months)
@@ -163,10 +165,10 @@ Respond ONLY with valid JSON — no markdown fences, no prose outside the JSON:
   ],
   "decisions": [
     {
-      "action": "HOLD|SELL|BUY|WATCH",
+      "action": "HOLD|SELL|BUY|WATCH|COVER",
       "symbol": "TICKER",
       "reason": "specific rule or rationale — must state unrealized PnL and entry date for every SELL or WATCH",
-      "rule_triggered": "momentum_decay|trend_break|quality_drop|profit_take|new_entry|null",
+      "rule_triggered": "momentum_decay|trend_break|quality_drop|profit_take|new_entry|long_only_breach|null",
       "sell_tier": "tier1|tier2|null",
       "urgency": "next_open|next_rebalance"
     }
@@ -182,15 +184,42 @@ Key rules for valid JSON output:
 - sell_tier must be "null" for HOLD, BUY, and HOLDs
 - Never set urgency=next_open for a profitable position with sell_tier=tier2
 - Never set action=BUY in a non-quarterly month (Feb/Mar/May/Jun/Aug/Sep/Nov/Dec)
+
+COVER — closing a short (v3.2):
+- If a holding has NEGATIVE shares the long-only invariant is breached. Emit action="COVER"
+  with sell_tier="null", urgency="next_open", rule_triggered="long_only_breach".
+- COVER means buy-to-close. Do NOT express it as SELL (that is what kept JBL short for four
+  months — the execution layer reads SELL as a sell and skips it under the long-only guard).
+- COVER is exempt from the quarterly lock and from the day_start flag-only rule: restoring an
+  invariant is not a discretionary trade and executes in any month, on any run type.
 """
 
 
 # ── Data loading ──────────────────────────────────────────────
 
+AGENT_CONTEXT_END = "<!-- AGENT-CONTEXT-END -->"
+
+
 def load_strategy() -> str:
+    """Return the agent-facing slice of STRATEGY.md (v4.0 Part I, sections 0-8).
+
+    The document is split: Part I is the operating rulebook the model needs on every run; Part II
+    is architecture, go-live gates and history that only humans read. Truncating at the marker keeps
+    roughly 3.7k tokens of that history out of every single call.
+
+    The split is enforced here rather than by convention, because a convention drifts. If the marker
+    is missing the whole document is sent -- degrading to the old behaviour is safe, whereas sending
+    an empty rulebook is not.
+    """
     if not STRATEGY_FILE.exists():
         return "Strategy file not found — operating on general momentum principles."
-    return STRATEGY_FILE.read_text(encoding="utf-8")
+    text = STRATEGY_FILE.read_text(encoding="utf-8")
+    head, sep, _tail = text.partition(AGENT_CONTEXT_END)
+    if not sep:
+        print(f"Warning: {AGENT_CONTEXT_END} not found in STRATEGY.md — sending the full document.",
+              file=sys.stderr)
+        return text
+    return head.rstrip() + "\n"
 
 
 def load_portfolio() -> dict:
@@ -356,7 +385,7 @@ def build_history_section(recent_history: list) -> str:
     if flags:
         lines.append("Flags: " + "; ".join(_safe(str(f), 80) for f in flags[:5]))
     decisions = entry.get("decisions", [])
-    for action in ("SELL", "BUY", "WATCH"):
+    for action in ("COVER", "SELL", "BUY", "WATCH"):
         syms = [d.get("symbol", "?") for d in decisions if d.get("action") == action]
         if syms:
             lines.append(f"{action}: {', '.join(_safe(s, 10) for s in syms)}")
@@ -456,12 +485,20 @@ def run_agent(
                 # Strategy doc is static — cache it (5-min TTL, saves ~2k tokens/run)
                 "type": "text",
                 "text": (
-                    "You are TradeQuest AI, an autonomous momentum trading agent running strategy v2.2.\n"
+                    "You are TradeQuest AI, an autonomous momentum trading agent running strategy v4.0.\n"
                     "You strictly follow the strategy document below for all decisions.\n\n"
-                    "CORE v2.2 RULE — always enforce before any other decision:\n"
-                    "  • Profitable positions (unrealized PnL > 0) may NOT be sold due to momentum decay alone.\n"
-                    "  • Only structural rules (MA break, quality failure, hard cap, parabolic) can exit a winner.\n"
-                    "  • In non-quarterly months (Feb/Mar/May/Jun/Aug/Sep/Nov/Dec): no BUY decisions.\n"
+                    "CHECK FIRST, every run, before any other reasoning:\n"
+                    "  • Any holding with NEGATIVE shares → emit action=COVER for the full quantity.\n"
+                    "    A cover is a BUY, never a SELL, and it overrides every lock, cap and budget.\n"
+                    "  • Size only against deployable_cash, never cash (cash includes short proceeds).\n"
+                    "  • Missing data (null sector / null MA / rank 0) blocks an ENTRY. It is never\n"
+                    "    itself a reason to sell.\n\n"
+                    "CORE RULES:\n"
+                    "  • Profitable positions (unrealized PnL > 0) may NOT be sold on momentum decay alone.\n"
+                    "  • Only structural rules (MA break, quality failure, hard cap, parabolic) exit a winner.\n"
+                    "  • Non-quarterly months (Feb/Mar/May/Jun/Aug/Sep/Nov/Dec): no NEW-ENTRANT buys.\n"
+                    "    Redeployment top-ups into existing top-N holdings ARE allowed, and COVER is\n"
+                    "    always allowed.\n"
                     "  • Classify every SELL as tier1 (loss + any rule) or tier2 (gain + only momentum decay).\n\n"
                     f"## STRATEGY DOCUMENT\n\n{strategy}"
                 ),
@@ -557,6 +594,12 @@ def normalize_decisions(decisions: list, run_type: str, quarterly: bool | None =
       4. Every SELL carries a sell_tier; when omitted it is inferred from urgency
          (next_rebalance → tier2, else tier1), and urgency is kept consistent with the tier.
 
+    COVER (v3.2) is exempt from 2 and 3. Closing a short RESTORES the long-only invariant —
+    it is not a discretionary purchase, so neither the day_start flag-only rule nor the
+    quarterly lock may suppress it. Before COVER existed the agent had to encode a cover as
+    action=SELL, which the execution layer read as a sell and skipped under the long-only
+    guard; JBL stayed short for four months while every run flagged it correctly.
+
     The original action is preserved in `_original_action` for audit.
     """
     if quarterly is None:
@@ -568,6 +611,13 @@ def normalize_decisions(decisions: list, run_type: str, quarterly: bool | None =
 
         if d.get("urgency") == "immediate":            # 1
             d["urgency"] = "next_open"
+
+        if action == "COVER":                          # v3.2 — always executable
+            d["action"]    = "COVER"
+            d["urgency"]   = "next_open"
+            d["sell_tier"] = "null"
+            out.append(d)
+            continue
 
         if run_type == "day_start" and action in ("SELL", "BUY"):   # 2
             d["_original_action"] = action
@@ -639,6 +689,11 @@ def write_log(log: dict, run_type: str, result: dict, usage: dict) -> dict:
             "tier2_deferred": tier2_deferred,
         }
 
+    return _append_entry(log, entry, run_type)
+
+
+def _append_entry(log: dict, entry: dict, run_type: str) -> dict:
+    """Insert entry at the head of the run log, trim history, and persist."""
     log.setdefault("runs", []).insert(0, entry)
     log["runs"]      = log["runs"][:90]   # keep ~3 months of history
     log["last_run"]  = entry["timestamp"]
@@ -649,6 +704,35 @@ def write_log(log: dict, run_type: str, result: dict, usage: dict) -> dict:
         json.dump(log, f, indent=2)
 
     return entry
+
+
+def write_degraded_log(log: dict, run_type: str, error: Exception) -> dict:
+    """Record a run where the model was unreachable, without blocking execution (v3.2).
+
+    The entry carries no decisions and is flagged `parse_failed`, which makes
+    update.load_agent_approvals() skip it and fall back to the last *valid* run rather
+    than returning empty approvals. `agent_unavailable` distinguishes an outage from a
+    genuine bad-JSON parse failure when reading the log later.
+    """
+    entry = {
+        "id":                f"RUN-{datetime.now().strftime('%Y%m%d-%H%M')}",
+        "timestamp":         datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "type":              run_type,
+        "model":             MODEL,
+        "assessment":        f"agent unavailable — {type(error).__name__}: {error}",
+        "regime":            "",
+        "regime_confidence": 0,
+        "flags":             [],
+        "decisions":         [],
+        "cash_action":       "maintain",
+        "cash_rationale":    "",
+        "summary":           "Agent run skipped: model API unavailable. Execution continued "
+                             "using the previous valid run's approvals.",
+        "usage":             {"input_tokens": 0, "output_tokens": 0},
+        "parse_failed":      True,
+        "agent_unavailable": True,
+    }
+    return _append_entry(log, entry, run_type)
 
 
 # ── Main ──────────────────────────────────────────────────────
@@ -684,10 +768,26 @@ def main():
     else:
         print("Execution  : no execution_summary.json found (run update.py first)")
 
-    result, usage = run_agent(
-        run_type, portfolio, strategy, enrichment,
-        recent_history, exec_summary,
-    )
+    # v3.2 resilience: the agent is ADVISORY. An unreachable or unpaid API must never take
+    # down the trading pipeline — on 2026-08-10 an exhausted Anthropic credit balance made
+    # agent.py exit 1, which aborted the market-open job before update.py could place any
+    # orders, freezing the book (with an open short) for 7 days. A missing agent means
+    # "no new approvals this run", not "halt trading", so we log the degradation and exit 0.
+    try:
+        result, usage = run_agent(
+            run_type, portfolio, strategy, enrichment,
+            recent_history, exec_summary,
+        )
+    except (anthropic.APIStatusError, anthropic.APIConnectionError, RuntimeError) as e:
+        print(f"\n{'='*60}", file=sys.stderr)
+        print(f"AGENT UNAVAILABLE — {type(e).__name__}: {e}", file=sys.stderr)
+        print("Continuing without new decisions. Downstream execution is NOT blocked;\n"
+              "load_agent_approvals() simply finds no fresh approvals for this run.",
+              file=sys.stderr)
+        print(f"{'='*60}\n", file=sys.stderr)
+        write_degraded_log(log, run_type, e)
+        return
+
     entry = write_log(log, run_type, result, usage)
 
     # Console summary
@@ -699,7 +799,7 @@ def main():
         print(f"  ⚑ {flag}")
     print(f"Decisions: {len(entry['decisions'])}")
     for d in entry["decisions"]:
-        marker = {"SELL": "↓", "BUY": "↑", "HOLD": "·", "WATCH": "⚠"}.get(d["action"], "?")
+        marker = {"SELL": "↓", "BUY": "↑", "HOLD": "·", "WATCH": "⚠", "COVER": "⇧"}.get(d["action"], "?")
         print(f"  {marker} {d['action']:5} {d.get('symbol','?'):6} — {d.get('reason','')}")
     cached = usage.get("cache_read_tokens", 0)
     print(f"\nTokens  : {usage['input_tokens']} in / {usage['output_tokens']} out"
