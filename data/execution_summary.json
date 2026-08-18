@@ -1,73 +1,74 @@
 {
-  "timestamp": "2026-08-18T16:20:35Z",
+  "timestamp": "2026-08-18T21:47:56Z",
   "mode": "post_close",
   "orders_placed": [
     {
       "action": "BUY",
       "symbol": "VLO",
-      "qty": 0.871276,
-      "status": "dry_run"
+      "qty": 0.733645,
+      "status": "submitted"
     },
     {
       "action": "BUY",
       "symbol": "MPC",
-      "qty": 0.74341,
-      "status": "dry_run"
+      "qty": 0.603418,
+      "status": "submitted"
     },
     {
       "action": "BUY",
       "symbol": "PSX",
-      "qty": 1.151652,
-      "status": "dry_run"
+      "qty": 0.908832,
+      "status": "submitted"
     },
     {
       "action": "BUY",
       "symbol": "BNY",
-      "qty": 1.111584,
-      "status": "dry_run"
+      "qty": 0.780628,
+      "status": "submitted"
     },
     {
       "action": "BUY",
       "symbol": "NUE",
-      "qty": 0.775764,
-      "status": "dry_run"
-    },
-    {
-      "action": "BUY",
-      "symbol": "NTRS",
-      "qty": 1.048361,
-      "status": "dry_run"
+      "qty": 0.586881,
+      "status": "submitted"
     },
     {
       "action": "BUY",
       "symbol": "CF",
-      "qty": 0.864156,
-      "status": "dry_run"
+      "qty": 0.896819,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "JBL",
+      "qty": 0.798471,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "NTRS",
+      "qty": 0.972286,
+      "status": "submitted"
     },
     {
       "action": "BUY",
       "symbol": "ROST",
-      "qty": 0.99384,
-      "status": "dry_run"
+      "qty": 1.003795,
+      "status": "submitted"
     },
     {
       "action": "BUY",
       "symbol": "KEYS",
-      "qty": 2.840848,
-      "status": "dry_run"
+      "qty": 2.765611,
+      "status": "submitted"
     }
   ],
-  "orders_skipped": [
-    {
-      "symbol": "JBL",
-      "reason": "blocked by agent approval or risk gate"
-    }
-  ],
+  "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 32.3,
+  "cash_pct_after": 32.33,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
   "trading_halted": false,
-  "dry_run": true
+  "dry_run": false
 }
