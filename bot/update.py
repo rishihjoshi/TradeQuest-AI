@@ -72,6 +72,15 @@ EXIT_RANK_MULTIPLE    = 1.5  # enter at rank ≤ TARGET_N, exit only at rank > T
 MIN_HOLD_DAYS         = 10   # a rank-based exit needs the position to be at least this old
 REENTRY_COOLDOWN_DAYS = 10   # a symbol sold this recently cannot be re-bought
 
+# v4.1 cash deployment. The generation-2 inception run deployed only 66% of a $10,000 book and
+# parked 34% in cash against a 5% bull-regime target -- not through any gate, but through integer
+# share rounding. Equal weight asks for $950 of VLO at $348.64; int(950 // 348.64) = 2 shares =
+# $697. Repeat across nine names and ~$2,000 never reaches the market. The redeployment carve-out
+# could not repair it either, because every remaining gap was smaller than one share.
+FRACTIONAL_SHARES   = True   # size positions in fractional shares (Alpaca supports these)
+FRACTIONAL_DECIMALS = 6      # Alpaca accepts up to 9dp; 6 is ample and avoids float noise
+MIN_ORDER_NOTIONAL  = 1.00   # brokers reject dust; skip anything smaller than $1
+
 # v2.2 quarterly months — only these months allow new BUY orders and Tier 2+ SELL exits
 QUARTERLY_MONTHS = {1, 4, 7, 10}  # Jan, Apr, Jul, Oct
 
@@ -187,6 +196,126 @@ def bootstrap_fresh_portfolio(state: dict, account_name: str,
         "holdings":      [],
         "trades":        [],
     }
+
+
+def size_shares(dollars: float, price: float, fractional: bool | None = None) -> float:
+    """Shares worth `dollars` at `price`, as a float. The single sizing primitive (v4.1).
+
+    Integer sizing systematically under-deploys: it always rounds DOWN, and the error grows with
+    share price, so the most expensive names -- often the highest-momentum ones -- end up the
+    most under-weight. On a $10,000 book that cost 29 percentage points of exposure on day one.
+
+    Returns 0.0 when the order would be dust, so callers can simply skip a falsy result.
+    """
+    if price <= 0 or dollars <= 0:
+        return 0.0
+    use_frac = FRACTIONAL_SHARES if fractional is None else fractional
+    if use_frac:
+        qty = math.floor(dollars / price * 10 ** FRACTIONAL_DECIMALS) / 10 ** FRACTIONAL_DECIMALS
+    else:
+        qty = float(int(dollars // price))
+    return qty if qty * price >= MIN_ORDER_NOTIONAL else 0.0
+
+
+def plan_residual_sweep(holdings: list[dict], target_symbols: set[str], deployable_cash: float,
+                        pv: float, prices: dict[str, float],
+                        rank_of: dict[str, int] | None = None) -> list[tuple]:
+    """Put leftover cash to work after the equal-weight pass (v4.1).
+
+    Runs as a backstop, not the primary mechanism: fractional sizing should already land each
+    position on its dollar target. This catches what fractional cannot -- a symbol the broker
+    will not trade fractionally, a price that moved between sizing and execution, or an
+    inception run where the sector cap left a slot unfilled.
+
+    Allocates best-ranked first, never past MAX_POSITION_PCT per name, and never below the cash
+    floor. Pure function: returns [(symbol, qty)] and touches nothing.
+    """
+    floor = pv * CASH_FLOOR_PCT
+    budget = deployable_cash - floor
+    if budget <= 0 or pv <= 0:
+        return []
+
+    cap = pv * MAX_POSITION_PCT
+    rank_of = rank_of or {}
+    eligible = [h for h in holdings
+                if h.get("symbol") in target_symbols and float(h.get("shares", 0) or 0) > 0]
+    eligible.sort(key=lambda h: rank_of.get(h["symbol"], 9999))
+
+    sweep: list[tuple] = []
+    for h in eligible:
+        sym = h["symbol"]
+        price = prices.get(sym.upper(), h.get("current_price", 0)) or 0
+        room = cap - float(h.get("market_value", 0) or 0)
+        spend = min(room, budget)
+        if spend <= 0:
+            continue
+        qty = size_shares(spend, price)
+        if not qty:
+            continue
+        sweep.append((sym, qty))
+        budget -= qty * price
+        if budget <= 0:
+            break
+    return sweep
+
+
+def plan_slot_fill(holdings: list[dict], screened: list[dict], fundamentals: dict,
+                   deployable_cash: float, pv: float, all_trades: list[dict],
+                   target_n: int = TARGET_N) -> list[tuple]:
+    """Fill UNFILLED target slots outside a quarterly rebalance (v4.1).
+
+    The quarterly lock exists to stop mid-quarter ROTATION -- churning names in and out. An
+    unfilled slot is not rotation; it is an allocation the strategy already decided on and never
+    completed. Leaving it empty caps exposure at (held / target_n) x MAX_POSITION_PCT: the
+    generation-2 book ran nine of ten names after the sector cap dropped APA, so it could not
+    exceed 90% invested no matter how the remaining cash was swept.
+
+    Narrow by construction. It only ever ADDS toward target_n, never replaces a held name, and
+    every existing guard still applies -- sector cap, re-entry cooldown, the data-integrity gate,
+    and the cash floor. Pure function: returns [(symbol, qty)].
+    """
+    longs = [h for h in holdings if float(h.get("shares", 0) or 0) > 0]
+    open_slots = target_n - len(longs)
+    if open_slots <= 0 or pv <= 0:
+        return []
+
+    budget = deployable_cash - pv * CASH_FLOOR_PCT
+    if budget <= 0:
+        return []
+
+    per_target = min(pv * (1 - CASH_FLOOR_PCT) / max(1, target_n), pv * MAX_POSITION_PCT)
+    cap_val = pv * MAX_SECTOR_PCT
+    sector_val: dict[str, float] = {}
+    for h in longs:
+        sec = h.get("sector") or "Unknown"
+        sector_val[sec] = sector_val.get(sec, 0.0) + float(h.get("market_value", 0) or 0)
+
+    held = {h["symbol"] for h in longs}
+    fills: list[tuple] = []
+    for cand in screened:
+        if len(fills) >= open_slots or budget <= 0:
+            break
+        sym = cand["symbol"]
+        if sym in held:
+            continue
+        info  = fundamentals.get(sym, {})
+        price = info.get("current_price", 0) or 0
+        sec   = info.get("sector") or "Unknown"
+        # Data-integrity gate (Directive 10): never enter on data we could not evaluate.
+        if sec == "Unknown" or not cand.get("momentum_rank") or info.get("ma_50d") is None:
+            continue
+        if in_reentry_cooldown(sym, all_trades) is not None:
+            continue
+        qty = size_shares(min(per_target, budget), price)
+        if not qty:
+            continue
+        if sector_val.get(sec, 0.0) + qty * price > cap_val:
+            continue
+        sector_val[sec] = sector_val.get(sec, 0.0) + qty * price
+        budget -= qty * price
+        fills.append((sym, qty))
+        held.add(sym)
+    return fills
 
 
 def is_inception_deployment(holdings: list[dict], deployable_cash: float, pv: float) -> bool:
@@ -990,7 +1119,7 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
             print(f"  Cover guard: {sym} is not short (qty {held}) — COVER skipped")
             continue
         # Never buy back more than the outstanding short, or the cover flips us long.
-        qty = min(int(shares), int(abs(held)))
+        qty = round(min(float(shares), abs(float(held))), FRACTIONAL_DECIMALS)
         if qty <= 0:
             print(f"  Cover guard: {sym} computed qty {qty} ≤ 0 — COVER skipped")
             continue
@@ -1011,15 +1140,20 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
         # open a short. If the position fetch failed entirely (empty map), this conservatively
         # blocks all sells for the run (safe: they retry next run) rather than risk a short.
         held = held_qty.get(sym.upper())
-        requested = int(shares)
+        # float, not int: int(2.7278) = 2 would silently strand the remainder of every
+        # fractional position, and no sell rule could ever reach the leftover.
+        requested = float(shares)
         if held is None:
             print(f"  Long-only guard: {sym} has no position on record — SELL skipped (no short)")
             continue
-        sellable = int(held)
+        sellable = float(held)
         if sellable <= 0:
             print(f"  Long-only guard: {sym} not held (qty {held:g}) — SELL skipped (no short)")
             continue
-        qty = sellable if requested <= 0 else min(requested, sellable)
+        # Clamp in float space so a full exit really is full. min() still guarantees the
+        # invariant that matters: never more than held, so a SELL can never open a short.
+        qty = sellable if requested <= 0 else min(float(requested), sellable)
+        qty = round(qty, FRACTIONAL_DECIMALS)
         if qty <= 0:
             print(f"  Long-only guard: {sym} computed qty {qty} ≤ 0 — SELL skipped")
             continue
@@ -1029,14 +1163,17 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
             continue
         try:
             submit(sym, qty, OrderSide.SELL, "SELL")
-            print(f"  ↓ SELL {qty:>5} {sym}")
+            print(f"  ↓ SELL {qty:>10.6g} {sym}")
             placed.append(("SELL", sym, qty))
             already_ordered.add(sym.upper())
         except Exception as e:
             print(f"  ✗ SELL {sym}: {e}", file=sys.stderr)
 
     for sym, shares in to_buy:
-        qty      = max(1, int(shares))
+        qty      = round(float(shares), FRACTIONAL_DECIMALS)
+        if qty <= 0:
+            print(f"  Size guard: BUY {sym} computed qty {qty} — skipped")
+            continue
         if sym.upper() in already_ordered:
             print(f"  Idempotency: BUY {sym} already has an open order today — skipped")
             continue
@@ -1050,7 +1187,7 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
             continue
         try:
             submit(sym, qty, OrderSide.BUY, "BUY")
-            print(f"  ↑ BUY  {qty:>5} {sym}")
+            print(f"  ↑ BUY  {qty:>10.6g} {sym}")
             placed.append(("BUY", sym, qty))
             already_ordered.add(sym.upper())
         except Exception as e:
@@ -1976,6 +2113,14 @@ def main():
         target_syms  = {s["symbol"] for s in screened[:TARGET_N]}
         rank_of      = {s["symbol"]: s["momentum_rank"] for s in screened}
 
+        # Priced up-front: the buy planners below (slot fill, residual sweep) need candidate
+        # prices, and they run before the risk gates.
+        price_map = {h["symbol"]: h.get("current_price", 0.0) for h in new_holdings}
+        price_map.update({
+            s["symbol"]: fundamentals.get(s["symbol"], {}).get("current_price", 0.0)
+            for s in screened
+        })
+
         # v3.1: equal-weight dollar target per position (deploy to CASH_FLOOR_PCT).
         # Sizing by dollars — not by shares/price — so an expensive single share (e.g. STX ~$913)
         # no longer becomes an oversized position while the best-ranked names stay tiny.
@@ -2029,8 +2174,8 @@ def main():
                 price = fundamentals.get(sym, {}).get("current_price", 0) or 0
                 if price <= 0:
                     continue
-                qty = int(target_per // price)
-                if qty >= 1:
+                qty = size_shares(target_per, price)
+                if qty:
                     raw_buys.append((sym, qty))
         elif to_buy_syms:
             print(
@@ -2049,16 +2194,37 @@ def main():
                     continue
                 price = h.get("current_price", 0) or 0
                 gap   = target_per - float(h.get("market_value", 0) or 0)
-                if price <= 0 or gap <= price:
+                if price <= 0 or gap <= 0:
                     continue
-                qty = int(gap // price)
-                if qty >= 1:
+                qty = size_shares(gap, price)
+                if qty:
                     topups.append((sym, qty))
             if topups:
                 print(f"  Cash deploy: {deployable_pct:.1%} deployable > trigger "
                       f"{deploy_trigger:.1%} — topping up {len(topups)} top-{TARGET_N} name(s) "
                       f"toward ${target_per:,.0f} each")
                 raw_buys.extend(topups)
+
+            # Complete the book: fill any target slot left empty (see plan_slot_fill).
+            committed = sum(q * price_map.get(s.upper(), 0) for s, q in raw_buys)
+            fills = plan_slot_fill(new_holdings, screened, fundamentals,
+                                   deployable_cash - committed, pv, all_trades)
+            if fills:
+                print(f"  Slot fill: book holds "
+                      f"{sum(1 for h in new_holdings if float(h.get('shares', 0) or 0) > 0)} of "
+                      f"{TARGET_N} target positions — adding "
+                      f"{', '.join(s for s, _ in fills)}")
+                raw_buys.extend(fills)
+
+            # Residual sweep: anything fractional sizing could not place (non-fractionable
+            # symbols, price drift) goes to the best-ranked names still under their cap.
+            committed = sum(q * price_map.get(s.upper(), 0) for s, q in raw_buys)
+            sweep = plan_residual_sweep(new_holdings, target_syms,
+                                        deployable_cash - committed, pv, price_map, rank_of)
+            if sweep:
+                print(f"  Residual sweep: placing leftover cash into "
+                      f"{', '.join(s for s, _ in sweep)}")
+                raw_buys.extend(sweep)
 
         # v3.2 re-entry cooldown: never re-buy a name sold within REENTRY_COOLDOWN_DAYS.
         if raw_buys:
@@ -2084,6 +2250,7 @@ def main():
                     sector_val[sec] = sector_val.get(sec, 0.0) + float(h.get("market_value", 0))
             cap_val = pv * MAX_SECTOR_PCT
             kept_buys: list[tuple] = []
+            dropped: list[str] = []
             # Add best-ranked buys first so a sector keeps its strongest names when trimming.
             for sym, qty in sorted(raw_buys, key=lambda sb: rank_of.get(sb[0], 9999)):
                 sec   = fundamentals.get(sym, {}).get("sector", "Unknown")
@@ -2091,9 +2258,38 @@ def main():
                 add_val = qty * price
                 if sector_val.get(sec, 0.0) + add_val > cap_val:
                     print(f"  Sector cap: dropping BUY {sym} — {sec} would exceed {MAX_SECTOR_PCT:.0%}")
+                    dropped.append(sym)
                     continue
                 sector_val[sec] = sector_val.get(sec, 0.0) + add_val
                 kept_buys.append((sym, qty))
+
+            # v4.1 backfill: a slot vacated by the sector cap is refilled from the next eligible
+            # candidate, rather than shrinking the book. Leaving it empty caps total exposure at
+            # (n-1) x MAX_POSITION_PCT -- the inception run reached only 90% for exactly this
+            # reason, and the missing 10% is pure cash drag until the next quarterly.
+            if dropped:
+                held_or_buying = current_syms | {s for s, _ in kept_buys}
+                for cand in screened:
+                    if len(kept_buys) >= len(raw_buys):
+                        break
+                    csym = cand["symbol"]
+                    if csym in held_or_buying:
+                        continue
+                    cinfo  = fundamentals.get(csym, {})
+                    cprice = cinfo.get("current_price", 0) or 0
+                    csec   = cinfo.get("sector", "Unknown")
+                    cqty   = size_shares(target_per, cprice)
+                    if not cqty:
+                        continue
+                    if sector_val.get(csec, 0.0) + cqty * cprice > cap_val:
+                        continue
+                    if in_reentry_cooldown(csym, all_trades) is not None:
+                        continue
+                    sector_val[csec] = sector_val.get(csec, 0.0) + cqty * cprice
+                    kept_buys.append((csym, cqty))
+                    held_or_buying.add(csym)
+                    print(f"  Sector cap backfill: BUY {csym} ({csec}) replaces "
+                          f"{', '.join(dropped)} — slot kept filled")
             raw_buys = kept_buys
 
         # Load what Claude approved and apply all risk limits before touching the broker.
@@ -2101,11 +2297,6 @@ def main():
         # Legacy "immediate" labels are treated as next_open inside load_agent_approvals.
         target_urgency  = "next_open"
         agent_approvals = load_agent_approvals(target_urgency=target_urgency)
-        price_map = {h["symbol"]: h.get("current_price", 0.0) for h in new_holdings}
-        price_map.update({
-            sym: fundamentals.get(sym, {}).get("current_price", 0.0)
-            for sym in to_buy_syms
-        })
         # v3.1: a quarterly rebalance completes the full rotation in one run (wide budget);
         # daily/non-quarterly runs keep the tight MAX_ORDERS_PER_RUN / 30%-sell throttles.
         if quarterly:
