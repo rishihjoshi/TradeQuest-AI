@@ -1,68 +1,44 @@
 {
-  "timestamp": "2026-08-18T15:33:16Z",
+  "timestamp": "2026-08-18T15:55:06Z",
   "mode": "post_close",
   "orders_placed": [
     {
       "action": "BUY",
       "symbol": "VLO",
-      "qty": 2,
-      "status": "submitted"
+      "qty": 1.0,
+      "status": "dry_run"
     },
     {
       "action": "BUY",
       "symbol": "MPC",
-      "qty": 2,
-      "status": "submitted"
+      "qty": 1.0,
+      "status": "dry_run"
     },
     {
       "action": "BUY",
       "symbol": "PSX",
-      "qty": 3,
-      "status": "submitted"
+      "qty": 1.0,
+      "status": "dry_run"
     },
     {
       "action": "BUY",
       "symbol": "BNY",
-      "qty": 5,
-      "status": "submitted"
+      "qty": 1.0,
+      "status": "dry_run"
     },
     {
       "action": "BUY",
       "symbol": "NUE",
-      "qty": 3,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "NTRS",
-      "qty": 4,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "CF",
-      "qty": 7,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "JBL",
-      "qty": 2,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "ROST",
-      "qty": 3,
-      "status": "submitted"
+      "qty": 1.0,
+      "status": "dry_run"
     }
   ],
   "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 34.17,
+  "cash_pct_after": 32.24,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
   "trading_halted": false,
-  "dry_run": false
+  "dry_run": true
 }
