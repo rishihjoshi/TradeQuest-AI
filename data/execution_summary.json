@@ -1,59 +1,59 @@
 {
-  "timestamp": "2026-08-18T16:12:12Z",
+  "timestamp": "2026-08-18T16:20:35Z",
   "mode": "post_close",
   "orders_placed": [
     {
       "action": "BUY",
       "symbol": "VLO",
-      "qty": 0.725826,
+      "qty": 0.871276,
       "status": "dry_run"
     },
     {
       "action": "BUY",
       "symbol": "MPC",
-      "qty": 0.602391,
+      "qty": 0.74341,
       "status": "dry_run"
     },
     {
       "action": "BUY",
       "symbol": "PSX",
-      "qty": 0.937934,
+      "qty": 1.151652,
       "status": "dry_run"
     },
     {
       "action": "BUY",
       "symbol": "BNY",
-      "qty": 0.813761,
+      "qty": 1.111584,
       "status": "dry_run"
     },
     {
       "action": "BUY",
       "symbol": "NUE",
-      "qty": 0.587303,
-      "status": "dry_run"
-    },
-    {
-      "action": "BUY",
-      "symbol": "CF",
-      "qty": 0.865421,
-      "status": "dry_run"
-    },
-    {
-      "action": "BUY",
-      "symbol": "ROST",
-      "qty": 0.996739,
+      "qty": 0.775764,
       "status": "dry_run"
     },
     {
       "action": "BUY",
       "symbol": "NTRS",
-      "qty": 0.984271,
+      "qty": 1.048361,
       "status": "dry_run"
     },
     {
       "action": "BUY",
-      "symbol": "CASY",
-      "qty": 1.092527,
+      "symbol": "CF",
+      "qty": 0.864156,
+      "status": "dry_run"
+    },
+    {
+      "action": "BUY",
+      "symbol": "ROST",
+      "qty": 0.99384,
+      "status": "dry_run"
+    },
+    {
+      "action": "BUY",
+      "symbol": "KEYS",
+      "qty": 2.840848,
       "status": "dry_run"
     }
   ],
@@ -64,7 +64,7 @@
     }
   ],
   "errors": [],
-  "cash_pct_after": 32.29,
+  "cash_pct_after": 32.3,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
