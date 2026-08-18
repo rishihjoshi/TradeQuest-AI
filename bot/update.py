@@ -685,18 +685,23 @@ def apply_risk_limits(
             print(f"  Risk gate: cash floor reached — no more buys ({sym} skipped)")
             break
         price = prices.get(sym.upper(), 0.0)
-        # Cap shares so the position value stays within MAX_POSITION_PCT
-        max_shares = int(max_pos_val / price) if price > 0 else shares
-        capped_shares = max(1, min(shares, max_shares))
+        # Cap the order so the position value stays within MAX_POSITION_PCT.
+        # v4.1: fractional-aware. The previous `max(1, min(shares, int(...)))` rounded every
+        # fractional order UP to a whole share, which silently undid fractional sizing at the
+        # last gate -- a planned 0.7238 VLO became 1.0, and the cash target was unreachable.
+        max_shares = size_shares(max_pos_val, price) if price > 0 else shares
+        capped_shares = min(float(shares), max_shares) if price > 0 else float(shares)
         order_cost = capped_shares * price if price > 0 else 0.0
         if order_cost > available_cash and price > 0:
-            # Reduce to what cash allows; skip entirely if even 1 share exceeds budget
-            affordable = int(available_cash / price)
-            if affordable < 1:
-                print(f"  Risk gate: can't afford even 1 share of {sym} "
-                      f"(${price:,.0f}/share, available ${available_cash:,.0f}) — skipped")
+            # Reduce to what cash allows; skip when even the minimum notional does not fit.
+            affordable = size_shares(available_cash, price)
+            if not affordable:
+                print(f"  Risk gate: {sym} does not fit the remaining budget "
+                      f"(${price:,.2f}/share, available ${available_cash:,.2f}) — skipped")
                 continue
             capped_shares = affordable
+        if capped_shares <= 0:
+            continue
         capped_buys.append((sym, capped_shares))
         available_cash -= capped_shares * price if price > 0 else 0.0
 
@@ -2183,6 +2188,7 @@ def main():
                 f"{', '.join(sorted(to_buy_syms))} deferred to next quarterly rebalance."
             )
 
+        deploying_cash = False
         deploy_trigger = CASH_FLOOR_PCT + CASH_DEPLOY_BAND
         deployable_pct = (deployable_cash / pv) if pv else 0.0
         if not quarterly and deployable_pct > deploy_trigger:
@@ -2225,6 +2231,8 @@ def main():
                 print(f"  Residual sweep: placing leftover cash into "
                       f"{', '.join(s for s, _ in sweep)}")
                 raw_buys.extend(sweep)
+
+            deploying_cash = bool(topups or fills or sweep)
 
         # v3.2 re-entry cooldown: never re-buy a name sold within REENTRY_COOLDOWN_DAYS.
         if raw_buys:
@@ -2301,6 +2309,14 @@ def main():
         # daily/non-quarterly runs keep the tight MAX_ORDERS_PER_RUN / 30%-sell throttles.
         if quarterly:
             run_max_orders, run_max_sell_pct = REBALANCE_MAX_ORDERS, REBALANCE_MAX_SELL_PCT
+        elif deploying_cash:
+            # POSTMORTEM lesson 2: size the budget to the job. A deployment is a single
+            # allocation decision, not a stream of discretionary trades -- splitting it across
+            # runs leaves the book under-invested for days for no risk-management benefit.
+            # Sells keep the tight daily cap; only the buy side widens.
+            run_max_orders, run_max_sell_pct = REBALANCE_MAX_ORDERS, MAX_SELL_VALUE_PCT
+            print(f"  Order budget: cash deployment — widening to {REBALANCE_MAX_ORDERS} orders "
+                  f"so the allocation completes in one run")
         else:
             run_max_orders, run_max_sell_pct = MAX_ORDERS_PER_RUN, MAX_SELL_VALUE_PCT
         # v3.2: risk gates size against DEPLOYABLE cash, not the raw broker figure — with a
