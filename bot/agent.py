@@ -53,7 +53,7 @@ TASK_DAY_END = """
 ## Your Task: DAY END — Post-Close Review (4:30 PM ET)
 
 The portfolio data has been updated with today's closing prices. Make definitive decisions
-using the v2.2 two-tier sell framework.
+using the v4.0 two-tier sell framework.
 
 ### Step 1 — Check structural rules on ALL holdings (apply regardless of profit/loss):
   - Rule A: Price < 50-day MA for ≥3 consecutive days    → SELL (Tier 1, urgency=next_open)
@@ -66,7 +66,7 @@ using the v2.2 two-tier sell framework.
   - IF unrealized PnL < 0  → SELL Tier 1 (urgency=next_open) — tax-loss harvest
   - IF unrealized PnL ≥ 0  → WATCH only (urgency=next_rebalance) — hold gate active
 
-### CRITICAL: The Hold Gate (v2.2 Core Rule)
+### CRITICAL: The Hold Gate (Core Rule)
   Do NOT issue a SELL for a position with unrealized PnL > 0 due to momentum decay alone.
   Profitable positions failing only Rule E must be classified as WATCH, not SELL.
   Only Rules A, B, C, D can trigger a SELL on a profitable position.
@@ -117,15 +117,17 @@ non-quarterly review month (Feb/Mar/May/Jun/Aug/Sep/Nov/Dec). Today's month dete
 the scope of what you can recommend.
 
 ### IF NON-QUARTERLY MONTH (flag-only mode):
-  - Apply the v2.2 sell rules to each holding (structural rules + momentum decay)
+  - Apply the v4.0 sell rules to each holding (structural rules + momentum decay)
   - Issue Tier 1 SELLs ONLY (positions with unrealized loss hitting any sell rule)
   - Issue WATCH for all Tier 2 signals (profitable positions with momentum decay)
-  - Do NOT recommend any BUY orders — the execution pipeline will block them anyway
+  - Do NOT recommend NEW-ENTRANT BUYs — the pipeline blocks them off-quarter.
+    Redeployment top-ups into existing top-N holdings are handled by the pipeline,
+    and COVER for any short is always required (see Directive 1).
   - Do NOT recommend Tier 2 SELLs — defer to next quarterly
-  - Summarise: which positions are deteriorating and why; what to watch for July quarterly
+  - Summarise: which positions are deteriorating and why; what to watch for at the next quarterly
 
 ### IF QUARTERLY MONTH (full rebalance):
-  1. Run ALL four sell rules against each holding (v2.2 decision tree)
+  1. Run ALL four sell rules against each holding (STRATEGY §5.2 decision tree)
   2. Execute Tier 1 SELLs (loss positions: structural or momentum decay) at next_open
   3. Review Tier 2 deferred signals from prior months — if still failing at this quarterly,
      execute the SELL now (position may now qualify for LTCG if held 12+ months)
@@ -195,10 +197,29 @@ COVER — closing a short (v3.2):
 
 # ── Data loading ──────────────────────────────────────────────
 
+AGENT_CONTEXT_END = "<!-- AGENT-CONTEXT-END -->"
+
+
 def load_strategy() -> str:
+    """Return the agent-facing slice of STRATEGY.md (v4.0 Part I, sections 0-8).
+
+    The document is split: Part I is the operating rulebook the model needs on every run; Part II
+    is architecture, go-live gates and history that only humans read. Truncating at the marker keeps
+    roughly 3.7k tokens of that history out of every single call.
+
+    The split is enforced here rather than by convention, because a convention drifts. If the marker
+    is missing the whole document is sent -- degrading to the old behaviour is safe, whereas sending
+    an empty rulebook is not.
+    """
     if not STRATEGY_FILE.exists():
         return "Strategy file not found — operating on general momentum principles."
-    return STRATEGY_FILE.read_text(encoding="utf-8")
+    text = STRATEGY_FILE.read_text(encoding="utf-8")
+    head, sep, _tail = text.partition(AGENT_CONTEXT_END)
+    if not sep:
+        print(f"Warning: {AGENT_CONTEXT_END} not found in STRATEGY.md — sending the full document.",
+              file=sys.stderr)
+        return text
+    return head.rstrip() + "\n"
 
 
 def load_portfolio() -> dict:
@@ -464,12 +485,20 @@ def run_agent(
                 # Strategy doc is static — cache it (5-min TTL, saves ~2k tokens/run)
                 "type": "text",
                 "text": (
-                    "You are TradeQuest AI, an autonomous momentum trading agent running strategy v2.2.\n"
+                    "You are TradeQuest AI, an autonomous momentum trading agent running strategy v4.0.\n"
                     "You strictly follow the strategy document below for all decisions.\n\n"
-                    "CORE v2.2 RULE — always enforce before any other decision:\n"
-                    "  • Profitable positions (unrealized PnL > 0) may NOT be sold due to momentum decay alone.\n"
-                    "  • Only structural rules (MA break, quality failure, hard cap, parabolic) can exit a winner.\n"
-                    "  • In non-quarterly months (Feb/Mar/May/Jun/Aug/Sep/Nov/Dec): no BUY decisions.\n"
+                    "CHECK FIRST, every run, before any other reasoning:\n"
+                    "  • Any holding with NEGATIVE shares → emit action=COVER for the full quantity.\n"
+                    "    A cover is a BUY, never a SELL, and it overrides every lock, cap and budget.\n"
+                    "  • Size only against deployable_cash, never cash (cash includes short proceeds).\n"
+                    "  • Missing data (null sector / null MA / rank 0) blocks an ENTRY. It is never\n"
+                    "    itself a reason to sell.\n\n"
+                    "CORE RULES:\n"
+                    "  • Profitable positions (unrealized PnL > 0) may NOT be sold on momentum decay alone.\n"
+                    "  • Only structural rules (MA break, quality failure, hard cap, parabolic) exit a winner.\n"
+                    "  • Non-quarterly months (Feb/Mar/May/Jun/Aug/Sep/Nov/Dec): no NEW-ENTRANT buys.\n"
+                    "    Redeployment top-ups into existing top-N holdings ARE allowed, and COVER is\n"
+                    "    always allowed.\n"
                     "  • Classify every SELL as tier1 (loss + any rule) or tier2 (gain + only momentum decay).\n\n"
                     f"## STRATEGY DOCUMENT\n\n{strategy}"
                 ),

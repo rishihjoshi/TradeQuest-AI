@@ -82,6 +82,26 @@ MARKET_OPEN_RUN = os.environ.get("MARKET_OPEN_RUN", "").lower() == "true"
 # Set via --sentinel CLI flag or SENTINEL_RUN=true env var.
 SENTINEL_RUN = "--sentinel" in sys.argv or os.environ.get("SENTINEL_RUN", "").lower() == "true"
 
+# ── v4.0 fresh-start + safety flags ─────────────────────────────────
+# Shadow mode: run the whole pipeline (screen, decide, gate, build orders) and record what WOULD
+# be submitted, without sending anything to the broker. Used to validate a new account for a few
+# sessions before letting it trade — the Apr–Aug 2026 account lost a quarter to execution bugs
+# that a handful of dry runs would have surfaced immediately.
+DRY_RUN = os.environ.get("DRY_RUN", "").lower() == "true"
+
+# One-time bootstrap for a NEW broker account. Seeds initial_capital from the account's real
+# equity instead of inheriting the previous generation's figure. `initial_capital` is sticky
+# (compute_summary preserves it across runs) and build_spy_curve normalises the benchmark to it,
+# so inheriting a stale value silently corrupts both P&L and the SPY comparison forever.
+RESET_PORTFOLIO = os.environ.get("RESET_PORTFOLIO", "").lower() == "true"
+
+# Kill switch: consecutive runs an invariant breach may persist before discretionary trading
+# halts. The Apr–Aug 2026 failure was not that a breach occurred — it was that it PERSISTED,
+# unnoticed, for four months. Persistence is therefore itself the alarm.
+MAX_BREACH_RUNS = 3
+
+STRATEGY_VERSION = "4.0"
+
 # Known dual-class share pairs: maps each ticker to a canonical issuer ID.
 # Screener keeps only the highest-momentum ticker per issuer.
 ISSUER_MAP: dict[str, str] = {
@@ -104,6 +124,69 @@ def is_quarterly_month(dt: datetime | None = None) -> bool:
     """
     month = (dt or datetime.now()).month
     return month in QUARTERLY_MONTHS
+
+
+def bootstrap_fresh_portfolio(state: dict, account_name: str,
+                              dt: datetime | None = None) -> dict:
+    """Seed a brand-new portfolio.json from a brand-new broker account (v4.0).
+
+    Why this exists: `initial_capital` is STICKY — compute_summary preserves it across every run,
+    and build_spy_curve normalises the SPY benchmark to it. Carrying the previous generation's
+    figure ($9,864.11) onto a new account would silently anchor all P&L and corrupt the benchmark
+    comparison permanently. So the fresh start reads the account's real equity instead.
+
+    Raises InvariantBreach if the account is not actually fresh — this wipes history, so it must
+    never run against a book that already holds anything.
+    """
+    positions = state.get("positions") or []
+    orders    = state.get("orders") or []
+    if positions:
+        raise InvariantBreach(
+            f"RESET_PORTFOLIO refused: account holds {len(positions)} position(s) "
+            f"({', '.join(str(getattr(p, 'symbol', '?')) for p in positions[:5])}). "
+            f"Reset is only for an empty, newly created account."
+        )
+    if orders:
+        raise InvariantBreach(
+            f"RESET_PORTFOLIO refused: account has {len(orders)} order(s) in its history. "
+            f"Reset is only for an empty, newly created account."
+        )
+
+    equity = float(state.get("portfolio_value") or 0)
+    if equity <= 0:
+        raise InvariantBreach(f"RESET_PORTFOLIO refused: account equity is ${equity:,.2f}.")
+
+    today = (dt or datetime.now()).strftime("%Y-%m-%d")
+    print("\n" + "=" * 68)
+    print("  FRESH START — seeding a new portfolio from live account equity")
+    print(f"  Account        : {account_name}")
+    print(f"  Initial capital: ${equity:,.2f}   (read from the broker, not inherited)")
+    print(f"  Inception      : {today}")
+    print("=" * 68 + "\n")
+
+    return {
+        "meta": {
+            "strategy":         f"TradeQuest AI Momentum Strategy v{STRATEGY_VERSION}",
+            "strategy_version": STRATEGY_VERSION,
+            "account_name":     account_name,
+            "account_generation": 2,
+            "inception_date":   today,
+            "initial_capital":  round(equity, 2),
+            "mode":             "alpaca",
+            "universe":         "S&P 500",
+        },
+        "summary": {
+            "initial_capital": round(equity, 2),
+            "cash":            round(equity, 2),
+            "portfolio_value": round(equity, 2),
+        },
+        "filter_status": {},
+        "equity_curve":  [],
+        "spy_curve":     [],
+        "benchmark":     [],
+        "holdings":      [],
+        "trades":        [],
+    }
 
 
 def next_quarterly_date(dt: datetime | None = None) -> str:
@@ -516,6 +599,99 @@ def compute_deployable_cash(cash: float, positions) -> float:
     return max(0.0, cash - short_liability)
 
 
+# ── v4.0 invariant gate + kill switch ──────────────────────────────
+
+class InvariantBreach(Exception):
+    """Raised when broker state violates a rule the strategy treats as inviolable."""
+
+
+def assert_invariants(state: dict, holdings: list[dict] | None = None) -> list[str]:
+    """Single chokepoint every order path passes through. Returns a list of breach strings.
+
+    This is the structural answer to the Apr–Aug 2026 failure. The system already had the rule
+    "long-only" written down in three documents; what it lacked was one place that checked. Every
+    caller (rebalance, sentinel, manual order, true-up) runs this before touching the broker.
+
+    Deliberately returns breaches rather than raising: the COVER path must still be allowed to run
+    precisely BECAUSE there is a breach. Raising here would make the invariant unfixable, which is
+    the exact deadlock v3.2 had to undo.
+    """
+    breaches: list[str] = []
+    pv = float(state.get("portfolio_value") or 0)
+
+    for pos in state.get("positions", []) or []:
+        sym = str(getattr(pos, "symbol", "?")).upper()
+        qty = float(getattr(pos, "qty", 0) or 0)
+        mv  = float(getattr(pos, "market_value", 0) or 0)
+        if qty < 0:
+            breaches.append(f"{sym}: short position ({qty:g} shares, ${mv:,.2f})")
+        if pv and abs(mv) > pv * MAX_POSITION_PCT * 2:
+            breaches.append(
+                f"{sym}: position ${abs(mv):,.2f} exceeds 2x the "
+                f"{MAX_POSITION_PCT:.0%} cap ({abs(mv)/pv:.1%} of book)"
+            )
+
+    deployable = state.get("deployable_cash")
+    if deployable is not None and float(deployable) < 0:
+        breaches.append(f"deployable cash is negative (${float(deployable):,.2f})")
+
+    # Sector concentration is checked against holdings when available (positions carry no sector).
+    if holdings and pv:
+        sector_val: dict[str, float] = {}
+        for h in holdings:
+            if float(h.get("shares", 0) or 0) > 0:
+                sec = h.get("sector") or "Unknown"
+                sector_val[sec] = sector_val.get(sec, 0.0) + float(h.get("market_value", 0) or 0)
+        for sec, val in sector_val.items():
+            if val > pv * MAX_SECTOR_PCT:
+                breaches.append(f"sector {sec} at {val/pv:.1%} exceeds the {MAX_SECTOR_PCT:.0%} cap")
+
+    return breaches
+
+
+def reconcile_positions(state: dict, holdings: list[dict]) -> list[str]:
+    """Compare broker truth against portfolio.json. Divergence is reported, never traded through."""
+    broker = {
+        str(getattr(p, "symbol", "")).upper(): float(getattr(p, "qty", 0) or 0)
+        for p in state.get("positions", []) or []
+    }
+    local = {
+        str(h.get("symbol", "")).upper(): float(h.get("shares", 0) or 0)
+        for h in holdings or []
+    }
+    diffs: list[str] = []
+    for sym in sorted(set(broker) | set(local)):
+        b, l = broker.get(sym), local.get(sym)
+        if b is None:
+            diffs.append(f"{sym}: in portfolio.json ({l:g}) but not at broker")
+        elif l is None:
+            diffs.append(f"{sym}: at broker ({b:g}) but not in portfolio.json")
+        elif abs(b - l) > 1e-6:
+            diffs.append(f"{sym}: broker {b:g} vs portfolio.json {l:g}")
+    return diffs
+
+
+def read_breach_streak(data_dir: Path) -> int:
+    """Consecutive prior runs that ended with an unresolved invariant breach."""
+    path = data_dir / "execution_summary.json"
+    if not path.exists():
+        return 0
+    try:
+        with open(path, encoding="utf-8") as f:
+            return int(json.load(f).get("breach_streak", 0) or 0)
+    except (OSError, ValueError, TypeError):
+        return 0
+
+
+def trading_halted(breaches: list[str], streak: int) -> bool:
+    """True once a breach has survived MAX_BREACH_RUNS runs — persistence is the alarm.
+
+    A halt stops DISCRETIONARY orders only. Covers are always permitted, because covering is what
+    clears the breach; halting them would recreate the JBL deadlock under a different name.
+    """
+    return bool(breaches) and streak >= MAX_BREACH_RUNS
+
+
 def alpaca_read_state(client) -> dict | None:
     """Fetch account summary, open positions, closed orders, and pending open orders."""
     try:
@@ -750,6 +926,21 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
     cash_floor = pv * CASH_FLOOR_PCT
     placed = []
 
+    def submit(symbol: str, quantity: int, side, label: str) -> None:
+        """The one and only path to the broker. DRY_RUN stops here and nowhere else.
+
+        Keeping shadow mode at a single chokepoint means a future branch cannot accidentally
+        bypass it — every order type (cover, sell, buy) must come through this function.
+        `label` is passed explicitly because the broker enum has no readable repr, and the
+        whole value of shadow mode is a plan a human can actually review.
+        """
+        if DRY_RUN:
+            print(f"  [DRY-RUN] would submit {label} {quantity} {symbol} — not sent")
+            return
+        client.submit_order(MarketOrderRequest(
+            symbol=symbol, qty=quantity, side=side, time_in_force=TimeInForce.DAY,
+        ))
+
     # Long-only guard: fetch current positions so we never sell more than we own.
     held_qty: dict[str, float] = {}
     try:
@@ -786,11 +977,7 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
             print(f"  Cover guard: {sym} computed qty {qty} ≤ 0 — COVER skipped")
             continue
         try:
-            client.submit_order(MarketOrderRequest(
-                symbol=sym, qty=qty,
-                side=OrderSide.BUY,
-                time_in_force=TimeInForce.DAY,
-            ))
+            submit(sym, qty, OrderSide.BUY, "COVER")
             print(f"  ⇧ COVER {qty:>5} {sym} (buy-to-close short — long-only restored)")
             placed.append(("COVER", sym, qty))
             already_ordered.add(key)
@@ -823,11 +1010,7 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
             print(f"  Price guard: {sym} has non-positive price ({price}) — SELL skipped")
             continue
         try:
-            client.submit_order(MarketOrderRequest(
-                symbol=sym, qty=qty,
-                side=OrderSide.SELL,
-                time_in_force=TimeInForce.DAY,
-            ))
+            submit(sym, qty, OrderSide.SELL, "SELL")
             print(f"  ↓ SELL {qty:>5} {sym}")
             placed.append(("SELL", sym, qty))
             already_ordered.add(sym.upper())
@@ -848,11 +1031,7 @@ def alpaca_place_orders(client, to_sell: list[tuple], to_buy: list[tuple],
             print(f"  Risk gate: cash floor — skipping BUY {sym} (cash ${cash:,.0f} near floor ${cash_floor:,.0f})")
             continue
         try:
-            client.submit_order(MarketOrderRequest(
-                symbol=sym, qty=qty,
-                side=OrderSide.BUY,
-                time_in_force=TimeInForce.DAY,
-            ))
+            submit(sym, qty, OrderSide.BUY, "BUY")
             print(f"  ↑ BUY  {qty:>5} {sym}")
             placed.append(("BUY", sym, qty))
             already_ordered.add(sym.upper())
@@ -869,6 +1048,10 @@ def write_execution_summary(
     cash_pct_after: float | None,
     data_dir: Path,
     long_only_breach: bool = False,
+    breaches: list[str] | None = None,
+    breach_streak: int = 0,
+    halted: bool = False,
+    dry_run: bool = False,
 ) -> None:
     """Write data/execution_summary.json so agent.py can report what actually ran.
 
@@ -885,13 +1068,20 @@ def write_execution_summary(
         "timestamp":      datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "mode":           "market_open" if MARKET_OPEN_RUN else "post_close",
         "orders_placed":  [
-            {"action": a, "symbol": s, "qty": q, "status": "submitted"}
+            {"action": a, "symbol": s, "qty": q,
+             "status": "dry_run" if dry_run else "submitted"}
             for a, s, q in placed
         ],
         "orders_skipped": skipped,
         "errors":         errors,
         "cash_pct_after": round(cash_pct_after, 2) if cash_pct_after is not None else None,
         "long_only_breach": bool(long_only_breach),
+        # v4.0 — the kill switch reads breach_streak back on the next run. A breach that
+        # persists is what halts trading; a single bad run is not enough to stop the system.
+        "invariant_breaches": breaches or [],
+        "breach_streak":      int(breach_streak),
+        "trading_halted":     bool(halted),
+        "dry_run":            bool(dry_run),
     }
     out_path = data_dir / "execution_summary.json"
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -1005,6 +1195,32 @@ def handle_manual_order(client) -> None:
                                    time_in_force=tif, stop_price=float(sp_str))
         else:
             req = MarketOrderRequest(symbol=sym, qty=qty, side=side, time_in_force=tif)
+
+        if side == OrderSide.SELL:
+            # Long-only: a manual SELL may never exceed the held quantity. Without this the
+            # manual hatch is a way around the invariant that the rest of the system enforces.
+            held = 0
+            try:
+                for pos in client.get_all_positions():
+                    if str(getattr(pos, "symbol", "")).upper() == sym:
+                        held = int(float(getattr(pos, "qty", 0) or 0))
+                        break
+            except Exception as e:
+                print(f"handle_manual_order: position check failed ({e}) — SELL blocked.",
+                      file=sys.stderr)
+                return
+            if held <= 0:
+                print(f"handle_manual_order: {sym} not held (qty {held}) — SELL blocked (no short).",
+                      file=sys.stderr)
+                return
+            if qty > held:
+                print(f"handle_manual_order: clamping SELL {qty} → {held} (held quantity).")
+                qty = held
+                req = MarketOrderRequest(symbol=sym, qty=qty, side=side, time_in_force=tif)
+
+        if DRY_RUN:
+            print(f"  [DRY-RUN] would place manual {side_str.upper()} {qty} {sym} ({type_str}) — not sent")
+            return
 
         order = client.submit_order(req)
         print(f"Manual order placed: {side_str.upper()} {qty} {sym} ({type_str}) → id={order.id}")
@@ -1480,6 +1696,19 @@ def run_sentinel() -> None:
         raw_sells, [], pv, deployable_cash, sentinel_syms, price_map
     )
 
+    # v4.0: the sentinel runs the same invariant gate. It is the one path that stayed alive
+    # through the Aug 2026 outage, so it must not be the one path without a safety check.
+    breaches      = assert_invariants(alpaca_state)
+    prior_streak  = read_breach_streak(REPO_ROOT / "data")
+    breach_streak = (prior_streak + 1) if breaches else 0
+    halted        = trading_halted(breaches, breach_streak)
+    if breaches:
+        print(f"sentinel mode: INVARIANT BREACH (run {breach_streak}/{MAX_BREACH_RUNS}) — "
+              + "; ".join(breaches))
+    if halted and gated_sells:
+        print(f"sentinel mode: kill switch — suppressing {len(gated_sells)} sell(s); covers proceed.")
+        gated_sells = []
+
     print(f"sentinel mode: placing {len(to_cover)} cover(s) + {len(gated_sells)} sell order(s) via Alpaca")
     placed = alpaca_place_orders(
         client, gated_sells, [], pv, deployable_cash, price_map, to_cover=to_cover
@@ -1494,7 +1723,9 @@ def run_sentinel() -> None:
     ]
     cash_pct = round(cash / pv * 100, 2) if pv else None
     write_execution_summary(exec_placed, exec_skipped, [], cash_pct, REPO_ROOT / "data",
-                            long_only_breach=bool(to_cover))
+                            long_only_breach=bool(to_cover),
+                            breaches=breaches, breach_streak=breach_streak,
+                            halted=halted, dry_run=DRY_RUN)
     print("sentinel mode: execution complete.")
 
 
@@ -1503,8 +1734,12 @@ def main():
         run_sentinel()
         return
 
-    # Load existing state
-    if DATA_FILE.exists():
+    if DRY_RUN:
+        print("SHADOW MODE (DRY_RUN=true) — orders will be computed and logged, never submitted.")
+
+    # Load existing state. RESET_PORTFOLIO replaces `data` later, once the broker is reachable
+    # and its real equity can be read (see the alpaca branch below).
+    if DATA_FILE.exists() and not RESET_PORTFOLIO:
         with open(DATA_FILE, encoding="utf-8") as f:
             data = json.load(f)
     else:
@@ -1616,6 +1851,14 @@ def main():
         # Guard: refuse to run against a live (non-paper) endpoint
         verify_paper_url()
 
+        # ── v4.0 one-time fresh start ───────────────────────────────
+        # Runs only with RESET_PORTFOLIO=true, and only against a genuinely empty account.
+        if RESET_PORTFOLIO:
+            data = bootstrap_fresh_portfolio(alpaca_state, ALPACA_ACCOUNT_NAME)
+            existing_holdings = []
+            existing_trades   = []
+            cash              = data["summary"]["cash"]
+
         # Build existing holdings map for entry_date preservation
         existing_map = {h["symbol"]: h for h in existing_holdings}
 
@@ -1631,6 +1874,31 @@ def main():
         # Trade history is needed BEFORE order placement so the v3.2 re-entry cooldown can
         # see recent sells. It is recomputed after the orders land.
         all_trades = alpaca_orders_to_trades(alpaca_state["orders"])
+
+        # ── v4.0 invariant gate ───────────────────────────────────
+        # One chokepoint, checked before any order is built. A breach does NOT stop the run —
+        # covers must still fire, because covering is what clears it. What a breach does is start
+        # a streak, and a streak that survives MAX_BREACH_RUNS halts discretionary trading.
+        breaches     = assert_invariants(alpaca_state, new_holdings)
+        prior_streak = read_breach_streak(REPO_ROOT / "data")
+        breach_streak = (prior_streak + 1) if breaches else 0
+        halted        = trading_halted(breaches, breach_streak)
+
+        if breaches:
+            print("\n" + "!" * 68)
+            print(f"  INVARIANT BREACH — run {breach_streak} of {MAX_BREACH_RUNS} before halt")
+            for b in breaches:
+                print(f"    • {b}")
+            if halted:
+                print("  TRADING HALTED — discretionary orders suppressed; COVER still permitted.")
+                print("  Remediate with: python bot/rebalance_trueup.py --dry-run")
+            print("!" * 68 + "\n")
+
+        divergences = reconcile_positions(alpaca_state, existing_holdings)
+        if divergences:
+            print("  Reconciliation: broker and portfolio.json disagree —")
+            for d in divergences[:10]:
+                print(f"    • {d}")
 
         # ── v3.2 long-only breach alarm ──────────────────────────
         # A long-only strategy holding a short is a system-down condition, not a data point.
@@ -1829,6 +2097,13 @@ def main():
         exec_skipped: list[dict]  = []
         exec_errors:  list[str]   = []
 
+        if halted and (to_sell or to_buy):
+            for sym, _ in to_sell + to_buy:
+                exec_skipped.append({"symbol": sym, "reason": "trading halted — unresolved invariant breach"})
+            print(f"  Kill switch: suppressing {len(to_sell)} sell(s) and {len(to_buy)} buy(s) — "
+                  f"breach unresolved for {breach_streak} runs. COVER orders still proceed.")
+            to_sell, to_buy = [], []
+
         if to_cover or to_sell or to_buy:
             print(f"Rebalance: {len(to_cover)} covers, {len(to_sell)} sells, "
                   f"{len(to_buy)} buys (after risk gates)")
@@ -1863,6 +2138,8 @@ def main():
             exec_placed, exec_skipped, exec_errors,
             cash_pct_now, REPO_ROOT / "data",
             long_only_breach=bool(shorts),
+            breaches=breaches, breach_streak=breach_streak,
+            halted=halted, dry_run=DRY_RUN,
         )
 
         # Handle manual order triggered via workflow_dispatch inputs
@@ -1949,10 +2226,10 @@ def main():
     output = {
         "meta": {
             **data.get("meta", {}),
-            "strategy":         "TradeQuest AI Momentum Strategy v3.2",
-            "strategy_version": "3.2",
+            "strategy":         f"TradeQuest AI Momentum Strategy v{STRATEGY_VERSION}",
+            "strategy_version": STRATEGY_VERSION,
             "universe":       "S&P 500",
-            "account_name":   "TradeQuest Paper",
+            "account_name":   ALPACA_ACCOUNT_NAME,
             "mode":           "alpaca" if alpaca_state else "simulation",
             "initial_capital": data.get("meta", {}).get("initial_capital", INITIAL_CAPITAL),
             "last_rebalance": today,

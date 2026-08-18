@@ -10,6 +10,11 @@ on:
         description: 'Run type override: day_end | monthly'
         required: false
         default: ''
+      reset_portfolio:
+        description: 'ONE-TIME: seed a fresh portfolio from a NEW empty Alpaca account'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   agent:
@@ -61,6 +66,10 @@ jobs:
           ALPACA_SECRET_KEY:   ${{ secrets.ALPACA_SECRET_KEY }}
           ALPACA_BASE_URL:     ${{ secrets.ALPACA_BASE_URL }}
           FMP_API_KEY:         ${{ secrets.FMP_API_KEY }}
+          # Shadow mode while validating a new account: set the repository variable DRY_RUN
+          # to "true" to compute orders without submitting them; unset it to trade for real.
+          DRY_RUN:             ${{ vars.DRY_RUN }}
+          RESET_PORTFOLIO:     ${{ inputs.reset_portfolio }}
         run: python bot/update.py
 
       - name: Fetch enrichment
