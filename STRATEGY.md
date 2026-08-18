@@ -290,6 +290,14 @@ BUY a symbol with an active SELL flag.
 deployable cash exceeds `CASH_FLOOR_PCT + CASH_DEPLOY_BAND` (8%). That carve-out is Directive 5 — the
 blanket block is what made the book able only to shrink.
 
+**Inception deployment.** An **empty** book with deployable cash runs its first deployment
+immediately, in any month, using the full rebalance budget. The quarterly lock exists to stop
+discretionary mid-quarter bets; it was never meant to stop the *first* one. Without this, an account
+bootstrapped on 18 Aug holds 100% cash until 1 Oct — six weeks of exactly the cash drag that cost
+generation 1 its quarter, while §6 targets 95% equity in a bull regime. Deliberately narrow: it
+requires **zero** long positions, so a partially-held book still waits for the quarterly and this
+cannot become a general mid-quarter buying loophole.
+
 **Hard limits (code-enforced in `update.py`; not overridable by the agent or any config):**
 
 ```python

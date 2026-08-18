@@ -189,6 +189,24 @@ def bootstrap_fresh_portfolio(state: dict, account_name: str,
     }
 
 
+def is_inception_deployment(holdings: list[dict], deployable_cash: float, pv: float) -> bool:
+    """True when the book is empty and there is real cash waiting to be deployed (v4.0).
+
+    The quarterly lock exists to stop discretionary mid-quarter bets. It was never meant to
+    stop the FIRST deployment. A freshly bootstrapped account holds nothing, so every top-N
+    candidate is a "new entrant" and is blocked -- an account started on 18 Aug would sit at
+    100% cash until 1 Oct, six weeks of exactly the cash drag that cost generation 1 its
+    quarter. STRATEGY.md targets 95% equity in a bull regime; holding all cash by accident is
+    a bigger deviation from the strategy than deploying off-quarter.
+
+    Deliberately narrow: it requires ZERO long positions. A partially-held book still waits
+    for the quarterly, so this cannot become a general mid-quarter buying loophole.
+    """
+    if any(float(h.get("shares", 0) or 0) > 0 for h in holdings):
+        return False
+    return pv > 0 and deployable_cash > pv * CASH_FLOOR_PCT
+
+
 def next_quarterly_date(dt: datetime | None = None) -> str:
     """First day of the next quarterly rebalance month (Jan/Apr/Jul/Oct), as YYYY-MM-DD.
 
@@ -1924,6 +1942,14 @@ def main():
         # Non-quarterly months: only Tier 1 sells (unrealized loss positions) may execute.
         # Quarterly months: full rebalance — buys and all approved sells may execute.
         quarterly = is_quarterly_month()
+
+        # v4.0 inception deployment: an empty book must be allowed to buy its initial
+        # positions in any month, using the full rebalance budget (see is_inception_deployment).
+        if not quarterly and is_inception_deployment(new_holdings, deployable_cash, pv):
+            print("Inception: book is empty with deployable cash — running the FIRST "
+                  "deployment now rather than waiting for the next quarterly.")
+            quarterly = True
+
         if quarterly:
             print("Quarter lock: QUARTERLY month — full rebalance allowed (buys + all Tier 1/2 sells).")
         else:
