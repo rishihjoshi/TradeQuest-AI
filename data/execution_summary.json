@@ -1,17 +1,28 @@
 {
-  "timestamp": "2026-08-19T19:02:30Z",
+  "timestamp": "2026-08-19T21:51:11Z",
   "mode": "post_close",
   "orders_placed": [
     {
-      "action": "SELL",
-      "symbol": "JBL",
-      "qty": 2.0,
+      "action": "BUY",
+      "symbol": "NUE",
+      "qty": 0.150447,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "NTRS",
+      "qty": 0.008203,
       "status": "submitted"
     }
   ],
-  "orders_skipped": [],
+  "orders_skipped": [
+    {
+      "symbol": "KEYS",
+      "reason": "blocked by agent approval or risk gate"
+    }
+  ],
   "errors": [],
-  "cash_pct_after": 4.92,
+  "cash_pct_after": 11.57,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
