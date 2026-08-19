@@ -1,19 +1,17 @@
 {
-  "timestamp": "2026-08-19T14:08:29Z",
-  "mode": "market_open",
-  "orders_placed": [],
-  "orders_skipped": [
+  "timestamp": "2026-08-19T19:02:30Z",
+  "mode": "post_close",
+  "orders_placed": [
     {
+      "action": "SELL",
       "symbol": "JBL",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "KEYS",
-      "reason": "blocked by agent approval or risk gate"
+      "qty": 2.0,
+      "status": "submitted"
     }
   ],
+  "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 4.84,
+  "cash_pct_after": 4.92,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
