@@ -1,7 +1,119 @@
 {
-  "last_run": "2026-08-18T21:48:46Z",
-  "last_type": "day_end",
+  "last_run": "2026-08-19T14:07:40Z",
+  "last_type": "day_start",
   "runs": [
+    {
+      "id": "RUN-20260819-1407",
+      "timestamp": "2026-08-19T14:07:40Z",
+      "type": "day_start",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is day-1 inception (all positions entered 2026-08-18) with 32.3% cash against a 5% bull-regime target \u2014 the primary structural issue. Three holdings (JBL, NTRS, ROST) carry missing sector/MA/rank data and remain on data-integrity watch; no negative shares exist so no COVER is required. Market regime is firmly bull with VIX 12.5, SPY above 200-MA, and breadth at 71.7% \u2014 well above the 60% bull threshold.",
+      "regime": "bull",
+      "regime_confidence": 0.87,
+      "flags": [
+        "CASH: 32.3% deployable cash ($3,224.54) vs 5% bull-regime target \u2014 significant underdeployment; pending top-up BUYs submitted at last market-open should reduce this once fills confirm; no new BUY action permitted today (day_start, flag-only run)",
+        "JBL: sector=Unknown, ma_50d=null, momentum_rank=0, eps_growth=null \u2014 fails data-integrity gate on all dimensions; current PnL -$14.32 (-2.07%) as of entry 2026-08-18; additional top-up BUY of 0.798471 shares submitted and pending \u2014 if fill confirms, do NOT re-issue; watch for data resolution before next day_end",
+        "NTRS: sector=Unknown, ma_50d=null, momentum_rank=0, eps_growth=null \u2014 fails data-integrity gate; PnL -$1.18 (-0.15%) as of entry 2026-08-18; pending top-up BUY of 0.972286 shares submitted \u2014 monitor fill status",
+        "ROST: sector=Unknown, ma_50d=null, momentum_rank=0, eps_growth=null \u2014 fails data-integrity gate; PnL -$4.23 (-0.59%) as of entry 2026-08-18; pending top-up BUY of 1.003795 shares submitted \u2014 monitor fill status",
+        "KEYS: BUY of 2.765611 shares submitted at market-open but no confirmed holding in portfolio \u2014 confirm fill before any further action; do NOT re-issue today",
+        "SECTOR/ENERGY: VLO (rank 1) + MPC (rank 2) + PSX (rank 4) = ~21.5% combined weight at current values \u2014 approaching 30% sector cap; monitor as top-up fills may push this higher",
+        "SECTOR/BASIC_MATERIALS: CF (rank 11) + NUE (rank 10) = ~15.9% combined \u2014 within cap but watch if NUE drifts further toward rank boundary (rank 10, hysteresis exit threshold is rank >15, so no action warranted yet)",
+        "SECTOR/FINANCIALS: BNY (rank 9) + NTRS (rank 0/unknown) = ~15.9% combined \u2014 within cap; NTRS data gap is the concern",
+        "CF: volatility_30d=0.3857 (elevated relative to portfolio); momentum_rank=11 is outside top-10 target but within hysteresis band (exit only at rank >15); no action \u2014 monitoring",
+        "NUE: momentum_rank=10, approaching hysteresis boundary but still within hold zone (exit threshold >15); PnL -$3.09 (-0.39%) day-1 noise; no action"
+      ],
+      "decisions": [
+        {
+          "action": "WATCH",
+          "symbol": "JBL",
+          "reason": "Data-integrity flag persists: sector=Unknown, ma_50d=null, momentum_rank=0, eps_growth=null. Missing data blocks any new entry assessment but is NOT a sell signal per Directive 10. Unrealized PnL: -$14.32 (-2.07%), entry date 2026-08-18 (day 1 \u2014 MIN_HOLD_DAYS not met, and no structural sell rule triggered). Pending top-up fill of 0.798471 shares \u2014 do not re-issue. Watch for data resolution.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "NTRS",
+          "reason": "Data-integrity flag persists: sector=Unknown, ma_50d=null, momentum_rank=0, eps_growth=null. Not a sell signal. Unrealized PnL: -$1.18 (-0.15%), entry date 2026-08-18. Pending top-up fill of 0.972286 shares \u2014 do not re-issue. Watch for data resolution.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "ROST",
+          "reason": "Data-integrity flag persists: sector=Unknown, ma_50d=null, momentum_rank=0, eps_growth=null. Not a sell signal. Unrealized PnL: -$4.23 (-0.59%), entry date 2026-08-18. Pending top-up fill of 1.003795 shares \u2014 do not re-issue. Watch for data resolution.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "KEYS",
+          "reason": "BUY of 2.765611 shares submitted at market-open 2026-08-18 but no holding confirmed in portfolio yet. Awaiting fill confirmation \u2014 do not re-issue today.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "VLO",
+          "reason": "Rank 1 (top momentum), above 50-day MA ($285.89), strong quality (EPS growth 453.5%, revenue 51.7%), valuation reasonable (P/E 11.5). PnL -$4.40 (-0.63%) is day-1 noise. All four filters pass. Pending top-up fill of 0.733645 shares.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "MPC",
+          "reason": "Rank 2, above 50-day MA ($289.59), strong quality (EPS 348%, revenue 53.7%), P/E 11.4. PnL -$0.98 (-0.13%) day-1 noise. All filters pass. Pending top-up fill of 0.603418 shares.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "PSX",
+          "reason": "Rank 4, above 50-day MA ($194.39), strong quality (EPS 344.9%, revenue 53.1%), P/E 11.6. PnL +$2.61 (+0.36%). All filters pass. Pending top-up fill of 0.908832 shares.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "BNY",
+          "reason": "Rank 9, above 50-day MA ($152.31), quality solid (EPS 26.9%, revenue 13.1%), P/E 16.0. PnL +$2.20 (+0.27%). All filters pass. Pending top-up fill of 0.780628 shares.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "Rank 10, above 50-day MA ($248.46), quality solid (EPS 93.8%, revenue 23.0%), P/E 14.0. Rank 10 is within hysteresis hold zone (exit only at rank >15). PnL -$3.09 (-0.39%) day-1 noise. Pending top-up fill of 0.586881 shares.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CF",
+          "reason": "Rank 11, above 50-day MA ($114.96), quality excellent (EPS 99.6%, revenue 17.6%), P/E 11.5. Rank 11 is within hysteresis hold zone (exit only at rank >15). PnL -$1.68 (-0.20%) day-1 noise. Pending top-up fill of 0.896819 shares.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "decrease",
+      "cash_rationale": "32.3% cash is far above the 5% bull-regime target. Pending top-up BUYs submitted at yesterday's market-open (for KEYS, ROST, NTRS, JBL, CF, NUE, BNY, PSX, MPC, VLO) should deploy a significant portion once fills confirm. No new BUY actions are permitted in this day_start flag-only run. Cash reduction will be assessed at day_end once fill confirmations are available and KEYS holding status is resolved.",
+      "summary": "Day-start pre-market check: no shorts/COVERs needed; JBL/NTRS/ROST/KEYS flagged for data-integrity or fill-confirmation watch; all other holdings HOLD with pending top-up fills expected to reduce 32.3% cash overhang toward the 5% bull-regime target.",
+      "usage": {
+        "input_tokens": 7604,
+        "output_tokens": 2558,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 5926
+      }
+    },
     {
       "id": "RUN-20260818-2148",
       "timestamp": "2026-08-18T21:48:46Z",
@@ -11966,104 +12078,6 @@
       "usage": {
         "input_tokens": 12841,
         "output_tokens": 2637,
-        "cache_read_tokens": 0,
-        "cache_write_tokens": 8817
-      },
-      "sell_tier_summary": {
-        "tier1_execute": 0,
-        "tier2_deferred": 3
-      }
-    },
-    {
-      "id": "RUN-20260612-1632",
-      "timestamp": "2026-06-12T16:32:16Z",
-      "type": "day_start",
-      "model": "claude-sonnet-4-6",
-      "assessment": "Portfolio holds 8 positions with 59.8% cash \u2014 dramatically above the 5% bull-regime target with no ability to deploy mid-quarter (June is non-quarterly). Three positions (AMAT, C, WDC) have momentum_rank=0 and null fundamental data, indicating data pipeline failures that obscure true status; these have been flagged for 5+ consecutive runs. The hold gate applies to all three as they are profitable (+31.3%, +9.8%, +10.9% respectively), so no Tier 1 sell is warranted on momentum decay alone. Market breadth at 59.5% is borderline \u2014 just below the 60% bull threshold \u2014 consistent with a narrowing rally requiring caution.",
-      "regime": "bull",
-      "regime_confidence": 0.78,
-      "flags": [
-        "WDC: momentum_rank=0, all fundamentals null, status unknown_ma \u2014 data pipeline failure persisting 5+ runs. Position profitable at +$52.91 (+10.9%), entry 2026-05-22. Hold gate active \u2014 cannot sell on momentum decay alone. Structural rules cannot be assessed without MA data. Escalated to WATCH pending data resolution at July quarterly rebalance.",
-        "AMAT: momentum_rank=0, all fundamentals null (eps_growth=null, revenue_growth=null, forward_pe=null), status unknown_ma, volatility_30d=0.6658 (high). Position profitable at +$132.84 (+31.28%), entry 2026-05-20. Hold gate active. Cannot confirm MA status or quality compliance. WATCH \u2014 assess at July quarterly.",
-        "C: momentum_rank=0, all fundamentals null, status unknown_ma, volatility_30d=0.2757. Position profitable at +$49.16 (+9.77%), entry 2026-05-26. Hold gate active. WATCH \u2014 assess at July quarterly.",
-        "CAT: loss position at -$24.31 (-2.64%), entry 2026-05-06. momentum_rank=2 (top tier \u2014 passing), price $897.63 above MA50 $847.82 (no trend break), eps_growth=30.2%, revenue_growth=22.2% (quality passing). No structural sell rule triggered \u2014 loss does not trigger sell absent rule violation. Monitor closely.",
-        "BREADTH: S&P breadth at 59.5% is just below the 60% bull threshold with the 8MA trending below the 200MA \u2014 bearish breadth trend. Two of three regime signals still point bull (SPY above 200-MA, VIX 13.8) but breadth is deteriorating. Regime confidence reduced from 0.84 to 0.78. No regime change yet but approaching a potential sideways reclassification.",
-        "CASH: 59.8% cash vs 5% bull-regime target. $6,158.79 idle. Cannot deploy mid-quarter (June is non-quarterly). Structural issue \u2014 excessive selling in prior weeks has left portfolio severely underinvested. Will require aggressive redeployment at July 1 quarterly rebalance.",
-        "SECTOR CONCENTRATION \u2014 Basic Materials: NUE (5.07%) + STLD (2.72%) = 7.79% combined. Within 30% cap but both are steel producers \u2014 highly correlated. Monitor for sector cap breach if additional materials positions are added at July rebalance.",
-        "STLD: momentum_rank=8 \u2014 approaching the lower boundary of the top-tier holding range. momentum_6m=0.4418, momentum_12m=0.7957. Still in top 30% but worth monitoring for rank deterioration. Position profitable at +$37.38 (+15.43%), entry 2026-05-06. Hold gate would apply if rank exits top 30%."
-      ],
-      "decisions": [
-        {
-          "action": "HOLD",
-          "symbol": "ADI",
-          "reason": "Passing all filters. momentum_rank=5, price $412.13 above MA50 $389.52, eps_growth=110.5%, revenue_growth=37.2%, forward_pe=27.9. PnL=+$28.51 (+7.43%), entry 2026-05-04. No sell rule triggered.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "AMAT",
-          "reason": "momentum_rank=0, all fundamentals null, status unknown_ma \u2014 persistent data failure for 5+ runs. Cannot confirm quality, momentum, or MA compliance. Position profitable at +$132.84 (+31.28%), entry 2026-05-20. Hold gate active under Rule E \u2014 cannot sell profitable position on momentum decay alone. Escalate to full structural review at July 1 quarterly rebalance. If structural rules (A/B) could be confirmed broken, Tier 1 would apply but data is insufficient.",
-          "rule_triggered": "momentum_decay",
-          "sell_tier": "tier2",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "C",
-          "reason": "momentum_rank=0, all fundamentals null, status unknown_ma \u2014 data pipeline failure persisting. Position profitable at +$49.16 (+9.77%), entry 2026-05-26. Hold gate active \u2014 Tier 2 only. Defer to July 1 quarterly rebalance for full structural assessment.",
-          "rule_triggered": "momentum_decay",
-          "sell_tier": "tier2",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "CAT",
-          "reason": "Loss position at -$24.31 (-2.64%), entry 2026-05-06. However, no structural sell rule is triggered: momentum_rank=2 (top tier, passing top 30%), price $897.63 well above MA50 $847.82 (no trend break), eps_growth=30.2% and revenue_growth=22.2% (quality passing), forward_pe=29.8 (valuation passing). Loss alone does not trigger a sell \u2014 a structural rule must also fire. Continue monitoring; if momentum rank degrades below top 30% for 5+ days, Tier 1 sell applies as a loss position.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "JBL",
-          "reason": "Passing all filters. momentum_rank=4, price $376.89 above MA50 $335.93, eps_growth=96.2%, revenue_growth=23.1%, forward_pe=25.7. PnL=+$40.31 (+11.98%), entry 2026-05-04. No sell rule triggered.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "NUE",
-          "reason": "Passing all filters. momentum_rank=6, price $260.90 above MA50 $219.89, eps_growth=382.1%, revenue_growth=21.3%, forward_pe=15.7. PnL=+$68.97 (+15.23%), entry 2026-05-04. No sell rule triggered.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "STLD",
-          "reason": "Passing all filters but momentum_rank=8 warrants monitoring for rank deterioration. Price $279.55 above MA50 $227.53, eps_growth=93.1%, revenue_growth=19.1%, forward_pe=15.6. PnL=+$37.38 (+15.43%), entry 2026-05-06. No sell rule triggered today. Flag if rank moves outside top 30% for 5+ consecutive days.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "WDC",
-          "reason": "momentum_rank=0, all fundamentals null, status unknown_ma, volatility_30d=0.7097 (highest in portfolio). Persistent data failure for 5+ runs. Previously flagged as Tier 1 SELL when believed to be at a loss; position is now confirmed profitable at +$52.91 (+10.9%), entry 2026-05-22 \u2014 hold gate applies. Cannot assess structural rules A or B without MA and fundamental data. Defer to July 1 quarterly rebalance for definitive action. Note: volatility of 0.7097 annualized is elevated and warrants data resolution urgently.",
-          "rule_triggered": "momentum_decay",
-          "sell_tier": "tier2",
-          "urgency": "next_rebalance"
-        }
-      ],
-      "cash_action": "maintain",
-      "cash_rationale": "June is a non-quarterly month \u2014 BUY orders are pipeline-blocked regardless of cash level. The 59.8% cash vs 5% bull-regime target is a structural problem that can only be resolved at the July 1 quarterly rebalance when full screening and redeployment are permitted. No action available today.",
-      "summary": "Day start Jun 12: 8 positions HOLDing with no Tier 1 sells triggered; AMAT/C/WDC maintained WATCH Tier 2 (profitable, hold gate active, data failures); CAT loss monitored but no structural rule fired; breadth at 59.5% narrows regime confidence to 0.78; July 1 rebalance critical to redeploy $6,159 idle cash.",
-      "usage": {
-        "input_tokens": 12094,
-        "output_tokens": 2452,
         "cache_read_tokens": 0,
         "cache_write_tokens": 8817
       },
