@@ -1,502 +1,557 @@
 {
-  "generated_at": "2026-08-17T13:57:40Z",
+  "generated_at": "2026-08-20T14:10:05Z",
   "article_count": 30,
   "articles": [
     {
-      "id": "61243331",
-      "headline": "12 Information Technology Stocks Moving In Monday's Pre-Market Session",
-      "summary": "Gainers  Amphenol (NYSE:APH) stock increased by 101.3% to $168.21 during Monday&39;s pre-market session. The company&39;s market cap stands at $102.7 billion.  FiEE (NASDAQ:FIEE) shares rose 15.0% to $5.75. The market",
-      "url": "https://www.benzinga.com/trading-ideas/movers/26/08/61243331/12-information-technology-stocks-moving-monday-s-pre-market-session",
-      "author": "Benzinga Insights",
+      "id": "61320682",
+      "headline": "Trump Could Reportedly Cut Canadian Auto Tariffs to 15%, Aluminum and Steel to 25%: NUE, STLD, CENX in Focus (UPDATED)",
+      "summary": "The U.S. and Canada could be close to an agreement on cutting auto tariffs to 15% but effective rates may be lower.",
+      "url": "https://www.benzinga.com/news/politics/26/08/61320682/us-could-cut-canadian-auto-tariffs-to-15-aluminum-and-steel-to-25-under-proposed-trade-deal-report",
+      "author": "Badar Shaikh",
       "source": "benzinga",
       "symbols": [
-        "APH",
-        "BGDE",
-        "BGIN",
-        "BTTC",
-        "CANG",
-        "DAIC",
-        "FIEE",
-        "FUFU",
-        "HIVE",
-        "MF",
-        "QMLS",
-        "VEEA"
+        "CENX",
+        "CLF",
+        "F",
+        "NUE",
+        "STLD",
+        "TM",
+        "TSLA"
       ],
-      "created_at": "2026-08-17T12:06:30Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "created_at": "2026-08-20T13:08:43Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Lower tariffs reduce costs for steel/aluminum producers and auto manufacturers, supporting margins."
     },
     {
-      "id": "61243247",
-      "headline": "Evolution Metals & Technologies, Barfresh Food Group, Snap And Other Big Stocks Moving Lower In Monday\u2019s Pre-Market Session",
-      "summary": "U.S. stock futures were mixed this morning, with the Nasdaq 100 futures up 150 points. Evolution Metals &amp; Technologies Corp (EMAT) drops in pre-market trading due to weak sales. Other stocks, such as BRFH, SNAP, and VCRE also decline.",
-      "url": "https://www.benzinga.com/trading-ideas/movers/26/08/61243247/evolution-metals-technologies-barfresh-food-group-snap-and-other-big-stocks-moving-lower-in-mondays-pre-market-session",
+      "id": "61325145",
+      "headline": "How To Earn $500 A Month From Ross Stores Stock Ahead Of Q2 Earnings",
+      "summary": "Ross Stores will release its Q2 earnings report on Aug. 20. Dividend yield is 0.76% ($1.78/year). To earn $500/month, you need...",
+      "url": "https://www.benzinga.com/trading-ideas/dividends/26/08/61325145/how-to-earn-500-a-month-from-ross-stores-stock-ahead-of-q2-earnings-2",
       "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "API",
-        "BRFH",
-        "DHT",
-        "EMAT",
-        "GEVO",
-        "IEP",
-        "MNSO",
-        "ROST",
-        "SNAP",
-        "UMAC",
-        "VCRE"
-      ],
-      "created_at": "2026-08-17T12:05:04Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61234388",
-      "headline": "Benzinga's 'Stock Whisper' Index: 5 Stocks Investors Secretly Monitor But Don't Talk About Yet",
-      "summary": "The Stock Whisper Index is a market indicator highlighting stocks that are attracting heightened interest from traders and investors.",
-      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/08/61234388/benzingas-stock-whisper-index-5-stocks-investors-secretly-monitor-but-dont-talk-about-yet-122",
-      "author": "Chris Katje",
-      "source": "benzinga",
-      "symbols": [
-        "FERG",
-        "KDP",
-        "SMTC",
-        "SPG",
-        "USFD"
-      ],
-      "created_at": "2026-08-15T12:31:26Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61229366",
-      "headline": "Telsey Advisory Group Maintains Outperform on Ross Stores, Raises Price Target to $280",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61229366/telsey-advisory-group-maintains-outperform-ross-stores-raises-price-target-280",
-      "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
         "ROST"
       ],
-      "created_at": "2026-08-14T20:34:12Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "created_at": "2026-08-20T11:46:24Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Article focuses on income generation strategy and dividend yield, indicating positive outlook on ROST stock"
     },
     {
-      "id": "61228630",
-      "headline": "Berkshire Hathaway Cuts Share Stake In Nucor Corp By 52.5% To 1.9M Shares",
-      "summary": "",
-      "url": "https://www.benzinga.com/m/26/08/61228630/berkshire-hathaway-cuts-share-stake-nucor-corp-52-5-1-9m-shares",
-      "author": "Benzinga Newsdesk",
+      "id": "61324392",
+      "headline": "Robinhood CEO Says Trump Accounts Give Kids a Simple Way Into S&P 500 \u2014 \u2018See the Magic of Compound Interest\u2019",
+      "summary": "Robinhood CEO Vlad Tenev explains Trump Accounts&39; S&amp;P 500 access and potential for more investment options.",
+      "url": "https://www.benzinga.com/markets/equities/26/08/61324392/robinhood-ceo-says-trump-accounts-give-kids-a-simple-way-into-sp-500-see-the-magic-of-compound-interest",
+      "author": "Tanya Rawat",
       "source": "benzinga",
       "symbols": [
-        "NUE"
+        "BNY",
+        "COIN",
+        "CRCL",
+        "GS",
+        "HOOD",
+        "MS",
+        "MSTR"
       ],
-      "created_at": "2026-08-14T20:26:40Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "created_at": "2026-08-20T11:12:57Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "CEO promotes new investment product with positive educational messaging to expand user base"
     },
     {
-      "id": "61217893",
-      "headline": "Live On CNBC, Steve Weiss Announces Bought Valero Energy",
-      "summary": "",
-      "url": "https://www.benzinga.com/quote/VLO",
-      "author": "Benzinga News-desk",
+      "id": "61323265",
+      "headline": "Ross Stores Earnings Are Imminent; These Most Accurate Analysts Revise Forecasts Ahead Of Earnings Call",
+      "summary": "ROST to release Q2 earnings on Aug. 20, expected to report $1.94 EPS and $6.15B revenue. 47 new stores opened. Analysts&39; ratings and price targets available.",
+      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/08/61323265/ross-stores-earnings-are-imminent-these-most-accurate-analysts-revise-forecasts-ahead-of-earnings-call-2",
+      "author": "Avi Kapoor",
       "source": "benzinga",
       "symbols": [
-        "VLO"
+        "ROST"
       ],
-      "created_at": "2026-08-14T16:27:05Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "created_at": "2026-08-20T10:25:05Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Store expansion and analyst engagement ahead of earnings suggest positive momentum."
     },
     {
-      "id": "61214527",
-      "headline": "$1000 Invested In CSX 10 Years Ago Would Be Worth This Much Today",
-      "summary": "CSX (NASDAQ:CSX) has outperformed the market over the past 10 years by 4.63% on an annualized basis producing an average annual return of 18.14%. Currently, CSX has a market capitalization of $93.74 billion.  Buying",
-      "url": "https://www.benzinga.com/news/26/08/61214527/1000-invested-csx-10-years-ago-would-be-worth-much-today",
+      "id": "61320693",
+      "headline": "Stock Market: Will S&P 500 Open Up or Down Today?",
+      "summary": "Will the S&amp;P 500 open higher? Polymarket odds lean bullish amid Trump&39;s economic D-Day on Iran, rising Treasury yields, and Walmart earnings.",
+      "url": "https://www.benzinga.com/markets/prediction-markets/26/08/61320693/stock-market-will-sp-500-open-up-or-down-today-20",
+      "author": "Rishabh Mishra",
+      "source": "benzinga",
+      "symbols": [
+        "BABA",
+        "DE",
+        "DIA",
+        "NTES",
+        "POLUSD",
+        "QQQ",
+        "ROST",
+        "SPY",
+        "WMT"
+      ],
+      "created_at": "2026-08-20T05:45:08Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Polymarket odds lean bullish; positive Walmart earnings and rising yields support upside"
+    },
+    {
+      "id": "61318828",
+      "headline": "If You Invested $100 In Marathon Petroleum Stock 15 Years Ago, You Would Have This Much Today",
+      "summary": "Marathon Petroleum (NYSE:MPC) has outperformed the market over the past 15 years by 9.08% on an annualized basis producing an average annual return of 22.5%. Currently, Marathon Petroleum has a market capitalization of",
+      "url": "https://www.benzinga.com/news/26/08/61318828/if-you-invested-100-marathon-petroleum-stock-15-years-ago-you-would-have-much-today",
       "author": "Benzinga Insights",
       "source": "benzinga",
       "symbols": [
-        "CSX"
+        "MPC"
       ],
-      "created_at": "2026-08-14T15:15:51Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "created_at": "2026-08-19T23:30:38Z",
+      "sentiment": "bull",
+      "confidence": 0.92,
+      "reason": "Strong 15-year outperformance with 22.5% annualized returns significantly exceeding market."
     },
     {
-      "id": "61184162",
-      "headline": "Here's How Much $1000 Invested In Casey's General Stores 10 Years Ago Would Be Worth Today",
-      "summary": "Casey&39;s General Stores (NASDAQ:CASY) has outperformed the market over the past 10 years by 6.92% on an annualized basis producing an average annual return of 20.44%. Currently, Casey&39;s General Stores has a",
-      "url": "https://www.benzinga.com/news/26/08/61184162/here-s-how-much-1000-invested-casey-s-general-stores-10-years-ago-would-be-worth-today",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "CASY"
-      ],
-      "created_at": "2026-08-13T16:17:49Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61173995",
-      "headline": "Nucor To Invest $59M To Expands Its Vulcraft Indiana Manufacturing Facility With Expected Addition Of 20 New Full-Time Jobs",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61173995/nucor-invest-59m-expands-its-vulcraft-indiana-manufacturing-facility-expected-addition-20-new-full-t",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "NUE"
-      ],
-      "created_at": "2026-08-13T13:13:31Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61131385",
-      "headline": "If You Invested $100 In F5 Stock 20 Years Ago, You Would Have This Much Today",
-      "summary": "F5 (NASDAQ:FFIV) has outperformed the market over the past 20 years by 5.82% on an annualized basis producing an average annual return of 15.09%. Currently, F5 has a market capitalization of $23.44 billion.  Buying $100",
-      "url": "https://www.benzinga.com/news/26/08/61131385/if-you-invested-100-f5-stock-20-years-ago-you-would-have-much-today",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "FFIV"
-      ],
-      "created_at": "2026-08-11T23:30:15Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61127188",
-      "headline": "UBS Upgrades Jabil to Buy, Maintains Price Target to $430",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61127188/ubs-upgrades-jabil-buy-maintains-price-target-430",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "JBL"
-      ],
-      "created_at": "2026-08-11T20:18:22Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61123568",
-      "headline": "Ladenburg Thalmann Maintains Buy on Simon Property Group, Raises Price Target to $275",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61123568/ladenburg-thalmann-maintains-buy-simon-property-group-raises-price-target-275",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "SPG"
-      ],
-      "created_at": "2026-08-11T19:09:25Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61120978",
-      "headline": "Stifel Maintains Hold on Simon Property Group, Raises Price Target to $209",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61120978/stifel-maintains-hold-simon-property-group-raises-price-target-209",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "SPG"
-      ],
-      "created_at": "2026-08-11T17:48:57Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61095493",
-      "headline": "$100 Invested In Valero Energy 5 Years Ago Would Be Worth This Much Today",
-      "summary": "Valero Energy (NYSE:VLO) has outperformed the market over the past 5 years by 24.96% on an annualized basis producing an average annual return of 36.59%. Currently, Valero Energy has a market capitalization of $90.75",
-      "url": "https://www.benzinga.com/news/26/08/61095493/100-invested-valero-energy-5-years-ago-would-be-worth-much-today",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "VLO"
-      ],
-      "created_at": "2026-08-10T21:00:16Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61092884",
-      "headline": "UBS Maintains Neutral on Steel Dynamics, Raises Price Target to $276",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61092884/ubs-maintains-neutral-steel-dynamics-raises-price-target-276",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "STLD"
-      ],
-      "created_at": "2026-08-10T20:19:12Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61091148",
-      "headline": "Simon Property Group Q2 FFO $3.12 Misses $3.22 Estimate, Sales $1.791B Beat $1.612B Estimate",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/earnings/26/08/61091148/simon-property-group-q2-ffo-3-12-misses-3-22-estimate-sales-1-791b-beat-1-612b-estimate",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "SPG"
-      ],
-      "created_at": "2026-08-10T20:06:18Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61091136",
-      "headline": "Simon Property Group Raises FY2026 FFO Guidance from $13.10-$13.25 to $13.20-$13.30 vs $13.11 Est",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61091136/simon-property-group-raises-fy2026-ffo-guidance-13-10-13-25-13-20-13-30-vs-13-11-est",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "SPG"
-      ],
-      "created_at": "2026-08-10T20:06:15Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61086911",
-      "headline": "Why Is Coherent Stock Falling on Monday?",
-      "summary": "Coherent Corp. stock drops Monday as market participants engaged in aggressive profit-taking and de-risking ahead of the company&39;s Q4 earnings report.",
-      "url": "https://www.benzinga.com/trading-ideas/movers/26/08/61086911/why-is-coherent-stock-falling-on-monday",
+      "id": "61314087",
+      "headline": "Walmart Could Swing $41.4 Billion In Value After Earnings",
+      "summary": "Earnings back in focus on Thursday: Benzinga-selected slate runs from big-box retail and off-price apparel to industrial machinery &amp; niche tech. Walmart is the marquee name, with 4.50% implied move. Deere &amp; Ross Stores also reporting with 5.64% and 6.94% implied moves respectively.",
+      "url": "https://www.benzinga.com/markets/options/26/08/61314087/walmart-could-swing-41-4-billion-in-value-after-earnings",
       "author": "Kaustubh Bagalkote",
       "source": "benzinga",
       "symbols": [
-        "AMZN",
-        "APH",
-        "CIEN",
-        "COHR",
-        "GLW",
-        "LFUS",
-        "LITE",
-        "NVDA"
+        "AAP",
+        "DE",
+        "FLO",
+        "NMM",
+        "OSIS",
+        "ROST",
+        "SCSC",
+        "WMT"
       ],
-      "created_at": "2026-08-10T18:18:51Z",
+      "created_at": "2026-08-19T19:31:06Z",
       "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "confidence": 0.85,
+      "reason": "Article reports earnings event with implied volatility but contains no directional bias or fundamental assessment."
     },
     {
-      "id": "61078319",
-      "headline": "$1000 Invested In Bank of New York Mellon 10 Years Ago Would Be Worth This Much Today",
-      "summary": "Bank of New York Mellon (NYSE:BNY) has outperformed the market over the past 10 years by 1.3% on an annualized basis producing an average annual return of 14.81%. Currently, Bank of New York Mellon has a market",
-      "url": "https://www.benzinga.com/news/26/08/61078319/1000-invested-bank-new-york-mellon-10-years-ago-would-be-worth-much-today",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "BNY"
-      ],
-      "created_at": "2026-08-10T14:45:26Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61077553",
-      "headline": "$1000 Invested In Jabil 15 Years Ago Would Be Worth This Much Today",
-      "summary": "Jabil (NYSE:JBL) has outperformed the market over the past 15 years by 9.32% on an annualized basis producing an average annual return of 22.58%. Currently, Jabil has a market capitalization of $36.47 billion.  Buying",
-      "url": "https://www.benzinga.com/news/26/08/61077553/1000-invested-jabil-15-years-ago-would-be-worth-much-today",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "JBL"
-      ],
-      "created_at": "2026-08-10T14:30:18Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61072430",
-      "headline": "Simon Property Earnings Are Imminent; These Most Accurate Analysts Revise Forecasts Ahead Of Earnings Call",
-      "summary": "Simon Property Group, Inc (NYSE: SPG) to report Q2 earnings on 8/10, expected to be $1.57/share. Analysts maintain various ratings for the stock.",
-      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/08/61072430/simon-property-earnings-are-imminent-these-most-accurate-analysts-revise-forecasts-ahead-of-earnings-call-2",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "SPG"
-      ],
-      "created_at": "2026-08-10T12:22:19Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61071961",
-      "headline": "This NetApp Analyst Is No Longer Bearish; Here Are Top 5 Upgrades For Monday",
-      "summary": "Wall Street analysts upgraded PTGX, LECO, and JHX. See analyst ratings and price targets for these stocks.",
-      "url": "https://www.benzinga.com/analyst-stock-ratings/upgrades/26/08/61071961/this-netapp-analyst-is-no-longer-bearish-here-are-top-5-upgrades-for-monday",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "DKS",
-        "JHX",
-        "LECO",
-        "NTAP",
-        "PTGX",
-        "PZZA",
-        "RGNX"
-      ],
-      "created_at": "2026-08-10T12:07:46Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61070346",
-      "headline": "Morgan Stanley Upgrades NetApp to Equal-Weight, Raises Price Target to $173",
+      "id": "61313325",
+      "headline": "JP Morgan Maintains Overweight on Keysight Techs, Raises Price Target to $425",
       "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61070346/morgan-stanley-upgrades-netapp-equal-weight-raises-price-target-173",
+      "url": "https://www.benzinga.com/news/26/08/61313325/jp-morgan-maintains-overweight-keysight-techs-raises-price-target-425",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "NTAP"
+        "KEYS"
       ],
-      "created_at": "2026-08-10T11:30:29Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "created_at": "2026-08-19T19:05:30Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "JP Morgan's overweight rating and price target increase signals strong positive outlook for Keysight."
     },
     {
-      "id": "61064247",
-      "headline": "Simon Property Group Stock: What to Expect Ahead of Q2 Earnings",
-      "summary": "This Simon Property Group stock forecast explains what to expect ahead of its second quarter earnings on Monday this week",
-      "url": "https://www.benzinga.com/markets/equities/26/08/61064247/simon-property-group-stock-what-to-expect-ahead-of-q2-earnings",
-      "author": "Crispus Nyaga",
+      "id": "61309609",
+      "headline": "Moderna Doubles, Gold Rallies To $4,500 As Dollar Sinks: Stock Market Today",
+      "summary": "Treasury&39;s expanded long-bond buybacks knocked yields off 20-month highs and sank the dollar, as gold soars.",
+      "url": "https://www.benzinga.com/markets/equities/26/08/61309609/moderna-doubles-gold-nears-4500-dollar-sinks-treasury-buyback-markets-wednesday",
+      "author": "Piero Cingari",
       "source": "benzinga",
       "symbols": [
-        "NVDA",
-        "SPG",
-        "VNQ"
+        "ADI",
+        "BTCUSD",
+        "CDE",
+        "DIA",
+        "DOCN",
+        "EL",
+        "GDX",
+        "GLD",
+        "HL",
+        "IBB",
+        "ITB",
+        "IWM",
+        "KEYS",
+        "LOW",
+        "MRK",
+        "MRNA",
+        "MRVL",
+        "MSTR",
+        "MTSI",
+        "NEM",
+        "PSNL",
+        "QQQ",
+        "RGLD",
+        "TEM",
+        "TGT",
+        "TJX",
+        "TTMI",
+        "VICR",
+        "VOO",
+        "XLB",
+        "XLC",
+        "XLI",
+        "XLK",
+        "XLU",
+        "XLV",
+        "XLY"
       ],
-      "created_at": "2026-08-09T21:21:36Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "created_at": "2026-08-19T17:10:12Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Moderna doubles in value while gold rallies strongly; weak dollar supports commodities and equities."
     },
     {
-      "id": "61016171",
-      "headline": "If You Invested $100 In Nucor Stock 10 Years Ago, You Would Have This Much Today",
-      "summary": "Nucor (NYSE:NUE) has outperformed the market over the past 10 years by 4.47% on an annualized basis producing an average annual return of 17.92%. Currently, Nucor has a market capitalization of $63.05 billion.  Buying",
-      "url": "https://www.benzinga.com/news/26/08/61016171/if-you-invested-100-nucor-stock-10-years-ago-you-would-have-much-today",
+      "id": "61310166",
+      "headline": "Morgan Stanley Maintains Overweight on Keysight Techs, Raises Price Target to $425",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/61310166/morgan-stanley-maintains-overweight-keysight-techs-raises-price-target-425",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "KEYS"
+      ],
+      "created_at": "2026-08-19T17:27:00Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Overweight rating with raised price target signals strong positive outlook for Keysight Technologies stock."
+    },
+    {
+      "id": "61308306",
+      "headline": "Here\u2019s How Much You Would Have Made Owning Nucor Stock In The Last 10 Years",
+      "summary": "Nucor (NYSE:NUE) has outperformed the market over the past 10 years by 4.55% on an annualized basis producing an average annual return of 17.97%. Currently, Nucor has a market capitalization of $61.03 billion.  Buying",
+      "url": "https://www.benzinga.com/news/26/08/61308306/here-s-how-much-you-would-have-made-owning-nucor-stock-last-10-years",
       "author": "Benzinga Insights",
       "source": "benzinga",
       "symbols": [
         "NUE"
       ],
-      "created_at": "2026-08-06T20:00:36Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "created_at": "2026-08-19T16:30:44Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Stock outperformed market by 4.55% annually with 17.97% average return over 10 years."
     },
     {
-      "id": "61013105",
-      "headline": "7 Back-to-School Stocks to Buy Now",
-      "summary": "As we head into the back half of summer, a lot of stocks start to lose steam. Beginning around the second week of August, the seasonal picture has historically turned more bearish than bullish.    But one seasonal trend",
-      "url": "https://www.benzinga.com/opinion/26/08/61013105/7-back-to-school-stocks-to-buy-now",
-      "author": "Tom Gentile",
+      "id": "61306753",
+      "headline": "Here's How Much $1000 Invested In Keysight Techs 10 Years Ago Would Be Worth Today",
+      "summary": "Keysight Techs (NYSE:KEYS) has outperformed the market over the past 10 years by 13.21% on an annualized basis producing an average annual return of 26.62%. Currently, Keysight Techs has a market capitalization of",
+      "url": "https://www.benzinga.com/news/26/08/61306753/here-s-how-much-1000-invested-keysight-techs-10-years-ago-would-be-worth-today",
+      "author": "Benzinga Insights",
       "source": "benzinga",
       "symbols": [
-        "AAPL",
-        "BBY",
-        "FIVE",
-        "ROST",
+        "KEYS"
+      ],
+      "created_at": "2026-08-19T15:45:36Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Strong 10-year outperformance with 26.62% annualized returns significantly exceeds market"
+    },
+    {
+      "id": "61304651",
+      "headline": "UBS Maintains Buy on Keysight Techs, Raises Price Target to $440",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/61304651/ubs-maintains-buy-keysight-techs-raises-price-target-440",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "KEYS"
+      ],
+      "created_at": "2026-08-19T14:55:28Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "UBS maintains buy rating and raises price target, signaling confidence in stock upside."
+    },
+    {
+      "id": "61304116",
+      "headline": "These Analysts Boost Their Forecasts On Keysight Following Upbeat Q3 Results",
+      "summary": "Keysight Technologies (KEYS) reported strong Q3 results and provided strong Q4 guidance, beating analyst estimates. Stock price target raised by analysts.",
+      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/08/61304116/these-analysts-boost-their-forecasts-on-keysight-following-upbeat-q3-results",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "KEYS"
+      ],
+      "created_at": "2026-08-19T14:42:35Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Strong Q3 results, upbeat Q4 guidance, and analyst price target increases signal positive momentum."
+    },
+    {
+      "id": "61302160",
+      "headline": "Truist Securities Maintains Hold on Keysight Techs, Raises Price Target to $400",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/61302160/truist-securities-maintains-hold-keysight-techs-raises-price-target-400",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "KEYS"
+      ],
+      "created_at": "2026-08-19T14:09:33Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Price target raise signals improved outlook despite Hold rating maintenance."
+    },
+    {
+      "id": "61300837",
+      "headline": "Barclays Maintains Overweight on Keysight Techs, Raises Price Target to $429",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/61300837/barclays-maintains-overweight-keysight-techs-raises-price-target-429",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "KEYS"
+      ],
+      "created_at": "2026-08-19T13:50:32Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Barclays maintains overweight rating and raises price target, signaling confidence in future stock performance."
+    },
+    {
+      "id": "61299880",
+      "headline": "Wells Fargo Maintains Overweight on Keysight Techs, Raises Price Target to $405",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/61299880/wells-fargo-maintains-overweight-keysight-techs-raises-price-target-405",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "KEYS"
+      ],
+      "created_at": "2026-08-19T13:32:41Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains overweight rating and raises price target, signaling positive outlook."
+    },
+    {
+      "id": "61299876",
+      "headline": "Keysight Q3 Orders Soar 56%, Boosts Outlook",
+      "summary": "Keysight Q3 adjusted EPS and revenue beat estimates as orders surge 56%, while the company raises FY2026 sales and earnings guidance.",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/08/61299876/keysight-q3-orders-soar-56-boosts-outlook",
+      "author": "Lekha Gupta",
+      "source": "benzinga",
+      "symbols": [
+        "KEYS"
+      ],
+      "created_at": "2026-08-19T13:32:29Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Strong order growth, earnings/revenue beats, and raised guidance signal robust demand and positive momentum."
+    },
+    {
+      "id": "61299161",
+      "headline": "Susquehanna Maintains Positive on Keysight Techs, Raises Price Target to $440",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/61299161/susquehanna-maintains-positive-keysight-techs-raises-price-target-440",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "KEYS"
+      ],
+      "created_at": "2026-08-19T13:08:37Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains positive rating and raises price target, indicating bullish outlook."
+    },
+    {
+      "id": "61293924",
+      "headline": "Stock Market Futures Mixed: Dow Jones Gains, Nasdaq 100 Drops as Trump Says 'No Talks' Are Happening With Iran\u2014 Keysight Technologies, Mercury Systems, SK Hynix in Focus (UPDATED)",
+      "summary": "U.S. stock futures were higher on Wednesday, as the Dow Jones, S&amp;P 500, and Nasdaq 100 indices rose, following Tuesday&39;s lower close.",
+      "url": "https://www.benzinga.com/markets/equities/26/08/61293924/stock-market-today-sp-500-nasdaq-100-futures-rise-as-trump-says-no-talks-are-happening-with-iran-keysight-technologies-mercury-systems-sk-hynix-in-focus",
+      "author": "Rishabh Mishra",
+      "source": "benzinga",
+      "symbols": [
+        "BTCUSD",
+        "KEYS",
+        "MRCY",
+        "QQQ",
+        "SHEL",
+        "SKHY",
+        "SPY",
+        "TGT"
+      ],
+      "created_at": "2026-08-19T12:32:40Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Mixed signals with Dow gains offset by Nasdaq drops and geopolitical uncertainty."
+    },
+    {
+      "id": "61297667",
+      "headline": "Palo Alto To Rally Around 14%? Here Are 10 Top Analyst Forecasts For Wednesday",
+      "summary": "Analysts changed outlook on top names. Piper Sandler raises Mercury Systems&39; target price, Ascendiant Capital boosts Alzamend Neuro&39;s target price, BTIG raises Henry Schein&39;s target price, Cantor Fitzgerald increases Palo Alto&39;s target price, Morgan Stanley cuts Baidu&39;s target price, Cantor Fitzgerald slashes Crowdstrike Holdings&39; target price, Baird raises Donaldson Company&39;s target price, B of A Securities cuts Pony AI&39;s target price.",
+      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/08/61297667/palo-alto-to-rally-around-14-here-are-10-top-analyst-forecasts-for-wednesday",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "ALZN",
+        "BIDU",
+        "CRWD",
+        "DCI",
+        "HSIC",
+        "KEYS",
+        "MRCY",
+        "NP",
+        "PANW",
+        "PONY"
+      ],
+      "created_at": "2026-08-19T12:23:07Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Cantor Fitzgerald increases Palo Alto's target price, suggesting upside potential of ~14%."
+    },
+    {
+      "id": "61295823",
+      "headline": "Baird Maintains Outperform on Keysight Techs, Raises Price Target to $410",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/61295823/baird-maintains-outperform-keysight-techs-raises-price-target-410",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "KEYS"
+      ],
+      "created_at": "2026-08-19T11:07:41Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains positive rating and raises price target, signaling confidence in stock appreciation."
+    },
+    {
+      "id": "61293438",
+      "headline": "Why Keysight Shares Are Trading Higher By 3%; Here Are 20 Stocks Moving Premarket",
+      "summary": "KEYS stock rose 3% in pre-market trading due to strong financial results and guidance. Other gainers include TNON, BIVI, ZNB, MSS, CAST, RCON, TGL, OPHC, and GURE. Losers include DAIC, PFSA, TPET, and OSRH with significant declines.",
+      "url": "https://www.benzinga.com/news/26/08/61293438/why-keysight-shares-are-trading-higher-by-3-here-are-20-stocks-moving-premarket",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "BIVI",
+        "CAST",
+        "COSM",
+        "CRON",
+        "DAIC",
+        "GURE",
+        "IPST",
+        "KEYS",
+        "MRCY",
+        "MSS",
+        "OPHC",
+        "OSRH",
+        "PFSA",
+        "RCON",
+        "SGLY",
+        "TGL",
+        "TNON",
+        "TPET",
+        "WYFI",
+        "ZNB"
+      ],
+      "created_at": "2026-08-19T08:57:24Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Strong financial results and guidance drove 3% premarket gain."
+    },
+    {
+      "id": "61292875",
+      "headline": "Target, Keysight Technologies And 3 Stocks To Watch Heading Into Wednesday",
+      "summary": "U.S. stock futures down, Lowe&39;s, Mercury Systems, Target, Keysight, TJX to report earnings. Lowe&39;s, Keysight shares rise, Mercury Systems falls.",
+      "url": "https://www.benzinga.com/markets/equities/26/08/61292875/target-keysight-technologies-and-3-stocks-to-watch-heading-into-wednesday",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "KEYS",
+        "LOW",
+        "MRCY",
         "TGT",
-        "TJX",
-        "WMT"
+        "TJX"
       ],
-      "created_at": "2026-08-06T18:42:51Z",
+      "created_at": "2026-08-19T07:12:04Z",
       "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "confidence": 0.75,
+      "reason": "Mixed earnings reactions with some gainers and losers; futures down suggests caution."
     },
     {
-      "id": "60992183",
-      "headline": "Amphenol Announces 2-For-1 Stock Split, Effective August 17",
+      "id": "61290140",
+      "headline": "Conference Call: Keysight Techs Sees FY2026 Adj EPS $11.46 vs $10.24 Est; Raises FY2026 Sales Guidance from $6.826B-$6.934B to $7.095B vs $6.884B Est",
       "summary": "",
-      "url": "https://www.benzinga.com/quote/APH",
+      "url": "https://www.benzinga.com/news/26/08/61290140/conference-call-keysight-techs-sees-fy2026-adj-eps-11-46-vs-10-24-est-raises-fy2026-sales-guidance-6",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "APH"
+        "KEYS"
       ],
-      "created_at": "2026-08-06T12:14:38Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "created_at": "2026-08-18T21:48:25Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Keysight raised FY2026 guidance significantly above estimates on both EPS and sales."
     },
     {
-      "id": "60991915",
-      "headline": "NetApp Acquires JetStream Software For Undisclosed Sum",
+      "id": "61290034",
+      "headline": "Keysight Techs Q3 2026 Earnings Call: Complete Transcript",
+      "summary": "Keysight Techs (NYSE:KEYS) reported third-quarter financial results on Tuesday. The transcript from the company&39;s third-quarter earnings call has been provided below. This content is powered by Benzinga APIs. For",
+      "url": "https://www.benzinga.com/news/26/08/61290034/keysight-techs-q3-2026-earnings-call-complete-transcript",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "KEYS"
+      ],
+      "created_at": "2026-08-18T21:36:52Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Article only provides earnings call transcript availability without disclosing results or commentary."
+    },
+    {
+      "id": "61288691",
+      "headline": "Keysight Reports Strong Q3 Results, Stock Steps Higher",
+      "summary": "Here&39;s a detailed look inside the Q3 earnings report from Keysight Technologies.",
+      "url": "https://www.benzinga.com/markets/earnings/26/08/61288691/keysight-reports-strong-q3-results-stock-steps-higher",
+      "author": "Erica Kollmann",
+      "source": "benzinga",
+      "symbols": [
+        "KEYS"
+      ],
+      "created_at": "2026-08-18T20:41:22Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Strong Q3 results and rising stock price indicate positive financial performance and market confidence."
+    },
+    {
+      "id": "61287295",
+      "headline": "CORRECTION: Keysight Techs Sees Q4 Adj EPS $3.34-$3.40 vs $2.70 Est; Sees Sales $1.930B-$1.950B vs $1.814B Est",
       "summary": "",
-      "url": "https://www.benzinga.com/m/26/08/60991915/netapp-acquires-jetstream-software-undisclosed-sum",
+      "url": "https://www.benzinga.com/news/26/08/61287295/correction-keysight-techs-sees-q4-adj-eps-3-34-3-40-vs-2-70-est-sees-sales-1-930b-1-950b-vs-1-814b-e",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "NTAP"
+        "KEYS"
       ],
-      "created_at": "2026-08-06T12:10:12Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "created_at": "2026-08-18T20:07:56Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Q4 EPS guidance significantly above estimates; revenue forecast also exceeds expectations."
     },
     {
-      "id": "60977473",
-      "headline": "Here\u2019s How Much You Would Have Made Owning Ross Stores Stock In The Last 10 Years",
-      "summary": "Ross Stores (NASDAQ:ROST) has outperformed the market over the past 10 years by 1.9% on an annualized basis producing an average annual return of 15.33%. Currently, Ross Stores has a market capitalization of $83.54",
-      "url": "https://www.benzinga.com/news/26/08/60977473/here-s-how-much-you-would-have-made-owning-ross-stores-stock-last-10-years",
-      "author": "Benzinga Insights",
+      "id": "61287148",
+      "headline": "Keysight Techs Sees Q4 Adj EPS $3.34-$3.40 vs $2.70 Est; Sees Sales $1.930B-$195.000B vs $1.814B Est",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/61287148/keysight-techs-sees-q4-adj-eps-3-34-3-40-vs-2-70-est-sees-sales-1-930b-195-000b-vs-1-814b-est",
+      "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "ROST"
+        "KEYS"
       ],
-      "created_at": "2026-08-05T21:15:49Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "created_at": "2026-08-18T20:06:03Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Q4 EPS and sales guidance significantly exceed analyst estimates, indicating strong business momentum."
     },
     {
-      "id": "60970921",
-      "headline": "$1000 Invested In Amphenol 10 Years Ago Would Be Worth This Much Today",
-      "summary": "Amphenol (NYSE:APH) has outperformed the market over the past 10 years by 14.18% on an annualized basis producing an average annual return of 27.61%. Currently, Amphenol has a market capitalization of $211.72 billion.",
-      "url": "https://www.benzinga.com/news/26/08/60970921/1000-invested-amphenol-10-years-ago-would-be-worth-much-today",
-      "author": "Benzinga Insights",
+      "id": "61287125",
+      "headline": "Keysight Techs Q3 Adj. EPS $3.07 Beats $2.48 Estimate, Sales $1.846B Beat $1.737B Estimate",
+      "summary": "",
+      "url": "https://www.benzinga.com/quote/KEYS",
+      "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "APH"
+        "KEYS"
       ],
-      "created_at": "2026-08-05T20:15:31Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "created_at": "2026-08-18T20:05:49Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Strong earnings beat with EPS 24% above estimate and revenue 6% above estimate"
     }
   ]
 }
