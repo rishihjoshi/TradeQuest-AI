@@ -1,17 +1,26 @@
 {
-  "timestamp": "2026-08-20T19:09:56Z",
+  "timestamp": "2026-08-20T21:54:27Z",
   "mode": "post_close",
   "orders_placed": [
     {
-      "action": "SELL",
-      "symbol": "ROST",
-      "qty": 4.0,
+      "action": "BUY",
+      "symbol": "NTRS",
+      "qty": 0.02067,
       "status": "submitted"
     }
   ],
-  "orders_skipped": [],
+  "orders_skipped": [
+    {
+      "symbol": "NUE",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "KEYS",
+      "reason": "blocked by agent approval or risk gate"
+    }
+  ],
   "errors": [],
-  "cash_pct_after": 11.17,
+  "cash_pct_after": 20.67,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
