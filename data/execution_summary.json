@@ -1,17 +1,23 @@
 {
-  "timestamp": "2026-08-21T19:06:19Z",
+  "timestamp": "2026-08-21T21:49:29Z",
   "mode": "post_close",
   "orders_placed": [
     {
       "action": "SELL",
-      "symbol": "NTRS",
-      "qty": 5.0,
+      "symbol": "NUE",
+      "qty": 3.0,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "BNY",
+      "qty": 0.030468,
       "status": "submitted"
     }
   ],
   "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 26.83,
+  "cash_pct_after": 36.37,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
