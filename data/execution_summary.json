@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-08-21T14:08:36Z",
-  "mode": "market_open",
+  "timestamp": "2026-08-21T19:06:19Z",
+  "mode": "post_close",
   "orders_placed": [
     {
       "action": "SELL",
-      "symbol": "KEYS",
-      "qty": 2.0,
+      "symbol": "NTRS",
+      "qty": 5.0,
       "status": "submitted"
     }
   ],
