@@ -1,26 +1,17 @@
 {
-  "timestamp": "2026-08-20T21:54:27Z",
-  "mode": "post_close",
+  "timestamp": "2026-08-21T14:08:36Z",
+  "mode": "market_open",
   "orders_placed": [
     {
-      "action": "BUY",
-      "symbol": "NTRS",
-      "qty": 0.02067,
+      "action": "SELL",
+      "symbol": "KEYS",
+      "qty": 2.0,
       "status": "submitted"
     }
   ],
-  "orders_skipped": [
-    {
-      "symbol": "NUE",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "KEYS",
-      "reason": "blocked by agent approval or risk gate"
-    }
-  ],
+  "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 20.67,
+  "cash_pct_after": 26.83,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
