@@ -1,12 +1,5 @@
 {
-  "timestamp": "2026-08-21T19:06:17Z",
-  "sells": [
-    {
-      "symbol": "NTRS",
-      "shares": 5,
-      "rule": "persistent_flag",
-      "reason": "Symbol flagged SELL/WATCH in 6 consecutive agent runs without execution (\u2265 5 threshold). Position is at a loss \u2014 Tier 1 forced exit. Sentinel Rule 3."
-    }
-  ],
-  "count": 1
+  "timestamp": "2026-08-24T19:09:33Z",
+  "sells": [],
+  "count": 0
 }
