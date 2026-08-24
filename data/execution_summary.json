@@ -1,23 +1,10 @@
 {
-  "timestamp": "2026-08-21T21:49:29Z",
-  "mode": "post_close",
-  "orders_placed": [
-    {
-      "action": "SELL",
-      "symbol": "NUE",
-      "qty": 3.0,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "BNY",
-      "qty": 0.030468,
-      "status": "submitted"
-    }
-  ],
+  "timestamp": "2026-08-24T14:12:43Z",
+  "mode": "market_open",
+  "orders_placed": [],
   "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 36.37,
+  "cash_pct_after": 43.94,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
