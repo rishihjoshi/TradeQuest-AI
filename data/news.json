@@ -1,557 +1,587 @@
 {
-  "generated_at": "2026-08-20T14:10:05Z",
+  "generated_at": "2026-08-24T14:08:44Z",
   "article_count": 30,
   "articles": [
     {
-      "id": "61320682",
-      "headline": "Trump Could Reportedly Cut Canadian Auto Tariffs to 15%, Aluminum and Steel to 25%: NUE, STLD, CENX in Focus (UPDATED)",
-      "summary": "The U.S. and Canada could be close to an agreement on cutting auto tariffs to 15% but effective rates may be lower.",
-      "url": "https://www.benzinga.com/news/politics/26/08/61320682/us-could-cut-canadian-auto-tariffs-to-15-aluminum-and-steel-to-25-under-proposed-trade-deal-report",
-      "author": "Badar Shaikh",
+      "id": "61371513",
+      "headline": "Benzinga Bulls and Bears: Ross, Moderna, Webull",
+      "summary": "Benzinga examined the prospects for many investors\u2019 favorite stocks over the last week \u2014 here\u2019s a look at some of our top stories.",
+      "url": "https://www.benzinga.com/markets/market-summary/26/08/61371513/benzinga-bulls-and-bears-ross-moderna-webull",
+      "author": "Benzinga Senior Editor",
       "source": "benzinga",
       "symbols": [
-        "CENX",
-        "CLF",
-        "F",
-        "NUE",
-        "STLD",
-        "TM",
-        "TSLA"
-      ],
-      "created_at": "2026-08-20T13:08:43Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Lower tariffs reduce costs for steel/aluminum producers and auto manufacturers, supporting margins."
-    },
-    {
-      "id": "61325145",
-      "headline": "How To Earn $500 A Month From Ross Stores Stock Ahead Of Q2 Earnings",
-      "summary": "Ross Stores will release its Q2 earnings report on Aug. 20. Dividend yield is 0.76% ($1.78/year). To earn $500/month, you need...",
-      "url": "https://www.benzinga.com/trading-ideas/dividends/26/08/61325145/how-to-earn-500-a-month-from-ross-stores-stock-ahead-of-q2-earnings-2",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "ROST"
-      ],
-      "created_at": "2026-08-20T11:46:24Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Article focuses on income generation strategy and dividend yield, indicating positive outlook on ROST stock"
-    },
-    {
-      "id": "61324392",
-      "headline": "Robinhood CEO Says Trump Accounts Give Kids a Simple Way Into S&P 500 \u2014 \u2018See the Magic of Compound Interest\u2019",
-      "summary": "Robinhood CEO Vlad Tenev explains Trump Accounts&39; S&amp;P 500 access and potential for more investment options.",
-      "url": "https://www.benzinga.com/markets/equities/26/08/61324392/robinhood-ceo-says-trump-accounts-give-kids-a-simple-way-into-sp-500-see-the-magic-of-compound-interest",
-      "author": "Tanya Rawat",
-      "source": "benzinga",
-      "symbols": [
-        "BNY",
-        "COIN",
-        "CRCL",
-        "GS",
-        "HOOD",
-        "MS",
-        "MSTR"
-      ],
-      "created_at": "2026-08-20T11:12:57Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "CEO promotes new investment product with positive educational messaging to expand user base"
-    },
-    {
-      "id": "61323265",
-      "headline": "Ross Stores Earnings Are Imminent; These Most Accurate Analysts Revise Forecasts Ahead Of Earnings Call",
-      "summary": "ROST to release Q2 earnings on Aug. 20, expected to report $1.94 EPS and $6.15B revenue. 47 new stores opened. Analysts&39; ratings and price targets available.",
-      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/08/61323265/ross-stores-earnings-are-imminent-these-most-accurate-analysts-revise-forecasts-ahead-of-earnings-call-2",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "ROST"
-      ],
-      "created_at": "2026-08-20T10:25:05Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Store expansion and analyst engagement ahead of earnings suggest positive momentum."
-    },
-    {
-      "id": "61320693",
-      "headline": "Stock Market: Will S&P 500 Open Up or Down Today?",
-      "summary": "Will the S&amp;P 500 open higher? Polymarket odds lean bullish amid Trump&39;s economic D-Day on Iran, rising Treasury yields, and Walmart earnings.",
-      "url": "https://www.benzinga.com/markets/prediction-markets/26/08/61320693/stock-market-will-sp-500-open-up-or-down-today-20",
-      "author": "Rishabh Mishra",
-      "source": "benzinga",
-      "symbols": [
-        "BABA",
-        "DE",
-        "DIA",
-        "NTES",
-        "POLUSD",
-        "QQQ",
+        "AMLX",
+        "BRK",
+        "BULL",
+        "DAL",
+        "DHI",
+        "GOOG",
+        "GOOGL",
+        "LEN",
+        "LYNX",
+        "M",
+        "MRCY",
+        "MRK",
+        "MRNA",
+        "NKE",
+        "NVDA",
         "ROST",
-        "SPY",
-        "WMT"
+        "SOFI",
+        "WYFI"
       ],
-      "created_at": "2026-08-20T05:45:08Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Polymarket odds lean bullish; positive Walmart earnings and rising yields support upside"
-    },
-    {
-      "id": "61318828",
-      "headline": "If You Invested $100 In Marathon Petroleum Stock 15 Years Ago, You Would Have This Much Today",
-      "summary": "Marathon Petroleum (NYSE:MPC) has outperformed the market over the past 15 years by 9.08% on an annualized basis producing an average annual return of 22.5%. Currently, Marathon Petroleum has a market capitalization of",
-      "url": "https://www.benzinga.com/news/26/08/61318828/if-you-invested-100-marathon-petroleum-stock-15-years-ago-you-would-have-much-today",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "MPC"
-      ],
-      "created_at": "2026-08-19T23:30:38Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Strong 15-year outperformance with 22.5% annualized returns significantly exceeding market."
-    },
-    {
-      "id": "61314087",
-      "headline": "Walmart Could Swing $41.4 Billion In Value After Earnings",
-      "summary": "Earnings back in focus on Thursday: Benzinga-selected slate runs from big-box retail and off-price apparel to industrial machinery &amp; niche tech. Walmart is the marquee name, with 4.50% implied move. Deere &amp; Ross Stores also reporting with 5.64% and 6.94% implied moves respectively.",
-      "url": "https://www.benzinga.com/markets/options/26/08/61314087/walmart-could-swing-41-4-billion-in-value-after-earnings",
-      "author": "Kaustubh Bagalkote",
-      "source": "benzinga",
-      "symbols": [
-        "AAP",
-        "DE",
-        "FLO",
-        "NMM",
-        "OSIS",
-        "ROST",
-        "SCSC",
-        "WMT"
-      ],
-      "created_at": "2026-08-19T19:31:06Z",
+      "created_at": "2026-08-22T12:01:13Z",
       "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Article reports earnings event with implied volatility but contains no directional bias or fundamental assessment."
+      "confidence": 0.95,
+      "reason": "Article previews multiple stocks without indicating positive or negative outlook."
     },
     {
-      "id": "61313325",
-      "headline": "JP Morgan Maintains Overweight on Keysight Techs, Raises Price Target to $425",
+      "id": "61366989",
+      "headline": "Citigroup Maintains Buy on Ross Stores, Raises Price Target to $290",
       "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61313325/jp-morgan-maintains-overweight-keysight-techs-raises-price-target-425",
+      "url": "https://www.benzinga.com/news/26/08/61366989/citigroup-maintains-buy-ross-stores-raises-price-target-290",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "KEYS"
+        "ROST"
       ],
-      "created_at": "2026-08-19T19:05:30Z",
+      "created_at": "2026-08-21T19:48:16Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "JP Morgan's overweight rating and price target increase signals strong positive outlook for Keysight."
+      "reason": "Analyst maintains buy rating and raises price target, signaling confidence in stock appreciation."
     },
     {
-      "id": "61309609",
-      "headline": "Moderna Doubles, Gold Rallies To $4,500 As Dollar Sinks: Stock Market Today",
-      "summary": "Treasury&39;s expanded long-bond buybacks knocked yields off 20-month highs and sank the dollar, as gold soars.",
-      "url": "https://www.benzinga.com/markets/equities/26/08/61309609/moderna-doubles-gold-nears-4500-dollar-sinks-treasury-buyback-markets-wednesday",
+      "id": "61365164",
+      "headline": "Jefferies Maintains Buy on Ross Stores, Raises Price Target to $285",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/61365164/jefferies-maintains-buy-ross-stores-raises-price-target-285",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "ROST"
+      ],
+      "created_at": "2026-08-21T18:40:03Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains Buy rating and raises price target, signaling positive outlook."
+    },
+    {
+      "id": "61363396",
+      "headline": "10 Financials Stocks With Whale Alerts In Today\u2019s Session",
+      "summary": "This whale alert can help traders discover the next big trading opportunities. Whales are entities with large sums of money and we track their transactions here at Benzinga on our options activity scanner. Traders will",
+      "url": "https://www.benzinga.com/markets/options/26/08/61363396/10-financials-stocks-whale-alerts-today-s-session",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "BAC",
+        "BNY",
+        "BULL",
+        "C",
+        "COIN",
+        "FISV",
+        "HOOD",
+        "JPM",
+        "MRSH",
+        "WFC"
+      ],
+      "created_at": "2026-08-21T17:35:18Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Article discusses whale activity tracking without indicating positive or negative price implications."
+    },
+    {
+      "id": "61363182",
+      "headline": "Truist Securities Maintains Buy on Ross Stores, Raises Price Target to $310",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/61363182/truist-securities-maintains-buy-ross-stores-raises-price-target-310",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "ROST"
+      ],
+      "created_at": "2026-08-21T17:28:14Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Maintained Buy rating with raised price target signals positive outlook and confidence in stock appreciation."
+    },
+    {
+      "id": "61362531",
+      "headline": "Bitcoin Jumps Above $77,000, Gold Hits 3-Month Highs: Stock Market Today",
+      "summary": "Stocks steadied Friday as bond yields stabilized, Robinhood and Coinbase surged on CLARITY Act optimism, and gold hit a three-month high.",
+      "url": "https://www.benzinga.com/markets/equities/26/08/61362531/stock-market-today-btc-bitcoin-770000-gold-3-month-high",
       "author": "Piero Cingari",
       "source": "benzinga",
       "symbols": [
-        "ADI",
+        "ALB",
+        "AMLP",
+        "APLD",
+        "ARM",
+        "BTC",
         "BTCUSD",
-        "CDE",
+        "COIN",
         "DIA",
-        "DOCN",
-        "EL",
+        "EIX",
+        "FCX",
         "GDX",
         "GLD",
-        "HL",
-        "IBB",
-        "ITB",
+        "HOOD",
+        "INTC",
         "IWM",
-        "KEYS",
-        "LOW",
-        "MRK",
+        "MP",
         "MRNA",
         "MRVL",
         "MSTR",
-        "MTSI",
-        "NEM",
-        "PSNL",
+        "MWH",
+        "PBW",
+        "PWR",
         "QQQ",
-        "RGLD",
-        "TEM",
-        "TGT",
-        "TJX",
-        "TTMI",
-        "VICR",
+        "ROST",
+        "SMH",
+        "UI",
+        "VIRT",
         "VOO",
+        "WMT",
+        "WULF",
         "XLB",
-        "XLC",
-        "XLI",
+        "XLE",
         "XLK",
+        "XLRE",
         "XLU",
         "XLV",
-        "XLY"
+        "XLY",
+        "XME"
       ],
-      "created_at": "2026-08-19T17:10:12Z",
+      "created_at": "2026-08-21T17:03:32Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Moderna doubles in value while gold rallies strongly; weak dollar supports commodities and equities."
+      "reason": "Stocks stabilized, crypto stocks surged on favorable legislation, gold hit 3-month highs."
     },
     {
-      "id": "61310166",
-      "headline": "Morgan Stanley Maintains Overweight on Keysight Techs, Raises Price Target to $425",
+      "id": "61362328",
+      "headline": "Morgan Stanley Maintains Equal-Weight on Ross Stores, Raises Price Target to $234",
       "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61310166/morgan-stanley-maintains-overweight-keysight-techs-raises-price-target-425",
+      "url": "https://www.benzinga.com/news/26/08/61362328/morgan-stanley-maintains-equal-weight-ross-stores-raises-price-target-234",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "KEYS"
+        "ROST"
       ],
-      "created_at": "2026-08-19T17:27:00Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Overweight rating with raised price target signals strong positive outlook for Keysight Technologies stock."
+      "created_at": "2026-08-21T16:57:37Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Equal-weight rating with price target raise shows modest optimism but cautious outlook."
     },
     {
-      "id": "61308306",
-      "headline": "Here\u2019s How Much You Would Have Made Owning Nucor Stock In The Last 10 Years",
-      "summary": "Nucor (NYSE:NUE) has outperformed the market over the past 10 years by 4.55% on an annualized basis producing an average annual return of 17.97%. Currently, Nucor has a market capitalization of $61.03 billion.  Buying",
-      "url": "https://www.benzinga.com/news/26/08/61308306/here-s-how-much-you-would-have-made-owning-nucor-stock-last-10-years",
+      "id": "61360811",
+      "headline": "JP Morgan Maintains Overweight on Ross Stores, Raises Price Target to $272",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/61360811/jp-morgan-maintains-overweight-ross-stores-raises-price-target-272",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "ROST"
+      ],
+      "created_at": "2026-08-21T16:15:03Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "JP Morgan's overweight rating and price target increase signals positive outlook for Ross Stores"
+    },
+    {
+      "id": "61359320",
+      "headline": "UBS Maintains Neutral on Ross Stores, Raises Price Target to $239",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/61359320/ubs-maintains-neutral-ross-stores-raises-price-target-239",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "ROST"
+      ],
+      "created_at": "2026-08-21T15:32:26Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Neutral rating maintained despite price target increase suggests cautious optimism but no strong conviction."
+    },
+    {
+      "id": "61358813",
+      "headline": "Barclays Maintains Overweight on Ross Stores, Raises Price Target to $298",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/61358813/barclays-maintains-overweight-ross-stores-raises-price-target-298",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "ROST"
+      ],
+      "created_at": "2026-08-21T15:17:20Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Maintains overweight rating with price target increase signals positive outlook"
+    },
+    {
+      "id": "61358753",
+      "headline": "Here's How Much $100 Invested In Phillips 66 5 Years Ago Would Be Worth Today",
+      "summary": "Phillips 66 (NYSE:PSX) has outperformed the market over the past 5 years by 16.51% on an annualized basis producing an average annual return of 27.83%. Currently, Phillips 66 has a market capitalization of $96.28",
+      "url": "https://www.benzinga.com/news/26/08/61358753/here-s-how-much-100-invested-phillips-66-5-years-ago-would-be-worth-today",
       "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "PSX"
+      ],
+      "created_at": "2026-08-21T15:15:39Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "PSX significantly outperformed market with 27.83% annualized returns over 5 years."
+    },
+    {
+      "id": "61357655",
+      "headline": "Wells Fargo Maintains Equal-Weight on Ross Stores, Raises Price Target to $248",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/61357655/wells-fargo-maintains-equal-weight-ross-stores-raises-price-target-248",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "ROST"
+      ],
+      "created_at": "2026-08-21T14:47:39Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Price target raise indicates positive outlook despite maintaining equal-weight rating"
+    },
+    {
+      "id": "61354972",
+      "headline": "Bernstein Maintains Market Perform on Ross Stores, Raises Price Target to $240",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/61354972/bernstein-maintains-market-perform-ross-stores-raises-price-target-240",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "ROST"
+      ],
+      "created_at": "2026-08-21T13:41:12Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Market Perform rating maintained despite price target increase suggests limited upside catalyst."
+    },
+    {
+      "id": "61354365",
+      "headline": "Nucor Files Prospectus To Sell Mixed Securities Shelf Of An Indeterminate Amount",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/61354365/nucor-files-prospectus-sell-mixed-securities-shelf-indeterminate-amount",
+      "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
         "NUE"
       ],
-      "created_at": "2026-08-19T16:30:44Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Stock outperformed market by 4.55% annually with 17.97% average return over 10 years."
+      "created_at": "2026-08-21T13:28:21Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Routine shelf filing for future flexibility; no immediate impact on operations or valuation."
     },
     {
-      "id": "61306753",
-      "headline": "Here's How Much $1000 Invested In Keysight Techs 10 Years Ago Would Be Worth Today",
-      "summary": "Keysight Techs (NYSE:KEYS) has outperformed the market over the past 10 years by 13.21% on an annualized basis producing an average annual return of 26.62%. Currently, Keysight Techs has a market capitalization of",
-      "url": "https://www.benzinga.com/news/26/08/61306753/here-s-how-much-1000-invested-keysight-techs-10-years-ago-would-be-worth-today",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "KEYS"
-      ],
-      "created_at": "2026-08-19T15:45:36Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong 10-year outperformance with 26.62% annualized returns significantly exceeds market"
-    },
-    {
-      "id": "61304651",
-      "headline": "UBS Maintains Buy on Keysight Techs, Raises Price Target to $440",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61304651/ubs-maintains-buy-keysight-techs-raises-price-target-440",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "KEYS"
-      ],
-      "created_at": "2026-08-19T14:55:28Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "UBS maintains buy rating and raises price target, signaling confidence in stock upside."
-    },
-    {
-      "id": "61304116",
-      "headline": "These Analysts Boost Their Forecasts On Keysight Following Upbeat Q3 Results",
-      "summary": "Keysight Technologies (KEYS) reported strong Q3 results and provided strong Q4 guidance, beating analyst estimates. Stock price target raised by analysts.",
-      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/08/61304116/these-analysts-boost-their-forecasts-on-keysight-following-upbeat-q3-results",
+      "id": "61353736",
+      "headline": "These Analysts Boost Their Forecasts On Ross Stores After Better-Than-Expected Q2 Earnings",
+      "summary": "Ross Stores reported Q2 results that beat expectations, with raised guidance for full-year earnings per share. Analysts also upgraded price targets.",
+      "url": "https://www.benzinga.com/news/26/08/61353736/these-analysts-boost-their-forecasts-on-ross-stores-after-better-than-expected-q2-earnings",
       "author": "Avi Kapoor",
       "source": "benzinga",
       "symbols": [
-        "KEYS"
+        "ROST"
       ],
-      "created_at": "2026-08-19T14:42:35Z",
+      "created_at": "2026-08-21T13:04:28Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Strong Q3 results, upbeat Q4 guidance, and analyst price target increases signal positive momentum."
+      "reason": "Better-than-expected earnings, raised guidance, and analyst upgrades indicate strong performance."
     },
     {
-      "id": "61302160",
-      "headline": "Truist Securities Maintains Hold on Keysight Techs, Raises Price Target to $400",
+      "id": "61353564",
+      "headline": "Evercore ISI Group Maintains Outperform on Ross Stores, Raises Price Target to $290",
       "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61302160/truist-securities-maintains-hold-keysight-techs-raises-price-target-400",
+      "url": "https://www.benzinga.com/news/26/08/61353564/evercore-isi-group-maintains-outperform-ross-stores-raises-price-target-290",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "KEYS"
+        "ROST"
       ],
-      "created_at": "2026-08-19T14:09:33Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Price target raise signals improved outlook despite Hold rating maintenance."
-    },
-    {
-      "id": "61300837",
-      "headline": "Barclays Maintains Overweight on Keysight Techs, Raises Price Target to $429",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61300837/barclays-maintains-overweight-keysight-techs-raises-price-target-429",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "KEYS"
-      ],
-      "created_at": "2026-08-19T13:50:32Z",
+      "created_at": "2026-08-21T12:59:42Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Barclays maintains overweight rating and raises price target, signaling confidence in future stock performance."
+      "reason": "Outperform rating maintained with price target raised indicates positive outlook for Ross Stores."
     },
     {
-      "id": "61299880",
-      "headline": "Wells Fargo Maintains Overweight on Keysight Techs, Raises Price Target to $405",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61299880/wells-fargo-maintains-overweight-keysight-techs-raises-price-target-405",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "KEYS"
-      ],
-      "created_at": "2026-08-19T13:32:41Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains overweight rating and raises price target, signaling positive outlook."
-    },
-    {
-      "id": "61299876",
-      "headline": "Keysight Q3 Orders Soar 56%, Boosts Outlook",
-      "summary": "Keysight Q3 adjusted EPS and revenue beat estimates as orders surge 56%, while the company raises FY2026 sales and earnings guidance.",
-      "url": "https://www.benzinga.com/trading-ideas/movers/26/08/61299876/keysight-q3-orders-soar-56-boosts-outlook",
-      "author": "Lekha Gupta",
-      "source": "benzinga",
-      "symbols": [
-        "KEYS"
-      ],
-      "created_at": "2026-08-19T13:32:29Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong order growth, earnings/revenue beats, and raised guidance signal robust demand and positive momentum."
-    },
-    {
-      "id": "61299161",
-      "headline": "Susquehanna Maintains Positive on Keysight Techs, Raises Price Target to $440",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61299161/susquehanna-maintains-positive-keysight-techs-raises-price-target-440",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "KEYS"
-      ],
-      "created_at": "2026-08-19T13:08:37Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains positive rating and raises price target, indicating bullish outlook."
-    },
-    {
-      "id": "61293924",
-      "headline": "Stock Market Futures Mixed: Dow Jones Gains, Nasdaq 100 Drops as Trump Says 'No Talks' Are Happening With Iran\u2014 Keysight Technologies, Mercury Systems, SK Hynix in Focus (UPDATED)",
-      "summary": "U.S. stock futures were higher on Wednesday, as the Dow Jones, S&amp;P 500, and Nasdaq 100 indices rose, following Tuesday&39;s lower close.",
-      "url": "https://www.benzinga.com/markets/equities/26/08/61293924/stock-market-today-sp-500-nasdaq-100-futures-rise-as-trump-says-no-talks-are-happening-with-iran-keysight-technologies-mercury-systems-sk-hynix-in-focus",
+      "id": "61350037",
+      "headline": "Stock Market Today: Dow Jones, S&P 500, Nasdaq 100 Futures Gain as Scott Bessent Touts 'Toughest Sanctions' for Iran\u2014 Ross Stores, Strategy, Flowers Foods in Focus (UPDATED)",
+      "summary": "U.S. stock futures advanced on Friday, as the Dow Jones, S&amp;P 500 and Nasdaq 100 indices rose, following Thursday&39;s lower close.",
+      "url": "https://www.benzinga.com/markets/equities/26/08/61350037/stock-market-today-dow-jones-sp-500-futures-gain-as-scott-bessent-touts-toughest-sanctions-for-iran-ross-stores-strategy-flowers-foods-in-focus",
       "author": "Rishabh Mishra",
       "source": "benzinga",
       "symbols": [
+        "AAP",
         "BTCUSD",
-        "KEYS",
-        "MRCY",
+        "FLO",
+        "MSTR",
+        "OSIS",
         "QQQ",
-        "SHEL",
-        "SKHY",
-        "SPY",
-        "TGT"
+        "ROST",
+        "SPY"
       ],
-      "created_at": "2026-08-19T12:32:40Z",
-      "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Mixed signals with Dow gains offset by Nasdaq drops and geopolitical uncertainty."
+      "created_at": "2026-08-21T12:28:00Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Stock futures advanced across major indices following positive geopolitical stance and market recovery."
     },
     {
-      "id": "61297667",
-      "headline": "Palo Alto To Rally Around 14%? Here Are 10 Top Analyst Forecasts For Wednesday",
-      "summary": "Analysts changed outlook on top names. Piper Sandler raises Mercury Systems&39; target price, Ascendiant Capital boosts Alzamend Neuro&39;s target price, BTIG raises Henry Schein&39;s target price, Cantor Fitzgerald increases Palo Alto&39;s target price, Morgan Stanley cuts Baidu&39;s target price, Cantor Fitzgerald slashes Crowdstrike Holdings&39; target price, Baird raises Donaldson Company&39;s target price, B of A Securities cuts Pony AI&39;s target price.",
-      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/08/61297667/palo-alto-to-rally-around-14-here-are-10-top-analyst-forecasts-for-wednesday",
+      "id": "61352782",
+      "headline": "Ross Stores To Rally Around 18%? Here Are 10 Top Analyst Forecasts For Friday",
+      "summary": "Top Wall Street analysts changed outlook on top names. Baird raised PSN target, BTIG cut WMT target, HSBC raised TX target, Rothschild upgraded EFX, HC Wainwright lowered COCH target, BTIG cut MDXH target, Baird raised ROST target.",
+      "url": "https://www.benzinga.com/news/26/08/61352782/ross-stores-to-rally-around-18-here-are-10-top-analyst-forecasts-for-friday",
       "author": "Avi Kapoor",
       "source": "benzinga",
       "symbols": [
-        "ALZN",
-        "BIDU",
-        "CRWD",
-        "DCI",
-        "HSIC",
-        "KEYS",
-        "MRCY",
-        "NP",
-        "PANW",
-        "PONY"
+        "COCH",
+        "DE",
+        "EFX",
+        "HAE",
+        "HTB",
+        "MDXH",
+        "PSN",
+        "ROST",
+        "TX",
+        "WMT"
       ],
-      "created_at": "2026-08-19T12:23:07Z",
+      "created_at": "2026-08-21T12:24:30Z",
       "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Cantor Fitzgerald increases Palo Alto's target price, suggesting upside potential of ~14%."
+      "confidence": 0.95,
+      "reason": "Baird raised ROST target with headline suggesting 18% rally potential"
     },
     {
-      "id": "61295823",
-      "headline": "Baird Maintains Outperform on Keysight Techs, Raises Price Target to $410",
+      "id": "61352584",
+      "headline": "Baird Maintains Outperform on Ross Stores, Raises Price Target to $270",
       "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61295823/baird-maintains-outperform-keysight-techs-raises-price-target-410",
+      "url": "https://www.benzinga.com/news/26/08/61352584/baird-maintains-outperform-ross-stores-raises-price-target-270",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "KEYS"
+        "ROST"
       ],
-      "created_at": "2026-08-19T11:07:41Z",
+      "created_at": "2026-08-21T12:14:08Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Analyst maintains positive rating and raises price target, signaling confidence in stock appreciation."
+      "reason": "Maintained outperform rating with raised price target indicates positive outlook"
     },
     {
-      "id": "61293438",
-      "headline": "Why Keysight Shares Are Trading Higher By 3%; Here Are 20 Stocks Moving Premarket",
-      "summary": "KEYS stock rose 3% in pre-market trading due to strong financial results and guidance. Other gainers include TNON, BIVI, ZNB, MSS, CAST, RCON, TGL, OPHC, and GURE. Losers include DAIC, PFSA, TPET, and OSRH with significant declines.",
-      "url": "https://www.benzinga.com/news/26/08/61293438/why-keysight-shares-are-trading-higher-by-3-here-are-20-stocks-moving-premarket",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "BIVI",
-        "CAST",
-        "COSM",
-        "CRON",
-        "DAIC",
-        "GURE",
-        "IPST",
-        "KEYS",
-        "MRCY",
-        "MSS",
-        "OPHC",
-        "OSRH",
-        "PFSA",
-        "RCON",
-        "SGLY",
-        "TGL",
-        "TNON",
-        "TPET",
-        "WYFI",
-        "ZNB"
-      ],
-      "created_at": "2026-08-19T08:57:24Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Strong financial results and guidance drove 3% premarket gain."
-    },
-    {
-      "id": "61292875",
-      "headline": "Target, Keysight Technologies And 3 Stocks To Watch Heading Into Wednesday",
-      "summary": "U.S. stock futures down, Lowe&39;s, Mercury Systems, Target, Keysight, TJX to report earnings. Lowe&39;s, Keysight shares rise, Mercury Systems falls.",
-      "url": "https://www.benzinga.com/markets/equities/26/08/61292875/target-keysight-technologies-and-3-stocks-to-watch-heading-into-wednesday",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "KEYS",
-        "LOW",
-        "MRCY",
-        "TGT",
-        "TJX"
-      ],
-      "created_at": "2026-08-19T07:12:04Z",
-      "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Mixed earnings reactions with some gainers and losers; futures down suggests caution."
-    },
-    {
-      "id": "61290140",
-      "headline": "Conference Call: Keysight Techs Sees FY2026 Adj EPS $11.46 vs $10.24 Est; Raises FY2026 Sales Guidance from $6.826B-$6.934B to $7.095B vs $6.884B Est",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61290140/conference-call-keysight-techs-sees-fy2026-adj-eps-11-46-vs-10-24-est-raises-fy2026-sales-guidance-6",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "KEYS"
-      ],
-      "created_at": "2026-08-18T21:48:25Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Keysight raised FY2026 guidance significantly above estimates on both EPS and sales."
-    },
-    {
-      "id": "61290034",
-      "headline": "Keysight Techs Q3 2026 Earnings Call: Complete Transcript",
-      "summary": "Keysight Techs (NYSE:KEYS) reported third-quarter financial results on Tuesday. The transcript from the company&39;s third-quarter earnings call has been provided below. This content is powered by Benzinga APIs. For",
-      "url": "https://www.benzinga.com/news/26/08/61290034/keysight-techs-q3-2026-earnings-call-complete-transcript",
+      "id": "61352399",
+      "headline": "11 Consumer Discretionary Stocks Moving In Friday's Pre-Market Session",
+      "summary": "Gainers  JX Luxventure Group (NASDAQ:JXG) stock moved upwards by 30.9% to $8.97 during Friday&39;s pre-market session.  Ross Stores (NASDAQ:ROST) stock increased by 8.03% to $247.39. The company&39;s market cap stands",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/08/61352399/11-consumer-discretionary-stocks-moving-friday-s-pre-market-session",
       "author": "Benzinga Insights",
       "source": "benzinga",
       "symbols": [
-        "KEYS"
+        "AACG",
+        "BIRD",
+        "BKE",
+        "BZUN",
+        "EZGO",
+        "JWEL",
+        "JXG",
+        "JZ",
+        "MMA",
+        "ROST",
+        "YJ"
       ],
-      "created_at": "2026-08-18T21:36:52Z",
+      "created_at": "2026-08-21T12:06:11Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Both mentioned stocks showed significant pre-market gains, indicating positive market momentum."
+    },
+    {
+      "id": "61351738",
+      "headline": "Ross Stores CEO Says Retailer Is Snatching Market Share From Rivals",
+      "summary": "Ross Stores (ROST) surges in premarket after Q2 revenue beats at $6.27B and EPS hits $2.66. FY26 earnings guidance raised.",
+      "url": "https://www.benzinga.com/markets/large-cap/26/08/61351738/ross-stores-ceo-says-retailer-is-snatching-market-share-from-rivals",
+      "author": "Lekha Gupta",
+      "source": "benzinga",
+      "symbols": [
+        "ROSS",
+        "ROST"
+      ],
+      "created_at": "2026-08-21T11:37:47Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Revenue beat, strong EPS, raised FY26 guidance, and market share gains signal positive momentum."
+    },
+    {
+      "id": "61351606",
+      "headline": "Market-Moving News for August 21st",
+      "summary": "",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/08/61351606/market-moving-news-august-21st",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "OSIS",
+        "ROST",
+        "SUGP"
+      ],
+      "created_at": "2026-08-21T11:23:03Z",
+      "sentiment": "neutral",
+      "confidence": 0.5,
+      "reason": "No specific stock mentioned or market-moving details provided in the summary."
+    },
+    {
+      "id": "61349777",
+      "headline": "Why Ross Stores Shares Are Trading Higher By Around 9%; Here Are 20 Stocks Moving Premarket",
+      "summary": "Ross Stores beats estimates with Q2 financial results, shares jump 9.1%. Other gainers include RFAI, HOWL, SUGP, SDEV, ZKH, BTAI, SXTC, TREO, and ASST. Losers are JZ, DFNS, FLUX, and MMA.",
+      "url": "https://www.benzinga.com/news/26/08/61349777/why-ross-stores-shares-are-trading-higher-by-around-9-here-are-20-stocks-moving-premarket",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "ASST",
+        "AVAH",
+        "BTAI",
+        "DFNS",
+        "FLO",
+        "FLUX",
+        "GYGY",
+        "HOWL",
+        "HUIZ",
+        "ISPC",
+        "JZ",
+        "MMA",
+        "OSIS",
+        "RFAI",
+        "ROST",
+        "SDEV",
+        "SUGP",
+        "SXTC",
+        "TREO",
+        "ZKH"
+      ],
+      "created_at": "2026-08-21T08:53:22Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Ross Stores beat Q2 estimates with 9.1% share price gain."
+    },
+    {
+      "id": "61349488",
+      "headline": "BJ's Wholesale Club, Ross Stores And 3 Stocks To Watch Heading Into Friday",
+      "summary": "US stock futures up, BJ&39;s Wholesale and Ross Stores beat earnings estimates, while Flowers Foods and OSI Systems report downbeat results.",
+      "url": "https://www.benzinga.com/markets/equities/26/08/61349488/bjs-wholesale-club-ross-stores-and-3-stocks-to-watch-heading-into-friday",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "BEKE",
+        "BJ",
+        "FLO",
+        "OSIS",
+        "ROST"
+      ],
+      "created_at": "2026-08-21T07:58:03Z",
+      "sentiment": "neutral",
+      "confidence": 0.65,
+      "reason": "Mixed earnings results: BJ's and Ross beat estimates, while Flowers Foods and OSI Systems missed."
+    },
+    {
+      "id": "61347879",
+      "headline": "Walmart, Ross Stores, Advance Auto Parts, MARA Holdings and SpaceX: Why These 5 Stocks Are on Investors' Radars Today",
+      "summary": "WMT, ROST, AAP, MARA, SPCX were among the stocks seen trending on Thursday, Aug. 20, 2026.",
+      "url": "https://www.benzinga.com/news/26/08/61347879/walmart-ross-stores-advance-auto-parts-mara-holdings-and-spacex-why-these-5-stocks-are-on-investors-radars-today",
+      "author": "Shivdeep Dhaliwal",
+      "source": "benzinga",
+      "symbols": [
+        "AAP",
+        "BTCUSD",
+        "MARA",
+        "ROST",
+        "SPCX",
+        "WMT"
+      ],
+      "created_at": "2026-08-21T01:24:17Z",
       "sentiment": "neutral",
       "confidence": 0.85,
-      "reason": "Article only provides earnings call transcript availability without disclosing results or commentary."
+      "reason": "Article lists stocks trending without positive or negative performance indicators."
     },
     {
-      "id": "61288691",
-      "headline": "Keysight Reports Strong Q3 Results, Stock Steps Higher",
-      "summary": "Here&39;s a detailed look inside the Q3 earnings report from Keysight Technologies.",
-      "url": "https://www.benzinga.com/markets/earnings/26/08/61288691/keysight-reports-strong-q3-results-stock-steps-higher",
-      "author": "Erica Kollmann",
+      "id": "61346823",
+      "headline": "Ross Stores Q2 2026 Earnings Call Transcript",
+      "summary": "Ross Stores (NASDAQ:ROST) released second-quarter financial results and hosted an earnings call on Thursday. Read the complete transcript below. This content is powered by Benzinga APIs. For comprehensive financial data",
+      "url": "https://www.benzinga.com/news/26/08/61346823/ross-stores-q2-2026-earnings-call-transcript",
+      "author": "Benzinga Insights",
       "source": "benzinga",
       "symbols": [
-        "KEYS"
+        "ROST"
       ],
-      "created_at": "2026-08-18T20:41:22Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong Q3 results and rising stock price indicate positive financial performance and market confidence."
+      "created_at": "2026-08-20T21:48:51Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Earnings call transcript publication lacks specific financial metrics or forward guidance details."
     },
     {
-      "id": "61287295",
-      "headline": "CORRECTION: Keysight Techs Sees Q4 Adj EPS $3.34-$3.40 vs $2.70 Est; Sees Sales $1.930B-$1.950B vs $1.814B Est",
+      "id": "61345467",
+      "headline": "12 Consumer Discretionary Stocks Moving In Thursday's After-Market Session",
+      "summary": "Gainers  Worksport (NASDAQ:WKSP) shares moved upwards by 7.1% to $0.65 during Thursday&39;s after-market session. The company&39;s market cap stands at $9.8 million.  Ross Stores (NASDAQ:ROST) shares moved upwards by",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/08/61345467/12-consumer-discretionary-stocks-moving-thursday-s-after-market-session",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "AZI",
+        "EJH",
+        "ENHA",
+        "EZGO",
+        "FRSX",
+        "JZ",
+        "LESL",
+        "MMA",
+        "RIME",
+        "ROST",
+        "SPHL",
+        "WKSP"
+      ],
+      "created_at": "2026-08-20T21:06:26Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Both mentioned stocks showed upward price movement in after-market trading."
+    },
+    {
+      "id": "61345305",
+      "headline": "$100 Invested In Jabil 15 Years Ago Would Be Worth This Much Today",
+      "summary": "Jabil (NYSE:JBL) has outperformed the market over the past 15 years by 9.05% on an annualized basis producing an average annual return of 22.3%. Currently, Jabil has a market capitalization of $33.18 billion.  Buying",
+      "url": "https://www.benzinga.com/news/26/08/61345305/100-invested-jabil-15-years-ago-would-be-worth-much-today",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "JBL"
+      ],
+      "created_at": "2026-08-20T21:00:52Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Strong historical outperformance with 22.3% annualized returns significantly exceeding market."
+    },
+    {
+      "id": "61344730",
+      "headline": "Ross Stores Posts Double Beat in Q2, Raises 2026 Earnings Guidance",
+      "summary": "Ross Stores reports second-quarter financial results after the market close on Thursday. Here&39;s a rundown of the retailer&39;s report.",
+      "url": "https://www.benzinga.com/markets/earnings/26/08/61344730/ross-stores-posts-double-beat-in-q2-raises-2026-earnings-guidance",
+      "author": "Adam Eckert",
+      "source": "benzinga",
+      "symbols": [
+        "ROST"
+      ],
+      "created_at": "2026-08-20T20:32:35Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Double beat on earnings and raised 2026 guidance signals strong operational performance"
+    },
+    {
+      "id": "61343617",
+      "headline": "Ross Stores Sees Q4 GAAP EPS $2.17-$2.26 vs $2.12 Est",
       "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61287295/correction-keysight-techs-sees-q4-adj-eps-3-34-3-40-vs-2-70-est-sees-sales-1-930b-1-950b-vs-1-814b-e",
+      "url": "https://www.benzinga.com/news/26/08/61343617/ross-stores-sees-q4-gaap-eps-2-17-2-26-vs-2-12-est",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "KEYS"
+        "ROST"
       ],
-      "created_at": "2026-08-18T20:07:56Z",
+      "created_at": "2026-08-20T20:03:19Z",
       "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Q4 EPS guidance significantly above estimates; revenue forecast also exceeds expectations."
-    },
-    {
-      "id": "61287148",
-      "headline": "Keysight Techs Sees Q4 Adj EPS $3.34-$3.40 vs $2.70 Est; Sees Sales $1.930B-$195.000B vs $1.814B Est",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61287148/keysight-techs-sees-q4-adj-eps-3-34-3-40-vs-2-70-est-sees-sales-1-930b-195-000b-vs-1-814b-est",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "KEYS"
-      ],
-      "created_at": "2026-08-18T20:06:03Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Q4 EPS and sales guidance significantly exceed analyst estimates, indicating strong business momentum."
-    },
-    {
-      "id": "61287125",
-      "headline": "Keysight Techs Q3 Adj. EPS $3.07 Beats $2.48 Estimate, Sales $1.846B Beat $1.737B Estimate",
-      "summary": "",
-      "url": "https://www.benzinga.com/quote/KEYS",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "KEYS"
-      ],
-      "created_at": "2026-08-18T20:05:49Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong earnings beat with EPS 24% above estimate and revenue 6% above estimate"
+      "confidence": 0.85,
+      "reason": "Q4 EPS guidance midpoint of $2.215 exceeds analyst estimate of $2.12, indicating stronger than expected performance."
     }
   ]
 }
