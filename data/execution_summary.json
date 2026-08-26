@@ -1,17 +1,10 @@
 {
-  "timestamp": "2026-08-25T21:53:44Z",
-  "mode": "post_close",
-  "orders_placed": [
-    {
-      "action": "BUY",
-      "symbol": "MPC",
-      "qty": 0.006788,
-      "status": "submitted"
-    }
-  ],
+  "timestamp": "2026-08-26T14:13:28Z",
+  "mode": "market_open",
+  "orders_placed": [],
   "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 44.28,
+  "cash_pct_after": 44.1,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
