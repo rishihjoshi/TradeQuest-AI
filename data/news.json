@@ -1,7 +1,260 @@
 {
-  "generated_at": "2026-08-24T14:08:44Z",
+  "generated_at": "2026-08-27T23:02:51Z",
   "article_count": 30,
   "articles": [
+    {
+      "id": "61475698",
+      "headline": "Reuters Reported President Trump Expected To Convene Meeting With U.S. Refiners And Fuel Retailers Next Week To Highlight Efforts To Bring Down Gas Prices",
+      "summary": "",
+      "url": "https://www.benzinga.com/quote/HES",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "BP",
+        "COP",
+        "CVX",
+        "HES",
+        "MPC",
+        "MRO",
+        "OXY",
+        "PBR",
+        "SHEL",
+        "SLB",
+        "XOM"
+      ],
+      "created_at": "2026-08-27T18:05:36Z",
+      "sentiment": "bull",
+      "confidence": 0.65,
+      "reason": "Presidential focus on gas prices suggests potential policy support for energy sector"
+    },
+    {
+      "id": "61451734",
+      "headline": "Northern Trust And Commonwealth Superannuation Corp. Sign MoU To Advance Tokenized Finance, Digital Assets And Institutional Settlement Infrastructure",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/61451734/northern-trust-and-commonwealth-superannuation-corp-sign-mou-advance-tokenized-finance-digital-asset",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "NTRS"
+      ],
+      "created_at": "2026-08-27T00:13:51Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Strategic partnership on tokenized finance and digital assets signals growth in institutional crypto infrastructure."
+    },
+    {
+      "id": "61441690",
+      "headline": "CNBC Halftime Report Final Trades: Valero Energy, Micron Technology, Flowserve, Howmet Aerospace",
+      "summary": "",
+      "url": "https://www.benzinga.com/quote/HWM",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "FLS",
+        "HWM",
+        "MU",
+        "VLO"
+      ],
+      "created_at": "2026-08-26T17:02:03Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Final trades segment lists multiple stocks without directional bias or fundamental analysis."
+    },
+    {
+      "id": "61437587",
+      "headline": "Secretary Brooke Rollins Posts On X \"BIG DAY AHEAD FOR AMERICAN FERTILIZER. Headed to Louisiana, where we will break ground on two major projects bringing critical fertilizer production back to Americ",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/61437587/secretary-brooke-rollins-posts-on-x-big-day-ahead-for-american-fertilizer-headed-to-louisiana-where-we-will-break-ground-on-two-major-projects-bringing-critical-fertilizer-production-back-to-americ-2",
+      "author": "Benzinga News-desk",
+      "source": "benzinga",
+      "symbols": [
+        "CF",
+        "GRO",
+        "ICL",
+        "IPI",
+        "LXU",
+        "MOS",
+        "NTR",
+        "SPY",
+        "SQM",
+        "UAN"
+      ],
+      "created_at": "2026-08-26T14:58:42Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Major fertilizer production projects in US signal positive business expansion and economic growth"
+    },
+    {
+      "id": "61424045",
+      "headline": "$1000 Invested In Valero Energy 5 Years Ago Would Be Worth This Much Today",
+      "summary": "Valero Energy (NYSE:VLO) has outperformed the market over the past 5 years by 27.71% on an annualized basis producing an average annual return of 38.82%. Currently, Valero Energy has a market capitalization of $98.63",
+      "url": "https://www.benzinga.com/news/26/08/61424045/1000-invested-valero-energy-5-years-ago-would-be-worth-much-today",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "VLO"
+      ],
+      "created_at": "2026-08-25T21:45:37Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Stock significantly outperformed market with strong 38.82% annualized returns over 5 years."
+    },
+    {
+      "id": "61414191",
+      "headline": "Canada Fires Back At Trump: Up to 50% Tariffs on $20 Billion of US Goods",
+      "summary": "Canada hit back at Trump with tariffs of up to 50% on $20B of U.S. goods, escalating the trade war ahead of Sept. 8.",
+      "url": "https://www.benzinga.com/markets/macro-economic-events/26/08/61414191/canada-trump-tariffs-50-percent-us-goods",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "AA",
+        "CLF",
+        "DE",
+        "EWC",
+        "NUE",
+        "WHR"
+      ],
+      "created_at": "2026-08-25T15:57:51Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Escalating trade war with retaliatory tariffs creates economic uncertainty and threatens cross-border commerce."
+    },
+    {
+      "id": "61405979",
+      "headline": "Top 3 Energy Stocks That May Keep You Up At Night In Q3",
+      "summary": "As of Aug. 25, 2026, three warning stocks in energy sector for momentum traders. RSI indicator shows overbought asset. Stocks: TK, PSX, BTU.",
+      "url": "https://www.benzinga.com/trading-ideas/short-ideas/26/08/61405979/top-3-energy-stocks-that-may-keep-you-up-at-night-in-q3",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "BTU",
+        "PSX",
+        "TK"
+      ],
+      "created_at": "2026-08-25T12:35:03Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Warning stocks with overbought RSI signals suggest caution and downside risk for Q3."
+    },
+    {
+      "id": "61401124",
+      "headline": "Schumer, Pritzker and Others Slam Trump\u2019s Canada Tariffs: \u2018Economic Warfare\u2019 Could Raise Costs for Americans",
+      "summary": "Schumer warned Trump\u2019s Canada tariffs could raise costs for American families and manufacturers, urging Republicans to challenge the trade policy.",
+      "url": "https://www.benzinga.com/news/politics/26/08/61401124/schumer-pritzker-and-others-slam-trumps-canada-tariffs-economic-warfare-could-raise-costs-for-americans",
+      "author": "Snigdha Gairola",
+      "source": "benzinga",
+      "symbols": [
+        "CLF",
+        "GM",
+        "NUE",
+        "STLD"
+      ],
+      "created_at": "2026-08-25T07:59:40Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Tariffs threaten to raise costs for American consumers and manufacturers, negatively impacting economic growth."
+    },
+    {
+      "id": "61400565",
+      "headline": "Mike Pence Warns Trump 'The Last Thing We Need' Is a Canada Trade War, Says Tariffs Could Hurt American Families and Businesses",
+      "summary": "Former VP Mike Pence warns escalating US-Canada tariffs could harm Americans, urges Trump to negotiate instead of deepening conflict.",
+      "url": "https://www.benzinga.com/news/politics/26/08/61400565/mike-pence-trump-canada-trade-war-tariffs-american-families-businesses",
+      "author": "Snigdha Gairola",
+      "source": "benzinga",
+      "symbols": [
+        "CLF",
+        "F",
+        "GM",
+        "NUE",
+        "STLA",
+        "STLD"
+      ],
+      "created_at": "2026-08-25T06:12:37Z",
+      "sentiment": "bear",
+      "confidence": 0.75,
+      "reason": "Warnings of trade war and tariffs harm suggest negative economic impacts on businesses and consumers."
+    },
+    {
+      "id": "61392396",
+      "headline": "Trump\u2019s 50% Canada Auto Tariff Shock: These ETFs Could Be in the Crosshairs",
+      "summary": "Trump\u2019s proposed 50% tariff on Canadian autos could hit automakers and supply chains. Here are the ETFs most exposed to the trade-war shock.",
+      "url": "https://www.benzinga.com/etfs/sector-etfs/26/08/61392396/trumps-50-percent-canada-auto-tariff-shock-these-etfs-could-be-in-the-crosshairs",
+      "author": "Chandrima Sanyal",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "CARZ",
+        "CLF",
+        "DRIV",
+        "F",
+        "GM",
+        "GOOGL",
+        "IYJ",
+        "MSFT",
+        "MU",
+        "NUE",
+        "NVDA",
+        "PAVE",
+        "STLA",
+        "STLD",
+        "TSLA",
+        "XME"
+      ],
+      "created_at": "2026-08-24T18:14:24Z",
+      "sentiment": "bear",
+      "confidence": 0.95,
+      "reason": "Proposed 50% tariffs on Canadian autos threaten automakers and supply chains with significant cost pressures."
+    },
+    {
+      "id": "61388521",
+      "headline": "$100 Invested In Ross Stores 20 Years Ago Would Be Worth This Much Today",
+      "summary": "Ross Stores (NASDAQ:ROST) has outperformed the market over the past 20 years by 6.71% on an annualized basis producing an average annual return of 15.95%. Currently, Ross Stores has a market capitalization of $78.74",
+      "url": "https://www.benzinga.com/news/26/08/61388521/100-invested-ross-stores-20-years-ago-would-be-worth-much-today",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "ROST"
+      ],
+      "created_at": "2026-08-24T16:15:30Z",
+      "sentiment": "bull",
+      "confidence": 0.92,
+      "reason": "Strong 20-year outperformance with 15.95% annualized returns significantly exceeds market"
+    },
+    {
+      "id": "61386099",
+      "headline": "Trump Threatens 50% Canada Auto Tariff: Steelmakers Rally While Detroit Stocks Fall",
+      "summary": "Trump threatened Canada with new tariffs starting on Jan. 1, 2027. GM, Ford and Stellantis fell. U.S. steelmakers rallied.",
+      "url": "https://www.benzinga.com/news/politics/26/08/61386099/trump-50-percent-canada-auto-tariffs-gm-ford-stellantis-stock-reaction",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "CLF",
+        "F",
+        "GM",
+        "NUE",
+        "STLA",
+        "STLD"
+      ],
+      "created_at": "2026-08-24T15:11:57Z",
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
+    },
+    {
+      "id": "61384552",
+      "headline": "Wells Fargo Maintains Overweight on Nucor, Lowers Price Target to $285",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/08/61384552/wells-fargo-maintains-overweight-nucor-lowers-price-target-285",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "NUE"
+      ],
+      "created_at": "2026-08-24T14:36:05Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Overweight rating maintained despite price target reduction, indicating analyst confidence in stock"
+    },
     {
       "id": "61371513",
       "headline": "Benzinga Bulls and Bears: Ross, Moderna, Webull",
@@ -32,7 +285,7 @@
       "created_at": "2026-08-22T12:01:13Z",
       "sentiment": "neutral",
       "confidence": 0.95,
-      "reason": "Article previews multiple stocks without indicating positive or negative outlook."
+      "reason": "Article reviews multiple stocks without expressing directional bias or recommendation."
     },
     {
       "id": "61366989",
@@ -47,7 +300,7 @@
       "created_at": "2026-08-21T19:48:16Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, signaling confidence in stock appreciation."
+      "reason": "Analyst maintains buy rating and raises price target, signaling positive outlook for Ross Stores stock."
     },
     {
       "id": "61365164",
@@ -62,7 +315,7 @@
       "created_at": "2026-08-21T18:40:03Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Analyst maintains Buy rating and raises price target, signaling positive outlook."
+      "reason": "Analyst maintains buy rating and raises price target, indicating confidence in stock appreciation."
     },
     {
       "id": "61363396",
@@ -85,8 +338,8 @@
       ],
       "created_at": "2026-08-21T17:35:18Z",
       "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Article discusses whale activity tracking without indicating positive or negative price implications."
+      "confidence": 0.65,
+      "reason": "Article reports whale activity tracking without directional market bias or stock-specific recommendations."
     },
     {
       "id": "61363182",
@@ -101,7 +354,7 @@
       "created_at": "2026-08-21T17:28:14Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Maintained Buy rating with raised price target signals positive outlook and confidence in stock appreciation."
+      "reason": "Analyst maintains buy rating and raises price target, signaling positive outlook for Ross Stores stock."
     },
     {
       "id": "61362531",
@@ -153,7 +406,7 @@
       "created_at": "2026-08-21T17:03:32Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Stocks stabilized, crypto stocks surged on favorable legislation, gold hit 3-month highs."
+      "reason": "Robinhood and Coinbase surged on regulatory optimism, Bitcoin jumped above $77k, gold hit 3-month highs."
     },
     {
       "id": "61362328",
@@ -168,7 +421,7 @@
       "created_at": "2026-08-21T16:57:37Z",
       "sentiment": "neutral",
       "confidence": 0.85,
-      "reason": "Equal-weight rating with price target raise shows modest optimism but cautious outlook."
+      "reason": "Equal-weight rating with price target increase shows mixed outlook; upgrade in price target offset by unchanged rating."
     },
     {
       "id": "61360811",
@@ -183,7 +436,7 @@
       "created_at": "2026-08-21T16:15:03Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "JP Morgan's overweight rating and price target increase signals positive outlook for Ross Stores"
+      "reason": "Overweight rating and price target increase signal strong positive outlook for Ross Stores."
     },
     {
       "id": "61359320",
@@ -197,8 +450,8 @@
       ],
       "created_at": "2026-08-21T15:32:26Z",
       "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Neutral rating maintained despite price target increase suggests cautious optimism but no strong conviction."
+      "confidence": 0.85,
+      "reason": "Neutral rating maintained despite price target increase suggests cautious optimism with balanced outlook."
     },
     {
       "id": "61358813",
@@ -213,7 +466,7 @@
       "created_at": "2026-08-21T15:17:20Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Maintains overweight rating with price target increase signals positive outlook"
+      "reason": "Overweight rating maintained with raised price target signals positive outlook"
     },
     {
       "id": "61358753",
@@ -228,7 +481,7 @@
       "created_at": "2026-08-21T15:15:39Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "PSX significantly outperformed market with 27.83% annualized returns over 5 years."
+      "reason": "PSX significantly outperformed market with 27.83% annualized returns over 5 years"
     },
     {
       "id": "61357655",
@@ -243,7 +496,7 @@
       "created_at": "2026-08-21T14:47:39Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Price target raise indicates positive outlook despite maintaining equal-weight rating"
+      "reason": "Price target raise indicates analyst confidence in stock upside potential despite maintaining equal-weight rating."
     },
     {
       "id": "61354972",
@@ -258,7 +511,7 @@
       "created_at": "2026-08-21T13:41:12Z",
       "sentiment": "neutral",
       "confidence": 0.85,
-      "reason": "Market Perform rating maintained despite price target increase suggests limited upside catalyst."
+      "reason": "Maintained rating with price target increase shows modest positive view but no upgrade."
     },
     {
       "id": "61354365",
@@ -273,7 +526,7 @@
       "created_at": "2026-08-21T13:28:21Z",
       "sentiment": "neutral",
       "confidence": 0.85,
-      "reason": "Routine shelf filing for future flexibility; no immediate impact on operations or valuation."
+      "reason": "Filing prospectus is routine capital management with no inherent positive or negative implications."
     },
     {
       "id": "61353736",
@@ -288,7 +541,7 @@
       "created_at": "2026-08-21T13:04:28Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Better-than-expected earnings, raised guidance, and analyst upgrades indicate strong performance."
+      "reason": "Better-than-expected earnings and raised guidance with analyst upgrades signal strong performance."
     },
     {
       "id": "61353564",
@@ -303,7 +556,7 @@
       "created_at": "2026-08-21T12:59:42Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Outperform rating maintained with price target raised indicates positive outlook for Ross Stores."
+      "reason": "Analyst maintains positive rating and raises price target, indicating confidence in stock appreciation."
     },
     {
       "id": "61350037",
@@ -325,263 +578,7 @@
       "created_at": "2026-08-21T12:28:00Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Stock futures advanced across major indices following positive geopolitical stance and market recovery."
-    },
-    {
-      "id": "61352782",
-      "headline": "Ross Stores To Rally Around 18%? Here Are 10 Top Analyst Forecasts For Friday",
-      "summary": "Top Wall Street analysts changed outlook on top names. Baird raised PSN target, BTIG cut WMT target, HSBC raised TX target, Rothschild upgraded EFX, HC Wainwright lowered COCH target, BTIG cut MDXH target, Baird raised ROST target.",
-      "url": "https://www.benzinga.com/news/26/08/61352782/ross-stores-to-rally-around-18-here-are-10-top-analyst-forecasts-for-friday",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "COCH",
-        "DE",
-        "EFX",
-        "HAE",
-        "HTB",
-        "MDXH",
-        "PSN",
-        "ROST",
-        "TX",
-        "WMT"
-      ],
-      "created_at": "2026-08-21T12:24:30Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Baird raised ROST target with headline suggesting 18% rally potential"
-    },
-    {
-      "id": "61352584",
-      "headline": "Baird Maintains Outperform on Ross Stores, Raises Price Target to $270",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61352584/baird-maintains-outperform-ross-stores-raises-price-target-270",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "ROST"
-      ],
-      "created_at": "2026-08-21T12:14:08Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Maintained outperform rating with raised price target indicates positive outlook"
-    },
-    {
-      "id": "61352399",
-      "headline": "11 Consumer Discretionary Stocks Moving In Friday's Pre-Market Session",
-      "summary": "Gainers  JX Luxventure Group (NASDAQ:JXG) stock moved upwards by 30.9% to $8.97 during Friday&39;s pre-market session.  Ross Stores (NASDAQ:ROST) stock increased by 8.03% to $247.39. The company&39;s market cap stands",
-      "url": "https://www.benzinga.com/trading-ideas/movers/26/08/61352399/11-consumer-discretionary-stocks-moving-friday-s-pre-market-session",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "AACG",
-        "BIRD",
-        "BKE",
-        "BZUN",
-        "EZGO",
-        "JWEL",
-        "JXG",
-        "JZ",
-        "MMA",
-        "ROST",
-        "YJ"
-      ],
-      "created_at": "2026-08-21T12:06:11Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Both mentioned stocks showed significant pre-market gains, indicating positive market momentum."
-    },
-    {
-      "id": "61351738",
-      "headline": "Ross Stores CEO Says Retailer Is Snatching Market Share From Rivals",
-      "summary": "Ross Stores (ROST) surges in premarket after Q2 revenue beats at $6.27B and EPS hits $2.66. FY26 earnings guidance raised.",
-      "url": "https://www.benzinga.com/markets/large-cap/26/08/61351738/ross-stores-ceo-says-retailer-is-snatching-market-share-from-rivals",
-      "author": "Lekha Gupta",
-      "source": "benzinga",
-      "symbols": [
-        "ROSS",
-        "ROST"
-      ],
-      "created_at": "2026-08-21T11:37:47Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Revenue beat, strong EPS, raised FY26 guidance, and market share gains signal positive momentum."
-    },
-    {
-      "id": "61351606",
-      "headline": "Market-Moving News for August 21st",
-      "summary": "",
-      "url": "https://www.benzinga.com/trading-ideas/movers/26/08/61351606/market-moving-news-august-21st",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "OSIS",
-        "ROST",
-        "SUGP"
-      ],
-      "created_at": "2026-08-21T11:23:03Z",
-      "sentiment": "neutral",
-      "confidence": 0.5,
-      "reason": "No specific stock mentioned or market-moving details provided in the summary."
-    },
-    {
-      "id": "61349777",
-      "headline": "Why Ross Stores Shares Are Trading Higher By Around 9%; Here Are 20 Stocks Moving Premarket",
-      "summary": "Ross Stores beats estimates with Q2 financial results, shares jump 9.1%. Other gainers include RFAI, HOWL, SUGP, SDEV, ZKH, BTAI, SXTC, TREO, and ASST. Losers are JZ, DFNS, FLUX, and MMA.",
-      "url": "https://www.benzinga.com/news/26/08/61349777/why-ross-stores-shares-are-trading-higher-by-around-9-here-are-20-stocks-moving-premarket",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "ASST",
-        "AVAH",
-        "BTAI",
-        "DFNS",
-        "FLO",
-        "FLUX",
-        "GYGY",
-        "HOWL",
-        "HUIZ",
-        "ISPC",
-        "JZ",
-        "MMA",
-        "OSIS",
-        "RFAI",
-        "ROST",
-        "SDEV",
-        "SUGP",
-        "SXTC",
-        "TREO",
-        "ZKH"
-      ],
-      "created_at": "2026-08-21T08:53:22Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Ross Stores beat Q2 estimates with 9.1% share price gain."
-    },
-    {
-      "id": "61349488",
-      "headline": "BJ's Wholesale Club, Ross Stores And 3 Stocks To Watch Heading Into Friday",
-      "summary": "US stock futures up, BJ&39;s Wholesale and Ross Stores beat earnings estimates, while Flowers Foods and OSI Systems report downbeat results.",
-      "url": "https://www.benzinga.com/markets/equities/26/08/61349488/bjs-wholesale-club-ross-stores-and-3-stocks-to-watch-heading-into-friday",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "BEKE",
-        "BJ",
-        "FLO",
-        "OSIS",
-        "ROST"
-      ],
-      "created_at": "2026-08-21T07:58:03Z",
-      "sentiment": "neutral",
-      "confidence": 0.65,
-      "reason": "Mixed earnings results: BJ's and Ross beat estimates, while Flowers Foods and OSI Systems missed."
-    },
-    {
-      "id": "61347879",
-      "headline": "Walmart, Ross Stores, Advance Auto Parts, MARA Holdings and SpaceX: Why These 5 Stocks Are on Investors' Radars Today",
-      "summary": "WMT, ROST, AAP, MARA, SPCX were among the stocks seen trending on Thursday, Aug. 20, 2026.",
-      "url": "https://www.benzinga.com/news/26/08/61347879/walmart-ross-stores-advance-auto-parts-mara-holdings-and-spacex-why-these-5-stocks-are-on-investors-radars-today",
-      "author": "Shivdeep Dhaliwal",
-      "source": "benzinga",
-      "symbols": [
-        "AAP",
-        "BTCUSD",
-        "MARA",
-        "ROST",
-        "SPCX",
-        "WMT"
-      ],
-      "created_at": "2026-08-21T01:24:17Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Article lists stocks trending without positive or negative performance indicators."
-    },
-    {
-      "id": "61346823",
-      "headline": "Ross Stores Q2 2026 Earnings Call Transcript",
-      "summary": "Ross Stores (NASDAQ:ROST) released second-quarter financial results and hosted an earnings call on Thursday. Read the complete transcript below. This content is powered by Benzinga APIs. For comprehensive financial data",
-      "url": "https://www.benzinga.com/news/26/08/61346823/ross-stores-q2-2026-earnings-call-transcript",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "ROST"
-      ],
-      "created_at": "2026-08-20T21:48:51Z",
-      "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Earnings call transcript publication lacks specific financial metrics or forward guidance details."
-    },
-    {
-      "id": "61345467",
-      "headline": "12 Consumer Discretionary Stocks Moving In Thursday's After-Market Session",
-      "summary": "Gainers  Worksport (NASDAQ:WKSP) shares moved upwards by 7.1% to $0.65 during Thursday&39;s after-market session. The company&39;s market cap stands at $9.8 million.  Ross Stores (NASDAQ:ROST) shares moved upwards by",
-      "url": "https://www.benzinga.com/trading-ideas/movers/26/08/61345467/12-consumer-discretionary-stocks-moving-thursday-s-after-market-session",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "AZI",
-        "EJH",
-        "ENHA",
-        "EZGO",
-        "FRSX",
-        "JZ",
-        "LESL",
-        "MMA",
-        "RIME",
-        "ROST",
-        "SPHL",
-        "WKSP"
-      ],
-      "created_at": "2026-08-20T21:06:26Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Both mentioned stocks showed upward price movement in after-market trading."
-    },
-    {
-      "id": "61345305",
-      "headline": "$100 Invested In Jabil 15 Years Ago Would Be Worth This Much Today",
-      "summary": "Jabil (NYSE:JBL) has outperformed the market over the past 15 years by 9.05% on an annualized basis producing an average annual return of 22.3%. Currently, Jabil has a market capitalization of $33.18 billion.  Buying",
-      "url": "https://www.benzinga.com/news/26/08/61345305/100-invested-jabil-15-years-ago-would-be-worth-much-today",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "JBL"
-      ],
-      "created_at": "2026-08-20T21:00:52Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong historical outperformance with 22.3% annualized returns significantly exceeding market."
-    },
-    {
-      "id": "61344730",
-      "headline": "Ross Stores Posts Double Beat in Q2, Raises 2026 Earnings Guidance",
-      "summary": "Ross Stores reports second-quarter financial results after the market close on Thursday. Here&39;s a rundown of the retailer&39;s report.",
-      "url": "https://www.benzinga.com/markets/earnings/26/08/61344730/ross-stores-posts-double-beat-in-q2-raises-2026-earnings-guidance",
-      "author": "Adam Eckert",
-      "source": "benzinga",
-      "symbols": [
-        "ROST"
-      ],
-      "created_at": "2026-08-20T20:32:35Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Double beat on earnings and raised 2026 guidance signals strong operational performance"
-    },
-    {
-      "id": "61343617",
-      "headline": "Ross Stores Sees Q4 GAAP EPS $2.17-$2.26 vs $2.12 Est",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61343617/ross-stores-sees-q4-gaap-eps-2-17-2-26-vs-2-12-est",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "ROST"
-      ],
-      "created_at": "2026-08-20T20:03:19Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Q4 EPS guidance midpoint of $2.215 exceeds analyst estimate of $2.12, indicating stronger than expected performance."
+      "reason": "Stock futures advanced across major indices following geopolitical developments and policy announcements."
     }
   ]
 }
