@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-08-27T00:58:21Z",
-  "mode": "post_close",
+  "timestamp": "2026-08-27T23:03:22Z",
+  "mode": "market_open",
   "orders_placed": [],
   "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 43.86,
+  "cash_pct_after": 44.03,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
