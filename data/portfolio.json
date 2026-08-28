@@ -8,7 +8,7 @@
     "initial_capital": 10000.0,
     "mode": "alpaca",
     "universe": "S&P 500",
-    "last_rebalance": "2026-08-27",
+    "last_rebalance": "2026-08-28",
     "next_rebalance": "2026-10-01",
     "market_regime": "bull",
     "regime_confidence": 0.87,
@@ -23,7 +23,7 @@
   },
   "summary": {
     "initial_capital": 10000.0,
-    "portfolio_value": 9760.23,
+    "portfolio_value": 9759.46,
     "cash": 4297.3,
     "cash_pct": 44.03,
     "deployable_cash": 4297.3,
@@ -32,11 +32,11 @@
     "long_exposure_pct": 55.97,
     "net_exposure_pct": 55.97,
     "long_only_breach": false,
-    "invested": 5462.93,
-    "total_pnl": -235.97,
-    "total_pnl_pct": -2.36,
+    "invested": 5462.16,
+    "total_pnl": -236.74,
+    "total_pnl_pct": -2.37,
     "realized_pnl": -204.43,
-    "unrealized_pnl": -31.54,
+    "unrealized_pnl": -32.31,
     "win_rate": 0.0,
     "total_trades": 31,
     "attributed_trades": 5,
@@ -44,9 +44,9 @@
     "losing_trades": 5,
     "avg_win_pct": 0,
     "avg_loss_pct": -5.3,
-    "sharpe_ratio": -4.54,
+    "sharpe_ratio": -4.25,
     "max_drawdown_pct": 3.25,
-    "last_updated": "2026-08-27T23:03:22Z"
+    "last_updated": "2026-08-28T05:32:35Z"
   },
   "filter_status": {
     "momentum": {
@@ -110,6 +110,10 @@
     {
       "date": "Aug 27",
       "value": 9760
+    },
+    {
+      "date": "Aug 28",
+      "value": 9759
     }
   ],
   "spy_curve": [
@@ -144,6 +148,10 @@
     {
       "date": "Aug 27",
       "value": 10048
+    },
+    {
+      "date": "Aug 28",
+      "value": 8363
     }
   ],
   "benchmark": [
@@ -178,6 +186,10 @@
     {
       "date": "Aug 27",
       "value": 10048
+    },
+    {
+      "date": "Aug 28",
+      "value": 8363
     }
   ],
   "holdings": [
@@ -197,7 +209,7 @@
       "forward_pe": 15.8,
       "volatility_30d": 0.1974,
       "entry_date": "2026-08-18",
-      "ma_50d": 154.96,
+      "ma_50d": 155.32,
       "status": "above_ma",
       "momentum_rank": 7,
       "momentum_6m": 0.2937,
@@ -219,7 +231,7 @@
       "forward_pe": 12.0,
       "volatility_30d": 0.4226,
       "entry_date": "2026-08-18",
-      "ma_50d": 117.21,
+      "ma_50d": 117.61,
       "status": "above_ma",
       "momentum_rank": 8,
       "momentum_6m": 0.2997,
@@ -231,17 +243,17 @@
       "sector": "Technology",
       "shares": 0.798471,
       "avg_cost": 341.34,
-      "current_price": 312.22,
-      "market_value": 249.3,
+      "current_price": 311.26,
+      "market_value": 248.53,
       "weight": 0.0255,
-      "pnl": -23.25,
-      "pnl_pct": -8.53,
+      "pnl": -24.02,
+      "pnl_pct": -8.81,
       "eps_growth": 27.6,
       "revenue_growth": 11.8,
       "forward_pe": 18.5,
       "volatility_30d": 0.5443,
       "entry_date": "2026-08-18",
-      "ma_50d": 336.82,
+      "ma_50d": 335.55,
       "status": "below_ma",
       "momentum_rank": 0,
       "momentum_6m": 0,
@@ -285,7 +297,7 @@
       "forward_pe": 11.3,
       "volatility_30d": 0.373,
       "entry_date": "2026-08-18",
-      "ma_50d": 303.61,
+      "ma_50d": 305.87,
       "status": "above_ma",
       "momentum_rank": 2,
       "momentum_6m": 0.568,
@@ -307,7 +319,7 @@
       "forward_pe": 14.7,
       "volatility_30d": 0.2179,
       "entry_date": "2026-08-18",
-      "ma_50d": 182.31,
+      "ma_50d": 182.54,
       "status": "above_ma",
       "momentum_rank": 13,
       "momentum_6m": 0.2493,
@@ -329,7 +341,7 @@
       "forward_pe": 13.3,
       "volatility_30d": 0.3939,
       "entry_date": "2026-08-18",
-      "ma_50d": 247.31,
+      "ma_50d": 247.18,
       "status": "above_ma",
       "momentum_rank": 3,
       "momentum_6m": 0.4723,
@@ -351,7 +363,7 @@
       "forward_pe": 11.6,
       "volatility_30d": 0.3033,
       "entry_date": "2026-08-18",
-      "ma_50d": 203.03,
+      "ma_50d": 204.38,
       "status": "above_ma",
       "momentum_rank": 5,
       "momentum_6m": 0.3914,
@@ -363,17 +375,17 @@
       "sector": "Consumer Cyclical",
       "shares": 0.003795,
       "avg_cost": 234.51,
-      "current_price": 230.51,
+      "current_price": 230.18,
       "market_value": 0.87,
       "weight": 0.0001,
       "pnl": -0.02,
-      "pnl_pct": -1.71,
+      "pnl_pct": -1.85,
       "eps_growth": 70.5,
       "revenue_growth": 13.3,
       "forward_pe": 25.8,
       "volatility_30d": 0.2837,
       "entry_date": "2026-08-18",
-      "ma_50d": 234.53,
+      "ma_50d": 234.44,
       "status": "below_ma",
       "momentum_rank": 0,
       "momentum_6m": 0,
@@ -395,7 +407,7 @@
       "forward_pe": 11.3,
       "volatility_30d": 0.3148,
       "entry_date": "2026-08-18",
-      "ma_50d": 298.56,
+      "ma_50d": 300.61,
       "status": "above_ma",
       "momentum_rank": 1,
       "momentum_6m": 0.5368,
