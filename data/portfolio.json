@@ -8,7 +8,7 @@
     "initial_capital": 10000.0,
     "mode": "alpaca",
     "universe": "S&P 500",
-    "last_rebalance": "2026-08-28",
+    "last_rebalance": "2026-08-29",
     "next_rebalance": "2026-10-01",
     "market_regime": "bull",
     "regime_confidence": 0.86,
@@ -23,7 +23,7 @@
   },
   "summary": {
     "initial_capital": 10000.0,
-    "portfolio_value": 9794.19,
+    "portfolio_value": 9793.95,
     "cash": 4297.3,
     "cash_pct": 43.88,
     "deployable_cash": 4297.3,
@@ -32,21 +32,21 @@
     "long_exposure_pct": 56.12,
     "net_exposure_pct": 56.12,
     "long_only_breach": false,
-    "invested": 5496.89,
-    "total_pnl": -201.97,
+    "invested": 5496.65,
+    "total_pnl": -202.21,
     "total_pnl_pct": -2.02,
     "realized_pnl": -204.43,
-    "unrealized_pnl": 2.46,
+    "unrealized_pnl": 2.22,
     "win_rate": 0.0,
-    "total_trades": 31,
+    "total_trades": 32,
     "attributed_trades": 5,
     "winning_trades": 0,
     "losing_trades": 5,
     "avg_win_pct": 0,
     "avg_loss_pct": -5.3,
-    "sharpe_ratio": -3.48,
+    "sharpe_ratio": -3.27,
     "max_drawdown_pct": 3.25,
-    "last_updated": "2026-08-28T23:11:40Z"
+    "last_updated": "2026-08-29T03:14:43Z"
   },
   "filter_status": {
     "momentum": {
@@ -114,6 +114,10 @@
     {
       "date": "Aug 28",
       "value": 9794
+    },
+    {
+      "date": "Aug 29",
+      "value": 9794
     }
   ],
   "spy_curve": [
@@ -152,6 +156,10 @@
     {
       "date": "Aug 28",
       "value": 10025
+    },
+    {
+      "date": "Aug 29",
+      "value": 8313
     }
   ],
   "benchmark": [
@@ -190,6 +198,10 @@
     {
       "date": "Aug 28",
       "value": 10025
+    },
+    {
+      "date": "Aug 29",
+      "value": 8313
     }
   ],
   "holdings": [
@@ -212,7 +224,7 @@
       "ma_50d": 155.32,
       "status": "above_ma",
       "momentum_rank": 6,
-      "momentum_6m": 0.323,
+      "momentum_6m": 0.3231,
       "momentum_12m": 0.5144
     },
     {
@@ -353,11 +365,11 @@
       "sector": "Energy",
       "shares": 3.908832,
       "avg_cost": 242.18,
-      "current_price": 244.07,
-      "market_value": 954.03,
+      "current_price": 244.01,
+      "market_value": 953.79,
       "weight": 0.0974,
-      "pnl": 7.38,
-      "pnl_pct": 0.78,
+      "pnl": 7.14,
+      "pnl_pct": 0.75,
       "eps_growth": 344.9,
       "revenue_growth": 53.1,
       "forward_pe": 11.8,
@@ -847,6 +859,20 @@
       "pnl": null,
       "pnl_pct": null,
       "reason": "Alpaca paper trade \u2014 momentum rebalance",
+      "type": "market"
+    },
+    {
+      "id": "ALP-603A1BBA",
+      "date": "2026-08-29",
+      "action": "BUY",
+      "symbol": "JBL",
+      "name": "JBL",
+      "shares": 2.288025,
+      "price": 0.0,
+      "value": 0.0,
+      "pnl": null,
+      "pnl_pct": null,
+      "reason": "Pending \u2014 awaiting market open",
       "type": "market"
     }
   ]
