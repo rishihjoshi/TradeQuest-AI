@@ -1,5 +1,24 @@
 {
-  "timestamp": "2026-08-29T01:49:41Z",
-  "sells": [],
-  "count": 0
+  "timestamp": "2026-08-31T22:58:00Z",
+  "sells": [
+    {
+      "symbol": "KEYS",
+      "shares": 2,
+      "rule": "persistent_flag",
+      "reason": "Symbol flagged SELL/WATCH in 17 consecutive agent runs without execution (\u2265 5 threshold). Position is at a loss \u2014 Tier 1 forced exit. Sentinel Rule 3."
+    },
+    {
+      "symbol": "NTRS",
+      "shares": 5,
+      "rule": "persistent_flag",
+      "reason": "Symbol flagged SELL/WATCH in 8 consecutive agent runs without execution (\u2265 5 threshold). Position is at a loss \u2014 Tier 1 forced exit. Sentinel Rule 3."
+    },
+    {
+      "symbol": "ROST",
+      "shares": 4,
+      "rule": "trend_break",
+      "reason": "Price below 50-day MA for 4 consecutive agent runs (\u2265 3 threshold). Forced exit \u2014 sentinel Rule 2."
+    }
+  ],
+  "count": 3
 }

@@ -1,35 +1,29 @@
 {
-  "timestamp": "2026-08-31T19:36:02Z",
-  "mode": "market_open",
+  "timestamp": "2026-08-31T22:58:02Z",
+  "mode": "post_close",
   "orders_placed": [
     {
       "action": "SELL",
-      "symbol": "JBL",
-      "qty": 3.0,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "NTRS",
-      "qty": 5.020361,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
       "symbol": "KEYS",
-      "qty": 2.148903,
+      "qty": 2.0,
       "status": "submitted"
     },
     {
-      "action": "BUY",
+      "action": "SELL",
+      "symbol": "NTRS",
+      "qty": 5.0,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
       "symbol": "ROST",
-      "qty": 4.110263,
+      "qty": 4.0,
       "status": "submitted"
     }
   ],
   "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 19.8,
+  "cash_pct_after": 19.81,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
