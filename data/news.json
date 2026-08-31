@@ -1,7 +1,83 @@
 {
-  "generated_at": "2026-08-27T23:02:51Z",
+  "generated_at": "2026-08-31T19:33:04Z",
   "article_count": 30,
   "articles": [
+    {
+      "id": "61502614",
+      "headline": "10 Financials Stocks Whale Activity In Today\u2019s Session",
+      "summary": "This whale alert can help traders discover the next big trading opportunities. Whales are entities with large sums of money and we track their transactions here at Benzinga on our options activity scanner. Traders will",
+      "url": "https://www.benzinga.com/markets/options/26/08/61502614/10-financials-stocks-whale-activity-today-s-session",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "BNY",
+        "COIN",
+        "GS",
+        "HOOD",
+        "JPM",
+        "PYPL",
+        "SCHW",
+        "SOFI",
+        "STT",
+        "TOST"
+      ],
+      "created_at": "2026-08-28T17:35:17Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Article reports whale activity tracking without stating positive or negative market implications."
+    },
+    {
+      "id": "61500314",
+      "headline": "Live On CNBC, Kevin Simpson Announces Bought More CF Industries",
+      "summary": "",
+      "url": "https://www.benzinga.com/quote/CF",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "CF"
+      ],
+      "created_at": "2026-08-28T16:25:26Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Executive buying more shares signals confidence in company's future prospects and value."
+    },
+    {
+      "id": "61496371",
+      "headline": "Here\u2019s How Much You Would Have Made Owning Bank of New York Mellon Stock In The Last 15 Years",
+      "summary": "Bank of New York Mellon (NYSE:BNY) has outperformed the market over the past 15 years by 1.76% on an annualized basis producing an average annual return of 15.18%. Currently, Bank of New York Mellon has a market",
+      "url": "https://www.benzinga.com/news/26/08/61496371/here-s-how-much-you-would-have-made-owning-bank-new-york-mellon-stock-last-15-years",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "BNY"
+      ],
+      "created_at": "2026-08-28T15:01:05Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Stock outperformed market with 15.18% average annual return over 15 years."
+    },
+    {
+      "id": "61487812",
+      "headline": "Berkshire Hathaway Cut Capital One Stake by 58% in Q2 \u2014 Billionaire Dan Loeb Is Doing the Exact Opposite",
+      "summary": "Berkshire slashed its Capital One stake by 58%, among its largest cuts, despite the stock&39;s top growth score.",
+      "url": "https://www.benzinga.com/markets/equities/26/08/61487812/warren-buffett-dumped-more-than-half-his-stake-in-a-top-growth-stock",
+      "author": "Radhika Anilkumar Nadig",
+      "source": "benzinga",
+      "symbols": [
+        "ALLY",
+        "BAC",
+        "BRK",
+        "COF",
+        "DVA",
+        "KO",
+        "M",
+        "NUE"
+      ],
+      "created_at": "2026-08-28T10:16:38Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Berkshire's 58% stake reduction signals lost confidence in Capital One despite strong fundamentals."
+    },
     {
       "id": "61475698",
       "headline": "Reuters Reported President Trump Expected To Convene Meeting With U.S. Refiners And Fuel Retailers Next Week To Highlight Efforts To Bring Down Gas Prices",
@@ -24,8 +100,8 @@
       ],
       "created_at": "2026-08-27T18:05:36Z",
       "sentiment": "bull",
-      "confidence": 0.65,
-      "reason": "Presidential focus on gas prices suggests potential policy support for energy sector"
+      "confidence": 0.72,
+      "reason": "Presidential focus on gas price reduction suggests potential policy support for energy sector refiners and retailers."
     },
     {
       "id": "61451734",
@@ -40,7 +116,7 @@
       "created_at": "2026-08-27T00:13:51Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Strategic partnership on tokenized finance and digital assets signals growth in institutional crypto infrastructure."
+      "reason": "Strategic partnership on tokenized finance and digital assets signals growth opportunity and technological advancement."
     },
     {
       "id": "61441690",
@@ -58,7 +134,7 @@
       "created_at": "2026-08-26T17:02:03Z",
       "sentiment": "neutral",
       "confidence": 0.85,
-      "reason": "Final trades segment lists multiple stocks without directional bias or fundamental analysis."
+      "reason": "Final trades segment lists multiple stocks without expressing directional bias or recommendation."
     },
     {
       "id": "61437587",
@@ -82,7 +158,7 @@
       "created_at": "2026-08-26T14:58:42Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Major fertilizer production projects in US signal positive business expansion and economic growth"
+      "reason": "Major fertilizer production projects breaking ground in US signals positive growth and infrastructure investment."
     },
     {
       "id": "61424045",
@@ -117,7 +193,7 @@
       "created_at": "2026-08-25T15:57:51Z",
       "sentiment": "bear",
       "confidence": 0.85,
-      "reason": "Escalating trade war with retaliatory tariffs creates economic uncertainty and threatens cross-border commerce."
+      "reason": "Escalating trade war with retaliatory tariffs creates uncertainty and headwinds for US exporters."
     },
     {
       "id": "61405979",
@@ -134,7 +210,7 @@
       "created_at": "2026-08-25T12:35:03Z",
       "sentiment": "bear",
       "confidence": 0.85,
-      "reason": "Warning stocks with overbought RSI signals suggest caution and downside risk for Q3."
+      "reason": "Warning stocks with overbought RSI indicate potential downturn risk in Q3."
     },
     {
       "id": "61401124",
@@ -152,7 +228,7 @@
       "created_at": "2026-08-25T07:59:40Z",
       "sentiment": "bear",
       "confidence": 0.85,
-      "reason": "Tariffs threaten to raise costs for American consumers and manufacturers, negatively impacting economic growth."
+      "reason": "Tariffs on Canada could increase costs for American families and manufacturers, negatively impacting economic growth."
     },
     {
       "id": "61400565",
@@ -172,7 +248,7 @@
       "created_at": "2026-08-25T06:12:37Z",
       "sentiment": "bear",
       "confidence": 0.75,
-      "reason": "Warnings of trade war and tariffs harm suggest negative economic impacts on businesses and consumers."
+      "reason": "Trade war warnings and tariff concerns create uncertainty and potential economic headwinds for US businesses."
     },
     {
       "id": "61392396",
@@ -202,8 +278,8 @@
       ],
       "created_at": "2026-08-24T18:14:24Z",
       "sentiment": "bear",
-      "confidence": 0.95,
-      "reason": "Proposed 50% tariffs on Canadian autos threaten automakers and supply chains with significant cost pressures."
+      "confidence": 0.92,
+      "reason": "Proposed 50% tariffs on Canadian autos threaten automakers and supply chains with significant negative impact."
     },
     {
       "id": "61388521",
@@ -217,8 +293,8 @@
       ],
       "created_at": "2026-08-24T16:15:30Z",
       "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Strong 20-year outperformance with 15.95% annualized returns significantly exceeds market"
+      "confidence": 0.95,
+      "reason": "Strong 20-year outperformance with 15.95% annualized returns significantly beating market"
     },
     {
       "id": "61386099",
@@ -237,8 +313,8 @@
       ],
       "created_at": "2026-08-24T15:11:57Z",
       "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "confidence": 0.85,
+      "reason": "Positive for US steelmakers, negative for Detroit automakers due to tariff threat."
     },
     {
       "id": "61384552",
@@ -253,7 +329,7 @@
       "created_at": "2026-08-24T14:36:05Z",
       "sentiment": "bull",
       "confidence": 0.75,
-      "reason": "Overweight rating maintained despite price target reduction, indicating analyst confidence in stock"
+      "reason": "Overweight rating maintained despite price target reduction, suggesting positive long-term outlook."
     },
     {
       "id": "61371513",
@@ -284,8 +360,8 @@
       ],
       "created_at": "2026-08-22T12:01:13Z",
       "sentiment": "neutral",
-      "confidence": 0.95,
-      "reason": "Article reviews multiple stocks without expressing directional bias or recommendation."
+      "confidence": 0.85,
+      "reason": "Article is a general roundup of multiple stocks without expressing a directional bias."
     },
     {
       "id": "61366989",
@@ -300,7 +376,7 @@
       "created_at": "2026-08-21T19:48:16Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, signaling positive outlook for Ross Stores stock."
+      "reason": "Analyst maintains buy rating and raises price target, signaling positive outlook"
     },
     {
       "id": "61365164",
@@ -315,7 +391,7 @@
       "created_at": "2026-08-21T18:40:03Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, indicating confidence in stock appreciation."
+      "reason": "Analyst maintains buy rating and raises price target, indicating positive outlook"
     },
     {
       "id": "61363396",
@@ -337,9 +413,9 @@
         "WFC"
       ],
       "created_at": "2026-08-21T17:35:18Z",
-      "sentiment": "neutral",
-      "confidence": 0.65,
-      "reason": "Article reports whale activity tracking without directional market bias or stock-specific recommendations."
+      "sentiment": "bull",
+      "confidence": 0.72,
+      "reason": "Whale alerts indicate large institutional activity, suggesting potential trading opportunities and market interest."
     },
     {
       "id": "61363182",
@@ -354,7 +430,7 @@
       "created_at": "2026-08-21T17:28:14Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, signaling positive outlook for Ross Stores stock."
+      "reason": "Analyst maintains Buy rating and raises price target, indicating positive outlook for Ross Stores."
     },
     {
       "id": "61362531",
@@ -406,7 +482,7 @@
       "created_at": "2026-08-21T17:03:32Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Robinhood and Coinbase surged on regulatory optimism, Bitcoin jumped above $77k, gold hit 3-month highs."
+      "reason": "Positive momentum in crypto stocks (Robinhood, Coinbase) and stabilizing market conditions support bullish outlook."
     },
     {
       "id": "61362328",
@@ -421,7 +497,7 @@
       "created_at": "2026-08-21T16:57:37Z",
       "sentiment": "neutral",
       "confidence": 0.85,
-      "reason": "Equal-weight rating with price target increase shows mixed outlook; upgrade in price target offset by unchanged rating."
+      "reason": "Equal-weight rating maintained despite price target increase suggests modest positive view with balanced risk."
     },
     {
       "id": "61360811",
@@ -436,7 +512,7 @@
       "created_at": "2026-08-21T16:15:03Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Overweight rating and price target increase signal strong positive outlook for Ross Stores."
+      "reason": "Analyst upgrade with raised price target signals positive outlook on Ross Stores"
     },
     {
       "id": "61359320",
@@ -466,7 +542,7 @@
       "created_at": "2026-08-21T15:17:20Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Overweight rating maintained with raised price target signals positive outlook"
+      "reason": "Analyst maintains positive rating and raises price target, signaling confidence in stock appreciation."
     },
     {
       "id": "61358753",
@@ -481,7 +557,7 @@
       "created_at": "2026-08-21T15:15:39Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "PSX significantly outperformed market with 27.83% annualized returns over 5 years"
+      "reason": "Strong 5-year outperformance with 27.83% average annual return significantly exceeds market expectations."
     },
     {
       "id": "61357655",
@@ -495,8 +571,8 @@
       ],
       "created_at": "2026-08-21T14:47:39Z",
       "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Price target raise indicates analyst confidence in stock upside potential despite maintaining equal-weight rating."
+      "confidence": 0.75,
+      "reason": "Price target raised to $248 indicates positive outlook despite maintaining equal-weight rating."
     },
     {
       "id": "61354972",
@@ -511,74 +587,7 @@
       "created_at": "2026-08-21T13:41:12Z",
       "sentiment": "neutral",
       "confidence": 0.85,
-      "reason": "Maintained rating with price target increase shows modest positive view but no upgrade."
-    },
-    {
-      "id": "61354365",
-      "headline": "Nucor Files Prospectus To Sell Mixed Securities Shelf Of An Indeterminate Amount",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61354365/nucor-files-prospectus-sell-mixed-securities-shelf-indeterminate-amount",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "NUE"
-      ],
-      "created_at": "2026-08-21T13:28:21Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Filing prospectus is routine capital management with no inherent positive or negative implications."
-    },
-    {
-      "id": "61353736",
-      "headline": "These Analysts Boost Their Forecasts On Ross Stores After Better-Than-Expected Q2 Earnings",
-      "summary": "Ross Stores reported Q2 results that beat expectations, with raised guidance for full-year earnings per share. Analysts also upgraded price targets.",
-      "url": "https://www.benzinga.com/news/26/08/61353736/these-analysts-boost-their-forecasts-on-ross-stores-after-better-than-expected-q2-earnings",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "ROST"
-      ],
-      "created_at": "2026-08-21T13:04:28Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Better-than-expected earnings and raised guidance with analyst upgrades signal strong performance."
-    },
-    {
-      "id": "61353564",
-      "headline": "Evercore ISI Group Maintains Outperform on Ross Stores, Raises Price Target to $290",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61353564/evercore-isi-group-maintains-outperform-ross-stores-raises-price-target-290",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "ROST"
-      ],
-      "created_at": "2026-08-21T12:59:42Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains positive rating and raises price target, indicating confidence in stock appreciation."
-    },
-    {
-      "id": "61350037",
-      "headline": "Stock Market Today: Dow Jones, S&P 500, Nasdaq 100 Futures Gain as Scott Bessent Touts 'Toughest Sanctions' for Iran\u2014 Ross Stores, Strategy, Flowers Foods in Focus (UPDATED)",
-      "summary": "U.S. stock futures advanced on Friday, as the Dow Jones, S&amp;P 500 and Nasdaq 100 indices rose, following Thursday&39;s lower close.",
-      "url": "https://www.benzinga.com/markets/equities/26/08/61350037/stock-market-today-dow-jones-sp-500-futures-gain-as-scott-bessent-touts-toughest-sanctions-for-iran-ross-stores-strategy-flowers-foods-in-focus",
-      "author": "Rishabh Mishra",
-      "source": "benzinga",
-      "symbols": [
-        "AAP",
-        "BTCUSD",
-        "FLO",
-        "MSTR",
-        "OSIS",
-        "QQQ",
-        "ROST",
-        "SPY"
-      ],
-      "created_at": "2026-08-21T12:28:00Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Stock futures advanced across major indices following geopolitical developments and policy announcements."
+      "reason": "Market Perform rating maintained despite price target increase suggests modest positive but not strong conviction."
     }
   ]
 }
