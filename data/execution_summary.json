@@ -1,19 +1,17 @@
 {
-  "timestamp": "2026-09-01T00:43:36Z",
-  "mode": "post_close",
-  "orders_placed": [],
-  "orders_skipped": [
+  "timestamp": "2026-09-01T17:24:42Z",
+  "mode": "market_open",
+  "orders_placed": [
     {
-      "symbol": "ROST",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "KEYS",
-      "reason": "blocked by agent approval or risk gate"
+      "action": "BUY",
+      "symbol": "BNY",
+      "qty": 0.053568,
+      "status": "submitted"
     }
   ],
+  "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 19.78,
+  "cash_pct_after": 44.5,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
