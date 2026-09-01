@@ -1,17 +1,10 @@
 {
-  "timestamp": "2026-09-01T17:24:42Z",
-  "mode": "market_open",
-  "orders_placed": [
-    {
-      "action": "BUY",
-      "symbol": "BNY",
-      "qty": 0.053568,
-      "status": "submitted"
-    }
-  ],
+  "timestamp": "2026-09-01T23:28:46Z",
+  "mode": "post_close",
+  "orders_placed": [],
   "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 44.5,
+  "cash_pct_after": 44.28,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
