@@ -1,7 +1,166 @@
 {
-  "generated_at": "2026-08-31T19:33:04Z",
+  "generated_at": "2026-09-03T17:08:28Z",
   "article_count": 30,
   "articles": [
+    {
+      "id": "61606565",
+      "headline": "Keysight Announces Research Collaboration With University Of York's Centre For Assuring Autonomy On AI Safety Validation Methods For Software-Defined Vehicles",
+      "summary": "",
+      "url": "https://www.benzinga.com/quote/KEYS",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "KEYS"
+      ],
+      "created_at": "2026-09-03T15:02:20Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Research collaboration on AI safety validation demonstrates Keysight's leadership in autonomous vehicle testing and positions it favorably in growing market."
+    },
+    {
+      "id": "61597617",
+      "headline": "Oracle, Alphabet, Valero Energy And More On CNBC\u2019s \u2018Final Trades\u2019",
+      "summary": "CNBC final trades: Weiss chose Alphabet, Lebenthal Oracle, Thomas iShares Gold Trust, and Terranova Valero; all closed higher Wednesday.",
+      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/09/61597617/oracle-alphabet-valero-energy-and-more-on-cnbc-final-trades",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "GOOG",
+        "GOOGL",
+        "IAU",
+        "ORCL",
+        "VLO"
+      ],
+      "created_at": "2026-09-03T11:07:53Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Multiple analyst picks with all stocks closing higher Wednesday signals positive momentum."
+    },
+    {
+      "id": "61583666",
+      "headline": "CNBC Halftime Report Final Trades: Valero Energy, Oracle, Alphabet Class A, iShares Gold Trust Shares",
+      "summary": "",
+      "url": "https://www.benzinga.com/quote/GOOGL",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "GOOGL",
+        "IAU",
+        "ORCL",
+        "VLO"
+      ],
+      "created_at": "2026-09-02T17:02:03Z",
+      "sentiment": "neutral",
+      "confidence": 0.95,
+      "reason": "Article lists multiple stocks without expressing directional opinion or analysis."
+    },
+    {
+      "id": "61581001",
+      "headline": "$100 Invested In Ross Stores 15 Years Ago Would Be Worth This Much Today",
+      "summary": "Ross Stores (NASDAQ:ROST) has outperformed the market over the past 15 years by 5.01% on an annualized basis producing an average annual return of 18.23%. Currently, Ross Stores has a market capitalization of $75.98",
+      "url": "https://www.benzinga.com/news/26/09/61581001/100-invested-ross-stores-15-years-ago-would-be-worth-much-today",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "ROST"
+      ],
+      "created_at": "2026-09-02T15:45:24Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Strong historical outperformance with 18.23% annualized returns over 15 years demonstrates excellent long-term value creation."
+    },
+    {
+      "id": "61552796",
+      "headline": "Trump Presses Refiners on Gas Prices Tuesday \u2014 and He's Been Buying Their Stocks",
+      "summary": "President Donald Trump is set to meet with oil executives Tuesday.",
+      "url": "https://www.benzinga.com/news/politics/26/09/61552796/trump-presses-refiners-on-gas-prices-tuesday-and-hes-been-buying-their-stocks",
+      "author": "Chris Katje",
+      "source": "benzinga",
+      "symbols": [
+        "COP",
+        "CVX",
+        "EOG",
+        "OXY",
+        "VLO",
+        "XOM"
+      ],
+      "created_at": "2026-09-01T15:32:28Z",
+      "sentiment": "neutral",
+      "confidence": 0.72,
+      "reason": "Meeting suggests potential policy pressure, but Trump's stock purchases indicate confidence in sector."
+    },
+    {
+      "id": "61549115",
+      "headline": "Wells Fargo Maintains Overweight on Valero Energy, Raises Price Target to $389",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/09/61549115/wells-fargo-maintains-overweight-valero-energy-raises-price-target-389",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "VLO"
+      ],
+      "created_at": "2026-09-01T14:07:36Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Overweight rating and price target increase signal positive outlook for Valero Energy"
+    },
+    {
+      "id": "61549014",
+      "headline": "Wells Fargo Maintains Overweight on Phillips 66, Raises Price Target to $335",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/09/61549014/wells-fargo-maintains-overweight-phillips-66-raises-price-target-335",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "PSX"
+      ],
+      "created_at": "2026-09-01T14:06:07Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Overweight rating maintained with raised price target indicates positive outlook and analyst confidence in PSX."
+    },
+    {
+      "id": "61548926",
+      "headline": "Wells Fargo Maintains Overweight on Marathon Petroleum, Raises Price Target to $400",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/09/61548926/wells-fargo-maintains-overweight-marathon-petroleum-raises-price-target-400",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "MPC"
+      ],
+      "created_at": "2026-09-01T14:04:45Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst upgrade with price target increase signals strong positive outlook for Marathon Petroleum."
+    },
+    {
+      "id": "61543575",
+      "headline": "Jim Cramer Warns of \u2018Unholy Developments\u2019 Crushing Rate-Cut Hopes as Brent Tops $92 After Strait of Hormuz Attacks",
+      "summary": "Jim Cramer warns &39;unholy developments&39; and a hawkish Fed will crush rate cut hopes as Brent crude tops $92 after Middle East tanker attacks.",
+      "url": "https://www.benzinga.com/markets/economic-data/26/09/61543575/jim-cramer-warns-of-unholy-developments-crushing-rate-cut-hopes-as-brent-tops-92-after-strait-of-hormuz-attacks",
+      "author": "Rishabh Mishra",
+      "source": "benzinga",
+      "symbols": [
+        "BNO",
+        "CVI",
+        "CVX",
+        "DIA",
+        "EOG",
+        "LPG",
+        "MPC",
+        "OXY",
+        "QQQ",
+        "SLB",
+        "SPY",
+        "USO",
+        "XOM"
+      ],
+      "created_at": "2026-09-01T11:49:00Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Rising oil prices and hawkish Fed outlook threaten rate cuts, pressuring equities and economic growth."
+    },
     {
       "id": "61502614",
       "headline": "10 Financials Stocks Whale Activity In Today\u2019s Session",
@@ -23,8 +182,8 @@
       ],
       "created_at": "2026-08-28T17:35:17Z",
       "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Article reports whale activity tracking without stating positive or negative market implications."
+      "confidence": 0.65,
+      "reason": "Article reports whale activity tracking without expressing positive or negative outlook on stocks."
     },
     {
       "id": "61500314",
@@ -39,7 +198,7 @@
       "created_at": "2026-08-28T16:25:26Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Executive buying more shares signals confidence in company's future prospects and value."
+      "reason": "Executive buying more shares signals confidence in CF Industries' future prospects"
     },
     {
       "id": "61496371",
@@ -54,7 +213,7 @@
       "created_at": "2026-08-28T15:01:05Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Stock outperformed market with 15.18% average annual return over 15 years."
+      "reason": "Stock outperformed market with strong 15.18% annualized returns over 15 years."
     },
     {
       "id": "61487812",
@@ -76,7 +235,7 @@
       "created_at": "2026-08-28T10:16:38Z",
       "sentiment": "bear",
       "confidence": 0.85,
-      "reason": "Berkshire's 58% stake reduction signals lost confidence in Capital One despite strong fundamentals."
+      "reason": "Berkshire's 58% stake reduction signals reduced confidence in Capital One despite growth metrics."
     },
     {
       "id": "61475698",
@@ -101,7 +260,7 @@
       "created_at": "2026-08-27T18:05:36Z",
       "sentiment": "bull",
       "confidence": 0.72,
-      "reason": "Presidential focus on gas price reduction suggests potential policy support for energy sector refiners and retailers."
+      "reason": "Presidential focus on lowering gas prices suggests potential policy support for refiners and fuel retailers."
     },
     {
       "id": "61451734",
@@ -116,7 +275,7 @@
       "created_at": "2026-08-27T00:13:51Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Strategic partnership on tokenized finance and digital assets signals growth opportunity and technological advancement."
+      "reason": "Strategic partnership on tokenized finance and digital assets signals growth opportunity and institutional adoption."
     },
     {
       "id": "61441690",
@@ -133,8 +292,8 @@
       ],
       "created_at": "2026-08-26T17:02:03Z",
       "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Final trades segment lists multiple stocks without expressing directional bias or recommendation."
+      "confidence": 0.65,
+      "reason": "Final trades segment presents multiple stocks without clear directional bias or substantive analysis."
     },
     {
       "id": "61437587",
@@ -158,7 +317,7 @@
       "created_at": "2026-08-26T14:58:42Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Major fertilizer production projects breaking ground in US signals positive growth and infrastructure investment."
+      "reason": "Groundbreaking on major fertilizer production projects signals positive industrial expansion and domestic investment."
     },
     {
       "id": "61424045",
@@ -173,7 +332,7 @@
       "created_at": "2026-08-25T21:45:37Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Stock significantly outperformed market with strong 38.82% annualized returns over 5 years."
+      "reason": "Strong outperformance with 38.82% average annual return significantly exceeding market."
     },
     {
       "id": "61414191",
@@ -193,7 +352,7 @@
       "created_at": "2026-08-25T15:57:51Z",
       "sentiment": "bear",
       "confidence": 0.85,
-      "reason": "Escalating trade war with retaliatory tariffs creates uncertainty and headwinds for US exporters."
+      "reason": "Escalating trade war with retaliatory tariffs increases economic uncertainty and costs for US businesses."
     },
     {
       "id": "61405979",
@@ -210,7 +369,7 @@
       "created_at": "2026-08-25T12:35:03Z",
       "sentiment": "bear",
       "confidence": 0.85,
-      "reason": "Warning stocks with overbought RSI indicate potential downturn risk in Q3."
+      "reason": "Warning stocks with overbought RSI indicate elevated risk and potential pullback concerns."
     },
     {
       "id": "61401124",
@@ -228,7 +387,7 @@
       "created_at": "2026-08-25T07:59:40Z",
       "sentiment": "bear",
       "confidence": 0.85,
-      "reason": "Tariffs on Canada could increase costs for American families and manufacturers, negatively impacting economic growth."
+      "reason": "Tariffs on Canada could raise costs for American families and manufacturers, negatively impacting consumers and businesses."
     },
     {
       "id": "61400565",
@@ -248,7 +407,7 @@
       "created_at": "2026-08-25T06:12:37Z",
       "sentiment": "bear",
       "confidence": 0.75,
-      "reason": "Trade war warnings and tariff concerns create uncertainty and potential economic headwinds for US businesses."
+      "reason": "Tariff escalation warnings suggest economic headwinds for US businesses and consumers."
     },
     {
       "id": "61392396",
@@ -278,8 +437,8 @@
       ],
       "created_at": "2026-08-24T18:14:24Z",
       "sentiment": "bear",
-      "confidence": 0.92,
-      "reason": "Proposed 50% tariffs on Canadian autos threaten automakers and supply chains with significant negative impact."
+      "confidence": 0.85,
+      "reason": "Proposed 50% tariffs on Canadian autos threaten automakers and supply chains with significant cost pressures."
     },
     {
       "id": "61388521",
@@ -293,7 +452,7 @@
       ],
       "created_at": "2026-08-24T16:15:30Z",
       "sentiment": "bull",
-      "confidence": 0.95,
+      "confidence": 0.92,
       "reason": "Strong 20-year outperformance with 15.95% annualized returns significantly beating market"
     },
     {
@@ -313,8 +472,8 @@
       ],
       "created_at": "2026-08-24T15:11:57Z",
       "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Positive for US steelmakers, negative for Detroit automakers due to tariff threat."
+      "confidence": 0.8,
+      "reason": "Bearish for auto stocks (GM, Ford, Stellantis); bullish for U.S. steelmakers."
     },
     {
       "id": "61384552",
@@ -328,8 +487,8 @@
       ],
       "created_at": "2026-08-24T14:36:05Z",
       "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Overweight rating maintained despite price target reduction, suggesting positive long-term outlook."
+      "confidence": 0.85,
+      "reason": "Overweight rating maintained despite price target reduction, suggesting analyst confidence in stock outperformance."
     },
     {
       "id": "61371513",
@@ -360,8 +519,8 @@
       ],
       "created_at": "2026-08-22T12:01:13Z",
       "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Article is a general roundup of multiple stocks without expressing a directional bias."
+      "confidence": 0.95,
+      "reason": "Article reviews multiple stocks without expressing directional bias or conclusion."
     },
     {
       "id": "61366989",
@@ -376,7 +535,7 @@
       "created_at": "2026-08-21T19:48:16Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, signaling positive outlook"
+      "reason": "Analyst maintains buy rating and raises price target, signaling positive outlook for stock."
     },
     {
       "id": "61365164",
@@ -391,7 +550,7 @@
       "created_at": "2026-08-21T18:40:03Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, indicating positive outlook"
+      "reason": "Analyst maintains Buy rating and raises price target, signaling confidence in stock appreciation."
     },
     {
       "id": "61363396",
@@ -415,179 +574,7 @@
       "created_at": "2026-08-21T17:35:18Z",
       "sentiment": "bull",
       "confidence": 0.72,
-      "reason": "Whale alerts indicate large institutional activity, suggesting potential trading opportunities and market interest."
-    },
-    {
-      "id": "61363182",
-      "headline": "Truist Securities Maintains Buy on Ross Stores, Raises Price Target to $310",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61363182/truist-securities-maintains-buy-ross-stores-raises-price-target-310",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "ROST"
-      ],
-      "created_at": "2026-08-21T17:28:14Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains Buy rating and raises price target, indicating positive outlook for Ross Stores."
-    },
-    {
-      "id": "61362531",
-      "headline": "Bitcoin Jumps Above $77,000, Gold Hits 3-Month Highs: Stock Market Today",
-      "summary": "Stocks steadied Friday as bond yields stabilized, Robinhood and Coinbase surged on CLARITY Act optimism, and gold hit a three-month high.",
-      "url": "https://www.benzinga.com/markets/equities/26/08/61362531/stock-market-today-btc-bitcoin-770000-gold-3-month-high",
-      "author": "Piero Cingari",
-      "source": "benzinga",
-      "symbols": [
-        "ALB",
-        "AMLP",
-        "APLD",
-        "ARM",
-        "BTC",
-        "BTCUSD",
-        "COIN",
-        "DIA",
-        "EIX",
-        "FCX",
-        "GDX",
-        "GLD",
-        "HOOD",
-        "INTC",
-        "IWM",
-        "MP",
-        "MRNA",
-        "MRVL",
-        "MSTR",
-        "MWH",
-        "PBW",
-        "PWR",
-        "QQQ",
-        "ROST",
-        "SMH",
-        "UI",
-        "VIRT",
-        "VOO",
-        "WMT",
-        "WULF",
-        "XLB",
-        "XLE",
-        "XLK",
-        "XLRE",
-        "XLU",
-        "XLV",
-        "XLY",
-        "XME"
-      ],
-      "created_at": "2026-08-21T17:03:32Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Positive momentum in crypto stocks (Robinhood, Coinbase) and stabilizing market conditions support bullish outlook."
-    },
-    {
-      "id": "61362328",
-      "headline": "Morgan Stanley Maintains Equal-Weight on Ross Stores, Raises Price Target to $234",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61362328/morgan-stanley-maintains-equal-weight-ross-stores-raises-price-target-234",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "ROST"
-      ],
-      "created_at": "2026-08-21T16:57:37Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Equal-weight rating maintained despite price target increase suggests modest positive view with balanced risk."
-    },
-    {
-      "id": "61360811",
-      "headline": "JP Morgan Maintains Overweight on Ross Stores, Raises Price Target to $272",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61360811/jp-morgan-maintains-overweight-ross-stores-raises-price-target-272",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "ROST"
-      ],
-      "created_at": "2026-08-21T16:15:03Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst upgrade with raised price target signals positive outlook on Ross Stores"
-    },
-    {
-      "id": "61359320",
-      "headline": "UBS Maintains Neutral on Ross Stores, Raises Price Target to $239",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61359320/ubs-maintains-neutral-ross-stores-raises-price-target-239",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "ROST"
-      ],
-      "created_at": "2026-08-21T15:32:26Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Neutral rating maintained despite price target increase suggests cautious optimism with balanced outlook."
-    },
-    {
-      "id": "61358813",
-      "headline": "Barclays Maintains Overweight on Ross Stores, Raises Price Target to $298",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61358813/barclays-maintains-overweight-ross-stores-raises-price-target-298",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "ROST"
-      ],
-      "created_at": "2026-08-21T15:17:20Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains positive rating and raises price target, signaling confidence in stock appreciation."
-    },
-    {
-      "id": "61358753",
-      "headline": "Here's How Much $100 Invested In Phillips 66 5 Years Ago Would Be Worth Today",
-      "summary": "Phillips 66 (NYSE:PSX) has outperformed the market over the past 5 years by 16.51% on an annualized basis producing an average annual return of 27.83%. Currently, Phillips 66 has a market capitalization of $96.28",
-      "url": "https://www.benzinga.com/news/26/08/61358753/here-s-how-much-100-invested-phillips-66-5-years-ago-would-be-worth-today",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "PSX"
-      ],
-      "created_at": "2026-08-21T15:15:39Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong 5-year outperformance with 27.83% average annual return significantly exceeds market expectations."
-    },
-    {
-      "id": "61357655",
-      "headline": "Wells Fargo Maintains Equal-Weight on Ross Stores, Raises Price Target to $248",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61357655/wells-fargo-maintains-equal-weight-ross-stores-raises-price-target-248",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "ROST"
-      ],
-      "created_at": "2026-08-21T14:47:39Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Price target raised to $248 indicates positive outlook despite maintaining equal-weight rating."
-    },
-    {
-      "id": "61354972",
-      "headline": "Bernstein Maintains Market Perform on Ross Stores, Raises Price Target to $240",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61354972/bernstein-maintains-market-perform-ross-stores-raises-price-target-240",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "ROST"
-      ],
-      "created_at": "2026-08-21T13:41:12Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Market Perform rating maintained despite price target increase suggests modest positive but not strong conviction."
+      "reason": "Whale alerts indicate large institutional activity, suggesting potential trading opportunities and market interest in financial stocks."
     }
   ]
 }
