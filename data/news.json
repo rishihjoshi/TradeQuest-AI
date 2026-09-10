@@ -1,7 +1,238 @@
 {
-  "generated_at": "2026-09-07T18:18:16Z",
+  "generated_at": "2026-09-10T17:07:21Z",
   "article_count": 30,
   "articles": [
+    {
+      "id": "61703497",
+      "headline": "If You Invested $100 In Valero Energy Stock 20 Years Ago, You Would Have This Much Today",
+      "summary": "Valero Energy (NYSE:VLO) has outperformed the market over the past 20 years by 1.39% on an annualized basis producing an average annual return of 10.55%. Currently, Valero Energy has a market capitalization of $112.67",
+      "url": "https://www.benzinga.com/news/26/09/61703497/if-you-invested-100-valero-energy-stock-20-years-ago-you-would-have-much-today",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "VLO"
+      ],
+      "created_at": "2026-09-09T23:00:29Z",
+      "sentiment": "bull",
+      "confidence": 0.92,
+      "reason": "Stock outperformed market with strong 10.55% annualized returns over 20 years."
+    },
+    {
+      "id": "61685641",
+      "headline": "Oil Hits $100: Which Stocks And ETFs Win Or Lose?",
+      "summary": "Brent topped $100 after US strikes on Iranian tankers. Refiners have doubled in 2026. Airlines, REITs and gold miners are on the wrong side.",
+      "url": "https://www.benzinga.com/markets/commodities/26/09/61685641/oil-100-barrel-winners-losers-stocks-etfs",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "COP",
+        "CRAK",
+        "CVX",
+        "DAL",
+        "GDX",
+        "JETS",
+        "MPC",
+        "NEM",
+        "PSX",
+        "SPY",
+        "UAL",
+        "VLO",
+        "XLE",
+        "XLK",
+        "XLRE",
+        "XOM"
+      ],
+      "created_at": "2026-09-09T13:25:39Z",
+      "sentiment": "neutral",
+      "confidence": 0.65,
+      "reason": "Mixed impacts: bullish for refiners/energy, bearish for airlines/REITs/gold miners."
+    },
+    {
+      "id": "61684291",
+      "headline": "Jim Cramer: Reliance Is \u2018Terrific,\u2019 but He Prefers This Steel Stock",
+      "summary": "Cramer avoids AstraZeneca, Joby and Grab; favors Trinity, Nucor over Reliance, and praises Simon Property and Federal Realty.",
+      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/09/61684291/jim-cramer-reliance-is-terrific-but-he-prefers-this-steel-stock",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "AZN",
+        "FRT",
+        "GRAB",
+        "JOBY",
+        "NUE",
+        "RS",
+        "SPG",
+        "TRN"
+      ],
+      "created_at": "2026-09-09T12:56:55Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Cramer praises multiple stocks (Trinity, Nucor, Simon Property, Federal Realty) as favorable investments."
+    },
+    {
+      "id": "61677544",
+      "headline": "Reported Earlier, Northern Trust Expands Retail Unit Trust Capabilities In Singapore Through New Relationship With Perpetual",
+      "summary": "",
+      "url": "https://www.benzinga.com/quote/NTRS",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "NTRS"
+      ],
+      "created_at": "2026-09-09T07:09:53Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Northern Trust expansion of retail unit trust capabilities signals business growth and market opportunity"
+    },
+    {
+      "id": "61664405",
+      "headline": "$1000 Invested In Jabil 10 Years Ago Would Be Worth This Much Today",
+      "summary": "Jabil (NYSE:JBL) has outperformed the market over the past 10 years by 17.45% on an annualized basis producing an average annual return of 31.12%. Currently, Jabil has a market capitalization of $32.69 billion.  Buying",
+      "url": "https://www.benzinga.com/news/26/09/61664405/1000-invested-jabil-10-years-ago-would-be-worth-much-today",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "JBL"
+      ],
+      "created_at": "2026-09-08T15:45:21Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Stock significantly outperformed market with 31.12% annualized returns over 10 years"
+    },
+    {
+      "id": "61662570",
+      "headline": "UBS Maintains Buy on Marathon Petroleum, Raises Price Target to $450",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/09/61662570/ubs-maintains-buy-marathon-petroleum-raises-price-target-450",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "MPC"
+      ],
+      "created_at": "2026-09-08T14:57:15Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "UBS maintains buy rating and raises price target, indicating positive outlook for Marathon Petroleum stock."
+    },
+    {
+      "id": "61662453",
+      "headline": "UBS Maintains Buy on Phillips 66, Raises Price Target to $300",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/09/61662453/ubs-maintains-buy-phillips-66-raises-price-target-300",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "PSX"
+      ],
+      "created_at": "2026-09-08T14:54:30Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "UBS maintains buy rating and raises price target, indicating positive outlook for Phillips 66."
+    },
+    {
+      "id": "61662305",
+      "headline": "UBS Maintains Buy on Valero Energy, Raises Price Target to $450",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/09/61662305/ubs-maintains-buy-valero-energy-raises-price-target-450",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "VLO"
+      ],
+      "created_at": "2026-09-08T14:50:42Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "UBS maintains buy rating and raises price target, indicating positive outlook for Valero Energy stock."
+    },
+    {
+      "id": "61660652",
+      "headline": "Goldman Sachs Maintains Buy on Jabil, Lowers Price Target to $375",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/09/61660652/goldman-sachs-maintains-buy-jabil-lowers-price-target-375",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "JBL"
+      ],
+      "created_at": "2026-09-08T14:13:47Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Buy rating maintained despite price target reduction, indicating continued upside conviction."
+    },
+    {
+      "id": "61657973",
+      "headline": "Hormuz Risk, $100 Oil and 4 ETFs Investors Must Watch",
+      "summary": "Iran-Hormuz tensions are pushing Brent toward $100. Here\u2019s how BNO, USO, XLE and XOP could respond to a potential oil supply shock.",
+      "url": "https://www.benzinga.com/etfs/sector-etfs/26/09/61657973/hormuz-risk-100-oil-and-4-etfs-investors-must-watch",
+      "author": "Chandrima Sanyal",
+      "source": "benzinga",
+      "symbols": [
+        "BNO",
+        "COP",
+        "CVX",
+        "MPC",
+        "USO",
+        "VLO",
+        "XLE",
+        "XOM",
+        "XOP"
+      ],
+      "created_at": "2026-09-08T13:30:01Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Rising oil prices and geopolitical tensions typically benefit oil-related ETFs like BNO, USO, XLE, and XOP."
+    },
+    {
+      "id": "61656318",
+      "headline": "Top 3 Energy Stocks That Could Sink Your Portfolio This Month",
+      "summary": "Marathon Petroleum, Phillips 66 and CVR Energy show overbought RSI readings above 70, warning momentum-focused energy investors.",
+      "url": "https://www.benzinga.com/trading-ideas/short-ideas/26/09/61656318/top-3-energy-stocks-that-could-sink-your-portfolio-this-month",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "CVI",
+        "MPC",
+        "PSX"
+      ],
+      "created_at": "2026-09-08T12:40:51Z",
+      "sentiment": "bear",
+      "confidence": 0.95,
+      "reason": "Overbought technical indicators warn of potential price declines for these energy stocks."
+    },
+    {
+      "id": "61651457",
+      "headline": "Canada Claps Back at Trump With Retaliatory Tariffs on More Than $20 Billion of US Goods, Hitting Steel, Milk and More",
+      "summary": "Canada\u2019s new tariffs on over $20 billion of U.S. goods take effect, targeting steel, milk, apparel and other imports.",
+      "url": "https://www.benzinga.com/news/macro-notification/26/09/61651457/canada-claps-back-at-trump-with-retaliatory-tariffs-on-more-than-20-billion-of-us-goods-hitting-steel-milk-and-more",
+      "author": "Namrata Sen",
+      "source": "benzinga",
+      "symbols": [
+        "CAT",
+        "DE",
+        "NUE",
+        "TGT",
+        "WMT"
+      ],
+      "created_at": "2026-09-08T09:06:16Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Retaliatory tariffs on US goods increase trade tensions and costs for affected industries."
+    },
+    {
+      "id": "61650801",
+      "headline": "Reported Earlier, Northern Trust Chosen To Manage Key Services For $4.8B UK Pension Fund",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/09/61650801/reported-earlier-northern-trust-chosen-manage-key-services-4-8b-uk-pension-fund",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "NTRS"
+      ],
+      "created_at": "2026-09-08T07:49:04Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Northern Trust secured $4.8B UK pension fund management contract, indicating strong business expansion and client confidence."
+    },
     {
       "id": "61648403",
       "headline": "Here's How Much $100 Invested In Nucor 5 Years Ago Would Be Worth Today",
@@ -14,8 +245,8 @@
       ],
       "created_at": "2026-09-07T15:45:29Z",
       "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Stock significantly outperformed market with 18.39% annualized returns over 5 years."
+      "confidence": 0.92,
+      "reason": "Strong outperformance with 18.39% average annual returns significantly exceeding market over 5 years."
     },
     {
       "id": "61643418",
@@ -34,7 +265,7 @@
       "created_at": "2026-09-05T13:00:09Z",
       "sentiment": "neutral",
       "confidence": 0.85,
-      "reason": "Article describes monitoring interest without positive or negative performance indicators."
+      "reason": "Article discusses investor interest in stocks without expressing positive or negative views."
     },
     {
       "id": "61642314",
@@ -49,7 +280,7 @@
       "created_at": "2026-09-04T22:15:18Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Strong long-term outperformance with 26.83% annualized returns significantly exceeding market."
+      "reason": "Strong 10-year outperformance with 26.83% annualized returns significantly exceeds market benchmarks."
     },
     {
       "id": "61634168",
@@ -64,7 +295,7 @@
       "created_at": "2026-09-04T16:15:43Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Stock outperformed market with strong 14.83% annualized returns over 10 years."
+      "reason": "Stock outperformed market with strong 14.83% annualized returns over 10 years"
     },
     {
       "id": "61611154",
@@ -79,7 +310,7 @@
       "created_at": "2026-09-03T17:17:44Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Analyst maintains overweight rating and raises price target, signaling confidence in stock appreciation."
+      "reason": "Overweight rating maintained with price target raised signals continued positive outlook."
     },
     {
       "id": "61611068",
@@ -92,9 +323,9 @@
         "PSX"
       ],
       "created_at": "2026-09-03T17:14:38Z",
-      "sentiment": "neutral",
+      "sentiment": "bull",
       "confidence": 0.75,
-      "reason": "Neutral rating maintained despite price target increase suggests mixed outlook on Phillips 66."
+      "reason": "Price target increase signals analyst confidence despite neutral rating maintenance."
     },
     {
       "id": "61611031",
@@ -109,7 +340,7 @@
       "created_at": "2026-09-03T17:13:37Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Analyst maintains overweight rating and raises price target, indicating positive outlook"
+      "reason": "Analyst maintains positive rating and raises price target, signaling confidence in stock appreciation."
     },
     {
       "id": "61606565",
@@ -124,7 +355,7 @@
       "created_at": "2026-09-03T15:02:20Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Strategic R&D partnership positions Keysight as leader in autonomous vehicle safety validation technology."
+      "reason": "Strategic AI safety collaboration enhances Keysight's positioning in autonomous vehicle validation market"
     },
     {
       "id": "61597617",
@@ -143,7 +374,7 @@
       "created_at": "2026-09-03T11:07:53Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Multiple analysts chose these stocks for final trades with all closing higher Wednesday."
+      "reason": "Multiple analyst picks with all stocks closing higher Wednesday indicates positive momentum."
     },
     {
       "id": "61583666",
@@ -161,7 +392,7 @@
       "created_at": "2026-09-02T17:02:03Z",
       "sentiment": "neutral",
       "confidence": 0.85,
-      "reason": "Final trades report lists multiple stocks without directional commentary or price targets."
+      "reason": "Final trades segment lists multiple stocks without directional commentary or price targets."
     },
     {
       "id": "61581001",
@@ -175,8 +406,8 @@
       ],
       "created_at": "2026-09-02T15:45:24Z",
       "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Strong long-term outperformance with 18.23% annualized returns significantly exceeding market average."
+      "confidence": 0.95,
+      "reason": "Strong 18.23% annualized returns significantly outperforming market over 15 years"
     },
     {
       "id": "61552796",
@@ -195,8 +426,8 @@
       ],
       "created_at": "2026-09-01T15:32:28Z",
       "sentiment": "neutral",
-      "confidence": 0.65,
-      "reason": "Mixed signals: Trump engagement suggests potential policy influence, but pressure on prices could be negative for refiner margins."
+      "confidence": 0.75,
+      "reason": "Meeting suggests potential policy pressure, but Trump's stock purchases indicate confidence in sector fundamentals."
     },
     {
       "id": "61549115",
@@ -211,7 +442,7 @@
       "created_at": "2026-09-01T14:07:36Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Overweight rating and raised price target indicate positive outlook for Valero Energy stock."
+      "reason": "Overweight rating maintained with raised price target signals positive outlook for Valero Energy."
     },
     {
       "id": "61549014",
@@ -226,7 +457,7 @@
       "created_at": "2026-09-01T14:06:07Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Wells Fargo maintains overweight rating and raises price target, signaling positive outlook"
+      "reason": "Overweight rating with raised price target signals strong positive outlook from major analyst."
     },
     {
       "id": "61548926",
@@ -241,7 +472,7 @@
       "created_at": "2026-09-01T14:04:45Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Overweight rating maintained with raised price target to $400 signals positive outlook."
+      "reason": "Overweight rating maintained with price target raised signals strong positive outlook for Marathon Petroleum."
     },
     {
       "id": "61543575",
@@ -267,8 +498,8 @@
       ],
       "created_at": "2026-09-01T11:49:00Z",
       "sentiment": "bear",
-      "confidence": 0.95,
-      "reason": "Rising oil prices and hawkish Fed policy threaten rate cuts and market valuations."
+      "confidence": 0.85,
+      "reason": "Oil price surge and hawkish Fed outlook threaten rate cuts, pressuring equities and economic growth."
     },
     {
       "id": "61502614",
@@ -291,263 +522,8 @@
       ],
       "created_at": "2026-08-28T17:35:17Z",
       "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Article reports whale activity tracking without directional bias or performance data."
-    },
-    {
-      "id": "61500314",
-      "headline": "Live On CNBC, Kevin Simpson Announces Bought More CF Industries",
-      "summary": "",
-      "url": "https://www.benzinga.com/quote/CF",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "CF"
-      ],
-      "created_at": "2026-08-28T16:25:26Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Executive buying additional shares signals confidence in company's future prospects"
-    },
-    {
-      "id": "61496371",
-      "headline": "Here\u2019s How Much You Would Have Made Owning Bank of New York Mellon Stock In The Last 15 Years",
-      "summary": "Bank of New York Mellon (NYSE:BNY) has outperformed the market over the past 15 years by 1.76% on an annualized basis producing an average annual return of 15.18%. Currently, Bank of New York Mellon has a market",
-      "url": "https://www.benzinga.com/news/26/08/61496371/here-s-how-much-you-would-have-made-owning-bank-new-york-mellon-stock-last-15-years",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "BNY"
-      ],
-      "created_at": "2026-08-28T15:01:05Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Stock outperformed market with strong 15.18% annualized returns over 15 years."
-    },
-    {
-      "id": "61487812",
-      "headline": "Berkshire Hathaway Cut Capital One Stake by 58% in Q2 \u2014 Billionaire Dan Loeb Is Doing the Exact Opposite",
-      "summary": "Berkshire slashed its Capital One stake by 58%, among its largest cuts, despite the stock&39;s top growth score.",
-      "url": "https://www.benzinga.com/markets/equities/26/08/61487812/warren-buffett-dumped-more-than-half-his-stake-in-a-top-growth-stock",
-      "author": "Radhika Anilkumar Nadig",
-      "source": "benzinga",
-      "symbols": [
-        "ALLY",
-        "BAC",
-        "BRK",
-        "COF",
-        "DVA",
-        "KO",
-        "M",
-        "NUE"
-      ],
-      "created_at": "2026-08-28T10:16:38Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Berkshire's 58% stake reduction signals reduced confidence in Capital One's outlook."
-    },
-    {
-      "id": "61475698",
-      "headline": "Reuters Reported President Trump Expected To Convene Meeting With U.S. Refiners And Fuel Retailers Next Week To Highlight Efforts To Bring Down Gas Prices",
-      "summary": "",
-      "url": "https://www.benzinga.com/quote/HES",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "BP",
-        "COP",
-        "CVX",
-        "HES",
-        "MPC",
-        "MRO",
-        "OXY",
-        "PBR",
-        "SHEL",
-        "SLB",
-        "XOM"
-      ],
-      "created_at": "2026-08-27T18:05:36Z",
-      "sentiment": "bull",
-      "confidence": 0.72,
-      "reason": "Presidential focus on gas price reduction suggests potential policy support for refiners and fuel retailers."
-    },
-    {
-      "id": "61451734",
-      "headline": "Northern Trust And Commonwealth Superannuation Corp. Sign MoU To Advance Tokenized Finance, Digital Assets And Institutional Settlement Infrastructure",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61451734/northern-trust-and-commonwealth-superannuation-corp-sign-mou-advance-tokenized-finance-digital-asset",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "NTRS"
-      ],
-      "created_at": "2026-08-27T00:13:51Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Strategic partnership on tokenized finance and digital assets signals growth opportunities and innovation leadership."
-    },
-    {
-      "id": "61441690",
-      "headline": "CNBC Halftime Report Final Trades: Valero Energy, Micron Technology, Flowserve, Howmet Aerospace",
-      "summary": "",
-      "url": "https://www.benzinga.com/quote/HWM",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "FLS",
-        "HWM",
-        "MU",
-        "VLO"
-      ],
-      "created_at": "2026-08-26T17:02:03Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Headline lists multiple stocks without indicating positive or negative performance or outlook."
-    },
-    {
-      "id": "61437587",
-      "headline": "Secretary Brooke Rollins Posts On X \"BIG DAY AHEAD FOR AMERICAN FERTILIZER. Headed to Louisiana, where we will break ground on two major projects bringing critical fertilizer production back to Americ",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/08/61437587/secretary-brooke-rollins-posts-on-x-big-day-ahead-for-american-fertilizer-headed-to-louisiana-where-we-will-break-ground-on-two-major-projects-bringing-critical-fertilizer-production-back-to-americ-2",
-      "author": "Benzinga News-desk",
-      "source": "benzinga",
-      "symbols": [
-        "CF",
-        "GRO",
-        "ICL",
-        "IPI",
-        "LXU",
-        "MOS",
-        "NTR",
-        "SPY",
-        "SQM",
-        "UAN"
-      ],
-      "created_at": "2026-08-26T14:58:42Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Major fertilizer production projects breaking ground in US signals growth and positive momentum for domestic industry."
-    },
-    {
-      "id": "61424045",
-      "headline": "$1000 Invested In Valero Energy 5 Years Ago Would Be Worth This Much Today",
-      "summary": "Valero Energy (NYSE:VLO) has outperformed the market over the past 5 years by 27.71% on an annualized basis producing an average annual return of 38.82%. Currently, Valero Energy has a market capitalization of $98.63",
-      "url": "https://www.benzinga.com/news/26/08/61424045/1000-invested-valero-energy-5-years-ago-would-be-worth-much-today",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "VLO"
-      ],
-      "created_at": "2026-08-25T21:45:37Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong 5-year outperformance with 38.82% average annual returns significantly exceeds market."
-    },
-    {
-      "id": "61414191",
-      "headline": "Canada Fires Back At Trump: Up to 50% Tariffs on $20 Billion of US Goods",
-      "summary": "Canada hit back at Trump with tariffs of up to 50% on $20B of U.S. goods, escalating the trade war ahead of Sept. 8.",
-      "url": "https://www.benzinga.com/markets/macro-economic-events/26/08/61414191/canada-trump-tariffs-50-percent-us-goods",
-      "author": "Piero Cingari",
-      "source": "benzinga",
-      "symbols": [
-        "AA",
-        "CLF",
-        "DE",
-        "EWC",
-        "NUE",
-        "WHR"
-      ],
-      "created_at": "2026-08-25T15:57:51Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Escalating trade war with retaliatory tariffs creates uncertainty and negatively impacts cross-border commerce."
-    },
-    {
-      "id": "61405979",
-      "headline": "Top 3 Energy Stocks That May Keep You Up At Night In Q3",
-      "summary": "As of Aug. 25, 2026, three warning stocks in energy sector for momentum traders. RSI indicator shows overbought asset. Stocks: TK, PSX, BTU.",
-      "url": "https://www.benzinga.com/trading-ideas/short-ideas/26/08/61405979/top-3-energy-stocks-that-may-keep-you-up-at-night-in-q3",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "BTU",
-        "PSX",
-        "TK"
-      ],
-      "created_at": "2026-08-25T12:35:03Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Warning stocks with overbought RSI signals potential pullback risk for traders."
-    },
-    {
-      "id": "61401124",
-      "headline": "Schumer, Pritzker and Others Slam Trump\u2019s Canada Tariffs: \u2018Economic Warfare\u2019 Could Raise Costs for Americans",
-      "summary": "Schumer warned Trump\u2019s Canada tariffs could raise costs for American families and manufacturers, urging Republicans to challenge the trade policy.",
-      "url": "https://www.benzinga.com/news/politics/26/08/61401124/schumer-pritzker-and-others-slam-trumps-canada-tariffs-economic-warfare-could-raise-costs-for-americans",
-      "author": "Snigdha Gairola",
-      "source": "benzinga",
-      "symbols": [
-        "CLF",
-        "GM",
-        "NUE",
-        "STLD"
-      ],
-      "created_at": "2026-08-25T07:59:40Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Tariffs on Canada could increase costs for American consumers and manufacturers, creating economic headwinds."
-    },
-    {
-      "id": "61400565",
-      "headline": "Mike Pence Warns Trump 'The Last Thing We Need' Is a Canada Trade War, Says Tariffs Could Hurt American Families and Businesses",
-      "summary": "Former VP Mike Pence warns escalating US-Canada tariffs could harm Americans, urges Trump to negotiate instead of deepening conflict.",
-      "url": "https://www.benzinga.com/news/politics/26/08/61400565/mike-pence-trump-canada-trade-war-tariffs-american-families-businesses",
-      "author": "Snigdha Gairola",
-      "source": "benzinga",
-      "symbols": [
-        "CLF",
-        "F",
-        "GM",
-        "NUE",
-        "STLA",
-        "STLD"
-      ],
-      "created_at": "2026-08-25T06:12:37Z",
-      "sentiment": "bear",
-      "confidence": 0.75,
-      "reason": "Warnings about tariffs harming American families and businesses suggest economic headwinds for companies."
-    },
-    {
-      "id": "61392396",
-      "headline": "Trump\u2019s 50% Canada Auto Tariff Shock: These ETFs Could Be in the Crosshairs",
-      "summary": "Trump\u2019s proposed 50% tariff on Canadian autos could hit automakers and supply chains. Here are the ETFs most exposed to the trade-war shock.",
-      "url": "https://www.benzinga.com/etfs/sector-etfs/26/08/61392396/trumps-50-percent-canada-auto-tariff-shock-these-etfs-could-be-in-the-crosshairs",
-      "author": "Chandrima Sanyal",
-      "source": "benzinga",
-      "symbols": [
-        "AAPL",
-        "CARZ",
-        "CLF",
-        "DRIV",
-        "F",
-        "GM",
-        "GOOGL",
-        "IYJ",
-        "MSFT",
-        "MU",
-        "NUE",
-        "NVDA",
-        "PAVE",
-        "STLA",
-        "STLD",
-        "TSLA",
-        "XME"
-      ],
-      "created_at": "2026-08-24T18:14:24Z",
-      "sentiment": "bear",
-      "confidence": 0.95,
-      "reason": "Proposed 50% tariffs on Canadian autos threaten automakers and supply chains with significant cost pressures."
+      "confidence": 0.7,
+      "reason": "Article describes whale tracking activity as informational tool without expressing positive or negative outlook."
     }
   ]
 }
