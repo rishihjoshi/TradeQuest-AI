@@ -1,14 +1,10 @@
 {
-  "timestamp": "2026-09-10T17:07:05Z",
-  "mode": "market_open",
+  "timestamp": "2026-09-10T23:19:48Z",
+  "mode": "post_close",
   "orders_placed": [],
   "orders_skipped": [
     {
       "symbol": "NUE",
-      "reason": "trading halted \u2014 unresolved invariant breach"
-    },
-    {
-      "symbol": "BNY",
       "reason": "trading halted \u2014 unresolved invariant breach"
     },
     {
@@ -17,12 +13,12 @@
     }
   ],
   "errors": [],
-  "cash_pct_after": 43.56,
+  "cash_pct_after": 43.75,
   "long_only_breach": false,
   "invariant_breaches": [
-    "sector Energy at 31.0% exceeds the 30% cap"
+    "sector Energy at 30.7% exceeds the 30% cap"
   ],
-  "breach_streak": 13,
+  "breach_streak": 14,
   "trading_halted": true,
   "dry_run": false
 }
