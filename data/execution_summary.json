@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-09-09T23:26:22Z",
-  "mode": "post_close",
+  "timestamp": "2026-09-10T17:07:05Z",
+  "mode": "market_open",
   "orders_placed": [],
   "orders_skipped": [
     {
@@ -10,15 +10,19 @@
     {
       "symbol": "BNY",
       "reason": "trading halted \u2014 unresolved invariant breach"
+    },
+    {
+      "symbol": "JBL",
+      "reason": "trading halted \u2014 unresolved invariant breach"
     }
   ],
   "errors": [],
-  "cash_pct_after": 43.4,
+  "cash_pct_after": 43.56,
   "long_only_breach": false,
   "invariant_breaches": [
     "sector Energy at 31.0% exceeds the 30% cap"
   ],
-  "breach_streak": 12,
+  "breach_streak": 13,
   "trading_halted": true,
   "dry_run": false
 }
