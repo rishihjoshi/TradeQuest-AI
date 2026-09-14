@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-09-11T23:27:51Z",
-  "mode": "post_close",
+  "timestamp": "2026-09-14T18:50:52Z",
+  "mode": "market_open",
   "orders_placed": [],
   "orders_skipped": [
     {
@@ -8,7 +8,7 @@
       "reason": "trading halted \u2014 unresolved invariant breach"
     },
     {
-      "symbol": "NTRS",
+      "symbol": "JBL",
       "reason": "trading halted \u2014 unresolved invariant breach"
     },
     {
@@ -16,21 +16,25 @@
       "reason": "trading halted \u2014 unresolved invariant breach"
     },
     {
-      "symbol": "JBL",
+      "symbol": "NTRS",
       "reason": "trading halted \u2014 unresolved invariant breach"
     },
     {
       "symbol": "ROST",
       "reason": "trading halted \u2014 unresolved invariant breach"
+    },
+    {
+      "symbol": "BNY",
+      "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 43.63,
+  "cash_pct_after": 44.14,
   "long_only_breach": false,
   "invariant_breaches": [
-    "sector Energy at 30.9% exceeds the 30% cap"
+    "sector Energy at 30.7% exceeds the 30% cap"
   ],
-  "breach_streak": 16,
+  "breach_streak": 17,
   "trading_halted": true,
   "dry_run": false
 }
