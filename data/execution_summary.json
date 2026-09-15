@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-09-15T17:45:42Z",
-  "mode": "market_open",
+  "timestamp": "2026-09-15T23:36:05Z",
+  "mode": "post_close",
   "orders_placed": [],
   "orders_skipped": [
     {
@@ -33,12 +33,12 @@
     }
   ],
   "errors": [],
-  "cash_pct_after": 43.49,
+  "cash_pct_after": 43.5,
   "long_only_breach": false,
   "invariant_breaches": [
     "sector Energy at 31.6% exceeds the 30% cap"
   ],
-  "breach_streak": 19,
+  "breach_streak": 20,
   "trading_halted": true,
   "dry_run": false
 }
