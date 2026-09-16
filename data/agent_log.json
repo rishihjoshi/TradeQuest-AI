@@ -1,7 +1,27 @@
 {
-  "last_run": "2026-09-16T17:42:05Z",
-  "last_type": "day_start",
+  "last_run": "2026-09-16T23:44:15Z",
+  "last_type": "day_end",
   "runs": [
+    {
+      "id": "RUN-20260916-2344",
+      "timestamp": "2026-09-16T23:44:15Z",
+      "type": "day_end",
+      "model": "claude-sonnet-4-6",
+      "assessment": "agent unavailable \u2014 BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cf81MgEs9jYaEy8z1m8Js'}",
+      "regime": "",
+      "regime_confidence": 0,
+      "flags": [],
+      "decisions": [],
+      "cash_action": "maintain",
+      "cash_rationale": "",
+      "summary": "Agent run skipped: model API unavailable. Execution continued using the previous valid run's approvals.",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      "parse_failed": true,
+      "agent_unavailable": true
+    },
     {
       "id": "RUN-20260916-1742",
       "timestamp": "2026-09-16T17:42:05Z",
@@ -12173,153 +12193,6 @@
       "sell_tier_summary": {
         "tier1_execute": 1,
         "tier2_deferred": 5
-      }
-    },
-    {
-      "id": "RUN-20260710-2233",
-      "timestamp": "2026-07-10T22:33:23Z",
-      "type": "day_end",
-      "model": "claude-sonnet-4-6",
-      "assessment": "Portfolio sits at +4.6% unrealized PnL ($453) against initial capital in a confirmed bull regime (breadth 65%, SPY above 200-MA, VIX ~15.5). The critical JBL anomaly \u2014 a net short position of -7 shares with negative weight -21.97% \u2014 remains unresolved despite 5+ consecutive sell flags and a partial fill of only 1 share at market open today. This is the single most urgent issue. Cash is elevated at 11.9% vs 5% bull target, partly due to the JBL short distorting portfolio math. C and GS report earnings Monday July 14 \u2014 both are profitable and held, so no preemptive sell, but earnings risk is flagged.",
-      "regime": "bull",
-      "regime_confidence": 0.88,
-      "flags": [
-        "JBL: CRITICAL ANOMALY \u2014 net short -7 shares, weight -21.97%, market_value -$2312. Only 1 share was sold at open today vs the full position needed. This short is generating ongoing losses (-$25.42) and distorting portfolio metrics. Must be fully closed immediately. 6th consecutive SELL flag. Tier 1, next_open.",
-        "C: Earnings Monday 2026-07-14 TAS (EPS est $2.72). Profitable position +$60.04 (+11.93%, entry 2026-07-07). momentum_rank=0, fundamentals null \u2014 data quality issue, not confirmed failure. Hold gate active; no sell on momentum alone. Monitor post-earnings.",
-        "GS: Earnings Monday 2026-07-14 TAS (EPS est $14.47). Profitable position +$27.29 (+2.66%, entry 2026-07-07). momentum_rank=0, fundamentals null \u2014 data quality issue. Hold gate active. Monitor post-earnings.",
-        "ANET: momentum_rank=0, all fundamentals null, ma_50d null \u2014 persistent data quality failure for 5+ runs. Profitable +$142.11 (+14.48%, entry 2026-07-02). Hold gate active; structural sell requires confirmed Rule A/B/D, not data gaps.",
-        "WDC: momentum_rank=0, fundamentals null, ma_50d null \u2014 data quality issue. Profitable +$96.59 (+19.89%, entry 2026-07-07). volatility_30d=1.08 \u2014 extremely high, near 90th pct threshold but not confirmed above universe percentile. Hold gate active.",
-        "MS: momentum_rank=0, fundamentals null, ma_50d null \u2014 data quality issue. Profitable +$38.56 (+4.53%, entry 2026-07-07). Hold gate active.",
-        "FRT: momentum_rank=8 (top 30% if universe ~500 \u2192 top 30% threshold ~rank 150, rank 8 passes), small loss -$2.72 (-0.28%, entry 2026-07-08). Above 50-MA. No structural rule triggered. Loss is de minimis; monitor for Rule E confirmation.",
-        "WST: New position entered 2026-07-10, loss -$11.26 (-3.08%). Entry is fresh (1 day). Above 50-MA ($353.71 vs MA $324.46). momentum_rank=6, passes top 30%. Too early for Rule E confirmation.",
-        "Cash at 11.87% vs 5% bull target \u2014 elevated due to JBL short distortion and pending fills. Will normalize once JBL short is closed."
-      ],
-      "decisions": [
-        {
-          "action": "SELL",
-          "symbol": "JBL",
-          "reason": "CRITICAL \u2014 net short position of -7 shares remains open. Today only 1 share was sold, leaving -7 shares short with market_value -$2312.03 and weight -21.97%. This is an anomalous short that has generated a loss of -$25.42 (-1.11%, entry 2026-05-04). Position is below 50-day MA ($330.29 vs MA $358.37, Rule A confirmed). momentum_rank=0 (Rule E, loss position). Weight -21.97% breaches hard cap in the wrong direction (Rule C). 6th consecutive SELL flag. Must close entire remaining short position at next open. Tier 1.",
-          "rule_triggered": "trend_break",
-          "sell_tier": "tier1",
-          "urgency": "next_open"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "ANET",
-          "reason": "Profitable position +$142.11 (+14.48%, entry 2026-07-02). momentum_rank=0 and all fundamentals null \u2014 this is a data quality failure, not confirmed momentum decay or quality failure. Hold gate active: cannot sell a profitable position on momentum decay alone (Rule E). No structural rules confirmed: ma_50d is null (unknown_ma \u2014 lenient treatment per strategy). Rule A requires 3 consecutive days price < 50-MA with confirmed MA data; Rule B requires 2 consecutive quarters negative EPS with confirmed data. Neither is met. Continue holding; flag for data resolution at next rebalance.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "BNY",
-          "reason": "Profitable +$28.51 (+2.76%, entry 2026-07-01). momentum_rank=7 \u2014 passes top 30% of universe. Above 50-MA ($151.92 vs MA $140.50). EPS growth 41.8%, revenue growth 13.4% \u2014 passes quality filter. Forward P/E 15.4 \u2014 passes valuation. Thesis intact: quality financials name with strong momentum.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "C",
-          "reason": "Profitable +$60.04 (+11.93%, entry 2026-07-07). momentum_rank=0, fundamentals null \u2014 data quality issue persisting 5+ runs. Hold gate active: cannot sell profitable position on momentum decay alone. Earnings Monday 2026-07-14 TAS (EPS est $2.72) \u2014 elevated event risk. Strategy does not sell solely on earnings risk; flagging as WATCH. If earnings disappoint and price breaks below 50-MA for 3 consecutive days (Rule A), Tier 1 sell would be warranted. No structural sell today.",
-          "rule_triggered": "momentum_decay",
-          "sell_tier": "tier2",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "CAT",
-          "reason": "Profitable +$30.47 (+3.31%, entry 2026-07-07). momentum_rank=1 \u2014 top momentum stock in portfolio. Above 50-MA ($952.41 vs MA $922.97). EPS growth 30.2%, revenue growth 22.2% \u2014 strong quality. Forward P/E 31.3 \u2014 passes valuation. All four filters passing. Core holding \u2014 thesis fully intact.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "CSCO",
-          "reason": "Profitable +$54.69 (+5.26%, entry 2026-07-02). momentum_rank=2 \u2014 strong momentum. Above 50-MA ($121.61 vs MA $113.06). EPS growth 37.1%, revenue growth 12.0% \u2014 passes quality. Forward P/E 25.4 \u2014 passes valuation. All filters passing. Thesis intact.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "FRT",
-          "reason": "Small loss -$2.72 (-0.28%, entry 2026-07-08). momentum_rank=8 \u2014 passes top 30% threshold. Above 50-MA ($120.94 vs MA $119.40). EPS growth 152.5%, revenue growth 10.3% \u2014 passes quality. Forward P/E 39.0 \u2014 passes valuation (below 40). Rule E momentum decay: rank 8 does not confirm outside top 30%; no decay signal. Loss is de minimis and position is only 2 days old. No Rule A/B/C/D triggered. Hold.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "GS",
-          "reason": "Profitable +$27.29 (+2.66%, entry 2026-07-07). momentum_rank=0, fundamentals null \u2014 persistent data quality issue. Hold gate active: cannot sell profitable position on momentum decay alone. Earnings Monday 2026-07-14 TAS (EPS est $14.47) \u2014 material event risk next week. WATCH for post-earnings price action; if Rule A triggered post-earnings, Tier 1 sell warranted.",
-          "rule_triggered": "momentum_decay",
-          "sell_tier": "tier2",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "IBKR",
-          "reason": "Profitable +$5.08 (+0.45%, entry 2026-07-02). momentum_rank=5 \u2014 passes top 30%. Above 50-MA ($94.30 vs MA $87.49). EPS growth 22.9%, revenue growth 16.8% \u2014 passes quality. Forward P/E 31.9 \u2014 passes valuation. All filters passing. Thesis intact.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "MNST",
-          "reason": "Profitable +$9.27 (+1.07%, entry 2026-07-09). momentum_rank=4 \u2014 passes top 30%. Above 50-MA ($97.49 vs MA $88.68). EPS growth 28.9%, revenue growth 26.9% \u2014 strong quality. Forward P/E 37.6 \u2014 passes valuation (below 40). All filters passing. Thesis intact.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "MS",
-          "reason": "Profitable +$38.56 (+4.53%, entry 2026-07-07). momentum_rank=0, fundamentals null, ma_50d null \u2014 persistent data quality issue for 2+ runs. Hold gate active: cannot sell profitable position on momentum decay alone (Rule E). No structural rules confirmed with null MA data. WATCH pending data resolution at next rebalance.",
-          "rule_triggered": "momentum_decay",
-          "sell_tier": "tier2",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "TXN",
-          "reason": "Profitable +$0.17 (+0.02%, entry 2026-07-09). momentum_rank=3 \u2014 passes top 30%. Above 50-MA ($311.46 vs MA $298.66). EPS growth 31.3%, revenue growth 18.6% \u2014 passes quality. Forward P/E 32.5 \u2014 passes valuation. All filters passing. Thesis intact; position is newly re-entered.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "WDC",
-          "reason": "Profitable +$96.59 (+19.89%, entry 2026-07-07). momentum_rank=0, fundamentals null, ma_50d null \u2014 persistent data quality issue. Hold gate active: cannot sell profitable position on momentum decay alone. volatility_30d=1.0799 \u2014 extremely elevated; if this confirms above 90th percentile of universe it would fail Risk filter (Rule 4) but this is not a sell rule per se. No structural Rule A/B/D confirmed. WATCH for data resolution; assess parabolic Rule D: +19.89% in 3 days is fast but not yet >60% in <60 days.",
-          "rule_triggered": "momentum_decay",
-          "sell_tier": "tier2",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "WST",
-          "reason": "Small loss -$11.26 (-3.08%, entry 2026-07-10). Position is 1 day old. momentum_rank=6 \u2014 passes top 30%. Above 50-MA ($353.71 vs MA $324.46). EPS growth 56.1%, revenue growth 21.0% \u2014 strong quality. Forward P/E 37.0 \u2014 passes valuation. No Rule E confirmation possible (needs 5 consecutive days). No structural rules triggered. Hold.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        }
-      ],
-      "cash_action": "maintain",
-      "cash_rationale": "Cash at 11.87% vs 5% bull target. Excess cash is partly structural (JBL short distorting portfolio math with -$2312 negative market value). Closing JBL will add ~$2312 in proceeds but also eliminate the -$2312 liability, net effect depends on how Alpaca accounts for the short cover. Maintain current cash level until JBL is resolved; do not deploy additional capital mid-month.",
-      "summary": "Day-end: SELL JBL (6th flag, critical -7 share short, Tier 1 next_open); WATCH C/GS pre-earnings Monday; HOLD all profitable positions under hold gate; portfolio +4.6% unrealized in confirmed bull regime.",
-      "usage": {
-        "input_tokens": 15219,
-        "output_tokens": 3848,
-        "cache_read_tokens": 0,
-        "cache_write_tokens": 8817
-      },
-      "sell_tier_summary": {
-        "tier1_execute": 1,
-        "tier2_deferred": 4
       }
     }
   ]

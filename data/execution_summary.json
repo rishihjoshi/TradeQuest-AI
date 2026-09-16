@@ -1,20 +1,51 @@
 {
-  "timestamp": "2026-09-16T21:31:51Z",
+  "timestamp": "2026-09-16T23:44:14Z",
   "mode": "post_close",
   "orders_placed": [
     {
-      "action": "SELL",
-      "symbol": "BNY",
-      "qty": 5.0,
+      "action": "BUY",
+      "symbol": "NUE",
+      "qty": 2.950472,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "JBL",
+      "qty": 3.147723,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "KEYS",
+      "qty": 2.061477,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "NTRS",
+      "qty": 5.398546,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "ROST",
+      "qty": 2.548552,
       "status": "submitted"
     }
   ],
-  "orders_skipped": [],
+  "orders_skipped": [
+    {
+      "symbol": "BNY",
+      "reason": "blocked by agent approval or risk gate"
+    }
+  ],
   "errors": [],
-  "cash_pct_after": 43.5,
+  "cash_pct_after": 43.49,
   "long_only_breach": false,
-  "invariant_breaches": [],
-  "breach_streak": 0,
+  "invariant_breaches": [
+    "sector Energy at 31.8% exceeds the 30% cap"
+  ],
+  "breach_streak": 1,
   "trading_halted": false,
   "dry_run": false
 }
