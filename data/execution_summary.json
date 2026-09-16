@@ -1,44 +1,20 @@
 {
-  "timestamp": "2026-09-16T17:42:43Z",
-  "mode": "market_open",
-  "orders_placed": [],
-  "orders_skipped": [
+  "timestamp": "2026-09-16T21:31:51Z",
+  "mode": "post_close",
+  "orders_placed": [
     {
+      "action": "SELL",
       "symbol": "BNY",
-      "reason": "trading halted \u2014 unresolved invariant breach"
-    },
-    {
-      "symbol": "NUE",
-      "reason": "trading halted \u2014 unresolved invariant breach"
-    },
-    {
-      "symbol": "JBL",
-      "reason": "trading halted \u2014 unresolved invariant breach"
-    },
-    {
-      "symbol": "KEYS",
-      "reason": "trading halted \u2014 unresolved invariant breach"
-    },
-    {
-      "symbol": "NTRS",
-      "reason": "trading halted \u2014 unresolved invariant breach"
-    },
-    {
-      "symbol": "ROST",
-      "reason": "trading halted \u2014 unresolved invariant breach"
-    },
-    {
-      "symbol": "BNY",
-      "reason": "blocked by agent approval or risk gate"
+      "qty": 5.0,
+      "status": "submitted"
     }
   ],
+  "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 43.29,
+  "cash_pct_after": 43.5,
   "long_only_breach": false,
-  "invariant_breaches": [
-    "sector Energy at 31.9% exceeds the 30% cap"
-  ],
-  "breach_streak": 21,
-  "trading_halted": true,
+  "invariant_breaches": [],
+  "breach_streak": 0,
+  "trading_halted": false,
   "dry_run": false
 }
