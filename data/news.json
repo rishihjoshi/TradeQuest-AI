@@ -1,7 +1,90 @@
 {
-  "generated_at": "2026-09-14T18:45:06Z",
+  "generated_at": "2026-09-17T17:43:11Z",
   "article_count": 30,
   "articles": [
+    {
+      "id": "61823187",
+      "headline": "The Next Oil Shock Has No Safety Valve \u2014 And the Bill Will Land in Your Pantry",
+      "summary": "Drone strikes shut Saudi Arabia\u2019s key pipeline, threatening global oil supplies as depleted inventories and maxed-out U.S. refineries limit relief.",
+      "url": "https://www.benzinga.com/markets/commodities/26/09/61823187/the-next-oil-shock-has-no-safety-valve-and-the-bill-will-land-in-your-pantry",
+      "author": "Stjepan Kalinic",
+      "source": "benzinga",
+      "symbols": [
+        "MPC",
+        "VLO"
+      ],
+      "created_at": "2026-09-16T17:09:57Z",
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
+    },
+    {
+      "id": "61821505",
+      "headline": "Warren Buffett, Donald Trump Bet on Same 17 Stocks \u2014 Some Might Surprise You",
+      "summary": "The investment portfolio of President Donald Trump and Berkshire Hathaway have 17 stocks in common. Here&39;s a look at the list.",
+      "url": "https://www.benzinga.com/news/politics/26/09/61821505/warren-buffett-donald-trump-bet-on-same-17-stocks-some-might-surprise-you",
+      "author": "Chris Katje",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "AXP",
+        "BAC",
+        "BRK",
+        "BRK/A",
+        "BRK/B",
+        "COF",
+        "CVX",
+        "DAL",
+        "DHI",
+        "DVA",
+        "GOOG",
+        "GOOGL",
+        "KHC",
+        "KO",
+        "KR",
+        "LEN",
+        "MCO",
+        "NUE",
+        "OXY",
+        "VRSN"
+      ],
+      "created_at": "2026-09-16T16:13:41Z",
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
+    },
+    {
+      "id": "61806682",
+      "headline": "Here's How Much $1000 Invested In Phillips 66 5 Years Ago Would Be Worth Today",
+      "summary": "Phillips 66 (NYSE:PSX) has outperformed the market over the past 5 years by 20.97% on an annualized basis producing an average annual return of 32.75%. Currently, Phillips 66 has a market capitalization of $106.40",
+      "url": "https://www.benzinga.com/news/26/09/61806682/here-s-how-much-1000-invested-phillips-66-5-years-ago-would-be-worth-today",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "PSX"
+      ],
+      "created_at": "2026-09-15T23:45:46Z",
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
+    },
+    {
+      "id": "61796458",
+      "headline": "QUICK SPARK: Diesel Squeeze Puts Valero Stock On Pace For Best Year Ever, Up 140%",
+      "summary": "Valero shares are up 140.6% in 2026, on pace for its best year ever; the diesel crack spread near $106 a barrel dwarfs gasoline&39;s $31.",
+      "url": "https://www.benzinga.com/markets/commodities/26/09/61796458/valero-stock-up-140-percent-best-year-ever-diesel-crack-spread",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "CRAK",
+        "MPC",
+        "VLO"
+      ],
+      "created_at": "2026-09-15T16:07:58Z",
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
+    },
     {
       "id": "61729677",
       "headline": "If You Invested $1000 In Marathon Petroleum Stock 15 Years Ago, You Would Have This Much Today",
@@ -13,9 +96,9 @@
         "MPC"
       ],
       "created_at": "2026-09-10T21:30:42Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Stock significantly outperformed market with strong 23.02% annualized returns over 15 years."
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61728439",
@@ -28,9 +111,9 @@
         "VLO"
       ],
       "created_at": "2026-09-10T20:39:19Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Positive price movement with 2% intraday gain following a key trading signal."
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61703497",
@@ -43,9 +126,9 @@
         "VLO"
       ],
       "created_at": "2026-09-09T23:00:29Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong 20-year outperformance with 10.55% annualized returns demonstrates consistent value creation."
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61685641",
@@ -73,9 +156,9 @@
         "XOM"
       ],
       "created_at": "2026-09-09T13:25:39Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Oil price surge benefits energy stocks; refiners doubled in value despite headwinds."
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61684291",
@@ -95,9 +178,9 @@
         "TRN"
       ],
       "created_at": "2026-09-09T12:56:55Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Cramer praises multiple stocks including Trinity, Nucor, Simon Property and Federal Realty as favorable picks."
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61677544",
@@ -110,9 +193,9 @@
         "NTRS"
       ],
       "created_at": "2026-09-09T07:09:53Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Northern Trust expands capabilities through new partnership, indicating growth and market presence strengthening."
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61664405",
@@ -125,9 +208,9 @@
         "JBL"
       ],
       "created_at": "2026-09-08T15:45:21Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong 10-year outperformance with 31.12% annualized returns and significant market cap growth."
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61662570",
@@ -140,9 +223,9 @@
         "MPC"
       ],
       "created_at": "2026-09-08T14:57:15Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "UBS maintains buy rating and raises price target, indicating positive outlook for Marathon Petroleum"
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61662453",
@@ -155,9 +238,9 @@
         "PSX"
       ],
       "created_at": "2026-09-08T14:54:30Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "UBS maintains buy rating and raises price target, indicating positive outlook for Phillips 66."
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61662305",
@@ -170,9 +253,9 @@
         "VLO"
       ],
       "created_at": "2026-09-08T14:50:42Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, indicating positive outlook"
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61660652",
@@ -185,9 +268,9 @@
         "JBL"
       ],
       "created_at": "2026-09-08T14:13:47Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Buy rating maintained despite lower price target suggests ongoing confidence in stock fundamentals."
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61657973",
@@ -208,9 +291,9 @@
         "XOP"
       ],
       "created_at": "2026-09-08T13:30:01Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Rising oil prices and supply concerns typically benefit oil-related ETFs like BNO, USO, XLE, and XOP."
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61656318",
@@ -225,9 +308,9 @@
         "PSX"
       ],
       "created_at": "2026-09-08T12:40:51Z",
-      "sentiment": "bear",
-      "confidence": 0.92,
-      "reason": "Overbought RSI readings signal potential price decline risk for these energy stocks."
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61651457",
@@ -244,9 +327,9 @@
         "WMT"
       ],
       "created_at": "2026-09-08T09:06:16Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Retaliatory tariffs on US goods create trade tensions and economic uncertainty, negatively impacting affected sectors."
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61650801",
@@ -259,9 +342,9 @@
         "NTRS"
       ],
       "created_at": "2026-09-08T07:49:04Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Northern Trust wins major contract to manage $4.8B pension fund, indicating strong client confidence and revenue growth."
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61648403",
@@ -274,9 +357,9 @@
         "NUE"
       ],
       "created_at": "2026-09-07T15:45:29Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Strong 5-year outperformance with 18.39% annual returns significantly exceeds market expectations."
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61643418",
@@ -294,8 +377,8 @@
       ],
       "created_at": "2026-09-05T13:00:09Z",
       "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Article highlights stocks of interest without positive or negative commentary on performance."
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61642314",
@@ -308,9 +391,9 @@
         "KEYS"
       ],
       "created_at": "2026-09-04T22:15:18Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong 10-year outperformance with 26.83% annualized returns significantly exceeds market"
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61634168",
@@ -323,9 +406,9 @@
         "BNY"
       ],
       "created_at": "2026-09-04T16:15:43Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Stock outperformed market with strong 14.83% average annual returns over 10 years."
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61611154",
@@ -338,9 +421,9 @@
         "VLO"
       ],
       "created_at": "2026-09-03T17:17:44Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Overweight rating maintained with price target increase signals analyst confidence in upside potential."
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61611068",
@@ -354,8 +437,8 @@
       ],
       "created_at": "2026-09-03T17:14:38Z",
       "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Neutral rating maintained despite price target increase suggests cautious optimism without strong conviction."
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61611031",
@@ -368,9 +451,9 @@
         "MPC"
       ],
       "created_at": "2026-09-03T17:13:37Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Overweight rating maintained with price target increase signals strong bullish outlook"
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61606565",
@@ -383,9 +466,9 @@
         "KEYS"
       ],
       "created_at": "2026-09-03T15:02:20Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Strategic AI safety collaboration enhances Keysight's positioning in autonomous vehicle validation market"
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61597617",
@@ -402,9 +485,9 @@
         "VLO"
       ],
       "created_at": "2026-09-03T11:07:53Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Multiple analysts selected these stocks as final trades with all positions closing higher."
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61583666",
@@ -421,8 +504,8 @@
       ],
       "created_at": "2026-09-02T17:02:03Z",
       "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Final trades segment lists multiple stocks without directional bias or commentary."
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     },
     {
       "id": "61581001",
@@ -435,74 +518,9 @@
         "ROST"
       ],
       "created_at": "2026-09-02T15:45:24Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong 15-year outperformance with 18.23% annualized returns significantly exceeds market benchmarks."
-    },
-    {
-      "id": "61552796",
-      "headline": "Trump Presses Refiners on Gas Prices Tuesday \u2014 and He's Been Buying Their Stocks",
-      "summary": "President Donald Trump is set to meet with oil executives Tuesday.",
-      "url": "https://www.benzinga.com/news/politics/26/09/61552796/trump-presses-refiners-on-gas-prices-tuesday-and-hes-been-buying-their-stocks",
-      "author": "Chris Katje",
-      "source": "benzinga",
-      "symbols": [
-        "COP",
-        "CVX",
-        "EOG",
-        "OXY",
-        "VLO",
-        "XOM"
-      ],
-      "created_at": "2026-09-01T15:32:28Z",
       "sentiment": "neutral",
-      "confidence": 0.72,
-      "reason": "Meeting suggests engagement but outcome unclear; Trump's stock purchases indicate confidence in sector."
-    },
-    {
-      "id": "61549115",
-      "headline": "Wells Fargo Maintains Overweight on Valero Energy, Raises Price Target to $389",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/09/61549115/wells-fargo-maintains-overweight-valero-energy-raises-price-target-389",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "VLO"
-      ],
-      "created_at": "2026-09-01T14:07:36Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Overweight rating maintained with price target raise signals strong confidence in stock appreciation."
-    },
-    {
-      "id": "61549014",
-      "headline": "Wells Fargo Maintains Overweight on Phillips 66, Raises Price Target to $335",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/09/61549014/wells-fargo-maintains-overweight-phillips-66-raises-price-target-335",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "PSX"
-      ],
-      "created_at": "2026-09-01T14:06:07Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Overweight rating maintained with raised price target indicates positive outlook"
-    },
-    {
-      "id": "61548926",
-      "headline": "Wells Fargo Maintains Overweight on Marathon Petroleum, Raises Price Target to $400",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/09/61548926/wells-fargo-maintains-overweight-marathon-petroleum-raises-price-target-400",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "MPC"
-      ],
-      "created_at": "2026-09-01T14:04:45Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Overweight rating and price target increase signal positive outlook for Marathon Petroleum stock."
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
     }
   ]
 }
