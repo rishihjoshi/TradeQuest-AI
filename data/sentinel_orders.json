@@ -1,12 +1,5 @@
 {
-  "timestamp": "2026-09-16T21:31:49Z",
-  "sells": [
-    {
-      "symbol": "BNY",
-      "shares": 5,
-      "rule": "trend_break",
-      "reason": "Price below 50-day MA for 4 consecutive agent runs (\u2265 3 threshold). Forced exit \u2014 sentinel Rule 2."
-    }
-  ],
-  "count": 1
+  "timestamp": "2026-09-17T21:35:45Z",
+  "sells": [],
+  "count": 0
 }
