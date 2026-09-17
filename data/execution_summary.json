@@ -1,34 +1,24 @@
 {
-  "timestamp": "2026-09-17T17:43:06Z",
-  "mode": "market_open",
-  "orders_placed": [
+  "timestamp": "2026-09-17T23:36:50Z",
+  "mode": "post_close",
+  "orders_placed": [],
+  "orders_skipped": [
     {
-      "action": "SELL",
-      "symbol": "JBL",
-      "qty": 3.0,
-      "status": "submitted"
+      "symbol": "NUE",
+      "reason": "trading halted \u2014 unresolved invariant breach"
     },
     {
-      "action": "SELL",
-      "symbol": "NTRS",
-      "qty": 5.0,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
       "symbol": "ROST",
-      "qty": 1.534675,
-      "status": "submitted"
+      "reason": "trading halted \u2014 unresolved invariant breach"
     }
   ],
-  "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 25.73,
+  "cash_pct_after": 25.78,
   "long_only_breach": false,
   "invariant_breaches": [
-    "sector Energy at 32.2% exceeds the 30% cap"
+    "sector Energy at 32.5% exceeds the 30% cap"
   ],
-  "breach_streak": 2,
-  "trading_halted": false,
+  "breach_streak": 3,
+  "trading_halted": true,
   "dry_run": false
 }
