@@ -1,7 +1,27 @@
 {
-  "last_run": "2026-09-16T23:44:15Z",
-  "last_type": "day_end",
+  "last_run": "2026-09-17T17:42:26Z",
+  "last_type": "day_start",
   "runs": [
+    {
+      "id": "RUN-20260917-1742",
+      "timestamp": "2026-09-17T17:42:26Z",
+      "type": "day_start",
+      "model": "claude-sonnet-4-6",
+      "assessment": "agent unavailable \u2014 BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cf9RaMd6hyx38zyDy4kZ9'}",
+      "regime": "",
+      "regime_confidence": 0,
+      "flags": [],
+      "decisions": [],
+      "cash_action": "maintain",
+      "cash_rationale": "",
+      "summary": "Agent run skipped: model API unavailable. Execution continued using the previous valid run's approvals.",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      "parse_failed": true,
+      "agent_unavailable": true
+    },
     {
       "id": "RUN-20260916-2344",
       "timestamp": "2026-09-16T23:44:15Z",
@@ -12044,154 +12064,6 @@
       },
       "sell_tier_summary": {
         "tier1_execute": 2,
-        "tier2_deferred": 5
-      }
-    },
-    {
-      "id": "RUN-20260713-1605",
-      "timestamp": "2026-07-13T16:05:43Z",
-      "type": "day_start",
-      "model": "claude-sonnet-4-6",
-      "assessment": "Portfolio is in bull regime with 88% confidence, VIX at 15.5 and breadth at 65% supporting broad participation. The critical structural issue is JBL showing -7 shares (net short, market_value -$2,312) which is an anomalous position requiring immediate resolution \u2014 a SELL order was submitted at yesterday's open but the short position persists. Four positions (ANET, C, GS, MS, WDC) have momentum_rank=0 and all fundamentals null, representing persistent data quality failures that prevent proper rule evaluation; all are profitable and protected by the hold gate but warrant monitoring. Earnings catalysts for C and GS are imminent Monday July 14.",
-      "regime": "bull",
-      "regime_confidence": 0.88,
-      "flags": [
-        "JBL: CRITICAL \u2014 net short -7 shares, market_value -$2,312.03, weight -21.97%. SELL submitted 2026-07-10 but position still shows as short. Pipeline must resolve this at next open. Unrealized PnL: -$25.42 (-1.11%), entry 2026-05-04. This is a structural anomaly \u2014 not a normal holding.",
-        "ANET: momentum_rank=0, all fundamentals null (eps_growth/revenue_growth/forward_pe all null), ma_50d null, sector Unknown. Profitable +$142.11 (+14.48%), entry 2026-07-02. Data quality failure prevents rule evaluation. Hold gate active \u2014 DO NOT sell profitable position on data failure alone. Flagged 5 consecutive runs.",
-        "C: momentum_rank=0, all fundamentals null, ma_50d null, sector Unknown. Profitable +$60.04 (+11.93%), entry 2026-07-07. Earnings MONDAY 2026-07-14 TAS, EPS est $2.72. Hold gate active. Earnings proximity adds risk \u2014 watch closely.",
-        "GS: momentum_rank=0, all fundamentals null, ma_50d null, sector Unknown. Profitable +$27.29 (+2.66%), entry 2026-07-07. Earnings MONDAY 2026-07-14 TAS, EPS est $14.47. Hold gate active. Earnings proximity adds risk \u2014 watch closely.",
-        "MS: momentum_rank=0, all fundamentals null, ma_50d null, sector Unknown. Profitable +$38.56 (+4.53%), entry 2026-07-07. Data quality failure prevents rule evaluation. Hold gate active. Flagged 3 consecutive runs.",
-        "WDC: momentum_rank=0, all fundamentals null, ma_50d null, sector Unknown. Profitable +$96.59 (+19.89%), entry 2026-07-07. volatility_30d=1.0799 (extremely high \u2014 likely above 90th percentile risk threshold). Hold gate active on profitable position. Data quality failure is concerning given extreme volatility.",
-        "FRT: momentum_rank=8, at a loss -$2.72 (-0.28%), entry 2026-07-08. Price $120.94 vs MA50 $119.40 \u2014 only $1.54 above the 50-day MA (1.3% margin). Approaching trend-break threshold. Flagged 3 consecutive runs. Watch closely for MA breach.",
-        "WST: at a loss -$11.26 (-3.08%), entry 2026-07-10. Very new position, loss position. Price $353.71 vs MA50 $324.46 \u2014 well above MA50 so no trend break concern yet. Small loss, monitor.",
-        "FINANCIAL SERVICES SECTOR: BNY (10.1%) + IBKR (10.75%) + C (5.35%) + GS (10.03%) + MS (8.45%) = ~44.6% allocated to financial services if C/GS/MS are classified under Financial Services. Sector cap is 30%. If sector classification resolves from Unknown to Financial Services for C/GS/MS, this would trigger a hard sector cap breach requiring trim at next quarterly rebalance.",
-        "CASH: Current cash 11.87% vs bull target 5%. Elevated cash is partially explained by JBL short distorting portfolio weights. After JBL resolution, cash deployment should be assessed at next quarterly rebalance (August 1)."
-      ],
-      "decisions": [
-        {
-          "action": "SELL",
-          "symbol": "JBL",
-          "reason": "CRITICAL STRUCTURAL ANOMALY \u2014 position is net short -7 shares, market_value -$2,312.03, weight -21.97%. This violates all portfolio construction rules. Unrealized PnL: -$25.42 (-1.11%), entry date 2026-05-04. Loss position below MA50 ($330.29 vs MA50 $358.37), momentum_rank=0. SELL order was submitted 2026-07-10 but position persists as short. Re-issuing Tier 1 with next_open urgency \u2014 6th consecutive flag. Pipeline must close this short immediately.",
-          "rule_triggered": "trend_break",
-          "sell_tier": "tier1",
-          "urgency": "next_open"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "C",
-          "reason": "Profitable position +$60.04 (+11.93%), entry 2026-07-07. momentum_rank=0, all fundamentals null \u2014 data quality failure prevents structural rule evaluation. Hold gate active: profitable position cannot be sold on momentum decay alone. Earnings Monday 2026-07-14 TAS (EPS est $2.72) adds event risk. Watching pre-earnings \u2014 do not sell for earnings risk alone per strategy rules.",
-          "rule_triggered": "momentum_decay",
-          "sell_tier": "tier2",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "GS",
-          "reason": "Profitable position +$27.29 (+2.66%), entry 2026-07-07. momentum_rank=0, all fundamentals null \u2014 data quality failure. Hold gate active. Earnings Monday 2026-07-14 TAS (EPS est $14.47) \u2014 if already flagging for other reasons, prefer to hold through earnings given profitable status and hold gate protection.",
-          "rule_triggered": "momentum_decay",
-          "sell_tier": "tier2",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "MS",
-          "reason": "Profitable position +$38.56 (+4.53%), entry 2026-07-07. momentum_rank=0, all fundamentals null, ma_50d null. Hold gate active \u2014 profitable position cannot be sold due to momentum decay or data quality failure alone. Defer to next quarterly rebalance (August 1).",
-          "rule_triggered": "momentum_decay",
-          "sell_tier": "tier2",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "ANET",
-          "reason": "Profitable position +$142.11 (+14.48%), entry 2026-07-02. momentum_rank=0, all fundamentals null, ma_50d null. Hold gate active \u2014 cannot sell profitable position on momentum decay or data quality failure. volatility_30d=0.6505 is elevated. Defer to quarterly rebalance for data quality resolution.",
-          "rule_triggered": "momentum_decay",
-          "sell_tier": "tier2",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "WDC",
-          "reason": "Profitable position +$96.59 (+19.89%), entry 2026-07-07. momentum_rank=0, all fundamentals null, ma_50d null. volatility_30d=1.0799 is extremely high and likely above 90th percentile risk threshold. Hold gate active \u2014 profitable position protected from momentum decay sell. Extreme volatility noted as risk flag for quarterly review.",
-          "rule_triggered": "momentum_decay",
-          "sell_tier": "tier2",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "FRT",
-          "reason": "Loss position -$2.72 (-0.28%), entry 2026-07-08. momentum_rank=8 (within top 30% \u2014 passing). Price $120.94 vs MA50 $119.40, only $1.54 (1.3%) above MA50. No trend break confirmed yet (requires 3 consecutive days below MA). Watching closely \u2014 if price dips below $119.40 today, that begins the 3-day MA break confirmation clock.",
-          "rule_triggered": "trend_break",
-          "sell_tier": "tier1",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "BNY",
-          "reason": "Profitable +$28.51 (+2.76%), entry 2026-07-01. momentum_rank=7, price $151.92 well above MA50 $140.50. EPS growth 41.8%, revenue growth 13.4% \u2014 quality passing. All structural rules clear.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "CAT",
-          "reason": "Profitable +$30.47 (+3.31%), entry 2026-07-07. momentum_rank=1 (top rank), price $952.41 above MA50 $922.97. EPS growth 30.2%, revenue growth 22.2%, forward P/E 31.3. All filters passing. Strong hold.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "CSCO",
-          "reason": "Profitable +$54.69 (+5.26%), entry 2026-07-02. momentum_rank=2, price $121.61 above MA50 $113.06. EPS growth 37.1%, revenue growth 12.0%, forward P/E 25.4. All filters passing. Solid hold.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "IBKR",
-          "reason": "Profitable +$5.08 (+0.45%), entry 2026-07-02. momentum_rank=5, price $94.30 above MA50 $87.49. EPS growth 22.9%, revenue growth 16.8%, forward P/E 31.9. All filters passing.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "MNST",
-          "reason": "Profitable +$9.27 (+1.07%), entry 2026-07-09. momentum_rank=4, price $97.49 above MA50 $88.68. EPS growth 28.9%, revenue growth 26.9%, forward P/E 37.6. All filters passing.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "TXN",
-          "reason": "Profitable +$0.17 (+0.02%), entry 2026-07-09. momentum_rank=3, price $311.46 above MA50 $298.66. EPS growth 31.3%, revenue growth 18.6%, forward P/E 32.5. All filters passing. Near breakeven but above MA and passing all filters.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "WST",
-          "reason": "Loss position -$11.26 (-3.08%), entry 2026-07-10 (very new \u2014 1 day). momentum_rank=6, price $353.71 well above MA50 $324.46. EPS growth 56.1%, revenue growth 21.0%. No structural rules triggered. Loss is small and position is new \u2014 no action warranted at day_start.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        }
-      ],
-      "cash_action": "maintain",
-      "cash_rationale": "Cash at 11.87% vs 5% bull target is elevated, but this is distorted by the JBL short position inflating the portfolio's apparent cash. Once JBL is resolved at next open, actual cash levels should be reassessed. No buys permitted in non-quarterly month (July is quarterly but rebalance was last_rebalance 2026-07-10 \u2014 next is August 1). Maintain current cash level pending JBL resolution.",
-      "summary": "Day-start: SELL JBL re-issued (critical -7 share short, Tier 1, 6th flag); WATCH C/GS pre-earnings Monday; WATCH ANET/MS/WDC/FRT on data quality and MA proximity; HOLD all other profitable positions under hold gate.",
-      "usage": {
-        "input_tokens": 14423,
-        "output_tokens": 3387,
-        "cache_read_tokens": 0,
-        "cache_write_tokens": 8817
-      },
-      "sell_tier_summary": {
-        "tier1_execute": 1,
         "tier2_deferred": 5
       }
     }

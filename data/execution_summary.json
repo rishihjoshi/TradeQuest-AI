@@ -1,51 +1,34 @@
 {
-  "timestamp": "2026-09-16T23:44:14Z",
-  "mode": "post_close",
+  "timestamp": "2026-09-17T17:43:06Z",
+  "mode": "market_open",
   "orders_placed": [
     {
-      "action": "BUY",
-      "symbol": "NUE",
-      "qty": 2.950472,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
+      "action": "SELL",
       "symbol": "JBL",
-      "qty": 3.147723,
+      "qty": 3.0,
       "status": "submitted"
     },
     {
-      "action": "BUY",
-      "symbol": "KEYS",
-      "qty": 2.061477,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
+      "action": "SELL",
       "symbol": "NTRS",
-      "qty": 5.398546,
+      "qty": 5.0,
       "status": "submitted"
     },
     {
       "action": "BUY",
       "symbol": "ROST",
-      "qty": 2.548552,
+      "qty": 1.534675,
       "status": "submitted"
     }
   ],
-  "orders_skipped": [
-    {
-      "symbol": "BNY",
-      "reason": "blocked by agent approval or risk gate"
-    }
-  ],
+  "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 43.49,
+  "cash_pct_after": 25.73,
   "long_only_breach": false,
   "invariant_breaches": [
-    "sector Energy at 31.8% exceeds the 30% cap"
+    "sector Energy at 32.2% exceeds the 30% cap"
   ],
-  "breach_streak": 1,
+  "breach_streak": 2,
   "trading_halted": false,
   "dry_run": false
 }
