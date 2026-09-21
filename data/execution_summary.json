@@ -1,29 +1,25 @@
 {
-  "timestamp": "2026-09-18T23:28:25Z",
-  "mode": "post_close",
+  "timestamp": "2026-09-21T18:53:23Z",
+  "mode": "market_open",
   "orders_placed": [],
   "orders_skipped": [
     {
-      "symbol": "ROST",
+      "symbol": "NUE",
       "reason": "trading halted \u2014 unresolved invariant breach"
     },
     {
       "symbol": "NUE",
       "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "ROST",
-      "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 25.98,
+  "cash_pct_after": 26.2,
   "long_only_breach": false,
   "invariant_breaches": [
-    "sector Unknown at 30.0% exceeds the 30% cap",
-    "sector Energy at 32.8% exceeds the 30% cap"
+    "sector Unknown at 30.5% exceeds the 30% cap",
+    "sector Energy at 32.2% exceeds the 30% cap"
   ],
-  "breach_streak": 5,
+  "breach_streak": 6,
   "trading_halted": true,
   "dry_run": false
 }
