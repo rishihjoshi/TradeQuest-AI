@@ -1,7 +1,263 @@
 {
-  "generated_at": "2026-09-17T17:43:11Z",
+  "generated_at": "2026-09-21T18:49:39Z",
   "article_count": 30,
   "articles": [
+    {
+      "id": "61900845",
+      "headline": "The Fed Is Watching AI Inflation. Here's What ETF Investors Should Watch",
+      "summary": "ETF investors should take note of rising data-center demand for power, copper and infrastructure as AI investment fuels inflation.",
+      "url": "https://www.benzinga.com/etfs/sector-etfs/26/09/61900845/fed-ai-inflation-heres-what-etf-investors-should-watch",
+      "author": "Chandrima Sanyal",
+      "source": "benzinga",
+      "symbols": [
+        "CCJ",
+        "COPX",
+        "CVX",
+        "DE",
+        "EMR",
+        "ETN",
+        "FAST",
+        "NUE",
+        "PAVE",
+        "PWR",
+        "URA",
+        "XLE",
+        "XLU",
+        "XOM"
+      ],
+      "created_at": "2026-09-21T15:54:23Z",
+      "sentiment": "neutral",
+      "confidence": 0.72,
+      "reason": "Mixed outlook: AI demand benefits infrastructure/copper but inflation concerns may pressure valuations."
+    },
+    {
+      "id": "61881898",
+      "headline": "Diesel Squeeze Nobody Hedged: 4 Refiners Just Logged Their 6th Straight Week of Gains",
+      "summary": "Valero, Marathon Petroleum, HF Sinclair and Phillips 66 have gained for six consecutive weeks as diesel crack spreads hit an all-time record.",
+      "url": "https://www.benzinga.com/markets/commodities/26/09/61881898/diesel-squeeze-oil-refiners-stocks-four-top-performing-six-weeks-of-gains",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "CRAK",
+        "DINO",
+        "GS",
+        "MPC",
+        "PSX",
+        "VLO"
+      ],
+      "created_at": "2026-09-18T20:32:07Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Six consecutive weeks of gains and record diesel crack spreads indicate strong profitability."
+    },
+    {
+      "id": "61875543",
+      "headline": "Bitcoin Tops $80,000, S&P 500 Slips as Yields Reclaim 5%: Stock Market Today",
+      "summary": "Crypto-linked equities ripped higher as Bitcoin cleared $80,000, but the S&amp;P 500 slipped with the 10-year Treasury yield back above 5%.",
+      "url": "https://www.benzinga.com/markets/equities/26/09/61875543/bitcoin-tops-80000-crypto-stocks-soar-yields-reclaim-5-percent-markets-friday",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "AMAT",
+        "AMGN",
+        "AMZN",
+        "ASTS",
+        "BLSH",
+        "BMNR",
+        "BTCUSD",
+        "COIN",
+        "DIA",
+        "GLD",
+        "GLXY",
+        "GM",
+        "GOOGL",
+        "HOOD",
+        "IBM",
+        "IONQ",
+        "IWM",
+        "JETS",
+        "LRCX",
+        "META",
+        "MOO",
+        "MSFT",
+        "MSTR",
+        "MU",
+        "NUE",
+        "NVDA",
+        "ORCL",
+        "PL",
+        "QCOM",
+        "QQQ",
+        "RKLB",
+        "SMH",
+        "SNDK",
+        "STLD",
+        "TAN",
+        "TSLA",
+        "VOO",
+        "XLB",
+        "XLC",
+        "XLE",
+        "XLF",
+        "XLK",
+        "XLU",
+        "XME"
+      ],
+      "created_at": "2026-09-18T16:55:21Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Mixed signals: crypto strength offset by S&P 500 decline and rising yields."
+    },
+    {
+      "id": "61872584",
+      "headline": "This Crude Refiner Has Beaten Every Magnificent Seven Stock in the Last 2 Years",
+      "summary": "Valero Energy has risen more than 200% in two years, outpacing every Magnificent Seven stock, including Nvidia. Almost the entire move came in 2026, driven by a collapse in global refining capacity rather than by the oil price. The average analyst price target now sits 31% below the stock.",
+      "url": "https://www.benzinga.com/markets/equities/26/09/61872584/this-crude-refiner-has-beaten-every-magnificent-seven-stock-in-the-last-2-years",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "AMZN",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NVDA",
+        "SPY",
+        "TSLA",
+        "VLO"
+      ],
+      "created_at": "2026-09-18T15:20:23Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Analyst targets 31% below current price suggests significant overvaluation despite strong recent performance."
+    },
+    {
+      "id": "61871155",
+      "headline": "Here\u2019s How Much You Would Have Made Owning Jabil Stock In The Last 10 Years",
+      "summary": "Jabil (NYSE:JBL) has outperformed the market over the past 10 years by 16.21% on an annualized basis producing an average annual return of 29.55%. Currently, Jabil has a market capitalization of $31.25 billion.  Buying",
+      "url": "https://www.benzinga.com/news/26/09/61871155/here-s-how-much-you-would-have-made-owning-jabil-stock-last-10-years",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "JBL"
+      ],
+      "created_at": "2026-09-18T14:45:21Z",
+      "sentiment": "bull",
+      "confidence": 0.92,
+      "reason": "Strong historical outperformance of 29.55% annual returns significantly exceeds market benchmarks."
+    },
+    {
+      "id": "61862065",
+      "headline": "Stock Market Today: S&P 500, Dow Futures Pare Gains, Nasdaq 100 Up as Trump Weighs 'Big Decision' on Iran Military Strikes\u2014 OKLO, MCD, BB, NUE in Focus (UPDATED)",
+      "summary": "U.S. stock futures advanced on Friday, as the Dow Jones, S&amp;P 500 and Nasdaq 100 indices rose, following Thursday&39;s higher close.",
+      "url": "https://www.benzinga.com/markets/equities/26/09/61862065/stock-market-today-sp-500-nasdaq-100-futures-rise-as-trump-weighs-big-decision-on-iran-military-strikes-oklo-mcd-bb-nue-in-focus",
+      "author": "Rishabh Mishra",
+      "source": "benzinga",
+      "symbols": [
+        "BB",
+        "BTCUSD",
+        "FEAM",
+        "MCD",
+        "NUE",
+        "OKLO",
+        "QQQ",
+        "SPY"
+      ],
+      "created_at": "2026-09-18T12:40:18Z",
+      "sentiment": "bull",
+      "confidence": 0.72,
+      "reason": "Stock futures advanced with indices rising, though geopolitical uncertainty tempers gains."
+    },
+    {
+      "id": "61865080",
+      "headline": "Xenon Pharmaceuticals, Steel Dynamics, Nucor And Other Big Stocks Moving Lower In Friday\u2019s Pre-Market Session",
+      "summary": "U.S. futures rise, but Xenon plunges 27.6% after pausing psychiatry trial enrollment over neuropsychiatric adverse events; other stocks also fall",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/09/61865080/xenon-pharmaceuticals-steel-dynamics-nucor-and-other-big-stocks-moving-lower-in-fridays-pre-market-session",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "ARRY",
+        "BHVN",
+        "EYPT",
+        "FRO",
+        "NUE",
+        "STLD",
+        "SWRD",
+        "XENE"
+      ],
+      "created_at": "2026-09-18T12:01:05Z",
+      "sentiment": "bear",
+      "confidence": 0.95,
+      "reason": "Xenon plunges 27.6% due to pausing psychiatry trial over adverse neuropsychiatric events."
+    },
+    {
+      "id": "61861466",
+      "headline": "Why Alaunos Therapeutics Shares Are Trading Higher By Around 22%; Here Are 20 Stocks Moving Premarket",
+      "summary": "Alaunos rose 21.8% after adopting amended bylaws; Cheetah Net led gainers, while Xenon dropped 27.6% after pausing study enrollment.",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/09/61861466/why-alaunos-therapeutics-shares-are-trading-higher-by-around-22-here-are-20-stocks-moving-premarket",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "ABTS",
+        "AGMH",
+        "AIFF",
+        "AMZE",
+        "BHVN",
+        "BTCT",
+        "CPOP",
+        "CTNT",
+        "DLXY",
+        "DTSS",
+        "FRO",
+        "GIPR",
+        "HELP",
+        "MASS",
+        "NUE",
+        "RENX",
+        "SECZ",
+        "TCRT",
+        "WHLR",
+        "XENE"
+      ],
+      "created_at": "2026-09-18T08:25:11Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Alaunos shares surged 21.8% following adoption of amended bylaws, indicating positive market reaction."
+    },
+    {
+      "id": "61860295",
+      "headline": "Nucor, BlackBerry and 3 Stocks to Watch Heading Into Friday",
+      "summary": "Nucor forecasts higher Q3 earnings; BlackBerry gains on QNX deal; Clean Harbors prices $600M notes; McDonald\u2019s raises dividend.",
+      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/09/61860295/nucor-blackberry-and-3-stocks-to-watch-heading-into-friday",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "BB",
+        "CLH",
+        "FEAM",
+        "MCD",
+        "NUE"
+      ],
+      "created_at": "2026-09-18T06:18:18Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Multiple positive catalysts: Nucor higher earnings forecast, BlackBerry QNX deal, McDonald's dividend raise."
+    },
+    {
+      "id": "61856485",
+      "headline": "$100 Invested In CF Industries Holdings 5 Years Ago Would Be Worth This Much Today",
+      "summary": "CF Industries Holdings (NYSE:CF) has outperformed the market over the past 5 years by 10.31% on an annualized basis producing an average annual return of 22.26%. Currently, CF Industries Holdings has a market",
+      "url": "https://www.benzinga.com/news/26/09/61856485/100-invested-cf-industries-holdings-5-years-ago-would-be-worth-much-today",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "CF"
+      ],
+      "created_at": "2026-09-17T20:15:32Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Stock significantly outperformed market with 22.26% annual return over 5 years."
+    },
     {
       "id": "61823187",
       "headline": "The Next Oil Shock Has No Safety Valve \u2014 And the Bill Will Land in Your Pantry",
@@ -14,9 +270,9 @@
         "VLO"
       ],
       "created_at": "2026-09-16T17:09:57Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "sentiment": "bear",
+      "confidence": 0.92,
+      "reason": "Supply disruptions and capacity constraints threaten oil prices, raising costs for consumers and businesses."
     },
     {
       "id": "61821505",
@@ -49,9 +305,9 @@
         "VRSN"
       ],
       "created_at": "2026-09-16T16:13:41Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Shared holdings by respected investors Buffett and Trump suggests confidence in these stocks."
     },
     {
       "id": "61806682",
@@ -64,9 +320,9 @@
         "PSX"
       ],
       "created_at": "2026-09-15T23:45:46Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "PSX significantly outperformed market with 32.75% average annual return over 5 years."
     },
     {
       "id": "61796458",
@@ -81,9 +337,9 @@
         "VLO"
       ],
       "created_at": "2026-09-15T16:07:58Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Strong YTD gains of 140% driven by exceptionally high diesel crack spreads indicating robust refinery margins."
     },
     {
       "id": "61729677",
@@ -96,9 +352,9 @@
         "MPC"
       ],
       "created_at": "2026-09-10T21:30:42Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Stock significantly outperformed market with strong 23.02% annualized returns over 15 years."
     },
     {
       "id": "61728439",
@@ -111,9 +367,9 @@
         "VLO"
       ],
       "created_at": "2026-09-10T20:39:19Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Positive price movement of 2% following a key trading signal indicates bullish momentum."
     },
     {
       "id": "61703497",
@@ -126,9 +382,9 @@
         "VLO"
       ],
       "created_at": "2026-09-09T23:00:29Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Strong historical outperformance with 10.55% annualized returns over 20 years."
     },
     {
       "id": "61685641",
@@ -157,8 +413,8 @@
       ],
       "created_at": "2026-09-09T13:25:39Z",
       "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "confidence": 0.65,
+      "reason": "Mixed impacts across sectors: refiners benefit while airlines, REITs, gold miners suffer from $100 oil."
     },
     {
       "id": "61684291",
@@ -178,9 +434,9 @@
         "TRN"
       ],
       "created_at": "2026-09-09T12:56:55Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Cramer praises multiple stocks (Trinity, Nucor, Simon Property, Federal Realty) as favorable picks."
     },
     {
       "id": "61677544",
@@ -193,9 +449,9 @@
         "NTRS"
       ],
       "created_at": "2026-09-09T07:09:53Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Northern Trust expands capabilities through new partnership, indicating growth and market opportunity."
     },
     {
       "id": "61664405",
@@ -208,9 +464,9 @@
         "JBL"
       ],
       "created_at": "2026-09-08T15:45:21Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "sentiment": "bull",
+      "confidence": 0.92,
+      "reason": "Strong historical outperformance with 31.12% annualized returns over 10 years significantly exceeds market gains."
     },
     {
       "id": "61662570",
@@ -223,9 +479,9 @@
         "MPC"
       ],
       "created_at": "2026-09-08T14:57:15Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "UBS maintains buy rating and raises price target, indicating positive outlook for Marathon Petroleum stock."
     },
     {
       "id": "61662453",
@@ -238,9 +494,9 @@
         "PSX"
       ],
       "created_at": "2026-09-08T14:54:30Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "UBS maintains buy rating and raises price target, signaling confidence in stock appreciation."
     },
     {
       "id": "61662305",
@@ -253,9 +509,9 @@
         "VLO"
       ],
       "created_at": "2026-09-08T14:50:42Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Buy rating maintained with raised price target signals positive outlook"
     },
     {
       "id": "61660652",
@@ -268,9 +524,9 @@
         "JBL"
       ],
       "created_at": "2026-09-08T14:13:47Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Goldman Sachs maintains Buy rating despite lowering price target, indicating continued positive outlook."
     },
     {
       "id": "61657973",
@@ -291,9 +547,9 @@
         "XOP"
       ],
       "created_at": "2026-09-08T13:30:01Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Rising oil prices and supply concerns drive bullish outlook for energy ETFs BNO, USO, XLE, and XOP."
     },
     {
       "id": "61656318",
@@ -308,9 +564,9 @@
         "PSX"
       ],
       "created_at": "2026-09-08T12:40:51Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "sentiment": "bear",
+      "confidence": 0.95,
+      "reason": "Overbought RSI readings warn of potential price declines for these energy stocks."
     },
     {
       "id": "61651457",
@@ -327,9 +583,9 @@
         "WMT"
       ],
       "created_at": "2026-09-08T09:06:16Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Retaliatory tariffs on US goods create trade tensions and potential cost pressures for affected sectors."
     },
     {
       "id": "61650801",
@@ -342,9 +598,9 @@
         "NTRS"
       ],
       "created_at": "2026-09-08T07:49:04Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Northern Trust wins major \u00a34.8B UK pension fund management contract, expanding revenue streams."
     },
     {
       "id": "61648403",
@@ -357,170 +613,9 @@
         "NUE"
       ],
       "created_at": "2026-09-07T15:45:29Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61643418",
-      "headline": "Benzinga's 'Stock Whisper' Index: 5 Stocks Investors Secretly Monitor But Don't Talk About Yet",
-      "summary": "The Benzinga Stock Whisper Index highlights five unique stocks each week that attract high reader and investor interest.",
-      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/09/61643418/benzingas-stock-whisper-index-5-stocks-investors-secretly-monitor-but-dont-talk-about-yet-125",
-      "author": "Chris Katje",
-      "source": "benzinga",
-      "symbols": [
-        "CRDO",
-        "CVE",
-        "OKTA",
-        "VLO",
-        "XEL"
-      ],
-      "created_at": "2026-09-05T13:00:09Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61642314",
-      "headline": "$100 Invested In Keysight Techs 10 Years Ago Would Be Worth This Much Today",
-      "summary": "Keysight Techs (NYSE:KEYS) has outperformed the market over the past 10 years by 13.41% on an annualized basis producing an average annual return of 26.83%. Currently, Keysight Techs has a market capitalization of",
-      "url": "https://www.benzinga.com/news/26/09/61642314/100-invested-keysight-techs-10-years-ago-would-be-worth-much-today",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "KEYS"
-      ],
-      "created_at": "2026-09-04T22:15:18Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61634168",
-      "headline": "Here\u2019s How Much You Would Have Made Owning Bank of New York Mellon Stock In The Last 10 Years",
-      "summary": "Bank of New York Mellon (NYSE:BNY) has outperformed the market over the past 10 years by 1.41% on an annualized basis producing an average annual return of 14.83%. Currently, Bank of New York Mellon has a market",
-      "url": "https://www.benzinga.com/news/26/09/61634168/here-s-how-much-you-would-have-made-owning-bank-new-york-mellon-stock-last-10-years",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "BNY"
-      ],
-      "created_at": "2026-09-04T16:15:43Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61611154",
-      "headline": "Piper Sandler Maintains Overweight on Valero Energy, Raises Price Target to $435",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/09/61611154/piper-sandler-maintains-overweight-valero-energy-raises-price-target-435",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "VLO"
-      ],
-      "created_at": "2026-09-03T17:17:44Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61611068",
-      "headline": "Piper Sandler Maintains Neutral on Phillips 66, Raises Price Target to $264",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/09/61611068/piper-sandler-maintains-neutral-phillips-66-raises-price-target-264",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "PSX"
-      ],
-      "created_at": "2026-09-03T17:14:38Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61611031",
-      "headline": "Piper Sandler Maintains Overweight on Marathon Petroleum, Raises Price Target to $462",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/09/61611031/piper-sandler-maintains-overweight-marathon-petroleum-raises-price-target-462",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "MPC"
-      ],
-      "created_at": "2026-09-03T17:13:37Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61606565",
-      "headline": "Keysight Announces Research Collaboration With University Of York's Centre For Assuring Autonomy On AI Safety Validation Methods For Software-Defined Vehicles",
-      "summary": "",
-      "url": "https://www.benzinga.com/quote/KEYS",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "KEYS"
-      ],
-      "created_at": "2026-09-03T15:02:20Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61597617",
-      "headline": "Oracle, Alphabet, Valero Energy And More On CNBC\u2019s \u2018Final Trades\u2019",
-      "summary": "CNBC final trades: Weiss chose Alphabet, Lebenthal Oracle, Thomas iShares Gold Trust, and Terranova Valero; all closed higher Wednesday.",
-      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/09/61597617/oracle-alphabet-valero-energy-and-more-on-cnbc-final-trades",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "GOOG",
-        "GOOGL",
-        "IAU",
-        "ORCL",
-        "VLO"
-      ],
-      "created_at": "2026-09-03T11:07:53Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61583666",
-      "headline": "CNBC Halftime Report Final Trades: Valero Energy, Oracle, Alphabet Class A, iShares Gold Trust Shares",
-      "summary": "",
-      "url": "https://www.benzinga.com/quote/GOOGL",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "GOOGL",
-        "IAU",
-        "ORCL",
-        "VLO"
-      ],
-      "created_at": "2026-09-02T17:02:03Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "61581001",
-      "headline": "$100 Invested In Ross Stores 15 Years Ago Would Be Worth This Much Today",
-      "summary": "Ross Stores (NASDAQ:ROST) has outperformed the market over the past 15 years by 5.01% on an annualized basis producing an average annual return of 18.23%. Currently, Ross Stores has a market capitalization of $75.98",
-      "url": "https://www.benzinga.com/news/26/09/61581001/100-invested-ross-stores-15-years-ago-would-be-worth-much-today",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "ROST"
-      ],
-      "created_at": "2026-09-02T15:45:24Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
+      "sentiment": "bull",
+      "confidence": 0.92,
+      "reason": "Stock significantly outperformed market with strong 18.39% annualized returns over 5 years."
     }
   ]
 }
