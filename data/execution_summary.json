@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-09-22T00:14:16Z",
-  "mode": "post_close",
+  "timestamp": "2026-09-22T17:43:47Z",
+  "mode": "market_open",
   "orders_placed": [],
   "orders_skipped": [
     {
@@ -13,13 +13,13 @@
     }
   ],
   "errors": [],
-  "cash_pct_after": 26.49,
+  "cash_pct_after": 26.4,
   "long_only_breach": false,
   "invariant_breaches": [
-    "sector Unknown at 30.7% exceeds the 30% cap",
-    "sector Energy at 31.6% exceeds the 30% cap"
+    "sector Unknown at 30.5% exceeds the 30% cap",
+    "sector Energy at 31.9% exceeds the 30% cap"
   ],
-  "breach_streak": 7,
+  "breach_streak": 8,
   "trading_halted": true,
   "dry_run": false
 }
