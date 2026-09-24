@@ -1,21 +1,21 @@
 {
-  "timestamp": "2026-09-23T23:51:47Z",
-  "mode": "post_close",
+  "timestamp": "2026-09-24T17:56:31Z",
+  "mode": "market_open",
   "orders_placed": [],
   "orders_skipped": [
     {
-      "symbol": "NUE",
+      "symbol": "CF",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 26.62,
+  "cash_pct_after": 33.79,
   "long_only_breach": false,
   "invariant_breaches": [
-    "sector Unknown at 31.1% exceeds the 30% cap",
-    "sector Energy at 30.9% exceeds the 30% cap"
+    "sector Unknown at 30.8% exceeds the 30% cap",
+    "sector Energy at 31.6% exceeds the 30% cap"
   ],
-  "breach_streak": 1,
+  "breach_streak": 2,
   "trading_halted": false,
   "dry_run": false
 }
