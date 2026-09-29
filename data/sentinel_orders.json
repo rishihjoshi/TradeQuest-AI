@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-09-28T23:25:52Z",
+  "timestamp": "2026-09-29T22:30:21Z",
   "sells": [
     {
-      "symbol": "CF",
-      "shares": 7,
+      "symbol": "JBL",
+      "shares": 2,
       "rule": "persistent_flag",
       "reason": "Symbol flagged SELL/WATCH in 5 consecutive agent runs without execution (\u2265 5 threshold). Position is at a loss \u2014 Tier 1 forced exit. Sentinel Rule 3."
     }

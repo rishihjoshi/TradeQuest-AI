@@ -1,33 +1,20 @@
 {
-  "timestamp": "2026-09-29T18:49:50Z",
-  "mode": "market_open",
+  "timestamp": "2026-09-29T22:30:23Z",
+  "mode": "post_close",
   "orders_placed": [
     {
       "action": "SELL",
-      "symbol": "BNY",
-      "qty": 6.0,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "NTRS",
-      "qty": 5.0,
-      "status": "submitted"
-    }
-  ],
-  "orders_skipped": [
-    {
       "symbol": "JBL",
-      "reason": "blocked by agent approval or risk gate"
+      "qty": 2.0,
+      "status": "submitted"
     }
   ],
+  "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 34.44,
+  "cash_pct_after": 34.4,
   "long_only_breach": false,
-  "invariant_breaches": [
-    "sector Energy at 31.3% exceeds the 30% cap"
-  ],
-  "breach_streak": 2,
+  "invariant_breaches": [],
+  "breach_streak": 0,
   "trading_halted": false,
   "dry_run": false
 }
