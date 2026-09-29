@@ -1,20 +1,40 @@
 {
-  "timestamp": "2026-09-28T23:25:53Z",
+  "timestamp": "2026-09-29T01:09:13Z",
   "mode": "post_close",
   "orders_placed": [
     {
-      "action": "SELL",
-      "symbol": "CF",
-      "qty": 7.0,
+      "action": "BUY",
+      "symbol": "BNY",
+      "qty": 5.423623,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "JBL",
+      "qty": 2.702328,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "NTRS",
+      "qty": 4.924392,
       "status": "submitted"
     }
   ],
-  "orders_skipped": [],
+  "orders_skipped": [
+    {
+      "symbol": "CF",
+      "reason": "blocked by agent approval or risk gate"
+    }
+  ],
   "errors": [],
   "cash_pct_after": 34.07,
   "long_only_breach": false,
-  "invariant_breaches": [],
-  "breach_streak": 0,
+  "invariant_breaches": [
+    "sector Unknown at 31.0% exceeds the 30% cap",
+    "sector Energy at 31.1% exceeds the 30% cap"
+  ],
+  "breach_streak": 1,
   "trading_halted": false,
   "dry_run": false
 }
