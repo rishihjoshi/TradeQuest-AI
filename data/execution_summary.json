@@ -1,20 +1,15 @@
 {
-  "timestamp": "2026-09-29T22:30:23Z",
+  "timestamp": "2026-09-30T00:40:19Z",
   "mode": "post_close",
-  "orders_placed": [
-    {
-      "action": "SELL",
-      "symbol": "JBL",
-      "qty": 2.0,
-      "status": "submitted"
-    }
-  ],
+  "orders_placed": [],
   "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 34.4,
+  "cash_pct_after": 34.38,
   "long_only_breach": false,
-  "invariant_breaches": [],
-  "breach_streak": 0,
+  "invariant_breaches": [
+    "sector Energy at 31.2% exceeds the 30% cap"
+  ],
+  "breach_streak": 1,
   "trading_halted": false,
   "dry_run": false
 }
