@@ -1,7 +1,126 @@
 {
-  "last_run": "2026-09-30T18:32:05Z",
-  "last_type": "day_start",
+  "last_run": "2026-10-01T00:42:28Z",
+  "last_type": "monthly",
   "runs": [
+    {
+      "id": "RUN-20261001-0042",
+      "timestamp": "2026-10-01T00:42:28Z",
+      "type": "monthly",
+      "model": "claude-sonnet-4-6",
+      "assessment": "This is October 2026, a quarterly rebalance month (Q4), enabling full rebalance authority. The portfolio is in bear regime (95% confidence) with breadth at 38% (below 40% bear threshold), SPY MA200 trend negative, and VIX at 9.9 \u2014 the regime signals a 50% cash target. The book is severely degraded: only 3 of 10 holdings pass momentum filters, four positions (BNY, NTRS, NUE, CF) remain as stub remnants from repeated partial sells with persistent unresolved execution, and three holdings (JBL, KEYS, ROST) carry sector=Unknown/null MA data blocking any new entry assessment. Urgent Tier 1 exits and a significant restructuring toward the 50% cash target are required.",
+      "regime": "bear",
+      "regime_confidence": 0.95,
+      "flags": [
+        "BNY: URGENT Tier 1 \u2014 stub position 0.310709 shares ($44.94, 0.46% weight), unrealized PnL -$1.34 (-2.89%), price $144.63 below 50d MA $158.33 (trend break Rule A confirmed), momentum_rank=0 (rank outside top 30%, confirmed multi-day), entry 2026-08-18. SELL flagged 7+ runs. Execute immediately at next_open.",
+        "NTRS: URGENT Tier 1 \u2014 stub position 0.366745 shares ($62.11, 0.63% weight), unrealized PnL -$2.15 (-3.34%), price $169.36 below 50d MA $183.03 (trend break Rule A confirmed), momentum_rank=0, entry 2026-08-18. SELL flagged 7+ runs. Execute immediately at next_open.",
+        "NUE: URGENT Tier 1 \u2014 stub position 0.6878 shares ($160.77, 1.64% weight), unrealized PnL -$22.13 (-12.1%), price $233.75 below 50d MA $255.81 (trend break Rule A confirmed), momentum_rank=0, entry 2026-08-18. SELL flagged 7+ runs. Execute immediately at next_open.",
+        "CF: URGENT Tier 1 \u2014 stub position 0.896819 shares ($103.31, 1.06% weight), unrealized PnL -$4.61 (-4.27%), sector=Unknown, ma_50d=null, momentum_rank=0, quality data null (data integrity failure), entry 2026-08-18. SELL flagged 7+ runs. Execute immediately at next_open.",
+        "JBL: Tier 1 loss position \u2014 0.936547 shares ($270.66, 2.77% weight), unrealized PnL -$29.37 (-9.79%), sector=Unknown, ma_50d=null, momentum_rank=0. Data integrity gate blocks hold \u2014 no valid MA, no sector, no momentum rank. Loss position. SELL at next_open.",
+        "KEYS: Profitable position \u2014 2.975991 shares ($1083.08, 11.07% weight), unrealized PnL +$103.88 (+10.61%), sector=Unknown, ma_50d=null, momentum_rank=0. Weight exceeds 10% cap (11.07%). Data integrity gate: null sector/MA/rank block assessment of structural rules but cannot force a sell on a winner. WATCH \u2014 at quarterly rebalance trim to 10% cap; monitor for structural rule triggers. Cannot confirm trend break without MA data.",
+        "ROST: Profitable position \u2014 4.197285 shares ($979.65, 10.01% weight), unrealized PnL +$16.99 (+1.76%), sector=Unknown, ma_50d=null, momentum_rank=0. Data integrity gate: null sector/MA/rank. Cannot confirm structural rules. WATCH \u2014 profitable, hold gate applies; missing data is NOT a sell signal per Directive 10.",
+        "MPC: HOLD \u2014 above MA, momentum_rank=2, profitable (+$80.42, +8.45%), sector=Energy. Energy sector concentration: MPC ($1032), PSX ($998), VLO ($1063) = $3093 of $9785 = 31.6% \u2014 marginally breaches 30% sector cap. Flag for trim at rebalance.",
+        "PSX: HOLD \u2014 above MA $237.58, momentum_rank=5, profitable (+$51.31, +5.42%), sector=Energy. Part of energy concentration issue.",
+        "VLO: HOLD \u2014 above MA $349.66, momentum_rank=3, profitable (+$108.04, +11.32%), sector=Energy. Weight 10.86% at cap boundary. Part of energy concentration.",
+        "ENERGY SECTOR: MPC + PSX + VLO = ~31.6% of portfolio \u2014 marginally above 30% cap. Trim the lowest-momentum energy name (PSX, rank=5) at rebalance to bring sector under 30%.",
+        "CASH: Current deployable_cash = $3988.11 (40.76%). Bear regime target = 50% cash ($4892.62). Book is over-invested relative to bear target. Tier 1 sells (BNY, NTRS, NUE, CF, JBL stubs = ~$641 proceeds) will move cash closer to 50% target. After sells, evaluate whether top-up buys into MPC/VLO/PSX are appropriate given bear regime \u2014 likely hold cash at 50% rather than deploy.",
+        "EXECUTION HALT: MU, NTAP, AMAT, EXPD had trading halted at last market-open due to unresolved invariant breach. These are not in current holdings \u2014 confirm no negative-share positions exist for these symbols. long_only_breach=false in portfolio meta, so these may have been cleared. Monitor."
+      ],
+      "decisions": [
+        {
+          "action": "SELL",
+          "symbol": "BNY",
+          "reason": "Tier 1 SELL \u2014 stub position 0.310709 shares, unrealized PnL -$1.34 (-2.89%), entry 2026-08-18. Rule A: price $144.63 below 50d MA $158.33, confirmed 3+ consecutive days. Rule E: momentum_rank=0 (outside top 30%, confirmed 7+ runs), loss position. Flagged 7+ consecutive runs \u2014 urgent. October is quarterly month; full exit authorized.",
+          "rule_triggered": "trend_break",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "NTRS",
+          "reason": "Tier 1 SELL \u2014 stub position 0.366745 shares, unrealized PnL -$2.15 (-3.34%), entry 2026-08-18. Rule A: price $169.36 below 50d MA $183.03, confirmed 3+ consecutive days. Rule E: momentum_rank=0, loss position. Flagged 7+ consecutive runs \u2014 urgent. October quarterly rebalance; full exit authorized.",
+          "rule_triggered": "trend_break",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "NUE",
+          "reason": "Tier 1 SELL \u2014 stub position 0.6878 shares, unrealized PnL -$22.13 (-12.1%), entry 2026-08-18. Rule A: price $233.75 below 50d MA $255.81, confirmed 3+ consecutive days. Rule E: momentum_rank=0, confirmed loss position. Flagged 7+ consecutive runs \u2014 urgent. October quarterly rebalance; full exit authorized.",
+          "rule_triggered": "trend_break",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "CF",
+          "reason": "Tier 1 SELL \u2014 stub position 0.896819 shares, unrealized PnL -$4.61 (-4.27%), entry 2026-08-18. Sector=Unknown, ma_50d=null, momentum_rank=0, quality data null \u2014 fails data integrity gate (Directive 10). Loss position with no valid data to support hold. Rule E: rank=0, confirmed loss. Flagged 7+ consecutive runs \u2014 urgent. October quarterly rebalance; full exit authorized.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "JBL",
+          "reason": "Tier 1 SELL \u2014 0.936547 shares, unrealized PnL -$29.37 (-9.79%), entry 2026-08-18. Sector=Unknown, ma_50d=null, momentum_rank=0 \u2014 data integrity gate blocks continuation. Loss position. Rule E: momentum_rank=0 confirmed multi-day, pnl negative. October quarterly rebalance; full exit authorized.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "KEYS",
+          "reason": "WATCH \u2014 profitable position, 2.975991 shares, unrealized PnL +$103.88 (+10.61%), entry 2026-08-19 (held ~43 days, < 12 months). Sector=Unknown, ma_50d=null, momentum_rank=0. Hold gate applies: cannot sell a profitable position on momentum decay alone (Rule E, pnl>0). Missing data is NOT a sell signal (Directive 10). However weight=11.07% exceeds MAX_POSITION_PCT 10% \u2014 flag for trim to 10% at rebalance execution. Structural rule A cannot be confirmed without MA data. Trim excess above 10% weight only.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "ROST",
+          "reason": "WATCH \u2014 profitable position, 4.197285 shares, unrealized PnL +$16.99 (+1.76%), entry 2026-08-18. Sector=Unknown, ma_50d=null, momentum_rank=0. Hold gate applies: profitable position, missing data is not a sell signal (Directive 10). Cannot confirm trend break without MA. Momentum rank=0 with pnl>0 = WATCH only at next_rebalance. Monitor for structural confirmation at next quarterly.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "MPC",
+          "reason": "HOLD \u2014 above 50d MA ($395.42 > $359.65), momentum_rank=2 (top 30%), profitable +$80.42 (+8.45%), entry 2026-08-18. Quality: EPS growth 348%, revenue growth 53.7%. Valuation: fwd P/E 8.4. All filters pass. Energy sector concentration flagged (MPC+PSX+VLO ~31.6%) \u2014 monitor but MPC is highest momentum energy name (rank=2), retain.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "PSX",
+          "reason": "HOLD \u2014 above 50d MA ($255.31 > $237.58), momentum_rank=5 (top 30%), profitable +$51.31 (+5.42%), entry 2026-08-18. Quality: EPS growth 344.9%, revenue growth 53.1%. Valuation: fwd P/E 9.9. All filters pass. Note: PSX is lowest momentum of the three energy names (rank=5 vs MPC rank=2, VLO rank=3). If energy sector trim needed, PSX is trim candidate \u2014 but with proceeds going to cash in bear regime, not redeployment.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "VLO",
+          "reason": "HOLD \u2014 above 50d MA ($388.68 > $349.66), momentum_rank=3 (top 30%), profitable +$108.04 (+11.32%), entry 2026-08-18. Quality: EPS growth 453.5%, revenue growth 51.7%. Valuation: fwd P/E 10.2. Weight 10.86% \u2014 marginally above 10% cap. All structural filters pass. Best performing position. Trim fractional excess above 10% weight.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "increase",
+      "cash_rationale": "Bear regime (95% confidence) targets 50% cash. Current deployable cash is 40.76% ($3988). Tier 1 sells of BNY+NTRS+NUE+CF+JBL (combined market value ~$641) will add approximately $641 to cash, bringing total to ~$4629 (~47.3%). No new-entrant BUYs recommended in bear regime with breadth at 38% (below bull threshold) and negative MA200 trend. Remaining gap to 50% target (~$261) can be achieved by trimming VLO and KEYS above their 10% position caps. Do NOT redeploy stub proceeds into new positions \u2014 bear regime cash target supersedes redeployment pressure.",
+      "summary": "Q4 quarterly rebalance: five Tier 1 SELLs (BNY/NTRS/NUE/CF/JBL \u2014 all loss positions with trend breaks or data integrity failures), WATCH on KEYS and ROST (profitable, hold gate applies), HOLD on MPC/PSX/VLO (all above MA, passing momentum), targeting 50% cash in confirmed bear regime with breadth at 38%.",
+      "usage": {
+        "input_tokens": 13930,
+        "output_tokens": 3573,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 5926
+      },
+      "sell_tier_summary": {
+        "tier1_execute": 5,
+        "tier2_deferred": 2
+      }
+    },
     {
       "id": "RUN-20260930-1832",
       "timestamp": "2026-09-30T18:32:05Z",
@@ -10862,196 +10981,6 @@
       "sell_tier_summary": {
         "tier1_execute": 0,
         "tier2_deferred": 2
-      }
-    },
-    {
-      "id": "RUN-20260724-2236",
-      "timestamp": "2026-07-24T22:36:05Z",
-      "type": "day_end",
-      "model": "claude-sonnet-4-6",
-      "assessment": "Portfolio sits at +1.77% total PnL with 31.6% cash \u2014 well above the 5% bull-regime target \u2014 while the market regime remains firmly bull (VIX 13.7, breadth 66.1%, SPY above 200-MA). The critical unresolved issue is JBL's naked short of -22 shares, which must be closed via buy-to-cover immediately; this single position represents a -67.8% weight and unbounded short-side risk that violates the long-only invariant. Several legitimate positions need attention: WST is below its 50-day MA at a -10% loss, IBKR and MNST are loss positions with deteriorating momentum, and ROST/SPG have slipped outside the top-30% momentum rank.",
-      "regime": "bull",
-      "regime_confidence": 0.79,
-      "flags": [
-        "JBL: CRITICAL \u2014 Naked short of -22 shares (weight -67.8%) violates long-only invariant. Buy-to-cover 22 shares at next open. This is an execution emergency, not a trading decision. Flagged 5+ consecutive runs. Current mark shows +$136.91 unrealized on the short but this is a structural risk, not a valid position.",
-        "WST: Tier 1 SELL \u2014 price $328.20 is BELOW 50-day MA of $334.41 (Rule A, below_ma status confirmed), unrealized PnL -$36.77 (-10.08%), entry 2026-07-10. Also momentum_rank=0 (data gap) and flagged 3+ consecutive runs. Urgency: next_open.",
-        "IBKR: Tier 1 SELL \u2014 at a loss (PnL -$27.08, -2.40%), entry 2026-07-02. Momentum rank 13 \u2014 outside top 30% (rank >9 in a 18-stock universe is borderline, but rank 13 clearly outside top 30%). Confirmed flagged 5 consecutive runs. Urgency: next_open.",
-        "MNST: Tier 1 SELL \u2014 at a loss (PnL -$25.65, -2.96%), entry 2026-07-09. Momentum rank 7 \u2014 borderline but flagged 5 consecutive runs for momentum decay while at a loss. Rule E applies: loss position with confirmed momentum decay. Urgency: next_open.",
-        "ROST: WATCH \u2014 profitable (PnL +$26.50, +5.88%), entry 2026-07-15. Momentum rank 14 \u2014 outside top 30%. Hold gate active per Rule E; cannot SELL a profitable position on momentum decay alone. Defer to next quarterly rebalance.",
-        "SPG: WATCH \u2014 profitable (PnL +$8.50, +3.84%), entry 2026-07-14. Momentum rank 11 \u2014 outside top 30% threshold. Hold gate active. Defer to next quarterly rebalance.",
-        "ANET: WATCH \u2014 profitable (PnL +$62.49, +6.37%), entry 2026-07-07. Momentum rank 0 (data gap \u2014 yfinance missing). MA status unknown. Cannot confirm structural break. Hold gate active given positive PnL. Flagged 5 consecutive runs.",
-        "FRT: WATCH \u2014 profitable (PnL +$38.40, +3.96%), entry 2026-07-08. Momentum rank 0 (data gap), MA status unknown. Hold gate active given positive PnL. Flagged 5 consecutive runs.",
-        "CASH: 31.6% cash vs 5% bull-regime target \u2014 severe cash drag. Deploy toward existing positions or defer to next quarterly opportunity. No new BUYs permitted in non-quarterly month (August).",
-        "NTRS: Momentum rank 0 (data gap), sector Unknown, MA status unknown. Small gain +$5.00 (+0.56%), entry 2026-07-22. Monitor; hold gate applies given positive PnL.",
-        "GS: Momentum rank 0 (data gap), sector Unknown, MA status unknown. Profitable +$33.34 (+3.24%), entry 2026-07-07. Hold gate applies.",
-        "STLD: BUY order placed at today's open (3 shares submitted) \u2014 do not re-issue. Monitor for fill confirmation."
-      ],
-      "decisions": [
-        {
-          "action": "SELL",
-          "symbol": "JBL",
-          "reason": "CRITICAL long-only invariant violation \u2014 BUY-TO-COVER 22 shares to close naked short. JBL currently holds -22 shares (weight -67.8%), a runaway short created by repeated sell orders without held-quantity clamping. The mark shows +$136.91 unrealized gain on the short position but this does NOT make it a legitimate position \u2014 it is an execution error that creates unbounded loss risk. The long-only invariant (\u00a75) mandates immediate closure. This is flagged 5+ consecutive runs (persistent escalation applies). Unrealized PnL on short: +$136.91; entry date on original long: 2026-05-04. Rule A also confirmed: price $312.59 below MA50 of $352.50. Tier 1 \u2014 execute buy-to-cover 22 shares at next_open.",
-          "rule_triggered": "trend_break",
-          "sell_tier": "tier1",
-          "urgency": "next_open"
-        },
-        {
-          "action": "SELL",
-          "symbol": "WST",
-          "reason": "Rule A trigger \u2014 price $328.20 is below 50-day MA of $334.41, status confirmed 'below_ma'. Position is at a loss: unrealized PnL -$36.77 (-10.08%), entry 2026-07-10. Momentum rank 0 (data gap, conservative fail). Flagged 3+ consecutive runs. Tier 1 tax-loss harvest. Sell all 1 share at next_open.",
-          "rule_triggered": "trend_break",
-          "sell_tier": "tier1",
-          "urgency": "next_open"
-        },
-        {
-          "action": "SELL",
-          "symbol": "IBKR",
-          "reason": "Rule E \u2014 momentum rank 13 confirmed outside top 30% (18-stock universe, top 30% \u2248 rank \u2264 5-6); position is at a loss: unrealized PnL -$27.08 (-2.40%), entry 2026-07-02. Flagged 5 consecutive runs confirming sustained momentum decay. Loss position with confirmed momentum decay \u2192 Tier 1 tax-loss harvest. Sell all 12 shares at next_open.",
-          "rule_triggered": "momentum_decay",
-          "sell_tier": "tier1",
-          "urgency": "next_open"
-        },
-        {
-          "action": "SELL",
-          "symbol": "MNST",
-          "reason": "Rule E \u2014 momentum rank 7, flagged 5 consecutive runs confirming sustained momentum decay. Position is at a loss: unrealized PnL -$25.65 (-2.96%), entry 2026-07-09. Loss position with confirmed momentum decay \u2192 Tier 1 tax-loss harvest. Sell all 9 shares at next_open.",
-          "rule_triggered": "momentum_decay",
-          "sell_tier": "tier1",
-          "urgency": "next_open"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "ROST",
-          "reason": "Rule E flag \u2014 momentum rank 14 is outside top 30% threshold, flagged multiple consecutive runs. However, position is PROFITABLE: unrealized PnL +$26.50 (+5.88%), entry 2026-07-15. Hold gate active \u2014 profitable positions cannot be sold on momentum decay alone (v2.2 core rule). Structural rules A/B/D not triggered (price $238.65 above MA50 $225.14, EPS growth 37.4% positive, not parabolic). Defer any action to next quarterly rebalance (October).",
-          "rule_triggered": "momentum_decay",
-          "sell_tier": "tier2",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "SPG",
-          "reason": "Rule E flag \u2014 momentum rank 11 is outside top 30% threshold, flagged multiple consecutive runs. However, position is PROFITABLE: unrealized PnL +$8.50 (+3.84%), entry 2026-07-14. Hold gate active \u2014 cannot sell profitable position on momentum decay alone. Structural rules not triggered (price $229.78 above MA50 $214.71, EPS growth 16.4% positive). Defer to next quarterly rebalance (October).",
-          "rule_triggered": "momentum_decay",
-          "sell_tier": "tier2",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "ANET",
-          "reason": "Momentum rank 0 \u2014 yfinance data gap, MA status unknown. Position is PROFITABLE: unrealized PnL +$62.49 (+6.37%), entry 2026-07-07. Hold gate active. Cannot issue structural sell without confirmed data. Flagged 5 consecutive runs but gain position with data gap \u2192 WATCH, not SELL. Monitor for data resolution; defer to next quarterly rebalance if momentum data remains unavailable.",
-          "rule_triggered": "momentum_decay",
-          "sell_tier": "tier2",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "FRT",
-          "reason": "Momentum rank 0 \u2014 yfinance data gap, MA status unknown. Position is PROFITABLE: unrealized PnL +$38.40 (+3.96%), entry 2026-07-08. Hold gate active. Cannot confirm structural rule violation without data. Flagged 5 consecutive runs but gain position \u2192 WATCH. Defer to next quarterly rebalance.",
-          "rule_triggered": "momentum_decay",
-          "sell_tier": "tier2",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "BNY",
-          "reason": "Strong fundamentals: EPS growth 26.9%, revenue growth 13.1%, forward P/E 15.5. Price $158.91 above MA50 $145.47. Momentum rank 9 \u2014 borderline but within acceptable range for 18-stock universe. Unrealized PnL +$77.44 (+7.48%), entry 2026-07-01. All four filters pass. Thesis intact.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "CASY",
-          "reason": "New position entered 2026-07-24. EPS growth 66.0%, revenue growth 14.5%, forward P/E 36.6 (within valuation guard). Price $860 above MA50 $824.86. Momentum rank 5 \u2014 solid. Unrealized PnL -$10.65 (-1.22%) \u2014 minor loss on day-1, no rule triggered. Hold.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "CSX",
-          "reason": "New position entered 2026-07-24. EPS growth 22.7%, revenue growth 10.1%, forward P/E 23.5. Price $53.34 above MA50 $47.45. Momentum rank 8. Unrealized PnL +$3.24 (+0.34%). All filters pass. Thesis intact.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "GE",
-          "reason": "New position entered 2026-07-24. EPS growth 19.4%, revenue growth 21.1%, forward P/E 39.0 (just under 40 threshold). Price $353.73 above MA50 $337.00. Momentum rank 10 \u2014 borderline top 30% in 18-stock universe. Unrealized PnL -$6.00 (-0.84%) \u2014 minor loss on day-1. Hold; monitor momentum rank.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "GS",
-          "reason": "Profitable position: unrealized PnL +$33.34 (+3.24%), entry 2026-07-07. Momentum rank 0 (data gap) \u2014 cannot confirm decay without data. MA status unknown. Hold gate protects against action on incomplete data. No structural rule confirmed. Hold pending data resolution.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "JBHT",
-          "reason": "Strong momentum rank 3 \u2014 top tier. EPS growth 45.6%, revenue growth 19.4%, forward P/E 28.5. Price $288.30 above MA50 $276.49. Unrealized PnL -$9.76 (-1.67%), entry 2026-07-16 \u2014 modest loss but no rule triggered, strong fundamentals and momentum. Hold.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "MNST",
-          "reason": "See SELL decision above \u2014 this HOLD is superseded by the Tier 1 SELL on MNST.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "MS",
-          "reason": "Excellent fundamentals: EPS growth 62.4%, revenue growth 28.0%, forward P/E 15.8. Price $214.48 above MA50 $212.20 (tight but above). Momentum rank 6. Unrealized PnL +$7.36 (+0.86%), entry 2026-07-07. All filters pass. Thesis intact.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "NTAP",
-          "reason": "Position at a loss: unrealized PnL -$42.90 (-4.09%), entry 2026-07-15. However, momentum rank 4 \u2014 strong, top tier. Price $167.74 above MA50 $155.02. EPS growth 23.4%, revenue growth 12.5%, forward P/E 17.0. Loss is modest and momentum is improving. No Rule E trigger (rank is top tier). Hold.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "NTRS",
-          "reason": "Small gain: unrealized PnL +$5.00 (+0.56%), entry 2026-07-22. Momentum rank 0 (data gap), MA unknown. Sector unknown. Hold gate applies given positive PnL and very recent entry. No structural rule confirmed without data. Monitor.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "NUE",
-          "reason": "New position entered 2026-07-24. Momentum rank 2 \u2014 top tier. EPS growth 382.1%, revenue growth 21.3%, forward P/E 14.2. Price $247.56 above MA50 $239.50. Unrealized PnL +$7.80 (+1.06%). Thesis strongly intact.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        }
-      ],
-      "cash_action": "decrease",
-      "cash_rationale": "Cash at 31.6% is far above the 5% bull-regime target. However, it is August (non-quarterly month), so no new BUY orders can be placed. The Tier 1 SELLs (JBL buy-to-cover, WST, IBKR, MNST) will increase cash further. The buy-to-cover on JBL will consume approximately $6,877 of cash to close the naked short, which will actually reduce the cash balance and fix the book. Net effect after JBL buy-to-cover + 3 loss-position sells: cash will remain elevated at ~25-30%. This should be addressed at the October quarterly rebalance by deploying into top-ranked positions. No action to increase cash further; the regime supports deployment, but execution rules prevent new buys this month.",
-      "summary": "Day-end Jul 24: JBL buy-to-cover (22 shares, emergency long-only fix) + Tier 1 SELLs on WST (Rule A, -10%), IBKR (Rule E, loss), MNST (Rule E, loss); ROST/SPG/ANET/FRT WATCH under hold gate; 4 new positions (GE/CSX/CASY/NUE) held; cash drag at 31.6% deferred to October rebalance.",
-      "usage": {
-        "input_tokens": 16612,
-        "output_tokens": 4636,
-        "cache_read_tokens": 0,
-        "cache_write_tokens": 9832
-      },
-      "sell_tier_summary": {
-        "tier1_execute": 4,
-        "tier2_deferred": 4
       }
     }
   ]
