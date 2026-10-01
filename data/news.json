@@ -1,629 +1,545 @@
 {
-  "generated_at": "2026-09-28T20:10:30Z",
+  "generated_at": "2026-10-01T18:59:46Z",
   "article_count": 30,
   "articles": [
     {
-      "id": "62033597",
-      "headline": "President Trump Says If We Don't Make Steel Ourselves, We Can't Defend Ourselves",
-      "summary": "",
-      "url": "https://www.benzinga.com/economics/macro-economic-events/26/09/62033597/president-trump-says-if-we-don-t-make-steel-ourselves-we-can-t-defend-ourselves",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "ASTL",
-        "CLF",
-        "CMC",
-        "CRS",
-        "GGB",
-        "MT",
-        "MTUS",
-        "NUE",
-        "PKX",
-        "RS",
-        "SLX",
-        "SPY",
-        "STLD",
-        "WS"
-      ],
-      "created_at": "2026-09-28T18:52:14Z",
-      "sentiment": "bull",
-      "confidence": 0.72,
-      "reason": "Protectionist rhetoric supports domestic steel production, benefiting U.S. steel manufacturers"
-    },
-    {
-      "id": "62018919",
-      "headline": "This First Solar Analyst Is No Longer Bearish; Here Are Top 5 Upgrades For Monday",
-      "summary": "Analysts upgraded Royal Caribbean, Park Hotels, First Solar, Teleflex and CF Industries, with several receiving higher price targets.",
-      "url": "https://www.benzinga.com/analyst-stock-ratings/upgrades/26/09/62018919/this-first-solar-analyst-is-no-longer-bearish-here-are-top-5-upgrades-for-monday",
+      "id": "62118193",
+      "headline": "Apple To $355? Here Are 10 Top Analyst Forecasts For Thursday",
+      "summary": "Analysts raised targets for HPE, Phillips 66, Micron and AEON; cut targets for Liquidia, Apple and Zions.",
+      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/10/62118193/apple-to-355-here-are-10-top-analyst-forecasts-for-thursday",
       "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "CF",
-        "FSLR",
-        "PK",
-        "RCL",
-        "TFX"
-      ],
-      "created_at": "2026-09-28T12:22:54Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Multiple analyst upgrades including First Solar moving from bearish to bullish stance."
-    },
-    {
-      "id": "62018376",
-      "headline": "Rothschild & Co Upgrades CF Industries Holdings to Neutral, Raises Price Target to $110",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/09/62018376/rothschild-co-upgrades-cf-industries-holdings-neutral-raises-price-target-110",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "CF"
-      ],
-      "created_at": "2026-09-28T12:05:36Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Price target raised to $110 and upgrade to Neutral suggests positive outlook with upside potential."
-    },
-    {
-      "id": "62012052",
-      "headline": "Earnings Volatility Watch: Micron Sets The Week, But Six Other Stocks Are Priced To Swing More",
-      "summary": "Micron headlines the week, up 276% in 2026, yet its implied earnings move trails CarMax, Jefferies and other names.",
-      "url": "https://www.benzinga.com/markets/market-summary/26/09/62012052/earnings-volatility-watch-micron-implied-moves-september-2026",
-      "author": "Piero Cingari",
-      "source": "benzinga",
-      "symbols": [
-        "ACN",
-        "AYI",
-        "CCL",
-        "FDS",
-        "JBL",
-        "JEF",
-        "KMX",
-        "MKC",
-        "MU",
-        "NKE"
-      ],
-      "created_at": "2026-09-27T12:30:23Z",
-      "sentiment": "neutral",
-      "confidence": 0.65,
-      "reason": "Micron gains noted but earnings volatility suggests uncertainty despite price appreciation."
-    },
-    {
-      "id": "62011121",
-      "headline": "Why US Diesel Prices Could Stay High Even If Oil Tumbles: A Global Refinery Shortage",
-      "summary": "US diesel prices hover near record highs as a global refinery shortage persists. Here&39;s why pump prices may stay high even if oil tumbles after Hormuz reopens.",
-      "url": "https://www.benzinga.com/markets/commodities/26/09/62011121/why-us-diesel-prices-could-stay-high-even-if-oil-tumbles-a-global-refinery-shortage",
-      "author": "Benzinga Weekend Correspondent",
-      "source": "benzinga",
-      "symbols": [
-        "MPC",
-        "PSX",
-        "VLO",
-        "XOM"
-      ],
-      "created_at": "2026-09-26T14:19:08Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Refinery shortage pressures diesel prices upward regardless of oil prices, indicating sustained cost headwinds."
-    },
-    {
-      "id": "62003900",
-      "headline": "10 Information Technology Stocks With Whale Alerts In Today\u2019s Session",
-      "summary": "This whale alert can help traders discover the next big trading opportunities. Whales are entities with large sums of money and we track their transactions here at Benzinga on our options activity scanner. Traders will",
-      "url": "https://www.benzinga.com/markets/options/26/09/62003900/10-information-technology-stocks-whale-alerts-today-s-session",
-      "author": "Benzinga Insights",
       "source": "benzinga",
       "symbols": [
         "AAPL",
-        "CRWV",
-        "INTC",
-        "IREN",
-        "KEYS",
-        "NBIS",
-        "NOW",
-        "ORCL",
-        "PANW",
-        "RIOT"
+        "AEON",
+        "DT",
+        "HPE",
+        "LQDA",
+        "MU",
+        "NFLX",
+        "PSX",
+        "WFC",
+        "ZION"
       ],
-      "created_at": "2026-09-25T17:35:11Z",
-      "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Article describes tracking whale activity without indicating bullish or bearish implications."
+      "created_at": "2026-10-01T18:10:08Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Analysts cut price targets for Apple despite headline mentioning $355 target."
     },
     {
-      "id": "61999274",
-      "headline": "Akamai, Atlas Energy Solutions, People And Other Big Stocks Moving Higher On Friday",
-      "summary": "U.S. stocks rose Friday; Akamai jumped 8.1% on an $11.6B Anthropic cloud deal, while Atlas Energy, Almonty and others posted strong gains.",
-      "url": "https://www.benzinga.com/trading-ideas/movers/26/09/61999274/akamai-atlas-energy-solutions-people-and-other-big-stocks-moving-higher-on-friday",
-      "author": "Avi Kapoor",
+      "id": "62117254",
+      "headline": "Goldman Sachs Maintains Neutral on Phillips 66, Raises Price Target to $274",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62117254/goldman-sachs-maintains-neutral-phillips-66-raises-price-target-274",
+      "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "AESI",
-        "AKAM",
-        "ALM",
-        "BE",
-        "DDOG",
-        "ENRD",
-        "HUM",
-        "JBL",
-        "MAAS",
-        "MXL",
-        "PPLI",
-        "QCOM",
-        "QMCO",
-        "SYNA",
-        "TSEM",
-        "YDES"
+        "PSX"
       ],
-      "created_at": "2026-09-25T15:17:32Z",
+      "created_at": "2026-10-01T17:42:12Z",
       "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Akamai jumped 8.1% on major $11.6B Anthropic cloud deal; broad market gains."
+      "confidence": 0.75,
+      "reason": "Price target raise signals improved outlook despite neutral rating maintenance."
     },
     {
-      "id": "61996358",
-      "headline": "Truist Securities Maintains Buy on Bank of New York Mellon, Lowers Price Target to $172",
+      "id": "62111203",
+      "headline": "Evercore ISI Group Maintains In-Line on Northern Trust, Raises Price Target to $183",
       "summary": "",
-      "url": "https://www.benzinga.com/news/26/09/61996358/truist-securities-maintains-buy-bank-new-york-mellon-lowers-price-target-172",
+      "url": "https://www.benzinga.com/news/26/10/62111203/evercore-isi-group-maintains-line-northern-trust-raises-price-target-183",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "NTRS"
+      ],
+      "created_at": "2026-10-01T15:06:57Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Price target raise signals analyst confidence in Northern Trust's growth prospects."
+    },
+    {
+      "id": "62108859",
+      "headline": "Evercore ISI Group Maintains In-Line on Bank of New York Mellon, Lowers Price Target to $150",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62108859/evercore-isi-group-maintains-line-bank-new-york-mellon-lowers-price-target-150",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
         "BNY"
       ],
-      "created_at": "2026-09-25T14:01:13Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Buy rating maintained despite price target reduction, indicating continued positive outlook on BNY Mellon"
+      "created_at": "2026-10-01T14:15:13Z",
+      "sentiment": "bear",
+      "confidence": 0.75,
+      "reason": "Price target lowered despite maintaining rating indicates reduced upside potential"
     },
     {
-      "id": "61993087",
-      "headline": "This Tower Semiconductor Analyst Begins Coverage On A Bullish Note; Here Are Top 5 Initiations For Friday",
-      "summary": "Analysts initiated bullish coverage on TSEM, PGEN, SPTX, PDFS and CF, setting targets of $300, $12, $46, $60 and $162.",
-      "url": "https://www.benzinga.com/news/26/09/61993087/this-tower-semiconductor-analyst-begins-coverage-on-a-bullish-note-here-are-top-5-initiations-for-friday",
+      "id": "62104523",
+      "headline": "Argus Research Reiterates Buy on Jabil, Maintains $475 Price Target",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62104523/argus-research-reiterates-buy-jabil-maintains-475-price-target",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "JBL"
+      ],
+      "created_at": "2026-10-01T12:55:46Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Argus Research maintains Buy rating and $475 price target on Jabil, showing confidence in stock."
+    },
+    {
+      "id": "62104355",
+      "headline": "Barclays Maintains Overweight on Jabil, Lowers Price Target to $378",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62104355/barclays-maintains-overweight-jabil-lowers-price-target-378",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "JBL"
+      ],
+      "created_at": "2026-10-01T12:50:09Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Overweight rating maintained despite lower price target, indicating continued positive outlook."
+    },
+    {
+      "id": "62097560",
+      "headline": "Dow Dips Over 400 Points Following PCE Data: Investor Sentiment Improves, Greed Index Remains in \u2018Fear\u2019 Zone",
+      "summary": "Markets remained fearful despite cooler PCE data: Dow fell 444 points, S&amp;P 500 slipped, while Nasdaq gained; earnings beat estimates.",
+      "url": "https://www.benzinga.com/markets/market-summary/26/10/62097560/dow-dips-over-400-points-following-pce-data-investor-sentiment-improves-greed-index-remains-in-fear-zone",
       "author": "Avi Kapoor",
       "source": "benzinga",
       "symbols": [
-        "CF",
-        "PDFS",
-        "PGEN",
-        "SPTX",
-        "TSEM"
+        "ACN",
+        "AYI",
+        "CAG",
+        "JBL",
+        "NKE"
       ],
-      "created_at": "2026-09-25T12:30:21Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Multiple analysts initiated bullish coverage on five stocks with positive price targets."
+      "created_at": "2026-10-01T06:09:57Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Mixed signals: market decline offset by positive earnings and cooling inflation data."
     },
     {
-      "id": "61992359",
-      "headline": "Why Is Akamai Technologies Stock Surging Friday?",
-      "summary": "Akamai (AKAM) stock jumps 21% premarket on an $11.6B cloud deal with Anthropic. See details on cap-ex plans &amp; analyst forecasts.",
-      "url": "https://www.benzinga.com/markets/large-cap/26/09/61992359/why-is-akamai-technologies-stock-surging-friday",
-      "author": "Lekha Gupta",
+      "id": "62095793",
+      "headline": "Here's How Much $1000 Invested In Bank of New York Mellon 15 Years Ago Would Be Worth Today",
+      "summary": "Bank of New York Mellon (NYSE:BNY) has outperformed the market over the past 15 years by 1.42% on an annualized basis producing an average annual return of 14.76%. Currently, Bank of New York Mellon has a market",
+      "url": "https://www.benzinga.com/news/26/09/62095793/here-s-how-much-1000-invested-bank-new-york-mellon-15-years-ago-would-be-worth-today",
+      "author": "Benzinga Insights",
       "source": "benzinga",
       "symbols": [
-        "AKAM",
-        "JBL"
+        "BNY"
       ],
-      "created_at": "2026-09-25T12:03:02Z",
+      "created_at": "2026-09-30T22:30:19Z",
       "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Major $11.6B cloud deal with Anthropic drives 21% premarket stock surge"
+      "confidence": 0.85,
+      "reason": "Strong 15-year outperformance with 14.76% annualized returns exceeding market benchmarks."
     },
     {
-      "id": "61992342",
-      "headline": "Bernstein Initiates Coverage On CF Industries Holdings with Outperform Rating, Announces Price Target of $162",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/09/61992342/bernstein-initiates-coverage-cf-industries-holdings-outperform-rating-announces-price-target-162",
-      "author": "Benzinga Newsdesk",
+      "id": "62095719",
+      "headline": "Here's How Much $1000 Invested In CF Industries Holdings 20 Years Ago Would Be Worth Today",
+      "summary": "CF Industries Holdings (NYSE:CF) has outperformed the market over the past 20 years by 6.2% on an annualized basis producing an average annual return of 15.24%. Currently, CF Industries Holdings has a market",
+      "url": "https://www.benzinga.com/news/26/09/62095719/here-s-how-much-1000-invested-cf-industries-holdings-20-years-ago-would-be-worth-today",
+      "author": "Benzinga Insights",
       "source": "benzinga",
       "symbols": [
         "CF"
       ],
-      "created_at": "2026-09-25T12:02:02Z",
+      "created_at": "2026-09-30T22:15:26Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Outperform rating with $162 price target from major analyst initiating coverage signals positive outlook."
+      "reason": "Stock significantly outperformed market with strong 15.24% annualized returns over 20 years."
     },
     {
-      "id": "61991780",
-      "headline": "Reported Earlier, 'US Fed plans to raise bank oversight thresholds, sources say' - Reuters Exclusive",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/09/61991780/reported-earlier-us-fed-plans-raise-bank-oversight-thresholds-sources-say-reuters-exclusive",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "BAC",
-        "BNY",
-        "C",
-        "CFG",
-        "COF",
-        "FCNCA",
-        "FITB",
-        "GS",
-        "HBAN",
-        "JPM",
-        "KEY",
-        "MS",
-        "PNC",
-        "SPY",
-        "STT",
-        "TD",
-        "TFC",
-        "USB",
-        "WFC"
-      ],
-      "created_at": "2026-09-25T11:36:21Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Higher oversight thresholds reduce regulatory burden on banks, supporting profitability."
-    },
-    {
-      "id": "61987296",
-      "headline": "Here's How Much $100 Invested In Marathon Petroleum 15 Years Ago Would Be Worth Today",
-      "summary": "Marathon Petroleum (NYSE:MPC) has outperformed the market over the past 15 years by 11.53% on an annualized basis producing an average annual return of 25.14%. Currently, Marathon Petroleum has a market capitalization",
-      "url": "https://www.benzinga.com/news/26/09/61987296/here-s-how-much-100-invested-marathon-petroleum-15-years-ago-would-be-worth-today",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "MPC"
-      ],
-      "created_at": "2026-09-24T22:30:24Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Stock significantly outperformed market with 25.14% annualized returns over 15 years."
-    },
-    {
-      "id": "61982105",
-      "headline": "Federal Reserve Board Seeks Public Comment On Proposals For Stablecoin Rules Under GENIUS Act, Requiring Full Reserve Backing And Capital Standards For Supervised Issuers",
-      "summary": "",
-      "url": "https://www.benzinga.com/markets/cryptocurrency/26/09/61982105/federal-reserve-board-seeks-public-comment-proposals-stablecoin-rules-under-genius-act-requiring-ful",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "BLK",
-        "BNY",
-        "COIN",
-        "CRCL",
-        "GS",
-        "HOOD",
-        "NTRS",
-        "SPY",
-        "STT"
-      ],
-      "created_at": "2026-09-24T18:36:08Z",
-      "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Regulatory proposal neither positive nor negative; seeks comment on stablecoin rules"
-    },
-    {
-      "id": "61980097",
-      "headline": "S&P 500 Erases Losses as US, Iran Reportedly Discuss Hormuz Deal: Stock Market Today",
-      "summary": "Stocks pared a sharp morning selloff after sources said US and Iranian negotiators are discussing a phased deal to reopen the Strait of Hormuz.",
-      "url": "https://www.benzinga.com/markets/market-summary/26/09/61980097/sp500-erases-losses-us-iran-hormuz-deal-markets-thursday",
-      "author": "Piero Cingari",
-      "source": "benzinga",
-      "symbols": [
-        "AMLP",
-        "AUR",
-        "CRL",
-        "DIA",
-        "ENPH",
-        "FSLR",
-        "GDDY",
-        "GEN",
-        "IBB",
-        "IWM",
-        "LLY",
-        "META",
-        "MGM",
-        "OIH",
-        "ORCL",
-        "P",
-        "QQQ",
-        "SEDG",
-        "SNX",
-        "VKTX",
-        "VLO",
-        "VOO",
-        "XLC",
-        "XLE",
-        "XLI",
-        "XLK",
-        "XLV",
-        "XLY",
-        "XOP",
-        "XRT"
-      ],
-      "created_at": "2026-09-24T17:32:01Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Positive geopolitical development reducing tensions and uncertainty around critical shipping lane."
-    },
-    {
-      "id": "61959651",
-      "headline": "Dozens Of U.S. Oil Refining And Business Groups Urge Trump To Reject Any Effort To Impose Ban On Diesel Exports",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/09/61959651/dozens-of-u-s-oil-refining-and-business-groups-urge-trump-to-reject-any-effort-to-impose-ban-on-diesel-exports",
-      "author": "Benzinga News-desk",
-      "source": "benzinga",
-      "symbols": [
-        "BP",
-        "CLMT",
-        "COP",
-        "CVX",
-        "DINO",
-        "HES",
-        "MPC",
-        "MRO",
-        "OXY",
-        "PARR",
-        "PBF",
-        "PBR",
-        "SHEL",
-        "SLB",
-        "SPY",
-        "VLO",
-        "XOM"
-      ],
-      "created_at": "2026-09-23T21:07:11Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Industry groups opposing export bans protects refiner profit margins and operational flexibility."
-    },
-    {
-      "id": "61950726",
-      "headline": "Here\u2019s How Much You Would Have Made Owning Keysight Techs Stock In The Last 10 Years",
-      "summary": "Keysight Techs (NYSE:KEYS) has outperformed the market over the past 10 years by 13.74% on an annualized basis producing an average annual return of 27.3%. Currently, Keysight Techs has a market capitalization of $58.79",
-      "url": "https://www.benzinga.com/news/26/09/61950726/here-s-how-much-you-would-have-made-owning-keysight-techs-stock-last-10-years",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "KEYS"
-      ],
-      "created_at": "2026-09-23T15:45:26Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Stock significantly outperformed market with 27.3% average annual returns over 10 years."
-    },
-    {
-      "id": "61944154",
-      "headline": "Microsoft To Rally More Than 15%? Here Are 10 Top Analyst Forecasts For Wednesday",
-      "summary": "Analysts raised targets for Meta, Microsoft, Valero and others; Microsoft upgraded to Buy, while KB Home and RTX targets fell.",
-      "url": "https://www.benzinga.com/news/26/09/61944154/microsoft-to-rally-more-than-15-here-are-10-top-analyst-forecasts-for-wednesday",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "AZO",
-        "KBH",
-        "KMX",
-        "META",
-        "MSFT",
-        "NKE",
-        "ONON",
-        "RTX",
-        "TLSI",
-        "VLO"
-      ],
-      "created_at": "2026-09-23T12:57:40Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Microsoft upgraded to Buy with analyst targets raised; headline suggests potential 15%+ rally."
-    },
-    {
-      "id": "61944055",
-      "headline": "Trump's Diesel Ban Comes With A Bigger Bill at The Pump",
-      "summary": "A diesel export ban could force U.S. refiners to lift gasoline and jet fuel prices, with diesel already at a record $6.53 a gallon.",
-      "url": "https://www.benzinga.com/markets/commodities/26/09/61944055/trump-diesel-export-ban-pump-prices-refiners",
-      "author": "Piero Cingari",
-      "source": "benzinga",
-      "symbols": [
-        "MPC",
-        "PSX",
-        "VLO"
-      ],
-      "created_at": "2026-09-23T12:55:31Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Diesel ban threatens higher fuel prices across gasoline, jet fuel, and diesel categories."
-    },
-    {
-      "id": "61941639",
-      "headline": "Goldman Sachs Maintains Buy on Valero Energy, Raises Price Target to $457",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/09/61941639/goldman-sachs-maintains-buy-valero-energy-raises-price-target-457",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "VLO"
-      ],
-      "created_at": "2026-09-23T11:25:42Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Goldman Sachs maintains buy rating and raises price target, signaling positive outlook."
-    },
-    {
-      "id": "61919246",
-      "headline": "This Marathon Petroleum Analyst Is No Longer Bullish; Here Are Top 4 Downgrades For Tuesday",
-      "summary": "Analysts downgraded MPC, ERIC, VLO, DAVA, lowering price targets for Ericsson and Pegasystems.",
-      "url": "https://www.benzinga.com/analyst-stock-ratings/downgrades/26/09/61919246/this-marathon-petroleum-analyst-is-no-longer-bullish-here-are-top-4-downgrades-for-tuesday",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "DAVA",
-        "ERIC",
-        "MPC",
-        "PANW",
-        "PEGA",
-        "VLO"
-      ],
-      "created_at": "2026-09-22T13:13:49Z",
-      "sentiment": "bear",
-      "confidence": 0.95,
-      "reason": "Marathon Petroleum analyst downgrade signals reduced bullish outlook and lower price targets."
-    },
-    {
-      "id": "61916744",
-      "headline": "Jefferies Downgrades Marathon Petroleum to Hold, Announces $413 Price Target",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/09/61916744/jefferies-downgrades-marathon-petroleum-hold-announces-413-price-target",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "MPC"
-      ],
-      "created_at": "2026-09-22T12:07:53Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Downgrade from Buy to Hold with price target suggests analyst expects limited upside ahead."
-    },
-    {
-      "id": "61916707",
-      "headline": "Jefferies Downgrades Valero Energy to Hold, Announces $401 Price Target",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/09/61916707/jefferies-downgrades-valero-energy-hold-announces-401-price-target",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "VLO"
-      ],
-      "created_at": "2026-09-22T12:06:45Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Downgrade from buy to hold with price target indicates reduced near-term upside potential."
-    },
-    {
-      "id": "61914774",
-      "headline": "Top Wall Street Forecasters Revamp Jabil Expectations Ahead Of Q4 Earnings",
-      "summary": "Jabil will report Q4 earnings Sept. 30, with analysts expecting $4.07 EPS and $9.7B revenue; the company also announced a $1.5B buyback.",
-      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/09/61914774/top-wall-street-forecasters-revamp-jabil-expectations-ahead-of-q4-earnings",
-      "author": "Avi Kapoor",
+      "id": "62086597",
+      "headline": "Jabil Flags \u2018Real\u2019 Memory Constraints As AI and Hyperscale Demand Tighten Supply",
+      "summary": "Jabil (NYSE: JBL) stock dropped 7% despite beating Q4 estimates with $10.6B revenue, driven by strong AI infrastructure demand.",
+      "url": "https://www.benzinga.com/markets/earnings/26/09/62086597/jabil-flags-real-memory-constraints-as-ai-and-hyperscale-demand-tighten-supply",
+      "author": "Anusuya Lahiri",
       "source": "benzinga",
       "symbols": [
         "JBL"
       ],
-      "created_at": "2026-09-22T11:01:08Z",
-      "sentiment": "bull",
+      "created_at": "2026-09-30T16:56:06Z",
+      "sentiment": "bear",
       "confidence": 0.85,
-      "reason": "Strong EPS expectations, solid revenue guidance, and $1.5B buyback signal analyst confidence and shareholder returns."
+      "reason": "Stock dropped 7% despite earnings beat; memory constraints and supply tightness signal operational headwinds ahead."
     },
     {
-      "id": "61913142",
-      "headline": "Trump Says US Negotiating \u2018Massive\u2019 Belarus Potash Deal Amid Trade Tussle With Canada, Putin Ally Cites Shortage: \u2018We Simply Do Not Have\u2026\u2019",
-      "summary": "Trump touts a massive Belarus potash deal at lower prices than Canada, but Lukashenko says no supply is available.",
-      "url": "https://www.benzinga.com/news/politics/26/09/61913142/trump-says-us-negotiating-massive-belarus-potash-deal-amid-trade-tussle-with-canada-putin-ally-cites-shortage-we-simply-do-not-have",
-      "author": "Namrata Sen",
+      "id": "62086386",
+      "headline": "Nasdaq 100 Climbs as Cooler PCE Cuts Rate Hike Bets, Micron Earnings Loom: Stock Market Today",
+      "summary": "Nasdaq 100 gains as softer PCE inflation cools Fed rate-hike bets, with oil above $91 and Micron earnings due after the bell Wednesday.",
+      "url": "https://www.benzinga.com/markets/equities/26/09/62086386/nasdaq-100-climbs-cooler-pce-cuts-rate-hike-bets-micron-earnings-loom-stock-market-today",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "AMZN",
+        "CAT",
+        "DIA",
+        "FORM",
+        "GEN",
+        "GOOGL",
+        "GS",
+        "HPE",
+        "IGV",
+        "IWM",
+        "JBL",
+        "JETS",
+        "KMX",
+        "MRNA",
+        "MSFT",
+        "MU",
+        "NLY",
+        "NVDA",
+        "QQQ",
+        "SANM",
+        "SMMT",
+        "TSLA",
+        "UTHR",
+        "VOO",
+        "XBI",
+        "XLB",
+        "XLC",
+        "XLE",
+        "XLF",
+        "XLI",
+        "XLK",
+        "XLP",
+        "XLRE",
+        "XLU",
+        "XLV",
+        "XLY",
+        "XOP"
+      ],
+      "created_at": "2026-09-30T16:47:40Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Cooler PCE inflation reduces rate hike expectations, supporting Nasdaq gains and equity valuations."
+    },
+    {
+      "id": "62083446",
+      "headline": "Here\u2019s How Much You Would Have Made Owning Valero Energy Stock In The Last 5 Years",
+      "summary": "Valero Energy (NYSE:VLO) has outperformed the market over the past 5 years by 27.52% on an annualized basis producing an average annual return of 39.67%. Currently, Valero Energy has a market capitalization of $112.68",
+      "url": "https://www.benzinga.com/news/26/09/62083446/here-s-how-much-you-would-have-made-owning-valero-energy-stock-last-5-years",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "VLO"
+      ],
+      "created_at": "2026-09-30T15:15:25Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Stock significantly outperformed market with strong 39.67% annualized returns over 5 years."
+    },
+    {
+      "id": "62082319",
+      "headline": "Here\u2019s How Much You Would Have Made Owning Phillips 66 Stock In The Last 5 Years",
+      "summary": "Phillips 66 (NYSE:PSX) has outperformed the market over the past 5 years by 14.99% on an annualized basis producing an average annual return of 27.12%. Currently, Phillips 66 has a market capitalization of $101.47",
+      "url": "https://www.benzinga.com/news/26/09/62082319/here-s-how-much-you-would-have-made-owning-phillips-66-stock-last-5-years",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "PSX"
+      ],
+      "created_at": "2026-09-30T14:45:46Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "PSX significantly outperformed market with 27.12% average annual return over 5 years."
+    },
+    {
+      "id": "62081243",
+      "headline": "Jabil Reports Q4 2026 Results: Full Earnings Call Transcript",
+      "summary": "On Wednesday, Jabil (NYSE:JBL) discussed fourth-quarter financial results during its earnings call. The full transcript is provided below. This content is powered by Benzinga APIs. For comprehensive financial data and",
+      "url": "https://www.benzinga.com/news/26/09/62081243/jabil-reports-q4-2026-results-full-earnings-call-transcript",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "JBL"
+      ],
+      "created_at": "2026-09-30T14:21:21Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Article presents earnings results without commentary indicating positive or negative performance."
+    },
+    {
+      "id": "62080835",
+      "headline": "This Nice Analyst Turns Bullish; Here Are Top 3 Upgrades For Wednesday",
+      "summary": "Wall Street analysts upgraded Grocery Outlet, NICE and Pinnacle Financial Partners; targets are $15, $150 and $118, respectively.",
+      "url": "https://www.benzinga.com/analyst-stock-ratings/upgrades/26/09/62080835/this-nice-analyst-turns-bullish-here-are-top-3-upgrades-for-wednesday",
+      "author": "Avi Kapoor",
       "source": "benzinga",
       "symbols": [
         "CF",
-        "IPI",
-        "MOS",
-        "NTR"
+        "GO",
+        "NICE",
+        "PNFP",
+        "SFIX",
+        "TFX"
       ],
-      "created_at": "2026-09-22T09:13:59Z",
-      "sentiment": "neutral",
-      "confidence": 0.65,
-      "reason": "Deal touted but contradicted by Belarus claim of no supply availability, creating uncertainty."
+      "created_at": "2026-09-30T14:12:41Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Three stocks received analyst upgrades with price targets, signaling positive outlook."
     },
     {
-      "id": "61910616",
-      "headline": "Here's How Much $100 Invested In Nucor 5 Years Ago Would Be Worth Today",
-      "summary": "Nucor (NYSE:NUE) has outperformed the market over the past 5 years by 7.41% on an annualized basis producing an average annual return of 19.15%. Currently, Nucor has a market capitalization of $55.19 billion.  Buying",
-      "url": "https://www.benzinga.com/news/26/09/61910616/here-s-how-much-100-invested-nucor-5-years-ago-would-be-worth-today",
+      "id": "62079279",
+      "headline": "Nasdaq Gains Over 100 Points; Jabil Posts Upbeat Earnings",
+      "summary": "U.S. stocks rose, led by tech, as Jabil beat Q4 estimates and raised FY2027 guidance; oil and gold also climbed.",
+      "url": "https://www.benzinga.com/news/26/09/62079279/nasdaq-gains-over-100-points-jabil-posts-upbeat-earnings",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "CNTB",
+        "DKI",
+        "DXST",
+        "JBL",
+        "NCI",
+        "NIVF",
+        "RFL"
+      ],
+      "created_at": "2026-09-30T13:42:25Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Jabil beat earnings estimates, raised FY2027 guidance, and tech sector led market gains."
+    },
+    {
+      "id": "62076500",
+      "headline": "TD Cowen Maintains Buy on Phillips 66, Raises Price Target to $295",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/09/62076500/td-cowen-maintains-buy-phillips-66-raises-price-target-295",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "PSX"
+      ],
+      "created_at": "2026-09-30T12:35:46Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains buy rating and raises price target, indicating positive outlook for Phillips 66."
+    },
+    {
+      "id": "62074470",
+      "headline": "Jabil Sees Q1 Adj EPS $3.80-$4.20 vs $3.60 Est; Sees Sales $10.600B-$11.400B vs $9.942B Est",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/09/62074470/jabil-sees-q1-adj-eps-3-80-4-20-vs-3-60-est-sees-sales-10-600b-11-400b-vs-9-942b-est",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "JBL"
+      ],
+      "created_at": "2026-09-30T11:32:11Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Strong guidance beats on both EPS and sales, with significant upside to analyst expectations."
+    },
+    {
+      "id": "62074447",
+      "headline": "Jabil Sees Q1 GAAP EPS $2.78-$3.18 vs $2.83 Est",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/09/62074447/jabil-sees-q1-gaap-eps-2-78-3-18-vs-2-83-est",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "JBL"
+      ],
+      "created_at": "2026-09-30T11:31:53Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "EPS guidance range straddles estimate with midpoint slightly below consensus."
+    },
+    {
+      "id": "62074393",
+      "headline": "Jabil Sees FY2027 Adj EPS $17.55 vs $16.80 Est; Sees Sales $44.500B vs $42.643B Est",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/09/62074393/jabil-sees-fy2027-adj-eps-17-55-vs-16-80-est-sees-sales-44-500b-vs-42-643b-est",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "JBL"
+      ],
+      "created_at": "2026-09-30T11:31:17Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "FY2027 guidance beats on both EPS and sales expectations, signaling strong growth"
+    },
+    {
+      "id": "62074365",
+      "headline": "Jabil Q4 Adj. EPS $4.40 Beats $4.06 Estimate, Sales $10.616B Beat $9.693B Estimate",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/earnings/26/09/62074365/jabil-q4-adj-eps-4-40-beats-4-06-estimate-sales-10-616b-beat-9-693b-estimate",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "JBL"
+      ],
+      "created_at": "2026-09-30T11:30:30Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Strong earnings beat on both EPS and revenue significantly exceeding expectations."
+    },
+    {
+      "id": "62074135",
+      "headline": "Earnings Scheduled For September 30, 2026",
+      "summary": "Companies Reporting Before The Bell \u2022 FactSet Research Systems (NYSE:FDS) is expected to report quarterly earnings at $4.34 per share on revenue of $629.46 million.  \u2022 Cal-Maine Foods (NASDAQ:CALM) is projected to",
+      "url": "https://www.benzinga.com/news/earnings/26/09/62074135/earnings-scheduled-september-30-2026",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "BSET",
+        "CAG",
+        "CALM",
+        "FDS",
+        "JBL",
+        "MU",
+        "PRGS",
+        "YRD"
+      ],
+      "created_at": "2026-09-30T11:11:10Z",
+      "sentiment": "neutral",
+      "confidence": 0.95,
+      "reason": "Article merely announces upcoming earnings dates with projected figures; contains no evaluative language."
+    },
+    {
+      "id": "62070172",
+      "headline": "Dow Falls Over 100 Points as Treasury Yields Rise: Investor Sentiment Weakens, Fear & Greed Index Stays in \u2018Fear\u2019 Zone",
+      "summary": "Markets fell as CNN\u2019s Fear &amp; Greed Index slipped to 32, remaining in the Fear zone; investors awaited earnings and watched economic data.",
+      "url": "https://www.benzinga.com/markets/market-summary/26/09/62070172/dow-falls-over-100-points-as-treasury-yields-rise-investor-sentiment-weakens-fear-greed-index-stays-in-fear-zone",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "CAG",
+        "CCL",
+        "JBL",
+        "MU"
+      ],
+      "created_at": "2026-09-30T06:05:01Z",
+      "sentiment": "bear",
+      "confidence": 0.95,
+      "reason": "Dow decline, rising yields, and Fear & Greed Index in fear zone signal weakening investor sentiment."
+    },
+    {
+      "id": "62070081",
+      "headline": "Jabil, Micron and 3 Stocks to Watch Heading Into Wednesday",
+      "summary": "Conagra and Jabil report earnings; FingerMotion plans Newbit acquisition; Concentrix cuts guidance; Micron reports after close.",
+      "url": "https://www.benzinga.com/markets/equities/26/09/62070081/jabil-micron-and-3-stocks-to-watch-heading-into-wednesday",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "CAG",
+        "CNXC",
+        "FNGR",
+        "JBL",
+        "MU"
+      ],
+      "created_at": "2026-09-30T05:44:51Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Mixed signals: earnings reports and acquisitions offset by guidance cuts."
+    },
+    {
+      "id": "62069859",
+      "headline": "Stock Market: Will S&P 500 Open Up or Down Today?",
+      "summary": "Will S&amp;P 500 open higher? Polymarket odds jump to 72% as Wall Street digests PCE inflation data, Micron earnings, and Q4 seasonal strength.",
+      "url": "https://www.benzinga.com/markets/prediction-markets/26/09/62069859/stock-market-will-sp-500-open-up-or-down-today-47",
+      "author": "Rishabh Mishra",
+      "source": "benzinga",
+      "symbols": [
+        "CAG",
+        "CALM",
+        "DIA",
+        "FDS",
+        "JBL",
+        "MU",
+        "POLUSD",
+        "QQQ",
+        "SPY"
+      ],
+      "created_at": "2026-09-30T05:14:15Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "72% Polymarket odds for S&P 500 opening higher, plus Q4 seasonal strength support bullish sentiment."
+    },
+    {
+      "id": "62067520",
+      "headline": "Northern Trust's CFO Dave Fox To Retire; Co. To Conduct Internal And External Search For Next CFO; Dave Fox To Remain As CFO Through End Of Q1 2027",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/09/62067520/northern-trust-s-cfo-dave-fox-retire-co-conduct-internal-and-external-search-next-cfo-dave-fox-remai",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "NTRS"
+      ],
+      "created_at": "2026-09-29T21:09:41Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Planned executive transition with orderly handover timeline; no negative business implications indicated."
+    },
+    {
+      "id": "62053869",
+      "headline": "Keysight Technologies Announces Dual-Channel 20 GHz Analog Signal Generator For Aerospace, Defense, And Wireless Testing",
+      "summary": "",
+      "url": "https://www.benzinga.com/quote/KEYS",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "KEYS"
+      ],
+      "created_at": "2026-09-29T15:04:28Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Product innovation announcement demonstrates technological advancement and market expansion in high-value aerospace and defense sectors."
+    },
+    {
+      "id": "62052698",
+      "headline": "This Staar Surgical Analyst Turns Bullish; Here Are Top 5 Upgrades For Tuesday",
+      "summary": "Analysts upgraded STAA, NFLX, SFIX, with ratings moving toward Buy or Neutral and mixed price-target changes.",
+      "url": "https://www.benzinga.com/analyst-stock-ratings/upgrades/26/09/62052698/this-staar-surgical-analyst-turns-bullish-here-are-top-5-upgrades-for-tuesday",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "BLMN",
+        "CF",
+        "NFLX",
+        "RZLT",
+        "SFIX",
+        "STAA",
+        "TFX"
+      ],
+      "created_at": "2026-09-29T14:37:46Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Analyst upgrade to bullish on STAA with multiple positive rating changes across mentioned stocks."
+    },
+    {
+      "id": "62044174",
+      "headline": "Transcript: Nucor Q2 2026 Earnings Conference Call",
+      "summary": "Nucor (NYSE:NUE) held its second-quarter earnings conference call on Tuesday. Below is the complete transcript from the call. Benzinga APIs provide real-time access to earnings call transcripts and financial data. Visit",
+      "url": "https://www.benzinga.com/news/26/09/62044174/transcript-nucor-q2-2026-earnings-conference-call",
       "author": "Benzinga Insights",
       "source": "benzinga",
       "symbols": [
         "NUE"
       ],
-      "created_at": "2026-09-21T22:15:24Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong outperformance with 19.15% annualized returns significantly beating market over 5 years."
-    },
-    {
-      "id": "61908038",
-      "headline": "US Diesel Prices Surge Past $6.50: The Agriculture ETFs Caught in the Crossfire",
-      "summary": "U.S. diesel prices hit a record $6.50 a gallon, putting fresh pressure on farmers. Here\u2019s what soaring fuel costs could mean for agriculture ETFs.",
-      "url": "https://www.benzinga.com/etfs/sector-etfs/26/09/61908038/us-diesel-prices-surge-past-6-50-the-agriculture-etfs-caught-in-the-crossfire",
-      "author": "Chandrima Sanyal",
-      "source": "benzinga",
-      "symbols": [
-        "ADM",
-        "CF",
-        "CTVA",
-        "DBA",
-        "DE",
-        "MOO",
-        "NTR",
-        "PDBA"
-      ],
-      "created_at": "2026-09-21T19:54:43Z",
-      "sentiment": "bear",
-      "confidence": 0.95,
-      "reason": "Soaring diesel prices increase farming costs, pressuring agriculture sector profitability and ETF performance."
-    },
-    {
-      "id": "61900845",
-      "headline": "The Fed Is Watching AI Inflation. Here's What ETF Investors Should Watch",
-      "summary": "ETF investors should take note of rising data-center demand for power, copper and infrastructure as AI investment fuels inflation.",
-      "url": "https://www.benzinga.com/etfs/sector-etfs/26/09/61900845/fed-ai-inflation-heres-what-etf-investors-should-watch",
-      "author": "Chandrima Sanyal",
-      "source": "benzinga",
-      "symbols": [
-        "CCJ",
-        "COPX",
-        "CVX",
-        "DE",
-        "EMR",
-        "ETN",
-        "FAST",
-        "NUE",
-        "PAVE",
-        "PWR",
-        "URA",
-        "XLE",
-        "XLU",
-        "XOM"
-      ],
-      "created_at": "2026-09-21T15:54:23Z",
+      "created_at": "2026-09-29T11:06:57Z",
       "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Mixed implications: AI growth drives infrastructure demand but creates inflation concerns for investors."
+      "confidence": 0.85,
+      "reason": "Earnings call transcript publication contains no performance metrics or forward guidance details."
     },
     {
-      "id": "61890305",
-      "headline": "Goldman Sachs Maintains Buy on Marathon Petroleum, Raises Price Target to $472",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/09/61890305/goldman-sachs-maintains-buy-marathon-petroleum-raises-price-target-472",
-      "author": "Benzinga Newsdesk",
+      "id": "62035556",
+      "headline": "Here\u2019s How Much You Would Have Made Owning Ross Stores Stock In The Last 5 Years",
+      "summary": "Ross Stores (NASDAQ:ROST) has outperformed the market over the past 5 years by 4.36% on an annualized basis producing an average annual return of 16.37%. Currently, Ross Stores has a market capitalization of $77.96",
+      "url": "https://www.benzinga.com/news/26/09/62035556/here-s-how-much-you-would-have-made-owning-ross-stores-stock-last-5-years",
+      "author": "Benzinga Insights",
       "source": "benzinga",
       "symbols": [
-        "MPC"
+        "ROST"
       ],
-      "created_at": "2026-09-21T11:03:33Z",
+      "created_at": "2026-09-28T20:15:33Z",
       "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Goldman Sachs maintains buy rating and raises price target, signaling positive outlook"
-    },
-    {
-      "id": "61881898",
-      "headline": "Diesel Squeeze Nobody Hedged: 4 Refiners Just Logged Their 6th Straight Week of Gains",
-      "summary": "Valero, Marathon Petroleum, HF Sinclair and Phillips 66 have gained for six consecutive weeks as diesel crack spreads hit an all-time record.",
-      "url": "https://www.benzinga.com/markets/commodities/26/09/61881898/diesel-squeeze-oil-refiners-stocks-four-top-performing-six-weeks-of-gains",
-      "author": "Piero Cingari",
-      "source": "benzinga",
-      "symbols": [
-        "CRAK",
-        "DINO",
-        "GS",
-        "MPC",
-        "PSX",
-        "VLO"
-      ],
-      "created_at": "2026-09-18T20:32:07Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Record diesel crack spreads and 6-week consecutive gains signal strong profitability for refiners."
+      "confidence": 0.85,
+      "reason": "Strong 5-year outperformance of 16.37% annual return demonstrates solid growth and market-beating performance."
     }
   ]
 }
