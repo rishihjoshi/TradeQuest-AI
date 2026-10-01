@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-01T00:41:24Z",
-  "mode": "post_close",
+  "timestamp": "2026-10-01T19:00:10Z",
+  "mode": "market_open",
   "orders_placed": [],
   "orders_skipped": [
     {
@@ -16,25 +16,25 @@
       "reason": "trading halted \u2014 unresolved invariant breach"
     },
     {
-      "symbol": "EXPD",
+      "symbol": "AMGN",
       "reason": "trading halted \u2014 unresolved invariant breach"
-    },
-    {
-      "symbol": "ROST",
-      "reason": "blocked by agent approval or risk gate"
     },
     {
       "symbol": "KEYS",
       "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "ROST",
+      "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 40.76,
+  "cash_pct_after": 39.99,
   "long_only_breach": false,
   "invariant_breaches": [
-    "sector Energy at 31.6% exceeds the 30% cap"
+    "sector Energy at 32.4% exceeds the 30% cap"
   ],
-  "breach_streak": 3,
+  "breach_streak": 4,
   "trading_halted": true,
   "dry_run": false
 }
