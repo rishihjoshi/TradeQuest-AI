@@ -1,49 +1,27 @@
 {
-  "timestamp": "2026-10-03T00:37:09Z",
-  "mode": "post_close",
+  "timestamp": "2026-10-05T21:18:34Z",
+  "mode": "market_open",
   "orders_placed": [
     {
       "action": "BUY",
       "symbol": "MU",
-      "qty": 0.883897,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "HUM",
-      "qty": 2.446423,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "FLEX",
-      "qty": 8.147612,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "NTAP",
-      "qty": 2.818548,
+      "qty": 0.843477,
       "status": "submitted"
     }
   ],
   "orders_skipped": [
-    {
-      "symbol": "ROST",
-      "reason": "blocked by agent approval or risk gate"
-    },
     {
       "symbol": "KEYS",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 39.88,
+  "cash_pct_after": 13.88,
   "long_only_breach": false,
   "invariant_breaches": [
-    "sector Energy at 32.5% exceeds the 30% cap"
+    "sector Energy at 33.0% exceeds the 30% cap"
   ],
-  "breach_streak": 1,
+  "breach_streak": 2,
   "trading_halted": false,
   "dry_run": false
 }
