@@ -1,24 +1,21 @@
 {
-  "timestamp": "2026-10-06T01:50:26Z",
-  "mode": "post_close",
+  "timestamp": "2026-10-06T19:01:59Z",
+  "mode": "market_open",
   "orders_placed": [],
   "orders_skipped": [
-    {
-      "symbol": "MU",
-      "reason": "trading halted \u2014 unresolved invariant breach"
-    },
     {
       "symbol": "KEYS",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 13.87,
+  "cash_pct_after": 4.97,
   "long_only_breach": false,
   "invariant_breaches": [
-    "sector Energy at 33.1% exceeds the 30% cap"
+    "sector Technology at 34.0% exceeds the 30% cap",
+    "sector Energy at 32.9% exceeds the 30% cap"
   ],
-  "breach_streak": 3,
+  "breach_streak": 4,
   "trading_halted": true,
   "dry_run": false
 }
