@@ -1,17 +1,11 @@
 {
-  "timestamp": "2026-10-08T01:10:46Z",
-  "mode": "post_close",
+  "timestamp": "2026-10-08T19:23:38Z",
+  "mode": "market_open",
   "orders_placed": [
     {
       "action": "SELL",
-      "symbol": "NTAP",
-      "qty": 1.94555,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
       "symbol": "PSX",
-      "qty": 1.129162,
+      "qty": 0.610747,
       "status": "submitted"
     }
   ],
@@ -41,7 +35,19 @@
       "reason": "trading halted \u2014 unresolved invariant breach"
     },
     {
+      "symbol": "EXPD",
+      "reason": "trading halted \u2014 unresolved invariant breach"
+    },
+    {
+      "symbol": "CF",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
       "symbol": "JBL",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "NUE",
       "reason": "blocked by agent approval or risk gate"
     },
     {
@@ -53,30 +59,25 @@
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "BNY",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "CF",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
       "symbol": "ROST",
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "NUE",
+      "symbol": "BNY",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "HUM",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 4.94,
+  "cash_pct_after": 14.18,
   "long_only_breach": false,
   "invariant_breaches": [
-    "sector Technology at 34.5% exceeds the 30% cap",
-    "sector Energy at 33.0% exceeds the 30% cap"
+    "sector Energy at 31.7% exceeds the 30% cap"
   ],
-  "breach_streak": 7,
+  "breach_streak": 8,
   "trading_halted": true,
   "dry_run": false
 }
