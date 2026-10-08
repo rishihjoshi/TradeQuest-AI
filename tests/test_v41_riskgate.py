@@ -165,8 +165,9 @@ class TestSweepAccountsForPending(unittest.TestCase):
 
     @staticmethod
     def _h(sym, mv, price):
+        # ma_50d added in v4.2 -- see the note on the matching helper in test_v41_deployment.
         return {"symbol": sym, "shares": 2, "current_price": price, "market_value": mv,
-                "sector": "Energy"}
+                "sector": "Energy", "ma_50d": price * 0.9}
 
     def test_a_name_already_being_topped_up_is_not_re_proposed(self):
         holdings = [self._h("VLO", 696.73, 348.64)]
@@ -245,7 +246,8 @@ class TestKeepSetSemantics(unittest.TestCase):
 
     def test_the_sweep_can_reach_held_names_too(self):
         holdings = [{"symbol": "ROST", "shares": 3, "current_price": 237.99,
-                     "market_value": 712.63, "sector": "Consumer Cyclical"}]
+                     "market_value": 712.63, "sector": "Consumer Cyclical",
+                     "ma_50d": 214.19}]
         sweep = update.plan_residual_sweep(holdings, {"ROST"}, 3_000.0, 9_995.91,
                                            {"ROST": 237.99})
         self.assertTrue(sweep, "leftover cash must be able to reach a held name")
