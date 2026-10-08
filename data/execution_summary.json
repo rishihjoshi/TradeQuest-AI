@@ -1,21 +1,82 @@
 {
-  "timestamp": "2026-10-07T19:29:28Z",
-  "mode": "market_open",
-  "orders_placed": [],
+  "timestamp": "2026-10-08T01:10:46Z",
+  "mode": "post_close",
+  "orders_placed": [
+    {
+      "action": "SELL",
+      "symbol": "NTAP",
+      "qty": 1.94555,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "PSX",
+      "qty": 1.129162,
+      "status": "submitted"
+    }
+  ],
   "orders_skipped": [
     {
+      "symbol": "BNY",
+      "reason": "trading halted \u2014 unresolved invariant breach"
+    },
+    {
+      "symbol": "CF",
+      "reason": "trading halted \u2014 unresolved invariant breach"
+    },
+    {
+      "symbol": "JBL",
+      "reason": "trading halted \u2014 unresolved invariant breach"
+    },
+    {
+      "symbol": "NTRS",
+      "reason": "trading halted \u2014 unresolved invariant breach"
+    },
+    {
+      "symbol": "NUE",
+      "reason": "trading halted \u2014 unresolved invariant breach"
+    },
+    {
+      "symbol": "ROST",
+      "reason": "trading halted \u2014 unresolved invariant breach"
+    },
+    {
+      "symbol": "JBL",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "NTRS",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
       "symbol": "KEYS",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "BNY",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "CF",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "ROST",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "NUE",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 4.96,
+  "cash_pct_after": 4.94,
   "long_only_breach": false,
   "invariant_breaches": [
-    "sector Technology at 34.4% exceeds the 30% cap",
+    "sector Technology at 34.5% exceeds the 30% cap",
     "sector Energy at 33.0% exceeds the 30% cap"
   ],
-  "breach_streak": 6,
+  "breach_streak": 7,
   "trading_halted": true,
   "dry_run": false
 }
