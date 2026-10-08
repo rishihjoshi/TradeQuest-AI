@@ -81,6 +81,13 @@ FRACTIONAL_SHARES   = True   # size positions in fractional shares (Alpaca suppo
 FRACTIONAL_DECIMALS = 6      # Alpaca accepts up to 9dp; 6 is ample and avoids float noise
 MIN_ORDER_NOTIONAL  = 1.00   # brokers reject dust; skip anything smaller than $1
 
+# v4.2: a position must reach this fraction of its equal-weight target before it counts as
+# occupying one of the TARGET_N slots. Fractional sells leave residues the broker still reports as
+# positions; at `shares > 0` three stubs worth $60 made the book look full at "10 of 10" and
+# blocked every new entry while 44% sat in cash. 10% of target is well clear of ordinary drift
+# (a real position that has halved is still 5x this) and well above any plausible residue.
+SLOT_MATERIAL_PCT   = 0.10
+
 # v2.2 quarterly months — only these months allow new BUY orders and Tier 2+ SELL exits
 QUARTERLY_MONTHS = {1, 4, 7, 10}  # Jan, Apr, Jul, Oct
 
@@ -217,6 +224,64 @@ def size_shares(dollars: float, price: float, fractional: bool | None = None) ->
     return qty if qty * price >= MIN_ORDER_NOTIONAL else 0.0
 
 
+def is_material(market_value: float, target_per: float) -> bool:
+    """True when a position is large enough to count as actually occupying a target slot (v4.2).
+
+    A fractional residue is a position by the broker's reckoning and nothing by the strategy's.
+    Counting `shares > 0` let three stubs worth $60 combined report the book as "10 of 10
+    positions", which drove `open_slots` to zero and blocked every new entry outside a quarterly
+    month while 44% of the book sat in cash.
+
+    Scaled off the equal-weight target rather than a fixed dollar figure so it tracks book size.
+    """
+    if target_per <= 0:
+        return market_value > 0
+    return market_value >= max(MIN_ORDER_NOTIONAL, target_per * SLOT_MATERIAL_PCT)
+
+
+def is_eligible_entry(price: float, sector: str | None, momentum_rank: int | None,
+                      ma_50d: float | None, require_rank: bool = True) -> tuple[bool, str]:
+    """The STRATEGY §3 entry gates, in one place. Returns (ok, reason_when_blocked) (v4.2).
+
+    Two gates, both of which the strategy has always required and only one of which was ever
+    implemented -- and that one on only one of the three paths that can open or grow a position:
+
+    * **Data integrity (§3, Directive 10).** A candidate with an Unknown sector, a null 50-day MA
+      or `momentum_rank == 0` was not evaluated by the filters, so it cannot pass them. CF reached
+      10.9% of the book -- the largest position -- with all three null.
+    * **Trend (§3).** "New entries must be above their 50-day MA at purchase -- never buy a stock
+      that would immediately trigger the trend-break sell rule." This existed nowhere in the buy
+      path. On 2026-08-31 the redeployment bought KEYS at $322.03 against a $329.87 MA, ROST at
+      $228.13 against $234.26 and JBL at $303.55 against $334.08; Rule A sold all three the next
+      morning for a realised -$45.44.
+
+    This gates ADDING only. A held position that fails it is left to the §5.2 exit rules -- missing
+    data is not a sell signal either (Directive 10), and forcing an exit here would re-create the
+    generation-1 bug where a null rank read as a sell.
+
+    `require_rank=False` for the two paths that size a position the book ALREADY holds (the
+    redeployment top-up and the residual sweep). §3 scopes the data-integrity gate to entry -- "not
+    eligible for entry" -- and a held name has already cleared the exit tests this run, so its rank
+    is `should_exit_on_rank`'s business, not the sizing code's. Enforcing it here would mean a
+    transient null rank -- and KEYS demonstrably flapped between real data and nulls across the
+    2026-08-29 and 09-01 runs -- silently froze top-ups into a perfectly good holding. That is a
+    fresh instance of the deadlock shape, so the rank check stays where entries are decided. The
+    trend and sector/MA checks bind on every path: they answer "is this a sound thing to own more
+    of", which does not depend on how much of it we already own.
+    """
+    if price <= 0:
+        return False, "no price"
+    if (sector or "Unknown") == "Unknown":
+        return False, "sector unknown"
+    if require_rank and not momentum_rank:
+        return False, "momentum_rank null"
+    if ma_50d is None:
+        return False, "50-day MA unavailable"
+    if price <= float(ma_50d):
+        return False, f"below 50-day MA (${price:,.2f} <= ${float(ma_50d):,.2f})"
+    return True, ""
+
+
 def consolidate_orders(orders: list[tuple]) -> list[tuple]:
     """Merge repeated symbols into one order each, preserving first-seen order (v4.1).
 
@@ -251,8 +316,13 @@ def plan_residual_sweep(holdings: list[dict], target_symbols: set[str], deployab
     will not trade fractionally, a price that moved between sizing and execution, or an
     inception run where the sector cap left a slot unfilled.
 
-    Allocates best-ranked first, never past MAX_POSITION_PCT per name, and never below the cash
-    floor. Pure function: returns [(symbol, qty)] and touches nothing.
+    Allocates best-ranked first, never past MAX_POSITION_PCT per name, never past MAX_SECTOR_PCT
+    per sector, and never below the cash floor. Pure function: returns [(symbol, qty)].
+
+    The sector cap was added in v4.2. This was the last buy path with no sector limit at all: a
+    backstop meant for rounding residue could quietly pour every leftover dollar into whichever
+    sector happened to hold the best-ranked names. On the 2026-09-01 book that was Energy, already
+    53.7% of invested capital.
     """
     floor = pv * CASH_FLOOR_PCT
     budget = deployable_cash - floor
@@ -274,11 +344,32 @@ def plan_residual_sweep(holdings: list[dict], target_symbols: set[str], deployab
                 if h.get("symbol") in target_symbols and float(h.get("shares", 0) or 0) > 0]
     eligible.sort(key=lambda h: rank_of.get(h["symbol"], 9999))
 
+    # v4.2 sector cap, measured against the invested book a completed deployment produces rather
+    # than portfolio value -- dividing by pv lets a sector look compliant purely because cash is
+    # high, which is exactly the state this function runs in. Orders already planned this run count
+    # toward the sector total, for the same reason they count toward per-name room.
+    sector_cap = pv * (1 - CASH_FLOOR_PCT) * MAX_SECTOR_PCT
+    sector_val: dict[str, float] = {}
+    for h in holdings:
+        if float(h.get("shares", 0) or 0) > 0:
+            sec = h.get("sector") or "Unknown"
+            sector_val[sec] = (sector_val.get(sec, 0.0) + float(h.get("market_value", 0) or 0)
+                               + pending_value.get(h.get("symbol"), 0.0))
+
     sweep: list[tuple] = []
     for h in eligible:
         sym = h["symbol"]
         price = prices.get(sym.upper(), h.get("current_price", 0)) or 0
+        # v4.2: the sweep grows positions, so the STRATEGY §3 entry gates bind here too. This was
+        # the last unguarded way to add exposure -- it could pour leftover cash into a name with
+        # null data or one trading below its 50-day MA.
+        ok, _why = is_eligible_entry(price, h.get("sector"), rank_of.get(sym),
+                                     h.get("ma_50d"), require_rank=False)
+        if not ok:
+            continue
+        sec  = h.get("sector") or "Unknown"
         room = cap - float(h.get("market_value", 0) or 0) - pending_value.get(sym, 0.0)
+        room = min(room, sector_cap - sector_val.get(sec, 0.0))
         spend = min(room, budget)
         if spend <= 0:
             continue
@@ -286,10 +377,60 @@ def plan_residual_sweep(holdings: list[dict], target_symbols: set[str], deployab
         if not qty:
             continue
         sweep.append((sym, qty))
+        sector_val[sec] = sector_val.get(sec, 0.0) + qty * price
         budget -= qty * price
         if budget <= 0:
             break
     return sweep
+
+
+def plan_topups(holdings: list[dict], keep_syms: set[str], selling_syms: set[str],
+                rank_of: dict[str, int], target_per: float,
+                deployable_cash: float, pv: float) -> list[tuple]:
+    """Top held names up toward their equal-weight target (v3.2 carve-out; extracted in v4.2).
+
+    The redeployment carve-out that lets a non-quarterly month put idle cash back to work. It
+    follows the names being KEPT rather than today's top-N screen: ranks are noisy -- on
+    2026-08-19 five holdings moved 5-7 places overnight -- and having decided to hold a name,
+    leaving it under-weight while cash sits idle is cash drag by another route. A name queued to
+    SELL is excluded, so this never adds to a position being exited.
+
+    Extracted from the rebalance body in v4.2 so it is reachable by tests. While it was inline it
+    was the one planner nothing could exercise directly, and it was the one carrying both of the
+    bugs below.
+
+    Pure function: returns [(symbol, qty)].
+    """
+    topups: list[tuple] = []
+    # v4.2: track the budget. This previously summed every gap with no reference to available
+    # cash, relying on the placement layer to refuse whatever overshot the floor. A planner that
+    # over-proposes and a guard that silently truncates is the same split consolidate_orders was
+    # written to close: the guard should be the backstop, not the mechanism. Against the
+    # 2026-09-01 book it planned $4,183 of top-ups out of $4,401 -- $278 through the floor.
+    budget = deployable_cash - pv * CASH_FLOOR_PCT
+    for h in sorted(holdings, key=lambda x: rank_of.get(x["symbol"], 9999)):
+        if budget <= 0:
+            break
+        sym = h["symbol"]
+        if sym in selling_syms or sym not in keep_syms:
+            continue
+        price = h.get("current_price", 0) or 0
+        gap   = target_per - float(h.get("market_value", 0) or 0)
+        if price <= 0 or gap <= 0:
+            continue
+        # v4.2: the STRATEGY §3 gates apply to ADDING to a position, not only to opening one.
+        # Without this the carve-out was a hole straight through the entry rules -- it topped up
+        # CF (null sector, null MA, the largest position in the book) and re-bought names trading
+        # below their 50-day MA, which Rule A then sold the next morning.
+        ok, _why = is_eligible_entry(price, h.get("sector"), rank_of.get(sym),
+                                     h.get("ma_50d"), require_rank=False)
+        if not ok:
+            continue
+        qty = size_shares(min(gap, budget), price)
+        if qty:
+            topups.append((sym, qty))
+            budget -= qty * price
+    return topups
 
 
 def plan_slot_fill(holdings: list[dict], screened: list[dict], fundamentals: dict,
@@ -307,17 +448,33 @@ def plan_slot_fill(holdings: list[dict], screened: list[dict], fundamentals: dic
     every existing guard still applies -- sector cap, re-entry cooldown, the data-integrity gate,
     and the cash floor. Pure function: returns [(symbol, qty)].
     """
+    if pv <= 0:
+        return []
+    per_target = min(pv * (1 - CASH_FLOOR_PCT) / max(1, target_n), pv * MAX_POSITION_PCT)
+
     longs = [h for h in holdings if float(h.get("shares", 0) or 0) > 0]
-    open_slots = target_n - len(longs)
-    if open_slots <= 0 or pv <= 0:
+    # v4.2: only MATERIAL positions occupy a slot. A fractional residue is a position to the
+    # broker and nothing to the strategy; counting it made a book of 7 real names plus 3 stubs
+    # read as full and returned [] here on every run.
+    occupied = [h for h in longs
+                if is_material(float(h.get("market_value", 0) or 0), per_target)]
+    open_slots = target_n - len(occupied)
+    if open_slots <= 0:
         return []
 
     budget = deployable_cash - pv * CASH_FLOOR_PCT
     if budget <= 0:
         return []
 
-    per_target = min(pv * (1 - CASH_FLOOR_PCT) / max(1, target_n), pv * MAX_POSITION_PCT)
-    cap_val = pv * MAX_SECTOR_PCT
+    # v4.2: the sector cap divides by INVESTED capital, not portfolio value. Against pv it goes
+    # slack exactly when cash is high -- which is when concentration is most dangerous. On
+    # 2026-09-01 three refiners were 29.9% of pv and read as "just under" the 30% cap while being
+    # 53.7% of the book actually at risk. Measured post-deployment so the cap does not gate on
+    # today's under-investment: the denominator is what the book will hold once this run's budget
+    # is spent, which at the 5% target converges on pv.
+    invested_after = max(sum(float(h.get("market_value", 0) or 0) for h in longs) + budget,
+                         pv * (1 - CASH_FLOOR_PCT))
+    cap_val = invested_after * MAX_SECTOR_PCT
     sector_val: dict[str, float] = {}
     for h in longs:
         sec = h.get("sector") or "Unknown"
@@ -334,8 +491,11 @@ def plan_slot_fill(holdings: list[dict], screened: list[dict], fundamentals: dic
         info  = fundamentals.get(sym, {})
         price = info.get("current_price", 0) or 0
         sec   = info.get("sector") or "Unknown"
-        # Data-integrity gate (Directive 10): never enter on data we could not evaluate.
-        if sec == "Unknown" or not cand.get("momentum_rank") or info.get("ma_50d") is None:
+        # STRATEGY §3 entry gates: data integrity (Directive 10) AND the trend gate. The trend
+        # half was missing here -- this path could open a position already below its 50-day MA,
+        # which Rule A then sold the next morning.
+        ok, _why = is_eligible_entry(price, sec, cand.get("momentum_rank"), info.get("ma_50d"))
+        if not ok:
             continue
         if in_reentry_cooldown(sym, all_trades) is not None:
             continue
@@ -472,6 +632,80 @@ def check_sector_concentration(holdings: list[dict]) -> dict[str, float]:
         sector = h.get("sector", "Unknown")
         totals[sector] += float(h.get("weight", 0))
     return {s: w for s, w in totals.items() if w > MAX_SECTOR_PCT}
+
+
+def sector_exposure_of_invested(holdings: list[dict]) -> dict[str, float]:
+    """{sector: share of INVESTED capital}, descending. Advisory — never halts (v4.2).
+
+    `check_sector_concentration` and the invariant check both divide by portfolio value, which
+    makes a sector look safer the more cash the book is holding. That is backwards: cash is not
+    diversification, and a concentrated book is most fragile precisely when the rest of it is
+    idle. On 2026-09-01 MPC+PSX+VLO were 29.9% of portfolio value -- reported as inside the 30%
+    cap -- and 53.7% of the money actually exposed to the market.
+
+    Reported, not enforced. Feeding this into `assert_invariants` would breach on every run and
+    halt trading after MAX_BREACH_RUNS, stopping the redeployment that brings the ratio back down.
+    """
+    invested: dict[str, float] = {}
+    for h in holdings:
+        if float(h.get("shares", 0) or 0) > 0:
+            sec = h.get("sector") or "Unknown"
+            invested[sec] = invested.get(sec, 0.0) + float(h.get("market_value", 0) or 0)
+    total = sum(invested.values())
+    if total <= 0:
+        return {}
+    return dict(sorted(((s, v / total) for s, v in invested.items()),
+                       key=lambda kv: kv[1], reverse=True))
+
+
+def plan_sector_trims(holdings: list[dict], pv: float) -> list[tuple]:
+    """Restoration path for the sector-concentration invariant (v4.3).
+
+    assert_invariants flags any GICS sector whose market value exceeds MAX_SECTOR_PCT of
+    portfolio value. Like an open short, that breach has no discretionary cure: the overweight
+    came from price drift, not from buying (buys are already sector-capped), and the halt kill
+    switch SUPPRESSES the very sells that would reduce it — so breach_streak climbs forever.
+    That is the Oct 2026 freeze: Tech 34.4% / Energy 33.0%, halted at streak 6, no order the
+    book could produce to clear it. Same deadlock shape as the JBL short, which COVER solved by
+    declaring "restoring an invariant is not a discretionary trade" and bypassing every gate.
+
+    A sector trim is exactly that, so it gets the same treatment (caller routes it past the
+    halt, the quarterly lock, the agent gate and the order budget). Sells the lowest-momentum
+    names in each breached sector first (strongest holdings survive), partially on the marginal
+    name, so no more is sold than clears the breach. Float shares (v4.1): never strand dust.
+    """
+    if not pv:
+        return []
+    cap_val = pv * MAX_SECTOR_PCT
+    by_sector: dict[str, list[dict]] = {}
+    for h in holdings:
+        if float(h.get("shares", 0) or 0) > 0:
+            by_sector.setdefault(h.get("sector") or "Unknown", []).append(h)
+
+    trims: list[tuple] = []
+    for sec, hs in by_sector.items():
+        excess = sum(float(h.get("market_value", 0) or 0) for h in hs) - cap_val
+        if excess <= 0:
+            continue
+        # Worst momentum rank (highest number) first — keep the sector's strongest names.
+        for h in sorted(hs, key=lambda x: (x.get("momentum_rank") or 9999), reverse=True):
+            if excess <= 0:
+                break
+            price  = float(h.get("current_price", 0) or 0)
+            shares = float(h.get("shares", 0) or 0)
+            mv     = float(h.get("market_value", 0) or 0)
+            if price <= 0 or shares <= 0:
+                continue
+            # Trim just enough to clear the breach (plus a cent of headroom), or the whole
+            # position if one name is not enough.
+            qty = min(shares, min(mv, excess + 0.01) / price)
+            if qty <= 0:
+                continue
+            trims.append((h["symbol"], qty))
+            excess -= qty * price
+            print(f"  TRIM: SELL {qty:g} {h['symbol']} — {sec} over {MAX_SECTOR_PCT:.0%} cap "
+                  f"(restores invariant; bypasses halt and order caps)")
+    return trims
 
 
 # ── FMP fallback — fundamentals ───────────────────────────────
@@ -827,6 +1061,14 @@ def assert_invariants(state: dict, holdings: list[dict] | None = None) -> list[s
             if float(h.get("shares", 0) or 0) > 0:
                 sec = h.get("sector") or "Unknown"
                 sector_val[sec] = sector_val.get(sec, 0.0) + float(h.get("market_value", 0) or 0)
+        # NOTE (v4.2): this stays on the portfolio-value denominator ON PURPOSE. Breaches here
+        # feed breach_streak, and MAX_BREACH_RUNS of them HALT discretionary trading. Measuring
+        # sector share against invested capital would make the 2026-09-01 book (three refiners at
+        # 53.7% of invested) breach on every run and halt the system within three -- stopping the
+        # dust sells and redeployment that are what bring the ratio back down. That is Directive 4
+        # exactly: a guard with no restoration path, freezing what it was meant to protect.
+        # The honest invested-capital figure is reported by check_sector_concentration(), which
+        # advises and never halts.
         for sec, val in sector_val.items():
             if val > pv * MAX_SECTOR_PCT:
                 breaches.append(f"sector {sec} at {val/pv:.1%} exceeds the {MAX_SECTOR_PCT:.0%} cap")
@@ -2112,6 +2354,14 @@ def main():
             print("    python bot/rebalance_trueup.py --dry-run")
             print("!" * 68 + "\n")
 
+        # v4.2 advisory: sector share of the money actually at risk. Reported, never enforced —
+        # see sector_exposure_of_invested for why this must not reach assert_invariants.
+        _sector_inv = sector_exposure_of_invested(new_holdings)
+        for _sec, _share in _sector_inv.items():
+            if _share > MAX_SECTOR_PCT:
+                print(f"  Concentration: {_sec} is {_share:.1%} of INVESTED capital "
+                      f"(cap {MAX_SECTOR_PCT:.0%}) — advisory; deploying idle cash dilutes it.")
+
         # ── v2.2 Quarterly lock + profit gate ────────────────────
         # Determine whether this run is in a quarterly rebalance month.
         # Non-quarterly months: only Tier 1 sells (unrealized loss positions) may execute.
@@ -2173,7 +2423,16 @@ def main():
         quarterly_deferred: list[str] = []
         churn_deferred: list[str] = []
         for h in new_holdings:
-            held = int(h.get("shares", 0) or 0)
+            # float, not int (v4.2). The execution clamp was converted to float in v4.1 for
+            # exactly this reason, but the PLANNER that feeds it was missed, so the fix never
+            # took effect. int() failed twice over: it truncated the request, so exiting
+            # 5.020361 shares sold 5.0 and stranded 0.020361; and int(0.0865) == 0 then tripped
+            # the guard below, making that residue unreachable by every sell rule, forever.
+            # JBL/NTRS/ROST accumulated $60 of such dust and were flagged "Tier 1 SELL --
+            # unresolved across 3+ consecutive runs" from 2026-08-29 with no order that could
+            # clear them. The guard still means what it says: flat or short, never "under one
+            # share".
+            held = float(h.get("shares", 0) or 0)
             if held <= 0:
                 continue   # shorts and flats are handled by to_cover, never re-sold here
             do_exit, why = should_exit_on_rank(h, rank_of.get(h["symbol"]))
@@ -2209,8 +2468,17 @@ def main():
 
         if quarterly:
             for sym in to_buy_syms:
-                price = fundamentals.get(sym, {}).get("current_price", 0) or 0
-                if price <= 0:
+                info  = fundamentals.get(sym, {})
+                price = info.get("current_price", 0) or 0
+                # v4.2: the §3 entry gates. This is the primary new-entrant path -- the one a
+                # quarterly rebalance builds the whole book through -- and it enforced neither the
+                # data-integrity gate nor the trend gate. Generation 1 bought ANET, APH and SPG
+                # here with null sector/MA/rank; §3 says a name the filters could not evaluate is
+                # not a candidate, and one below its 50-day MA is a Rule A sell on arrival.
+                ok, why = is_eligible_entry(price, info.get("sector"),
+                                            rank_of.get(sym), info.get("ma_50d"))
+                if not ok:
+                    print(f"  Entry gate: BUY {sym} skipped — {why}")
                     continue
                 qty = size_shares(target_per, price)
                 if qty:
@@ -2237,18 +2505,8 @@ def main():
                 h["symbol"] for h in new_holdings
                 if float(h.get("shares", 0) or 0) > 0 and h["symbol"] not in selling_syms
             }
-            topups: list[tuple] = []
-            for h in sorted(new_holdings, key=lambda x: rank_of.get(x["symbol"], 9999)):
-                sym = h["symbol"]
-                if sym in selling_syms or sym not in keep_syms:
-                    continue
-                price = h.get("current_price", 0) or 0
-                gap   = target_per - float(h.get("market_value", 0) or 0)
-                if price <= 0 or gap <= 0:
-                    continue
-                qty = size_shares(gap, price)
-                if qty:
-                    topups.append((sym, qty))
+            topups = plan_topups(new_holdings, keep_syms, selling_syms, rank_of,
+                                 target_per, deployable_cash, pv)
             if topups:
                 print(f"  Cash deploy: {deployable_pct:.1%} deployable > trigger "
                       f"{deploy_trigger:.1%} — topping up {len(topups)} top-{TARGET_N} name(s) "
@@ -2301,10 +2559,16 @@ def main():
             sector_val: dict[str, float] = {}
             exiting_syms = {s for s, _ in raw_sells}
             for h in new_holdings:
-                if int(h.get("shares", 0) or 0) > 0 and h["symbol"] not in exiting_syms:
+                # float, not int (v4.2) — see the sell planner. int() dropped every sub-one-share
+                # position out of the sector totals, understating the exposure the cap measures.
+                if float(h.get("shares", 0) or 0) > 0 and h["symbol"] not in exiting_syms:
                     sec = h.get("sector", "Unknown")
                     sector_val[sec] = sector_val.get(sec, 0.0) + float(h.get("market_value", 0))
-            cap_val = pv * MAX_SECTOR_PCT
+            # v4.2: measure the cap against the INVESTED book a completed rebalance produces, not
+            # against portfolio value. Dividing by pv lets a sector look compliant purely because
+            # cash is high. The rebalance deploys to the cash floor, so that book is pv x (1-floor)
+            # — the two converge when cash is on target, and the cap stays honest when it is not.
+            cap_val = pv * (1 - CASH_FLOOR_PCT) * MAX_SECTOR_PCT
             kept_buys: list[tuple] = []
             dropped: list[str] = []
             # Add best-ranked buys first so a sector keeps its strongest names when trimming.
@@ -2334,6 +2598,13 @@ def main():
                     cinfo  = fundamentals.get(csym, {})
                     cprice = cinfo.get("current_price", 0) or 0
                     csec   = cinfo.get("sector", "Unknown")
+                    # v4.2: the backfill opens a brand-new position, so the §3 entry gates apply.
+                    # It previously checked only the sector cap and the cooldown, making it a
+                    # fourth way into the book that skipped the data-integrity and trend gates.
+                    cok, _cwhy = is_eligible_entry(cprice, csec, cand.get("momentum_rank"),
+                                                   cinfo.get("ma_50d"))
+                    if not cok:
+                        continue
                     cqty   = size_shares(target_per, cprice)
                     if not cqty:
                         continue
@@ -2382,8 +2653,21 @@ def main():
             for sym, _ in to_sell + to_buy:
                 exec_skipped.append({"symbol": sym, "reason": "trading halted — unresolved invariant breach"})
             print(f"  Kill switch: suppressing {len(to_sell)} sell(s) and {len(to_buy)} buy(s) — "
-                  f"breach unresolved for {breach_streak} runs. COVER orders still proceed.")
+                  f"breach unresolved for {breach_streak} runs. COVER and TRIM orders still proceed.")
             to_sell, to_buy = [], []
+
+        # ── v4.3: sector-trim restoration — the way out of the Oct 2026 freeze ──
+        # Runs on EVERY breached run, not just after the halt, so the streak need never reach it:
+        # a sector over the cap is cured by trimming it, and trimming restores the invariant, so
+        # (like COVER) it bypasses the halt above, the quarterly lock, the agent gate and the
+        # order budget. Computed after the kill switch so it sees the real post-gate sell list;
+        # names already exiting in to_sell are excluded so the sector is not double-counted.
+        exiting = {s for s, _ in to_sell}
+        to_trim = plan_sector_trims(
+            [h for h in new_holdings if h["symbol"] not in exiting], pv
+        )
+        if to_trim:
+            to_sell = to_sell + to_trim
 
         if to_cover or to_sell or to_buy:
             print(f"Rebalance: {len(to_cover)} covers, {len(to_sell)} sells, "

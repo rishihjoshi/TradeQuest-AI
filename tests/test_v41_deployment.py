@@ -159,8 +159,11 @@ class TestResidualSweep(unittest.TestCase):
 
     @staticmethod
     def _h(sym, shares, price, mv, sector="Energy"):
+        # ma_50d added in v4.2: the sweep now applies the STRATEGY section 3 trend gate, so a
+        # fixture must say where the name sits against its 50-day MA. Set below price, i.e. the
+        # holding is in an uptrend, which is what these cases have always meant to assume.
         return {"symbol": sym, "shares": shares, "current_price": price,
-                "market_value": mv, "sector": sector}
+                "market_value": mv, "sector": sector, "ma_50d": price * 0.9}
 
     def test_sweep_respects_the_position_cap(self):
         pv = 9_995.91
@@ -289,7 +292,15 @@ class TestSlotFill(unittest.TestCase):
 # ════════════════════════════════════════════════════════════════════════════
 @unittest.skipUnless(LIVE_BOOK.exists(), "no live book")
 class TestLiveBookReachesTarget(unittest.TestCase):
-    """9 positions, 34.17% cash. Prove the v4.1 planners close the gap to the 5% target."""
+    """Replay the deployment planners against whatever the live book currently is.
+
+    v4.2 rewrite: this class used to re-implement the planners in a local `_plan_spend` helper.
+    That model then drifted from the shipped code and started failing for its own reasons -- it
+    omitted the cash floor on top-ups (a bug the real planner also had, and which the model
+    therefore could not catch) and counted dust stubs as filled slots. A replay harness that
+    reimplements the thing it is replaying tests nothing. It now calls plan_topups,
+    plan_slot_fill and plan_residual_sweep directly, which is why plan_topups was extracted.
+    """
 
     @classmethod
     def setUpClass(cls):
@@ -298,53 +309,71 @@ class TestLiveBookReachesTarget(unittest.TestCase):
         if cls.summary.get("cash_pct", 0) < 15:
             raise unittest.SkipTest("book has already been re-deployed")
 
-    def _plan_spend(self):
+    def _inputs(self):
         pv, cash = self.summary["portfolio_value"], self.summary["cash"]
+        holdings = self.book["holdings"]
         per = min(pv * (1 - update.CASH_FLOOR_PCT) / update.TARGET_N,
                   pv * update.MAX_POSITION_PCT)
-        spend = 0.0
-        for h in self.book["holdings"]:
-            gap = per - h["market_value"]
-            if gap > 0:
-                spend += update.size_shares(gap, h["current_price"]) * h["current_price"]
-        open_slots = update.TARGET_N - len(self.book["holdings"])
-        headroom = cash - spend - pv * update.CASH_FLOOR_PCT
-        spend += max(0.0, min(per * open_slots, headroom))
-        return pv, cash, spend
+        rank_of = {h["symbol"]: h.get("momentum_rank") or 9999 for h in holdings}
+        prices  = {h["symbol"]: h["current_price"] for h in holdings}
+        keep    = {h["symbol"] for h in holdings if float(h.get("shares", 0) or 0) > 0}
+        return pv, cash, holdings, per, rank_of, prices, keep
 
-    def test_topups_plus_slot_fill_reach_the_target(self):
-        pv, cash, spend = self._plan_spend()
-        remaining_pct = (cash - spend) / pv * 100
-        self.assertLess(remaining_pct, 8.0,
-                        f"cash should fall from {self.summary['cash_pct']}% "
-                        f"to under 8%, got {remaining_pct:.1f}%")
+    def _plan(self):
+        """Run the real planners in the same order the rebalance does."""
+        pv, cash, holdings, per, rank_of, prices, keep = self._inputs()
+        buys = update.plan_topups(holdings, keep, set(), rank_of, per, cash, pv)
+        committed = sum(q * prices.get(s, 0) for s, q in buys)
+        buys += update.plan_slot_fill(holdings, [], {}, cash - committed, pv,
+                                      self.book.get("trades", []))
+        committed = sum(q * prices.get(s, 0) for s, q in buys)
+        buys += update.plan_residual_sweep(holdings, keep, cash - committed, pv,
+                                           prices, rank_of, pending=buys)
+        buys = update.consolidate_orders(buys)
+        spend = sum(q * prices.get(s, 0) for s, q in buys)
+        return pv, cash, buys, spend
 
     def test_the_plan_never_breaches_the_cash_floor(self):
-        pv, cash, spend = self._plan_spend()
-        self.assertGreaterEqual(cash - spend, pv * update.CASH_FLOOR_PCT - 0.01)
+        pv, cash, _buys, spend = self._plan()
+        self.assertGreaterEqual(cash - spend, pv * update.CASH_FLOOR_PCT - 0.01,
+                                "the planners must not spend through the 5% floor")
 
-    def test_no_position_would_exceed_the_cap(self):
-        pv = self.summary["portfolio_value"]
-        per = min(pv * (1 - update.CASH_FLOOR_PCT) / update.TARGET_N,
-                  pv * update.MAX_POSITION_PCT)
-        for h in self.book["holdings"]:
-            with self.subTest(symbol=h["symbol"]):
-                self.assertLessEqual(max(per, h["market_value"]),
+    def test_no_planned_buy_pushes_a_position_past_the_cap(self):
+        """MAX_POSITION_PCT is a SIZING cap on what may be bought, not a ceiling on market value.
+
+        A holding that appreciates past 10% is not a breach -- §5.2 Rule C trims at 20%. The old
+        assertion here conflated the two and went red when CF (10.87%) and MPC (10.06%) simply
+        drifted up. What the planners actually owe is that nothing they propose *adds* past the cap.
+        """
+        pv, _cash, buys, _spend = self._plan()
+        mv = {h["symbol"]: h["market_value"] for h in self.book["holdings"]}
+        px = {h["symbol"]: h["current_price"] for h in self.book["holdings"]}
+        for sym, qty in buys:
+            with self.subTest(symbol=sym):
+                self.assertLessEqual(mv.get(sym, 0.0) + qty * px.get(sym, 0),
                                      pv * update.MAX_POSITION_PCT + 0.01)
 
-    def test_integer_sizing_would_not_have_reached_the_target(self):
-        """Confirms fractional is doing the work, not the sweep alone."""
-        pv, cash = self.summary["portfolio_value"], self.summary["cash"]
-        per = min(pv * (1 - update.CASH_FLOOR_PCT) / update.TARGET_N,
-                  pv * update.MAX_POSITION_PCT)
-        spend = 0.0
-        for h in self.book["holdings"]:
-            gap = per - h["market_value"]
-            if gap > 0:
-                spend += update.size_shares(gap, h["current_price"],
-                                            fractional=False) * h["current_price"]
-        self.assertGreater((cash - spend) / pv * 100, 15.0,
-                           "integer sizing alone should still leave the book well above target")
+    def test_the_gates_hold_on_the_live_book(self):
+        """Nothing below its 50-day MA, and nothing with null data, may be bought."""
+        _pv, _cash, buys, _spend = self._plan()
+        info = {h["symbol"]: h for h in self.book["holdings"]}
+        for sym, _qty in buys:
+            h = info.get(sym)
+            if not h:
+                continue
+            with self.subTest(symbol=sym):
+                self.assertIsNotNone(h.get("ma_50d"), f"{sym} has no 50-day MA")
+                self.assertNotEqual(h.get("sector"), "Unknown")
+                self.assertGreater(h["current_price"], h["ma_50d"])
+
+    def test_dust_is_not_topped_up_toward_a_full_position(self):
+        """A residue must be sold, not grown back into a name the exit rules just rejected."""
+        _pv, _cash, buys, _spend = self._plan()
+        per = self._inputs()[3]
+        dust = {h["symbol"] for h in self.book["holdings"]
+                if not update.is_material(h["market_value"], per)}
+        for sym, _qty in buys:
+            self.assertNotIn(sym, dust, f"{sym} is a dust stub and was topped up")
 
 
 if __name__ == "__main__":

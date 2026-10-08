@@ -115,12 +115,24 @@ Removes junk momentum — high-beta names with no earnings support crash hardest
 
 **Filter 4 — Risk.** 30-day annualised volatility below the **90th percentile** of the universe.
 
-**Trend gate (entry only).** New entries must be **above their 50-day MA** at purchase — never buy a
-stock that would immediately trigger the trend-break sell rule.
+**Trend gate.** A name must be **above its 50-day MA** to be bought — never buy a stock that would
+immediately trigger the trend-break sell rule.
 
 **Data-integrity gate (Directive 10).** A candidate with `sector == "Unknown"`, `momentum_rank == 0`,
 or a null 50-day MA is **not eligible for entry**. Generation 1 held ANET at 10.5% of book, and APH
 and SPG to the very end, all bought without the data the filters require.
+
+**Both gates bind on every path that buys (v4.2).** `is_eligible_entry()` is the single predicate,
+called from all five: the quarterly new-entrant list, the sector-cap backfill, `plan_slot_fill`,
+`plan_topups` and `plan_residual_sweep`. Until v4.2 the trend gate existed in this document and
+nowhere in the code, and the data-integrity gate ran on `plan_slot_fill` alone — so on 2026-08-31
+the redeployment bought KEYS at \$322.03 against a \$329.87 MA, ROST at \$228.13 against \$234.26 and
+JBL at \$303.55 against \$334.08, and Rule A sold all three the next morning.
+
+*Adding to a name already held* (`plan_topups`, `plan_residual_sweep`) applies the trend and
+sector/MA checks but **not** the rank check — §3 scopes data integrity to *entry*, a held name has
+already cleared this run's exit tests, and enforcing rank here would let a transient null (KEYS
+flapped between real data and nulls on 08-29 and 09-01) freeze top-ups into a sound holding.
 
 ---
 
@@ -156,10 +168,18 @@ the next run — from `update.py` **and** from the sentinel, so a short closes e
 market-open pipelines are both down. COVER bypasses every gate (Directive 1) and is exempt from the
 `day_start` flag-only rule and the non-quarterly `BUY → HOLD` rewrite.
 
+*Restoration (sector):* a GICS sector over the 30% cap is the same shape of breach — it drifts there on
+price, not on buying (buys are already sector-capped), so the halt that suppresses discretionary sells
+would freeze it permanently (the Oct 2026 Tech 34.4% / Energy 33.0% halt at breach-streak 6). A **TRIM**
+(`plan_sector_trims`) therefore runs on every breached run, selling the lowest-momentum names in the
+over-cap sector first — partially on the marginal name — until the sector clears the cap. Trimming
+restores an invariant, so like COVER it bypasses the halt, the quarterly lock, the approval gate and the
+order budget.
+
 *Detection:* `assert_invariants()` is the single chokepoint every order path passes through. Any
 breach sets `long_only_breach: true` and starts a streak. **A breach unresolved for
-`MAX_BREACH_RUNS` runs halts discretionary trading** — covers still proceed, because covering is what
-clears it. Generation 1's failure was not that a breach occurred; it was that it persisted,
+`MAX_BREACH_RUNS` runs halts discretionary trading** — covers and sector trims still proceed, because
+they are what clears the breach. Generation 1's failure was not that a breach occurred; it was that it persisted,
 unnoticed, for four months. Persistence is therefore itself the alarm.
 
 ### 5.2 — Exit Rules
@@ -306,7 +326,7 @@ MAX_ORDERS_PER_RUN     = 5      # daily runs only
 MAX_SELL_VALUE_PCT     = 0.30   # daily runs only
 CASH_FLOOR_PCT         = 0.05
 MAX_POSITION_PCT       = 0.10
-MAX_SECTOR_PCT         = 0.30   # ENFORCED by trimming, not advisory
+MAX_SECTOR_PCT         = 0.30   # of INVESTED capital (v4.2), not portfolio value
 QUARTERLY_MONTHS       = {1, 4, 7, 10}
 REBALANCE_MAX_ORDERS   = 24     # a full rotation completes in ONE run
 REBALANCE_MAX_SELL_PCT = 1.00
@@ -318,6 +338,7 @@ MAX_BREACH_RUNS        = 3      # breach persistence before trading halts
 FRACTIONAL_SHARES      = True   # size in fractional shares, not whole ones
 FRACTIONAL_DECIMALS    = 6
 MIN_ORDER_NOTIONAL     = 1.00   # skip dust orders the broker would reject
+SLOT_MATERIAL_PCT      = 0.10   # a position below 10% of target occupies no slot (v4.2)
 ```
 
 **Sizing is fractional (v4.1).** Whole-share sizing always rounds *down*, and the error scales with
@@ -327,10 +348,19 @@ under-weight. The generation-2 inception run asked for \$950 of VLO at \$348.64,
 caused it; arithmetic did. `size_shares()` is the single sizing primitive and never spends more than
 the dollars it is given.
 
-Fractional sizing requires the execution clamp to work in float. `int(held)` would strand the
-remainder of every position — hold 2.7278 shares, exit "all", sell 2, keep 0.7278 that no sell rule
-can ever reach. The clamp still enforces the invariant that matters: **never more than held**, so a
-SELL can never open a short.
+Fractional sizing requires **every** stage of the sell path to work in float — the planner that
+decides the quantity as well as the clamp that bounds it. `int(held)` strands the remainder of every
+position: hold 2.7278 shares, exit "all", sell 2, keep 0.7278 that no sell rule can ever reach. The
+clamp still enforces the invariant that matters: **never more than held**, so a SELL can never open
+a short.
+
+v4.1 fixed the clamp and missed the planner feeding it, so the fix never took effect and this exact
+paragraph described a live bug for two weeks. By 2026-09-01 the sell planner had left four residues
+— JBL \$25.87, KEYS \$291.98, NTRS \$8.00, ROST \$26.23 — and because `int(0.0865) == 0` tripped its
+own `held <= 0` guard, **it could no longer see them at all**: the agent flagged "Tier 1 SELL,
+unresolved across 3+ runs" every run against an order the pipeline had no way to produce. Those
+residues then counted as filled slots, which is what held the book at 44% cash. When a rule about a
+numeric type matters, grep for the type — not for the function the post-mortem happened to name.
 
 **Cash reaches its target through three ordered steps**, each bounded by `MAX_POSITION_PCT`,
 `MAX_SECTOR_PCT` and the cash floor:
