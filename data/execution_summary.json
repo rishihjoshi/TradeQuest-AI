@@ -1,47 +1,11 @@
 {
-  "timestamp": "2026-10-09T01:20:12Z",
-  "mode": "post_close",
+  "timestamp": "2026-10-09T18:57:44Z",
+  "mode": "market_open",
   "orders_placed": [
     {
-      "action": "SELL",
-      "symbol": "BNY",
-      "qty": 0.310709,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "CF",
-      "qty": 0.896819,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "JBL",
-      "qty": 0.936547,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "NTRS",
-      "qty": 0.366745,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "NUE",
-      "qty": 0.6878,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "ROST",
-      "qty": 0.197285,
-      "status": "submitted"
-    },
-    {
       "action": "BUY",
-      "symbol": "EXPD",
-      "qty": 4.789107,
+      "symbol": "WST",
+      "qty": 1.892885,
       "status": "submitted"
     }
   ],
@@ -52,7 +16,7 @@
     }
   ],
   "errors": [],
-  "cash_pct_after": 14.01,
+  "cash_pct_after": 5.0,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
