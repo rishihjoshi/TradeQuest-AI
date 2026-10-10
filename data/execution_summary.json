@@ -1,14 +1,7 @@
 {
-  "timestamp": "2026-10-09T18:57:44Z",
-  "mode": "market_open",
-  "orders_placed": [
-    {
-      "action": "BUY",
-      "symbol": "WST",
-      "qty": 1.892885,
-      "status": "submitted"
-    }
-  ],
+  "timestamp": "2026-10-10T01:05:46Z",
+  "mode": "post_close",
+  "orders_placed": [],
   "orders_skipped": [
     {
       "symbol": "KEYS",
@@ -16,7 +9,7 @@
     }
   ],
   "errors": [],
-  "cash_pct_after": 5.0,
+  "cash_pct_after": 4.99,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
