@@ -1,18 +1,61 @@
 {
-  "timestamp": "2026-10-10T01:05:46Z",
-  "mode": "post_close",
-  "orders_placed": [],
+  "timestamp": "2026-10-12T21:51:12Z",
+  "mode": "market_open",
+  "orders_placed": [
+    {
+      "action": "SELL",
+      "symbol": "EXPD",
+      "qty": 4.789101,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "FLEX",
+      "qty": 8.147612,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "HUM",
+      "qty": 2.446413,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "KEYS",
+      "qty": 2.975986,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "MPC",
+      "qty": 2.610206,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "MU",
+      "qty": 1.378196,
+      "status": "submitted"
+    }
+  ],
   "orders_skipped": [
     {
-      "symbol": "KEYS",
+      "symbol": "VLO",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "PSX",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 4.99,
+  "cash_pct_after": 5.05,
   "long_only_breach": false,
-  "invariant_breaches": [],
-  "breach_streak": 0,
+  "invariant_breaches": [
+    "sector Unknown at 95.0% exceeds the 30% cap"
+  ],
+  "breach_streak": 1,
   "trading_halted": false,
   "dry_run": false
 }
