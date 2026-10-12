@@ -1,580 +1,553 @@
 {
-  "generated_at": "2026-10-08T19:23:27Z",
+  "generated_at": "2026-10-12T21:47:49Z",
   "article_count": 30,
   "articles": [
     {
-      "id": "62256022",
-      "headline": "Micron Analyst Sees Stock Nearly Tripling to $3,000, Warns Short Sellers: 'You Have an Expiry'",
-      "summary": "D.A. Davidson\u2019s Gil Luria sees Micron reaching $3,000 as buybacks and AI-driven memory demand threaten short sellers.",
-      "url": "https://www.benzinga.com/markets/prediction-markets/26/10/62256022/micron-stock-3000-price-target-short-sellers",
-      "author": "Daragh Thomas",
-      "source": "benzinga",
-      "symbols": [
-        "AMD",
-        "INTC",
-        "MU"
-      ],
-      "created_at": "2026-10-08T17:45:21Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst sees stock tripling with positive catalysts from buybacks and AI-driven demand."
-    },
-    {
-      "id": "62255641",
-      "headline": "10 Information Technology Stocks With Whale Alerts In Today\u2019s Session",
-      "summary": "This whale alert can help traders discover the next big trading opportunities. Whales are entities with large sums of money and we track their transactions here at Benzinga on our options activity scanner. Traders often",
-      "url": "https://www.benzinga.com/markets/options/26/10/62255641/10-information-technology-stocks-whale-alerts-today-s-session",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "AVGO",
-        "CBRS",
-        "CRWD",
-        "HUT",
-        "IREN",
-        "MU",
-        "NVDA",
-        "ORCL",
-        "SNDK",
-        "WULF"
-      ],
-      "created_at": "2026-10-08T17:35:12Z",
-      "sentiment": "neutral",
-      "confidence": 0.72,
-      "reason": "Article reports whale activity tracking without expressing positive or negative outlook on stocks."
-    },
-    {
-      "id": "62255036",
-      "headline": "Stock Market Today: S&P 500 Slips as Oil Spikes 5%, 10-Year Yields Near 5.35%",
-      "summary": "Stocks slip as Gulf tanker attacks lift Brent above $105 and the 10-year yield nears 5.35%; small caps lag while energy and Chipotle rally.",
-      "url": "https://www.benzinga.com/markets/equities/26/10/62255036/stock-market-today-sp-500-slips-oil-rallies-yields",
-      "author": "Piero Cingari",
-      "source": "benzinga",
-      "symbols": [
-        "AAOI",
-        "APA",
-        "ASTS",
-        "BTCUSD",
-        "CMG",
-        "CVX",
-        "DIA",
-        "FRMI",
-        "GFS",
-        "GLD",
-        "IWM",
-        "JMKE",
-        "LLY",
-        "MPC",
-        "QQQ",
-        "RVMD",
-        "SBUX",
-        "VOO",
-        "WULF",
-        "XLE",
-        "XLK",
-        "XLP",
-        "XLRE",
-        "XLU",
-        "XLV",
-        "XOM"
-      ],
-      "created_at": "2026-10-08T17:19:59Z",
-      "sentiment": "bear",
-      "confidence": 0.75,
-      "reason": "Stock market slipping amid oil spike and rising yields, though energy stocks rally."
-    },
-    {
-      "id": "62254578",
-      "headline": "Watching Micron Technology; Hearing Investor Business Daily SwingTrader Sells Stock",
+      "id": "62312436",
+      "headline": "UBS Maintains Neutral on Humana, Raises Price Target to $495",
       "summary": "",
-      "url": "https://www.benzinga.com/quote/MU",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "MU"
-      ],
-      "created_at": "2026-10-08T17:07:05Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "SwingTrader sell signal indicates negative near-term momentum for Micron Technology stock."
-    },
-    {
-      "id": "62252561",
-      "headline": "What's Going On With Micron Technology Stock Thursday?",
-      "summary": "Micron stock drops 2% as tech shares retreat. Meanwhile, bullish analyst forecasts point to sustained AI memory demand and future growth.",
-      "url": "https://www.benzinga.com/markets/tech/26/10/62252561/whats-going-on-with-micron-technology-stock-thursday-7",
-      "author": "Anusuya Lahiri",
-      "source": "benzinga",
-      "symbols": [
-        "MU",
-        "SOXQ",
-        "SOXX",
-        "XNTK"
-      ],
-      "created_at": "2026-10-08T16:12:53Z",
-      "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Mixed signals: near-term price decline offset by positive analyst outlooks on AI demand."
-    },
-    {
-      "id": "62247591",
-      "headline": "Forget the AI Bubble: Jordi Visser Says the 'Bankpocalypse' Has Begun",
-      "summary": "Jordi Visser says rising yields are no dot-com replay. Instead, AI agents demanding instant payments could squeeze banks, Visa and Mastercard.",
-      "url": "https://www.benzinga.com/markets/large-cap/26/10/62247591/jordi-visser-bankpocalypse-ai-agents-banks-visa-mastercard",
-      "author": "Piero Cingari",
-      "source": "benzinga",
-      "symbols": [
-        "ETHUSD",
-        "F",
-        "GM",
-        "KBE",
-        "MA",
-        "MU",
-        "NVDA",
-        "V"
-      ],
-      "created_at": "2026-10-08T14:08:42Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "AI agents and rising yields threaten banking sector profitability and payment processors like Visa/Mastercard"
-    },
-    {
-      "id": "62245476",
-      "headline": "TD Cowen Reinstates Hold on Northern Trust, Announces $175 Price Target",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62245476/td-cowen-reinstates-hold-northern-trust-announces-175-price-target",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "NTRS"
-      ],
-      "created_at": "2026-10-08T13:24:32Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Hold rating with price target suggests balanced outlook, neither bullish nor bearish positioning."
-    },
-    {
-      "id": "62245451",
-      "headline": "TD Cowen Reinstates Hold on Bank of New York Mellon, Announces $160 Price Target",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62245451/td-cowen-reinstates-hold-bank-new-york-mellon-announces-160-price-target",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "BNY"
-      ],
-      "created_at": "2026-10-08T13:23:31Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Hold rating with price target suggests balanced outlook, neither strongly positive nor negative."
-    },
-    {
-      "id": "62243917",
-      "headline": "Nucor To Expand Production At Its Towers & Structures Facility In Indiana Under Additional $105M Investment; Expected To Create 100 New Jobs",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62243917/nucor-expand-production-its-towers-structures-facility-indiana-under-additional-105m-investment-expe",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "NUE"
-      ],
-      "created_at": "2026-10-08T12:38:20Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Major capital investment and job creation signal growth and operational expansion for Nucor."
-    },
-    {
-      "id": "62239479",
-      "headline": "Stock Market Today: S&P 500, Dow Jones, Nasdaq 100 Futures Decline as Pentagon Prepares for Potential Military Strikes on Iran \u2014 APLD, LEVI, MU in Focus (UPDATED)",
-      "summary": "U.S. stock futures were lower on Thursday, as the Dow Jones, S&amp;P 500 and Nasdaq 100 indices fell, following Wednesday&39;s lower close.",
-      "url": "https://www.benzinga.com/markets/equities/26/10/62239479/stock-market-today-sp-500-dow-jones-futures-decline-as-pentagon-prepares-for-potential-military-strikes-on-iran-apld-levi-mu-in-focus",
-      "author": "Rishabh Mishra",
-      "source": "benzinga",
-      "symbols": [
-        "APLD",
-        "BTCUSD",
-        "CAT",
-        "LEVI",
-        "MRVL",
-        "MU",
-        "QQQ",
-        "SPY"
-      ],
-      "created_at": "2026-10-08T12:36:35Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Stock futures declining amid geopolitical tensions and potential military conflict concerns."
-    },
-    {
-      "id": "62243753",
-      "headline": "Samsung\u2019s $80B Quarterly Profit Tops Nvidia, AMD\u2019s Lisa Su Shops In Seoul",
-      "summary": "Samsung boasts a record quarterly profit as AI memory demand soars, and AMD&39;s Lisa Su went to Seoul, South Korea to secure supply.",
-      "url": "https://www.benzinga.com/markets/tech/26/10/62243753/samsung-80-billion-profit-tops-nvidia-amd-lisa-su-seoul",
-      "author": "Piero Cingari",
-      "source": "benzinga",
-      "symbols": [
-        "AAPL",
-        "AMD",
-        "GOOG",
-        "MSFT",
-        "MU",
-        "NVDA",
-        "SKHY",
-        "SSNFL"
-      ],
-      "created_at": "2026-10-08T12:34:56Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Samsung's record profit from AI demand surge and AMD's proactive supply chain moves signal strong sector growth."
-    },
-    {
-      "id": "62243074",
-      "headline": "This Tyler Technologies Analyst Is No Longer Bullish; Here Are Top 5 Downgrades For Thursday",
-      "summary": "Analysts downgraded STZ, TYL, DK, CRBU and PSX; price targets changed for STZ, TYL, DK and PSX.",
-      "url": "https://www.benzinga.com/analyst-stock-ratings/downgrades/26/10/62243074/this-tyler-technologies-analyst-is-no-longer-bullish-here-are-top-5-downgrades-for-thursday",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "CRBU",
-        "DK",
-        "PSX",
-        "STZ",
-        "TYL"
-      ],
-      "created_at": "2026-10-08T12:13:12Z",
-      "sentiment": "bear",
-      "confidence": 0.95,
-      "reason": "Multiple analyst downgrades announced, including Tyler Technologies (TYL) with price target reduction."
-    },
-    {
-      "id": "62241501",
-      "headline": "Mizuho Maintains Neutral on Valero Energy, Raises Price Target to $434",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62241501/mizuho-maintains-neutral-valero-energy-raises-price-target-434",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "VLO"
-      ],
-      "created_at": "2026-10-08T11:27:06Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Price target raise signals analyst confidence in Valero Energy's prospects despite neutral rating."
-    },
-    {
-      "id": "62241464",
-      "headline": "Mizuho Maintains Neutral on Marathon Petroleum, Raises Price Target to $457",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62241464/mizuho-maintains-neutral-marathon-petroleum-raises-price-target-457",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "MPC"
-      ],
-      "created_at": "2026-10-08T11:24:21Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Neutral rating maintained despite price target increase suggests cautious optimism without strong conviction."
-    },
-    {
-      "id": "62241196",
-      "headline": "Mizuho Downgrades Phillips 66 to Neutral, Raises Price Target to $300",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62241196/mizuho-downgrades-phillips-66-neutral-raises-price-target-300",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "PSX"
-      ],
-      "created_at": "2026-10-08T11:19:34Z",
-      "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Downgrade to neutral offset by raised price target suggesting mixed outlook."
-    },
-    {
-      "id": "62236979",
-      "headline": "Stock Market: Will S&P 500 Open Up or Down Today?",
-      "summary": "Will S&amp;P 500 open higher? Polymarket odds sit at 52% as Wall Street weighs 5.35% Treasury yields, potential Iran strikes, and Pepsi earnings.",
-      "url": "https://www.benzinga.com/markets/prediction-markets/26/10/62236979/stock-market-will-sp-500-open-up-or-down-today-53",
-      "author": "Rishabh Mishra",
-      "source": "benzinga",
-      "symbols": [
-        "AMD",
-        "DIA",
-        "MU",
-        "NG",
-        "NRIX",
-        "PEP",
-        "POLUSD",
-        "QQQ",
-        "SPCX",
-        "SPY",
-        "TLRY"
-      ],
-      "created_at": "2026-10-08T06:12:35Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Mixed signals with slight bullish lean (52% odds) offset by geopolitical risks and high yields."
-    },
-    {
-      "id": "62236247",
-      "headline": "Samsung's Q3 Profit Guidance Tops Analyst Estimates As AI Demand Outstrips Memory Supply",
-      "summary": "Samsung guided for a rise in third-quarter profit and sales on AI memory chip demand, though shares in Seoul slipped less than 1%.",
-      "url": "https://www.benzinga.com/markets/earnings/26/10/62236247/samsung-third-quarter-guidance-profit-sales-ai-memory-demand",
-      "author": "Radhika Anilkumar Nadig",
-      "source": "benzinga",
-      "symbols": [
-        "ASML",
-        "MU",
-        "SKHY",
-        "SSNLF"
-      ],
-      "created_at": "2026-10-08T01:51:35Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Q3 profit guidance exceeds estimates driven by strong AI memory demand."
-    },
-    {
-      "id": "62236166",
-      "headline": "Applied Digital, Webull Corp., Super Micro Computer, Micron and Caterpillar: Why These 5 Stocks Are on Investors' Radars Today",
-      "summary": "Major U.S. indices closed lower, with the Dow Jones Industrial Average falling 0.66% to 51,179.87.",
-      "url": "https://www.benzinga.com/markets/equities/26/10/62236166/applied-digital-webull-super-micro-micron-caterpillar-stocks-investors-radar",
-      "author": "Shivdeep Dhaliwal",
-      "source": "benzinga",
-      "symbols": [
-        "APLD",
-        "BULL",
-        "CAT",
-        "MU",
-        "SMCI"
-      ],
-      "created_at": "2026-10-08T01:11:32Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "62228073",
-      "headline": "10 Information Technology Stocks Whale Activity In Today\u2019s Session",
-      "summary": "This whale alert can help traders discover the next big trading opportunities. Whales are entities with large sums of money and we track their transactions here at Benzinga on our options activity scanner. Traders will",
-      "url": "https://www.benzinga.com/markets/options/26/10/62228073/10-information-technology-stocks-whale-activity-today-s-session",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "AAPL",
-        "ADBE",
-        "AVGO",
-        "DGXX",
-        "ENPH",
-        "INTC",
-        "MU",
-        "QCOM",
-        "SMCI",
-        "SNDK"
-      ],
-      "created_at": "2026-10-07T17:35:11Z",
-      "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Article reports on whale activity tracking without expressing positive or negative market outlook."
-    },
-    {
-      "id": "62219299",
-      "headline": "Nvidia, Micron and Other 5 S&P 500 Stocks With +100% Revenue Growth",
-      "summary": "Micron, Sandisk and Nvidia lead seven S&amp;P 500 stocks that more than doubled quarterly revenue. Six sell AI hardware.",
-      "url": "https://www.benzinga.com/news/26/10/62219299/p-500-stocks-100-percent-revenue-growth-micron-nvidia-sandisk",
-      "author": "Piero Cingari",
-      "source": "benzinga",
-      "symbols": [
-        "BE",
-        "LITE",
-        "MU",
-        "NVDA",
-        "SNDK",
-        "TER",
-        "WAT"
-      ],
-      "created_at": "2026-10-07T14:06:10Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Companies achieving 100%+ revenue growth demonstrate exceptional business momentum and market demand."
-    },
-    {
-      "id": "62216483",
-      "headline": "Micron Stock Falls Amid Chip-Sector Slump as Taiwan Union Votes 99% for Strike Authorization",
-      "summary": "Micron Technology stock falls amid a strike threat at the company&39;s plant in Taiwan amid a broader semiconductor selloff.",
-      "url": "https://www.benzinga.com/trading-ideas/movers/26/10/62216483/micron-stock-falls-amid-chip-sector-slump-as-taiwan-union-votes-99-for-strike-authorization",
-      "author": "Dylan Berman",
-      "source": "benzinga",
-      "symbols": [
-        "MU"
-      ],
-      "created_at": "2026-10-07T13:30:58Z",
-      "sentiment": "bear",
-      "confidence": 0.95,
-      "reason": "Stock falls amid strike threat at Taiwan plant and broader chip sector selloff."
-    },
-    {
-      "id": "62215976",
-      "headline": "Reported Earlier, 'Micron Tech chipmaker union in Taiwan gets OK to strike' - Reuters",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62215976/reported-earlier-micron-tech-chipmaker-union-taiwan-gets-ok-strike-reuters",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "MU"
-      ],
-      "created_at": "2026-10-07T13:13:56Z",
-      "sentiment": "bear",
-      "confidence": 0.75,
-      "reason": "Union strike approval at major chipmaker risks production disruptions and supply chain impacts."
-    },
-    {
-      "id": "62215069",
-      "headline": "Most Undervalued Chip Stocks In October 2026: Four Are Cheaper Than The S&P 500",
-      "summary": "Undervalued chip stocks in October 2026: Micron, NXP, Qualcomm and Nvidia trade below the S&amp;P 500&39;s forward P/E of 20.3.",
-      "url": "https://www.benzinga.com/markets/equities/26/10/62215069/undervalued-chip-stocks-october-cheaper-than-sp-500",
-      "author": "Piero Cingari",
-      "source": "benzinga",
-      "symbols": [
-        "AAPL",
-        "MCHP",
-        "MU",
-        "NVDA",
-        "NXPI",
-        "QCOM",
-        "SPY"
-      ],
-      "created_at": "2026-10-07T12:49:50Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Stocks identified as undervalued trading below market P/E ratio suggests buying opportunity."
-    },
-    {
-      "id": "62214851",
-      "headline": "Top 3 Tech Stocks That May Fall Off A Cliff In Q4",
-      "summary": "Synopsys, Keysight and NetApp showed overbought RSI readings above 70, signaling potential momentum risks for investors.",
-      "url": "https://www.benzinga.com/trading-ideas/short-ideas/26/10/62214851/top-3-tech-stocks-that-may-fall-off-a-cliff-in-q4",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "KEYS",
-        "NTAP",
-        "SNPS"
-      ],
-      "created_at": "2026-10-07T12:44:09Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Overbought RSI readings signal potential sharp price declines for Synopsys, Keysight, NetApp."
-    },
-    {
-      "id": "62214736",
-      "headline": "This NetApp Analyst Turns Bullish; Here Are Top 5 Upgrades For Wednesday",
-      "summary": "Analysts upgraded NetApp, Humana, Corteva, Afya, with price-target changes for four stocks.",
-      "url": "https://www.benzinga.com/analyst-stock-ratings/upgrades/26/10/62214736/this-netapp-analyst-turns-bullish-here-are-top-5-upgrades-for-wednesday-2",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "AFYA",
-        "CTVA",
-        "HUM",
-        "NTAP",
-        "RZLT",
-        "XPO"
-      ],
-      "created_at": "2026-10-07T12:39:43Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst upgrade for NetApp with positive price-target changes signals improved outlook."
-    },
-    {
-      "id": "62213969",
-      "headline": "Micron To Rally Around 187%? Here Are 10 Top Analyst Forecasts For Wednesday",
-      "summary": "Wall Street analysts revised targets: upgrades for NetApp and Humana; downgrades for PJT Partners; mixed target changes for Redwood, Marvell, Yum and S&amp;P",
-      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/10/62213969/micron-to-rally-around-187-here-are-10-top-analyst-forecasts-for-wednesday",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "ABT",
-        "CB",
-        "HUM",
-        "MRVL",
-        "MU",
-        "NTAP",
-        "PJT",
-        "RWT",
-        "SPGI",
-        "YUM",
-        "ZS"
-      ],
-      "created_at": "2026-10-07T12:19:47Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Headline suggests significant upside potential for Micron with 187% rally forecast and upgrades for multiple stocks."
-    },
-    {
-      "id": "62213009",
-      "headline": "DA Davidson Maintains Buy on Micron Technology, Raises Price Target to $3000",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62213009/da-davidson-maintains-buy-micron-technology-raises-price-target-3000",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "MU"
-      ],
-      "created_at": "2026-10-07T11:47:08Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target significantly, indicating positive outlook"
-    },
-    {
-      "id": "62211602",
-      "headline": "Cantor Fitzgerald Upgrades Humana to Overweight, Raises Price Target to $460",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62211602/cantor-fitzgerald-upgrades-humana-overweight-raises-price-target-460",
+      "url": "https://www.benzinga.com/news/26/10/62312436/ubs-maintains-neutral-humana-raises-price-target-495",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
         "HUM"
       ],
-      "created_at": "2026-10-07T10:42:56Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Upgrade to Overweight with significant price target increase signals positive outlook."
+      "created_at": "2026-10-12T21:10:04Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Neutral rating maintained despite price target increase suggests cautious optimism."
     },
     {
-      "id": "62211042",
-      "headline": "Evercore ISI Group Upgrades NetApp to Outperform, Raises Price Target to $300",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62211042/evercore-isi-group-upgrades-netapp-outperform-raises-price-target-300",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "NTAP"
-      ],
-      "created_at": "2026-10-07T10:14:46Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst upgrade to Outperform with significant price target raise signals positive outlook"
-    },
-    {
-      "id": "62210782",
-      "headline": "First Samsung, Now Micron: Netlist\u2019s Patent Offensive Unlocks Another $600 Million",
-      "summary": "Micron agrees to pay Netlist $600M in a landmark patent settlement. See how NLST stock jumped nearly 18% on the deal.",
-      "url": "https://www.benzinga.com/markets/tech/26/10/62210782/first-samsung-now-micron-netlists-patent-offensive-unlocks-another-600-million",
-      "author": "Akanksha Bakshi",
+      "id": "62311094",
+      "headline": "Micron, SanDisk Look Cheaper by the Day: Here\u2019s the Catch",
+      "summary": "Whether memory stocks look cheap doesn&39;t matter. The key question is: How long can the earnings behind those valuations last?",
+      "url": "https://www.benzinga.com/markets/tech/26/10/62311094/micron-forward-pe-sk-hynix-memory-stocks-valuation",
+      "author": "Piero Cingari",
       "source": "benzinga",
       "symbols": [
         "MU",
-        "NLST",
-        "SOXQ",
-        "SOXX",
-        "SSNLF",
-        "XNTK"
+        "SKHY",
+        "SNDK",
+        "SSNLF"
       ],
-      "created_at": "2026-10-07T10:05:16Z",
+      "created_at": "2026-10-12T20:01:59Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Valuation cheapness masks concerns about earnings sustainability and durability."
+    },
+    {
+      "id": "62311021",
+      "headline": "S&P 500 Dominated by AI Stocks, Adding SpaceX Would Create History Last Seen in 1880s",
+      "summary": "AI stocks are reaching unprecedented territory when it comes to their inclusion in a major US stock market index.",
+      "url": "https://www.benzinga.com/etfs/broad-u-s-equity-etfs/26/10/62311021/sp-500-dominated-by-ai-stocks-adding-spacex-would-create-history-last-seen-in-1880s",
+      "author": "Chris Katje",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "AMZN",
+        "AVGO",
+        "GOOG",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "MU",
+        "NVDA",
+        "SPCX",
+        "SPY",
+        "TSLA"
+      ],
+      "created_at": "2026-10-12T20:00:53Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "AI stocks dominating S&P 500 signals strong market confidence and growth potential in technology sector."
+    },
+    {
+      "id": "62310740",
+      "headline": "China Chip Concerns Hit Micron, SanDisk: Monday's Selloff Brings Double Pain for This ETF",
+      "summary": "Memory stocks lost $108 billion as China competition fears hit DRAM and RAM ETFs. See how 2x leverage magnifies risks in the AI memory trade.",
+      "url": "https://www.benzinga.com/etfs/sector-etfs/26/10/62310740/china-chip-concerns-hit-micron-sandisk-mondays-selloff-brings-double-pain-for-this-etf",
+      "author": "Chandrima Sanyal",
+      "source": "benzinga",
+      "symbols": [
+        "DRAM",
+        "MU",
+        "RAM",
+        "SKHY",
+        "SNDK"
+      ],
+      "created_at": "2026-10-12T19:50:44Z",
+      "sentiment": "bear",
+      "confidence": 0.95,
+      "reason": "Major selloff in memory stocks driven by China competition fears and significant market cap losses."
+    },
+    {
+      "id": "62310521",
+      "headline": "Barclays Maintains Equal-Weight on Phillips 66, Raises Price Target to $282",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62310521/barclays-maintains-equal-weight-phillips-66-raises-price-target-282",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "PSX"
+      ],
+      "created_at": "2026-10-12T19:41:09Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Price target raise indicates positive outlook despite equal-weight rating maintenance."
+    },
+    {
+      "id": "62310497",
+      "headline": "Barclays Maintains Overweight on Marathon Petroleum, Raises Price Target to $488",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62310497/barclays-maintains-overweight-marathon-petroleum-raises-price-target-488",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "MPC"
+      ],
+      "created_at": "2026-10-12T19:39:26Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Major $600M patent settlement drives significant stock surge, validating Netlist's IP portfolio value"
+      "reason": "Analyst upgrade with higher price target indicates positive outlook for Marathon Petroleum stock."
+    },
+    {
+      "id": "62308565",
+      "headline": "China\u2019s 4F\u00b2 Threat To Micron\u2014Houthis' Deadly Attack On Saudi Arabia Eclipses Trump\u2019s Russian Diesel Deal",
+      "summary": "    Advance In Memory Chips    Please click here for an enlarged chart of United States Oil ETF (NYSE:USO).    Note the following:     The chart shows oil ETF USO moving up on two crosscurrents.\u00a0 President Trump\u2019s",
+      "url": "https://www.benzinga.com/Opinion/26/10/62308565/chinas-4f%c2%b2-threat-to-micron-houthis-deadly-attack-on-saudi-arabia-eclipses-trumps-russian-diesel-deal",
+      "author": "The Arora Report",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "AMZN",
+        "BTCUSD",
+        "GOOG",
+        "META",
+        "MSFT",
+        "MU",
+        "NVDA",
+        "QQQ",
+        "SKHY",
+        "SSNLF",
+        "TSLA",
+        "USO"
+      ],
+      "created_at": "2026-10-12T18:13:41Z",
+      "sentiment": "bear",
+      "confidence": 0.72,
+      "reason": "Geopolitical threats to Micron and oil market volatility from attacks create headwinds for tech sector."
+    },
+    {
+      "id": "62308645",
+      "headline": "Truist Securities Maintains Hold on Humana, Raises Price Target to $475",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62308645/truist-securities-maintains-hold-humana-raises-price-target-475",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "HUM"
+      ],
+      "created_at": "2026-10-12T18:15:52Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Price target raise signals analyst confidence despite maintaining Hold rating"
+    },
+    {
+      "id": "62307757",
+      "headline": "Oppenheimer Maintains Outperform on Humana, Raises Price Target to $525",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62307757/oppenheimer-maintains-outperform-humana-raises-price-target-525",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "HUM"
+      ],
+      "created_at": "2026-10-12T17:45:04Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains outperform rating and raises price target, signaling positive outlook"
+    },
+    {
+      "id": "62305426",
+      "headline": "Sandisk Stock Is Falling Monday: What's Going On?",
+      "summary": "Sandisk lost $15 billion in market value as Chinese chip advances triggered a sharp selloff across global memory stocks.",
+      "url": "https://www.benzinga.com/markets/tech/26/10/62305426/sandisk-stock-is-falling-monday-whats-going-on-2",
+      "author": "Anusuya Lahiri",
+      "source": "benzinga",
+      "symbols": [
+        "MU",
+        "SKHY",
+        "SNDK"
+      ],
+      "created_at": "2026-10-12T16:31:43Z",
+      "sentiment": "bear",
+      "confidence": 0.95,
+      "reason": "Sandisk lost $15B in market value due to Chinese chip competition, triggering sharp selloff."
+    },
+    {
+      "id": "62305018",
+      "headline": "Michael Burry's Big Short Gets Broader: Nvidia-Heavy Chip ETF, Nasdaq Now in Focus",
+      "summary": "Michael Burry shifts bearish bets to Nasdaq-100 and SMH puts. Here&39;s how Nvidia&39;s 19.6% ETF weighting puts 4 ETFs in focus.",
+      "url": "https://www.benzinga.com/etfs/sector-etfs/26/10/62305018/michael-burrys-big-short-gets-broader-nvidia-heavy-chip-etf-nasdaq-now-in-focus",
+      "author": "Chandrima Sanyal",
+      "source": "benzinga",
+      "symbols": [
+        "AMAT",
+        "AMD",
+        "AVGO",
+        "MRVL",
+        "MU",
+        "NVDA",
+        "PSQ",
+        "QQQ",
+        "SMH",
+        "SOXS",
+        "SOXX",
+        "TSM"
+      ],
+      "created_at": "2026-10-12T16:17:34Z",
+      "sentiment": "bear",
+      "confidence": 0.95,
+      "reason": "Michael Burry's bearish bets on Nasdaq-100 and chip ETFs signal negative outlook on Nvidia and tech sector."
+    },
+    {
+      "id": "62304811",
+      "headline": "Evercore ISI Group Maintains In-Line on Valero Energy, Raises Price Target to $385",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62304811/evercore-isi-group-maintains-line-valero-energy-raises-price-target-385",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "VLO"
+      ],
+      "created_at": "2026-10-12T16:11:41Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Price target raise indicates analyst confidence in upside potential despite maintaining in-line rating."
+    },
+    {
+      "id": "62304728",
+      "headline": "Evercore ISI Group Maintains Outperform on Phillips 66, Raises Price Target to $250",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62304728/evercore-isi-group-maintains-outperform-phillips-66-raises-price-target-250",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "PSX"
+      ],
+      "created_at": "2026-10-12T16:10:15Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Outperform rating maintained with price target raised to $250 signals analyst confidence."
+    },
+    {
+      "id": "62304703",
+      "headline": "Evercore ISI Group Maintains In-Line on Marathon Petroleum, Raises Price Target to $420",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62304703/evercore-isi-group-maintains-line-marathon-petroleum-raises-price-target-420",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "MPC"
+      ],
+      "created_at": "2026-10-12T16:09:37Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Price target raise signals analyst confidence in Marathon Petroleum's future performance."
+    },
+    {
+      "id": "62304259",
+      "headline": "DataMeds AI Stock Rises After Humana Adds Medicaid Coverage for ChemoFx Cancer Test",
+      "summary": "Humana includes DataMeds AI&39;s Helomics ChemoFx assay in its Medicaid policy for gynecologic cancers, expanding payer reimbursement.",
+      "url": "https://www.benzinga.com/news/health-care/26/10/62304259/datameds-ai-stock-rises-after-humana-adds-medicaid-coverage-for-chemofx-cancer-test",
+      "author": "Vandana Singh",
+      "source": "benzinga",
+      "symbols": [
+        "HUM",
+        "MEDS"
+      ],
+      "created_at": "2026-10-12T16:00:34Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Medicaid coverage expansion by major payer Humana significantly broadens reimbursement access and revenue potential."
+    },
+    {
+      "id": "62303712",
+      "headline": "QUICK SPARK: Micron, SK Hynix, SanDisk Wipe Out $100 Billion as Memory Rout Worsens",
+      "summary": "Micron, SK Hynix and Sandisk lost about $108 billion in market value Monday morning after China\u2019s CXMT reported progress on a denser memory-chip design.",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/10/62303712/micron-sk-hynix-sandisk-wipe-out-100-billion-memory-selloff",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "DRAM",
+        "MU",
+        "SKHY",
+        "SNDK",
+        "STX",
+        "WDC"
+      ],
+      "created_at": "2026-10-12T15:44:12Z",
+      "sentiment": "bear",
+      "confidence": 0.95,
+      "reason": "Major market value losses for memory chip stocks amid competitive pressure from China."
+    },
+    {
+      "id": "62301577",
+      "headline": "The Oil Market Is Breaking Apart: Brent-WTI Price Gap Hits $13",
+      "summary": "Brent trades $13 above WTI as record tanker rates keep U.S. crude at home. Freight to China now costs $40 a barrel, and BNO is outpacing USO. 2011 offers a guide.",
+      "url": "https://www.benzinga.com/markets/commodities/26/10/62301577/brent-wti-spread-13-dollars-tanker-costs-split-oil-market",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "BNO",
+        "BWET",
+        "DHT",
+        "FANG",
+        "FRO",
+        "MPC",
+        "PBF",
+        "USO",
+        "VLO",
+        "XOP"
+      ],
+      "created_at": "2026-10-12T14:49:24Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Brent outperformance and record tanker rates suggest supply constraints supporting higher oil prices."
+    },
+    {
+      "id": "62300320",
+      "headline": "Micron, SK Hynix Face New Challenge as China Makes AI Memory Cheaper",
+      "summary": "China&39;s CXMT is advancing DRAM technology and targeting server memory, raising new questions about Micron&39;s and SK Hynix&39;s pricing power.",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/10/62300320/micron-sk-hynix-china-memory",
+      "author": "Surbhi Jain",
+      "source": "benzinga",
+      "symbols": [
+        "MU",
+        "SKHY"
+      ],
+      "created_at": "2026-10-12T14:17:14Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Chinese competitor advancing DRAM technology threatens pricing power of Micron and SK Hynix"
+    },
+    {
+      "id": "62297902",
+      "headline": "Reported October 11, 'China\u2019s CXMT unveils \u2018key progress\u2019 on chip structure pursued by Samsung, SK Hynix' - SCMP",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62297902/reported-october-11-china-s-cxmt-unveils-key-progress-chip-structure-pursued-samsung-sk-hynix-scmp",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "MU",
+        "SKHY",
+        "SNDK",
+        "STX",
+        "WDC"
+      ],
+      "created_at": "2026-10-12T13:17:35Z",
+      "sentiment": "bull",
+      "confidence": 0.72,
+      "reason": "Key technological progress on advanced chip structures positions CXMT competitively against major rivals Samsung and SK Hynix."
+    },
+    {
+      "id": "62297722",
+      "headline": "Flex Expands Its Portfolio Of Prefabricated Modular Data Center Solutions Designed To Accelerate Deployment Of Next-Generation AI Factories",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62297722/flex-expands-its-portfolio-prefabricated-modular-data-center-solutions-designed-accelerate-deploymen",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "FLEX"
+      ],
+      "created_at": "2026-10-12T13:10:15Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Portfolio expansion in high-demand AI data center solutions signals growth opportunity and market positioning."
+    },
+    {
+      "id": "62297398",
+      "headline": "This Insmed Analyst Is No Longer Bullish; Here Are Top 5 Downgrades For Monday",
+      "summary": "Analysts downgraded UWMC, ACT, ROIV, INSM; ACT\u2019s target fell to $44.",
+      "url": "https://www.benzinga.com/analyst-stock-ratings/downgrades/26/10/62297398/this-insmed-analyst-is-no-longer-bullish-here-are-top-5-downgrades-for-monday",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "ACT",
+        "INSM",
+        "MNDY",
+        "PSX",
+        "ROIV",
+        "UWMC"
+      ],
+      "created_at": "2026-10-12T13:03:39Z",
+      "sentiment": "bear",
+      "confidence": 0.95,
+      "reason": "Multiple analyst downgrades including INSM, with ACT's price target reduced to $44."
+    },
+    {
+      "id": "62294840",
+      "headline": "Raymond James Upgrades Humana to Outperform, Announces $520 Price Target",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62294840/raymond-james-upgrades-humana-outperform-announces-520-price-target",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "HUM"
+      ],
+      "created_at": "2026-10-12T11:25:58Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Upgrade to Outperform with $520 price target indicates positive outlook for Humana stock."
+    },
+    {
+      "id": "62294146",
+      "headline": "Micron's Monster Rally Faces New Threat As Traders Pile Into Bearish Bets",
+      "summary": "Micron faces bearish options bets despite strong AI-driven memory demand. Read why analysts remain bullish on MU stock long-term.",
+      "url": "https://www.benzinga.com/markets/tech/26/10/62294146/microns-monster-rally-faces-new-threat-as-traders-pile-into-bearish-bets",
+      "author": "Anusuya Lahiri",
+      "source": "benzinga",
+      "symbols": [
+        "AMZN",
+        "GOOG",
+        "GOOGL",
+        "MSFT",
+        "MU"
+      ],
+      "created_at": "2026-10-12T10:59:54Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Bearish short-term bets conflict with bullish analyst outlooks and AI demand fundamentals."
+    },
+    {
+      "id": "62291207",
+      "headline": "Dow Jumps Over 400 Points, Records Weekly Gain: Investor Sentiment Improves, Fear & Greed Index Moves yo \u2018Neutral\u2019 Zone",
+      "summary": "CNN Fear &amp; Greed Index rose to Neutral at 45 as U.S. stocks gained Friday; Dow jumped 423 points, while consumer sentiment weakened.",
+      "url": "https://www.benzinga.com/markets/equities/26/10/62291207/dow-jumps-over-400-points-records-weekly-gain-investor-sentiment-improves-fear-greed-index-moves-yo-neutral-zone",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "HUM"
+      ],
+      "created_at": "2026-10-12T06:42:46Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Dow jumped 423 points with weekly gains and improving investor sentiment despite weakening consumer data."
+    },
+    {
+      "id": "62289011",
+      "headline": "Trump\u2019s Russian Diesel Deal Draws GOP Pushback: Rep. Brian Fitzpatrick Plans Bill to Block Russian Oil Purchases",
+      "summary": "Rep. Fitzpatrick plans bipartisan bill to block Russian oil purchases, opposing Donald Trump\u2019s diesel deal.",
+      "url": "https://www.benzinga.com/news/26/10/62289011/trumps-russian-diesel-deal-draws-gop-pushback-rep-brian-fitzpatrick-plans-bill-to-block-russian-oil-purchases",
+      "author": "Rounak Jain",
+      "source": "benzinga",
+      "symbols": [
+        "MPC",
+        "PBF",
+        "VLO"
+      ],
+      "created_at": "2026-10-11T07:37:14Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "GOP pushback and planned legislation to block Russian oil purchases signals potential restrictions on energy deals."
+    },
+    {
+      "id": "62288632",
+      "headline": "DRAM ETF Stuck in Bear Market: Top Catalysts for a Rebound in Memory Stocks",
+      "summary": "The DRAM ETF is stuck in a bear market. Here are the top catalysts for the Roundhill Memory ETF as it continues to struggle.",
+      "url": "https://www.benzinga.com/etfs/sector-etfs/26/10/62288632/dram-etf-stuck-in-a-bear-market-top-catalysts-for-a-rebound-in-memory-stocks",
+      "author": "Crispus Nyaga",
+      "source": "benzinga",
+      "symbols": [
+        "DRAM",
+        "MU",
+        "SNDK",
+        "WDC"
+      ],
+      "created_at": "2026-10-10T20:15:07Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "ETF in bear market with stocks struggling, though article mentions potential catalysts for recovery."
+    },
+    {
+      "id": "62288488",
+      "headline": "Why Micron Stock is Struggling Despite Revenue Growth and a Low Valuation",
+      "summary": "Micron stock price has remained inside a narrow range in the past few days despite its strong revenue growth and cheap valuation",
+      "url": "https://www.benzinga.com/markets/equities/26/10/62288488/why-micron-stock-is-struggling-despite-revenue-growth-and-a-low-valuation",
+      "author": "Crispus Nyaga",
+      "source": "benzinga",
+      "symbols": [
+        "MU"
+      ],
+      "created_at": "2026-10-10T18:12:35Z",
+      "sentiment": "bear",
+      "confidence": 0.75,
+      "reason": "Stock struggling despite positive fundamentals suggests market skepticism about growth prospects."
+    },
+    {
+      "id": "62288135",
+      "headline": "SpaceX, Micron, AMD and More: 5 Stocks Investors Couldn't Stop Buzzing About This Week",
+      "summary": "Retail investors talked up five hot stocks during the week (Oct. 5 to Oct. 9) on X and Reddit&39;s r/WallStreetBets: SPCX, MU, APLD, AMD, ASTS",
+      "url": "https://www.benzinga.com/markets/equities/26/10/62288135/spacex-micron-amd-and-more-5-stocks-investors-couldnt-stop-buzzing-about-this-week",
+      "author": "Rishabh Mishra",
+      "source": "benzinga",
+      "symbols": [
+        "AMD",
+        "APLD",
+        "ASTS",
+        "MU",
+        "SPCX"
+      ],
+      "created_at": "2026-10-10T12:58:24Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Retail investors actively discussing and buzzing about these stocks suggests positive momentum and interest."
+    },
+    {
+      "id": "62288073",
+      "headline": "Benzinga Bulls and Bears: Nvidia, Lumentum, Planet Labs",
+      "summary": "Benzinga examined the prospects for many investors\u2019 favorite stocks over the last week \u2014 here\u2019s a look at some of our top stories.",
+      "url": "https://www.benzinga.com/markets/market-summary/26/10/62288073/benzinga-bulls-and-bears-nvidia-lumentum-planet-labs",
+      "author": "Benzinga Senior Editor",
+      "source": "benzinga",
+      "symbols": [
+        "APLD",
+        "ASTS",
+        "LEVI",
+        "LITE",
+        "MU",
+        "NBIS",
+        "NVDA",
+        "ONDS",
+        "PENG",
+        "PL",
+        "SKHY",
+        "SNDK",
+        "SPCX",
+        "STZ",
+        "TSLA"
+      ],
+      "created_at": "2026-10-10T12:00:11Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Article reviews multiple stocks without clear directional bias or specific price targets."
+    },
+    {
+      "id": "62285582",
+      "headline": "Trump Says Putin Is Sending Russian Diesel \u2014 So Much for Sanctions",
+      "summary": "President Trump says Russia will supply 4.8 million tons of diesel after talks with Putin, though pump prices remain near records.",
+      "url": "https://www.benzinga.com/markets/commodities/26/10/62285582/trump-says-putin-is-sending-russian-diesel-so-much-for-sanctions",
+      "author": "Erica Kollmann",
+      "source": "benzinga",
+      "symbols": [
+        "MPC",
+        "PBF",
+        "VLO"
+      ],
+      "created_at": "2026-10-09T20:44:39Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Diesel supply increase offsets high pump prices; geopolitical implications unclear for equities."
     }
   ]
 }
