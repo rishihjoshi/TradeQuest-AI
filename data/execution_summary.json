@@ -1,22 +1,38 @@
 {
-  "timestamp": "2026-10-13T02:40:43Z",
-  "mode": "post_close",
+  "timestamp": "2026-10-13T19:57:51Z",
+  "mode": "market_open",
   "orders_placed": [
     {
       "action": "BUY",
-      "symbol": "LLY",
-      "qty": 0.005344,
+      "symbol": "APA",
+      "qty": 20.05753,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "CSCO",
+      "qty": 8.363549,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "TXN",
+      "qty": 3.345594,
       "status": "submitted"
     }
   ],
   "orders_skipped": [
+    {
+      "symbol": "LLY",
+      "reason": "blocked by agent approval or risk gate"
+    },
     {
       "symbol": "KEYS",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 5.06,
+  "cash_pct_after": 40.56,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
