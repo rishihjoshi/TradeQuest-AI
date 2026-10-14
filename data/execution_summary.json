@@ -1,26 +1,15 @@
 {
-  "timestamp": "2026-10-14T00:29:05Z",
-  "mode": "post_close",
-  "orders_placed": [
-    {
-      "action": "SELL",
-      "symbol": "MU",
-      "qty": 0.349178,
-      "status": "submitted"
-    }
-  ],
+  "timestamp": "2026-10-14T18:09:42Z",
+  "mode": "market_open",
+  "orders_placed": [],
   "orders_skipped": [
     {
       "symbol": "KEYS",
       "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "LLY",
-      "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 40.59,
+  "cash_pct_after": 43.97,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
