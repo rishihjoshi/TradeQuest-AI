@@ -1,7 +1,148 @@
 {
-  "last_run": "2026-10-15T17:51:48Z",
-  "last_type": "day_start",
+  "last_run": "2026-10-15T23:47:01Z",
+  "last_type": "day_end",
   "runs": [
+    {
+      "id": "RUN-20261015-2347",
+      "timestamp": "2026-10-15T23:47:01Z",
+      "type": "day_end",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio sits at 74.65% long exposure against a 95% target in a bull regime (VIX 10.1, SPY well above 200-MA, breadth 62%), leaving ~20pp of deployable cash idling at 25.35%. The October quarterly rebalance ran on 2026-10-13/15 and seeded the new book, but CSCO printed below its 50-day MA on entry and now needs a Rule A watch, and three dust residuals (EXPD, HUM, KEYS) continue to occupy slots without material exposure. NTAP is undersized at 1.88% weight versus the ~10% target and should be topped up at next opportunity.",
+      "regime": "bull",
+      "regime_confidence": 0.81,
+      "flags": [
+        "EXPD: Dust residual 6e-06 shares (~$0.00 market value) \u2014 rebalance artifact persisting across 5+ runs; slot is effectively empty but registered as held; recommend forced cleanup at next rebalance",
+        "HUM: Dust residual 1e-05 shares (~$0.00 market value) \u2014 same artifact, 4+ runs; no material exposure, slot blocked",
+        "KEYS: Dust residual 5e-06 shares, sector=Unknown, momentum_rank=0, ma_50d=null \u2014 data-integrity gate would block any top-up; slot functionally empty",
+        "CSCO: Price $109.70 vs MA50 $112.13 \u2014 currently below 50-day MA (day 1 of potential Rule A sequence); entry was 2026-10-13, loss -$45.12 (-4.69%); momentum_rank=0 (null data); monitor for 3-consecutive-day MA breach",
+        "NTAP: Weight only 1.88% vs ~10% target \u2014 severely undersized; loss -$12.69 (-6.35%); above MA50 ($201.24); rank 4 is strong; eligible for top-up in October (quarterly month) but October rebalance window may have closed",
+        "TXN: Momentum rank 15 \u2014 exactly at the hysteresis boundary (exit threshold rank >15); above MA50 ($272.31); loss -$33.61 (-3.49%); entry 2026-10-13; MIN_HOLD_DAYS=10 not yet met; watching for rank breach",
+        "LLY: Momentum rank 11 \u2014 outside top-30% (rank >10 in a ~500-stock universe top-30% = ~150 names, so rank 11 is borderline; top 30% of 500 = rank \u2264150, so rank 11 IS in top 30%); flagged persistently \u2014 confirming rank 11 is well within top 30%, no exit signal; loss -$8.77 (-0.92%)",
+        "VLO: Weight 12.16% \u2014 above MAX_POSITION_PCT (10%); profitable +$257.90 (+27.02%); Rule C flag: trim to \u226410% at next rebalance; Energy sector at ~(APA+VLO+PSX)/invested \u2014 monitor sector cap",
+        "Energy sector: APA $948.02 + VLO $1,212.37 + PSX $627.25 = $2,787.64 of $7,442.80 invested = 37.5% \u2014 EXCEEDS 30% sector cap; sector trim required",
+        "STLD: Momentum rank 9, entry 2026-10-15 (day 1 held); above MA50 ($240.31); loss -$9.17 (-0.96%); flagged 2 runs \u2014 within normal noise for new entry",
+        "WST: Momentum rank 10 \u2014 at top-30% boundary; gain +$25.18 (+3.60%); above MA50 ($356.79); entry 2026-10-09 (6 days held, MIN_HOLD_DAYS not met for rank-based exit); watching"
+      ],
+      "decisions": [
+        {
+          "action": "HOLD",
+          "symbol": "EXPD",
+          "reason": "Dust residual 6e-06 shares (~$0.00) \u2014 effectively zero position; no material exposure to exit; missing data would block re-entry; hold artifact until next rebalance cleanup. Not a sellable quantity.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "HUM",
+          "reason": "Dust residual 1e-05 shares (~$0.00) \u2014 effectively zero position; same artifact as EXPD; hold until next rebalance cleanup.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "KEYS",
+          "reason": "Dust residual 5e-06 shares (~$0.00), sector=Unknown, momentum_rank=0, ma_50d=null \u2014 data-integrity gate blocks any action other than cleanup; shares are positive (no COVER needed); hold artifact until next rebalance.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "CSCO",
+          "reason": "Price $109.70 is below 50-day MA $112.13 \u2014 potential Rule A trend break, day 1 of 3-consecutive-day requirement. Unrealized PnL: -$45.12 (-4.69%), entry 2026-10-13. Additionally momentum_rank=0 (null data \u2014 not itself a sell signal per Directive 10). If price remains below MA50 for 2 more consecutive days, Rule A Tier 1 SELL triggers at next_open. Monitoring closely.",
+          "rule_triggered": "trend_break",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "APA",
+          "reason": "Price $47.26 above MA50 $43.11; momentum rank 8 (top 30%); EPS growth 26.3%, revenue growth 9.2% \u2014 quality filters pass; unrealized PnL -$15.15 (-1.57%), entry 2026-10-13; MIN_HOLD_DAYS not yet met (2 days); no structural rule triggered. Thesis intact: Energy momentum, strong fundamentals, cheap valuation (P/E 10.0).",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "LLY",
+          "reason": "Price $1,254.66 above MA50 $1,177.41; momentum rank 11 \u2014 within top 30% of ~500-stock universe (top 30% = roughly rank \u2264150); EPS growth 26.2%, revenue 47.7% \u2014 quality pass; unrealized PnL -$8.77 (-0.92%), entry 2026-10-13; all structural rules clear. Persistent flags are precautionary; no exit signal present.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NTAP",
+          "reason": "Price $214.50 above MA50 $201.24; momentum rank 4 (strong); EPS growth 63.5%, revenue 29.9% \u2014 quality excellent; unrealized PnL -$12.69 (-6.35%), entry 2026-10-05 (10 days held); weight only 1.88% vs ~10% target \u2014 severely undersized due to partial fill. No structural exit rule triggered. Position needs top-up; eligible in October (quarterly month) if deployable cash allows and within remaining rebalance budget.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "PSX",
+          "reason": "Price $289.20 above MA50 $252.26; momentum rank 3 (excellent); EPS growth 344.9%, revenue 53.1%; unrealized PnL +$100.89 (+19.17%), entry 2026-08-18; weight 6.29% \u2014 below MAX_POSITION_PCT; all structural rules clear. Profitable position, hold gate active \u2014 no momentum decay exit applies.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "STLD",
+          "reason": "Price $241.00 above MA50 $240.31 (margin is thin, $0.69; monitor); momentum rank 9; EPS growth 83.6%, revenue 33.4%; unrealized PnL -$9.17 (-0.96%), entry 2026-10-15 (day 0 \u2014 MIN_HOLD_DAYS not met); no structural rule triggered. New position, thesis intact.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "TXN",
+          "reason": "Momentum rank 15 \u2014 at the hysteresis exit boundary (exit triggers at rank >15 per EXIT_RANK_MULTIPLE=1.5 applied to TARGET_N=10, boundary=15). Rank has been at or near boundary for 2 consecutive runs. Unrealized PnL: -$33.61 (-3.49%), entry 2026-10-13 (2 days held \u2014 MIN_HOLD_DAYS=10 not yet met, so rank-based exit is blocked regardless). Price $277.75 above MA50 $272.31. If rank exceeds 15 AND MIN_HOLD_DAYS met AND confirmed \u22655 days, Tier 1 SELL eligible (loss position). Continue monitoring.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "SELL",
+          "symbol": "VLO",
+          "reason": "Rule C \u2014 position weight 12.16% exceeds MAX_POSITION_PCT (10%). Additionally, Energy sector cap breach: APA + VLO + PSX = ~37.5% of invested capital, exceeding the 30% MAX_SECTOR_PCT. Sector trim required per \u00a75.1 \u2014 trim lowest-momentum names in over-cap sector first. VLO has momentum_rank=2 (highest in Energy), APA rank=8, PSX rank=3 \u2014 trim APA first by sector logic (rank 8 is lowest momentum in Energy group), but VLO's individual weight breach (12.16% > 10%) also requires trimming VLO to \u226410%. Unrealized PnL: +$257.90 (+27.02%), entry 2026-08-18. This is a structural Rule C + sector cap trim, not momentum decay \u2014 eligible on profitable position. Trim VLO from $1,212.37 to ~$997 (\u226410% of $9,970.61): sell approximately $215 worth (~0.485 shares at $443.50). Sector trim is invariant restoration \u2014 bypasses halt and quarterly lock per \u00a75.1.",
+          "rule_triggered": "profit_take",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "APA",
+          "reason": "Energy sector cap breach: sector at ~37.5% of invested capital vs 30% cap. Sector trim \u00a75.1 \u2014 sell lowest-momentum names in over-cap sector first. APA momentum_rank=8 is lowest in Energy (VLO=2, PSX=3, APA=8). After trimming VLO to 10% weight, Energy = (VLO ~$997 + PSX $627.25 + APA $948.02) / $7,442.80 \u2248 34.6% \u2014 still above 30%. Further trim needed. Reduce APA until Energy clears 30%: target Energy \u2264 30% of invested = \u2264$2,232.84. After VLO trim: VLO ~$997 + PSX $627.25 = $1,624.25; APA allocation \u2264 $608.59 \u2192 sell ~$339.43 of APA (~7.18 shares at $47.26). Unrealized PnL: -$15.15 (-1.57%), entry 2026-10-13. Loss position + structural sector cap rule = Tier 1. Sector trim bypasses quarterly lock per \u00a75.1.",
+          "rule_triggered": "long_only_breach",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "WST",
+          "reason": "Price $383.02 above MA50 $356.79; momentum rank 10 \u2014 within top 30% (rank \u2264~150 of 500); EPS growth 18.1%, revenue 13.8%; unrealized PnL +$25.18 (+3.60%), entry 2026-10-09 (6 days held, MIN_HOLD_DAYS=10 not met); all structural rules clear. Profitable position; hold gate active. Even if rank were to drift outside top 30%, gain + MIN_HOLD_DAYS barrier = WATCH only, not SELL.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "decrease",
+      "cash_rationale": "Bull regime targets 5% cash; current deployable cash is 25.35% \u2014 ~20pp above target. After sector trims clear the Energy breach (which may modestly increase cash temporarily), remaining deployable cash should be deployed into undersized positions (NTAP at 1.88% weight needs ~$800 top-up) and any remaining open slots. October is a quarterly month so full rebalance activity is permitted. CSCO and KEYS were blocked at market-open; CSCO should be re-evaluated once MA50 breach status is confirmed over 3 days before adding more; KEYS has null data and should not receive new capital.",
+      "summary": "Day-end 2026-10-15: bull regime; issuing sector-cap trims on VLO (Rule C weight breach) and APA (Energy sector at ~37.5% vs 30% cap) at next_open; CSCO flagged for Rule A watch (day 1 below MA50); TXN at rank boundary but MIN_HOLD_DAYS not met; 25% deployable cash needs deployment into NTAP top-up and remaining slots.",
+      "usage": {
+        "input_tokens": 14756,
+        "output_tokens": 3792,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 6683
+      },
+      "sell_tier_summary": {
+        "tier1_execute": 2,
+        "tier2_deferred": 0
+      }
+    },
     {
       "id": "RUN-20261015-1751",
       "timestamp": "2026-10-15T17:51:48Z",
@@ -10151,41 +10292,6 @@
         "output_tokens": 2384,
         "cache_read_tokens": 0,
         "cache_write_tokens": 5265
-      }
-    },
-    {
-      "id": "RUN-20260818-1407",
-      "timestamp": "2026-08-18T14:07:06Z",
-      "type": "day_start",
-      "model": "claude-sonnet-4-6",
-      "assessment": "Portfolio is 100% cash ($10,000) with zero active holdings following the Aug 17 full liquidation. Market regime remains bull (91% confidence) with VIX at 12.4, SPY above 200-day MA, and breadth at 74.5% \u2014 healthy broad participation. The sole structural concern is severe benchmark lag: SPY has appreciated ~8.5% since inception while the portfolio sits idle in cash, compounding the opportunity cost of being undeployed through a rising market.",
-      "regime": "bull",
-      "regime_confidence": 0.91,
-      "flags": [
-        "CASH: Portfolio is 100% cash ($10,000 / 100%) against a bull regime target of 5% cash. Next deployment window is October 2026 quarterly rebalance (Oct 1). August is a non-quarterly month \u2014 no buys permitted.",
-        "BENCHMARK LAG: SPY has risen from $9,864 to $10,703 (+8.5%) since inception while portfolio is flat at $10,000. Every day in cash during a bull regime widens this gap. Cannot close gap until Oct 1 rebalance.",
-        "NEXT_REBALANCE DATE: meta.next_rebalance is set to 2026-09-01 which is a non-quarterly month (September). This must be corrected to 2026-10-01 before the pipeline triggers an erroneous rebalance run.",
-        "JBL UNRESOLVED FLAG: JBL appears in the unresolved sell orders list from Aug 7. Confirmed by Aug 17 day_end that all prior positions were liquidated \u2014 JBL flag is now stale and should be cleared. No action needed if position is confirmed at zero shares.",
-        "BREADTH: 74.5% of S&P 500 stocks above 200-day MA (as of Aug 14) \u2014 above the 60% bull threshold. Breadth 8MA is above 200MA. Confirms broad participation; bull regime well-supported. No concern."
-      ],
-      "decisions": [
-        {
-          "action": "WATCH",
-          "symbol": "CASH",
-          "reason": "Portfolio is 100% cash ($10,000) against a 5% cash target in bull regime. August is a non-quarterly month \u2014 BUYs are blocked by strategy rules. No holdings to evaluate against sell rules. Next deployment window: October 1, 2026 quarterly rebalance. Opportunity cost is accumulating (~8.5% SPY lag since inception). No action available today.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        }
-      ],
-      "cash_action": "maintain",
-      "cash_rationale": "August is a non-quarterly month; BUY orders are code-blocked by the non-quarterly execution lock. Cash must remain at 100% until the October 1 quarterly rebalance. Maintaining is not discretionary \u2014 it is strategy-enforced.",
-      "summary": "Aug 18 day_start: portfolio 100% cash with no holdings; bull regime confirmed (breadth 74.5%, VIX 12.4); next_rebalance date in meta should be corrected from 2026-09-01 to 2026-10-01; no trades permitted until October quarterly rebalance.",
-      "usage": {
-        "input_tokens": 4174,
-        "output_tokens": 803,
-        "cache_read_tokens": 0,
-        "cache_write_tokens": 9832
       }
     }
   ]
