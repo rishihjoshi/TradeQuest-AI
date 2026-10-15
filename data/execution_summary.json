@@ -1,7 +1,14 @@
 {
-  "timestamp": "2026-10-14T18:09:42Z",
-  "mode": "market_open",
-  "orders_placed": [],
+  "timestamp": "2026-10-15T00:01:13Z",
+  "mode": "post_close",
+  "orders_placed": [
+    {
+      "action": "BUY",
+      "symbol": "STLD",
+      "qty": 3.941753,
+      "status": "submitted"
+    }
+  ],
   "orders_skipped": [
     {
       "symbol": "KEYS",
@@ -9,7 +16,7 @@
     }
   ],
   "errors": [],
-  "cash_pct_after": 43.97,
+  "cash_pct_after": 44.01,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
