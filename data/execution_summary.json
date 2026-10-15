@@ -1,22 +1,26 @@
 {
-  "timestamp": "2026-10-15T00:01:13Z",
-  "mode": "post_close",
+  "timestamp": "2026-10-15T17:52:59Z",
+  "mode": "market_open",
   "orders_placed": [
     {
       "action": "BUY",
-      "symbol": "STLD",
-      "qty": 3.941753,
+      "symbol": "LLY",
+      "qty": 0.748806,
       "status": "submitted"
     }
   ],
   "orders_skipped": [
+    {
+      "symbol": "CSCO",
+      "reason": "blocked by agent approval or risk gate"
+    },
     {
       "symbol": "KEYS",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 44.01,
+  "cash_pct_after": 25.39,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
