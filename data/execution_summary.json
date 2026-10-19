@@ -1,19 +1,41 @@
 {
-  "timestamp": "2026-10-16T23:45:44Z",
-  "mode": "post_close",
-  "orders_placed": [],
-  "orders_skipped": [
+  "timestamp": "2026-10-19T19:26:52Z",
+  "mode": "market_open",
+  "orders_placed": [
     {
-      "symbol": "KEYS",
-      "reason": "blocked by agent approval or risk gate"
+      "action": "SELL",
+      "symbol": "CSCO",
+      "qty": 8.363549,
+      "status": "submitted"
     },
     {
-      "symbol": "CSCO",
-      "reason": "blocked by agent approval or risk gate"
+      "action": "SELL",
+      "symbol": "KEYS",
+      "qty": 5e-06,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "NTAP",
+      "qty": 4.587026,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "NUE",
+      "qty": 3.629075,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "LLY",
+      "qty": 0.10731,
+      "status": "submitted"
     }
   ],
+  "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 25.32,
+  "cash_pct_after": 13.98,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
