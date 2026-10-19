@@ -1,41 +1,17 @@
 {
-  "timestamp": "2026-10-19T19:26:52Z",
-  "mode": "market_open",
+  "timestamp": "2026-10-19T22:32:52Z",
+  "mode": "post_close",
   "orders_placed": [
     {
       "action": "SELL",
-      "symbol": "CSCO",
-      "qty": 8.363549,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "KEYS",
-      "qty": 5e-06,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "NTAP",
-      "qty": 4.587026,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "NUE",
-      "qty": 3.629075,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "LLY",
-      "qty": 0.10731,
+      "symbol": "TXN",
+      "qty": 3.0,
       "status": "submitted"
     }
   ],
   "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 13.98,
+  "cash_pct_after": 14.03,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
