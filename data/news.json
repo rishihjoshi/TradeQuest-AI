@@ -1,7 +1,540 @@
 {
-  "generated_at": "2026-10-15T17:51:47Z",
+  "generated_at": "2026-10-19T19:23:40Z",
   "article_count": 30,
   "articles": [
+    {
+      "id": "62450757",
+      "headline": "This 146-Old Can Maker Is On a Winning Streak Unseen In Its Half-Century Stock History",
+      "summary": "Ball Corp stock is on an 11-day winning streak, its longest since NYSE trading began in 1973, while the S&amp;P 500 has slipped. Here is what the data shows.",
+      "url": "https://www.benzinga.com/markets/equities/26/10/62450757/ball-corp-stock-record-11-day-winning-streak",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "APD",
+        "BALL",
+        "CCK",
+        "LIN",
+        "MAR",
+        "WST"
+      ],
+      "created_at": "2026-10-19T19:10:05Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "11-day winning streak longest in 50-year history while market declines shows strong outperformance."
+    },
+    {
+      "id": "62448550",
+      "headline": "Swiss Pharma Giant Roche Suspends German Capital Commitments Amid Dispute Over Drug Discounts",
+      "summary": "Roche halts German investments as chief Daniel Steiners warns Berlin that statutory drug rebates shatter trust in the market.",
+      "url": "https://www.benzinga.com/news/health-care/26/10/62448550/swiss-pharma-giant-roche-suspends-german-capital-commitments-amid-dispute-over-drug-discounts",
+      "author": "Vandana Singh",
+      "source": "benzinga",
+      "symbols": [
+        "LLY",
+        "PFE",
+        "RHHBY"
+      ],
+      "created_at": "2026-10-19T17:53:08Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Roche suspends German capital commitments due to drug discount disputes, signaling reduced investment and market confidence."
+    },
+    {
+      "id": "62442156",
+      "headline": "Nasdaq 100 Stocks Add Nearly $500 Billion As Chips Battle To Snap 2008-Style Rout",
+      "summary": "The SOX index is on track to snap an 8-day losing streak, its longest since October 2008. Nasdaq 100 stocks added nearly $500 billion.",
+      "url": "https://www.benzinga.com/markets/tech/26/10/62442156/nasdaq-100-adds-nearly-500-billion-chip-selloff-2008-snapped",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "AMAT",
+        "AMD",
+        "AMZN",
+        "ASML",
+        "AVGO",
+        "CRWV",
+        "INTC",
+        "LRCX",
+        "MU",
+        "NVDA",
+        "QQQ",
+        "SKHY",
+        "SNDK",
+        "SOXX",
+        "TSM",
+        "TXN",
+        "WDC"
+      ],
+      "created_at": "2026-10-19T15:06:30Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Nasdaq 100 stocks gained $500B and SOX index breaking 8-day losing streak signals recovery."
+    },
+    {
+      "id": "62437983",
+      "headline": "We Asked ChatGPT, Grok and Claude for 1 Stock to Buy This Week. No One Picked Tesla.",
+      "summary": "AI bots picked GE Aerospace, Netflix and Valero as weekly buys, each betting on upcoming earnings despite risks and differing confidence.",
+      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/10/62437983/we-asked-chatgpt-grok-and-claude-for-1-stock-to-buy-this-week-no-one-picked-tesla",
+      "author": "Erica Kollmann",
+      "source": "benzinga",
+      "symbols": [
+        "GE",
+        "LRCX",
+        "META",
+        "NFLX",
+        "TSLA",
+        "VLO"
+      ],
+      "created_at": "2026-10-19T13:23:37Z",
+      "sentiment": "neutral",
+      "confidence": 0.65,
+      "reason": "AI bots avoided Tesla but picked other stocks; mixed signals on market outlook."
+    },
+    {
+      "id": "62437386",
+      "headline": "Are Companies Reducing AI Spending? Chip Orders Say Otherwise",
+      "summary": "Bank of America and Cantor Fitzgerald analysts&39; report sold-out chip equipment and $1 trillion in capex. SOXX fell 11.8% last week.",
+      "url": "https://www.benzinga.com/markets/tech/26/10/62437386/companies-reducing-ai-spending-chip-orders-say-otherwise",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "AMAT",
+        "ASML",
+        "AVGO",
+        "CSCO",
+        "LRCX",
+        "MU",
+        "NVDA",
+        "SOXX"
+      ],
+      "created_at": "2026-10-19T13:04:47Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Strong chip equipment demand and $1T capex outlook suggest sustained AI spending despite recent SOXX decline."
+    },
+    {
+      "id": "62431980",
+      "headline": "Stock Market Today: Dow Futures Drop, S&P 500, Nasdaq 100 Rise as Scott Bessent Links September Inflation to 'Energy Shock'\u2014 RCAT, ESLT, STLD in Focus (UPDATED)",
+      "summary": "U.S. stock futures were higher on Monday, as the Dow Jones, S&amp;P 500 and Nasdaq 100 indices rose, following Friday&39;s lower close.",
+      "url": "https://www.benzinga.com/markets/equities/26/10/62431980/stock-market-today-dow-jones-sp-500-futures-rise-as-scott-bessent-links-september-inflation-to-energy-shock-rcat-eslt-stld-in-focus",
+      "author": "Rishabh Mishra",
+      "source": "benzinga",
+      "symbols": [
+        "BTCUSD",
+        "ESLT",
+        "GM",
+        "IBM",
+        "IRON",
+        "LRCX",
+        "META",
+        "NFLX",
+        "OPNW",
+        "PG",
+        "QQQ",
+        "RCAT",
+        "SPY",
+        "STLD",
+        "TSLA"
+      ],
+      "created_at": "2026-10-19T12:23:11Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "S&P 500 and Nasdaq 100 rise following lower close; futures point to market recovery."
+    },
+    {
+      "id": "62431722",
+      "headline": "Eli Lilly\u2019s Omvoh Shows 1-Year Phase 3 Results for Kids with Ulcerative Colitis",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62431722/eli-lilly-s-omvoh-shows-1-year-phase-3-results-kids-ulcerative-colitis",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "LLY"
+      ],
+      "created_at": "2026-10-19T08:44:01Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Positive Phase 3 results for pediatric indication expands Omvoh's market potential and clinical profile."
+    },
+    {
+      "id": "62431244",
+      "headline": "Nasdaq Tumbles Over 2%, Records Weekly Loss: Investor Sentiment Weakens, Fear & Greed Index Moves to \u2018Extreme Fear\u2019 Zone",
+      "summary": "Markets fell sharply, led by tech, as CNN\u2019s Fear &amp; Greed Index hit Extreme Fear at 18; oil stayed elevated amid Hormuz tensions.",
+      "url": "https://www.benzinga.com/markets/market-summary/26/10/62431244/nasdaq-tumbles-over-2-records-weekly-loss-investor-sentiment-weakens-fear-greed-index-moves-to-extreme-fear-zone",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "AMD",
+        "CFG",
+        "CLF",
+        "FITB",
+        "MTB",
+        "MU",
+        "SNDK",
+        "STLD"
+      ],
+      "created_at": "2026-10-19T07:21:40Z",
+      "sentiment": "bear",
+      "confidence": 0.95,
+      "reason": "Nasdaq down 2% with weekly losses, extreme fear sentiment, and weakened investor confidence."
+    },
+    {
+      "id": "62431231",
+      "headline": "Fifth Third Bancorp, Cleveland-Cliffs and 3 Stocks to Watch Heading Into Monday",
+      "summary": "Investors eye earnings from Fifth Third, Cleveland-Cliffs, Crown Holdings and Steel Dynamics; Gauzy announces a $7M private placement.",
+      "url": "https://www.benzinga.com/markets/equities/26/10/62431231/fifth-third-bancorp-cleveland-cliffs-and-3-stocks-to-watch-heading-into-monday",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "CCK",
+        "CLF",
+        "FITB",
+        "GAUZ",
+        "STLD"
+      ],
+      "created_at": "2026-10-19T07:17:16Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Article lists upcoming earnings reports and corporate announcements without positive or negative commentary."
+    },
+    {
+      "id": "62431016",
+      "headline": "Reported Sunday, Lilly Brings Updated Phase 3 Selpercatinib Data Versus Cabozantinib Or Vandetanib In RET-Mutant Medullary Thyroid Cancer To ESMO 2026, Alongside Sofetabart Mipitecan, Olomorasib And A",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62431016/reported-sunday-lilly-brings-updated-phase-3-selpercatinib-data-versus-cabozantinib-or-vandetanib-re",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "LLY"
+      ],
+      "created_at": "2026-10-19T06:53:13Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Lilly presenting updated Phase 3 data for selpercatinib demonstrates clinical progress in RET-mutant cancer treatment."
+    },
+    {
+      "id": "62429704",
+      "headline": "Fifth Third, Steel Dynamics Earnings Test Bank Trends And Steel Demand",
+      "summary": "Fifth Third Bancorp headlines Monday\u2019s reports as investors weigh whether merger synergies and loan trends can offset pressure on bank earnings. Cleveland-Cliffs and Dynex Capital report before the open; Steel Dynamics,",
+      "url": "https://www.benzinga.com/news/26/10/62429704/fifth-third-steel-dynamics-earnings-test-bank-trends-and-steel-demand",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "AGNC",
+        "BOKF",
+        "CCK",
+        "CLF",
+        "DX",
+        "FITB",
+        "FNB",
+        "RLI",
+        "SFBS",
+        "STLD",
+        "WAL",
+        "WRB",
+        "WTFC",
+        "ZION"
+      ],
+      "created_at": "2026-10-18T19:31:28Z",
+      "sentiment": "neutral",
+      "confidence": 0.65,
+      "reason": "Earnings report tests ability to offset headwinds; merger synergies vs. pressure create mixed outlook."
+    },
+    {
+      "id": "62429536",
+      "headline": "Trump\u2019s Russia Tariff Waiver Helps Apple, Eliminates Tariff Advantage for CF and CVR Partners",
+      "summary": "Trump\u2019s waiver of steep Russia\u2011related tariffs gives Apple temporary relief while denying fertilizer makers like CF Industries and CVR Partners a potential shield. The move reshapes outlooks across tech, energy, refining, and agriculture as Washington\u2019s sanctions strategy shifts again.",
+      "url": "https://www.benzinga.com/markets/commodities/26/10/62429536/trumps-russia-tariff-waiver-helps-apple-eliminates-tariff-advantage-for-cf-and-cvr-partners",
+      "author": "Benzinga Weekend Correspondent",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "CF",
+        "LXU",
+        "MPC",
+        "UAN",
+        "VLO"
+      ],
+      "created_at": "2026-10-18T16:55:09Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Apple gains tariff relief while competitors CF and CVR face disadvantages, improving relative competitive position."
+    },
+    {
+      "id": "62427207",
+      "headline": "JD Vance Touts TrumpRx Drug Price Push, Trump Accounts as \u2018Economic Nationalism\u2019 Wins Ahead Of Midterms",
+      "summary": "JD Vance touted TrumpRx and Trump Accounts as key economic wins, highlighting prescription drug savings ahead of the midterm elections.",
+      "url": "https://www.benzinga.com/news/politics/26/10/62427207/jd-vance-trumprx-trump-accounts-economic-wins",
+      "author": "Mohd Haider",
+      "source": "benzinga",
+      "symbols": [
+        "LLY",
+        "PFE"
+      ],
+      "created_at": "2026-10-17T06:22:23Z",
+      "sentiment": "bull",
+      "confidence": 0.72,
+      "reason": "Positive framing of drug price initiatives and economic policies ahead of midterms supports market optimism."
+    },
+    {
+      "id": "62427182",
+      "headline": "Robotics Remains In Its \u2018Lego Era,\u2019 Says Former Nvidia Leader Turned VC as Physical AI Awaits Its ChatGPT Moment",
+      "summary": "Robotics remains in its Lego era as developers work to improve simulation, safety standards and hardware despite rising investment.",
+      "url": "https://www.benzinga.com/markets/tech/26/10/62427182/robotics-lego-era-simulation-safety-physical-ai",
+      "author": "Mohd Haider",
+      "source": "benzinga",
+      "symbols": [
+        "LLY",
+        "NVDA",
+        "OUST"
+      ],
+      "created_at": "2026-10-17T05:38:59Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Industry still in early development phase despite investment growth; no specific stock mentioned."
+    },
+    {
+      "id": "62425124",
+      "headline": "Eli Lilly Takes 19.9% Stake In TRex Bio With 5.48M Shares, Investing $12.3M In IPO",
+      "summary": "",
+      "url": "https://www.benzinga.com/m/26/10/62425124/eli-lilly-takes-19-9-stake-trex-bio-5-48m-shares-investing-12-3m-ipo",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "LLY",
+        "TRXB"
+      ],
+      "created_at": "2026-10-16T20:23:40Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Major pharma company's significant IPO investment signals confidence in TRex Bio's potential"
+    },
+    {
+      "id": "62424485",
+      "headline": "Chip Stocks Endure Longest Losing Streak Since 2006 as CoreWeave Credit Concerns Mount: This Week on Wall Street",
+      "summary": "The iShares Semiconductor ETF is on a nine-session losing run unseen since May 2006, as the KOSPI posts its worst week since 2008, optical names suffer dot-com-era drops and Bank of America sees a Cisco echo.",
+      "url": "https://www.benzinga.com/markets/equities/26/10/62424485/chip-stocks-endure-longest-losing-streak-since-2006-as-coreweave-credit-concerns-mount-this-week-on-wall-street",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "AMAT",
+        "AVGO",
+        "CBRS",
+        "CIEN",
+        "COHR",
+        "CRDO",
+        "CRWD",
+        "CRWV",
+        "CSCO",
+        "DRAM",
+        "LITE",
+        "LRCX",
+        "MTSI",
+        "MU",
+        "NBIS",
+        "NVDA",
+        "PANW",
+        "RKLB",
+        "SKHY",
+        "SNDK",
+        "SOXX",
+        "SSNLF",
+        "TER"
+      ],
+      "created_at": "2026-10-16T20:02:54Z",
+      "sentiment": "bear",
+      "confidence": 0.95,
+      "reason": "Chip stocks in longest losing streak since 2006; multiple sectors declining sharply amid credit concerns."
+    },
+    {
+      "id": "62423468",
+      "headline": "Lam Research Could Swing $28.6 Billion After Earnings",
+      "summary": "Discover 9 stocks with the biggest options-implied earnings moves, led by Spotify at 9.31%, as investors prepare for key quarterly results.",
+      "url": "https://www.benzinga.com/markets/options/26/10/62423468/lam-research-could-swing-28-6-billion-after-earnings",
+      "author": "Kaustubh Bagalkote",
+      "source": "benzinga",
+      "symbols": [
+        "DHR",
+        "IBM",
+        "ISRG",
+        "LRCX",
+        "NFLX",
+        "SPOT",
+        "TMO",
+        "TXN",
+        "WDC"
+      ],
+      "created_at": "2026-10-16T19:30:09Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Article reports potential earnings volatility for Lam Research without indicating positive or negative outlook."
+    },
+    {
+      "id": "62414052",
+      "headline": "Nvidia, Micron and Broadcom Already Trade Like Cisco Post Dot-Com Burst: Bank of America",
+      "summary": "Bank of America\u2019s Vivek Arya says Nvidia, Broadcom and Micron trade near 13x forward earnings, in line with Cisco after the dot-com crash.",
+      "url": "https://www.benzinga.com/markets/tech/26/10/62414052/nvidia-micron-broadcom-cisco-dot-com-bank-of-america",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "AVGO",
+        "CRWV",
+        "CSCO",
+        "MU",
+        "NBIS",
+        "NVDA",
+        "SOXQ"
+      ],
+      "created_at": "2026-10-16T15:07:26Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Comparison to Cisco post dot-com crash suggests overvaluation and risk of significant decline."
+    },
+    {
+      "id": "62413941",
+      "headline": "Eli Lilly's GLP-1 Pill Wins Key European Backing for Obesity and Diabetes",
+      "summary": "Eli Lilly gains positive CHMP opinion for Foundayo (orforglipron), a new oral GLP-1 tablet for weight loss and type 2 diabetes.",
+      "url": "https://www.benzinga.com/news/health-care/26/10/62413941/eli-lillys-glp-1-pill-wins-key-european-backing-for-obesity-and-diabetes",
+      "author": "Vandana Singh",
+      "source": "benzinga",
+      "symbols": [
+        "LLY"
+      ],
+      "created_at": "2026-10-16T15:04:31Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Positive CHMP backing for novel oral GLP-1 drug expands Eli Lilly's competitive position in high-growth obesity/diabetes market."
+    },
+    {
+      "id": "62413827",
+      "headline": "Phillips 66 Raises Quarterly Dividend From $1.27 To $1.33 Per Share",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62413827/phillips-66-raises-quarterly-dividend-1-27-1-33-share",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "PSX"
+      ],
+      "created_at": "2026-10-16T15:02:25Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Dividend increase signals management confidence in cash generation and returns shareholder value."
+    },
+    {
+      "id": "62413716",
+      "headline": "9 Of 11 Sectors Rise In Friday Trading As Cyclicals Lead",
+      "summary": "Nine of 11 sectors are higher in Friday\u2019s regular session, with cyclical sectors holding the top three positions. The leaders are separated rather than clustered, with no single gap clearly standing apart from the other breaks across the table.",
+      "url": "https://www.benzinga.com/etfs/sector-etfs/26/10/62413716/9-of-11-sectors-rise-in-friday-trading-as-cyclicals-lead",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "APD",
+        "AVGO",
+        "BAC",
+        "BRK",
+        "COP",
+        "DIA",
+        "EOG",
+        "GOOGL",
+        "IWM",
+        "JNJ",
+        "JPM",
+        "LIN",
+        "LLY",
+        "META",
+        "MRK",
+        "MSFT",
+        "NEM",
+        "NFLX",
+        "ORCL",
+        "QQQ",
+        "SLB",
+        "SPY",
+        "XLB",
+        "XLC",
+        "XLE",
+        "XLF",
+        "XLI",
+        "XLK",
+        "XLP",
+        "XLRE",
+        "XLU",
+        "XLV",
+        "XLY"
+      ],
+      "created_at": "2026-10-16T15:00:20Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Majority of sectors rising with cyclicals leading suggests positive market momentum."
+    },
+    {
+      "id": "62406812",
+      "headline": "Jim Cramer: Reddit Is 'Inexpensive' While SiTime Is \u2018Expensive\u2019",
+      "summary": "Jim Cramer favors Reddit, Chevron, EPD and Corning, but calls SiTime expensive and Valero a risky double-or-nothing trade.",
+      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/10/62406812/jim-cramer-reddit-is-inexpensive-while-sitime-is-expensive",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "COHR",
+        "CVX",
+        "EPD",
+        "GLW",
+        "LITE",
+        "RDDT",
+        "SITM",
+        "VLO",
+        "XOM"
+      ],
+      "created_at": "2026-10-16T11:37:21Z",
+      "sentiment": "neutral",
+      "confidence": 0.0,
+      "reason": "Analysis unavailable"
+    },
+    {
+      "id": "62406483",
+      "headline": "Eli Lilly Receives EMA CHMP Positive Opinion Recommending Marketing Authorization For Foundayo For Treatment Of Type 2 Diabetes Mellitus And For Weight Management",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62406483/eli-lilly-receives-ema-chmp-positive-opinion-recommending-marketing-authorization-foundayo-treatment",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "LLY"
+      ],
+      "created_at": "2026-10-16T11:15:14Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "EMA CHMP positive opinion is major regulatory milestone enabling Foundayo market entry in Europe"
+    },
+    {
+      "id": "62399951",
+      "headline": "Scotiabank Initiates Coverage On APA with Sector Perform Rating, Announces Price Target of $44",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62399951/scotiabank-initiates-coverage-apa-sector-perform-rating-announces-price-target-44",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "APA"
+      ],
+      "created_at": "2026-10-15T20:26:40Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Sector Perform rating with $44 target indicates balanced outlook, neither bullish nor bearish."
+    },
+    {
+      "id": "62395652",
+      "headline": "Why Is Cisco Stock Falling on Thursday?",
+      "summary": "Cisco discloses a critical 9.8-rated Secure Email Gateway vulnerability under active exploitation. See the details and fixes.",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/10/62395652/why-is-cisco-stock-falling-on-thursday",
+      "author": "Kaustubh Bagalkote",
+      "source": "benzinga",
+      "symbols": [
+        "CSCO"
+      ],
+      "created_at": "2026-10-15T18:12:51Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Critical security vulnerability under active exploitation raises operational risk and liability concerns."
+    },
     {
       "id": "62394729",
       "headline": "Mizuho Maintains Underperform on APA, Raises Price Target to $44",
@@ -13,9 +546,9 @@
         "APA"
       ],
       "created_at": "2026-10-15T17:45:58Z",
-      "sentiment": "bear",
+      "sentiment": "neutral",
       "confidence": 0.75,
-      "reason": "Underperform rating despite price target raise suggests limited upside and continued underperformance expectations."
+      "reason": "Underperform rating maintained despite price target increase, showing mixed outlook."
     },
     {
       "id": "62390127",
@@ -30,7 +563,7 @@
       "created_at": "2026-10-15T15:56:59Z",
       "sentiment": "neutral",
       "confidence": 0.75,
-      "reason": "Underweight rating is bearish but price target raise provides mixed signals."
+      "reason": "Underweight rating is bearish but price target raise is constructive, resulting in mixed signals."
     },
     {
       "id": "62389912",
@@ -45,7 +578,7 @@
       "created_at": "2026-10-15T15:51:22Z",
       "sentiment": "bull",
       "confidence": 0.92,
-      "reason": "Positive clinical data demonstrating drug efficacy in multiple indications supports revenue growth"
+      "reason": "Positive clinical data demonstrating drug efficacy in key indications supports growth prospects."
     },
     {
       "id": "62388065",
@@ -91,8 +624,8 @@
       ],
       "created_at": "2026-10-15T15:09:32Z",
       "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Mixed sector performance with defensive sectors leading while technology trails; no stock-specific mention."
+      "confidence": 0.72,
+      "reason": "Mixed sector performance with defensive outperformance; no specific stock mentioned."
     },
     {
       "id": "62387771",
@@ -107,530 +640,7 @@
       "created_at": "2026-10-15T15:04:17Z",
       "sentiment": "bull",
       "confidence": 0.75,
-      "reason": "Price target raise indicates improved outlook despite maintaining Sector Perform rating."
-    },
-    {
-      "id": "62384758",
-      "headline": "Here\u2019s How Much You Would Have Made Owning Eli Lilly Stock In The Last 20 Years",
-      "summary": "Eli Lilly (NYSE:LLY) has outperformed the market over the past 20 years by 7.7% on an annualized basis producing an average annual return of 16.65%. Currently, Eli Lilly has a market capitalization of $1.04 trillion.",
-      "url": "https://www.benzinga.com/news/26/10/62384758/here-s-how-much-you-would-have-made-owning-eli-lilly-stock-last-20-years",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "LLY"
-      ],
-      "created_at": "2026-10-15T14:15:47Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong historical outperformance and massive market cap demonstrate consistent value creation."
-    },
-    {
-      "id": "62378277",
-      "headline": "Lilly Reports Omvoh Achieved Multiple Treatment Goals Simultaneously At One Year In IBD Studies",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62378277/lilly-reports-omvoh-achieved-multiple-treatment-goals-simultaneously-one-year-ibd-studies",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "LLY"
-      ],
-      "created_at": "2026-10-15T12:11:56Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Positive clinical trial results showing drug met multiple treatment goals at one year in IBD studies"
-    },
-    {
-      "id": "62376850",
-      "headline": "Adlai Nortye Group enters Clinical Trial Collaboration And Supply Agreements With Eli Lilly And Merck KGaA For The ERBITUX Anti-EGFR Antibody",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62376850/adlai-nortye-group-enters-clinical-trial-collaboration-and-supply-agreements-eli-lilly-and-merck-kga",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "ANL",
-        "LLY"
-      ],
-      "created_at": "2026-10-15T11:14:41Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Strategic partnerships with major pharma companies for clinical trials and supply agreements expand market opportunities."
-    },
-    {
-      "id": "62370850",
-      "headline": "$100 Invested In Texas Instruments 15 Years Ago Would Be Worth This Much Today",
-      "summary": "Texas Instruments (NASDAQ:TXN) has outperformed the market over the past 15 years by 3.0% on an annualized basis producing an average annual return of 16.09%. Currently, Texas Instruments has a market capitalization of",
-      "url": "https://www.benzinga.com/news/26/10/62370850/100-invested-texas-instruments-15-years-ago-would-be-worth-much-today",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "TXN"
-      ],
-      "created_at": "2026-10-14T21:15:35Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "TXN significantly outperformed market with 16.09% annualized returns over 15 years."
-    },
-    {
-      "id": "62368625",
-      "headline": "QUICK SPARK: This New ETF Goes Beyond Eli Lilly, Novo Nordisk and Targets the Peptide Boom",
-      "summary": "REX launches the PEPT ETF, offering exposure beyond Eli Lilly and Novo Nordisk as the GLP-1 market heads toward $200 billion by 2030.",
-      "url": "https://www.benzinga.com/etfs/new-etfs/26/10/62368625/quick-spark-this-new-etf-goes-beyond-eli-lilly-novo-nordisk-and-targets-the-peptide-boom",
-      "author": "Chandrima Sanyal",
-      "source": "benzinga",
-      "symbols": [
-        "LLY",
-        "NVO",
-        "PEPT"
-      ],
-      "created_at": "2026-10-14T19:52:40Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "New ETF launch targets high-growth $200B GLP-1 market, signaling strong investor interest in peptide sector"
-    },
-    {
-      "id": "62360140",
-      "headline": "Nasdaq 100 Drops 1% on Hot CPI, SOXX Falls 7th Day: Stock Market Today",
-      "summary": "The Nasdaq 100 fell 1% by midday Wednesday after September CPI topped forecasts, pushing Treasury yields and rate-hike bets higher.",
-      "url": "https://www.benzinga.com/markets/equities/26/10/62360140/nasdaq-100-drops-1-on-hot-cpi-soxx-falls-7th-day-stock-market-today",
-      "author": "Piero Cingari",
-      "source": "benzinga",
-      "symbols": [
-        "AAPL",
-        "ABBV",
-        "AFRM",
-        "AMD",
-        "AMGN",
-        "AVGO",
-        "BAC",
-        "CAI",
-        "CAT",
-        "CRWV",
-        "DELL",
-        "DIA",
-        "DOCN",
-        "FRMI",
-        "GDX",
-        "GFS",
-        "GLD",
-        "HALO",
-        "HOOD",
-        "IBB",
-        "IREN",
-        "ITB",
-        "IWM",
-        "LLY",
-        "META",
-        "MRK",
-        "MU",
-        "NVDA",
-        "ORCL",
-        "QQQ",
-        "SMH",
-        "SOFI",
-        "SOXX",
-        "TSLA",
-        "UNH",
-        "VOO",
-        "WULF",
-        "XLB",
-        "XLC",
-        "XLE",
-        "XLF",
-        "XLI",
-        "XLK",
-        "XLP",
-        "XLRE",
-        "XLU",
-        "XLV",
-        "XLY"
-      ],
-      "created_at": "2026-10-14T15:39:54Z",
-      "sentiment": "bear",
-      "confidence": 0.95,
-      "reason": "Hot CPI data drove Nasdaq 100 down 1% and SOXX to 7th consecutive day of losses."
-    },
-    {
-      "id": "62359155",
-      "headline": "8 Of 11 Sectors Fall Wednesday As Defensives Lead",
-      "summary": "Three sectors are higher and eight are lower in Wednesday&39;s regular session, with defensive sectors holding the top three positions. The leaders are separated rather than clustered, with no single sector pulling away from the group.",
-      "url": "https://www.benzinga.com/etfs/sector-etfs/26/10/62359155/8-of-11-sectors-fall-wednesday-as-defensives-lead",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "ABBV",
-        "AVGO",
-        "BAC",
-        "COP",
-        "COST",
-        "CVX",
-        "D",
-        "DIA",
-        "DUK",
-        "IWM",
-        "LLY",
-        "MA",
-        "NEE",
-        "NVDA",
-        "ORCL",
-        "PG",
-        "QQQ",
-        "SPY",
-        "UNH",
-        "V",
-        "WMT",
-        "XLB",
-        "XLC",
-        "XLE",
-        "XLF",
-        "XLI",
-        "XLK",
-        "XLP",
-        "XLRE",
-        "XLU",
-        "XLV",
-        "XLY",
-        "XOM"
-      ],
-      "created_at": "2026-10-14T15:14:53Z",
-      "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Mixed market performance with defensive sectors leading, but majority of sectors declining."
-    },
-    {
-      "id": "62357486",
-      "headline": "Wells Fargo Maintains Overweight on Valero Energy, Raises Price Target to $485",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62357486/wells-fargo-maintains-overweight-valero-energy-raises-price-target-485",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "VLO"
-      ],
-      "created_at": "2026-10-14T14:36:23Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Overweight rating and price target raise signal positive outlook for Valero Energy"
-    },
-    {
-      "id": "62357441",
-      "headline": "Wells Fargo Maintains Overweight on Phillips 66, Raises Price Target to $345",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62357441/wells-fargo-maintains-overweight-phillips-66-raises-price-target-345",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "PSX"
-      ],
-      "created_at": "2026-10-14T14:35:05Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Wells Fargo maintains overweight rating and raises price target, signaling positive outlook."
-    },
-    {
-      "id": "62356745",
-      "headline": "Watching Eli Lilly; Hearing Investor Business Daily SwingTrader Buys Stock",
-      "summary": "",
-      "url": "https://www.benzinga.com/quote/LLY",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "LLY"
-      ],
-      "created_at": "2026-10-14T14:22:49Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "SwingTrader buy signal indicates positive technical momentum for Eli Lilly stock."
-    },
-    {
-      "id": "62356570",
-      "headline": "Wells Fargo Maintains Equal-Weight on APA, Raises Price Target to $51",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62356570/wells-fargo-maintains-equal-weight-apa-raises-price-target-51",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "APA"
-      ],
-      "created_at": "2026-10-14T14:19:43Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Price target raise to $51 indicates positive outlook despite maintaining equal-weight rating."
-    },
-    {
-      "id": "62353171",
-      "headline": "Barclays Downgrades NetApp to Equal-Weight, Maintains Price Target to $219",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62353171/barclays-downgrades-netapp-equal-weight-maintains-price-target-219",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "NTAP"
-      ],
-      "created_at": "2026-10-14T13:23:01Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Downgrade from higher rating to Equal-Weight indicates reduced positive outlook despite maintained price target."
-    },
-    {
-      "id": "62351443",
-      "headline": "Top 3 Energy Stocks That May Fall Off A Cliff In October",
-      "summary": "CVR Energy, HF Sinclair and Phillips 66 show overbought momentum signals, with RSI readings of 81.2, 80.4 and 77.2.",
-      "url": "https://www.benzinga.com/trading-ideas/short-ideas/26/10/62351443/top-3-energy-stocks-that-may-fall-off-a-cliff-in-october",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "CVI",
-        "DINO",
-        "PSX"
-      ],
-      "created_at": "2026-10-14T12:39:08Z",
-      "sentiment": "bear",
-      "confidence": 0.95,
-      "reason": "Overbought momentum signals suggest imminent price declines for all three energy stocks."
-    },
-    {
-      "id": "62350263",
-      "headline": "Meta, JPMorgan, West Pharmaceutical And More: CNBC\u2019s \u2018Final Trades\u2019",
-      "summary": "CNBC traders picked WST, JPM, META and IYE; analysts raised WST and META targets, while JPM missed Q3 earnings and revenue estimates.",
-      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/10/62350263/meta-jpmorgan-west-pharmaceutical-and-more-cnbcs-final-trades",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "IYE",
-        "JPM",
-        "META",
-        "WST"
-      ],
-      "created_at": "2026-10-14T12:09:53Z",
-      "sentiment": "neutral",
-      "confidence": 0.0,
-      "reason": "Analysis unavailable"
-    },
-    {
-      "id": "62343080",
-      "headline": "Citigroup Maintains Neutral on Valero Energy, Raises Price Target to $485",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62343080/citigroup-maintains-neutral-valero-energy-raises-price-target-485",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "VLO"
-      ],
-      "created_at": "2026-10-13T22:09:41Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Price target raise indicates improved outlook despite neutral rating, suggesting upside potential."
-    },
-    {
-      "id": "62342977",
-      "headline": "Citigroup Maintains Neutral on Phillips 66, Raises Price Target to $297",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62342977/citigroup-maintains-neutral-phillips-66-raises-price-target-297",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "PSX"
-      ],
-      "created_at": "2026-10-13T22:08:32Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Price target raise indicates improved outlook despite neutral rating maintenance."
-    },
-    {
-      "id": "62339096",
-      "headline": "Phillips 66 355,000 Barrel/Day Refinery In Roxana, Illinois, Having Issues With Catalytic Cracker Unit",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62339096/phillips-66-355-000-barrel-day-refinery-roxana-illinois-having-issues-catalytic-cracker-unit",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "PSX"
-      ],
-      "created_at": "2026-10-13T19:43:08Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Refinery operational issues reduce production capacity and earnings potential for Phillips 66."
-    },
-    {
-      "id": "62339000",
-      "headline": "QUICK SPARK: UnitedHealth Calls 2026 the Bottom for Medicaid Margins",
-      "summary": "UnitedHealth expects Medicaid margins to bottom in 2026 and improve through 2028, UnitedHealthcare CEO Tim Noel says on earnings call.",
-      "url": "https://www.benzinga.com/markets/earnings/26/10/62339000/unitedhealth-calls-2026-the-bottom-for-medicaid-margins",
-      "author": "Erica Kollmann",
-      "source": "benzinga",
-      "symbols": [
-        "CLOV",
-        "CVS",
-        "HUM",
-        "UNH"
-      ],
-      "created_at": "2026-10-13T19:39:57Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Management guidance that Medicaid margins will bottom in 2026 and improve signals confidence in future profitability."
-    },
-    {
-      "id": "62335264",
-      "headline": "10 Information Technology Stocks With Whale Alerts In Today\u2019s Session",
-      "summary": "This whale alert can help traders discover the next big trading opportunities. Whales are entities with large sums of money and we track their transactions here at Benzinga on our options activity scanner. Traders often",
-      "url": "https://www.benzinga.com/markets/options/26/10/62335264/10-information-technology-stocks-whale-alerts-today-s-session",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "AAPL",
-        "INTC",
-        "LITE",
-        "MSFT",
-        "MU",
-        "NVDA",
-        "ORCL",
-        "PLTR",
-        "SNDK",
-        "TXN"
-      ],
-      "created_at": "2026-10-13T17:35:11Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Whale alerts indicate large institutional activity, suggesting potential trading opportunities and market interest."
-    },
-    {
-      "id": "62334030",
-      "headline": "CNBC Halftime Report Final Trades: JP Morgan Chase & Co., Meta Platforms, West Pharmaceutical Services, iShares U.S. Energy ETF",
-      "summary": "",
-      "url": "https://www.benzinga.com/quote/IYE",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "IYE",
-        "JPM",
-        "META",
-        "WST"
-      ],
-      "created_at": "2026-10-13T17:00:42Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Final trades segment presents multiple stocks without directional commentary or analysis."
-    },
-    {
-      "id": "62333961",
-      "headline": "Chip Stocks Slide as South Korea's KOSPI Plunges, J&J Sinks 6%: Stock Market Today",
-      "summary": "Chip stocks sold off after a 5% KOSPI plunge, with Micron and Applied Materials sinking, while J&amp;J fell despite a guidance raise.",
-      "url": "https://www.benzinga.com/news/26/10/62333961/chip-stocks-slide-korea-kospi-plunges-5-percent-jj-drops-markets-tuesday",
-      "author": "Piero Cingari",
-      "source": "benzinga",
-      "symbols": [
-        "AMAT",
-        "AMD",
-        "ASTS",
-        "BG",
-        "CAT",
-        "CTSH",
-        "DAR",
-        "DIA",
-        "DINO",
-        "DPC",
-        "FLEX",
-        "FRMI",
-        "GDX",
-        "GS",
-        "IWM",
-        "JNJ",
-        "JPM",
-        "KD",
-        "KRE",
-        "MPC",
-        "MU",
-        "PSX",
-        "QNT",
-        "QQQ",
-        "SKHY",
-        "SMH",
-        "SMMT",
-        "SSNLF",
-        "TTD",
-        "VLO",
-        "VOO",
-        "WFC",
-        "XLC",
-        "XLE",
-        "XLF",
-        "XLI",
-        "XLK",
-        "XLRE",
-        "XLV",
-        "XOP"
-      ],
-      "created_at": "2026-10-13T16:59:21Z",
-      "sentiment": "bear",
-      "confidence": 0.92,
-      "reason": "Chip stocks and J&J declined sharply amid market turmoil despite J&J's guidance raise."
-    },
-    {
-      "id": "62333557",
-      "headline": "Live On CNBC, Josh Brown Hosts Segment Titled \"Josh's Best Stocks In The Market: Expeditors International of Washington; Johnson Controls International\"",
-      "summary": "",
-      "url": "https://www.benzinga.com/quote/JCI",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "EXPD",
-        "JCI"
-      ],
-      "created_at": "2026-10-13T16:47:48Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Josh Brown publicly recommends both EXPD and JCI as his best stocks, indicating positive outlook."
-    },
-    {
-      "id": "62333295",
-      "headline": "TD Cowen Maintains Buy on West Pharmaceutical Servs, Raises Price Target to $420",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62333295/td-cowen-maintains-buy-west-pharmaceutical-servs-raises-price-target-420",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "WST"
-      ],
-      "created_at": "2026-10-13T16:40:17Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, signaling confidence in stock upside."
-    },
-    {
-      "id": "62323583",
-      "headline": "This Adobe Analyst Is No Longer Bullish; Here Are Top 5 Downgrades For Tuesday",
-      "summary": "Analysts downgraded ACGL, ASTS, PS, LNTH and ADBE, cutting ratings and price targets; ASTS target fell to $54 and Adobe\u2019s to $267.",
-      "url": "https://www.benzinga.com/analyst-stock-ratings/downgrades/26/10/62323583/this-adobe-analyst-is-no-longer-bullish-here-are-top-5-downgrades-for-tuesday",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "ACGL",
-        "ADBE",
-        "ASTS",
-        "INSM",
-        "LNTH",
-        "PS",
-        "PSX"
-      ],
-      "created_at": "2026-10-13T13:24:51Z",
-      "sentiment": "bear",
-      "confidence": 0.95,
-      "reason": "Multiple analyst downgrades with reduced price targets indicate negative sentiment shift."
-    },
-    {
-      "id": "62323404",
-      "headline": "U.K. Medicines And Healthcare Products Regulatory Agency Authorizes Eli Lilly's Onswik For Adults With Type 2 Diabetes",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62323404/u-k-medicines-and-healthcare-products-regulatory-agency-authorizes-eli-lilly-s-onswik-adults-type-2-",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "LLY"
-      ],
-      "created_at": "2026-10-13T13:16:23Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Regulatory approval for new diabetes treatment expands Eli Lilly's market opportunities and product portfolio."
+      "reason": "Price target raise indicates improved analyst outlook despite maintaining cautious rating"
     }
   ]
 }
