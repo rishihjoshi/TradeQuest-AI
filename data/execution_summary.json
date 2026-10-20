@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-10-19T22:32:52Z",
+  "timestamp": "2026-10-20T00:30:54Z",
   "mode": "post_close",
   "orders_placed": [
     {
-      "action": "SELL",
-      "symbol": "TXN",
-      "qty": 3.0,
+      "action": "BUY",
+      "symbol": "LLY",
+      "qty": 0.722913,
       "status": "submitted"
     }
   ],
   "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 14.03,
+  "cash_pct_after": 14.01,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
