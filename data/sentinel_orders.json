@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-10-19T22:32:49Z",
+  "timestamp": "2026-10-20T21:47:07Z",
   "sells": [
     {
-      "symbol": "TXN",
-      "shares": 3,
-      "rule": "persistent_flag",
-      "reason": "Symbol flagged SELL/WATCH in 6 consecutive agent runs without execution (\u2265 5 threshold). Position is at a loss \u2014 Tier 1 forced exit. Sentinel Rule 3."
+      "symbol": "LLY",
+      "shares": 1,
+      "rule": "concentration",
+      "reason": "Position weight 20.4% exceeds 2\u00d7 MAX_POSITION_PCT (20%). Forced exit \u2014 sentinel Rule 1."
     }
   ],
   "count": 1

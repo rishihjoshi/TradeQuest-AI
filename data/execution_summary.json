@@ -1,27 +1,22 @@
 {
-  "timestamp": "2026-10-20T18:06:15Z",
-  "mode": "market_open",
+  "timestamp": "2026-10-20T21:47:10Z",
+  "mode": "post_close",
   "orders_placed": [
     {
-      "action": "BUY",
-      "symbol": "FFIV",
-      "qty": 1.747016,
+      "action": "SELL",
+      "symbol": "LLY",
+      "qty": 1.0,
       "status": "submitted"
     }
   ],
-  "orders_skipped": [
-    {
-      "symbol": "NTAP",
-      "reason": "blocked by agent approval or risk gate"
-    }
-  ],
+  "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 5.0,
+  "cash_pct_after": 4.99,
   "long_only_breach": false,
   "invariant_breaches": [
-    "LLY: position $2,047.24 exceeds 2x the 10% cap (20.4% of book)"
+    "LLY: position $2,032.04 exceeds 2x the 10% cap (20.2% of book)"
   ],
-  "breach_streak": 1,
+  "breach_streak": 2,
   "trading_halted": false,
   "dry_run": false
 }
