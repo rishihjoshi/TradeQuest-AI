@@ -1,22 +1,20 @@
 {
-  "timestamp": "2026-10-20T21:47:10Z",
+  "timestamp": "2026-10-21T00:01:26Z",
   "mode": "post_close",
-  "orders_placed": [
+  "orders_placed": [],
+  "orders_skipped": [
     {
-      "action": "SELL",
-      "symbol": "LLY",
-      "qty": 1.0,
-      "status": "submitted"
+      "symbol": "NTAP",
+      "reason": "blocked by agent approval or risk gate"
     }
   ],
-  "orders_skipped": [],
   "errors": [],
   "cash_pct_after": 4.99,
   "long_only_breach": false,
   "invariant_breaches": [
-    "LLY: position $2,032.04 exceeds 2x the 10% cap (20.2% of book)"
+    "LLY: position $2,036.76 exceeds 2x the 10% cap (20.2% of book)"
   ],
-  "breach_streak": 2,
-  "trading_halted": false,
+  "breach_streak": 3,
+  "trading_halted": true,
   "dry_run": false
 }
