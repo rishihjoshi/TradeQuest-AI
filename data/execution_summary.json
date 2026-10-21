@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-21T00:01:26Z",
-  "mode": "post_close",
+  "timestamp": "2026-10-21T18:12:03Z",
+  "mode": "market_open",
   "orders_placed": [],
   "orders_skipped": [
     {
@@ -9,12 +9,10 @@
     }
   ],
   "errors": [],
-  "cash_pct_after": 4.99,
+  "cash_pct_after": 17.48,
   "long_only_breach": false,
-  "invariant_breaches": [
-    "LLY: position $2,036.76 exceeds 2x the 10% cap (20.2% of book)"
-  ],
-  "breach_streak": 3,
-  "trading_halted": true,
+  "invariant_breaches": [],
+  "breach_streak": 0,
+  "trading_halted": false,
   "dry_run": false
 }
