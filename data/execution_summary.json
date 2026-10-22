@@ -1,15 +1,17 @@
 {
-  "timestamp": "2026-10-22T18:08:53Z",
-  "mode": "market_open",
-  "orders_placed": [],
-  "orders_skipped": [
+  "timestamp": "2026-10-22T21:50:17Z",
+  "mode": "post_close",
+  "orders_placed": [
     {
-      "symbol": "NTAP",
-      "reason": "blocked by agent approval or risk gate"
+      "action": "SELL",
+      "symbol": "STLD",
+      "qty": 3.0,
+      "status": "submitted"
     }
   ],
+  "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 17.72,
+  "cash_pct_after": 17.7,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
