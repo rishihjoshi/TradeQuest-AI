@@ -1,7 +1,138 @@
 {
-  "last_run": "2026-10-21T18:11:10Z",
-  "last_type": "day_start",
+  "last_run": "2026-10-22T00:07:55Z",
+  "last_type": "day_end",
   "runs": [
+    {
+      "id": "RUN-20261022-0007",
+      "timestamp": "2026-10-22T00:07:55Z",
+      "type": "day_end",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Bear regime (95% confidence) with breadth at 38% (below 40% threshold) and negative MA200 trend. Portfolio is 82.6% long against a 50% equity target for bear regime, meaning we are significantly over-exposed to equities. The rebalance on 2026-10-22 (a quarterly month) should have reduced equity exposure toward target; cash at 17.4% vs 50% target remains a critical gap. Two dust residues (EXPD 6e-06 shares, HUM 1e-05 shares) persist as zero-value positions blocking slot accounting, and two data-integrity failures (NTAP, STLD) remain held with sector=Unknown and null MA data.",
+      "regime": "bear",
+      "regime_confidence": 0.95,
+      "flags": [
+        "EXPD: Dust residue 6e-06 shares ($0.00 market value) \u2014 functionally zero position, blocking slot; SELL to clear residue (Tier 1 urgency next_open, loss position per pnl_pct basis cost vs dust)",
+        "HUM: Dust residue 1e-05 shares ($0.00 market value) \u2014 functionally zero position, blocking slot; SELL to clear residue (Tier 1 urgency next_open)",
+        "NTAP: sector=Unknown, ma_50d=null, momentum_rank=0 \u2014 persistent data integrity failure; profitable (+$37.97, +3.31%) but fails data-integrity gate; flagged 4+ consecutive runs; blocked NTAP buy at market-open today",
+        "STLD: sector=Unknown, ma_50d=null, momentum_rank=0 \u2014 persistent data integrity failure; profitable (+$20.28, +2.11%); flagged 6+ consecutive runs",
+        "TXN: momentum_rank=11, weight=0.99% (well below slot threshold of 10% of target); SELL issued 2+ consecutive runs, only 0.346 shares remain after prior partial sells; at marginal gain (+$0.19); rank 11 below hysteresis threshold of 15 but position is sub-material",
+        "LLY: weight 7.36%, below the 20% hard cap trigger \u2014 Rule C flag from prior runs can be cleared; currently compliant",
+        "Bear regime: long exposure 82.6% vs 50% target \u2014 significant equity over-exposure requiring reduction",
+        "Energy sector: APA (9.9%) + PSX (6.24%) + VLO (11.86%) = 28% of portfolio \u2014 approaching 30% sector cap, monitor closely",
+        "VLO: up ~25.6% since entry 2026-08-18 \u2014 Rule D parabolic check: entry 2026-08-18 to today ~65 days, gain +25.6% which is below the 60% threshold; Rule D not triggered"
+      ],
+      "decisions": [
+        {
+          "action": "SELL",
+          "symbol": "EXPD",
+          "reason": "Dust residue of 6e-06 shares ($0.00 market value) \u2014 unresolved sell across 5+ consecutive runs. Clearing zero-value residue that blocks slot accounting. Unrealized PnL effectively $0.00 (dust), entry date 2026-10-09. Loss position on cost basis (avg_cost $195.81 vs current $197.01 but shares so small PnL rounds to $0). Tier 1 \u2014 clearing invariant residue.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "HUM",
+          "reason": "Dust residue of 1e-05 shares ($0.00 market value) \u2014 unresolved sell across 5+ consecutive runs. Clearing zero-value residue that blocks slot accounting. Unrealized PnL effectively $0.00 (dust), entry date 2026-10-05. Tier 1 \u2014 clearing invariant residue.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "TXN",
+          "reason": "momentum_rank=11, position weight 0.99% is below SLOT_MATERIAL_PCT (10% of target = 1.0% of portfolio) so occupies no real slot. Position is sub-material at $99.67 after prior sells reduced from ~$963 to $99.67. Unrealized PnL +$0.19 (+0.19%), entry date 2026-10-13. This is a gain position; however rank=11 is below hysteresis threshold of rank>15 so pure momentum decay sell would be WATCH only. BUT: the position is effectively a dust residue at $99.67 / 0.346 shares \u2014 below material threshold. Selling unresolved across 2 consecutive runs. Since PnL is marginally positive ($0.19), classifying as tier2 WATCH would defer; however in a quarterly month with full rebalance authority and bear regime requiring equity reduction, issuing as tier2 sell at next_rebalance to reduce over-exposure.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "NTAP",
+          "reason": "sector=Unknown, ma_50d=null, momentum_rank=0 \u2014 persistent data integrity failure across 4+ consecutive runs. Unrealized PnL +$37.97 (+3.31%), entry date 2026-10-05. Profitable position \u2014 cannot sell on data absence alone (Directive 10: missing data is never a reason to act). Structural rules A and B cannot be evaluated due to null MA and null EPS data. Watching for data resolution; if data remains absent at next quarterly (Jan 2027), will reassess. NTAP buy was blocked at market-open today.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "STLD",
+          "reason": "sector=Unknown, ma_50d=null, momentum_rank=0 \u2014 persistent data integrity failure across 6+ consecutive runs. Unrealized PnL +$20.28 (+2.11%), entry date 2026-10-15. Profitable position \u2014 cannot sell on data absence alone (Directive 10). Structural rules A and B cannot be evaluated due to null MA and null EPS. Watching for data resolution. Prior SELL flags from day_end 2026-10-20 and 2026-10-21 were issued but position remains \u2014 escalating to WATCH since gain position cannot be forced to next_open on data failure alone.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "APA",
+          "reason": "Momentum rank 9 (within top 30%, below hysteresis threshold of 15). Price $49.92 above MA50 $44.03 (above_ma). EPS growth 26.3% > 10%, revenue growth 9.2% > 8%. Forward P/E 9.6 < 40. Unrealized PnL +$38.11 (+3.96%), entry 2026-10-13. Quality and trend intact. Energy sector exposure (APA+PSX+VLO = ~28%) approaching 30% cap \u2014 monitor.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "FFIV",
+          "reason": "Momentum rank 4 (top 30%). Price $458.59 above MA50 $425.70 (above_ma). EPS growth 11.4% > 10%, revenue growth 10.9% > 8%. Forward P/E 25.4 < 40. Unrealized PnL +$7.41 (+0.93%), entry 2026-10-20. All filters pass. Newly entered position (2 days held).",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "LLY",
+          "reason": "Momentum rank 7 (within top 30%). Price $1272.50 above MA50 $1182.47 (above_ma). EPS growth 26.2% > 10%, revenue growth 47.7% > 8%. Forward P/E 26.9 < 40. Weight 7.36% \u2014 below 20% hard cap; Rule C flag from prior runs is now resolved (shares reduced via Oct 21 sell). Unrealized PnL +$4.43 (+0.60%), entry 2026-10-13. All structural rules pass.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "NUE",
+          "reason": "Momentum rank 10 (within top 30%, at boundary; hysteresis threshold is rank>15 for exit). Price $264.54 above MA50 $253.42 (above_ma). EPS growth 93.8% > 10%, revenue growth 23.0% > 8%. Forward P/E 12.6 < 40. Unrealized PnL +$11.76 (+1.24%), entry 2026-10-19. All filters pass. Rank 10 is exactly at TARGET_N boundary \u2014 monitor for sustained rank deterioration.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "PSX",
+          "reason": "Momentum rank 3 (top 30%). Price $291.00 above MA50 $258.99 (above_ma). EPS growth 344.9% > 10%, revenue growth 53.1% > 8%. Forward P/E 9.6 < 40. Unrealized PnL +$104.80 (+19.91%), entry 2026-08-18. Rule D check: up ~19.91% \u2014 well below 60% parabolic threshold. Thesis strong; Energy sector combined ~28% approaching cap.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "VLO",
+          "reason": "Momentum rank 2 (top 30%). Price $438.50 above MA50 $386.70 (above_ma). EPS growth 453.5% > 10%, revenue growth 51.7% > 8%. Forward P/E 8.9 < 40. Unrealized PnL +$244.23 (+25.59%), entry 2026-08-18. Rule D check: +25.59% in ~65 days \u2014 below 60% parabolic threshold, Rule D not triggered. Highest-momentum position in book; Energy sector combined ~28% of portfolio, approaching 30% sector cap \u2014 no trim required yet.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "WST",
+          "reason": "Momentum rank 8 (within top 30%). Price $393.48 above MA50 $359.47 (above_ma). EPS growth 18.1% > 10%, revenue growth 13.8% > 8%. Forward P/E 39.4 < 40 (just inside guard rail). Unrealized PnL +$44.97 (+6.43%), entry 2026-10-09. All filters pass. Forward P/E at 39.4 is very close to the 40 threshold \u2014 flag for monitoring.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "increase",
+      "cash_rationale": "Bear regime (95% confidence) targets 50% cash; current deployable cash is only 17.4% ($1,763) against a $5,054 target (50% of $10,109). Long exposure at 82.6% is severely over-target for bear conditions. Clearing EXPD and HUM dust residues will free two slots but negligible cash. TXN sale (~$99.67) is marginal. Primary path to correct cash level is reducing equity positions in the existing book \u2014 ideally through the quarterly rebalance mechanism targeting the lowest-momentum profitable positions for tier2 deferral, but given bear regime severity the book needs meaningful reduction. NTAP ($1,186) and STLD ($979) are data-integrity failures that should ideally be exited once structural rules can be confirmed; their profitable status prevents forced exit on data grounds alone. Next quarterly review (Jan 2027) is the next formal rebalance window for tier2 exits.",
+      "summary": "Day-end 2026-10-22: Bear regime; clearing EXPD and HUM dust residues next_open; TXN sub-material position flagged tier2 deferred sell; NTAP and STLD remain on WATCH for persistent data integrity failures (profitable, no structural exit trigger); all other holdings structurally sound with Energy sector at ~28% approaching 30% cap; cash at 17.4% significantly below 50% bear-regime target requiring attention at next rebalance opportunity.",
+      "usage": {
+        "input_tokens": 15055,
+        "output_tokens": 3454,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 6683
+      },
+      "sell_tier_summary": {
+        "tier1_execute": 2,
+        "tier2_deferred": 1
+      }
+    },
     {
       "id": "RUN-20261021-1811",
       "timestamp": "2026-10-21T18:11:10Z",
@@ -10362,115 +10493,6 @@
       "usage": {
         "input_tokens": 8397,
         "output_tokens": 2813,
-        "cache_read_tokens": 0,
-        "cache_write_tokens": 5926
-      }
-    },
-    {
-      "id": "RUN-20260819-2152",
-      "timestamp": "2026-08-19T21:52:03Z",
-      "type": "day_end",
-      "model": "claude-sonnet-4-6",
-      "assessment": "Portfolio is 2 days old (inception 2026-08-18), fully long with 10 positions and 11.6% cash against a 5% bull-regime target \u2014 slight cash excess from fractional sizing. All positions are at a loss (aggregate unrealized PnL -$237), reflecting normal inception-day slippage and a modest market dip on Aug 19. No shorts exist; no COVER needed. The bull regime remains intact with SPY above 200-MA, VIX at 12.5, and breadth at 71.5% \u2014 well above the 60% bull threshold.",
-      "regime": "bull",
-      "regime_confidence": 0.88,
-      "flags": [
-        "JBL: price $323.80 below 50-day MA $343.80 (day 1 of 3-day rule) \u2014 entry date 2026-08-18, unrealized PnL -$16.54 (-6.01%); momentum_rank=0 and sector data missing; monitoring for Rule A trigger",
-        "KEYS: price $320.29 below 50-day MA $333.57 (day 1 of 3-day rule, entry date 2026-08-19) \u2014 unrealized PnL -$72.93 (-7.61%); momentum_rank=0; data-integrity concern persists; monitoring for Rule A trigger",
-        "NUE: price $247.07 below 50-day MA $248.65 (day 1-2 of 3-day rule) \u2014 unrealized PnL -$66.82 (-7.01%); entry date 2026-08-18; momentum_rank=7 (within top 30% hysteresis threshold of 15); watching for Rule A confirmation",
-        "NTRS: momentum_rank=12, outside top 30% (rank >10 threshold) but held only 1 day \u2014 MIN_HOLD_DAYS=10 not met; no exit eligible; data-integrity flags from prior runs now show live data present in holdings; unrealized PnL -$28.28",
-        "ROST: momentum_rank=10, borderline top 30%; held 1 day; MIN_HOLD_DAYS not met; prior data-integrity flags now show live data; unrealized PnL -$6.80",
-        "SECTOR/ENE: Energy sector (MPC + PSX + VLO) = 28.8% of portfolio \u2014 approaching 30% sector cap; no trim required yet but monitor closely",
-        "CASH: deployable cash 11.57% vs 5% bull-regime target \u2014 excess ~$650; BUY blocked in August (non-quarterly month); will be addressed at next quarterly rebalance Oct 1"
-      ],
-      "decisions": [
-        {
-          "action": "WATCH",
-          "symbol": "JBL",
-          "reason": "Price $323.80 is below 50-day MA $343.80 \u2014 this is day 1 of the 3-consecutive-day Rule A trigger. Entry date 2026-08-18, unrealized PnL -$16.54 (-6.01%). Momentum_rank=0 and sector data incomplete (data-integrity gate blocks re-entry but does not itself cause a sell per Directive 10). Rule A requires 3 consecutive days below MA before Tier 1 SELL; not yet confirmed. Watching for day 2.",
-          "rule_triggered": "trend_break",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "KEYS",
-          "reason": "Price $320.29 is below 50-day MA $333.57 \u2014 day 1 of 3-consecutive-day Rule A trigger. Entry date 2026-08-19 (1 day held), unrealized PnL -$72.93 (-7.61%). Momentum_rank=0 per data; Rule A requires 3 consecutive days below MA. KEYS was flagged at inception for data-integrity but is now showing live market data in holdings. Watching for day 2 confirmation before Tier 1 SELL.",
-          "rule_triggered": "trend_break",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "NUE",
-          "reason": "Price $247.07 is below 50-day MA $248.65 \u2014 day 1-2 of 3-consecutive-day Rule A trigger. Entry date 2026-08-18, unrealized PnL -$66.82 (-7.01%). Momentum_rank=7 is within hysteresis threshold (rank \u226415) so Rule E does not apply. Rule A needs day 3 confirmation to trigger Tier 1 SELL. Priority watch heading into tomorrow's open.",
-          "rule_triggered": "trend_break",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "NTRS",
-          "reason": "Momentum_rank=12, outside top 30% boundary (threshold rank ~10 for TARGET_N=10). Entry date 2026-08-18, unrealized PnL -$28.28 (-2.98%). Position held only 1 day \u2014 MIN_HOLD_DAYS=10 not met, so rank-based Rule E exit is blocked. Price $185.40 is above 50-day MA $180.52; no structural rule triggered. Monitor rank trajectory; if rank stays outside top 30% for 5+ confirmed days after MIN_HOLD_DAYS met, Tier 1 SELL eligible (loss position).",
-          "rule_triggered": "momentum_decay",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "ROST",
-          "reason": "Momentum_rank=10, borderline top 30% \u2014 at the hysteresis boundary (EXIT_RANK_MULTIPLE=1.5 \u00d7 TARGET_N=10 = exit only at rank >15). Entry date 2026-08-18, unrealized PnL -$6.80 (-0.72%). Held 1 day \u2014 MIN_HOLD_DAYS=10 not met. Price $235.49 above 50-day MA $234.19; no structural rule. No action warranted; monitoring rank.",
-          "rule_triggered": "momentum_decay",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "VLO",
-          "reason": "Momentum_rank=1 (top of universe), price $346.09 well above 50-day MA $287.77. EPS growth 453.5%, revenue growth 51.7%, forward P/E 11.3. All four filters passing. Unrealized PnL -$8.38 (-0.88%) reflects 1-day price drift only. Thesis intact \u2014 highest-momentum energy refiner in portfolio.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "MPC",
-          "reason": "Momentum_rank=2, price $361.99 well above 50-day MA $291.68. EPS growth 348.0%, revenue growth 53.7%, forward P/E 11.2. All filters passing. Unrealized PnL -$6.92 (-0.73%) is inception-day noise. Thesis intact.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "PSX",
-          "reason": "Momentum_rank=3, price $241.99 well above 50-day MA $195.60. EPS growth 344.9%, revenue growth 53.1%, forward P/E 11.4. All filters passing. Unrealized PnL -$0.75 (-0.08%) \u2014 essentially flat. Thesis intact. Energy sector aggregate (MPC+PSX+VLO) = 28.8% \u2014 approaching 30% cap but not breached.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "BNY",
-          "reason": "Momentum_rank=6, price $160.22 above 50-day MA $152.74. EPS growth 26.9%, revenue growth 13.1%, forward P/E 15.6. All filters passing. Unrealized PnL -$19.84 (-2.1%) is inception-period noise. Financials sector (BNY+NTRS) = 18.5% \u2014 well within 30% cap. Thesis intact.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "CF",
-          "reason": "Momentum_rank=9, price $119.01 above 50-day MA $115.08. EPS growth 99.6%, revenue growth 17.6%, forward P/E 11.4. All filters passing. Unrealized PnL -$9.80 (-1.03%). Basic Materials sector (CF+NUE) = 18.8% \u2014 within cap. Thesis intact; rank 9 is within EXIT_RANK_MULTIPLE hysteresis (exit only at rank >15).",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        }
-      ],
-      "cash_action": "maintain",
-      "cash_rationale": "Deployable cash is 11.57% vs 5% bull-regime target, leaving ~$650 excess. BUY orders are blocked in August (non-quarterly month). No redeployment top-ups are needed as all 10 positions are filled and near equal weight (~9-10% each). The cash excess will be addressed at the October 1 quarterly rebalance. No Tier 1 SELLs have been triggered today, so no proceeds to redeploy.",
-      "summary": "Day-end review: no shorts, no Rule A/B/D triggers confirmed; JBL, KEYS, NUE flagged for potential trend-break (below 50-day MA, day 1-2 of 3-day rule); NTRS and ROST monitored for momentum boundary; all other holdings HOLD with bull thesis intact.",
-      "usage": {
-        "input_tokens": 9101,
-        "output_tokens": 2825,
         "cache_read_tokens": 0,
         "cache_write_tokens": 5926
       }

@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-10-21",
+  "generated_at": "2026-10-22",
   "earnings_this_week": [],
   "macro_events_14d": [],
   "market_breadth": {
-    "date": "2026-10-19",
-    "breadth_raw": 0.516,
-    "breadth_8ma": 0.5185,
-    "breadth_200ma": 0.6084,
-    "pct_above_200ma": "51.6%",
+    "date": "2026-10-20",
+    "breadth_raw": 0.558,
+    "breadth_8ma": 0.5274,
+    "breadth_200ma": 0.6079,
+    "pct_above_200ma": "55.8%",
     "trend_above_200ma": false,
     "interpretation": "NARROWING \u2014 selective rally, treat regime with caution"
   }
