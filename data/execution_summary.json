@@ -1,23 +1,17 @@
 {
-  "timestamp": "2026-10-23T17:57:41Z",
-  "mode": "market_open",
+  "timestamp": "2026-10-23T21:34:16Z",
+  "mode": "post_close",
   "orders_placed": [
     {
       "action": "SELL",
-      "symbol": "TXN",
-      "qty": 0.345594,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "HUM",
-      "qty": 1.675111,
+      "symbol": "EXPD",
+      "qty": 4.0,
       "status": "submitted"
     }
   ],
   "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 5.98,
+  "cash_pct_after": 5.99,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
