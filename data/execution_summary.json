@@ -1,14 +1,7 @@
 {
-  "timestamp": "2026-10-23T21:34:16Z",
+  "timestamp": "2026-10-23T23:55:12Z",
   "mode": "post_close",
-  "orders_placed": [
-    {
-      "action": "SELL",
-      "symbol": "EXPD",
-      "qty": 4.0,
-      "status": "submitted"
-    }
-  ],
+  "orders_placed": [],
   "orders_skipped": [],
   "errors": [],
   "cash_pct_after": 5.99,
