@@ -1,17 +1,32 @@
 {
-  "timestamp": "2026-10-22T21:50:17Z",
+  "timestamp": "2026-10-23T00:04:57Z",
   "mode": "post_close",
   "orders_placed": [
     {
-      "action": "SELL",
-      "symbol": "STLD",
-      "qty": 3.0,
+      "action": "BUY",
+      "symbol": "EXPD",
+      "qty": 4.822677,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "HUM",
+      "qty": 0.758295,
       "status": "submitted"
     }
   ],
-  "orders_skipped": [],
+  "orders_skipped": [
+    {
+      "symbol": "TXN",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "NTAP",
+      "reason": "blocked by agent approval or risk gate"
+    }
+  ],
   "errors": [],
-  "cash_pct_after": 17.7,
+  "cash_pct_after": 17.71,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
