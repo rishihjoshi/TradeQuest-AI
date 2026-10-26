@@ -1,7 +1,496 @@
 {
-  "generated_at": "2026-10-22T18:07:57Z",
+  "generated_at": "2026-10-26T19:26:42Z",
   "article_count": 30,
   "articles": [
+    {
+      "id": "62600475",
+      "headline": "Michael Burry Eyes the Exit on Walmart, Alphabet and Valero",
+      "summary": "Michael Burry may trim Walmart, Alphabet and Valero over valuation concerns, while buying beaten-down stocks and shorting AI names.",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/10/62600475/michael-burry-eyes-the-exit-on-walmart-alphabet-and-valero",
+      "author": "Erica Kollmann",
+      "source": "benzinga",
+      "symbols": [
+        "ADBE",
+        "BBW",
+        "GOOG",
+        "GOOGL",
+        "LULU",
+        "PYPL",
+        "VLO",
+        "WMT"
+      ],
+      "created_at": "2026-10-26T18:10:47Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Burry eyeing exits on major holdings due to valuation concerns signals negative outlook on these stocks."
+    },
+    {
+      "id": "104210693",
+      "headline": "Eli Lilly and Company Declares Fourth-Quarter 2026 Dividend",
+      "summary": "Eli Lilly and Company has declared a quarterly dividend of $1.73 per share for the fourth quarter of 2026.",
+      "url": "https://www.prnewswire.com/news-releases/lilly-declares-fourth-quarter-2026-dividend-302919496.html",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "LLY"
+      ],
+      "created_at": "2026-10-26T18:01:42Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Dividend increase signals strong financial health and shareholder value commitment."
+    },
+    {
+      "id": "62597572",
+      "headline": "Guggenheim Initiates Coverage On NetApp with Neutral Rating",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62597572/guggenheim-initiates-coverage-netapp-neutral-rating",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "NTAP"
+      ],
+      "created_at": "2026-10-26T16:51:37Z",
+      "sentiment": "neutral",
+      "confidence": 0.95,
+      "reason": "Guggenheim initiates coverage with neutral rating, indicating balanced outlook without bullish or bearish bias."
+    },
+    {
+      "id": "62585554",
+      "headline": "Nucor Likely To Report Higher Q3 Earnings; These Most Accurate Analysts Revise Forecasts Ahead Of Earnings Call",
+      "summary": "Nucor to report Q3 earnings Monday; analysts forecast $5.83 EPS and $10.79B revenue. Shares closed at $258.11 after announcing a $60M expansion.",
+      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/10/62585554/nucor-likely-to-report-higher-q3-earnings-these-most-accurate-analysts-revise-forecasts-ahead-of-earnings-call",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "NUE"
+      ],
+      "created_at": "2026-10-26T11:35:07Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Higher Q3 earnings expected with positive analyst revisions and recent $60M expansion announcement."
+    },
+    {
+      "id": "103899440",
+      "headline": "Raymond James Adjusts Price Target on APA Corporation to $58",
+      "summary": "Raymond James has updated its price target for APA Corporation, raising it from $54 to $58.",
+      "url": "https://www.marketscreener.com/news/raymond-james-adjusts-price-target-on-apa-to-58-from-54-ce785cdcdb88f120",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "APA"
+      ],
+      "created_at": "2026-10-26T11:32:08Z",
+      "sentiment": "bull",
+      "confidence": 0.92,
+      "reason": "Price target raised from $54 to $58, indicating analyst confidence in upside potential."
+    },
+    {
+      "id": "103899415",
+      "headline": "Guggenheim Initiates Coverage on NetApp with Hold Rating",
+      "summary": "Guggenheim analyst Howard Ma has initiated coverage on NetApp, Inc. (NTAP) with a hold rating.",
+      "url": "https://www.moomoo.com/news/post/1002343917/guggenheim-initiates-netapp-ntapus-with-hold-rating",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "NTAP"
+      ],
+      "created_at": "2026-10-26T11:31:57Z",
+      "sentiment": "neutral",
+      "confidence": 0.95,
+      "reason": "Hold rating indicates neither bullish nor bearish outlook on NetApp stock."
+    },
+    {
+      "id": "103881974",
+      "headline": "Bernstein Raises Price Target for Eli Lilly",
+      "summary": "Bernstein has increased its price target for Eli Lilly and Company shares from $1,385 to $1,450.",
+      "url": "https://www.moomoo.com/hans/news/flash/1002343208/eli-lilly-bernstein-raises-target-price-to-1450-from-1385",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "LLY"
+      ],
+      "created_at": "2026-10-26T10:31:32Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Price target increase signals analyst confidence in future stock appreciation."
+    },
+    {
+      "id": "62584013",
+      "headline": "Traders Are Pricing a 11% Swing In Intel Ahead of Earnings",
+      "summary": "Discover 9 stocks with the biggest expected earnings moves, led by SanDisk and Intel, as options markets brace for volatility.",
+      "url": "https://www.benzinga.com/markets/options/26/10/62584013/traders-are-pricing-a-11-swing-in-intel-ahead-of-earnings",
+      "author": "Kaustubh Bagalkote",
+      "source": "benzinga",
+      "symbols": [
+        "AMZN",
+        "GOOG",
+        "GOOGL",
+        "INTC",
+        "KO",
+        "LLY",
+        "MSFT",
+        "NOW",
+        "SBUX",
+        "SNDK"
+      ],
+      "created_at": "2026-10-26T10:30:19Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Article reports expected volatility around earnings without indicating positive or negative outlook."
+    },
+    {
+      "id": "62582123",
+      "headline": "Reported Saturday, Lilly Presented First Phase 1 Data For Sofe-M Plus Bevacizumab In Platinum-Sensitive Ovarian Cancer: 79% Confirmed Objective Response Rate, 100% Disease Control Rate, Activity Acros",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62582123/reported-saturday-lilly-presented-first-phase-1-data-sofe-m-plus-bevacizumab-platinum-sensitive-ovar",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "LLY"
+      ],
+      "created_at": "2026-10-26T07:12:41Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Strong Phase 1 efficacy data with 79% response rate and 100% disease control rate supports positive clinical progress."
+    },
+    {
+      "id": "62580314",
+      "headline": "Eli Lilly Announced Sunday At ESMO, Olomorasib Plus Chemoimmunotherapy Data Showing 62% Overall Response Rate, 14.5-Month Median Response Duration In First-Line KRAS G12C NSCLC",
+      "summary": "",
+      "url": "https://www.benzinga.com/quote/LLY",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "LLY"
+      ],
+      "created_at": "2026-10-25T20:16:18Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Strong clinical efficacy data with 62% response rate supports potential market approval and revenue growth."
+    },
+    {
+      "id": "62580211",
+      "headline": "Verizon, Welltower On Deck Monday As Wireless Growth, Senior Housing Demand Face Test",
+      "summary": "Verizon headlines Monday\u2019s reports, with investors weighing whether improving wireless momentum can overcome a recent pullback in the stock. Welltower, Cadence Design Systems, Nucor, Public Storage and Celestica report",
+      "url": "https://www.benzinga.com/news/26/10/62580211/verizon-welltower-on-deck-monday-as-wireless-growth-senior-housing-demand-face-test",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "AMKR",
+        "ARE",
+        "ARLP",
+        "BOH",
+        "BRO",
+        "BRX",
+        "CDNS",
+        "CINF",
+        "CLS",
+        "CX",
+        "GGB",
+        "HIG",
+        "MMYT",
+        "NE",
+        "NUE",
+        "PFG",
+        "PSA",
+        "RMBS",
+        "SSD",
+        "SUI",
+        "VZ",
+        "WELL"
+      ],
+      "created_at": "2026-10-25T19:31:07Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Mixed signals with Verizon's wireless growth potential offset by recent pullback; Welltower faces demand test."
+    },
+    {
+      "id": "103759206",
+      "headline": "Eli Lilly Presents New Clinical Data for Olomorasib at ESMO 2026",
+      "summary": "Eli Lilly and Company announced updated Phase 1/2 and Phase 3 safety lead-in data for its investigational KRAS G12C inhibitor, olomorasib, in first-line non-small cell lung cancer.",
+      "url": "https://www.prnewswire.com/news-releases/new-data-on-lillys-investigational-treatment-olomorasib-at-esmo-2026-show-durable-first-line-activity-in-kras-g12c-mutant-non-small-cell-lung-cancer-302918479.html",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "LLY"
+      ],
+      "created_at": "2026-10-25T13:01:46Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Positive clinical data presentation for pipeline drug suggests progress in development of potentially valuable oncology treatment."
+    },
+    {
+      "id": "62579677",
+      "headline": "Earnings Volatility Watch: SanDisk and 11 Other Stocks Are Priced for at Least 10% Swings This Week",
+      "summary": "Monolithic Power, Intel and SanDisk lead 12 stocks above $50 billion priced for outsized earnings swings as the AI trade faces Big Tech results.",
+      "url": "https://www.benzinga.com/markets/market-summary/26/10/62579677/earnings-volatility-watch-sandisk-intel-monolithic-power-implied-moves",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "AMZN",
+        "APH",
+        "CVNA",
+        "FTNT",
+        "GLW",
+        "GOOGL",
+        "HONA",
+        "HOOD",
+        "HWM",
+        "INTC",
+        "LLY",
+        "MPWR",
+        "MSFT",
+        "PWR",
+        "SNDK",
+        "SOXX",
+        "VRT"
+      ],
+      "created_at": "2026-10-25T12:30:19Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Article reports earnings volatility risk without predicting positive or negative outcomes."
+    },
+    {
+      "id": "103423228",
+      "headline": "Lilly Announces Positive Phase 1 Data for Investigational ADC Sofetabart Mipitecan in Ovarian Cancer",
+      "summary": "Eli Lilly and Company reported new Phase 1 clinical trial results showing its investigational folate receptor alpha-targeting antibody-drug conjugate, sofetabart mipitecan, achieved a 79% confirmed objective response rate in patients with platinum-sensitive ovarian cancer.",
+      "url": "https://www.morningstar.com/news/pr-newswire/20261024de78967/lilly-presents-first-clinical-data-in-platinum-sensitive-ovarian-cancer-for-its-investigational-next-generation-fr-targeting-adc-at-esmo-2026",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "LLY"
+      ],
+      "created_at": "2026-10-24T13:01:29Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "79% response rate in Phase 1 is strong clinical data supporting advancement of promising oncology candidate."
+    },
+    {
+      "id": "62577115",
+      "headline": "Oil Jumps to Nearly 6-Month High as Houthi Attacks on Saudi Arabia Stoke Supply Fears, While Trump Faces Fuel-Price Headwinds Ahead of Midterms",
+      "summary": "Oil prices surged to six-month highs as escalating Houthi attacks in Saudi Arabia fueled fears of Middle East supply disruptions.",
+      "url": "https://www.benzinga.com/markets/commodities/26/10/62577115/oil-prices-surge-houthi-attacks-saudi-arabia",
+      "author": "Mohd Haider",
+      "source": "benzinga",
+      "symbols": [
+        "BKR",
+        "PSX"
+      ],
+      "created_at": "2026-10-24T02:11:19Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Oil price surge to 6-month highs driven by supply disruption fears benefits energy stocks."
+    },
+    {
+      "id": "62573052",
+      "headline": "Citigroup Maintains Neutral on Valero Energy, Raises Price Target to $490",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62573052/citigroup-maintains-neutral-valero-energy-raises-price-target-490",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "VLO"
+      ],
+      "created_at": "2026-10-23T19:26:49Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Price target raise indicates improved outlook despite neutral rating maintenance."
+    },
+    {
+      "id": "102929038",
+      "headline": "Valero Energy Executive Discusses Impact of Surging Freight Rates on Supply Strategy",
+      "summary": "Valero Energy's vice president of crude, feedstocks supply and trading, Randy Hawkins, highlighted how rising tanker rates are forcing refiners to adjust supply strategies.",
+      "url": "https://www.morningstar.com/news/dow-jones/202610237299/oil-freight-rates-surge-over-20bbl-from-year-ago-goldman-says-opis",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "VLO"
+      ],
+      "created_at": "2026-10-23T19:02:16Z",
+      "sentiment": "bear",
+      "confidence": 0.75,
+      "reason": "Rising tanker rates increase refiner operational costs and constrain supply strategy flexibility."
+    },
+    {
+      "id": "102929037",
+      "headline": "Barclays Maintains Buy Rating and Raises Price Target for Valero Energy",
+      "summary": "Barclays analyst Theresa Chen maintained a Buy rating on Valero Energy and increased the price target to $443.",
+      "url": "https://www.moomoo.com/news/post/1002173339/barclays-maintains-valero-energy-vlous-with-buy-rating-raises-target",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "VLO"
+      ],
+      "created_at": "2026-10-23T19:02:16Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains Buy rating and raises price target, signaling confidence in stock upside."
+    },
+    {
+      "id": "102855314",
+      "headline": "US Releases Strategic Petroleum Reserves to Support Phillips 66 Refinery",
+      "summary": "The US Department of Energy approved the emergency release of up to 400,000 barrels of crude oil from the Strategic Petroleum Reserve to address a supply disruption at the Phillips 66 Lake Charles refinery.",
+      "url": "https://www.euro2day.gr/amp/news/world/article/2375087/oi-hpa-apeleytheronoyn-400000-varelia-petrelaioy-a.html",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "PSX"
+      ],
+      "created_at": "2026-10-23T18:02:22Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Government support removes supply constraints, enabling refinery operations and boosting production capacity."
+    },
+    {
+      "id": "62569474",
+      "headline": "10 Health Care Stocks Whale Activity In Today\u2019s Session",
+      "summary": "This whale alert can help traders discover the next big trading opportunities. Whales are entities with large sums of money and we track their transactions here at Benzinga on our options activity scanner. Traders will",
+      "url": "https://www.benzinga.com/markets/options/26/10/62569474/10-health-care-stocks-whale-activity-today-s-session",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "ABVX",
+        "CI",
+        "ELV",
+        "GILD",
+        "HIMS",
+        "LLY",
+        "MRK",
+        "TNGX",
+        "TVTX",
+        "UNH"
+      ],
+      "created_at": "2026-10-23T17:35:10Z",
+      "sentiment": "bull",
+      "confidence": 0.72,
+      "reason": "Whale activity tracking suggests institutional interest in healthcare stocks, potentially indicating positive trading opportunities."
+    },
+    {
+      "id": "62560015",
+      "headline": "Wells Fargo Maintains Overweight on Valero Energy, Raises Price Target to $489",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62560015/wells-fargo-maintains-overweight-valero-energy-raises-price-target-489",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "VLO"
+      ],
+      "created_at": "2026-10-23T13:58:47Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Overweight rating maintained with price target raise signals positive outlook"
+    },
+    {
+      "id": "62558990",
+      "headline": "Barclays Maintains Overweight on Valero Energy, Raises Price Target to $443",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62558990/barclays-maintains-overweight-valero-energy-raises-price-target-443",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "VLO"
+      ],
+      "created_at": "2026-10-23T13:44:13Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Overweight rating with price target increase signals positive outlook and analyst confidence"
+    },
+    {
+      "id": "62558920",
+      "headline": "Barclays Maintains Overweight on Steel Dynamics, Lowers Price Target to $280",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62558920/barclays-maintains-overweight-steel-dynamics-lowers-price-target-280",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "STLD"
+      ],
+      "created_at": "2026-10-23T13:43:32Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Overweight rating maintained despite price target reduction, indicating positive long-term outlook"
+    },
+    {
+      "id": "62556376",
+      "headline": "Keybanc Maintains Overweight on Steel Dynamics, Raises Price Target to $265",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62556376/keybanc-maintains-overweight-steel-dynamics-raises-price-target-265",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "STLD"
+      ],
+      "created_at": "2026-10-23T12:37:32Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Overweight rating maintained with raised price target signals positive outlook for Steel Dynamics."
+    },
+    {
+      "id": "62555914",
+      "headline": "How to Earn $500 a Month From Nucor Stock Ahead of Q3 Earnings",
+      "summary": "Nucor reports Q3 earnings Oct. 26; analysts expect $5.83 EPS and $10.79B revenue. At 0.87% yield, $691K investment earns $500 monthly.",
+      "url": "https://www.benzinga.com/trading-ideas/dividends/26/10/62555914/how-to-earn-500-a-month-from-nucor-stock-ahead-of-q3-earnings-2",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "NUE"
+      ],
+      "created_at": "2026-10-23T12:16:04Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Article highlights income generation potential from Nucor stock with positive earnings expectations."
+    },
+    {
+      "id": "62554133",
+      "headline": "More Americans Now Take GLP-1 Drugs for Weight Loss Than Diabetes as Food, Alcohol and Apparel Habits Shift, Survey Finds",
+      "summary": "GLP-1 users cut sweets and switch clothing sizes as weight management becomes top use.",
+      "url": "https://www.benzinga.com/news/health-care/26/10/62554133/more-americans-now-take-glp-1-drugs-for-weight-loss-than-diabetes-as-food-alcohol-and-apparel-habits-shift-survey-finds",
+      "author": "Tanya Rawat",
+      "source": "benzinga",
+      "symbols": [
+        "KHC",
+        "LLY",
+        "NVO",
+        "PEP"
+      ],
+      "created_at": "2026-10-23T11:01:46Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Growing GLP-1 adoption for weight loss expands market beyond diabetes, indicating strong demand and revenue potential."
+    },
+    {
+      "id": "62549805",
+      "headline": "If You Invested $1000 In Valero Energy Stock 5 Years Ago, You Would Have This Much Today",
+      "summary": "Valero Energy (NYSE:VLO) has outperformed the market over the past 5 years by 28.22% on an annualized basis producing an average annual return of 39.09%. Currently, Valero Energy has a market capitalization of $124.79",
+      "url": "https://www.benzinga.com/news/26/10/62549805/if-you-invested-1000-valero-energy-stock-5-years-ago-you-would-have-much-today",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "VLO"
+      ],
+      "created_at": "2026-10-22T23:45:19Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Stock significantly outperformed market with 39.09% average annual return over 5 years."
+    },
+    {
+      "id": "62548236",
+      "headline": "US Refineries Are Running Near Their Limits. Fund Manager Sees Diesel Above $5 Into 2027",
+      "summary": "Fund manager Frank Holmes sees diesel above $5 into 2027 as U.S. refineries run near capacity and shipping costs rise.",
+      "url": "https://www.benzinga.com/markets/prediction-markets/26/10/62548236/iesel-prices-us-refineries-2027",
+      "author": "Daragh Thomas",
+      "source": "benzinga",
+      "symbols": [
+        "DHT",
+        "SEA",
+        "STNG",
+        "VLO"
+      ],
+      "created_at": "2026-10-22T21:00:57Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "High refinery utilization and elevated diesel prices benefit refinery operators' margins and profitability."
+    },
     {
       "id": "101795778",
       "headline": "Citigroup and TD Cowen Adjust Price Targets for Valero Energy",
@@ -15,52 +504,7 @@
       "created_at": "2026-10-22T18:02:01Z",
       "sentiment": "neutral",
       "confidence": 0.85,
-      "reason": "Price target adjustments without directional guidance indicate routine analyst rebalancing post-earnings."
-    },
-    {
-      "id": "62539671",
-      "headline": "Morgan Stanley Maintains Underweight on Texas Instruments, Raises Price Target to $278",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62539671/morgan-stanley-maintains-underweight-texas-instruments-raises-price-target-278",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "TXN"
-      ],
-      "created_at": "2026-10-22T17:40:36Z",
-      "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Underweight rating conflicts with price target raise, creating mixed signals on TXN"
-    },
-    {
-      "id": "62537249",
-      "headline": "These Analysts Revise Their Forecasts On Texas Instruments Following Q3 Results",
-      "summary": "Texas Instruments beat Q3 estimates with $6.06B revenue and guided Q4 above forecasts; analysts mostly raised price targets despite shares slipping.",
-      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/10/62537249/these-analysts-revise-their-forecasts-on-texas-instruments-following-q3-results",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "TXN"
-      ],
-      "created_at": "2026-10-22T16:47:47Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Beat Q3 estimates, raised Q4 guidance, and analysts increased price targets despite stock weakness."
-    },
-    {
-      "id": "62536578",
-      "headline": "Barclays Maintains Equal-Weight on Texas Instruments, Raises Price Target to $280",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62536578/barclays-maintains-equal-weight-texas-instruments-raises-price-target-280",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "TXN"
-      ],
-      "created_at": "2026-10-22T16:35:21Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Price target raise signals analyst confidence in TXN's upside potential despite maintaining neutral rating."
+      "reason": "Analysts adjusted price targets post-earnings with no directional bias indicated in headline or summary."
     },
     {
       "id": "62533103",
@@ -76,417 +520,6 @@
       "sentiment": "bull",
       "confidence": 0.95,
       "reason": "Record ethanol production and significant EPS/revenue beats indicate strong operational and financial performance."
-    },
-    {
-      "id": "101545926",
-      "headline": "Texas Instruments Launches TI-Rover BT Robotic Vehicle",
-      "summary": "Texas Instruments has introduced the TI-Rover BT, a new Bluetooth-enabled robotic vehicle designed to help students visualize and interact with mathematical concepts.",
-      "url": "https://www.tradingview.com/news/prnewswire:19649186982ed:0-texas-instruments-announces-the-ti-rover-bt-bringing-math-to-life-with-a-calculator-controlled-robotic-vehicle/",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "TXN"
-      ],
-      "created_at": "2026-10-22T15:01:48Z",
-      "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Product launch announcement lacks direct financial impact or earnings implications."
-    },
-    {
-      "id": "101544650",
-      "headline": "Eli Lilly and Company Breaks Ground on $5B Integrated Manufacturing Site in Virginia",
-      "summary": "Eli Lilly and Company has begun construction on a $5 billion manufacturing facility near Richmond, Virginia, dedicated to producing antibody-drug conjugate (ADC) medicines.",
-      "url": "https://www.tradingview.com/news/tradingview:29a75614a8c29:0-eli-lilly-and-company-lly-breaks-ground-on-5b-integrated-adc-plant-in-virginia/",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "LLY"
-      ],
-      "created_at": "2026-10-22T15:01:30Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Major $5B capital investment signals growth confidence and expands ADC production capacity."
-    },
-    {
-      "id": "62531769",
-      "headline": "Valero Energy Q3 2026 Earnings Call Transcript",
-      "summary": "Valero Energy (NYSE:VLO) reported third-quarter financial results on Thursday. The transcript from the company\u2019s third-quarter earnings call has been provided below.This transcript is brought to you by Benzinga APIs.",
-      "url": "https://www.benzinga.com/news/26/10/62531769/valero-energy-q3-2026-earnings-call-transcript",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "VLO"
-      ],
-      "created_at": "2026-10-22T15:00:35Z",
-      "sentiment": "neutral",
-      "confidence": 0.95,
-      "reason": "Article is a factual earnings call transcript with no performance commentary or analysis provided."
-    },
-    {
-      "id": "62531733",
-      "headline": "Defensives Lead Sectors In Thursday Trading As Growth Trails",
-      "summary": "Five sectors are higher and six are lower in Thursday\u2019s regular session, with defensive sectors holding the top three positions. The leaders are separated rather than clustered, with no single gap clearly standing apart from the other breaks across the table.",
-      "url": "https://www.benzinga.com/etfs/sector-etfs/26/10/62531733/defensives-lead-sectors-in-thursday-trading-as-growth-trails",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "AVGO",
-        "CAT",
-        "CVX",
-        "D",
-        "DIA",
-        "GE",
-        "HON",
-        "IWM",
-        "JNJ",
-        "KO",
-        "LLY",
-        "MRK",
-        "NEE",
-        "NVDA",
-        "ORCL",
-        "PEP",
-        "PG",
-        "QQQ",
-        "SLB",
-        "SO",
-        "SPY",
-        "XLB",
-        "XLC",
-        "XLE",
-        "XLF",
-        "XLI",
-        "XLK",
-        "XLP",
-        "XLRE",
-        "XLU",
-        "XLV",
-        "XLY",
-        "XOM"
-      ],
-      "created_at": "2026-10-22T15:00:23Z",
-      "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Mixed sector performance with defensive strength, but growth underperformance suggests balanced outlook."
-    },
-    {
-      "id": "62530619",
-      "headline": "Eli Lilly Starts Construction On $5B Production Site In Richmond, Virginia",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62530619/eli-lilly-starts-construction-5b-production-site-richmond-virginia",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "LLY"
-      ],
-      "created_at": "2026-10-22T14:41:31Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Major $5B capital investment signals confidence in future demand and long-term growth"
-    },
-    {
-      "id": "62530592",
-      "headline": "Valero Exec Says \"Continues To See Pretty Strong Export Demand For Ethanol, And Our Capacity Is All Pointed At Growing Exports\"",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62530592/valero-exec-says-continues-see-pretty-strong-export-demand-ethanol-and-our-capacity-all-pointed-grow",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "VLO"
-      ],
-      "created_at": "2026-10-22T14:41:18Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Strong export demand and capacity growth indicate positive business outlook for Valero's ethanol operations."
-    },
-    {
-      "id": "62530438",
-      "headline": "Valero Energy Exec Says Not Seeing Any Signs Of Demand Destruction On The Wholesale Side; Refining Industry Can Expect A Heavier Turnaround Season Next Year; No Plans To Restart Idled Refineries; Cont",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62530438/valero-energy-exec-says-not-seeing-any-signs-demand-destruction-wholesale-side-refining-industry-can",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "VLO"
-      ],
-      "created_at": "2026-10-22T14:37:51Z",
-      "sentiment": "neutral",
-      "confidence": 0.65,
-      "reason": "Mixed signals: stable demand outlook offset by heavy turnarounds ahead and no refinery restart plans."
-    },
-    {
-      "id": "62530384",
-      "headline": "Valero Energy Exec Says Gulf Coast Remains One Of The Most Advantaged Crude Markets Globally And Rising Freight Costs Further Supports That; Long-Term Outlook On Crude Differentials Remains Very Const",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62530384/valero-energy-exec-says-gulf-coast-remains-one-most-advantaged-crude-markets-globally-and-rising-fre",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "VLO"
-      ],
-      "created_at": "2026-10-22T14:37:18Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Gulf Coast competitive advantage and supportive freight dynamics favor refining margins"
-    },
-    {
-      "id": "62529588",
-      "headline": "TD Cowen Maintains Hold on Valero Energy, Raises Price Target to $400",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62529588/td-cowen-maintains-hold-valero-energy-raises-price-target-400",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "VLO"
-      ],
-      "created_at": "2026-10-22T14:23:59Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Price target raised to $400 despite maintaining Hold rating, indicating analyst optimism about stock upside."
-    },
-    {
-      "id": "62529519",
-      "headline": "TD Cowen Maintains Buy on Phillips 66, Raises Price Target to $308",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62529519/td-cowen-maintains-buy-phillips-66-raises-price-target-308",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "PSX"
-      ],
-      "created_at": "2026-10-22T14:22:22Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, indicating confidence in stock appreciation."
-    },
-    {
-      "id": "62529393",
-      "headline": "Valero Energy To Run Refineries Between 80% To 83% Of Capacity In Q4; Expects Ethanol Segment To Produce 4.9M Gallons Per Day In Q4; Expects Sales Volumes Of 325M Gallons At Renewable Diesel Segment I",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62529393/valero-energy-to-run-refineries-between-80-to-83-of-capacity-in-q4-expects-ethanol-segment-to-produce-4-9m-gallons-per-day-in-q4-expects-sales-volumes-of-325mn-gallons-at-renewable-diesel-segment-in",
-      "author": "Benzinga News-desk",
-      "source": "benzinga",
-      "symbols": [
-        "VLO"
-      ],
-      "created_at": "2026-10-22T14:20:17Z",
-      "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Operational guidance provided with moderate capacity utilization and stable production targets."
-    },
-    {
-      "id": "62527993",
-      "headline": "JP Morgan Maintains Overweight on Texas Instruments, Raises Price Target to $365",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62527993/jp-morgan-maintains-overweight-texas-instruments-raises-price-target-365",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "TXN"
-      ],
-      "created_at": "2026-10-22T13:54:53Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Overweight rating maintained with price target raise signals positive outlook"
-    },
-    {
-      "id": "101435045",
-      "headline": "Barclays Adjusts Price Target on Steel Dynamics to $280 From $285",
-      "summary": "Barclays has revised its price target for Steel Dynamics, lowering it from $285 to $280.",
-      "url": "https://www.marketscreener.com/news/barclays-adjusts-price-target-on-steel-dynamics-to-280-from-285-ce785cdedb8bf424",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "STLD"
-      ],
-      "created_at": "2026-10-22T13:32:03Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Price target reduction signals analyst downgrade expectations for Steel Dynamics stock performance."
-    },
-    {
-      "id": "101435039",
-      "headline": "TD Cowen Adjusts Price Target on Valero Energy",
-      "summary": "TD Cowen has revised its price target for Valero Energy Corporation to $400 from $375.",
-      "url": "https://www.marketscreener.com/news/td-cowen-adjusts-price-target-on-valero-energy-to-400-from-375-ce785cdedb8ff725",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "VLO"
-      ],
-      "created_at": "2026-10-22T13:32:01Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Price target increased by $25, indicating improved analyst outlook on Valero Energy."
-    },
-    {
-      "id": "101433930",
-      "headline": "TD Cowen Adjusts Price Target on Phillips 66",
-      "summary": "TD Cowen has increased its price target for Phillips 66 from $295 to $308.",
-      "url": "https://www.marketscreener.com/news/td-cowen-adjusts-price-target-on-phillips-66-to-308-from-295-ce785cdedb8ff726",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "PSX"
-      ],
-      "created_at": "2026-10-22T13:31:45Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Price target increase of $13 (4.4%) signals positive analyst outlook on Phillips 66"
-    },
-    {
-      "id": "62525275",
-      "headline": "Stifel Maintains Buy on Texas Instruments, Raises Price Target to $370",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62525275/stifel-maintains-buy-texas-instruments-raises-price-target-370",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "TXN"
-      ],
-      "created_at": "2026-10-22T13:05:44Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Analyst maintains buy rating and raises price target, indicating positive outlook"
-    },
-    {
-      "id": "62524717",
-      "headline": "Rosenblatt Maintains Buy on Texas Instruments, Raises Price Target to $360",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62524717/rosenblatt-maintains-buy-texas-instruments-raises-price-target-360",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "TXN"
-      ],
-      "created_at": "2026-10-22T12:59:00Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, indicating positive outlook."
-    },
-    {
-      "id": "62523045",
-      "headline": "Mizuho Maintains Neutral on Texas Instruments, Lowers Price Target to $290",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62523045/mizuho-maintains-neutral-texas-instruments-lowers-price-target-290",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "TXN"
-      ],
-      "created_at": "2026-10-22T12:10:55Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Price target lowered indicates reduced near-term upside despite maintaining neutral stance"
-    },
-    {
-      "id": "101354760",
-      "headline": "Analysts Adjust Price Targets for Texas Instruments",
-      "summary": "Following the company's Q3 2026 earnings report, multiple financial institutions, including Goldman Sachs, JPMorgan, and Jefferies, adjusted their price targets for Texas Instruments.",
-      "url": "https://www.marketscreener.com/news/goldman-sachs-adjusts-price-target-on-texas-instruments-to-250-from-225-ce785cded98bf422",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "TXN"
-      ],
-      "created_at": "2026-10-22T11:31:42Z",
-      "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Analysts adjusted price targets without specifying direction of changes or earnings performance."
-    },
-    {
-      "id": "62519781",
-      "headline": "Valero Energy Q3 Adj. EPS $23.90 Beats $21.01 Estimate, Sales $46.098B Beat $39.481B Estimate",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/earnings/26/10/62519781/valero-energy-q3-adj-eps-23-90-beats-21-01-estimate-sales-46-098b-beat-39-481b-estimate",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "VLO"
-      ],
-      "created_at": "2026-10-22T10:31:26Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong Q3 earnings beat with EPS exceeding estimate by 13.7% and sales beating by 16.8%."
-    },
-    {
-      "id": "62519779",
-      "headline": "Texas Instruments CEO Sees No Slowdown in Data Center Demand: 'Actually Growing Demand'",
-      "summary": "Texas Instruments (NASDAQ: TXN) beat Q3 earnings estimates with $2.62 EPS and issued strong Q4 guidance driven by data center demand.",
-      "url": "https://www.benzinga.com/markets/tech/26/10/62519779/texas-instruments-ceo-sees-no-slowdown-in-data-center-demand-actually-growing-demand",
-      "author": "Lekha Gupta",
-      "source": "benzinga",
-      "symbols": [
-        "TXN"
-      ],
-      "created_at": "2026-10-22T10:31:18Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Beat earnings estimates with strong Q4 guidance driven by growing data center demand."
-    },
-    {
-      "id": "101275296",
-      "headline": "Humana AB Reports Third Quarter and Nine-Month Period 2026 Results",
-      "summary": "Humana AB reported its highest adjusted operating profit for a single quarter, driven by price increases and operational efficiencies in its Swedish operations.",
-      "url": "https://www.tradingview.com/news/modular_finance:b71c5d5cfcff7:0-humana-reports-third-quarter-and-nine-month-period-2026-results/",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "HUM"
-      ],
-      "created_at": "2026-10-22T07:02:05Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Record quarterly adjusted operating profit driven by price increases and operational efficiencies."
-    },
-    {
-      "id": "62515722",
-      "headline": "Meta, IBM, Texas Instruments, LAM Research and Tesla: Why These 5 Stocks Are on Investors' Radars Today",
-      "summary": "Major U.S. indices closed higher on Wednesday, with the Dow Jones Industrial Average rising 0.69% to 52,856.09.",
-      "url": "https://www.benzinga.com/markets/equities/26/10/62515722/meta-ibm-texas-instruments-lam-research-and-tesla-why-these-5-stocks-are-on-investors-radars-today",
-      "author": "Shivdeep Dhaliwal",
-      "source": "benzinga",
-      "symbols": [
-        "IBM",
-        "LRCX",
-        "META",
-        "TSLA",
-        "TXN"
-      ],
-      "created_at": "2026-10-22T01:17:44Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Major indices closed higher and stocks highlighted suggest positive investor interest."
-    },
-    {
-      "id": "101055516",
-      "headline": "NetApp Launches New Hybrid Multi-Cloud Capabilities and Data Sovereignty Services",
-      "summary": "NetApp has introduced new hybrid multi-cloud features, including enhancements to its NetApp Console and Keystone services, designed to support consistent operations across on-premises, public cloud, and AI infrastructure.",
-      "url": "https://www.futunn.com/hk/options/NTAP261120C125000-US/news",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "NTAP"
-      ],
-      "created_at": "2026-10-21T22:01:40Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "New product launches expanding multi-cloud capabilities address growing market demand for hybrid infrastructure."
-    },
-    {
-      "id": "62514143",
-      "headline": "Texas Instruments Q3 2026 Earnings Call Transcript",
-      "summary": "Texas Instruments (NASDAQ:TXN) reported third-quarter financial results on Wednesday. The transcript from the company\u2019s third-quarter earnings call has been provided below.This transcript is brought to you by Benzinga",
-      "url": "https://www.benzinga.com/news/26/10/62514143/texas-instruments-q3-2026-earnings-call-transcript",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "TXN"
-      ],
-      "created_at": "2026-10-21T21:22:22Z",
-      "sentiment": "neutral",
-      "confidence": 0.95,
-      "reason": "Article only provides earnings call transcript without analysis or forward guidance commentary."
     }
   ]
 }
