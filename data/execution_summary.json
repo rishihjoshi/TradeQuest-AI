@@ -1,10 +1,28 @@
 {
-  "timestamp": "2026-10-23T23:55:12Z",
-  "mode": "post_close",
-  "orders_placed": [],
-  "orders_skipped": [],
+  "timestamp": "2026-10-26T19:31:29Z",
+  "mode": "market_open",
+  "orders_placed": [
+    {
+      "action": "SELL",
+      "symbol": "STLD",
+      "qty": 0.941753,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "AMGN",
+      "qty": 2.006067,
+      "status": "submitted"
+    }
+  ],
+  "orders_skipped": [
+    {
+      "symbol": "WST",
+      "reason": "blocked by agent approval or risk gate"
+    }
+  ],
   "errors": [],
-  "cash_pct_after": 5.99,
+  "cash_pct_after": 7.22,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
