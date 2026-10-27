@@ -1,20 +1,7 @@
 {
-  "timestamp": "2026-10-26T19:31:29Z",
-  "mode": "market_open",
-  "orders_placed": [
-    {
-      "action": "SELL",
-      "symbol": "STLD",
-      "qty": 0.941753,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "AMGN",
-      "qty": 2.006067,
-      "status": "submitted"
-    }
-  ],
+  "timestamp": "2026-10-27T00:41:16Z",
+  "mode": "post_close",
+  "orders_placed": [],
   "orders_skipped": [
     {
       "symbol": "WST",
@@ -22,7 +9,7 @@
     }
   ],
   "errors": [],
-  "cash_pct_after": 7.22,
+  "cash_pct_after": 7.23,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
