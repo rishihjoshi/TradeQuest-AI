@@ -1,18 +1,33 @@
 {
-  "timestamp": "2026-10-27T00:41:16Z",
-  "mode": "post_close",
-  "orders_placed": [],
+  "timestamp": "2026-10-27T18:52:58Z",
+  "mode": "market_open",
+  "orders_placed": [
+    {
+      "action": "SELL",
+      "symbol": "WST",
+      "qty": 1.00838,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "MPC",
+      "qty": 0.516568,
+      "status": "submitted"
+    }
+  ],
   "orders_skipped": [
     {
-      "symbol": "WST",
+      "symbol": "VLO",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 7.23,
+  "cash_pct_after": 8.99,
   "long_only_breach": false,
-  "invariant_breaches": [],
-  "breach_streak": 0,
+  "invariant_breaches": [
+    "sector Healthcare at 34.0% exceeds the 30% cap"
+  ],
+  "breach_streak": 1,
   "trading_halted": false,
   "dry_run": false
 }
