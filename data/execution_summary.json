@@ -1,33 +1,39 @@
 {
-  "timestamp": "2026-10-28T00:39:29Z",
-  "mode": "post_close",
+  "timestamp": "2026-10-28T19:01:32Z",
+  "mode": "market_open",
   "orders_placed": [
     {
       "action": "SELL",
       "symbol": "WST",
-      "qty": 0.058819,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "MPC",
-      "qty": 0.916806,
+      "qty": 0.103878,
       "status": "submitted"
     }
   ],
   "orders_skipped": [
     {
       "symbol": "VLO",
+      "reason": "trading halted \u2014 unresolved invariant breach"
+    },
+    {
+      "symbol": "NDSN",
+      "reason": "trading halted \u2014 unresolved invariant breach"
+    },
+    {
+      "symbol": "VLO",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "APA",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 9.01,
+  "cash_pct_after": 5.69,
   "long_only_breach": false,
   "invariant_breaches": [
-    "sector Healthcare at 30.2% exceeds the 30% cap"
+    "sector Healthcare at 30.4% exceeds the 30% cap"
   ],
-  "breach_streak": 2,
-  "trading_halted": false,
+  "breach_streak": 3,
+  "trading_halted": true,
   "dry_run": false
 }
