@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-10-27T18:52:58Z",
-  "mode": "market_open",
+  "timestamp": "2026-10-28T00:39:29Z",
+  "mode": "post_close",
   "orders_placed": [
     {
       "action": "SELL",
       "symbol": "WST",
-      "qty": 1.00838,
+      "qty": 0.058819,
       "status": "submitted"
     },
     {
       "action": "BUY",
       "symbol": "MPC",
-      "qty": 0.516568,
+      "qty": 0.916806,
       "status": "submitted"
     }
   ],
@@ -22,12 +22,12 @@
     }
   ],
   "errors": [],
-  "cash_pct_after": 8.99,
+  "cash_pct_after": 9.01,
   "long_only_breach": false,
   "invariant_breaches": [
-    "sector Healthcare at 34.0% exceeds the 30% cap"
+    "sector Healthcare at 30.2% exceeds the 30% cap"
   ],
-  "breach_streak": 1,
+  "breach_streak": 2,
   "trading_halted": false,
   "dry_run": false
 }
