@@ -1,11 +1,53 @@
 {
-  "timestamp": "2026-10-28T19:01:32Z",
-  "mode": "market_open",
+  "timestamp": "2026-10-29T01:09:21Z",
+  "mode": "post_close",
   "orders_placed": [
     {
       "action": "SELL",
-      "symbol": "WST",
-      "qty": 0.103878,
+      "symbol": "AMGN",
+      "qty": 2.006062,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "APA",
+      "qty": 20.05753,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "EXPD",
+      "qty": 0.822673,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "FFIV",
+      "qty": 1.747016,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "HUM",
+      "qty": 2.433413,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "LLY",
+      "qty": 0.58437,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "MPC",
+      "qty": 1.433364,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "NTAP",
+      "qty": 5.373726,
       "status": "submitted"
     }
   ],
@@ -15,15 +57,19 @@
       "reason": "trading halted \u2014 unresolved invariant breach"
     },
     {
-      "symbol": "NDSN",
-      "reason": "trading halted \u2014 unresolved invariant breach"
+      "symbol": "WST",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "PSX",
+      "reason": "blocked by agent approval or risk gate"
     },
     {
       "symbol": "VLO",
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "APA",
+      "symbol": "NUE",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
@@ -31,9 +77,9 @@
   "cash_pct_after": 5.69,
   "long_only_breach": false,
   "invariant_breaches": [
-    "sector Healthcare at 30.4% exceeds the 30% cap"
+    "sector Unknown at 94.3% exceeds the 30% cap"
   ],
-  "breach_streak": 3,
+  "breach_streak": 4,
   "trading_halted": true,
   "dry_run": false
 }
