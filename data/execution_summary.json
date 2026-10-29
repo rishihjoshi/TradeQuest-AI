@@ -1,85 +1,45 @@
 {
-  "timestamp": "2026-10-29T01:09:21Z",
-  "mode": "post_close",
+  "timestamp": "2026-10-29T19:09:00Z",
+  "mode": "market_open",
   "orders_placed": [
     {
-      "action": "SELL",
-      "symbol": "AMGN",
-      "qty": 2.006062,
+      "action": "BUY",
+      "symbol": "ZBRA",
+      "qty": 2.483267,
       "status": "submitted"
     },
     {
-      "action": "SELL",
-      "symbol": "APA",
-      "qty": 20.05753,
+      "action": "BUY",
+      "symbol": "NDSN",
+      "qty": 2.851483,
       "status": "submitted"
     },
     {
-      "action": "SELL",
-      "symbol": "EXPD",
-      "qty": 0.822673,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "FFIV",
-      "qty": 1.747016,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "HUM",
-      "qty": 2.433413,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "LLY",
-      "qty": 0.58437,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "MPC",
-      "qty": 1.433364,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "NTAP",
-      "qty": 5.373726,
+      "action": "BUY",
+      "symbol": "DGX",
+      "qty": 3.722779,
       "status": "submitted"
     }
   ],
   "orders_skipped": [
     {
+      "symbol": "NUE",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
       "symbol": "VLO",
-      "reason": "trading halted \u2014 unresolved invariant breach"
+      "reason": "blocked by agent approval or risk gate"
     },
     {
       "symbol": "WST",
       "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "PSX",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "VLO",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "NUE",
-      "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 5.69,
+  "cash_pct_after": 41.65,
   "long_only_breach": false,
-  "invariant_breaches": [
-    "sector Unknown at 94.3% exceeds the 30% cap"
-  ],
-  "breach_streak": 4,
-  "trading_halted": true,
+  "invariant_breaches": [],
+  "breach_streak": 0,
+  "trading_halted": false,
   "dry_run": false
 }
