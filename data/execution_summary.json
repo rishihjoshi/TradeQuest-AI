@@ -1,33 +1,14 @@
 {
-  "timestamp": "2026-10-29T19:09:00Z",
-  "mode": "market_open",
-  "orders_placed": [
-    {
-      "action": "BUY",
-      "symbol": "ZBRA",
-      "qty": 2.483267,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "NDSN",
-      "qty": 2.851483,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "DGX",
-      "qty": 3.722779,
-      "status": "submitted"
-    }
-  ],
+  "timestamp": "2026-10-30T01:14:25Z",
+  "mode": "post_close",
+  "orders_placed": [],
   "orders_skipped": [
     {
-      "symbol": "NUE",
+      "symbol": "VLO",
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "VLO",
+      "symbol": "NUE",
       "reason": "blocked by agent approval or risk gate"
     },
     {
@@ -36,7 +17,7 @@
     }
   ],
   "errors": [],
-  "cash_pct_after": 41.65,
+  "cash_pct_after": 41.52,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
