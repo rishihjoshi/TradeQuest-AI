@@ -1,23 +1,40 @@
 {
-  "timestamp": "2026-10-30T01:14:25Z",
-  "mode": "post_close",
-  "orders_placed": [],
-  "orders_skipped": [
+  "timestamp": "2026-10-30T18:47:46Z",
+  "mode": "market_open",
+  "orders_placed": [
     {
+      "action": "SELL",
       "symbol": "VLO",
-      "reason": "blocked by agent approval or risk gate"
+      "qty": 2.733645,
+      "status": "submitted"
     },
     {
-      "symbol": "NUE",
+      "action": "BUY",
+      "symbol": "LUV",
+      "qty": 22.169278,
+      "status": "submitted"
+    }
+  ],
+  "orders_skipped": [
+    {
+      "symbol": "NTAP",
       "reason": "blocked by agent approval or risk gate"
     },
     {
       "symbol": "WST",
       "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "ZBRA",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "NDSN",
+      "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 41.52,
+  "cash_pct_after": 43.35,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
