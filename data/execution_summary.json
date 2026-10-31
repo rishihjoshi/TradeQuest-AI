@@ -1,23 +1,10 @@
 {
-  "timestamp": "2026-10-30T18:47:46Z",
-  "mode": "market_open",
-  "orders_placed": [
-    {
-      "action": "SELL",
-      "symbol": "VLO",
-      "qty": 2.733645,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "LUV",
-      "qty": 22.169278,
-      "status": "submitted"
-    }
-  ],
+  "timestamp": "2026-10-31T00:57:22Z",
+  "mode": "post_close",
+  "orders_placed": [],
   "orders_skipped": [
     {
-      "symbol": "NTAP",
+      "symbol": "NDSN",
       "reason": "blocked by agent approval or risk gate"
     },
     {
@@ -25,16 +12,16 @@
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "ZBRA",
+      "symbol": "NTAP",
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "NDSN",
+      "symbol": "ZBRA",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 43.35,
+  "cash_pct_after": 43.34,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
