@@ -1,558 +1,539 @@
 {
-  "generated_at": "2026-10-29T19:09:08Z",
+  "generated_at": "2026-11-02T22:23:45Z",
   "article_count": 30,
   "articles": [
     {
-      "id": "62706774",
-      "headline": "Alphabet Sinks 11.8%, Small Caps Rally on Strong GDP Growth: Stock Market Today",
-      "summary": "Alphabet&39;s capex-heavy quarter drags the Nasdaq 100 lower while GDP beats and the Russell 2000 rallies, with three of four large caps rising.",
-      "url": "https://www.benzinga.com/markets/equities/26/10/62706774/stock-market-today-alphabet-sinks-small-caps-rally-gdp-rotation",
+      "id": "62799853",
+      "headline": "Wall Street\u2019s Most Bullish Crude Analyst Calls the End of the Run: \u2018Time to Take Prompt Oil Profits\u2019",
+      "summary": "Jeff Currie is taking profits on prompt oil after a 130% USO rally; Oil services and producers building the new energy regime get paid next.",
+      "url": "https://www.benzinga.com/markets/commodities/26/11/62799853/jeff-currie-take-prompt-oil-profits-regime-trade-uso-oih",
       "author": "Piero Cingari",
       "source": "benzinga",
       "symbols": [
-        "AAPL",
-        "ADT",
-        "ALNY",
-        "AMZN",
-        "BTCUSD",
-        "CAT",
-        "CROX",
-        "CVNA",
-        "DIA",
-        "FTNT",
-        "GILD",
-        "GOOGL",
-        "IGV",
-        "IHE",
-        "INSM",
-        "IWM",
-        "LLY",
-        "MA",
-        "META",
-        "MRK",
-        "MSFT",
-        "NOW",
-        "QQQ",
-        "SCI",
-        "SFM",
-        "TXT",
-        "VOO",
-        "XLC",
-        "XLV"
-      ],
-      "created_at": "2026-10-29T16:22:00Z",
-      "sentiment": "bear",
-      "confidence": 0.92,
-      "reason": "Alphabet sinks 11.8% due to heavy capex spending, significantly dragging down Nasdaq 100."
-    },
-    {
-      "id": "62705087",
-      "headline": "Eli Lilly and Company Reports $303M In Q3 2026 Special Charges, Bringing 9-Month Total To $1.3B, Primarily Driven By Intangible Asset Impairment, Acquisition Costs And Litigation",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62705087/eli-lilly-and-company-reports-303m-q3-2026-special-charges-bringing-9-month-total-1-3b-primarily-dri",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "LLY"
-      ],
-      "created_at": "2026-10-29T15:43:43Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Significant special charges totaling $1.3B YTD, including substantial intangible asset impairments, indicate operational headwinds."
-    },
-    {
-      "id": "62703817",
-      "headline": "Eli Lilly Q3 2026 Earnings Call Transcript",
-      "summary": "Eli Lilly (NYSE:LLY) reported third-quarter financial results on Thursday. The transcript from the company\u2019s third-quarter earnings call has been provided below.This transcript is brought to you by Benzinga APIs. For",
-      "url": "https://www.benzinga.com/news/26/10/62703817/eli-lilly-q3-2026-earnings-call-transcript",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "LLY"
-      ],
-      "created_at": "2026-10-29T15:17:18Z",
-      "sentiment": "neutral",
-      "confidence": 0.95,
-      "reason": "Earnings call transcript provided without performance details or commentary."
-    },
-    {
-      "id": "62702630",
-      "headline": "8 Of 11 Sectors Rise Thursday As Defensives Lead",
-      "summary": "Eight sectors are higher and three are lower in Thursday\u2019s regular session, with defensive sectors holding two of the top three positions. The leaders are separated rather than clustered, with Health Care ahead of the next group.",
-      "url": "https://www.benzinga.com/etfs/sector-etfs/26/10/62702630/8-of-11-sectors-rise-thursday-as-defensives-lead",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "ABBV",
-        "AVGO",
-        "BAC",
-        "COP",
-        "DIA",
-        "EOG",
-        "EQIX",
-        "GOOGL",
-        "IWM",
-        "LLY",
-        "MA",
-        "MRK",
-        "MSFT",
-        "NFLX",
-        "ORCL",
-        "PLD",
-        "QQQ",
+        "HAL",
+        "MPC",
+        "OIH",
         "SLB",
-        "SPG",
-        "SPY",
-        "V",
-        "XLB",
-        "XLC",
+        "USO",
+        "VLO",
         "XLE",
-        "XLF",
-        "XLI",
-        "XLK",
-        "XLP",
-        "XLRE",
-        "XLU",
-        "XLV",
-        "XLY"
+        "XOP"
       ],
-      "created_at": "2026-10-29T15:00:28Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Majority of sectors rising with defensive strength suggests market stability and broad-based gains."
+      "created_at": "2026-11-02T21:30:07Z",
+      "sentiment": "neutral",
+      "confidence": 0.72,
+      "reason": "Bullish analyst exits but cites sector rotation rather than bearish fundamentals."
     },
     {
-      "id": "62699146",
-      "headline": "Huntington Ingalls, Crocs, Carvana, Insmed And Other Big Stocks Moving Higher On Thursday",
-      "summary": "Stocks rallied on strong earnings and raised guidance, led by Huntington Ingalls, Porch, Teladoc and Crocs, despite the Dow falling 150 points.",
-      "url": "https://www.benzinga.com/trading-ideas/movers/26/10/62699146/huntington-ingalls-crocs-carvana-insmed-and-other-big-stocks-moving-higher-on-thursday",
-      "author": "Avi Kapoor",
+      "id": "62795239",
+      "headline": "AMD, Shopify On Deck Tuesday As AI Spending, Merchant Growth Face Test",
+      "summary": "Advanced Micro Devices headlines Tuesday\u2019s reports, with investors looking for evidence that AI demand can withstand a sharp pullback in the stock. Shopify, Pfizer, Eaton, Marathon Petroleum and Ferrari report before",
+      "url": "https://www.benzinga.com/news/26/11/62795239/amd-shopify-on-deck-tuesday-as-ai-spending-merchant-growth-face-test",
+      "author": "Benzinga Insights",
       "source": "benzinga",
       "symbols": [
-        "BHC",
-        "CHDN",
-        "CMG",
-        "CROX",
-        "CVNA",
-        "DRS",
-        "FCN",
-        "FLS",
-        "FTAI",
-        "GEN",
-        "GKOS",
-        "HII",
-        "INSM",
-        "LLY",
-        "MAX",
-        "NCLH",
-        "PRCH",
-        "TDOC",
-        "TRN",
-        "WHD"
+        "ADM",
+        "AIG",
+        "AIZ",
+        "ALAB",
+        "AMD",
+        "AME",
+        "AMGN",
+        "ANET",
+        "APO",
+        "BKNG",
+        "CPNG",
+        "ETN",
+        "FISV",
+        "FTS",
+        "IFF",
+        "ITUB",
+        "KDP",
+        "MPC",
+        "MPLX",
+        "OVV",
+        "PFE",
+        "PRU",
+        "RACE",
+        "SHOP",
+        "SMCI",
+        "SU",
+        "SWKS",
+        "SYY",
+        "TEVA",
+        "TOST",
+        "TRI",
+        "WAT",
+        "XYZ",
+        "YUM"
       ],
-      "created_at": "2026-10-29T14:05:29Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Strong earnings and raised guidance drove stocks higher including HII, Crocs, and others."
+      "created_at": "2026-11-02T20:30:28Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Article presents upcoming earnings reports with both opportunity (AI demand) and risk (stock pullback) for AMD."
     },
     {
-      "id": "62698376",
-      "headline": "Wells Fargo Maintains Overweight on Phillips 66, Raises Price Target to $346",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62698376/wells-fargo-maintains-overweight-phillips-66-raises-price-target-346",
-      "author": "Benzinga Newsdesk",
+      "id": "62795225",
+      "headline": "AMD Could Swing $90.7 Billion After Earnings",
+      "summary": "Seven major companies are set to report earnings Tuesday, and options traders are pricing in significant stock moves. From Pfizer\u2019s modest 4.14% implied move to Shopify\u2019s 13.01% swing, here\u2019s a countdown of the stocks with the biggest post-earnings volatility expectations, including AMD, Eaton and Arista Networks.",
+      "url": "https://www.benzinga.com/markets/options/26/11/62795225/amd-could-swing-90-7-billion-after-earnings",
+      "author": "Kaustubh Bagalkote",
       "source": "benzinga",
+      "symbols": [
+        "AMD",
+        "AMGN",
+        "ANET",
+        "BKNG",
+        "ETN",
+        "PFE",
+        "SHOP"
+      ],
+      "created_at": "2026-11-02T20:30:09Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Article reports earnings volatility expectations without indicating positive or negative performance outlook."
+    },
+    {
+      "id": "110731525",
+      "headline": "Southwest Airlines Announces New Nonstop Weekend Service Between Austin and Nassau",
+      "summary": "Southwest Airlines will launch new nonstop weekend flights between Austin-Bergstrom International Airport and Lynden Pindling International Airport in summer 2027.",
+      "url": "https://www.globenewswire.com/news-release/2026/11/02/3393619/0/en/the-bahamas-sets-the-stage-for-winter-escapes-with-new-flights-island-stays-and-cultural-celebrations.html",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "LUV"
+      ],
+      "created_at": "2026-11-02T19:02:36Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "New route expansion demonstrates growth strategy and revenue diversification into leisure travel markets."
+    },
+    {
+      "id": "110731430",
+      "headline": "Phillips 66 Enters Long-Term Used Cooking Oil Supply Agreement with Restaurant Technologies",
+      "summary": "Phillips 66 has secured a long-term agreement with Restaurant Technologies, Inc. to source used cooking oil for renewable fuel production at its California facility.",
+      "url": "https://www.globenewswire.com/news-release/2026/11/02/3393618/0/en/from-fryer-to-flyer-converting-used-cooking-oil-into-sustainable-aviation-fuel.html",
+      "author": "",
+      "source": "fiscal.ai",
       "symbols": [
         "PSX"
       ],
-      "created_at": "2026-10-29T13:56:28Z",
+      "created_at": "2026-11-02T19:02:02Z",
       "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Overweight rating maintained with price target increase signals positive outlook for Phillips 66"
+      "confidence": 0.85,
+      "reason": "Long-term supply agreement strengthens renewable fuel production capacity and revenue streams for PSX."
     },
     {
-      "id": "62698181",
-      "headline": "Eli Lilly Mounjaro Clocks 65% Jump in Sales to Massive $10.7 billion",
-      "summary": "Eli Lilly tops Q3 forecasts on surging Mounjaro sales, raises 2026 revenue outlook to $92 billion, and hits new 52-week highs despite an EPS forecast trim.",
-      "url": "https://www.benzinga.com/markets/earnings/26/10/62698181/eli-lilly-mounjaro-clocks-65-jump-in-sales-to-massive-10-7-billion",
-      "author": "Vandana Singh",
-      "source": "benzinga",
-      "symbols": [
-        "LLY"
-      ],
-      "created_at": "2026-10-29T13:53:24Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Massive 65% Mounjaro sales growth, beat Q3 forecasts, raised 2026 revenue outlook to $92B."
-    },
-    {
-      "id": "62697696",
-      "headline": "Piper Sandler Maintains Neutral on Phillips 66, Raises Price Target to $268",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62697696/piper-sandler-maintains-neutral-phillips-66-raises-price-target-268",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "PSX"
-      ],
-      "created_at": "2026-10-29T13:47:00Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Price target raise signals analyst confidence despite neutral rating maintenance."
-    },
-    {
-      "id": "107208313",
-      "headline": "Morgan Stanley Adjusts Nucor Price Target to $300",
-      "summary": "Morgan Stanley has updated its price target for Nucor Corporation, increasing it from $270 to $300.",
-      "url": "https://www.marketscreener.com/news/morgan-stanley-adjusts-price-target-on-nucor-to-300-from-270-ce785cd3d081f126",
+      "id": "110729950",
+      "headline": "Nucor Secures Automotive Steel Contract with General Motors",
+      "summary": "Nucor Corporation has entered into a contract to supply exposed automotive steel for a General Motors SUV model.",
+      "url": "https://www.tradingview.com/news/tradingview:afe5639e641f8:0-weekly-recap-q3-sales-and-earnings-growth-and-mill-launch-and-gm-contract/",
       "author": "",
       "source": "fiscal.ai",
       "symbols": [
         "NUE"
       ],
-      "created_at": "2026-10-29T13:32:10Z",
+      "created_at": "2026-11-02T19:01:38Z",
       "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Price target increase of 11% signals analyst confidence in Nucor's growth prospects."
+      "confidence": 0.85,
+      "reason": "Long-term automotive steel contract with major OEM provides stable revenue and demonstrates market demand."
     },
     {
-      "id": "107208282",
-      "headline": "Wells Fargo Raises Price Target on Phillips 66 to $346",
-      "summary": "Wells Fargo analyst Sam Margolin increased the price target for Phillips 66 (NYSE: PSX) from $345 to $346 while maintaining an Overweight rating.",
-      "url": "https://www.streetinsider.com/news.php?id=27251377&classic=1",
-      "author": "",
-      "source": "fiscal.ai",
+      "id": "62788863",
+      "headline": "Morgan Stanley Maintains Overweight on Phillips 66, Raises Price Target to $290",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/11/62788863/morgan-stanley-maintains-overweight-phillips-66-raises-price-target-290",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
       "symbols": [
         "PSX"
       ],
-      "created_at": "2026-10-29T13:31:59Z",
+      "created_at": "2026-11-02T17:42:15Z",
       "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Price target increase with maintained Overweight rating signals positive outlook for PSX"
+      "confidence": 0.95,
+      "reason": "Overweight rating with raised price target signals strong positive outlook from major analyst."
     },
     {
-      "id": "62694662",
-      "headline": "West Pharmaceutical Servs Q3 2026 Earnings Call Transcript",
-      "summary": "West Pharmaceutical Servs (NYSE:WST) reported third-quarter financial results on Thursday. The transcript from the company\u2019s third-quarter earnings call has been provided below.This transcript is brought to you by",
-      "url": "https://www.benzinga.com/news/26/10/62694662/west-pharmaceutical-servs-q3-2026-earnings-call-transcript",
+      "id": "110402041",
+      "headline": "NetApp Completes Acquisition of PEAK:AIO",
+      "summary": "NetApp has finalized its acquisition of PEAK:AIO, a specialist in metadata architecture and high-performance parallel file systems, to enhance its AI-focused data infrastructure.",
+      "url": "https://www.fidelity.com/news/article/mergers-and-acquisitions/202611020800BIZWIRE_USPR_____20261102_BW208472",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "NTAP"
+      ],
+      "created_at": "2026-11-02T14:31:59Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Strategic acquisition enhances AI data infrastructure capabilities, positioning NetApp for growth in high-demand sector."
+    },
+    {
+      "id": "110401164",
+      "headline": "Ark Invest Trims Eli Lilly Holdings",
+      "summary": "Ark Invest reported selling $25 million worth of Eli Lilly shares, despite the company's strong revenue growth and positive outlook.",
+      "url": "https://www.tradingview.com/news/seekingalpha:998e4e62f094b:0-cathie-wood-s-weekly-recap-loads-ter-avav-after-strong-results-books-gain-in-amd-tsm-lly/",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "LLY"
+      ],
+      "created_at": "2026-11-02T14:31:51Z",
+      "sentiment": "bear",
+      "confidence": 0.75,
+      "reason": "Selling pressure from major investor Ark despite positive fundamentals signals caution"
+    },
+    {
+      "id": "62779123",
+      "headline": "$1000 Invested In Marathon Petroleum 15 Years Ago Would Be Worth This Much Today",
+      "summary": "Marathon Petroleum (NYSE:MPC) has outperformed the market over the past 15 years by 10.8% on an annualized basis producing an average annual return of 23.37%. Currently, Marathon Petroleum has a market capitalization of",
+      "url": "https://www.benzinga.com/news/26/11/62779123/1000-invested-marathon-petroleum-15-years-ago-would-be-worth-much-today",
       "author": "Benzinga Insights",
       "source": "benzinga",
       "symbols": [
-        "WST"
-      ],
-      "created_at": "2026-10-29T13:04:20Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Article only provides earnings call transcript without analysis or performance commentary."
-    },
-    {
-      "id": "107123919",
-      "headline": "David Constable Elected to Marathon Petroleum Corporation Board of Directors",
-      "summary": "Marathon Petroleum Corporation announced the election of David E. Constable to its board of directors, effective March 1, 2027.",
-      "url": "https://www.prnewswire.com/news-releases/david-constable-to-join-marathon-petroleum-corporation-board-of-directors-302923426.html",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
         "MPC"
       ],
-      "created_at": "2026-10-29T11:32:00Z",
-      "sentiment": "neutral",
+      "created_at": "2026-11-02T14:16:21Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Strong outperformance with 23.37% annualized return significantly exceeding market gains over 15 years."
+    },
+    {
+      "id": "110331786",
+      "headline": "Nordson EFD to Preview New Dispensing Technologies at COMPAMED 2026",
+      "summary": "Nordson EFD announced it will showcase two new dispensing technologies, the Ultimus AccuFlow and PICO P\u00b5lse XP HV, at the upcoming COMPAMED 2026 trade show.",
+      "url": "https://www.barchart.com/press-releases/8585658/nordson-efd-to-preview-new-dispensing-technologies-for-medical-device-assembly-at-compamed-2026",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "NDSN"
+      ],
+      "created_at": "2026-11-02T12:32:33Z",
+      "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Board appointment is routine corporate governance with no direct impact on operations or financial performance."
+      "reason": "New product launches showcase innovation and potential revenue growth opportunities."
     },
     {
-      "id": "107123468",
-      "headline": "Eli Lilly Reports Strong Third-Quarter 2026 Financial Results",
-      "summary": "Eli Lilly and Company reported third-quarter 2026 revenue of $24.4 billion, driven by robust demand for its diabetes and obesity medications, and raised its full-year revenue guidance.",
-      "url": "https://www.marketscreener.com/news/eli-lilly-3q-revenue-climbs-on-demand-for-mounjaro-zepbound-ce785cd3d18cf625",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "LLY"
-      ],
-      "created_at": "2026-10-29T11:31:58Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong Q3 revenue, robust medication demand, and raised full-year guidance indicate positive momentum."
-    },
-    {
-      "id": "107123461",
-      "headline": "West Pharmaceutical Services, Inc. Reports Third Quarter 2026 Financial Results",
-      "summary": "West Pharmaceutical Services, Inc. announced its financial results for the third quarter of 2026, reporting net sales of $874.5 million and a 57.3% increase in diluted earnings per share.",
-      "url": "https://www.prnewswire.com/news-releases/west-reports-third-quarter-2026-results-302922802.html",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "WST"
-      ],
-      "created_at": "2026-10-29T11:31:53Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong 57.3% EPS growth and solid $874.5M sales demonstrate robust financial performance."
-    },
-    {
-      "id": "107123459",
-      "headline": "Piper Sandler Adjusts Phillips 66 Price Target",
-      "summary": "Piper Sandler has updated its outlook on Phillips 66, increasing the price target for the company's shares.",
-      "url": "https://www.moomoo.com/hant/news/flash/1002792239/phillips-66-piper-sandler-raises-target-price-to-268-from",
+      "id": "110331705",
+      "headline": "Morgan Stanley Adjusts Price Target on Phillips 66 to $290",
+      "summary": "Morgan Stanley has increased its price target for Phillips 66 from $284 to $290.",
+      "url": "https://www.marketscreener.com/news/morgan-stanley-adjusts-price-target-on-phillips-66-to-290-from-284-ce785fd8d18af020",
       "author": "",
       "source": "fiscal.ai",
       "symbols": [
         "PSX"
       ],
-      "created_at": "2026-10-29T11:31:52Z",
+      "created_at": "2026-11-02T12:31:50Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Price target increase indicates analyst confidence in positive future performance"
+      "reason": "Price target increase signals analyst confidence in Phillips 66's growth prospects."
     },
     {
-      "id": "62687427",
-      "headline": "Lilly Reports Q3 Mounjaro Sales Of $10.723B, Up 65% YoY",
+      "id": "62774269",
+      "headline": "Cantor Fitzgerald Maintains Overweight on Eli Lilly, Raises Price Target to $1600",
       "summary": "",
-      "url": "https://www.benzinga.com/quote/LLY",
+      "url": "https://www.benzinga.com/news/26/11/62774269/cantor-fitzgerald-maintains-overweight-eli-lilly-raises-price-target-1600",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
         "LLY"
       ],
-      "created_at": "2026-10-29T10:50:04Z",
+      "created_at": "2026-11-02T12:29:13Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Mounjaro sales of $10.7B with 65% YoY growth significantly exceeds expectations and demonstrates strong market demand."
+      "reason": "Overweight rating and raised price target signal strong bullish outlook for Eli Lilly"
     },
     {
-      "id": "62687410",
-      "headline": "Eli Lilly Lowers FY2026 Adj EPS Guidance from $35.50-$36.50 to $35.00-$36.00 vs $34.04 Est; Raises FY2026 Sales Guidance from $85.000B-$87.000B to $91.000B-$92.000B vs $88.848B Est",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62687410/eli-lilly-lowers-fy2026-adj-eps-guidance-35-50-36-50-35-00-36-00-vs-34-04-est-raises-fy2026-sales-gu",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "LLY"
-      ],
-      "created_at": "2026-10-29T10:49:54Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Strong sales guidance raise significantly above estimates outweighs modest EPS guidance cut."
-    },
-    {
-      "id": "62687346",
-      "headline": "Eli Lilly Q3 Adj. EPS $7.48 Beats $6.50 Estimate, Sales $24.397B Beat $22.610B Estimate",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/earnings/26/10/62687346/eli-lilly-q3-adj-eps-7-48-beats-6-50-estimate-sales-24-397b-beat-22-610b-estimate",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "LLY"
-      ],
-      "created_at": "2026-10-29T10:48:25Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong Q3 earnings beat on both EPS and sales, significantly exceeding analyst estimates."
-    },
-    {
-      "id": "62686263",
-      "headline": "Steve Jobs' Son Says GLP-1 Weight Loss Drugs Could Be Among Most Important Medicines Ever, With Potential Impact on Cancer",
-      "summary": "Reed Jobs says GLP-1 drugs could help fight cancer; Yosemite fund passes $350M target.",
-      "url": "https://www.benzinga.com/news/health-care/26/10/62686263/steve-jobs-son-says-glp-1-drugs-could-be-among-most-important-medicines-ever-with-potential-impact-on-cancer",
-      "author": "Tanya Rawat",
-      "source": "benzinga",
-      "symbols": [
-        "ABBV",
-        "AMGN",
-        "VNDA"
-      ],
-      "created_at": "2026-10-29T10:28:57Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "GLP-1 drugs positioned as potentially transformative medicines with cancer-fighting applications suggests significant market opportunity."
-    },
-    {
-      "id": "62686200",
-      "headline": "West Pharmaceutical Servs Sees Q4 Adj EPS $2.22-$2.32 vs $2.27 Est; Sees Sales $820.000M-$830.000M vs $826.736M Est",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62686200/west-pharmaceutical-servs-sees-q4-adj-eps-2-22-2-32-vs-2-27-est-sees-sales-820-000m-830-000m-vs-826-",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "WST"
-      ],
-      "created_at": "2026-10-29T10:25:13Z",
-      "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Q4 EPS guidance below midpoint of estimate; sales guidance slightly below consensus."
-    },
-    {
-      "id": "62685267",
-      "headline": "West Pharmaceutical Servs Q3 Adj. EPS $2.66 Beats $2.19 Estimate, Sales $874.500M Beat $825.700M Estimate",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/earnings/26/10/62685267/west-pharmaceutical-servs-q3-adj-eps-2-66-beats-2-19-estimate-sales-874-500m-beat-825-700m-estimate",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "WST"
-      ],
-      "created_at": "2026-10-29T10:03:10Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong earnings beat with 22% EPS outperformance and 6% revenue beat signals solid operational execution."
-    },
-    {
-      "id": "62685245",
-      "headline": "West Pharmaceutical Servs Raises FY2026 GAAP EPS Guidance from $9.01-$9.26 to $9.31-$9.41 vs $8.47 Est",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/10/62685245/west-pharmaceutical-servs-raises-fy2026-gaap-eps-guidance-9-01-9-26-9-31-9-41-vs-8-47-est",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "WST"
-      ],
-      "created_at": "2026-10-29T10:02:54Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Company raises FY2026 EPS guidance above previous range and analyst estimates, signaling strong operational performance."
-    },
-    {
-      "id": "107050852",
-      "headline": "Nordea Upgrades Ambea Following Humana Acquisition",
-      "summary": "Nordea has reaffirmed its buy recommendation for the care provider Ambea and raised its price target, citing updated forecasts that incorporate the acquisition of Humana AB.",
-      "url": "https://de.marketscreener.com/boerse-nachrichten/nordea-sieht-nach-der-uebernahme-von-humana-starkes-gewinnwachstum-bei-ambea-erhoeht-kursziel-ce785cd2dd88fe26",
+      "id": "110315331",
+      "headline": "Berenberg Adjusts Price Target on Eli Lilly and Company to $1,570",
+      "summary": "Berenberg has raised its price target for Eli Lilly and Company to $1,570 from $1,400.",
+      "url": "https://www.marketscreener.com/news/berenberg-adjusts-price-target-on-eli-lilly-and-company-to-1-570-from-1-400-ce785fd8d189f526",
       "author": "",
       "source": "fiscal.ai",
       "symbols": [
-        "HUM"
+        "LLY"
       ],
-      "created_at": "2026-10-29T08:02:00Z",
+      "created_at": "2026-11-02T11:31:53Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Nordea upgraded price target and reaffirmed buy on Ambea, reflecting positive acquisition outlook."
+      "reason": "Price target raised 12% indicating increased analyst confidence in growth prospects."
     },
     {
-      "id": "62683235",
-      "headline": "Reported Earlier, Marathon Petroleum Raises Quarterly Dividend 10% To $1.10 Per Share From $1.00, Payable Dec. 10, 2026, To Shareholders Of Record As Of Nov. 18",
+      "id": "110315330",
+      "headline": "Cantor Fitzgerald Adjusts Price Target on Eli Lilly to $1,600",
+      "summary": "Cantor Fitzgerald has increased its price target for Eli Lilly and Company from $1,440 to $1,600.",
+      "url": "https://www.marketscreener.com/news/cantor-fitzgerald-adjusts-price-target-on-eli-lilly-to-1-600-from-1-440-ce785fd8d188f725",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "LLY"
+      ],
+      "created_at": "2026-11-02T11:31:53Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Price target increase of 11% signals analyst confidence in company's growth prospects."
+    },
+    {
+      "id": "62769248",
+      "headline": "Nordson EFD To Preview Ultimus AccuFlow And PICO P\u00b5lse XP HV Dispensing Technologies For Medical Device Assembly At COMPAMED 2026",
       "summary": "",
-      "url": "https://www.benzinga.com/quote/MPC",
+      "url": "https://www.benzinga.com/quote/NDSN",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "MPC"
+        "NDSN"
       ],
-      "created_at": "2026-10-29T07:03:50Z",
+      "created_at": "2026-11-02T08:12:28Z",
       "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "10% dividend increase signals strong cash flow and management confidence in future earnings."
+      "confidence": 0.85,
+      "reason": "Company showcasing advanced new dispensing technologies at major medical device industry event signals innovation and market expansion."
     },
     {
-      "id": "62682843",
-      "headline": "Stock Market: Will S&P 500 Open Up or Down Today?",
-      "summary": "Will S&amp;P 500 open higher? Polymarket odds dip to 47% as Wall Street weighs a tech selloff, Amazon earnings, PCE inflation, and cooling oil.",
-      "url": "https://www.benzinga.com/markets/prediction-markets/26/10/62682843/stock-market-will-sp-500-open-up-or-down-today-68",
-      "author": "Rishabh Mishra",
+      "id": "110033445",
+      "headline": "Lilly Endowment Inc. Proposes Sale of Eli Lilly Common Stock",
+      "summary": "Lilly Endowment, Inc. has disclosed an intent to sell 295,000 shares of Eli Lilly and Company common stock, valued at approximately $405.24 million.",
+      "url": "https://www.moomoo.com/stock/LLY-CA/news?chain_id=Name1K9-3FXPhg.1kupsog&global_content=%7B%22promote_id%22%3A13764,%22sub_promote_id%22%3A57,%22f%22%3A%22www.moomoo.com%2Fstock%2FEC-US%22%7D",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "LLY"
+      ],
+      "created_at": "2026-11-01T01:01:57Z",
+      "sentiment": "bear",
+      "confidence": 0.75,
+      "reason": "Large insider stake sale signals reduced confidence and potential downward pressure on stock price."
+    },
+    {
+      "id": "109719948",
+      "headline": "Eli Lilly CEO Dave Ricks Engages in Public Exchange Regarding Pharmaceutical Innovation",
+      "summary": "Eli Lilly CEO Dave Ricks publicly responded to skepticism from venture investor Vinod Khosla regarding the potential for large pharmaceutical companies to drive major medical breakthroughs.",
+      "url": "https://in.tradingview.com/news/benzinga:75534c33d094b:0-elon-musk-says-eli-lilly-has-some-banger-drugs-coming-out-after-ceo-dave-ricks-bets-against-vinod-khosla-s-big-biotech-skepticism/",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "LLY"
+      ],
+      "created_at": "2026-10-31T13:01:35Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "CEO response to innovation skepticism is informational without clear positive or negative implications."
+    },
+    {
+      "id": "62763624",
+      "headline": "Benzinga's 'Stock Whisper' Index: Five Stocks Investors Secretly Monitor But Don't Talk About Yet",
+      "summary": "The Stock Whisper Index is a market indicator highlighting stocks that are attracting heightened interest from traders and investors over the last trading week.",
+      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/10/62763624/benzingas-stock-whisper-index-five-stocks-investors-secretly-monitor-but-dont-talk-about-yet-6",
+      "author": "Chris Katje",
       "source": "benzinga",
       "symbols": [
-        "AMZN",
-        "CAT",
-        "DIA",
-        "GEV",
-        "INTC",
-        "LLY",
-        "MA",
-        "MRK",
-        "POLUSD",
-        "QQQ",
-        "SPY",
-        "VRT"
+        "DDOG",
+        "MPC",
+        "NTRA",
+        "TMO",
+        "V"
       ],
-      "created_at": "2026-10-29T06:04:17Z",
+      "created_at": "2026-10-31T13:00:07Z",
       "sentiment": "neutral",
       "confidence": 0.85,
-      "reason": "Mixed signals with tech selloff pressure offset by Amazon earnings and cooling inflation data."
+      "reason": "Article discusses market monitoring activity without revealing specific stocks or performance outlook."
     },
     {
-      "id": "62682622",
-      "headline": "Dow Gains For Third Session Following Fed Decision: Investor Sentiment Improves, Greed Index Remains In \u2018Fear\u2019 Zone",
-      "summary": "U.S. stocks rose after the Fed held rates steady, but CNN&39;s Fear &amp; Greed Index improved to 36, remaining in the Fear zone.",
-      "url": "https://www.benzinga.com/markets/market-summary/26/10/62682622/dow-gains-for-third-session-following-fed-decision-investor-sentiment-improves-greed-index-remains-in-fear-zone",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "AMZN",
-        "CAT",
-        "EAT",
-        "LLY",
-        "SKHY",
-        "VRT"
-      ],
-      "created_at": "2026-10-29T05:33:20Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Dow gains for third session and investor sentiment improves following Fed decision."
-    },
-    {
-      "id": "62682401",
-      "headline": "Amazon, Alphabet and 3 Stocks to Watch Heading Into Thursday",
-      "summary": "Stocks in focus: Amazon and Eli Lilly report earnings; Alphabet missed estimates and fell 10%; Microsoft beat; Caterpillar reports today.",
-      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/10/62682401/amazon-alphabet-and-3-stocks-to-watch-heading-into-thursday",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "AMZN",
-        "CAT",
-        "GOOG",
-        "GOOGL",
-        "LLY",
-        "MSFT"
-      ],
-      "created_at": "2026-10-29T04:18:41Z",
-      "sentiment": "neutral",
-      "confidence": 0.7,
-      "reason": "Mixed results: Alphabet missed and fell 10%, Microsoft beat, Amazon/Eli Lilly/Caterpillar pending."
-    },
-    {
-      "id": "62682206",
-      "headline": "Eli Lilly Shares Trending On Retatrutide Win Ahead Of Earnings: What You Should Know",
-      "summary": "Eli Lilly shares rise 1.89% after hours following positive Phase 3 retatrutide diabetes trial results ahead of quarterly earnings.",
-      "url": "https://www.benzinga.com/markets/equities/26/10/62682206/eli-lilly-shares-rise-after-hours-retatrutide-trial-results",
+      "id": "62763421",
+      "headline": "Elon Musk Says Eli Lilly Has \u2018Some Banger Drugs Coming Out\u2019 After CEO Dave Ricks Bets Against Vinod Khosla's Big Biotech Skepticism",
+      "summary": "Elon Musk praises Eli Lilly\u2019s upcoming drug pipeline as CEO Dave Ricks responds to skepticism about innovation at big biotech companies.",
+      "url": "https://www.benzinga.com/markets/biotech/26/10/62763421/elon-musk-praises-eli-lilly-upcoming-drug-pipeline",
       "author": "Mohd Haider",
       "source": "benzinga",
       "symbols": [
         "LLY",
+        "MRK",
         "NVO"
       ],
-      "created_at": "2026-10-29T03:07:20Z",
+      "created_at": "2026-10-31T09:14:46Z",
       "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Positive Phase 3 trial results for retatrutide and after-hours share price increase signal strong momentum."
+      "confidence": 0.85,
+      "reason": "Elon Musk's public praise of Eli Lilly's drug pipeline signals confidence in the company's future products."
     },
     {
-      "id": "107029263",
-      "headline": "JP Morgan Raises Nucor Price Target",
-      "summary": "JP Morgan increased its price target for Nucor Corporation to $304 per share from $296.",
-      "url": "https://www.moomoo.com/hans/news/post/1002696513/nucor-price-target-raised-to-304-00-share-from-296",
+      "id": "62762846",
+      "headline": "Tigress Financial Reinstates Buy on Southwest Airlines, Announces $62 Price Target",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62762846/tigress-financial-reinstates-buy-southwest-airlines-announces-62-price-target",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "LUV"
+      ],
+      "created_at": "2026-10-31T00:50:58Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst reinstatement of Buy rating with $62 price target indicates positive outlook for Southwest Airlines."
+    },
+    {
+      "id": "62761483",
+      "headline": "JP Morgan Maintains Overweight on Eli Lilly, Raises Price Target to $1650",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62761483/jp-morgan-maintains-overweight-eli-lilly-raises-price-target-1650",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "LLY"
+      ],
+      "created_at": "2026-10-30T22:14:14Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Overweight rating with raised price target signals strong positive outlook"
+    },
+    {
+      "id": "62760223",
+      "headline": "Citigroup Maintains Buy on West Pharmaceutical Servs, Raises Price Target to $494",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62760223/citigroup-maintains-buy-west-pharmaceutical-servs-raises-price-target-494",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "WST"
+      ],
+      "created_at": "2026-10-30T20:57:39Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains buy rating and raises price target, signaling confidence in stock upside potential."
+    },
+    {
+      "id": "62760190",
+      "headline": "Alphabet Posts Worst Week Since 2011, Intel Suffers Record Crash as Warsh Sees 'Cracks': This Week on Wall Street",
+      "summary": "Alphabet logs its worst week since 2011 and Intel its worst day ever as the AI trade cracks, while health care posts a record month against the market.",
+      "url": "https://www.benzinga.com/markets/market-summary/26/10/62760190/alphabet-worst-week-since-2011-intel-record-crash-warsh-cracks-this-week-on-wall-street",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "ALB",
+        "AMD",
+        "AMZN",
+        "ARM",
+        "BA",
+        "CVNA",
+        "F",
+        "FDXF",
+        "GM",
+        "GOOGL",
+        "GPN",
+        "HCA",
+        "HOOD",
+        "IBB",
+        "IBKR",
+        "ILMN",
+        "INTC",
+        "MAR",
+        "MPC",
+        "NOW",
+        "PLTR",
+        "PNR",
+        "QCOM",
+        "RDDT",
+        "REGN",
+        "SMCI",
+        "SNDK",
+        "SPY",
+        "VRT",
+        "XLC",
+        "XLV"
+      ],
+      "created_at": "2026-10-30T20:55:28Z",
+      "sentiment": "bear",
+      "confidence": 0.95,
+      "reason": "Alphabet and Intel both suffered severe losses, signaling weakness in the AI trade sector."
+    },
+    {
+      "id": "109187180",
+      "headline": "Nucor Executive Vice President Noah C. Hanners Sells Shares",
+      "summary": "Nucor Executive Vice President Noah C. Hanners sold 5,190 shares of company common stock for approximately $1.43 million.",
+      "url": "https://in.tradingview.com/news/tradingview:be39fd3ce7616:0-nucor-executive-vice-president-sold-shares-worth-over-1-4m/",
       "author": "",
       "source": "fiscal.ai",
       "symbols": [
         "NUE"
       ],
-      "created_at": "2026-10-29T02:02:15Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Price target increase signals analyst confidence in Nucor's future performance."
+      "created_at": "2026-10-30T20:32:06Z",
+      "sentiment": "bear",
+      "confidence": 0.65,
+      "reason": "Insider selling by executive can signal lack of confidence in near-term stock performance."
     },
     {
-      "id": "107029217",
-      "headline": "Eli Lilly Licenses SpeechDx Dataset for Alzheimer's Research",
-      "summary": "Eli Lilly and Company has entered a collaboration with the Alzheimer's Drug Discovery Foundation to license the SpeechDx dataset for use in Alzheimer's disease research.",
-      "url": "https://www.prnewswire.com/news-releases/alzheimers-drug-discovery-foundations-diagnostics-accelerator-licenses-speechdx-dataset-to-eli-lilly-and-company-advancing-speech-based-markers-as-a-critical-alzheimers-research-tool-302922366.html",
+      "id": "62759535",
+      "headline": "TD Cowen Maintains Buy on West Pharmaceutical Servs, Raises Price Target to $500",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62759535/td-cowen-maintains-buy-west-pharmaceutical-servs-raises-price-target-500",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "WST"
+      ],
+      "created_at": "2026-10-30T20:31:18Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Maintained Buy rating with raised price target signals strong conviction in positive outlook"
+    },
+    {
+      "id": "109015747",
+      "headline": "Amgen Continues Phase III Clinical Trial for Pegloticase in Uncontrolled Gout",
+      "summary": "Amgen's Phase III clinical trial evaluating subcutaneous and intravenous administration of pegloticase for uncontrolled gout remains active and continues to recruit participants.",
+      "url": "https://www.abnewswire.com/pressreleases/gout-clinical-trials-update-2026-phasewise-pipeline-status-drug-profiles-and-key-developers-astrazeneca-rpharm-allena-pharma-jw-pharma-hinova-pharma-jiangsu-hengrui-medicine-selecta-bio_845005.html",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "AMGN"
+      ],
+      "created_at": "2026-10-30T19:01:52Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Routine clinical trial update with no efficacy data or milestone achievement disclosed."
+    },
+    {
+      "id": "62755932",
+      "headline": "Scotiabank Maintains Sector Outperform on Eli Lilly, Raises Price Target to $1605",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62755932/scotiabank-maintains-sector-outperform-eli-lilly-raises-price-target-1605",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "LLY"
+      ],
+      "created_at": "2026-10-30T18:56:09Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Price target raised and sector outperform rating maintained indicates positive outlook"
+    },
+    {
+      "id": "108902795",
+      "headline": "Analysts Raise Price Targets for Eli Lilly Following Q3 Results",
+      "summary": "Following strong third-quarter earnings, analysts from UBS and BMO increased their price targets for Eli Lilly.",
+      "url": "https://www.marketscreener.com/news/eli-lilly-seen-sustaining-obesity-growth-ubs-says-ce785fdbde81f421",
       "author": "",
       "source": "fiscal.ai",
       "symbols": [
         "LLY"
       ],
-      "created_at": "2026-10-29T02:01:41Z",
+      "created_at": "2026-10-30T18:02:12Z",
       "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Strategic collaboration expands Eli Lilly's Alzheimer's research capabilities with advanced diagnostic dataset."
+      "confidence": 0.95,
+      "reason": "Strong Q3 results and analyst price target increases indicate positive momentum."
+    },
+    {
+      "id": "62753294",
+      "headline": "Morgan Stanley Maintains Overweight on Eli Lilly, Raises Price Target to $1596",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/10/62753294/morgan-stanley-maintains-overweight-eli-lilly-raises-price-target-1596",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "LLY"
+      ],
+      "created_at": "2026-10-30T18:01:43Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Overweight rating maintained with significant price target increase signals strong confidence in Eli Lilly's prospects."
     }
   ]
 }
