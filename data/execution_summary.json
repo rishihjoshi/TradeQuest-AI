@@ -1,32 +1,10 @@
 {
-  "timestamp": "2026-11-03T03:00:53Z",
-  "mode": "post_close",
-  "orders_placed": [
-    {
-      "action": "BUY",
-      "symbol": "PSX",
-      "qty": 1.222169,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "WAB",
-      "qty": 0.015859,
-      "status": "submitted"
-    }
-  ],
-  "orders_skipped": [
-    {
-      "symbol": "ZBRA",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "NTAP",
-      "reason": "blocked by agent approval or risk gate"
-    }
-  ],
+  "timestamp": "2026-11-03T20:15:52Z",
+  "mode": "market_open",
+  "orders_placed": [],
+  "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 42.89,
+  "cash_pct_after": 44.64,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
