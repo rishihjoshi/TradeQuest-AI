@@ -1,35 +1,32 @@
 {
-  "timestamp": "2026-11-02T22:28:10Z",
-  "mode": "market_open",
+  "timestamp": "2026-11-03T03:00:53Z",
+  "mode": "post_close",
   "orders_placed": [
-    {
-      "action": "SELL",
-      "symbol": "NTAP",
-      "qty": 0.086298,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "ZBRA",
-      "qty": 2.483267,
-      "status": "submitted"
-    },
     {
       "action": "BUY",
       "symbol": "PSX",
-      "qty": 1.253301,
+      "qty": 1.222169,
       "status": "submitted"
     },
     {
       "action": "BUY",
       "symbol": "WAB",
-      "qty": 0.014536,
+      "qty": 0.015859,
       "status": "submitted"
     }
   ],
-  "orders_skipped": [],
+  "orders_skipped": [
+    {
+      "symbol": "ZBRA",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "NTAP",
+      "reason": "blocked by agent approval or risk gate"
+    }
+  ],
   "errors": [],
-  "cash_pct_after": 42.9,
+  "cash_pct_after": 42.89,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
