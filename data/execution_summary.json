@@ -1,8 +1,26 @@
 {
-  "timestamp": "2026-11-04T01:33:53Z",
-  "mode": "post_close",
-  "orders_placed": [],
-  "orders_skipped": [],
+  "timestamp": "2026-11-04T20:31:55Z",
+  "mode": "market_open",
+  "orders_placed": [
+    {
+      "action": "SELL",
+      "symbol": "MPC",
+      "qty": 1e-05,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "ABBV",
+      "qty": 0.003595,
+      "status": "submitted"
+    }
+  ],
+  "orders_skipped": [
+    {
+      "symbol": "PSX",
+      "reason": "blocked by agent approval or risk gate"
+    }
+  ],
   "errors": [],
   "cash_pct_after": 44.67,
   "long_only_breach": false,
