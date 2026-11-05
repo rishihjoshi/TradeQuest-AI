@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-11-04T20:31:55Z",
-  "mode": "market_open",
+  "timestamp": "2026-11-05T01:38:10Z",
+  "mode": "post_close",
   "orders_placed": [
     {
-      "action": "SELL",
-      "symbol": "MPC",
-      "qty": 1e-05,
+      "action": "BUY",
+      "symbol": "ABBV",
+      "qty": 3.108699,
       "status": "submitted"
     },
     {
       "action": "BUY",
-      "symbol": "ABBV",
-      "qty": 0.003595,
+      "symbol": "XOM",
+      "qty": 0.040619,
       "status": "submitted"
     }
   ],
@@ -22,7 +22,7 @@
     }
   ],
   "errors": [],
-  "cash_pct_after": 44.67,
+  "cash_pct_after": 44.64,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
