@@ -1,40 +1,50 @@
 {
-  "timestamp": "2026-11-05T20:48:01Z",
-  "mode": "market_open",
+  "timestamp": "2026-11-06T01:42:40Z",
+  "mode": "post_close",
   "orders_placed": [
     {
-      "action": "SELL",
-      "symbol": "PSX",
-      "qty": 4.644393,
+      "action": "BUY",
+      "symbol": "ABBV",
+      "qty": 0.008809,
       "status": "submitted"
     },
     {
       "action": "BUY",
-      "symbol": "COP",
-      "qty": 1.691934,
+      "symbol": "ABNB",
+      "qty": 5.282352,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "AAPL",
+      "qty": 0.768994,
       "status": "submitted"
     }
   ],
   "orders_skipped": [
     {
-      "symbol": "NDSN",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
       "symbol": "XOM",
       "reason": "blocked by agent approval or risk gate"
     },
     {
-      "symbol": "EXPD",
+      "symbol": "NDSN",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "COP",
       "reason": "blocked by agent approval or risk gate"
     },
     {
       "symbol": "NUE",
       "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "EXPD",
+      "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 45.73,
+  "cash_pct_after": 45.86,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
