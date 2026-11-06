@@ -1,50 +1,41 @@
 {
-  "timestamp": "2026-11-06T01:42:40Z",
-  "mode": "post_close",
+  "timestamp": "2026-11-06T20:03:19Z",
+  "mode": "market_open",
   "orders_placed": [
     {
-      "action": "BUY",
-      "symbol": "ABBV",
-      "qty": 0.008809,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "ABNB",
-      "qty": 5.282352,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "AAPL",
-      "qty": 0.768994,
-      "status": "submitted"
-    }
-  ],
-  "orders_skipped": [
-    {
-      "symbol": "XOM",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "NDSN",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
+      "action": "SELL",
       "symbol": "COP",
-      "reason": "blocked by agent approval or risk gate"
+      "qty": 1.691934,
+      "status": "submitted"
     },
     {
-      "symbol": "NUE",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
+      "action": "SELL",
       "symbol": "EXPD",
-      "reason": "blocked by agent approval or risk gate"
+      "qty": 1e-05,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "NDSN",
+      "qty": 2.851483,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "NUE",
+      "qty": 3.629075,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "XOM",
+      "qty": 0.040619,
+      "status": "submitted"
     }
   ],
+  "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 45.86,
+  "cash_pct_after": 53.56,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
