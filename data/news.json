@@ -1,480 +1,540 @@
 {
-  "generated_at": "2026-11-05T20:47:13Z",
+  "generated_at": "2026-11-09T23:02:58Z",
   "article_count": 30,
   "articles": [
     {
-      "id": "62946892",
-      "headline": "Enbridge, Moderna On Deck Friday As Demand, Vaccine Pipeline Face Test",
-      "summary": "Enbridge headlines Friday\u2019s reports, with investors weighing whether resilient pipeline utilization can offset a softer revenue comparison. Moderna, Brookfield Asset Management, Humana, Vistra, PPL, Plains All American",
-      "url": "https://www.benzinga.com/news/26/11/62946892/enbridge-moderna-on-deck-friday-as-demand-vaccine-pipeline-face-test",
+      "id": "118001300",
+      "headline": "Stryker Nominates Quest Diagnostics CEO Jim Davis to Board of Directors",
+      "summary": "Stryker Corporation announced its intention to nominate Quest Diagnostics Chairman, CEO, and President Jim Davis to its board of directors, effective January 1, 2027.",
+      "url": "https://investors.stryker.com/press-releases/news-details/2026/Stryker-announces-intention-to-nominate-Jim-Davis-to-board-of-directors/default.aspx",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "DGX"
+      ],
+      "created_at": "2026-11-09T23:01:32Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Board nomination is corporate governance news with no direct impact on financial performance."
+    },
+    {
+      "id": "63072409",
+      "headline": "Jefferies Maintains Buy on Eli Lilly, Raises Price Target to $1700",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/11/63072409/jefferies-maintains-buy-eli-lilly-raises-price-target-1700",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "LLY"
+      ],
+      "created_at": "2026-11-09T21:38:06Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Maintained buy rating with raised price target signals strong positive outlook"
+    },
+    {
+      "id": "63071300",
+      "headline": "Jefferies Maintains Buy on Airbnb, Raises Price Target to $230",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/11/63071300/jefferies-maintains-buy-airbnb-raises-price-target-230",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "ABNB"
+      ],
+      "created_at": "2026-11-09T21:22:06Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains buy rating and raises price target, signaling positive outlook for Airbnb stock."
+    },
+    {
+      "id": "63070313",
+      "headline": "Amgen Announces New Data At The American Heart Association Scientific Sessions 2026; New Late-Breaking Findings Show That Repatha Was A Highly Cost-Effective Treatment Option for High-Risk Patients Wi",
+      "summary": "",
+      "url": "https://www.benzinga.com/quote/AMGN",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "AMGN"
+      ],
+      "created_at": "2026-11-09T21:13:58Z",
+      "sentiment": "bull",
+      "confidence": 0.92,
+      "reason": "Positive efficacy and cost-effectiveness data for Repatha supports market expansion and patient adoption."
+    },
+    {
+      "id": "63064828",
+      "headline": "$1000 Invested In Apple 10 Years Ago Would Be Worth This Much Today",
+      "summary": "Apple (NASDAQ:AAPL) has outperformed the market over the past 10 years by 16.16% on an annualized basis producing an average annual return of 29.36%. Currently, Apple has a market capitalization of $5.03 trillion.",
+      "url": "https://www.benzinga.com/news/26/11/63064828/1000-invested-apple-10-years-ago-would-be-worth-much-today",
       "author": "Benzinga Insights",
       "source": "benzinga",
       "symbols": [
-        "AQN",
-        "BAM",
-        "BEN",
-        "BIP",
-        "CHTR",
-        "DK",
-        "ELAN",
-        "EMA",
-        "ENB",
-        "ESNT",
-        "FLR",
-        "HUM",
+        "AAPL"
+      ],
+      "created_at": "2026-11-09T20:15:20Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Strong historical outperformance with 29.36% average annual return and massive market cap."
+    },
+    {
+      "id": "117623649",
+      "headline": "Humana Commences Cash Tender Offers for Certain Outstanding Debt Securities",
+      "summary": "Humana Inc. has initiated cash tender offers to purchase certain of its outstanding debt securities.",
+      "url": "https://www.streetinsider.com/Press+Releases?before_id=27312032",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "HUM"
+      ],
+      "created_at": "2026-11-09T19:02:53Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Debt tender offer is a routine financial operation with no clear positive or negative implications."
+    },
+    {
+      "id": "117623648",
+      "headline": "Barclays Raises Price Target on Humana to $587",
+      "summary": "Barclays maintained its 'Overweight' rating on Humana Inc. and increased its price target from $582 to $587.",
+      "url": "https://www.tradingview.com/news/tradingview:9165b37b6d2b0:0-barclays-maintains-humana-at-overweight-raises-price-target-to-587-from-582/",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "HUM"
+      ],
+      "created_at": "2026-11-09T19:02:53Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Price target increase and maintained Overweight rating signal analyst confidence in stock upside."
+    },
+    {
+      "id": "117623612",
+      "headline": "Quest Diagnostics CFO to Participate in 9th Annual Evercore Healthcare Conference",
+      "summary": "Quest Diagnostics announced that Sam Samad, Executive Vice President and Chief Financial Officer, will participate in a fireside chat at the 9th Annual Evercore Healthcare Conference in Miami on December 1, 2026.",
+      "url": "https://www.morningstar.com/news/pr-newswire/20261109ny91481/quest-diagnostics-to-speak-at-the-9th-annual-evercore-healthcare-conference",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "DGX"
+      ],
+      "created_at": "2026-11-09T19:02:37Z",
+      "sentiment": "neutral",
+      "confidence": 0.95,
+      "reason": "Announcement of CFO participation at industry conference is routine corporate disclosure with no material information."
+    },
+    {
+      "id": "117623611",
+      "headline": "Quest Diagnostics CFO to Speak at Jefferies Global Healthcare Conference",
+      "summary": "Quest Diagnostics announced that Sam Samad, Executive Vice President and Chief Financial Officer, will speak at the Jefferies Global Healthcare Conference in London.",
+      "url": "https://www.prnewswire.com/news-releases/quest-diagnostics-to-speak-at-the-jefferies-global-healthcare-conference-in-london-302933630.html",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "DGX"
+      ],
+      "created_at": "2026-11-09T19:02:37Z",
+      "sentiment": "neutral",
+      "confidence": 0.95,
+      "reason": "CFO speaking at conference is routine corporate activity with no material business impact."
+    },
+    {
+      "id": "117623609",
+      "headline": "Quest Diagnostics Executive Sells Shares",
+      "summary": "According to an SEC Form 144 filing, Quest Diagnostics executive Patrick Plewman sold 11,700 shares of company common stock on November 9, 2026.",
+      "url": "https://www.moomoo.com/ja/news/flash/1004007566/form-144-quest-diagnostics-dgxus-officer-proposes-to-sell-3",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "DGX"
+      ],
+      "created_at": "2026-11-09T19:02:37Z",
+      "sentiment": "bear",
+      "confidence": 0.65,
+      "reason": "Executive selling shares may signal lack of confidence in near-term stock performance."
+    },
+    {
+      "id": "117622209",
+      "headline": "Apple Announces Multiyear Investment in T\u00fcrkiye",
+      "summary": "Apple is launching a multiyear investment in T\u00fcrkiye, including the establishment of new Developer Academies, a Developer Center, and a Manufacturing Academy.",
+      "url": "https://appleosophy.com/wire/5nzgplq/",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "AAPL"
+      ],
+      "created_at": "2026-11-09T19:01:34Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Apple's multiyear investment in T\u00fcrkiye signals expansion and market development initiatives."
+    },
+    {
+      "id": "117622208",
+      "headline": "Apple Introduces Paid 'Intelligence Usage Packs' for AI Features",
+      "summary": "Apple has launched 'intelligence usage packs' for its Creator Studio apps, allowing users to pay for additional AI generation capacity after reaching monthly limits.",
+      "url": "https://www.tradingview.com/news/seekingalpha:4683431d2094b:0-apple-adds-ability-to-buy-extra-usage-in-creator-studio-in-ai-monetization-push/",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "AAPL"
+      ],
+      "created_at": "2026-11-09T19:01:34Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "New monetization feature shows revenue potential but limited impact on core business."
+    },
+    {
+      "id": "117622207",
+      "headline": "Apple Releases iOS 27.2.1 Update",
+      "summary": "Apple has officially rolled out the iOS 27.2.1 software update for supported iPhone models.",
+      "url": "https://appleosophy.com/wire/o6s1yss/",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "AAPL"
+      ],
+      "created_at": "2026-11-09T19:01:34Z",
+      "sentiment": "neutral",
+      "confidence": 0.95,
+      "reason": "Routine software update announcement lacks material business impact or forward-looking information."
+    },
+    {
+      "id": "63054391",
+      "headline": "Apple Reclaims $5 Trillion Crown: What's Going On?",
+      "summary": "Apple reclaimed its $5 trillion market cap, overtaking NVIDIA as lower AI capital spending, a $7.5B bond sale, and China AI approvals bolstered investor trust.",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/11/63054391/apple-reclaims-5-trillion-crown-whats-going-on",
+      "author": "Anusuya Lahiri",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "BABA",
+        "NVDA"
+      ],
+      "created_at": "2026-11-09T17:48:49Z",
+      "sentiment": "bull",
+      "confidence": 0.92,
+      "reason": "Apple reclaimed $5T market cap milestone with positive catalysts including bond sale and China AI approvals."
+    },
+    {
+      "id": "63051990",
+      "headline": "Nvidia Stock\u2014Is the Huang Controversy a Long-Term Risk?",
+      "summary": "    Jensen Probe    Please click here for an enlarged chart of NVIDIA Corp (NASDAQ:NVDA).    Note the following:     This article is about the big picture, not an individual stock.\u00a0 The chart of NVDA stock is being used",
+      "url": "https://www.benzinga.com/opinion/26/11/63051990/nvidia-stock-is-the-huang-controversy-a-long-term-risk",
+      "author": "The Arora Report",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "AMZN",
+        "BTCUSD",
+        "GOOG",
+        "META",
+        "MSFT",
+        "NVDA",
+        "QQQ",
+        "SPY",
+        "TSLA"
+      ],
+      "created_at": "2026-11-09T17:20:00Z",
+      "sentiment": "bear",
+      "confidence": 0.75,
+      "reason": "Article questions whether Huang controversy poses long-term risks to Nvidia, suggesting potential negative implications."
+    },
+    {
+      "id": "63052356",
+      "headline": "Live On CNBC, Karen Firestone Announces Trimmed Apple Position",
+      "summary": "",
+      "url": "https://www.benzinga.com/quote/AAPL",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL"
+      ],
+      "created_at": "2026-11-09T17:25:00Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Portfolio manager publicly trimmed Apple position, signaling reduced confidence in stock"
+    },
+    {
+      "id": "63051839",
+      "headline": "Humana Analysts Raise Their Forecasts After Q3 Results",
+      "summary": "Humana beat Q3 loss and revenue estimates, raised 2026 EPS guidance, and saw analysts lift price targets to $495-$587.",
+      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/11/63051839/humana-analysts-raise-their-forecasts-after-q3-results",
+      "author": "Avi Kapoor",
+      "source": "benzinga",
+      "symbols": [
+        "HUM"
+      ],
+      "created_at": "2026-11-09T17:17:37Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Beat estimates, raised guidance, and analysts increased price targets significantly."
+    },
+    {
+      "id": "63051284",
+      "headline": "Piper Sandler Maintains Overweight on Humana, Raises Price Target to $526",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/11/63051284/piper-sandler-maintains-overweight-humana-raises-price-target-526",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "HUM"
+      ],
+      "created_at": "2026-11-09T17:12:04Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Overweight rating maintained with raised price target signals positive outlook"
+    },
+    {
+      "id": "63049759",
+      "headline": "Hims-Eli Lilly GLP-1 Deal Meets Summit\u2019s FDA Gamble: Which Biotech ETFs Stand to Gain?",
+      "summary": "Biotech ETFs face key FDA catalysts as Summit Therapeutics&39; decision and the Hims-Lilly GLP-1 deal put XLV, IBB and XBI in focus.",
+      "url": "https://www.benzinga.com/etfs/sector-etfs/26/11/63049759/hims-eli-lilly-glp-1-deal-meets-summits-fda-gamble-which-biotech-etfs-stand-to-gain",
+      "author": "Chandrima Sanyal",
+      "source": "benzinga",
+      "symbols": [
+        "ABBV",
+        "AMGN",
+        "ARWR",
+        "GILD",
+        "HIMS",
+        "IBB",
+        "JNJ",
+        "LLY",
         "MRNA",
-        "OKLO",
-        "PAA",
-        "PAGP",
-        "PPL",
-        "STWD",
-        "TDS",
-        "VEON",
-        "VST",
-        "WULF"
+        "QQQ",
+        "REGN",
+        "SMMT",
+        "SPY",
+        "SYRE",
+        "TGTX",
+        "VRTX",
+        "XBI",
+        "XLV"
       ],
-      "created_at": "2026-11-05T20:30:27Z",
-      "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Mixed outlook with offsetting factors: resilient utilization vs. softer revenue for Enbridge; vaccine pipeline test for Moderna."
-    },
-    {
-      "id": "114513491",
-      "headline": "BofA Securities Raises Eli Lilly Price Target",
-      "summary": "BofA Securities analyst Jason Gerberry maintained a 'Buy' rating on Eli Lilly and Company while increasing the price target from $1,497 to $1,557.",
-      "url": "https://www.marketscreener.com/news/bofa-securities-adjusts-eli-lilly-price-target-to-1-557-from-1-497-ce785fdcd08ff024",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "LLY"
-      ],
-      "created_at": "2026-11-05T19:02:55Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Price target raised 4% with maintained Buy rating signals analyst confidence in LLY growth"
-    },
-    {
-      "id": "114508980",
-      "headline": "Guggenheim Adjusts Price Target on Amgen to $435",
-      "summary": "Guggenheim maintained its Neutral rating on Amgen while increasing its price target from $378 to $435.",
-      "url": "https://www.tradingview.com/news/tradingview:f069a2e0b6b2f:0-guggenheim-maintains-amgen-at-neutral-raises-price-target-to-435-from-378/",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "AMGN"
-      ],
-      "created_at": "2026-11-05T19:01:54Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "15% price target increase signals improved outlook despite neutral rating maintenance."
-    },
-    {
-      "id": "62937861",
-      "headline": "3 Health Care Stocks With Whale Alerts In Today\u2019s Session",
-      "summary": "This whale alert can help traders discover the next big trading opportunities. Whales are entities with large sums of money and we track their transactions here at Benzinga on our options activity scanner. Traders often",
-      "url": "https://www.benzinga.com/markets/options/26/11/62937861/3-health-care-stocks-whale-alerts-today-s-session",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "HUM",
-        "NVO",
-        "UNH"
-      ],
-      "created_at": "2026-11-05T17:35:08Z",
-      "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Article reports on whale activity tracking without expressing bullish or bearish views on specific stocks."
-    },
-    {
-      "id": "62931491",
-      "headline": "Guggenheim Maintains Neutral on Amgen, Raises Price Target to $435",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/11/62931491/guggenheim-maintains-neutral-amgen-raises-price-target-435",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "AMGN"
-      ],
-      "created_at": "2026-11-05T16:04:12Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Maintained neutral rating despite price target raise suggests mixed outlook."
-    },
-    {
-      "id": "114133598",
-      "headline": "Nucor Corporation Operational and Financial Update",
-      "summary": "Nucor Corporation reports strong operational progress, including the successful production start of its new automotive galvanizing line and continued on-schedule development of its West Virginia sheet mill.",
-      "url": "https://www.tradingview.com/news/zacks:653d5be16094b:0-bull-of-the-day-nucor-nue/",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "NUE"
-      ],
-      "created_at": "2026-11-05T16:01:34Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Successful production start and on-schedule development indicate strong operational execution and future growth."
-    },
-    {
-      "id": "114133596",
-      "headline": "Amgen Announces Real-World Study Results for Repatha",
-      "summary": "Amgen reported new real-world study data indicating that its cholesterol-lowering medication Repatha (evolocumab) outperformed ezetimibe in reducing heart disease risk.",
-      "url": "https://www.finanzen.ch/nachrichten/aktien/amgens-real-world-data-shows-repatha-outperforms-ezetimibe-for-heart-disease-1036722533",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "AMGN"
-      ],
-      "created_at": "2026-11-05T16:01:32Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Positive real-world study data showing Repatha's superior efficacy strengthens competitive positioning and revenue potential."
-    },
-    {
-      "id": "113966146",
-      "headline": "Zenith Epigenetics Announces Clinical Trial Collaboration with Eli Lilly",
-      "summary": "Zenith Epigenetics has executed a Clinical Trial Collaboration and Supply Agreement with Eli Lilly to study the combination of ZEN-3694 and Verzenio in patients with NUT carcinoma.",
-      "url": "https://www.newsfilecorp.com/release/322650/Zenith-Epigenetics-Announces-Clinical-Trial-Collaboration-and-Supply-Agreement-with-Lilly-for-Registration-Enabling-Study-of-ZEN3694-and-VerzenioR-Abemaciclib-in-NUT-Carcinoma",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "LLY"
-      ],
-      "created_at": "2026-11-05T14:31:50Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Clinical collaboration with major pharma Eli Lilly validates ZEN-3694 and expands development pipeline."
-    },
-    {
-      "id": "113966143",
-      "headline": "LifeMD Partners with Eli Lilly to Expand Access to GLP-1 Medications",
-      "summary": "LifeMD has entered into an arrangement with Eli Lilly and Company to enable the direct dispensing and shipping of Lilly's self-pay GLP-1 medications, including Zepbound and Foundayo, to eligible patients.",
-      "url": "https://www.globenewswire.com/news-release/2026/11/05/3396309/6480/en/lifemd-expands-access-to-lilly-s-self-pay-glp-1-medicines-enabling-option-to-dispense-and-ship-directly-to-patients-nationwide.html",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "LLY"
-      ],
-      "created_at": "2026-11-05T14:31:50Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Strategic partnership expands LifeMD's GLP-1 medication offerings, driving revenue growth."
-    },
-    {
-      "id": "62919213",
-      "headline": "Amgen Announces Results From Large Real-World Study Showing Treatment With Repatha Reduced Risk Of Fatal Or Nonfatal Heart Attacks By 20% Compared With Ezetimibe In People With ASCVD And Prior Statin ",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/11/62919213/amgen-announces-results-large-real-world-study-showing-treatment-repatha-reduced-risk-fatal-or-nonfa",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "AMGN"
-      ],
-      "created_at": "2026-11-05T14:06:53Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Positive real-world evidence showing Repatha's 20% risk reduction demonstrates clinical efficacy and competitive advantage."
-    },
-    {
-      "id": "62913737",
-      "headline": "LifeMD Announces Agreement For Its Pharmacies To Directly Dispense, Ship Eli Lilly's Self-Pay GLP-1 Medicines",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/11/62913737/lifemd-announces-agreement-its-pharmacies-directly-dispense-ship-eli-lilly-s-self-pay-glp-1-medicine",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "LFMD",
-        "LLY"
-      ],
-      "created_at": "2026-11-05T12:36:54Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "LifeMD gains direct dispensing rights for high-demand Eli Lilly GLP-1 drugs, expanding revenue opportunities."
-    },
-    {
-      "id": "113840875",
-      "headline": "Amgen Price Target Raised by Analyst",
-      "summary": "An analyst has increased the price target for Amgen Inc. shares to $400.00 from $345.00.",
-      "url": "https://www.moomoo.com/hans/news/post/1003632671",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "AMGN"
-      ],
-      "created_at": "2026-11-05T12:33:10Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst raised price target by 16%, indicating positive outlook on stock performance."
-    },
-    {
-      "id": "113839988",
-      "headline": "Phillips 66 Appoints Chris Chandler as Executive Vice President and Strategic Advisor to the CEO",
-      "summary": "Phillips 66 has appointed Chris Chandler as Executive Vice President and Strategic Advisor to the CEO, leveraging his extensive experience in the energy industry.",
-      "url": "https://energydigital.com/news/energys-people-moves-phillips-66-and-federal-pacific",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "PSX"
-      ],
-      "created_at": "2026-11-05T12:31:52Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Executive appointment is positive but lacks material business impact on operations or financials."
-    },
-    {
-      "id": "113839357",
-      "headline": "Lilly to Present New Clinical Data on Retatrutide, Taltz, and Zepbound at ACR Convergence 2026",
-      "summary": "Eli Lilly and Company announced it will showcase new clinical and real-world research regarding the use of retatrutide, Taltz, and Zepbound in patients with rheumatologic conditions and obesity.",
-      "url": "https://www.prnewswire.com/news-releases/lilly-to-showcase-new-retatrutide-taltz-ixekizumab-and-zepbound-tirzepatide-data-at-acr-convergence-2026-advancing-science-at-the-intersection-of-rheumatologic-conditions-and-obesity-302930037.html",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "LLY"
-      ],
-      "created_at": "2026-11-05T12:31:24Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Showcase of new clinical data on multiple key drugs signals positive pipeline progress and commercial confidence."
-    },
-    {
-      "id": "62901189",
-      "headline": "Canaccord Genuity Maintains Hold on Amgen, Raises Price Target to $440",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/11/62901189/canaccord-genuity-maintains-hold-amgen-raises-price-target-440",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "AMGN"
-      ],
-      "created_at": "2026-11-04T23:32:17Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Price target raise to $440 signals analyst confidence despite maintaining Hold rating."
-    },
-    {
-      "id": "113540945",
-      "headline": "Southwest Airlines Launches Seasonal Ski Vacation Package Promotion",
-      "summary": "Southwest Airlines is promoting its 'Getaways by Southwest' vacation packages for the winter season, offering savings of up to $250 on select five-night ski trips.",
-      "url": "https://travelprnews.com/article/southwest-offers-ski-vacation-packages-with-up-to-250-savings-and-free-checked-gear/amp/",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "LUV"
-      ],
-      "created_at": "2026-11-04T23:01:45Z",
+      "created_at": "2026-11-09T16:51:46Z",
       "sentiment": "bull",
       "confidence": 0.75,
-      "reason": "Seasonal promotion drives revenue growth and increases customer engagement during peak travel demand."
+      "reason": "Strategic GLP-1 deal and FDA catalysts create positive momentum for biotech ETFs."
     },
     {
-      "id": "113540932",
-      "headline": "Barclays Maintains Underweight Rating on Expeditors International, Raises Price Target to $175",
-      "summary": "Barclays has maintained its Underweight rating on Expeditors International while increasing the price target from $165 to $175.",
-      "url": "https://www.tradingview.com/news/tradingview:231df9ea283dc:0-barclays-maintains-expeditors-international-at-underweight-raises-price-target-to-175-from-165/",
+      "id": "63049081",
+      "headline": "CORRECTION: Airline companies are trading higher",
+      "summary": "",
+      "url": "https://www.benzinga.com/quote/RYAAY",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "AAL",
+        "ALK",
+        "DAL",
+        "LTM",
+        "LUV",
+        "RYAAY",
+        "UAL",
+        "ULCC"
+      ],
+      "created_at": "2026-11-09T16:43:11Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Airline companies trading higher indicates positive price movement and market optimism."
+    },
+    {
+      "id": "117404734",
+      "headline": "Eli Lilly's Foundayo Meets Primary Endpoint in Phase 3 Sleep Apnea Trial",
+      "summary": "Eli Lilly announced that its oral weight-loss drug, Foundayo, successfully met its primary endpoint in a late-stage clinical study for treating obstructive sleep apnea.",
+      "url": "https://www.morningstar.com/news/dow-jones/202611097009/eli-lilly-says-foundayo-shows-promise-in-treating-sleep-apnea",
       "author": "",
       "source": "fiscal.ai",
       "symbols": [
-        "EXPD"
+        "LLY"
       ],
-      "created_at": "2026-11-04T23:01:38Z",
-      "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Underweight rating is bearish but price target increase of $10 is bullish."
-    },
-    {
-      "id": "62899764",
-      "headline": "UBS Maintains Buy on Amgen, Raises Price Target to $530",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/11/62899764/ubs-maintains-buy-amgen-raises-price-target-530",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "AMGN"
-      ],
-      "created_at": "2026-11-04T22:52:16Z",
+      "created_at": "2026-11-09T16:01:47Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "UBS maintains buy rating and raises price target, signaling positive outlook"
+      "reason": "Successful Phase 3 trial endpoint achievement expands Foundayo's therapeutic potential and market opportunities."
     },
     {
-      "id": "62899631",
-      "headline": "UBS Maintains Buy on Expeditors International, Raises Price Target to $245",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/11/62899631/ubs-maintains-buy-expeditors-international-raises-price-target-245",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "EXPD"
-      ],
-      "created_at": "2026-11-04T22:48:51Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "UBS maintains buy rating and raises price target, signaling positive outlook"
-    },
-    {
-      "id": "62897022",
-      "headline": "Scotiabank Maintains Sector Outperform on Amgen, Raises Price Target to $530",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/11/62897022/scotiabank-maintains-sector-outperform-amgen-raises-price-target-530",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "AMGN"
-      ],
-      "created_at": "2026-11-04T22:08:43Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains outperform rating and raises price target, signaling confidence in stock appreciation."
-    },
-    {
-      "id": "62895525",
-      "headline": "Citigroup Maintains Neutral on Phillips 66, Raises Price Target to $302",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/11/62895525/citigroup-maintains-neutral-phillips-66-raises-price-target-302",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "PSX"
-      ],
-      "created_at": "2026-11-04T21:53:51Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Price target raised to $302 indicates improved outlook despite neutral rating."
-    },
-    {
-      "id": "113371734",
-      "headline": "Nucor President and COO Stephen D. Laxton Sells Shares Worth Over $2.9 Million",
-      "summary": "Nucor President and COO Stephen D. Laxton sold 10,560 shares of company common stock on November 3, 2026.",
-      "url": "https://www.tradingview.com/news/tradingview:70aea0088cfe0:0-nucor-president-coo-sold-shares-worth-over-2-9m/",
+      "id": "117403678",
+      "headline": "Apple Discloses Tax Savings from Earnings Allocation to Singapore",
+      "summary": "Apple reported in its annual filing that it reduced its tax bill by $2.7 billion by allocating certain earnings to Singapore to leverage local tax incentives.",
+      "url": "https://www.tradingview.com/news/seekingalpha:05506371d094b:0-apple-cut-tax-bill-by-2-7b-by-moving-some-earnings-to-singapore/",
       "author": "",
       "source": "fiscal.ai",
       "symbols": [
-        "NUE"
+        "AAPL"
       ],
-      "created_at": "2026-11-04T21:31:44Z",
-      "sentiment": "neutral",
+      "created_at": "2026-11-09T16:01:29Z",
+      "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Insider share sale is routine and doesn't indicate company fundamentals change."
+      "reason": "Tax savings of $2.7B improve profitability and cash flow efficiency."
     },
     {
-      "id": "62886768",
-      "headline": "Citigroup Maintains Neutral on Amgen, Raises Price Target to $465",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/11/62886768/citigroup-maintains-neutral-amgen-raises-price-target-465",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "AMGN"
-      ],
-      "created_at": "2026-11-04T20:58:53Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Maintained neutral rating despite price target increase suggests limited upside conviction."
-    },
-    {
-      "id": "62886248",
-      "headline": "$1000 Invested In Westinghouse Air Brake 15 Years Ago Would Be Worth This Much Today",
-      "summary": "Westinghouse Air Brake (NYSE:WAB) has outperformed the market over the past 15 years by 2.73% on an annualized basis producing an average annual return of 15.64%. Currently, Westinghouse Air Brake has a market",
-      "url": "https://www.benzinga.com/news/26/11/62886248/1000-invested-westinghouse-air-brake-15-years-ago-would-be-worth-much-today",
+      "id": "63044503",
+      "headline": "$1000 Invested In Westinghouse Air Brake 5 Years Ago Would Be Worth This Much Today",
+      "summary": "Westinghouse Air Brake (NYSE:WAB) has outperformed the market over the past 5 years by 14.86% on an annualized basis producing an average annual return of 24.77%. Currently, Westinghouse Air Brake has a market",
+      "url": "https://www.benzinga.com/news/26/11/63044503/1000-invested-westinghouse-air-brake-5-years-ago-would-be-worth-much-today",
       "author": "Benzinga Insights",
       "source": "benzinga",
       "symbols": [
         "WAB"
       ],
-      "created_at": "2026-11-04T20:46:34Z",
+      "created_at": "2026-11-09T16:00:24Z",
       "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Strong 15-year outperformance with 15.64% annualized returns significantly exceeds market average."
+      "confidence": 0.95,
+      "reason": "Stock significantly outperformed market with 24.77% annualized returns over 5 years."
     },
     {
-      "id": "62885560",
-      "headline": "$1000 Invested In Expeditors International 10 Years Ago Would Be Worth This Much Today",
-      "summary": "Expeditors International (NYSE:EXPD) has outperformed the market over the past 10 years by 1.0% on an annualized basis producing an average annual return of 14.62%. Currently, Expeditors International has a market",
-      "url": "https://www.benzinga.com/news/26/11/62885560/1000-invested-expeditors-international-10-years-ago-would-be-worth-much-today",
+      "id": "63044502",
+      "headline": "11 Of 11 Sectors Rise Monday As Growth Leads",
+      "summary": "All 11 sectors are higher in Monday\u2019s regular session, with growth sectors holding two of the top three positions. The leaders are separated rather than clustered, with no single gap clearly standing apart from the other breaks across the table.",
+      "url": "https://www.benzinga.com/etfs/sector-etfs/26/11/63044502/11-of-11-sectors-rise-monday-as-growth-leads",
       "author": "Benzinga Insights",
       "source": "benzinga",
       "symbols": [
-        "EXPD"
+        "AAPL",
+        "AMZN",
+        "AVGO",
+        "CAT",
+        "COP",
+        "DIA",
+        "EOG",
+        "GE",
+        "HON",
+        "IWM",
+        "JNJ",
+        "KO",
+        "LLY",
+        "MRK",
+        "NKE",
+        "ORCL",
+        "PEP",
+        "PG",
+        "QQQ",
+        "SLB",
+        "SPY",
+        "TSLA",
+        "XLB",
+        "XLC",
+        "XLE",
+        "XLF",
+        "XLI",
+        "XLK",
+        "XLP",
+        "XLRE",
+        "XLU",
+        "XLV",
+        "XLY"
       ],
-      "created_at": "2026-11-04T20:31:08Z",
+      "created_at": "2026-11-09T16:00:24Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "All 11 sectors rising with growth sectors outperforming indicates broad market strength."
+    },
+    {
+      "id": "63042269",
+      "headline": "Guggenheim Maintains Buy on Humana, Raises Price Target to $521",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/11/63042269/guggenheim-maintains-buy-humana-raises-price-target-521",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "HUM"
+      ],
+      "created_at": "2026-11-09T15:39:47Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Stock outperformed market with 14.62% annualized returns over 10 years."
+      "reason": "Analyst maintains buy rating and raises price target, indicating positive outlook for Humana stock."
     },
     {
-      "id": "62883691",
-      "headline": "JP Morgan Maintains Neutral on Expeditors International, Raises Price Target to $220",
+      "id": "63042103",
+      "headline": "Barclays Maintains Overweight on Humana, Raises Price Target to $587",
       "summary": "",
-      "url": "https://www.benzinga.com/news/26/11/62883691/jp-morgan-maintains-neutral-expeditors-international-raises-price-target-220",
+      "url": "https://www.benzinga.com/news/26/11/63042103/barclays-maintains-overweight-humana-raises-price-target-587",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "EXPD"
+        "HUM"
       ],
-      "created_at": "2026-11-04T19:45:46Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Price target raise signals improved outlook despite neutral rating maintained."
-    },
-    {
-      "id": "62882961",
-      "headline": "JP Morgan Maintains Neutral on Amgen, Raises Price Target to $425",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/11/62882961/jp-morgan-maintains-neutral-amgen-raises-price-target-425",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "AMGN"
-      ],
-      "created_at": "2026-11-04T19:26:55Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Price target raise signals positive outlook despite neutral rating, indicating upside potential."
-    },
-    {
-      "id": "62882009",
-      "headline": "TD Cowen Maintains Buy on Amgen, Raises Price Target to $531",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/11/62882009/td-cowen-maintains-buy-amgen-raises-price-target-531",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "AMGN"
-      ],
-      "created_at": "2026-11-04T19:02:43Z",
+      "created_at": "2026-11-09T15:38:06Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, indicating positive outlook for Amgen stock."
+      "reason": "Overweight rating and price target increase signals positive outlook for Humana stock."
     },
     {
-      "id": "113111068",
-      "headline": "JPMorgan Adjusts Price Target on Expeditors International of Washington to $220 From $214",
-      "summary": "JPMorgan has revised its price target for Expeditors International of Washington, increasing it from $214 to $220.",
-      "url": "https://www.marketscreener.com/news/jpmorgan-adjusts-price-target-on-expeditors-international-of-washington-to-220-from-214-ce785fdfdd8af42d",
-      "author": "",
-      "source": "fiscal.ai",
+      "id": "63039207",
+      "headline": "FDA Requires Safety Labeling Changes for Glucagon-Like Peptide-1 Receptor Agonists Due to Potential Increased Risk of Rare But Serious Eye Condition",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/11/63039207/fda-requires-safety-labeling-changes-glucagon-peptide-1-receptor-agonists-due-potential-increased-ri",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
       "symbols": [
-        "EXPD"
+        "LLY",
+        "NVO",
+        "SPY"
       ],
-      "created_at": "2026-11-04T19:02:39Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Price target increase signals improved analyst confidence in stock's upside potential."
-    },
-    {
-      "id": "113109384",
-      "headline": "NAD Recommends Good Life Meds Discontinue Claims for Compounded Tirzepatide",
-      "summary": "Following a challenge by Eli Lilly and Company, the National Advertising Division recommended that Good Life Meds, LLC discontinue unsupported health benefit and personalization claims for its compounded tirzepatide products.",
-      "url": "https://www.globenewswire.com/news-release/2026/11/04/3395623/0/en/national-advertising-division-recommends-good-life-discontinue-health-benefit-and-personalization-claims-for-compounded-tirzepatide-products.html",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "LLY"
-      ],
-      "created_at": "2026-11-04T19:01:33Z",
-      "sentiment": "bull",
+      "created_at": "2026-11-09T15:13:25Z",
+      "sentiment": "bear",
       "confidence": 0.85,
-      "reason": "Eli Lilly's successful challenge against competitor's tirzepatide claims strengthens its market position."
+      "reason": "FDA safety labeling requirement for serious adverse effects creates regulatory risk and potential liability concerns for GLP-1 manufacturers."
+    },
+    {
+      "id": "63038974",
+      "headline": "Eli Lilly Gains After Jefferies Raises Price Target to Wall Street-High $1,700",
+      "summary": "Eli Lilly is rising Monday after Jefferies raised its price target to $1,700, the highest target on Wall Street, according to Investing.com.",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/11/63038974/eli-lilly-gains-after-jefferies-raises-price-target-to-wall-street-high-dollar1700",
+      "author": "Dylan Berman",
+      "source": "benzinga",
+      "symbols": [
+        "LLY",
+        "NVO"
+      ],
+      "created_at": "2026-11-09T15:12:36Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Jefferies raised price target to Wall Street-high $1,700, driving stock gains."
+    },
+    {
+      "id": "63035881",
+      "headline": "Google Turns Up the Heat on NVIDIA With New Offerings",
+      "summary": "Alphabet stock rose Monday as Google unveiled new AI chips to rival NVIDIA. Explore GOOG technical levels, analyst targets, and TPU details.",
+      "url": "https://www.benzinga.com/markets/tech/26/11/63035881/google-turns-up-the-heat-on-nvidia-with-new-offerings",
+      "author": "Anusuya Lahiri",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "AMD",
+        "AVGO",
+        "GOOG",
+        "GOOGL",
+        "META",
+        "MRVL",
+        "NVDA",
+        "ORCL"
+      ],
+      "created_at": "2026-11-09T14:51:34Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Google's new AI chips rival NVIDIA, driving Alphabet stock up and positioning it competitively."
+    },
+    {
+      "id": "63034915",
+      "headline": "Bitcoin, Monero Remain the Best Coins for Market in 'Despair,' Analyst Argues",
+      "summary": "Bitcoin and Monero remain goodalexander\u2019s top bets at \u201cmax despair\u201d as Binance hacker sales weigh on Ethereum and XRP.",
+      "url": "https://www.benzinga.com/crypto/cryptocurrency/26/11/63034915/bitcoin-monero-remain-the-best-coins-for-market-in-despair-analyst-argues",
+      "author": "Parshwa Turakhiya",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "BTCUSD",
+        "ETHUSD",
+        "SPCX",
+        "TSLA",
+        "XMRUSD",
+        "XRPUSD"
+      ],
+      "created_at": "2026-11-09T14:45:06Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Bitcoin and Monero positioned as top investment choices despite market despair, suggesting strength."
     }
   ]
 }
