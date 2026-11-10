@@ -1,44 +1,41 @@
 {
-  "timestamp": "2026-11-10T03:43:10Z",
-  "mode": "post_close",
+  "timestamp": "2026-11-10T20:34:38Z",
+  "mode": "market_open",
   "orders_placed": [
     {
-      "action": "BUY",
-      "symbol": "AMGN",
-      "qty": 1.965299,
+      "action": "SELL",
+      "symbol": "AAPL",
+      "qty": 0.750166,
       "status": "submitted"
     },
     {
-      "action": "BUY",
-      "symbol": "CPAY",
-      "qty": 0.00726,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "LLY",
-      "qty": 0.645316,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "WST",
-      "qty": 1.486273,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
+      "action": "SELL",
       "symbol": "HUM",
-      "qty": 0.538631,
+      "qty": 1.080248,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "DGX",
+      "qty": 3.722779,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "WST",
+      "qty": 3.336268,
       "status": "submitted"
     }
   ],
   "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 32.82,
+  "cash_pct_after": 3.54,
   "long_only_breach": false,
-  "invariant_breaches": [],
-  "breach_streak": 0,
+  "invariant_breaches": [
+    "sector Unknown at 32.7% exceeds the 30% cap",
+    "sector Healthcare at 59.2% exceeds the 30% cap"
+  ],
+  "breach_streak": 1,
   "trading_halted": false,
   "dry_run": false
 }
