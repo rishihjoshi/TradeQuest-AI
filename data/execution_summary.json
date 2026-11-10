@@ -1,41 +1,41 @@
 {
-  "timestamp": "2026-11-09T23:07:16Z",
-  "mode": "market_open",
+  "timestamp": "2026-11-10T03:43:10Z",
+  "mode": "post_close",
   "orders_placed": [
     {
       "action": "BUY",
       "symbol": "AMGN",
-      "qty": 1.960771,
+      "qty": 1.965299,
       "status": "submitted"
     },
     {
       "action": "BUY",
       "symbol": "CPAY",
-      "qty": 0.006438,
+      "qty": 0.00726,
       "status": "submitted"
     },
     {
       "action": "BUY",
       "symbol": "LLY",
-      "qty": 0.645332,
+      "qty": 0.645316,
       "status": "submitted"
     },
     {
       "action": "BUY",
       "symbol": "WST",
-      "qty": 1.485363,
+      "qty": 1.486273,
       "status": "submitted"
     },
     {
       "action": "BUY",
       "symbol": "HUM",
-      "qty": 0.541616,
+      "qty": 0.538631,
       "status": "submitted"
     }
   ],
   "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 32.83,
+  "cash_pct_after": 32.82,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
