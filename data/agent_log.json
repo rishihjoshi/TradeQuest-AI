@@ -1,7 +1,127 @@
 {
-  "last_run": "2026-11-12T02:24:29Z",
-  "last_type": "day_end",
+  "last_run": "2026-11-12T21:01:19Z",
+  "last_type": "day_start",
   "runs": [
+    {
+      "id": "RUN-20261112-2101",
+      "timestamp": "2026-11-12T21:01:19Z",
+      "type": "day_start",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is in a confirmed bear regime (95% confidence) with 71.5% long exposure against a 50% equity target \u2014 significantly over-exposed for the current regime. The book holds several dust/residue positions (AAPL $5.96, WAB $9.25, HUM ~$0) that consume slots without meaningful exposure, and AMGN at 19.2% weight is approaching the 20% hard cap. Healthcare sector concentration (ABBV + AMGN + WST + HUM) remains a structural concern flagged across multiple runs. GRMN has an unresolved invariant breach halting its trading.",
+      "regime": "bear",
+      "regime_confidence": 0.95,
+      "flags": [
+        "AMGN: Weight 19.2% ($1,849.85) persistently approaching 20% hard-cap (Rule C) \u2014 flag TRIM to 15% at next quarterly rebalance (Jan 2027). Entry 2026-10-26, unrealized PnL +$20.03 (+1.09%). Above MA50 $423.79, rank 6 \u2014 no structural sell trigger yet.",
+        "Healthcare sector: ABBV ($927, 9.6%) + AMGN ($1,850, 19.2%) + WST ($133, 1.4%) + HUM (~$0) = ~$2,910 or ~30.2% of invested capital \u2014 at or marginally above the 30% sector cap. Monitor closely; a trim may be required if AMGN or ABBV appreciate further.",
+        "GRMN: Trading halted due to unresolved invariant breach from prior run. Weight only 1.1% ($109.20), above MA50 $281.85, rank 7, unrealized PnL +$1.96 (+1.83%). Breach must be resolved before normal trading can resume.",
+        "AAPL: Dust residue $5.96 (0.06% weight), sector=Unknown, ma_50d=null, momentum_rank=0 \u2014 data-integrity flags persist. WST sell at market open (2026-11-12) was submitted; AAPL residue remains. Not eligible for top-up per data-integrity gate (Directive 10).",
+        "WAB: Dust residue $9.25 (0.10% weight), sector=Unknown, ma_50d=null, momentum_rank=0 \u2014 same data-integrity issues as AAPL. Profitable (+$0.46, +5.24%) so not a Tier 1 sell; missing data is not a sell signal per Directive 10.",
+        "HUM: Effectively zero shares (0.000002), market_value=$0.00 \u2014 sub-dust residue occupying a slot. EPS growth -17.9% (quality failure \u2014 Rule B risk). Sector=Healthcare, rank=0, ma_50d=$405.92. Should be swept as a zero-value residue at next quarterly.",
+        "LUV: Sector=Unknown, ma_50d=null, momentum_rank=0 \u2014 persistent data-integrity issues for 5+ runs. However position is profitable (+$90.89, +9.74%, entry 2026-10-30) and missing data is NOT a sell signal. WATCH only.",
+        "CPAY: Momentum rank 13 \u2014 outside the top-30% threshold (rank >15 triggers exit per EXIT_RANK_MULTIPLE=1.5 applied to TARGET_N=10). Currently rank 13 is still within the 15-rank exit threshold. Monitor; if rank deteriorates above 15 for 5 consecutive days, Tier 1 or Tier 2 exit criteria engage. Unrealized PnL +$4.56 (+0.50%), entry 2026-11-09.",
+        "MET: Momentum rank 10 \u2014 at the edge of the top-N cutoff. Above MA50 $98.39, profitable (+$22.96, +2.49%, entry 2026-11-09). No exit trigger yet but approaching hysteresis boundary.",
+        "Long exposure 71.5% vs 50% bear-regime target: portfolio is ~21.5pp over-exposed for a bear regime. Redeployment opportunities are blocked (non-quarterly month, November). Reduction can only occur via Tier 1 SELLs on structural rule triggers or sector trims."
+      ],
+      "decisions": [
+        {
+          "action": "WATCH",
+          "symbol": "AMGN",
+          "reason": "Weight 19.2% approaching 20% hard-cap (Rule C). Flag for TRIM at next quarterly (Jan 2027). Unrealized PnL +$20.03 (+1.09%), entry 2026-10-26. Above MA50 $423.79, rank 6 \u2014 no immediate structural exit trigger. Profitable position; no Tier 1 action warranted today.",
+          "rule_triggered": "profit_take",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "CPAY",
+          "reason": "Momentum rank 13 \u2014 approaching exit threshold (rank >15 for 5 days triggers Rule E). Unrealized PnL +$4.56 (+0.50%), entry 2026-11-09. Above MA50 $407.04. Position is profitable so momentum decay alone does not trigger a Tier 1 sell. Continue monitoring rank trajectory.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "MET",
+          "reason": "Momentum rank 10 \u2014 at the boundary of the top-N cutoff; EXIT_RANK_MULTIPLE threshold is rank >15. No exit trigger yet. Unrealized PnL +$22.96 (+2.49%), entry 2026-11-09. Above MA50 $98.39. HOLD bias but monitor for rank deterioration.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "LUV",
+          "reason": "sector=Unknown, ma_50d=null, momentum_rank=0 \u2014 data missing for 5+ runs. Per Directive 10, missing data is not a sell signal. Position is profitable: unrealized PnL +$90.89 (+9.74%), entry 2026-10-30. No structural sell rule triggered. WATCH pending data restoration.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "WAB",
+          "reason": "Dust residue $9.25 (0.10% weight), sector=Unknown, ma_50d=null, momentum_rank=0. Per Directive 10, missing data is not a sell signal. Position is profitable: unrealized PnL +$0.46 (+5.24%), entry 2026-11-03. Flag for cleanup at next quarterly rebalance.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "AAPL",
+          "reason": "Dust residue $5.96 (0.06% weight), sector=Unknown, ma_50d=null, momentum_rank=0. WST sell order was submitted at market open but AAPL residue persists. Per Directive 10, missing data is not a sell signal. Position is profitable: unrealized PnL +$0.28 (+4.97%), entry 2026-11-06. Flag for cleanup at next quarterly.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "HUM",
+          "reason": "Effectively zero shares (0.000002), market_value=$0.00. EPS growth -17.9% raises Rule B quality concern (needs 2 consecutive quarters to trigger). Sub-dust residue; flag for zero-value sweep at next quarterly. Per Directive 10, rank=0 is not a sell signal.",
+          "rule_triggered": "quality_drop",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ABBV",
+          "reason": "Above MA50 $273.45, rank 4 (top-N), quality passing (EPS +2282%, rev +10.3%). Unrealized PnL -$10.18 (-1.09%), entry 2026-11-04. Loss position but rank 4 is well within top-30%; no structural exit trigger. MIN_HOLD_DAYS not yet elapsed for rank-based exit consideration.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": null
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ABNB",
+          "reason": "Above MA50 $169.16, rank 5 (top-N), quality passing (EPS +42.7%, rev +18.9%). Unrealized PnL -$44.85 (-4.49%), entry 2026-11-06. Loss position within MIN_HOLD_DAYS; no structural exit trigger (rank 5 is well inside threshold).",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": null
+        },
+        {
+          "action": "HOLD",
+          "symbol": "GRMN",
+          "reason": "Above MA50 $281.85, rank 7, quality passing (EPS +34.6%, rev +12.2%). Unrealized PnL +$1.96 (+1.83%), entry 2026-11-09. Trading halted due to unresolved invariant breach \u2014 no new orders until breach is resolved. No structural sell trigger.",
+          "rule_triggered": "long_only_breach",
+          "sell_tier": "null",
+          "urgency": null
+        },
+        {
+          "action": "HOLD",
+          "symbol": "WST",
+          "reason": "Above MA50 $375.84, rank 8 (top-N), quality passing (EPS +57.3%, rev +8.7%). Unrealized PnL +$0.02 (+0.01%), entry 2026-10-09. WST sell order (0.049051 shares) was submitted at market open \u2014 if pending fill, position may be near-zero. Remaining position effectively a dust residue; flag for quarterly cleanup.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": null
+        }
+      ],
+      "cash_action": "maintain",
+      "cash_rationale": "Cash is 28.6% against a 50% bear-regime target \u2014 significantly under the target but this is a non-quarterly month (November) so new-entrant BUYs are blocked and redeployment top-ups are not applicable when moving toward cash. No Tier 1 structural sell triggers are firing today to generate additional cash organically. The only path to increasing cash is structural sell triggers (Rules A-D); none are confirmed today. Maintain current cash level and await either a structural trigger or the January quarterly rebalance.",
+      "summary": "Day-start 2026-11-13 (bear regime, 95% confidence): 11 positions reviewed \u2014 ABBV/ABNB/GRMN/WST HOLD; AMGN/CPAY/MET/LUV/WAB/AAPL/HUM WATCH; no COVER needed; no Tier 1 sell triggers confirmed; Healthcare sector at ~30% cap boundary and AMGN approaching 20% hard-cap flagged for January quarterly action.",
+      "usage": {
+        "input_tokens": 14264,
+        "output_tokens": 2972,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 6683
+      }
+    },
     {
       "id": "RUN-20261112-0224",
       "timestamp": "2026-11-12T02:24:29Z",
@@ -10904,119 +11024,6 @@
       "sell_tier_summary": {
         "tier1_execute": 2,
         "tier2_deferred": 0
-      }
-    },
-    {
-      "id": "RUN-20260910-1706",
-      "timestamp": "2026-09-10T17:06:19Z",
-      "type": "day_start",
-      "model": "claude-sonnet-4-6",
-      "assessment": "Portfolio is in bull regime (82% confidence) with 43.4% cash \u2014 far above the 5% bull-regime target \u2014 due to persistent execution failures on JBL and ROST sells and the NUE/BNY trading halt. No negative share positions exist (long_only_breach=false), so no COVER is needed. The two stub positions JBL and ROST remain below their 50-day MAs with Tier 1 SELL orders unexecuted for 3+ consecutive runs, requiring urgent re-issuance at next open.",
-      "regime": "bull",
-      "regime_confidence": 0.82,
-      "flags": [
-        "JBL: URGENT Tier 1 SELL \u2014 Rule A confirmed, price $311.37 < MA_50d $326.19 (below MA status confirmed), SELL flagged on 2026-09-07, 2026-09-08, 2026-09-09 (3+ runs unexecuted). Stub position 0.086496 shares, unrealized PnL +$0.68, entry 2026-08-18. Must execute next_open.",
-        "ROST: URGENT Tier 1 SELL \u2014 Rule A confirmed, price $224.74 < MA_50d $234.83 (below MA status confirmed), SELL flagged on 2026-09-07, 2026-09-08, 2026-09-09 (3+ runs unexecuted). Stub position 0.114058 shares, unrealized PnL -$0.39, entry 2026-08-18. Must execute next_open.",
-        "CF: Data integrity block \u2014 sector=Unknown, ma_50d=null, momentum_rank=0. Cannot be evaluated against exit rules or entered as new position. Hold only; no buy or sell action on missing data alone. Unrealized PnL +$141.03 (+14.85%), entry 2026-08-18.",
-        "NUE: Trading halt unresolved \u2014 execution log shows invariant breach flag preventing orders. Current data shows shares=0.737328 (positive, no short), price $257.91 > MA_50d $248.90 (above MA), rank=2 (top tier). Halt needs manual resolution; position itself is structurally sound.",
-        "BNY: Trading halt unresolved \u2014 same invariant breach flag as NUE. Current data shows shares=5.887086 (positive, no short), price $162.51 > MA_50d $157.77 (above MA), rank=7. Halt needs manual resolution; position structurally sound.",
-        "ENERGY SECTOR: MPC (10.33%) + PSX (10.05%) + VLO (10.57%) = 30.95% Energy sector exposure \u2014 marginally above the 30% sector cap. Monitor closely; any appreciation in these names triggers mandatory trimming at next rebalance (2026-10-01).",
-        "CASH: 43.4% cash vs 5% bull-regime target \u2014 significant under-deployment. Primary cause is execution failures on JBL/ROST sells and the NUE/BNY halt preventing redeployment orders. Clearing halts and stub sells should release capital for redeployment at October rebalance.",
-        "KEYS: Rank=12, above EXIT_RANK_MULTIPLE threshold (rank > 15 needed to trigger exit). Price $331.01 > MA_50d $326.21 (above MA, margin only $4.80 or 1.5%). Watch for MA approach. Unrealized PnL +$8.21, entry 2026-08-19.",
-        "NTRS: Stub position 0.043807 shares, weight 0.08% \u2014 effectively dust. Unrealized PnL -$0.06, rank=9 (top tier), price $184.69 > MA_50d $184.04 (above MA by only $0.65, 0.35%). Extremely thin MA cushion; flag for trend break watch."
-      ],
-      "decisions": [
-        {
-          "action": "WATCH",
-          "symbol": "JBL",
-          "reason": "[day_start flag-only] Rule A \u2014 trend break confirmed: price $311.37 < MA_50d $326.19 for 3+ consecutive days (below_ma status). SELL Tier 1 re-issued \u2014 unexecuted for 3+ runs (2026-09-07, 2026-09-08, 2026-09-09). Unrealized PnL +$0.68 (+2.58%), entry 2026-08-18. Gain does not block Rule A structural exit. Stub position 0.086496 shares.",
-          "rule_triggered": "trend_break",
-          "sell_tier": "null",
-          "urgency": "next_rebalance",
-          "_original_action": "SELL"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "ROST",
-          "reason": "[day_start flag-only] Rule A \u2014 trend break confirmed: price $224.74 < MA_50d $234.83 for 3+ consecutive days (below_ma status). SELL Tier 1 re-issued \u2014 unexecuted for 3+ runs (2026-09-07, 2026-09-08, 2026-09-09). Unrealized PnL -$0.39 (-1.49%), entry 2026-08-18. Loss position with structural MA break. Stub position 0.114058 shares.",
-          "rule_triggered": "trend_break",
-          "sell_tier": "null",
-          "urgency": "next_rebalance",
-          "_original_action": "SELL"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "CF",
-          "reason": "Data integrity block (sector=Unknown, ma_50d=null, momentum_rank=0) prevents exit rule evaluation. Missing data is not a sell signal per Directive 10. Unrealized PnL +$141.03 (+14.85%), entry 2026-08-18. Hold pending data restoration.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "KEYS",
-          "reason": "Rank=12, above exit threshold (>15 required by EXIT_RANK_MULTIPLE=1.5). Price $331.01 > MA_50d $326.21 \u2014 above MA but margin is only $4.80 (1.5%). No structural exit rule triggered. Unrealized PnL +$8.21 (+2.79%), entry 2026-08-19. Monitor MA proximity; profitable position cannot exit on rank alone.",
-          "rule_triggered": "momentum_decay",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "WATCH",
-          "symbol": "NTRS",
-          "reason": "Price $184.69 > MA_50d $184.04 \u2014 above MA but margin is only $0.65 (0.35%), extremely thin. Stub position (0.043807 shares, weight 0.08%). Unrealized PnL -$0.06 (-0.74%), entry 2026-08-18. Rank=9 (top tier). Watch for MA break; loss position would trigger Tier 1 SELL immediately if price crosses below $184.04.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "NUE",
-          "reason": "Trading halt from execution log unresolved \u2014 manual intervention required to clear. Structurally sound: price $257.91 > MA_50d $248.90, rank=2 (top tier), EPS growth 93.8%, revenue growth 23.0%. Unrealized PnL -$4.22 (-2.17%), entry 2026-08-18. No exit rule triggered on current data.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "BNY",
-          "reason": "Trading halt from execution log unresolved \u2014 manual intervention required to clear. Structurally sound: price $162.51 > MA_50d $157.77, rank=7 (top tier), EPS growth 26.9%, revenue growth 13.1%. Unrealized PnL -$6.28 (-0.65%), entry 2026-08-18. No exit rule triggered.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "MPC",
-          "reason": "Price $401.45 > MA_50d $324.85 (well above). Rank=4 (top tier). Unrealized PnL +$96.16 (+10.10%), entry 2026-08-18. All filters pass. Energy sector cap watch (combined 30.95%) but no individual rule triggers.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "PSX",
-          "reason": "Price $260.78 > MA_50d $216.05 (well above). Rank=6 (top tier). Unrealized PnL +$72.69 (+7.68%), entry 2026-08-18. All filters pass. Energy sector cap watch.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "VLO",
-          "reason": "Price $392.05 > MA_50d $317.48 (well above, +23.4%). Rank=3 (top tier). Unrealized PnL +$117.24 (+12.28%), entry 2026-08-18. All filters pass. Energy sector cap watch.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        }
-      ],
-      "cash_action": "decrease",
-      "cash_rationale": "Cash at 43.4% is far above the 5% bull-regime target. Primary cause is unexecuted JBL/ROST stub sells and the NUE/BNY trading halt blocking redeployment. Clearing the halts and executing the stub sells will free slots but cash reduction via new buys must wait until the October quarterly rebalance (non-quarterly month). No new-entrant BUYs permitted in September.",
-      "summary": "Day-start 2026-09-10 (bull): re-issuing URGENT Tier 1 SELL next_open for JBL (Rule A, 3+ runs unexecuted, PnL +$0.68) and ROST (Rule A, 3+ runs unexecuted, PnL -$0.39); NUE/BNY trading halts require manual resolution; Energy sector at 30.95% marginally above cap; KEYS and NTRS flagged for MA proximity watch.",
-      "usage": {
-        "input_tokens": 11438,
-        "output_tokens": 2800,
-        "cache_read_tokens": 0,
-        "cache_write_tokens": 5926
       }
     }
   ]
