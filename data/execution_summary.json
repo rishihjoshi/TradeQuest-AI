@@ -1,17 +1,11 @@
 {
-  "timestamp": "2026-11-11T20:19:37Z",
-  "mode": "market_open",
+  "timestamp": "2026-11-12T02:23:26Z",
+  "mode": "post_close",
   "orders_placed": [
     {
       "action": "SELL",
-      "symbol": "LLY",
-      "qty": 1.290651,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
       "symbol": "WST",
-      "qty": 0.030627,
+      "qty": 0.049051,
       "status": "submitted"
     }
   ],
@@ -22,12 +16,12 @@
     }
   ],
   "errors": [],
-  "cash_pct_after": 28.59,
+  "cash_pct_after": 28.55,
   "long_only_breach": false,
   "invariant_breaches": [
-    "sector Healthcare at 49.3% exceeds the 30% cap"
+    "sector Healthcare at 30.2% exceeds the 30% cap"
   ],
-  "breach_streak": 3,
+  "breach_streak": 4,
   "trading_halted": true,
   "dry_run": false
 }

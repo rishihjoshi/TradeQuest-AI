@@ -1,7 +1,132 @@
 {
-  "last_run": "2026-11-11T20:18:51Z",
-  "last_type": "day_start",
+  "last_run": "2026-11-12T02:24:29Z",
+  "last_type": "day_end",
   "runs": [
+    {
+      "id": "RUN-20261112-0224",
+      "timestamp": "2026-11-12T02:24:29Z",
+      "type": "day_end",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio sits at $9,633.63 (-3.69% from inception) against a bear regime (95% confidence). The book is 71.5% long vs a 50% equity target \u2014 significantly over-exposed for a bear regime. Several dust/residue positions (AAPL $5.96, WAB $9.25, HUM ~$0.00) continue to occupy slots and complicate the picture. AMGN has breached the 20% weight cap at 19.2% and is approaching the hard-cap trigger. The Healthcare sector concentration (ABBV+AMGN+WST+HUM = ~31%) remains elevated above the 30% sector cap.",
+      "regime": "bear",
+      "regime_confidence": 0.95,
+      "flags": [
+        "AMGN: Weight 19.2% ($1,849.85) \u2014 approaches 20% hard-cap (Rule C). Flag TRIM at next quarterly (Jan 2027). Unrealized PnL +$20.03 (entry 2026-10-26).",
+        "Healthcare sector: ABBV ($927) + AMGN ($1,850) + WST ($133) + HUM (~$0) = ~$2,910 / $6,883 invested \u2248 42% of invested capital \u2014 above 30% sector cap. Sector trim required.",
+        "AAPL: Dust residue $5.96 (0.06% weight), sector=Unknown, ma_50d=null, momentum_rank=0 \u2014 data-integrity flags persist. Below SLOT_MATERIAL_PCT threshold (10% of target). PnL +$0.28, entry 2026-11-06.",
+        "WAB: Dust residue $9.25 (0.10% weight), sector=Unknown, ma_50d=null, momentum_rank=0 \u2014 data-integrity flags persist. PnL +$0.46, entry 2026-11-03.",
+        "HUM: Effectively zero shares (0.000002), market_value=$0.00 \u2014 sub-dust residue occupying a slot. EPS growth -17.9% (quality failure \u2014 Rule B risk). PnL $0.00, entry 2026-10-05.",
+        "LUV: sector=Unknown, ma_50d=null, momentum_rank=0 \u2014 data-integrity flags persist for 5+ runs. Largest position with unknown data ($1,024, 10.6% weight). PnL +$90.89, entry 2026-10-30.",
+        "CPAY: momentum_rank=13, outside top 30% (rank threshold ~15 for EXIT_RANK_MULTIPLE=1.5 \u00d7 TARGET_N=10). Rank 13 is within hysteresis band (exit only at rank >15). PnL +$4.56, entry 2026-11-09.",
+        "MET: momentum_rank=10, at the hysteresis boundary. Monitor closely. PnL +$22.96, entry 2026-11-09.",
+        "GRMN: Unresolved invariant breach flag from prior runs \u2014 trading halted per execution log. Weight 1.1% ($109.20), above MA. Needs invariant clearance. PnL +$1.96, entry 2026-11-09.",
+        "Bear regime: Long exposure 71.5% vs 50% target \u2014 book is ~$2,100 over-exposed for current regime. Cash target is 50%, current is 28.6%. Sector trims and dust cleanup would help close this gap.",
+        "WST: 0.049051 shares SELL submitted at market open (2026-11-12) \u2014 pending fill, do not re-issue."
+      ],
+      "decisions": [
+        {
+          "action": "HOLD",
+          "symbol": "ABBV",
+          "reason": "Above 50-day MA ($296.26 vs MA $273.45). Momentum rank 4 \u2014 top 30%. Quality passes (EPS +2282%, rev +10.3%). Valuation P/E 18.2 passes. Unrealized PnL -$10.18 (-1.09%, entry 2026-11-04). Loss position, but no structural rule triggered and held only 8 days \u2014 MIN_HOLD_DAYS not yet met for rank-based exit. Rule E momentum is passing (rank 4). No sell trigger.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ABNB",
+          "reason": "Above 50-day MA ($180.75 vs MA $169.16). Momentum rank 5 \u2014 top 30%. Quality passes (EPS +42.7%, rev +18.9%). Unrealized PnL -$44.85 (-4.49%, entry 2026-11-06). Loss position held 6 days \u2014 below MIN_HOLD_DAYS. Rule E not confirmed \u22655 days. No structural rule triggered. Hold.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "AMGN",
+          "reason": "Above 50-day MA ($471.17 vs MA $423.79). Momentum rank 6 \u2014 top 30%. Quality passes (EPS +19.4%, rev +8.5%). Weight 19.2% approaching 20% hard-cap (Rule C) \u2014 flag for TRIM at Jan 2027 quarterly. Unrealized PnL +$20.03 (+1.09%, entry 2026-10-26). Profitable position, all structural rules pass. HOLD with Rule C watch flag.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "CPAY",
+          "reason": "Above 50-day MA ($461.95 vs MA $407.04). Momentum rank 13 \u2014 outside top 30% (top 30% of ~500 = rank \u2264150, but strategy target_N=10 means exit at rank >15 per EXIT_RANK_MULTIPLE=1.5). Rank 13 is within hysteresis band (exit only at rank >15). Rule E not yet confirmed \u22655 days at this rank level. Unrealized PnL +$4.56 (+0.50%, entry 2026-11-09). Profitable position \u2014 if rank remains outside top 30% threshold for \u22655 confirmed days, hold gate applies (gain). WATCH.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "GRMN",
+          "reason": "Above 50-day MA ($293.93 vs MA $281.85). Momentum rank 7 \u2014 top 30%. Quality passes (EPS +34.6%, rev +12.2%). Unrealized PnL +$1.96 (+1.83%, entry 2026-11-09). All structural rules pass. Invariant breach flag from execution layer \u2014 GRMN trading was halted due to unresolved invariant breach per market-open log. No negative shares visible in current data (shares=0.371503, positive). Flagging for investigation but no sell trigger from strategy rules.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "HUM",
+          "reason": "Effectively zero shares (0.000002), market_value=$0.00. EPS growth -17.9% raises Rule B concern (quality failure \u2014 negative EPS growth). However position is effectively a zero-value dust residue. Momentum_rank=0, sector=Healthcare, ma_50d=$405.92. Unrealized PnL $0.00, entry 2026-10-05. Rule B requires 2 consecutive negative quarters \u2014 flagging for confirmation. Dust residue should be cleaned up at next rebalance.",
+          "rule_triggered": "quality_drop",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "LUV",
+          "reason": "sector=Unknown, ma_50d=null, momentum_rank=0 \u2014 data-integrity flags persist for 5+ consecutive runs. Per Directive 10, missing data is not a reason to sell a profitable position. Rule A cannot be evaluated (null MA). Unrealized PnL +$90.89 (+9.74%, entry 2026-10-30). Profitable position \u2014 data-integrity gap blocks structural rule confirmation. WATCH pending data restoration. Do not sell on missing data alone.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "MET",
+          "reason": "Above 50-day MA ($102.94 vs MA $98.39). Momentum rank 10 \u2014 at hysteresis boundary (exit only at rank >15). Quality passes (EPS +200.8%, rev +18.2%). Valuation P/E 9.2 passes. Unrealized PnL +$22.96 (+2.49%, entry 2026-11-09). All structural rules pass. Rank 10 within hysteresis band. HOLD.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "WAB",
+          "reason": "sector=Unknown, ma_50d=null, momentum_rank=0 \u2014 data-integrity flags persist for 5+ consecutive runs. Dust position $9.25 (0.10% weight, below SLOT_MATERIAL_PCT). Per Directive 10, missing data is not a reason to sell. Unrealized PnL +$0.46 (+5.24%, entry 2026-11-03). Profitable \u2014 cannot evaluate Rule A without MA data. WATCH pending data restoration or cleanup at next rebalance.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "WST",
+          "reason": "Above 50-day MA ($412.86 vs MA $375.84). Momentum rank 8 \u2014 top 30%. Quality passes (EPS +57.3%, rev +8.7%). Valuation P/E 39.7 \u2014 passes (below 40). Unrealized PnL +$0.02 (+0.01%, entry 2026-10-09). Note: 0.049051 shares SELL submitted at market open 2026-11-12 \u2014 pending fill, not re-issuing. Post-fill residue will be very small. HOLD remaining position.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "AAPL",
+          "reason": "sector=Unknown, ma_50d=null, momentum_rank=0 \u2014 data-integrity flags persist for 5+ consecutive runs. Dust residue $5.96 (0.06% weight). Per Directive 10, missing data is not a reason to sell. Unrealized PnL +$0.28 (+4.97%, entry 2026-11-06). Profitable \u2014 WATCH. Clean up at next rebalance (Jan 2027).",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "increase",
+      "cash_rationale": "Bear regime (95% confidence) targets 50% cash. Current deployable cash is 28.6% \u2014 approximately $2,100 short of the 50% cash target on a $9,634 portfolio (~$4,817 target cash). The Healthcare sector is over the 30% cap (~42% of invested), requiring trims. At the January quarterly rebalance, sector trims (Healthcare), cleanup of dust positions (AAPL, WAB, HUM), and reduction of AMGN toward cap should deploy proceeds into cash to approach the 50% bear-regime target. No BUYs are permitted in November (non-quarterly month).",
+      "summary": "Day-end 2026-11-12 (bear regime, 95% confidence): 11 positions reviewed \u2014 ABBV/ABNB/AMGN/GRMN/MET/WST HOLD; CPAY/HUM/LUV/WAB/AAPL WATCH; Healthcare sector over 30% cap flagged for Jan quarterly trim; AMGN approaching 20% hard-cap (Rule C); cash at 28.6% vs 50% bear-regime target \u2014 increase cash priority at next rebalance.",
+      "usage": {
+        "input_tokens": 15000,
+        "output_tokens": 3282,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 6683
+      },
+      "sell_tier_summary": {
+        "tier1_execute": 0,
+        "tier2_deferred": 2
+      }
+    },
     {
       "id": "RUN-20261111-2018",
       "timestamp": "2026-11-11T20:18:51Z",
@@ -10892,121 +11017,6 @@
         "output_tokens": 2800,
         "cache_read_tokens": 0,
         "cache_write_tokens": 5926
-      }
-    },
-    {
-      "id": "RUN-20260909-2327",
-      "timestamp": "2026-09-09T23:27:20Z",
-      "type": "day_end",
-      "model": "claude-sonnet-4-6",
-      "assessment": "Portfolio is in bull regime with 82% confidence, holding 10 positions but severely underweighted at 56.6% long exposure against a 95% target \u2014 43.4% cash is well above the 5% bull-regime floor. JBL and ROST remain stub positions below their 50-day MAs with persistent unexecuted Tier 1 SELL flags (6+ runs); CF has data integrity issues but is profitable and cannot be exited on that basis alone; the energy trio (VLO, MPC, PSX) and NUE are the portfolio's strongest performers. The October rebalance (2026-10-01) is the next opportunity to fully redeploy the excess cash into equal-weight positions.",
-      "regime": "bull",
-      "regime_confidence": 0.82,
-      "flags": [
-        "JBL: URGENT Tier 1 SELL \u2014 Rule A confirmed (price $311.37 < MA_50d $326.19), below MA for 6+ consecutive runs, unexecuted for 6+ runs. Position is at a GAIN (PnL +$0.68, +2.58%, entry 2026-08-18) \u2014 hold gate applies; must classify as WATCH not SELL since profitable. Escalating from SELL to WATCH per strategy: gain position failing Rule A must still be SELL Tier 1 (structural rule, not momentum decay alone). Rule A is structural \u2014 SELL Tier 1 applies regardless of P&L. Re-issuing next_open.",
-        "ROST: URGENT Tier 1 SELL \u2014 Rule A confirmed (price $224.74 < MA_50d $234.83), below MA for 6+ consecutive runs, unexecuted for 6+ runs. Position at a LOSS (PnL -$0.39, -1.49%, entry 2026-08-18). Tier 1 next_open. Run count: 6+.",
-        "CF: Data integrity block persists \u2014 sector=Unknown, ma_50d=null, momentum_rank=0. Position is PROFITABLE (PnL +$141.03, +14.85%, entry 2026-08-18). Missing data is NOT a sell signal per Directive 10. Holding until structural rule or data integrity is resolved.",
-        "NUE: Trading halt from execution log unresolved \u2014 invariant breach previously flagged. Current data shows shares=0.737328 (positive), no short. Position above MA_50d ($257.91 > $248.90), rank=2, at a loss (-$4.22). Breach flag should be cleared \u2014 no negative shares detected.",
-        "BNY: Trading halt from execution log \u2014 same invariant breach flag. Current data shows shares=5.887086 (positive), above MA. Halt should be reviewed for clearance.",
-        "KEYS: Momentum rank 12, outside top 30% (threshold ~rank 10 for top 30% of 500 stocks). EXIT_RANK_MULTIPLE threshold is rank >15 before exit triggered. Rank 12 is below exit threshold of 15. Position is profitable (+$8.21, +2.79%, entry 2026-08-19). No exit warranted.",
-        "NTRS: Stub position (0.043807 shares, $8.09 market value, 0.08% weight) \u2014 at a loss (-$0.06). Above MA ($184.69 > $184.04), rank 9. Undersized due to prior rebalance churn. Should be topped up at next quarterly rebalance.",
-        "ENERGY SECTOR: MPC (10.33%) + PSX (10.05%) + VLO (10.57%) = 30.95% sector weight \u2014 marginally above 30% sector cap. Flag for trim at October quarterly rebalance.",
-        "CASH: 43.4% deployed cash vs 5% bull-regime target. Next rebalance 2026-10-01. Non-quarterly month (September) \u2014 new-entrant BUYs blocked. Excess cash will be redeployed at October quarterly."
-      ],
-      "decisions": [
-        {
-          "action": "SELL",
-          "symbol": "JBL",
-          "reason": "Rule A \u2014 structural trend break. Price $311.37 < MA_50d $326.19 for 6+ consecutive days. Unrealized PnL +$0.68 (+2.58%), entry 2026-08-18. Rule A is a structural rule that applies regardless of P&L (unlike Rule E which requires hold gate for gains). Tier 1 structural exit. Unexecuted for 6+ consecutive runs \u2014 re-issuing urgency=next_open. Stub position (0.086496 shares, $26.93 value) \u2014 full liquidation.",
-          "rule_triggered": "trend_break",
-          "sell_tier": "tier1",
-          "urgency": "next_open"
-        },
-        {
-          "action": "SELL",
-          "symbol": "ROST",
-          "reason": "Rule A \u2014 structural trend break. Price $224.74 < MA_50d $234.83 for 6+ consecutive days. Unrealized PnL -$0.39 (-1.49%), entry 2026-08-18. Loss position hitting structural Rule A. Tier 1, tax-loss harvest. Unexecuted for 6+ consecutive runs \u2014 re-issuing urgency=next_open. Stub position (0.114058 shares, $25.63 value) \u2014 full liquidation.",
-          "rule_triggered": "trend_break",
-          "sell_tier": "tier1",
-          "urgency": "next_open"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "CF",
-          "reason": "Data integrity block (sector=Unknown, ma_50d=null, momentum_rank=0) is NOT a sell signal per Directive 10. Position is profitable: PnL +$141.03 (+14.85%), entry 2026-08-18. No structural rules can be evaluated without MA data \u2014 holding pending data restoration. Cannot enter new position if data were missing but existing profitable hold is retained.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "BNY",
-          "reason": "Above MA_50d ($162.51 > $157.77). Momentum rank 7 (within top 30%, below EXIT_RANK_MULTIPLE threshold of 15). EPS growth 26.9%, revenue growth 13.1% \u2014 quality passes. Slight loss (-$6.28, -0.65%, entry 2026-08-18) but no structural rule triggered. Trading halt from execution log should be reviewed \u2014 current data shows positive shares with no breach. Holding; top-up warranted at October quarterly to reach equal weight.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "KEYS",
-          "reason": "Above MA_50d ($331.01 > $326.21). Momentum rank 12 \u2014 outside top 30% but below EXIT_RANK_MULTIPLE threshold of 15 (exit only at rank >15 per churn damper). Position profitable: PnL +$8.21 (+2.79%), entry 2026-08-19. Quality excellent (EPS growth 109.1%, revenue growth 36.5%). Hold \u2014 no exit rule triggered. Rank decay being monitored.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "MPC",
-          "reason": "Above MA_50d ($401.45 > $324.85). Momentum rank 4 \u2014 strong top decile. EPS growth 348%, revenue growth 53.7%. Profitable: PnL +$96.16 (+10.1%), entry 2026-08-18. Weight 10.33% \u2014 within hard cap. Energy sector aggregate at ~30.95%, marginally above 30% cap; flag for trim at October quarterly but no immediate action required. Thesis intact.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "NTRS",
-          "reason": "Above MA_50d ($184.69 > $184.04). Momentum rank 9 \u2014 within top 30%. EPS growth 98.6%, revenue growth 36.4% \u2014 quality strong. Tiny loss (-$0.06, -0.74%, entry 2026-08-18). Stub position ($8.09, 0.08% weight) from rebalance churn \u2014 significantly underweight. No structural rule triggered. Redeployment top-up warranted at October quarterly.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "NUE",
-          "reason": "Above MA_50d ($257.91 > $248.90). Momentum rank 2 \u2014 top decile. EPS growth 93.8%, revenue growth 23%. At a loss: PnL -$4.22 (-2.17%), entry 2026-08-18. No structural rule triggered; rank 2 is well within top 30%. Trading halt flagged in execution log but current portfolio shows positive shares (0.737328) \u2014 no invariant breach detected. Holding; top-up warranted at October quarterly.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "PSX",
-          "reason": "Above MA_50d ($260.78 > $216.05). Momentum rank 6 \u2014 top 30%. EPS growth 344.9%, revenue growth 53.1%. Profitable: PnL +$72.69 (+7.68%), entry 2026-08-18. Weight 10.05% \u2014 within hard cap. Energy sector concentration flag noted (aggregate ~30.95%); trim to be evaluated at October quarterly. Thesis intact.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        },
-        {
-          "action": "HOLD",
-          "symbol": "VLO",
-          "reason": "Above MA_50d ($392.05 > $317.48). Momentum rank 3 \u2014 top decile. EPS growth 453.5%, revenue growth 51.7%. Profitable: PnL +$117.24 (+12.28%), entry 2026-08-18. Weight 10.57% \u2014 within hard cap (10% target, fractional overage acceptable). Check Rule D: up 12.28% since entry 2026-08-18 (22 days) \u2014 well below 60% threshold. Thesis intact; strongest energy holding.",
-          "rule_triggered": "null",
-          "sell_tier": "null",
-          "urgency": "next_rebalance"
-        }
-      ],
-      "cash_action": "maintain",
-      "cash_rationale": "September is a non-quarterly month \u2014 new-entrant BUYs are blocked by the execution pipeline. The 43.4% cash level is well above the 5% bull-regime target but cannot be redeployed until the October 1 quarterly rebalance. Maintaining cash at current level; redeployment into equal-weight top-N positions (including top-ups for NTRS, NUE, BNY stub positions and new entrants) will occur at next quarterly. The two stub liquidations (JBL, ROST) will add marginally to cash (~$52).",
-      "summary": "Day-end 2026-09-09 (bull): re-issuing Tier 1 SELL next_open for JBL (Rule A, 6+ runs, stub $26.93, PnL +$0.68) and ROST (Rule A, 6+ runs, stub $25.63, PnL -$0.39); 8 remaining positions held; 43.4% cash awaits October quarterly rebalance; Energy sector at ~30.95% flagged for trim; NUE and BNY trading halts to be reviewed against current positive-share data.",
-      "usage": {
-        "input_tokens": 12168,
-        "output_tokens": 3081,
-        "cache_read_tokens": 0,
-        "cache_write_tokens": 5926
-      },
-      "sell_tier_summary": {
-        "tier1_execute": 2,
-        "tier2_deferred": 0
       }
     }
   ]
