@@ -1,230 +1,51 @@
 {
-  "generated_at": "2026-11-09T23:02:58Z",
+  "generated_at": "2026-11-12T21:01:47Z",
   "article_count": 30,
   "articles": [
     {
-      "id": "118001300",
-      "headline": "Stryker Nominates Quest Diagnostics CEO Jim Davis to Board of Directors",
-      "summary": "Stryker Corporation announced its intention to nominate Quest Diagnostics Chairman, CEO, and President Jim Davis to its board of directors, effective January 1, 2027.",
-      "url": "https://investors.stryker.com/press-releases/news-details/2026/Stryker-announces-intention-to-nominate-Jim-Davis-to-board-of-directors/default.aspx",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "DGX"
-      ],
-      "created_at": "2026-11-09T23:01:32Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Board nomination is corporate governance news with no direct impact on financial performance."
-    },
-    {
-      "id": "63072409",
-      "headline": "Jefferies Maintains Buy on Eli Lilly, Raises Price Target to $1700",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/11/63072409/jefferies-maintains-buy-eli-lilly-raises-price-target-1700",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "LLY"
-      ],
-      "created_at": "2026-11-09T21:38:06Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Maintained buy rating with raised price target signals strong positive outlook"
-    },
-    {
-      "id": "63071300",
-      "headline": "Jefferies Maintains Buy on Airbnb, Raises Price Target to $230",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/11/63071300/jefferies-maintains-buy-airbnb-raises-price-target-230",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "ABNB"
-      ],
-      "created_at": "2026-11-09T21:22:06Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, signaling positive outlook for Airbnb stock."
-    },
-    {
-      "id": "63070313",
-      "headline": "Amgen Announces New Data At The American Heart Association Scientific Sessions 2026; New Late-Breaking Findings Show That Repatha Was A Highly Cost-Effective Treatment Option for High-Risk Patients Wi",
-      "summary": "",
-      "url": "https://www.benzinga.com/quote/AMGN",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "AMGN"
-      ],
-      "created_at": "2026-11-09T21:13:58Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Positive efficacy and cost-effectiveness data for Repatha supports market expansion and patient adoption."
-    },
-    {
-      "id": "63064828",
-      "headline": "$1000 Invested In Apple 10 Years Ago Would Be Worth This Much Today",
-      "summary": "Apple (NASDAQ:AAPL) has outperformed the market over the past 10 years by 16.16% on an annualized basis producing an average annual return of 29.36%. Currently, Apple has a market capitalization of $5.03 trillion.",
-      "url": "https://www.benzinga.com/news/26/11/63064828/1000-invested-apple-10-years-ago-would-be-worth-much-today",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "AAPL"
-      ],
-      "created_at": "2026-11-09T20:15:20Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Strong historical outperformance with 29.36% average annual return and massive market cap."
-    },
-    {
-      "id": "117623649",
-      "headline": "Humana Commences Cash Tender Offers for Certain Outstanding Debt Securities",
-      "summary": "Humana Inc. has initiated cash tender offers to purchase certain of its outstanding debt securities.",
-      "url": "https://www.streetinsider.com/Press+Releases?before_id=27312032",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "HUM"
-      ],
-      "created_at": "2026-11-09T19:02:53Z",
-      "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Debt tender offer is a routine financial operation with no clear positive or negative implications."
-    },
-    {
-      "id": "117623648",
-      "headline": "Barclays Raises Price Target on Humana to $587",
-      "summary": "Barclays maintained its 'Overweight' rating on Humana Inc. and increased its price target from $582 to $587.",
-      "url": "https://www.tradingview.com/news/tradingview:9165b37b6d2b0:0-barclays-maintains-humana-at-overweight-raises-price-target-to-587-from-582/",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "HUM"
-      ],
-      "created_at": "2026-11-09T19:02:53Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Price target increase and maintained Overweight rating signal analyst confidence in stock upside."
-    },
-    {
-      "id": "117623612",
-      "headline": "Quest Diagnostics CFO to Participate in 9th Annual Evercore Healthcare Conference",
-      "summary": "Quest Diagnostics announced that Sam Samad, Executive Vice President and Chief Financial Officer, will participate in a fireside chat at the 9th Annual Evercore Healthcare Conference in Miami on December 1, 2026.",
-      "url": "https://www.morningstar.com/news/pr-newswire/20261109ny91481/quest-diagnostics-to-speak-at-the-9th-annual-evercore-healthcare-conference",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "DGX"
-      ],
-      "created_at": "2026-11-09T19:02:37Z",
-      "sentiment": "neutral",
-      "confidence": 0.95,
-      "reason": "Announcement of CFO participation at industry conference is routine corporate disclosure with no material information."
-    },
-    {
-      "id": "117623611",
-      "headline": "Quest Diagnostics CFO to Speak at Jefferies Global Healthcare Conference",
-      "summary": "Quest Diagnostics announced that Sam Samad, Executive Vice President and Chief Financial Officer, will speak at the Jefferies Global Healthcare Conference in London.",
-      "url": "https://www.prnewswire.com/news-releases/quest-diagnostics-to-speak-at-the-jefferies-global-healthcare-conference-in-london-302933630.html",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "DGX"
-      ],
-      "created_at": "2026-11-09T19:02:37Z",
-      "sentiment": "neutral",
-      "confidence": 0.95,
-      "reason": "CFO speaking at conference is routine corporate activity with no material business impact."
-    },
-    {
-      "id": "117623609",
-      "headline": "Quest Diagnostics Executive Sells Shares",
-      "summary": "According to an SEC Form 144 filing, Quest Diagnostics executive Patrick Plewman sold 11,700 shares of company common stock on November 9, 2026.",
-      "url": "https://www.moomoo.com/ja/news/flash/1004007566/form-144-quest-diagnostics-dgxus-officer-proposes-to-sell-3",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "DGX"
-      ],
-      "created_at": "2026-11-09T19:02:37Z",
-      "sentiment": "bear",
-      "confidence": 0.65,
-      "reason": "Executive selling shares may signal lack of confidence in near-term stock performance."
-    },
-    {
-      "id": "117622209",
-      "headline": "Apple Announces Multiyear Investment in T\u00fcrkiye",
-      "summary": "Apple is launching a multiyear investment in T\u00fcrkiye, including the establishment of new Developer Academies, a Developer Center, and a Manufacturing Academy.",
-      "url": "https://appleosophy.com/wire/5nzgplq/",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "AAPL"
-      ],
-      "created_at": "2026-11-09T19:01:34Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Apple's multiyear investment in T\u00fcrkiye signals expansion and market development initiatives."
-    },
-    {
-      "id": "117622208",
-      "headline": "Apple Introduces Paid 'Intelligence Usage Packs' for AI Features",
-      "summary": "Apple has launched 'intelligence usage packs' for its Creator Studio apps, allowing users to pay for additional AI generation capacity after reaching monthly limits.",
-      "url": "https://www.tradingview.com/news/seekingalpha:4683431d2094b:0-apple-adds-ability-to-buy-extra-usage-in-creator-studio-in-ai-monetization-push/",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "AAPL"
-      ],
-      "created_at": "2026-11-09T19:01:34Z",
-      "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "New monetization feature shows revenue potential but limited impact on core business."
-    },
-    {
-      "id": "117622207",
-      "headline": "Apple Releases iOS 27.2.1 Update",
-      "summary": "Apple has officially rolled out the iOS 27.2.1 software update for supported iPhone models.",
-      "url": "https://appleosophy.com/wire/o6s1yss/",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "AAPL"
-      ],
-      "created_at": "2026-11-09T19:01:34Z",
-      "sentiment": "neutral",
-      "confidence": 0.95,
-      "reason": "Routine software update announcement lacks material business impact or forward-looking information."
-    },
-    {
-      "id": "63054391",
-      "headline": "Apple Reclaims $5 Trillion Crown: What's Going On?",
-      "summary": "Apple reclaimed its $5 trillion market cap, overtaking NVIDIA as lower AI capital spending, a $7.5B bond sale, and China AI approvals bolstered investor trust.",
-      "url": "https://www.benzinga.com/trading-ideas/movers/26/11/63054391/apple-reclaims-5-trillion-crown-whats-going-on",
-      "author": "Anusuya Lahiri",
+      "id": "63216627",
+      "headline": "Wall Street Takes the Chainsaw to Nvidia Targets: One Bank Slashes $465 to $186",
+      "summary": "Evercore cut its Nvidia (NVDA) target to $186 from $465, valuing it like Apple in 2012, as nine banks slashed targets after Jensen Huang&39;s exit.",
+      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/11/63216627/nvidia-price-targets-cut-evercore-apple-jensen-huang",
+      "author": "Piero Cingari",
       "source": "benzinga",
       "symbols": [
         "AAPL",
-        "BABA",
-        "NVDA"
+        "NVDA",
+        "SMH"
       ],
-      "created_at": "2026-11-09T17:48:49Z",
-      "sentiment": "bull",
-      "confidence": 0.92,
-      "reason": "Apple reclaimed $5T market cap milestone with positive catalysts including bond sale and China AI approvals."
+      "created_at": "2026-11-12T19:58:54Z",
+      "sentiment": "bear",
+      "confidence": 0.95,
+      "reason": "Massive 60% target cut by Evercore signals severe downgrades across multiple banks."
     },
     {
-      "id": "63051990",
-      "headline": "Nvidia Stock\u2014Is the Huang Controversy a Long-Term Risk?",
-      "summary": "    Jensen Probe    Please click here for an enlarged chart of NVIDIA Corp (NASDAQ:NVDA).    Note the following:     This article is about the big picture, not an individual stock.\u00a0 The chart of NVDA stock is being used",
-      "url": "https://www.benzinga.com/opinion/26/11/63051990/nvidia-stock-is-the-huang-controversy-a-long-term-risk",
+      "id": "120926447",
+      "headline": "Southwest Airlines Declares 191st Quarterly Dividend",
+      "summary": "Southwest Airlines Co. has declared a quarterly cash dividend of $0.18 per share for its shareholders.",
+      "url": "https://www.prnewswire.com/news-releases/southwest-airlines-declares-191st-quarterly-dividend-302938068.html",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "LUV"
+      ],
+      "created_at": "2026-11-12T19:01:59Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Dividend declaration signals financial strength and shareholder-friendly capital allocation policy."
+    },
+    {
+      "id": "63213045",
+      "headline": "Nvidia Crisis \u2013 Visionary Huang\u2019s Resignation Puts America's AI Advantage at Risk; Gold Falls Below $4000",
+      "summary": "    America\u2019s AI Advantage At Risk    Please click here for an enlarged weekly chart of NVIDIA Corp (NASDAQ:NVDA).    Note the following:     At this time, it is critical for investors to remember our principle: Give",
+      "url": "https://www.benzinga.com/opinion/26/11/63213045/nvidia-crisis-visionary-huang-resignation-puts-america-ai-advantage-at-risk-gold-falls-below-4000",
       "author": "The Arora Report",
       "source": "benzinga",
       "symbols": [
         "AAPL",
         "AMZN",
         "BTCUSD",
+        "GLD",
         "GOOG",
         "META",
         "MSFT",
@@ -233,308 +54,479 @@
         "SPY",
         "TSLA"
       ],
-      "created_at": "2026-11-09T17:20:00Z",
+      "created_at": "2026-11-12T18:52:08Z",
       "sentiment": "bear",
-      "confidence": 0.75,
-      "reason": "Article questions whether Huang controversy poses long-term risks to Nvidia, suggesting potential negative implications."
-    },
-    {
-      "id": "63052356",
-      "headline": "Live On CNBC, Karen Firestone Announces Trimmed Apple Position",
-      "summary": "",
-      "url": "https://www.benzinga.com/quote/AAPL",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "AAPL"
-      ],
-      "created_at": "2026-11-09T17:25:00Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Portfolio manager publicly trimmed Apple position, signaling reduced confidence in stock"
-    },
-    {
-      "id": "63051839",
-      "headline": "Humana Analysts Raise Their Forecasts After Q3 Results",
-      "summary": "Humana beat Q3 loss and revenue estimates, raised 2026 EPS guidance, and saw analysts lift price targets to $495-$587.",
-      "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/11/63051839/humana-analysts-raise-their-forecasts-after-q3-results",
-      "author": "Avi Kapoor",
-      "source": "benzinga",
-      "symbols": [
-        "HUM"
-      ],
-      "created_at": "2026-11-09T17:17:37Z",
-      "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Beat estimates, raised guidance, and analysts increased price targets significantly."
+      "reason": "Huang's resignation threatens Nvidia's leadership and America's AI competitive position."
     },
     {
-      "id": "63051284",
-      "headline": "Piper Sandler Maintains Overweight on Humana, Raises Price Target to $526",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/11/63051284/piper-sandler-maintains-overweight-humana-raises-price-target-526",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "HUM"
-      ],
-      "created_at": "2026-11-09T17:12:04Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Overweight rating maintained with raised price target signals positive outlook"
-    },
-    {
-      "id": "63049759",
-      "headline": "Hims-Eli Lilly GLP-1 Deal Meets Summit\u2019s FDA Gamble: Which Biotech ETFs Stand to Gain?",
-      "summary": "Biotech ETFs face key FDA catalysts as Summit Therapeutics&39; decision and the Hims-Lilly GLP-1 deal put XLV, IBB and XBI in focus.",
-      "url": "https://www.benzinga.com/etfs/sector-etfs/26/11/63049759/hims-eli-lilly-glp-1-deal-meets-summits-fda-gamble-which-biotech-etfs-stand-to-gain",
-      "author": "Chandrima Sanyal",
-      "source": "benzinga",
-      "symbols": [
-        "ABBV",
-        "AMGN",
-        "ARWR",
-        "GILD",
-        "HIMS",
-        "IBB",
-        "JNJ",
-        "LLY",
-        "MRNA",
-        "QQQ",
-        "REGN",
-        "SMMT",
-        "SPY",
-        "SYRE",
-        "TGTX",
-        "VRTX",
-        "XBI",
-        "XLV"
-      ],
-      "created_at": "2026-11-09T16:51:46Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Strategic GLP-1 deal and FDA catalysts create positive momentum for biotech ETFs."
-    },
-    {
-      "id": "63049081",
-      "headline": "CORRECTION: Airline companies are trading higher",
-      "summary": "",
-      "url": "https://www.benzinga.com/quote/RYAAY",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "AAL",
-        "ALK",
-        "DAL",
-        "LTM",
-        "LUV",
-        "RYAAY",
-        "UAL",
-        "ULCC"
-      ],
-      "created_at": "2026-11-09T16:43:11Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Airline companies trading higher indicates positive price movement and market optimism."
-    },
-    {
-      "id": "117404734",
-      "headline": "Eli Lilly's Foundayo Meets Primary Endpoint in Phase 3 Sleep Apnea Trial",
-      "summary": "Eli Lilly announced that its oral weight-loss drug, Foundayo, successfully met its primary endpoint in a late-stage clinical study for treating obstructive sleep apnea.",
-      "url": "https://www.morningstar.com/news/dow-jones/202611097009/eli-lilly-says-foundayo-shows-promise-in-treating-sleep-apnea",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "LLY"
-      ],
-      "created_at": "2026-11-09T16:01:47Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Successful Phase 3 trial endpoint achievement expands Foundayo's therapeutic potential and market opportunities."
-    },
-    {
-      "id": "117403678",
-      "headline": "Apple Discloses Tax Savings from Earnings Allocation to Singapore",
-      "summary": "Apple reported in its annual filing that it reduced its tax bill by $2.7 billion by allocating certain earnings to Singapore to leverage local tax incentives.",
-      "url": "https://www.tradingview.com/news/seekingalpha:05506371d094b:0-apple-cut-tax-bill-by-2-7b-by-moving-some-earnings-to-singapore/",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "AAPL"
-      ],
-      "created_at": "2026-11-09T16:01:29Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Tax savings of $2.7B improve profitability and cash flow efficiency."
-    },
-    {
-      "id": "63044503",
-      "headline": "$1000 Invested In Westinghouse Air Brake 5 Years Ago Would Be Worth This Much Today",
-      "summary": "Westinghouse Air Brake (NYSE:WAB) has outperformed the market over the past 5 years by 14.86% on an annualized basis producing an average annual return of 24.77%. Currently, Westinghouse Air Brake has a market",
-      "url": "https://www.benzinga.com/news/26/11/63044503/1000-invested-westinghouse-air-brake-5-years-ago-would-be-worth-much-today",
-      "author": "Benzinga Insights",
-      "source": "benzinga",
-      "symbols": [
-        "WAB"
-      ],
-      "created_at": "2026-11-09T16:00:24Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Stock significantly outperformed market with 24.77% annualized returns over 5 years."
-    },
-    {
-      "id": "63044502",
-      "headline": "11 Of 11 Sectors Rise Monday As Growth Leads",
-      "summary": "All 11 sectors are higher in Monday\u2019s regular session, with growth sectors holding two of the top three positions. The leaders are separated rather than clustered, with no single gap clearly standing apart from the other breaks across the table.",
-      "url": "https://www.benzinga.com/etfs/sector-etfs/26/11/63044502/11-of-11-sectors-rise-monday-as-growth-leads",
-      "author": "Benzinga Insights",
+      "id": "63211602",
+      "headline": "What Is Going on With Apple Stock on Thursday?",
+      "summary": "Apple (AAPL) stock rose nearly 1% Thursday as its $5 trillion valuation, $2,000 iPhone Duo pricing power, and expanding AI plans widened its lead over NVIDIA.",
+      "url": "https://www.benzinga.com/markets/tech/26/11/63211602/what-is-going-on-with-apple-stock-on-thursday-2",
+      "author": "Anusuya Lahiri",
       "source": "benzinga",
       "symbols": [
         "AAPL",
-        "AMZN",
+        "FFLG",
+        "NVDA",
+        "SPMO",
+        "USMC"
+      ],
+      "created_at": "2026-11-12T18:27:39Z",
+      "sentiment": "bull",
+      "confidence": 0.92,
+      "reason": "Stock rose 1% amid strong valuation, premium pricing power, and AI expansion outpacing competitors."
+    },
+    {
+      "id": "63211242",
+      "headline": "Can Nvidia Pull A Tim Cook? Apple's Post-Jobs Performance Offers Clues",
+      "summary": "Nvidia Jensen Huang resigns. Apple&39;s experience after Steve Jobs left offers investors a lesson ahead of Nvidia&39;s next earnings.",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/11/63211242/nvidia-jensen-huang-resigns-apple-tim-cook",
+      "author": "Surbhi Jain",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "NVDA"
+      ],
+      "created_at": "2026-11-12T18:22:01Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Article analyzes Nvidia's leadership transition by comparing to Apple's post-Jobs performance without clear positive or negative outlook."
+    },
+    {
+      "id": "63211052",
+      "headline": "What's Going On With Alphabet Stock Thursday?",
+      "summary": "Alphabet stock rises 3% as Google raises nearly $4B in Asian bonds and launches AI smart glasses to rival Meta.",
+      "url": "https://www.benzinga.com/markets/tech/26/11/63211052/whats-going-on-with-alphabet-stock-thursday-2",
+      "author": "Anusuya Lahiri",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "GOOG",
+        "GOOGL",
+        "META",
+        "SSNLF"
+      ],
+      "created_at": "2026-11-12T18:17:43Z",
+      "sentiment": "bull",
+      "confidence": 0.92,
+      "reason": "Stock price rise, major bond fundraising, and new competitive AI product launch are positive catalysts."
+    },
+    {
+      "id": "63210863",
+      "headline": "Nasdaq 100 Turns Green Despite Nvidia's 5% Drop on Huang Exit: Stock Market Today",
+      "summary": "The Nasdaq 100 turned green as Nvidia recovered from a 14.3% plunge on Jensen Huang&39;s exit, while AMD and Broadcom rallied and Treasury yields jumped.",
+      "url": "https://www.benzinga.com/markets/equities/26/11/63210863/stock-market-today-nvidia-huang-exit-amd-broadcom-rally",
+      "author": "Piero Cingari",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "AMAT",
+        "AMD",
         "AVGO",
-        "CAT",
-        "COP",
+        "BTCUSD",
+        "CSCO",
+        "CVX",
         "DIA",
-        "EOG",
-        "GE",
-        "HON",
+        "DPC",
+        "FIGR",
+        "FRMI",
+        "GDX",
+        "GOOGL",
+        "GPN",
+        "HUBS",
         "IWM",
-        "JNJ",
-        "KO",
-        "LLY",
-        "MRK",
-        "NKE",
-        "ORCL",
-        "PEP",
-        "PG",
+        "JBS",
+        "MBGL",
+        "NU",
+        "NVDA",
         "QQQ",
-        "SLB",
-        "SPY",
-        "TSLA",
+        "SMCI",
+        "SMH",
+        "TIGO",
+        "VOO",
         "XLB",
-        "XLC",
         "XLE",
-        "XLF",
-        "XLI",
-        "XLK",
-        "XLP",
-        "XLRE",
-        "XLU",
-        "XLV",
-        "XLY"
+        "XOP",
+        "YETI"
       ],
-      "created_at": "2026-11-09T16:00:24Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "All 11 sectors rising with growth sectors outperforming indicates broad market strength."
+      "created_at": "2026-11-12T18:16:23Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Mixed signals: Nasdaq recovery positive, but Nvidia's significant drop and CEO exit create uncertainty."
     },
     {
-      "id": "63042269",
-      "headline": "Guggenheim Maintains Buy on Humana, Raises Price Target to $521",
+      "id": "63208229",
+      "headline": "4 Industrials Stocks With Whale Alerts In Today\u2019s Session",
+      "summary": "This whale alert can help traders discover the next big trading opportunities. Whales are entities with large sums of money and we track their transactions here at Benzinga on our options activity scanner. Traders will",
+      "url": "https://www.benzinga.com/markets/options/26/11/63208229/4-industrials-stocks-whale-alerts-today-s-session",
+      "author": "Benzinga Insights",
+      "source": "benzinga",
+      "symbols": [
+        "FIX",
+        "LUV",
+        "UPS",
+        "VRT"
+      ],
+      "created_at": "2026-11-12T17:35:09Z",
+      "sentiment": "neutral",
+      "confidence": 0.65,
+      "reason": "Article alerts traders to whale activity without revealing positive or negative directional bias."
+    },
+    {
+      "id": "63208142",
+      "headline": "Google Launches Gemini App On Apple Carplay For iOS Users",
       "summary": "",
-      "url": "https://www.benzinga.com/news/26/11/63042269/guggenheim-maintains-buy-humana-raises-price-target-521",
+      "url": "https://www.benzinga.com/news/26/11/63208142/google-launches-gemini-app-apple-carplay-ios-users",
       "author": "Benzinga Newsdesk",
       "source": "benzinga",
       "symbols": [
-        "HUM"
+        "AAPL",
+        "GOOG",
+        "GOOGL"
       ],
-      "created_at": "2026-11-09T15:39:47Z",
+      "created_at": "2026-11-12T17:34:02Z",
       "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Analyst maintains buy rating and raises price target, indicating positive outlook for Humana stock."
+      "confidence": 0.75,
+      "reason": "Google expands Gemini AI availability to Apple CarPlay, increasing product reach and user engagement."
     },
     {
-      "id": "63042103",
-      "headline": "Barclays Maintains Overweight on Humana, Raises Price Target to $587",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/11/63042103/barclays-maintains-overweight-humana-raises-price-target-587",
-      "author": "Benzinga Newsdesk",
+      "id": "63205423",
+      "headline": "Wall Street Now Values Nvidia Like a Package-Delivery Company, Data Shows",
+      "summary": "Nvidia stock&39;s forward P/E fell below UPS after Jensen Huang resigned. The AI chipmaker now trades cheaper than airlines.",
+      "url": "https://www.benzinga.com/markets/equities/26/11/63205423/nvidia-stock-forward-pe-below-ups-jensen-huang",
+      "author": "Piero Cingari",
       "source": "benzinga",
       "symbols": [
-        "HUM"
+        "CAT",
+        "CMI",
+        "FDX",
+        "HRL",
+        "KDP",
+        "LUV",
+        "NVDA",
+        "SMH",
+        "UAL",
+        "UNP",
+        "UPS"
       ],
-      "created_at": "2026-11-09T15:38:06Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Overweight rating and price target increase signals positive outlook for Humana stock."
-    },
-    {
-      "id": "63039207",
-      "headline": "FDA Requires Safety Labeling Changes for Glucagon-Like Peptide-1 Receptor Agonists Due to Potential Increased Risk of Rare But Serious Eye Condition",
-      "summary": "",
-      "url": "https://www.benzinga.com/news/26/11/63039207/fda-requires-safety-labeling-changes-glucagon-peptide-1-receptor-agonists-due-potential-increased-ri",
-      "author": "Benzinga Newsdesk",
-      "source": "benzinga",
-      "symbols": [
-        "LLY",
-        "NVO",
-        "SPY"
-      ],
-      "created_at": "2026-11-09T15:13:25Z",
+      "created_at": "2026-11-12T17:00:09Z",
       "sentiment": "bear",
       "confidence": 0.85,
-      "reason": "FDA safety labeling requirement for serious adverse effects creates regulatory risk and potential liability concerns for GLP-1 manufacturers."
+      "reason": "Stock valuation collapse following CEO resignation signals market concern about company prospects."
     },
     {
-      "id": "63038974",
-      "headline": "Eli Lilly Gains After Jefferies Raises Price Target to Wall Street-High $1,700",
-      "summary": "Eli Lilly is rising Monday after Jefferies raised its price target to $1,700, the highest target on Wall Street, according to Investing.com.",
-      "url": "https://www.benzinga.com/trading-ideas/movers/26/11/63038974/eli-lilly-gains-after-jefferies-raises-price-target-to-wall-street-high-dollar1700",
-      "author": "Dylan Berman",
+      "id": "63203976",
+      "headline": "If You Invested $1000 In Corpay Stock 15 Years Ago, You Would Have This Much Today",
+      "summary": "Corpay (NYSE:CPAY) has outperformed the market over the past 15 years by 2.22% on an annualized basis producing an average annual return of 15.21%. Currently, Corpay has a market capitalization of $30.33 billion.",
+      "url": "https://www.benzinga.com/news/26/11/63203976/if-you-invested-1000-corpay-stock-15-years-ago-you-would-have-much-today",
+      "author": "Benzinga Insights",
       "source": "benzinga",
       "symbols": [
-        "LLY",
-        "NVO"
+        "CPAY"
       ],
-      "created_at": "2026-11-09T15:12:36Z",
+      "created_at": "2026-11-12T16:45:14Z",
       "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Jefferies raised price target to Wall Street-high $1,700, driving stock gains."
+      "confidence": 0.92,
+      "reason": "Strong 15-year outperformance with 15.21% annualized returns and substantial market cap growth."
     },
     {
-      "id": "63035881",
-      "headline": "Google Turns Up the Heat on NVIDIA With New Offerings",
-      "summary": "Alphabet stock rose Monday as Google unveiled new AI chips to rival NVIDIA. Explore GOOG technical levels, analyst targets, and TPU details.",
-      "url": "https://www.benzinga.com/markets/tech/26/11/63035881/google-turns-up-the-heat-on-nvidia-with-new-offerings",
-      "author": "Anusuya Lahiri",
+      "id": "63203759",
+      "headline": "Trump\u2019s Bombshell Choice for Nvidia\u2019s Next CEO: \u2018A Legend Replaces a Legend\u2019",
+      "summary": "Trump has a surprising name in mind for Nvidia\u2019s top job after Jensen Huang\u2019s exit, as Wall Street grapples with the fallout.",
+      "url": "https://www.benzinga.com/markets/tech/26/11/63203759/trump-choice-for-nvidia-next-ceo-tim-cook",
+      "author": "Benzinga Observer",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "NVDA"
+      ],
+      "created_at": "2026-11-12T16:42:44Z",
+      "sentiment": "bull",
+      "confidence": 0.72,
+      "reason": "Leadership succession planning with qualified candidates suggests stability and continuity for Nvidia."
+    },
+    {
+      "id": "120701102",
+      "headline": "Humana Insider Executes Stock Sale",
+      "summary": "A Humana Inc. insider sold shares of the company's stock valued at approximately $2.38 million, according to a recent SEC filing.",
+      "url": "https://www.marketscreener.com/news/humana-insider-sold-shares-worth-2-384-013-according-to-a-recent-sec-filing-ce785ed8de8af626",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "HUM"
+      ],
+      "created_at": "2026-11-12T16:02:21Z",
+      "sentiment": "bear",
+      "confidence": 0.65,
+      "reason": "Insider selling of $2.38M in shares suggests reduced confidence in near-term stock performance."
+    },
+    {
+      "id": "120701101",
+      "headline": "MetLife Recognized as One of the World's Best Workplaces",
+      "summary": "MetLife has been named to the 2026 World's Best Workplaces list by Great Place To Work.",
+      "url": "https://www.globenewswire.com/news-release/2026/11/12/3401407/0/en/25-companies-named-to-fortune-world-s-best-workplaces-list-based-on-over-9-million-surveys.html",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "MET"
+      ],
+      "created_at": "2026-11-12T16:02:13Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Recognition as top workplace enhances employer brand and aids talent retention, supporting long-term operational efficiency."
+    },
+    {
+      "id": "120699947",
+      "headline": "Nintendo to Discontinue 'Sign In with Apple' for Nintendo Accounts",
+      "summary": "Nintendo announced it will remove 'Sign In with Apple' and 'Sign In with Google' as authentication options for Nintendo Accounts starting January 26, 2027.",
+      "url": "https://appleosophy.com/wire/tcwfhvr/",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "AAPL"
+      ],
+      "created_at": "2026-11-12T16:01:28Z",
+      "sentiment": "neutral",
+      "confidence": 0.95,
+      "reason": "Discontinuing authentication options is administrative, with minimal financial or operational impact."
+    },
+    {
+      "id": "63196471",
+      "headline": "President Trump On Truth Social Says Now That NVIDIA CEO Jensen Huang, Who Has Done A Fantastic Job, Has Resigned, There Is Only One Man To Take His Place - Tim Cook Of Apple",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/11/63196471/president-trump-truth-social-says-now-nvidia-ceo-jensen-huang-who-has-done-fantastic-job-has-resigne",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "NVDA"
+      ],
+      "created_at": "2026-11-12T15:32:03Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Statement is speculative commentary without factual basis; no actual resignation confirmed."
+    },
+    {
+      "id": "120602365",
+      "headline": "Argus Research Adjusts Amgen Price Target to $515 From $460",
+      "summary": "Argus Research has updated its price target for Amgen Inc., raising it to $515 from the previous target of $460.",
+      "url": "https://www.marketscreener.com/news/argus-research-adjusts-amgen-price-target-to-515-from-460-ce785ed8df89f720",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "AMGN"
+      ],
+      "created_at": "2026-11-12T14:31:58Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Price target raised 12% indicating positive outlook on Amgen's future performance."
+    },
+    {
+      "id": "120601373",
+      "headline": "AbbVie Receives Corporate Leadership Award from Lymphoma Research Foundation",
+      "summary": "AbbVie has been honored with the Corporate Leadership Award by the Lymphoma Research Foundation for its contributions to lymphoma research and patient care.",
+      "url": "https://www.prnewswire.com/news-releases/lymphoma-research-foundation-to-honor-leaders-in-research-patient-advocacy-and-philanthropy-at-2026-annual-gala-302936770.html",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "ABBV"
+      ],
+      "created_at": "2026-11-12T14:31:26Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Award recognition enhances AbbVie's reputation in lymphoma treatment and supports its oncology portfolio."
+    },
+    {
+      "id": "63186301",
+      "headline": "Wells Fargo Maintains Overweight on Humana, Raises Price Target to $602",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/11/63186301/wells-fargo-maintains-overweight-humana-raises-price-target-602",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "HUM"
+      ],
+      "created_at": "2026-11-12T14:16:01Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst upgrade with price target raise signals positive outlook on Humana's prospects."
+    },
+    {
+      "id": "63184922",
+      "headline": "Wells Fargo Maintains Overweight on MetLife, Raises Price Target to $113",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/11/63184922/wells-fargo-maintains-overweight-metlife-raises-price-target-113",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "MET"
+      ],
+      "created_at": "2026-11-12T13:59:22Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Wells Fargo maintains overweight rating and raises price target, signaling positive outlook"
+    },
+    {
+      "id": "63184350",
+      "headline": "Argus Research Maintains Buy on Amgen, Raises Price Target to $515",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/11/63184350/argus-research-maintains-buy-amgen-raises-price-target-515",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "AMGN"
+      ],
+      "created_at": "2026-11-12T13:46:28Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Analyst maintains buy rating and raises price target, signaling confidence in stock upside."
+    },
+    {
+      "id": "63180788",
+      "headline": "Mizuho Maintains Outperform on MetLife, Raises Price Target to $117",
+      "summary": "",
+      "url": "https://www.benzinga.com/news/26/11/63180788/mizuho-maintains-outperform-metlife-raises-price-target-117",
+      "author": "Benzinga Newsdesk",
+      "source": "benzinga",
+      "symbols": [
+        "MET"
+      ],
+      "created_at": "2026-11-12T12:47:21Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Mizuho raised price target and maintained outperform rating, signaling positive outlook."
+    },
+    {
+      "id": "120529991",
+      "headline": "AbbVie Named to Fortune World's Best Workplaces List",
+      "summary": "AbbVie has been recognized as one of the 25 winners on the 2026 Fortune World's Best Workplaces list.",
+      "url": "https://www.finanznachrichten.de/nachrichten-2026-11/70111733-great-place-to-work-25-companies-named-to-fortune-world-s-best-workplaces-list-based-on-over-9-million-surveys-399.htm",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "ABBV"
+      ],
+      "created_at": "2026-11-12T12:31:44Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Positive workplace recognition enhances employer brand and talent retention, supporting long-term operational efficiency."
+    },
+    {
+      "id": "63176842",
+      "headline": "Nvidia Board Weighs CFO Colette Kress For Interim CEO Role Amid Uncertainty Over Jensen Huang\u2019s Future: Report",
+      "summary": "Nvidia reportedly weighs CFO Colette Kress as interim CEO as scrutiny surrounding Jensen Huang raises questions about succession.",
+      "url": "https://www.benzinga.com/markets/tech/26/11/63176842/nvidia-board-weighs-cfo-colette-kress-for-interim-ceo-role-amid-uncertainty-over-jensen-huangs-future-report",
+      "author": "Namrata Sen",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "INTC",
+        "NVDA"
+      ],
+      "created_at": "2026-11-12T11:40:56Z",
+      "sentiment": "bear",
+      "confidence": 0.75,
+      "reason": "CEO succession uncertainty and scrutiny over Jensen Huang raises governance concerns."
+    },
+    {
+      "id": "120511793",
+      "headline": "Rothschild & Co Redburn Adjusts Price Target on Westinghouse Air Brake Technologies to $311 From $292",
+      "summary": "Rothschild & Co Redburn has increased its price target for Westinghouse Air Brake Technologies Corporation (Wabtec) from $292 to $311.",
+      "url": "https://www.marketscreener.com/news/rothschild-co-redburn-adjusts-price-target-on-westinghouse-air-brake-technologies-to-311-from-29-ce785ed8da8ef227",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "WAB"
+      ],
+      "created_at": "2026-11-12T11:32:38Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Price target increased by $19 (6.5%), indicating analyst confidence in stock upside potential."
+    },
+    {
+      "id": "120511779",
+      "headline": "Wells Fargo Adjusts Price Target on MetLife to $113 From $110",
+      "summary": "Wells Fargo has updated its price target for MetLife, Inc., raising it from $110 to $113.",
+      "url": "https://www.marketscreener.com/news/wells-fargo-adjusts-price-target-on-metlife-to-113-from-110-ce785ed8dd88f721",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "MET"
+      ],
+      "created_at": "2026-11-12T11:32:05Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Price target increase signals improved analyst outlook on MetLife's prospects."
+    },
+    {
+      "id": "120511482",
+      "headline": "Analyst Maintains Buy Rating and Raises Price Target for Airbnb",
+      "summary": "Analyst Amanda Tan has maintained a 'Buy' rating on Airbnb (ABNB) and increased the price target to $210.",
+      "url": "https://www.moomoo.com/hans/news/post/1004416663/dbs-maintains-airbnb-abnbus-with-buy-rating-raises-target-price",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "ABNB"
+      ],
+      "created_at": "2026-11-12T11:31:37Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Maintained buy rating with raised price target signals positive outlook"
+    },
+    {
+      "id": "63171801",
+      "headline": "Tim Cook as Nvidia CEO? Kalshi Bettors See These Names as Top Replacement Bets for Scandal-Embroiled Jensen Huang",
+      "summary": "Cryptocurrency bettors are now wagering on who might succeed Jensen Huang as NVIDIA Corp. CEO \u2014 and former Apple Inc. CEO Tim Cook is among the contenders.",
+      "url": "https://www.benzinga.com/markets/prediction-markets/26/11/63171801/tim-cook-nvidia-ceo-jensen-huang-kalshi-prediction-market",
+      "author": "Aniket Verma",
+      "source": "benzinga",
+      "symbols": [
+        "AAPL",
+        "BTCUSD",
+        "NVDA",
+        "POLUSD",
+        "ZECUSD"
+      ],
+      "created_at": "2026-11-12T04:08:09Z",
+      "sentiment": "bear",
+      "confidence": 0.75,
+      "reason": "Article implies Jensen Huang's leadership is questioned, creating uncertainty about NVIDIA's future direction."
+    },
+    {
+      "id": "63171475",
+      "headline": "Nvidia, AMD, SanDisk, Broadcom and Apple: Why These 5 Stocks Are on Investors' Radars Today",
+      "summary": "Major U.S. indices closed higher on Wednesday, with the Dow Jones Industrial Average rising 0.49% to 52,486.49.",
+      "url": "https://www.benzinga.com/markets/equities/26/11/63171475/nvidia-amd-sandisk-broadcom-and-apple-why-these-5-stocks-are-on-investors-radars-today",
+      "author": "Shivdeep Dhaliwal",
       "source": "benzinga",
       "symbols": [
         "AAPL",
         "AMD",
         "AVGO",
-        "GOOG",
-        "GOOGL",
-        "META",
-        "MRVL",
         "NVDA",
-        "ORCL"
+        "SNDK"
       ],
-      "created_at": "2026-11-09T14:51:34Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Google's new AI chips rival NVIDIA, driving Alphabet stock up and positioning it competitively."
-    },
-    {
-      "id": "63034915",
-      "headline": "Bitcoin, Monero Remain the Best Coins for Market in 'Despair,' Analyst Argues",
-      "summary": "Bitcoin and Monero remain goodalexander\u2019s top bets at \u201cmax despair\u201d as Binance hacker sales weigh on Ethereum and XRP.",
-      "url": "https://www.benzinga.com/crypto/cryptocurrency/26/11/63034915/bitcoin-monero-remain-the-best-coins-for-market-in-despair-analyst-argues",
-      "author": "Parshwa Turakhiya",
-      "source": "benzinga",
-      "symbols": [
-        "AAPL",
-        "BTCUSD",
-        "ETHUSD",
-        "SPCX",
-        "TSLA",
-        "XMRUSD",
-        "XRPUSD"
-      ],
-      "created_at": "2026-11-09T14:45:06Z",
+      "created_at": "2026-11-12T01:15:56Z",
       "sentiment": "bull",
       "confidence": 0.75,
-      "reason": "Bitcoin and Monero positioned as top investment choices despite market despair, suggesting strength."
+      "reason": "Major indices closed higher and multiple stocks highlighted as being on investors' radars."
+    },
+    {
+      "id": "120450173",
+      "headline": "Study Highlights Airbnb's Economic Impact in Brazil",
+      "summary": "A study commissioned by Airbnb and conducted by FGV Projetos reports that the platform's intermediated short-term rentals contributed R$ 113.2 billion to the Brazilian economy in 2025.",
+      "url": "https://dino.ig.com.br/2026-11-11/airbnb-movimenta-r--113-2-bi-e-consorcio-de-imovel-sobe-37-.html",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "ABNB"
+      ],
+      "created_at": "2026-11-12T00:01:53Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Significant economic contribution demonstrates platform strength and market value in major emerging market."
     }
   ]
 }
