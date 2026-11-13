@@ -1,28 +1,13 @@
 {
-  "timestamp": "2026-11-13T02:01:08Z",
-  "mode": "post_close",
-  "orders_placed": [
-    {
-      "action": "SELL",
-      "symbol": "ABBV",
-      "qty": 0.002262,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "GRMN",
-      "qty": 2.806221,
-      "status": "submitted"
-    }
-  ],
+  "timestamp": "2026-11-13T20:38:11Z",
+  "mode": "market_open",
+  "orders_placed": [],
   "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 28.95,
+  "cash_pct_after": 11.96,
   "long_only_breach": false,
-  "invariant_breaches": [
-    "sector Healthcare at 30.0% exceeds the 30% cap"
-  ],
-  "breach_streak": 1,
+  "invariant_breaches": [],
+  "breach_streak": 0,
   "trading_halted": false,
   "dry_run": false
 }
