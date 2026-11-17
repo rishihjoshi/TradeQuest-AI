@@ -1,14 +1,7 @@
 {
-  "timestamp": "2026-11-16T23:00:58Z",
-  "mode": "market_open",
-  "orders_placed": [
-    {
-      "action": "SELL",
-      "symbol": "WST",
-      "qty": 0.004289,
-      "status": "submitted"
-    }
-  ],
+  "timestamp": "2026-11-17T04:04:36Z",
+  "mode": "post_close",
+  "orders_placed": [],
   "orders_skipped": [
     {
       "symbol": "GRMN",
@@ -16,12 +9,10 @@
     }
   ],
   "errors": [],
-  "cash_pct_after": 12.04,
+  "cash_pct_after": 11.98,
   "long_only_breach": false,
-  "invariant_breaches": [
-    "sector Healthcare at 30.0% exceeds the 30% cap"
-  ],
-  "breach_streak": 1,
+  "invariant_breaches": [],
+  "breach_streak": 0,
   "trading_halted": false,
   "dry_run": false
 }
