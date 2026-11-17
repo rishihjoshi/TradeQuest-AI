@@ -1,15 +1,17 @@
 {
-  "timestamp": "2026-11-17T04:04:36Z",
-  "mode": "post_close",
-  "orders_placed": [],
-  "orders_skipped": [
+  "timestamp": "2026-11-17T21:53:37Z",
+  "mode": "market_open",
+  "orders_placed": [
     {
+      "action": "SELL",
       "symbol": "GRMN",
-      "reason": "blocked by agent approval or risk gate"
+      "qty": 5.981693,
+      "status": "submitted"
     }
   ],
+  "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 11.98,
+  "cash_pct_after": 12.15,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
