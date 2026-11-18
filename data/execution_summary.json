@@ -1,15 +1,28 @@
 {
-  "timestamp": "2026-11-18T03:02:05Z",
-  "mode": "post_close",
-  "orders_placed": [],
+  "timestamp": "2026-11-18T21:32:46Z",
+  "mode": "market_open",
+  "orders_placed": [
+    {
+      "action": "BUY",
+      "symbol": "HAS",
+      "qty": 7.50757,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "IEX",
+      "qty": 2.792637,
+      "status": "submitted"
+    }
+  ],
   "orders_skipped": [
     {
-      "symbol": "GRMN",
+      "symbol": "HUM",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 12.15,
+  "cash_pct_after": 29.78,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
