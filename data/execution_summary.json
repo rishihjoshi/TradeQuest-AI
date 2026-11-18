@@ -1,17 +1,15 @@
 {
-  "timestamp": "2026-11-17T21:53:37Z",
-  "mode": "market_open",
-  "orders_placed": [
+  "timestamp": "2026-11-18T01:07:49Z",
+  "mode": "post_close",
+  "orders_placed": [],
+  "orders_skipped": [
     {
-      "action": "SELL",
       "symbol": "GRMN",
-      "qty": 5.981693,
-      "status": "submitted"
+      "reason": "sentinel rule triggered but order blocked by risk gate"
     }
   ],
-  "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 12.15,
+  "cash_pct_after": 12.16,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
