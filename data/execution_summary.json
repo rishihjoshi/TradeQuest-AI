@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-11-18T01:07:49Z",
+  "timestamp": "2026-11-18T03:02:05Z",
   "mode": "post_close",
   "orders_placed": [],
   "orders_skipped": [
     {
       "symbol": "GRMN",
-      "reason": "sentinel rule triggered but order blocked by risk gate"
+      "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 12.16,
+  "cash_pct_after": 12.15,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
