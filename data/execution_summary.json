@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-11-18T21:32:46Z",
-  "mode": "market_open",
+  "timestamp": "2026-11-19T02:43:34Z",
+  "mode": "post_close",
   "orders_placed": [
     {
       "action": "BUY",
       "symbol": "HAS",
-      "qty": 7.50757,
+      "qty": 7.516642,
       "status": "submitted"
     },
     {
       "action": "BUY",
       "symbol": "IEX",
-      "qty": 2.792637,
+      "qty": 2.780974,
       "status": "submitted"
     }
   ],
@@ -22,7 +22,7 @@
     }
   ],
   "errors": [],
-  "cash_pct_after": 29.78,
+  "cash_pct_after": 29.75,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,
