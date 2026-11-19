@@ -1,12 +1,5 @@
 {
-  "timestamp": "2026-11-18T01:07:47Z",
-  "sells": [
-    {
-      "symbol": "GRMN",
-      "shares": 5,
-      "rule": "trend_break",
-      "reason": "Price below 50-day MA for 3 consecutive agent runs (\u2265 3 threshold). Forced exit \u2014 sentinel Rule 2."
-    }
-  ],
-  "count": 1
+  "timestamp": "2026-11-19T00:38:22Z",
+  "sells": [],
+  "count": 0
 }
