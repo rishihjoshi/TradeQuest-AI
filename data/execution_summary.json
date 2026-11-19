@@ -1,28 +1,23 @@
 {
-  "timestamp": "2026-11-19T02:43:34Z",
-  "mode": "post_close",
-  "orders_placed": [
-    {
-      "action": "BUY",
-      "symbol": "HAS",
-      "qty": 7.516642,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "IEX",
-      "qty": 2.780974,
-      "status": "submitted"
-    }
-  ],
+  "timestamp": "2026-11-19T21:45:12Z",
+  "mode": "market_open",
+  "orders_placed": [],
   "orders_skipped": [
     {
       "symbol": "HUM",
       "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "WAB",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "MET",
+      "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 29.75,
+  "cash_pct_after": -3.16,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,

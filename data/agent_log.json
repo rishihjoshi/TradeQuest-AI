@@ -1,7 +1,120 @@
 {
-  "last_run": "2026-11-19T02:44:40Z",
-  "last_type": "day_end",
+  "last_run": "2026-11-19T21:44:19Z",
+  "last_type": "day_start",
   "runs": [
+    {
+      "id": "RUN-20261119-2144",
+      "timestamp": "2026-11-19T21:44:19Z",
+      "type": "day_start",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is in a stressed state with 29.75% cash (target 5% in bull regime), significant Healthcare sector concentration (~41% of invested capital across AMGN/ABBV/WST/HUM), and multiple dust/residue positions consuming slots. The bull regime holds (SPY above 200MA, breadth 58.2% near the 60% threshold) but breadth is narrowing and regime confidence is only 60-61%, warranting caution. An ABBV Tier 1 SELL was issued last run next_open \u2014 confirm execution occurred before day-end decisions.",
+      "regime": "bull",
+      "regime_confidence": 0.61,
+      "flags": [
+        "AMGN: Weight 18.64% ($1,749.69) approaching 20% hard cap (Rule C). Healthcare sector ~41% of invested capital vs 30% cap. Unrealized PnL -$80.12 (-4.38%), entry 2026-10-26. Above MA50 ($427.10 vs $445.66) \u2014 no structural sell trigger yet, but sector trim pressure is high.",
+        "ABBV: Tier 1 SELL was issued last run (next_open). Confirm execution. Unrealized PnL -$43.83 (-4.68%), entry 2026-11-04. Healthcare sector overweight driver. Price $285.50 above MA50 $277.15 \u2014 only sector cap triggers sell, not Rule A.",
+        "AAPL: Dust residue 0.016749 shares ($5.93). Sector=Unknown, momentum_rank=0, MA50=null. Occupies no meaningful slot (0.06% weight, below 10% of target). Cannot be exited on missing data grounds per Directive 10, but blocks no meaningful capital.",
+        "WAB: Dust residue 0.030395 shares ($8.83). Sector=Unknown, momentum_rank=0, MA50=null. Same dust residue status as AAPL \u2014 occupies no slot but persists in holdings.",
+        "HUM: Effectively zero shares (0.000002, $0.00). EPS growth -17.9% (quality failure, Rule B). Price below MA50 ($384.00 vs $410.68, Rule A). Both Rules A and B triggered. This is a residue \u2014 confirm the sell/close is fully cleared. If any fractional residue remains after prior sells, it needs to be swept.",
+        "LUV: Profitable position (+$114.17, +12.23%), entry 2026-10-30. Sector=Unknown, MA50=null. Missing data blocks structural sell assessment (Rule A cannot be evaluated). WATCH maintained \u2014 missing data is not a sell signal per Directive 10. No action today.",
+        "Healthcare sector: AMGN ($1,749.69) + ABBV ($892.79) + WST ($108.97) + HUM (~$0) = ~$2,751 of ~$6,595 invested = ~41.7%. Exceeds 30% cap by ~$763. Sector trim required \u2014 lowest-momentum names in sector first (HUM rank=0, then WST rank=2, then ABBV rank=7, then AMGN rank=4).",
+        "GRMN: SELL executed 2026-11-18 per trade log \u2014 confirm position is fully closed. No longer appears in holdings, so unresolved flag should be cleared.",
+        "Cash at 29.75% vs 5% bull-regime target: ~$2,792 deployable but November is non-quarterly month \u2014 new-entrant BUYs are blocked. Top-up into existing top-N holdings is allowed once ABBV sector trim executes and Healthcare drops below cap. HAS and IEX buys were submitted 2026-11-19 at open \u2014 confirm fills.",
+        "WST: Weight 1.16% ($108.97), far below 10% of target slot. Momentum rank 2, above MA50 ($404.02 vs $383.26). No structural sell trigger. Underfilled slot.",
+        "CPAY: Flagged persistently. Weight 9.69%, momentum rank 5, above MA50 ($455.22 vs $411.63). No structural sell trigger \u2014 flag appears to be a monitoring artifact, no action required today."
+      ],
+      "decisions": [
+        {
+          "action": "WATCH",
+          "symbol": "ABBV",
+          "reason": "Tier 1 SELL issued last run next_open for Healthcare sector trim (~41.7% vs 30% cap). Unrealized PnL -$43.83 (-4.68%), entry 2026-11-04. Day-start run \u2014 flag only, confirm execution occurred at open. If not yet executed, re-flag as URGENT next_open.",
+          "rule_triggered": "long_only_breach",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "AMGN",
+          "reason": "Weight 18.64% approaching 20% hard cap (Rule C). Healthcare sector at ~41.7% vs 30% cap \u2014 sector trim required. Unrealized PnL -$80.12 (-4.38%), entry 2026-10-26. Above MA50 ($427.10). No structural Rule A/B trigger today. Lowest-priority trim target after ABBV given rank=4 vs ABBV rank=7, but sector remains over cap after ABBV exits.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier1",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "LUV",
+          "reason": "Profitable +$114.17 (+12.23%), entry 2026-10-30. Sector=Unknown, MA50=null \u2014 missing data blocks Rule A evaluation. Missing data is not a sell signal (Directive 10). WATCH maintained pending data resolution.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "HUM",
+          "reason": "Effectively zero shares (0.000002). EPS growth -17.9% (Rule B quality failure) and price below MA50 ($384.00 vs $410.68, Rule A). Both structural rules triggered. Residue position \u2014 confirm full closure from prior sells. If any sellable quantity remains it must be cleared Tier 1 next_open.",
+          "rule_triggered": "quality_drop",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ABNB",
+          "reason": "Unrealized PnL -$45.32 (-4.53%), entry 2026-11-06. Above MA50 ($180.66 vs $169.33). Momentum rank 3 (top 30%). Quality passing (EPS +42.7%, Rev +18.9%). No structural sell trigger. MIN_HOLD_DAYS not yet elapsed for rank-based exit consideration.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": null
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CPAY",
+          "reason": "Unrealized PnL -$8.89 (-0.97%), entry 2026-11-09. Above MA50 ($455.22 vs $411.63). Momentum rank 5. Quality passing (EPS +44.8%, Rev +17.9%). No structural sell trigger.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": null
+        },
+        {
+          "action": "HOLD",
+          "symbol": "MET",
+          "reason": "Unrealized PnL -$5.99 (-0.65%), entry 2026-11-09. Above MA50 ($99.79 vs $98.94). Momentum rank 6. Quality passing (EPS +200.8%, Rev +18.2%). No structural sell trigger.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": null
+        },
+        {
+          "action": "HOLD",
+          "symbol": "WST",
+          "reason": "Unrealized PnL -$2.37 (-2.13%), entry 2026-10-09. Above MA50 ($404.02 vs $383.26). Momentum rank 2. Quality passing. Weight 1.16% \u2014 underfilled slot, top-up eligible in non-quarterly month if cash permits after sector cap resolves.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": null
+        },
+        {
+          "action": "HOLD",
+          "symbol": "AAPL",
+          "reason": "Dust residue 0.016749 shares ($5.93). Sector=Unknown, MA50=null, rank=0. Missing data is not a sell signal (Directive 10). Position below SLOT_MATERIAL_PCT (0.06% weight). No action \u2014 await data resolution.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": null
+        },
+        {
+          "action": "HOLD",
+          "symbol": "WAB",
+          "reason": "Dust residue 0.030395 shares ($8.83). Sector=Unknown, MA50=null, rank=0. Missing data is not a sell signal (Directive 10). Position below SLOT_MATERIAL_PCT (0.09% weight). No action \u2014 await data resolution.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": null
+        }
+      ],
+      "cash_action": "decrease",
+      "cash_rationale": "Cash at 29.75% is well above the 5% bull-regime target. November is non-quarterly so new-entrant BUYs are blocked, but redeployment top-ups into existing top-N holdings (ABNB, CPAY, MET, WST) are permitted once Healthcare sector drops below 30% cap after ABBV trim executes. HAS and IEX buys submitted at open (2026-11-19) should reduce cash further once confirmed filled. Priority: confirm ABBV sell execution, resolve Healthcare sector overweight, then assess top-up capacity.",
+      "summary": "Day-start 2026-11-20: ABBV Tier 1 SELL confirm-execution flag (Healthcare ~41.7% vs 30% cap); AMGN approaching 20% hard cap watched; HUM residue Tier 1 closure flagged; LUV WATCH maintained (profitable, missing MA data); cash 29.75% vs 5% target \u2014 top-ups pending sector resolution.",
+      "usage": {
+        "input_tokens": 14332,
+        "output_tokens": 2681,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 6683
+      }
+    },
     {
       "id": "RUN-20261119-0244",
       "timestamp": "2026-11-19T02:44:40Z",
@@ -11172,26 +11285,6 @@
       "type": "day_end",
       "model": "claude-sonnet-4-6",
       "assessment": "agent unavailable \u2014 BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cf9tbuY9zUANggTWZ6Vqn'}",
-      "regime": "",
-      "regime_confidence": 0,
-      "flags": [],
-      "decisions": [],
-      "cash_action": "maintain",
-      "cash_rationale": "",
-      "summary": "Agent run skipped: model API unavailable. Execution continued using the previous valid run's approvals.",
-      "usage": {
-        "input_tokens": 0,
-        "output_tokens": 0
-      },
-      "parse_failed": true,
-      "agent_unavailable": true
-    },
-    {
-      "id": "RUN-20260917-1742",
-      "timestamp": "2026-09-17T17:42:26Z",
-      "type": "day_start",
-      "model": "claude-sonnet-4-6",
-      "assessment": "agent unavailable \u2014 BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cf9RaMd6hyx38zyDy4kZ9'}",
       "regime": "",
       "regime_confidence": 0,
       "flags": [],
