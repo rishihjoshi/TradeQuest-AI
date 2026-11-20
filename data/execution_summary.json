@@ -1,12 +1,8 @@
 {
-  "timestamp": "2026-11-19T21:45:12Z",
-  "mode": "market_open",
+  "timestamp": "2026-11-20T02:29:19Z",
+  "mode": "post_close",
   "orders_placed": [],
   "orders_skipped": [
-    {
-      "symbol": "HUM",
-      "reason": "blocked by agent approval or risk gate"
-    },
     {
       "symbol": "WAB",
       "reason": "blocked by agent approval or risk gate"
@@ -14,10 +10,14 @@
     {
       "symbol": "MET",
       "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "HUM",
+      "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": -3.16,
+  "cash_pct_after": -3.15,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,

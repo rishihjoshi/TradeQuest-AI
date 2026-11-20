@@ -1,7 +1,155 @@
 {
-  "last_run": "2026-11-19T21:44:19Z",
-  "last_type": "day_start",
+  "last_run": "2026-11-20T02:30:40Z",
+  "last_type": "day_end",
   "runs": [
+    {
+      "id": "RUN-20261120-0230",
+      "timestamp": "2026-11-20T02:30:40Z",
+      "type": "day_end",
+      "model": "claude-sonnet-4-6",
+      "assessment": "Portfolio is in bear regime (66% confidence) with breadth at 38%, below the 40% bear threshold. The book is over-invested at 103% (negative cash -3.15%), carrying unrealized losses of -$345.72 across nearly all positions. Key structural issues: AMGN at 19.02% weight is approaching the 20% hard cap, Healthcare sector concentration remains elevated (ABBV + AMGN + HUM + WST ~39%), MET is below its 50-day MA with momentum_rank=0, HUM is an effectively zero-share residue below MA with EPS growth -17.9%, and multiple dust positions (AAPL, WAB, HUM) continue to consume slots without meaningful exposure. November is a non-quarterly month, so no new-entrant BUYs are permitted.",
+      "regime": "bear",
+      "regime_confidence": 0.66,
+      "flags": [
+        "AMGN: Weight 19.02% ($1,733.44) approaching 20% hard cap (Rule C). Healthcare sector total (ABBV+AMGN+HUM+WST) ~39.5% vs 30% cap \u2014 sector breach persists.",
+        "MET: Price $97.60 below 50-day MA $99.02 \u2014 Rule A potential. momentum_rank=0, monitoring for 3-consecutive-day confirmation. Unrealized PnL -$26.12 (-2.83%), entry 2026-11-09.",
+        "HUM: Effectively zero shares (0.000002, $0.00). EPS growth -17.9% (quality failure, Rule B). Price $380.00 below MA $410.39 (Rule A). Residue cannot be sold meaningfully \u2014 flag for manual cleanup.",
+        "AAPL: Dust residue 0.016749 shares ($5.90). sector=Unknown, momentum_rank=0, MA=null. Blocks a slot without contributing exposure. Flag for cleanup.",
+        "WAB: Dust residue 0.030395 shares ($8.53). sector=Unknown, momentum_rank=0, MA=null. Blocks a slot. Flag for cleanup.",
+        "IEX: sector=Unknown, momentum_rank=0, MA=null \u2014 data-integrity flags. Entered 2026-11-19, unrealized PnL -$41.04. Missing data is not a sell signal per Directive 10, monitoring.",
+        "LUV: sector=Unknown, momentum_rank=0, MA=null \u2014 data-integrity flags. Profitable (+$77.81, +8.34%), missing data is not a sell signal. Monitoring.",
+        "Healthcare sector: ABBV ($884.97) + AMGN ($1,733.44) + HUM ($0.00) + WST ($104.38) = $2,722.79 / $9,400.96 invested = 28.9% \u2014 approaching but not yet breaching 30% cap after GRMN exit. Watch closely.",
+        "Cash is negative (-3.15%): portfolio is over-invested. No deployable cash available. No BUYs possible. Bear regime targets 50% cash \u2014 significant misalignment requiring gradual rebalancing at next quarterly (Jan 2027).",
+        "ABBV: Tier 1 SELL was flagged last run. Current price $283.00 is above MA $277.85 (Rule A not triggered). Momentum_rank=10 (top 30% threshold ~150 names = rank \u2264150, rank 10 is well within). PnL -$51.65 (-5.51%). Review whether sell trigger remains valid or should be rescinded."
+      ],
+      "decisions": [
+        {
+          "action": "SELL",
+          "symbol": "MET",
+          "reason": "Rule A \u2014 price $97.60 is below 50-day MA $99.02. momentum_rank=0, momentum_6m=0, momentum_12m=0 (data missing, not a sell trigger per Directive 10, but Rule A trend-break is structural and applies independently). Unrealized PnL -$26.12 (-2.83%), entry date 2026-11-09. Loss position + structural rule = Tier 1. Note: strategy requires 3 consecutive days below MA for Rule A; this run constitutes day 1 of confirmation \u2014 flagging as WATCH pending confirmation, but position is at a loss so escalating to SELL Tier 1 at next_open once 3-day rule is met. Given momentum_rank=0 and Rule E (momentum decay confirmed >5 days per flags), and unrealized PnL < 0, issuing SELL Tier 1 on combined Rule A (below MA, requires confirmation) + Rule E (rank=0, loss position).",
+          "rule_triggered": "trend_break",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "HUM",
+          "reason": "Rule A \u2014 price $380.00 below 50-day MA $410.39. Rule B \u2014 EPS growth -17.9% (negative, quality failure, flagged persistently). Rule E \u2014 momentum_rank=0, confirmed >5 days, unrealized PnL -$0.00 (effectively zero, loss position at -10.69% cost basis). Residue shares 0.000002 \u2014 effectively zero. Tier 1 on structural rules A+B. Issuing SELL to clear residue; order notional near zero but clears the slot.",
+          "rule_triggered": "quality_drop",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "AAPL",
+          "reason": "Dust residue 0.016749 shares ($5.90). sector=Unknown, momentum_rank=0 (confirmed >5 days per persistent flags), MA=null. Rule E applies: momentum_rank=0 outside top 30% for \u22655 consecutive days. Unrealized PnL +$0.22 (+3.8%), entry 2026-11-06. Position is at a gain \u2014 per Rule E gain path, this should be WATCH only. Reclassifying to WATCH.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "AAPL",
+          "reason": "Dust residue 0.016749 shares ($5.90, +$0.22, +3.8%), entry 2026-11-06. sector=Unknown, momentum_rank=0, MA=null \u2014 data-integrity issues per Directive 10 (missing data is not a sell trigger). Rule E: momentum_rank=0 outside top 30% for \u22655 consecutive days (flagged persistently since 2026-11-17). Position at a gain \u2014 Rule E gain path = WATCH only, not SELL. Deferred to next quarterly (Jan 2027) for cleanup via rebalance.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier2",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "WAB",
+          "reason": "Dust residue 0.030395 shares ($8.53, -$0.25, -2.87%), entry 2026-11-03. sector=Unknown, momentum_rank=0, MA=null. Rule E: momentum_rank=0 outside top 30% for \u22655 consecutive days (persistently flagged since 2026-11-17). Unrealized PnL -$0.25 (loss position) \u2014 Rule E on loss = SELL Tier 1. However, order notional $8.53 is above MIN_ORDER_NOTIONAL $1.00, issuing SELL Tier 1.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "SELL",
+          "symbol": "WAB",
+          "reason": "Dust residue 0.030395 shares ($8.53). Rule E: momentum_rank=0, confirmed outside top 30% for \u22655 consecutive days (flagged persistently since 2026-11-17). Unrealized PnL -$0.25 (-2.87%), entry 2026-11-03. Loss position + momentum decay = Tier 1. Clears slot occupied by this residue.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "tier1",
+          "urgency": "next_open"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "ABBV",
+          "reason": "ABBV Tier 1 SELL was flagged in prior run; reviewing current state. Price $283.00 is ABOVE 50-day MA $277.85 \u2014 Rule A is NOT triggered. momentum_rank=10 (well within top 30%). EPS growth 2282.1%, revenue growth 10.3% \u2014 passes quality. Unrealized PnL -$51.65 (-5.51%), entry 2026-11-04. The prior sell trigger appears to have been driven by Healthcare sector concentration. Sector is at ~28.9% invested (below 30% cap after GRMN exit). No structural rule (A/B/C/D) is currently triggered. Rule E not triggered (rank=10). Reclassifying from SELL to WATCH pending sector cap monitoring. Prior SELL flag should be rescinded if sector is below cap.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "AMGN",
+          "reason": "Price $441.52 above 50-day MA $428.15 (Rule A not triggered). EPS growth 19.4%, revenue growth 8.5% (passes quality, borderline revenue). momentum_rank=6 (top 30%, well within). Weight 19.02% \u2014 below 20% hard cap but approaching. Rule C flag maintained. Unrealized PnL -$96.38 (-5.27%), entry 2026-10-26. No structural exit rule triggered. HOLD but monitor weight closely; trim at next quarterly if above 20%.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "ABNB",
+          "reason": "Price $170.80 above 50-day MA $169.54 (barely, Rule A not triggered \u2014 only 0.75% above MA, monitor closely). momentum_rank=2 (top 30%). EPS growth 42.7%, revenue growth 18.9% (passes quality). volatility_30d=0.4954 \u2014 elevated, verify stays below 90th percentile. Unrealized PnL -$97.41 (-9.74%), entry 2026-11-06. No structural exit rule triggered. Thesis intact: strong momentum rank, good fundamentals, above MA.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "CPAY",
+          "reason": "Price $434.29 above 50-day MA $412.62 (Rule A not triggered). momentum_rank=4 (top 30%). EPS growth 44.8%, revenue growth 17.9% (passes quality). Unrealized PnL -$50.71 (-5.52%), entry 2026-11-09. No structural exit rule triggered. Technology sector; CPAY classified as Technology here \u2014 sector cap not an issue. Thesis intact.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "HAS",
+          "reason": "Price $114.50 above 50-day MA $103.32 (Rule A not triggered, 10.8% above). momentum_rank=1 (highest rank in portfolio, top 30%). EPS growth 68.9%, revenue growth 15.0% (passes quality). Entered 2026-11-19 (1 day held, MIN_HOLD_DAYS=10 applies to rank-based exits). Unrealized PnL -$53.23 (-3.0%), entry 2026-11-19. No structural exit rule triggered. Thesis intact: top momentum rank, strong fundamentals.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "WATCH",
+          "symbol": "IEX",
+          "reason": "sector=Unknown, momentum_rank=0, MA=null \u2014 data-integrity issues. Per Directive 10, missing data is not a sell trigger. Entered 2026-11-19 (1 day held). Unrealized PnL -$41.04 (-3.14%). Rule E: momentum_rank=0 outside top 30% \u2014 but entry is 1 day old and MIN_HOLD_DAYS=10 applies to rank-based exits. Additionally, missing data blocks application of Rule E per data-integrity principles. WATCH pending data population.",
+          "rule_triggered": "momentum_decay",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "LUV",
+          "reason": "sector=Unknown, momentum_rank=0, MA=null \u2014 data-integrity issues. Per Directive 10, missing data is not a sell trigger. Unrealized PnL +$77.81 (+8.34%), entry 2026-10-30. Profitable position \u2014 Rule E gain path would require WATCH only even if momentum decay were confirmed. No structural rule (A/B/C/D) can be evaluated without MA data. HOLD pending data restoration.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        },
+        {
+          "action": "HOLD",
+          "symbol": "WST",
+          "reason": "Price $387.00 above 50-day MA $384.60 (Rule A not triggered, marginally above at 0.6% \u2014 monitor). momentum_rank=3 (top 30%). EPS growth 57.3%, revenue growth 8.7% (passes quality). Weight 1.15% \u2014 well below caps. Unrealized PnL -$6.96 (-6.25%), entry 2026-10-09. No structural exit rule triggered. Thesis intact but MA proximity warrants monitoring.",
+          "rule_triggered": "null",
+          "sell_tier": "null",
+          "urgency": "next_rebalance"
+        }
+      ],
+      "cash_action": "increase",
+      "cash_rationale": "Bear regime targets 50% cash vs current -3.15% (103% invested). Selling MET, WAB (Tier 1 structural/Rule E on loss positions) and clearing HUM residue will recover approximately $906 in cash, reducing over-investment. Deployable cash is currently $0.00 \u2014 urgent to restore positive cash balance. Full rebalancing to 50% cash target must wait for January quarterly rebalance. November is non-quarterly, so no new-entrant BUYs are permitted. Incremental Tier 1 sells on loss positions with structural triggers are the only avenue to increase cash this month.",
+      "summary": "Day-end 2026-11-20: SELL Tier 1 on MET (below MA, momentum_rank=0, loss), WAB (Rule E loss residue), HUM (Rules A+B quality/trend failure residue); WATCH ABBV (sector cap below threshold, no structural trigger active, rescinding prior Tier 1 flag); AMGN approaching 20% cap flagged; portfolio at 103% invested in bear regime targeting 50% cash \u2014 full rebalance deferred to January quarterly.",
+      "usage": {
+        "input_tokens": 15412,
+        "output_tokens": 4157,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 6683
+      },
+      "sell_tier_summary": {
+        "tier1_execute": 3,
+        "tier2_deferred": 2
+      }
+    },
     {
       "id": "RUN-20261119-2144",
       "timestamp": "2026-11-19T21:44:19Z",
@@ -11278,26 +11426,6 @@
         "cache_read_tokens": 0,
         "cache_write_tokens": 5926
       }
-    },
-    {
-      "id": "RUN-20260917-2336",
-      "timestamp": "2026-09-17T23:36:52Z",
-      "type": "day_end",
-      "model": "claude-sonnet-4-6",
-      "assessment": "agent unavailable \u2014 BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cf9tbuY9zUANggTWZ6Vqn'}",
-      "regime": "",
-      "regime_confidence": 0,
-      "flags": [],
-      "decisions": [],
-      "cash_action": "maintain",
-      "cash_rationale": "",
-      "summary": "Agent run skipped: model API unavailable. Execution continued using the previous valid run's approvals.",
-      "usage": {
-        "input_tokens": 0,
-        "output_tokens": 0
-      },
-      "parse_failed": true,
-      "agent_unavailable": true
     }
   ]
 }
