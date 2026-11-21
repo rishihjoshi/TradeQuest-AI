@@ -1,40 +1,35 @@
 {
-  "timestamp": "2026-11-20T21:28:09Z",
-  "mode": "market_open",
+  "timestamp": "2026-11-21T02:41:16Z",
+  "mode": "post_close",
   "orders_placed": [
     {
       "action": "SELL",
-      "symbol": "HUM",
-      "qty": 2e-06,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "MET",
-      "qty": 9.191305,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "WAB",
-      "qty": 0.030395,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
       "symbol": "ABBV",
-      "qty": 0.05802,
+      "qty": 0.100618,
       "status": "submitted"
     }
   ],
-  "orders_skipped": [],
+  "orders_skipped": [
+    {
+      "symbol": "HUM",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "MET",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "WAB",
+      "reason": "blocked by agent approval or risk gate"
+    }
+  ],
   "errors": [],
-  "cash_pct_after": -3.21,
+  "cash_pct_after": -3.2,
   "long_only_breach": false,
   "invariant_breaches": [
-    "sector Healthcare at 30.2% exceeds the 30% cap"
+    "sector Healthcare at 30.3% exceeds the 30% cap"
   ],
-  "breach_streak": 1,
+  "breach_streak": 2,
   "trading_halted": false,
   "dry_run": false
 }
