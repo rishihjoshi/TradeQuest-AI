@@ -1,7 +1,397 @@
 {
-  "generated_at": "2026-11-19T21:44:32Z",
+  "generated_at": "2026-11-24T01:03:27Z",
   "article_count": 30,
   "articles": [
+    {
+      "id": "129445799",
+      "headline": "Apple Plans Return of (PRODUCT)RED Lineup",
+      "summary": "Apple is reportedly preparing to reintroduce (PRODUCT)RED versions of several existing hardware products and accessories, including the HomePod mini 2.",
+      "url": "https://appleosophy.com/2026/11/23/apple-to-bring-back-several-productred-products-including-a-red-homepod-mini-2/",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "AAPL"
+      ],
+      "created_at": "2026-11-24T01:01:29Z",
+      "sentiment": "neutral",
+      "confidence": 0.75,
+      "reason": "Product color variant reintroduction is routine marketing, lacking material business impact."
+    },
+    {
+      "id": "129445134",
+      "headline": "Amgen to Present at Citi's 2026 Global Healthcare Conference",
+      "summary": "Amgen announced that its executives will present at the Citi 2026 Global Healthcare Conference on December 1, 2026.",
+      "url": "https://www.prnewswire.com/news-releases/amgen-to-present-at-citis-2026-global-healthcare-conference-302948642.html",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "AMGN"
+      ],
+      "created_at": "2026-11-24T00:01:39Z",
+      "sentiment": "neutral",
+      "confidence": 0.95,
+      "reason": "Conference presentation announcement provides no material information about business performance or outlook."
+    },
+    {
+      "id": "129331972",
+      "headline": "Apple TV Withdraws from FIFA World Cup Bidding",
+      "summary": "Apple TV has reportedly decided not to pursue the broadcasting rights for the 2030 and 2034 FIFA World Cup tournaments.",
+      "url": "https://www.mactech.com/2026/11/23/news-items-you-should-check-out-out-november-23/amp/",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "AAPL"
+      ],
+      "created_at": "2026-11-23T22:31:39Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Apple TV withdrawal from FIFA bidding is a business decision with no direct impact on core operations or financials."
+    },
+    {
+      "id": "129265584",
+      "headline": "Amgen to Present at Evercore ISI HealthCONx Conference",
+      "summary": "Amgen announced that company executives will present at the 9th annual Evercore ISI HealthCONx Conference on December 1, 2026.",
+      "url": "https://www.prnewswire.com/news-releases/amgen-to-present-at-the-9th-annual-evercore-isi-healthconx-conference-302948634.html",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "AMGN"
+      ],
+      "created_at": "2026-11-23T21:31:29Z",
+      "sentiment": "neutral",
+      "confidence": 0.95,
+      "reason": "Conference presentation announcement provides no new product, financial, or operational information."
+    },
+    {
+      "id": "129265582",
+      "headline": "FDA Approves AbbVie's RINVOQ for Nonsegmental Vitiligo",
+      "summary": "The U.S. Food and Drug Administration has approved AbbVie's RINVOQ (upadacitinib) as the first and only systemic therapy for adults and pediatric patients 12 and older with nonsegmental vitiligo.",
+      "url": "https://www.prnewswire.com/news-releases/abbvies-rinvoq-upadacitinib-approved-as-the-first-systemic-therapy-in-the-us-to-treat-adult-and-pediatric-patients-with-nonsegmental-vitiligo-302948650.html",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "ABBV"
+      ],
+      "created_at": "2026-11-23T21:31:28Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "FDA approval of first-in-class systemic therapy expands RINVOQ's market addressable population and revenue potential."
+    },
+    {
+      "id": "128868472",
+      "headline": "Humana Shares Decline Following CMS Proposal to Modify Medicare Advantage Star Ratings",
+      "summary": "Humana shares fell following a proposal by the Centers for Medicare & Medicaid Services (CMS) to change the Medicare Advantage Star Ratings program, which could reduce industry payments by approximately $107 billion over a decade.",
+      "url": "https://investorshub.advfn.com/market-news/article/40536/unitedhealth-humana-and-cvs-shares-fall-as-medicare-advantage-rating-changes-threaten-107-billion-in-payments",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "HUM"
+      ],
+      "created_at": "2026-11-23T14:32:04Z",
+      "sentiment": "bear",
+      "confidence": 0.95,
+      "reason": "CMS proposal to modify Star Ratings could reduce industry payments by $107B over decade"
+    },
+    {
+      "id": "128821740",
+      "headline": "AbbVie Eligible for China's National Monoclonal Antibody Procurement",
+      "summary": "AbbVie has been identified as an eligible participant in China's upcoming national centralized volume-based procurement for monoclonal antibody drugs, including adalimumab.",
+      "url": "https://www.moomoo.com/news/post/1005469595/national-centralized-procurement-document-no-1-for-monoclonal-antibodies-released",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "ABBV"
+      ],
+      "created_at": "2026-11-23T13:01:28Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Eligibility for China's national procurement program expands market access for AbbVie's key drug adalimumab."
+    },
+    {
+      "id": "128798148",
+      "headline": "Morgan Stanley Adjusts Price Target on MetLife to $120 From $111",
+      "summary": "Morgan Stanley has updated its price target for MetLife, Inc., raising it from $111 to $120.",
+      "url": "https://www.marketscreener.com/news/morgan-stanley-adjusts-price-target-on-metlife-to-120-from-111-ce7851dad881f422",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "MET"
+      ],
+      "created_at": "2026-11-23T11:32:14Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Price target raised by $9 (8.1%) signals positive outlook on MetLife's fundamentals"
+    },
+    {
+      "id": "128797901",
+      "headline": "Call for Applications for 2027 Tsinghua Amgen Scholars Program",
+      "summary": "The Amgen Foundation has opened the application process for the 2027 Tsinghua Amgen Scholars Program, an international initiative providing undergraduate research opportunities in biomedical science.",
+      "url": "https://www.prnewswire.com/apac/news-releases/call-for-application-for-2027-tsinghua-amgen-scholars-program-302947933.html",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "AMGN"
+      ],
+      "created_at": "2026-11-23T11:31:27Z",
+      "sentiment": "neutral",
+      "confidence": 0.95,
+      "reason": "Educational program announcement with no direct business or financial impact on any stock."
+    },
+    {
+      "id": "128619504",
+      "headline": "Raymond James Upgrades Southwest Airlines to Strong Buy",
+      "summary": "Raymond James has upgraded Southwest Airlines (LUV) to a 'Strong Buy' rating from 'Outperform', while adjusting the price target to $55.",
+      "url": "https://www.moomoo.com/stock/PECO-US?chain_id=Name1K9-3FXPhg.1le5340&global_content=%7B%22promote_id%22%3A13764%2C%22sub_promote_id%22%3A57%2C%22f%22%3A%22www.moomoo.com%2Fstock%2FSCAN-US%22%7D",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "LUV"
+      ],
+      "created_at": "2026-11-22T14:02:39Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Upgrade to Strong Buy with increased price target signals strong positive outlook for LUV."
+    },
+    {
+      "id": "127951388",
+      "headline": "Airbnb Implements New Policy Regarding Water Usage Restrictions",
+      "summary": "Airbnb is introducing new guidelines for hosts regarding water usage and potential restrictions in affected areas.",
+      "url": "https://turismo.ig.com.br/2026-11-20/proibido-lavar-louca--regras-do-airbnb-comecam-nesta-sexta-feira.html",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "ABNB"
+      ],
+      "created_at": "2026-11-20T22:32:08Z",
+      "sentiment": "neutral",
+      "confidence": 0.95,
+      "reason": "Policy implementation is operational news with no clear positive or negative financial impact."
+    },
+    {
+      "id": "127882821",
+      "headline": "MetLife Insider Sells Shares Worth $652,288",
+      "summary": "A MetLife insider sold company shares valued at $652,288, according to a recent SEC filing.",
+      "url": "https://www.marketscreener.com/news/metlife-insider-sold-shares-worth-652-288-according-to-a-recent-sec-filing-ce785ed3dc89f026",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "MET"
+      ],
+      "created_at": "2026-11-20T21:33:18Z",
+      "sentiment": "bear",
+      "confidence": 0.75,
+      "reason": "Insider selling can signal lack of confidence in near-term stock performance."
+    },
+    {
+      "id": "127713002",
+      "headline": "Wabtec Corporation Appoints Rich J. Freeland to the Board of Directors",
+      "summary": "Wabtec Corporation has announced the appointment of former Cummins Inc. President and COO Rich J. Freeland to its Board of Directors, effective November 23, 2026.",
+      "url": "https://www.businesswire.com/newsroom/industry/transport/rail",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "WAB"
+      ],
+      "created_at": "2026-11-20T19:02:00Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Appointment of experienced executive from industry leader strengthens board governance and strategic oversight."
+    },
+    {
+      "id": "127711938",
+      "headline": "Humana to Present 2026 US Senior Pickleball National Championships",
+      "summary": "Humana is the presenting sponsor for the 2026 US Senior Pickleball National Championships, scheduled for late November and early December 2026.",
+      "url": "https://www.einnews.com/pr_news/957845341/us-senior-pickleball-announces-largest-national-championships-ever-for-players-50",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "HUM"
+      ],
+      "created_at": "2026-11-20T19:01:56Z",
+      "sentiment": "neutral",
+      "confidence": 0.95,
+      "reason": "Sponsorship announcement has no material impact on financial performance or stock valuation."
+    },
+    {
+      "id": "127541275",
+      "headline": "Mizuho Adjusts Amgen Price Target to $388",
+      "summary": "Mizuho has updated its price target for Amgen Inc., raising it from $352 to $388 while maintaining a Neutral rating.",
+      "url": "https://www.marketscreener.com/news/mizuho-adjusts-price-target-on-amgen-to-388-from-352-maintains-neutral-rating-ce785ed3da8bf721",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "AMGN"
+      ],
+      "created_at": "2026-11-20T16:03:08Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Price target raised 10.2% signals improved analyst outlook despite neutral rating."
+    },
+    {
+      "id": "127464885",
+      "headline": "Bernstein Adjusts Price Target on Airbnb to $234",
+      "summary": "Bernstein has updated its price target for Airbnb, raising it from $217 to $234.",
+      "url": "https://www.marketscreener.com/news/bernstein-adjusts-price-target-on-airbnb-to-234-from-217-ce785ed3d98ef52d",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "ABNB"
+      ],
+      "created_at": "2026-11-20T14:32:36Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Price target raised by $17, indicating analyst confidence in Airbnb's growth prospects."
+    },
+    {
+      "id": "127464844",
+      "headline": "AbbVie to Present at the Piper Sandler 38th Annual Healthcare Conference",
+      "summary": "AbbVie announced its scheduled participation in the Piper Sandler 38th Annual Healthcare Conference.",
+      "url": "https://www.prnewswire.com/news-releases/abbvie-to-present-at-the-piper-sandler-38th-annual-healthcare-conference-302944450.html",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "ABBV"
+      ],
+      "created_at": "2026-11-20T14:32:10Z",
+      "sentiment": "neutral",
+      "confidence": 0.95,
+      "reason": "Conference participation announcement is routine corporate activity without material news impact."
+    },
+    {
+      "id": "127411699",
+      "headline": "Apple Developer Academy Showcase in Pohang",
+      "summary": "Apple held its annual showcase for the Apple Developer Academy in Pohang, South Korea, featuring apps developed by students.",
+      "url": "https://www.koreaherald.com/article/10944423",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "AAPL"
+      ],
+      "created_at": "2026-11-20T13:01:25Z",
+      "sentiment": "neutral",
+      "confidence": 0.95,
+      "reason": "Educational event announcement with no direct impact on Apple's financial performance or business operations."
+    },
+    {
+      "id": "127399214",
+      "headline": "TD Cowen Upgrades Humana to Buy",
+      "summary": "TD Cowen has upgraded Humana Inc. to a 'Buy' rating with a price target of $485.",
+      "url": "https://www.marketscreener.com/news/td-cowen-upgrades-humana-to-buy-price-target-is-485-ce785ed3d889f622",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "HUM"
+      ],
+      "created_at": "2026-11-20T12:32:05Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Upgrade to Buy rating with $485 price target signals positive outlook"
+    },
+    {
+      "id": "127398827",
+      "headline": "Apple Developing Autonomous AI Agent",
+      "summary": "Apple is reportedly developing an autonomous AI agent capable of performing multistep tasks, including writing code, browsing the web, and controlling applications.",
+      "url": "https://www.moomoo.com/stock/AAPL-US?chain_id=Name1K9-3FXPhg.1lg030g&global_content=%7B%22promote_id%22%3A13764%2C%22sub_promote_id%22%3A57%2C%22f%22%3A%22www.moomoo.com%2Fstock%2FPDD-US%22%7D",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "AAPL"
+      ],
+      "created_at": "2026-11-20T12:31:54Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Development of autonomous AI agent represents significant innovation potential and competitive positioning in AI sector."
+    },
+    {
+      "id": "127398822",
+      "headline": "Hasbro Raises Fiscal 2026 Financial Guidance and Doubles Share Repurchase Target",
+      "summary": "Hasbro has increased its full-year revenue, operating margin, and EBITDA outlook for fiscal 2026 while doubling its annual share repurchase target.",
+      "url": "https://www.barchart.com/story/news/8932140/hasbro-stock-is-wall-street-bullish-or-bearish",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "HAS"
+      ],
+      "created_at": "2026-11-20T12:31:46Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Raised guidance across revenue, margins, and EBITDA with doubled buyback target signals strong business momentum."
+    },
+    {
+      "id": "127398819",
+      "headline": "Corpay to Acquire Minority Stake in BILL as Part of $6 Billion Take-Private Deal",
+      "summary": "Corpay, Inc. has entered into a definitive agreement to acquire a minority stake in BILL Holdings, Inc. as part of a $6 billion take-private transaction led by TPG.",
+      "url": "https://www.businesswire.com/newsroom/subject/merger-acquisition",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "CPAY"
+      ],
+      "created_at": "2026-11-20T12:31:43Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Take-private deal at significant valuation validates BILL's value and provides liquidity event."
+    },
+    {
+      "id": "127378521",
+      "headline": "Bernstein Adjusts Price Target on Airbnb to $234 From $217",
+      "summary": "Bernstein has updated its price target for Airbnb, Inc., raising it from $217 to $234.",
+      "url": "https://www.marketscreener.com/news/bernstein-adjusts-price-target-on-airbnb-to-234-from-217-ce785ed3d98ef52d",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "ABNB"
+      ],
+      "created_at": "2026-11-20T11:32:18Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Price target increase of $17 (7.8%) signals analyst confidence in Airbnb's growth prospects."
+    },
+    {
+      "id": "127378171",
+      "headline": "Amgen Supports Pitch4RARE 2026 and SIAMG Indo US Bridging RARE Summit",
+      "summary": "Amgen is recognized as an industry supporter for the Pitch4RARE 2026 program and the SIAMG Indo US Bridging RARE Summit 2026.",
+      "url": "https://www.einpresswire.com/article/957675994/indousrare-gord-announce-pitch4rare-2026-inviting-global-innovators-to-advance-rare-disease-solutions",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "AMGN"
+      ],
+      "created_at": "2026-11-20T11:31:27Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Corporate sponsorship recognition has minimal direct impact on financial performance or stock valuation."
+    },
+    {
+      "id": "127303781",
+      "headline": "AbbVie Announces $217 Million Investment in Puerto Rico Manufacturing Operations",
+      "summary": "AbbVie is investing $217 million to modernize and expand its manufacturing facilities in Barceloneta, Puerto Rico, creating approximately 100 new jobs.",
+      "url": "https://world.einnews.com/pr_news/957755195/governor-announces-217-million-investment-by-abbvie-to-expand-barceloneta-manufacturing-operations",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "ABBV"
+      ],
+      "created_at": "2026-11-20T03:01:43Z",
+      "sentiment": "bull",
+      "confidence": 0.92,
+      "reason": "Major capital investment signals confidence in business growth and expansion of manufacturing capacity."
+    },
+    {
+      "id": "127130373",
+      "headline": "U.K. Tribunal Orders Government to Confirm Secret Demand for Apple Customer Data",
+      "summary": "The U.K. Investigatory Powers Tribunal has ordered the government to confirm it issued a secret technical order requiring Apple to provide encrypted customer information.",
+      "url": "https://newsfilter.io/articles/u-k-government-forced-to-disclose-secret-apple-backdoor-order-89f07cb47e5859b18ddafa5e02d91f83",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "AAPL"
+      ],
+      "created_at": "2026-11-19T22:31:27Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Tribunal order doesn't directly impact Apple's business operations or financials."
+    },
     {
       "id": "126880356",
       "headline": "Apple Camera and Photos Software Chief Jon McCormack Departs",
@@ -15,7 +405,7 @@
       "created_at": "2026-11-19T20:01:24Z",
       "sentiment": "bear",
       "confidence": 0.72,
-      "reason": "Departure of key software executive may impact product innovation and competitive positioning in imaging."
+      "reason": "Departure of key software executive may impact camera/photo feature development quality."
     },
     {
       "id": "126781958",
@@ -30,7 +420,7 @@
       "created_at": "2026-11-19T19:01:56Z",
       "sentiment": "neutral",
       "confidence": 0.85,
-      "reason": "Call for FAA modernization is industry-wide issue, not company-specific positive or negative"
+      "reason": "Call for FAA modernization is industry-wide advocacy, not company-specific positive or negative news."
     },
     {
       "id": "126781901",
@@ -44,8 +434,8 @@
       ],
       "created_at": "2026-11-19T19:01:28Z",
       "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "New credible competitor identified for Amgen's Tepezza threatens market share and revenue."
+      "confidence": 0.75,
+      "reason": "New competition identified for Amgen's Tepezza could pressure market share and revenue."
     },
     {
       "id": "126781894",
@@ -61,396 +451,6 @@
       "sentiment": "neutral",
       "confidence": 0.95,
       "reason": "Routine promotional announcement with no material business impact on financials or operations."
-    },
-    {
-      "id": "126408849",
-      "headline": "Corpay Signs Multi-Year FX Partnership with Hull City",
-      "summary": "Corpay's Cross-Border unit has entered into a multi-year agreement to serve as the official foreign exchange partner for the English Premier League soccer team Hull City.",
-      "url": "https://www.moomoo.com/hans/news/post/1005192169/corpay-signs-deal-to-provide-fx-management-for-hull-city",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "CPAY"
-      ],
-      "created_at": "2026-11-19T14:31:59Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Multi-year partnership expands Corpay's market presence and revenue streams in sports sector"
-    },
-    {
-      "id": "126336778",
-      "headline": "Morgan Stanley Adjusts Price Target on Humana to $475 From $370",
-      "summary": "Morgan Stanley has revised its price target for Humana Inc. shares, increasing the target to $475 from the previous level of $370.",
-      "url": "https://www.marketscreener.com/news/morgan-stanley-adjusts-price-target-on-humana-to-475-from-370-ce785ed2d888fe22",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "HUM"
-      ],
-      "created_at": "2026-11-19T13:02:32Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "28% price target increase signals analyst confidence in Humana's growth prospects."
-    },
-    {
-      "id": "126319920",
-      "headline": "Airbnb Announces 'At Home with the Raichands' Experience for K3G 25th Anniversary",
-      "summary": "Airbnb has launched a special promotional campaign featuring Bollywood stars Kareena Kapoor Khan and Hrithik Roshan to celebrate the 25th anniversary of the film 'Kabhi Khushi Kabhie Gham'.",
-      "url": "https://telugufeed.com/kareena-kapoor-hrithik-roshan-k3g-25-years-airbnb-raichands-campaign/",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "ABNB"
-      ],
-      "created_at": "2026-11-19T12:32:03Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Strategic marketing partnership with major Bollywood stars enhances brand visibility and drives user engagement in key market."
-    },
-    {
-      "id": "126292749",
-      "headline": "Humana Shares Decline Amid Increased Regulatory Scrutiny of Government Health Programs",
-      "summary": "Humana stock experienced a significant drop following reports of increased regulatory scrutiny regarding potential fraud in Medicare Advantage, Medicaid, and Marketplace plans.",
-      "url": "https://www.baystreet.ca/stockstowatch/24434/Watch-Anthropic-Okta-UNH-and-More",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "HUM"
-      ],
-      "created_at": "2026-11-19T11:31:23Z",
-      "sentiment": "bear",
-      "confidence": 0.95,
-      "reason": "Regulatory scrutiny of fraud allegations and stock price decline indicate significant negative sentiment."
-    },
-    {
-      "id": "126292747",
-      "headline": "AbbVie and DISCO Pharmaceuticals Announce Strategic Collaboration for Solid Tumor Therapeutics",
-      "summary": "AbbVie has entered into a strategic collaboration and option-to-license agreement with DISCO Pharmaceuticals to develop novel bispecific therapeutics for solid tumors.",
-      "url": "https://www.finanzen.ch/nachrichten/aktien/disco-pharmaceuticals-abbvie-announce-up-to-$2-5-bln-cancer-drug-collaboration-1036782736",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "ABBV"
-      ],
-      "created_at": "2026-11-19T11:31:18Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Strategic collaboration expands AbbVie's solid tumor pipeline with novel bispecific therapeutics."
-    },
-    {
-      "id": "126190533",
-      "headline": "Humana Releases Survey Findings on Florida Healthcare Trends",
-      "summary": "Humana published findings from two Morning Consult surveys highlighting the perspectives of Florida seniors and primary care providers on healthy aging and Medicare Advantage.",
-      "url": "https://www.barchart.com/press-releases/8897587/florida-seniors-and-primary-care-providers-agree-that-prevention-affordable-care-and-comprehensive-coverage-are-keys-to-healthy-aging",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "HUM"
-      ],
-      "created_at": "2026-11-19T03:02:24Z",
-      "sentiment": "neutral",
-      "confidence": 0.95,
-      "reason": "Survey release is informational without material financial impact or forward guidance."
-    },
-    {
-      "id": "126182237",
-      "headline": "Amgen Italia Presents Research on Cardiovascular Health and LDL Cholesterol Awareness",
-      "summary": "Amgen Italia unveiled the 'Vivere oltre i 50 anni' research project in Milan, focusing on the management of cardiovascular risk and LDL cholesterol awareness among individuals over 50.",
-      "url": "https://www.milanofinanza.it/news/ricerca-amgen-censis-sugli-over-50-e-il-rapporto-del-colesterolo-ldl-con-la-salute-del-cuore-202611181837154488",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "AMGN"
-      ],
-      "created_at": "2026-11-19T01:01:39Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Research presentation on health awareness lacks material business impact or financial implications."
-    },
-    {
-      "id": "126038267",
-      "headline": "Airbnb Insider Executes Share Sale",
-      "summary": "An Airbnb insider sold company shares valued at approximately $321,374, according to a recent SEC filing.",
-      "url": "https://www.marketscreener.com/news/airbnb-insider-sold-shares-worth-321-374-according-to-a-recent-sec-filing-ce785edddf88f224",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "ABNB"
-      ],
-      "created_at": "2026-11-18T22:31:56Z",
-      "sentiment": "bear",
-      "confidence": 0.6,
-      "reason": "Insider share sales can signal reduced confidence in near-term stock performance."
-    },
-    {
-      "id": "125954216",
-      "headline": "Apple Releases HomeView Software 27.2.1 Update",
-      "summary": "Apple has issued a software update for its smart home hub to address Siri functionality and connectivity bugs.",
-      "url": "https://appleosophy.com/wire/gwm546z/",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "AAPL"
-      ],
-      "created_at": "2026-11-18T21:31:41Z",
-      "sentiment": "neutral",
-      "confidence": 0.95,
-      "reason": "Bug fix update is routine maintenance with no material business impact."
-    },
-    {
-      "id": "125831082",
-      "headline": "Apple Announces Finalists for 2026 App Store Awards",
-      "summary": "Apple has revealed the 45 finalists for its annual App Store Awards, recognizing excellence across its hardware ecosystem.",
-      "url": "https://appleosophy.com/wire/oy1ri1h/",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "AAPL"
-      ],
-      "created_at": "2026-11-18T20:01:25Z",
-      "sentiment": "neutral",
-      "confidence": 0.95,
-      "reason": "Award announcement is promotional activity with no material financial impact on Apple's business."
-    },
-    {
-      "id": "125751217",
-      "headline": "Investigators Make Progress in FAA Ground Stop Probe",
-      "summary": "Investigators are reportedly making progress in the probe regarding the recent FAA ground stop that affected Southwest Airlines and other carriers.",
-      "url": "https://www.marketscreener.com/news/investigators-make-progress-in-faa-ground-stop-probe-ce785edddd81f625",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "LUV"
-      ],
-      "created_at": "2026-11-18T19:02:15Z",
-      "sentiment": "neutral",
-      "confidence": 0.95,
-      "reason": "Progress in investigation is factual; no direct impact on operations or financials mentioned."
-    },
-    {
-      "id": "125749882",
-      "headline": "Potential US Disclosure Requirements for Chinese AI Model Usage",
-      "summary": "Reports indicate that the Trump administration is considering a proposal that would require US companies, including Airbnb, to disclose their use of Chinese artificial intelligence models.",
-      "url": "https://news.futunn.com/post/1004911036/market-chatter-us-weighs-plan-to-require-companies-to-disclose",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "ABNB"
-      ],
-      "created_at": "2026-11-18T19:01:49Z",
-      "sentiment": "bear",
-      "confidence": 0.75,
-      "reason": "Disclosure requirements could increase compliance costs and limit AI model choices for US companies."
-    },
-    {
-      "id": "125543609",
-      "headline": "Airbnb to Implement New Limits on Rental Agreements",
-      "summary": "Airbnb is set to introduce new restrictions on rental agreements effective November 20, 2026.",
-      "url": "https://www.einpresswire.com/article/957305717/airbnb-limits-rental-agreements-starting-nov-20-proper-says-a-host-s-liability-coverage-shouldn-t-depend-on-one",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "ABNB"
-      ],
-      "created_at": "2026-11-18T16:01:45Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Policy change lacks clarity on impact; could affect supply or demand depending on restriction details."
-    },
-    {
-      "id": "125396439",
-      "headline": "Apple Services Experience Outage Following Internal Update",
-      "summary": "Apple experienced a widespread service outage on November 18, 2026, impacting the App Store, iCloud, and internal employee systems due to an internal update.",
-      "url": "https://www.euro2day.gr/news/world/article/2380680/update-prokalese-haos-se-yphresies-ths-apple-se-ex.html",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "AAPL"
-      ],
-      "created_at": "2026-11-18T13:01:21Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "Service outages damage user experience and revenue from App Store, negatively impacting Apple's reputation."
-    },
-    {
-      "id": "125365389",
-      "headline": "South Korean Regulator Orders Apple to Designate Legal Representatives",
-      "summary": "South Korean regulators have ordered Apple and several other major technology companies to appoint local legal representatives by January following a rise in customer complaints.",
-      "url": "https://www.marketscreener.com/news/korea-regulator-cites-customer-complaints-orders-apple-google-alibaba-openai-to-designate-legal-ce785edcd08efe23",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "AAPL"
-      ],
-      "created_at": "2026-11-18T11:32:12Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Regulatory compliance requirement with no direct business impact on operations or financials."
-    },
-    {
-      "id": "125365388",
-      "headline": "Apple Updates Operating System to Restrict Accessibility Tool Usage",
-      "summary": "Apple has implemented an operating system update that restricts the use of accessibility tools on Macs to prevent potential data privacy risks.",
-      "url": "https://www.fidelity.com/news/article/company-news/202611180600RTRSNEWSCOMBINED_L6N46Y1DP_1",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "AAPL"
-      ],
-      "created_at": "2026-11-18T11:32:12Z",
-      "sentiment": "neutral",
-      "confidence": 0.75,
-      "reason": "Security measure balances privacy concerns with potential accessibility limitations for users."
-    },
-    {
-      "id": "125188592",
-      "headline": "Bernstein Estimates $345 Million Industry Impact from FAA Ground Stop",
-      "summary": "Bernstein analysts estimated that the recent FAA ground stop cost the four largest U.S. airlines, including Southwest Airlines, a combined $345 million.",
-      "url": "https://www.barchart.com/story/news/8880491/faa-temporarily-stops-router-installations-connected-to-air-travel-stoppage",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "LUV"
-      ],
-      "created_at": "2026-11-17T23:01:55Z",
-      "sentiment": "bear",
-      "confidence": 0.85,
-      "reason": "FAA ground stop caused $345M in combined losses for major airlines including Southwest."
-    },
-    {
-      "id": "125188560",
-      "headline": "Nothing Bundt Cakes Partners with Corpay Subsidiary Stored Value Solutions (SVS) for Enhanced Gift Card Program",
-      "summary": "Nothing Bundt Cakes has launched an enhanced gift card program across its 850+ bakery locations and digital channels in partnership with Stored Value Solutions (SVS), a subsidiary of Corpay.",
-      "url": "https://www.globenewswire.com/news-release/2026/11/17/3405061/0/en/nothing-bundt-cakes-and-stored-value-solutions-launch-enhanced-gift-card-program.html",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "CPAY"
-      ],
-      "created_at": "2026-11-17T23:01:33Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Partnership expansion enhances customer engagement and revenue streams across 850+ locations."
-    },
-    {
-      "id": "125132682",
-      "headline": "Humana to Implement Mandatory Return-to-Office Policy for Some Employees in 2027",
-      "summary": "Humana Inc. is reportedly planning to transition certain employees back to office-based work starting in 2027.",
-      "url": "https://insurancenewsnet.com/oarticle/humana-to-begin-mandatory-return-to-office-for-some-workers-in-2027",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "HUM"
-      ],
-      "created_at": "2026-11-17T22:31:37Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Return-to-office policy is operational news with mixed implications for efficiency and employee retention."
-    },
-    {
-      "id": "124874616",
-      "headline": "Apple Reports Widespread Internal and Consumer Service Outages",
-      "summary": "Apple experienced significant service disruptions affecting internal corporate tools, retail store operations, and consumer-facing services.",
-      "url": "https://appleosophy.com/wire/lu3evxk/",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "AAPL"
-      ],
-      "created_at": "2026-11-17T20:01:26Z",
-      "sentiment": "bear",
-      "confidence": 0.95,
-      "reason": "Service outages disrupt operations and customer experience, negatively impacting Apple's business continuity."
-    },
-    {
-      "id": "124874614",
-      "headline": "EVERSANA INTOUCH Wins 2026 Pharma Grand Award for AbbVie Campaign",
-      "summary": "EVERSANA INTOUCH received the 2026 Pharma Grand Award and two Gold Towers for the \"Look Deeper Than Pigment\" campaign developed for AbbVie.",
-      "url": "https://www.einpresswire.com/article/957271987/nyfhealth-winners-announced-eversana-intouch-and-leo-singapore-earn-grand-awards-klick-health-is-agency-of-the-year",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "ABBV"
-      ],
-      "created_at": "2026-11-17T20:01:24Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Award recognition for AbbVie campaign demonstrates strong partnership and marketing effectiveness."
-    },
-    {
-      "id": "124775242",
-      "headline": "UBS Adjusts Southwest Airlines Price Target to $59 From $54",
-      "summary": "UBS analysts have raised their price target for Southwest Airlines Co. to $59 from $54 while maintaining a Buy rating.",
-      "url": "https://www.marketscreener.com/news/ubs-adjusts-southwest-airlines-price-target-to-59-from-54-maintains-buy-rating-ce785edcda88f622",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "LUV"
-      ],
-      "created_at": "2026-11-17T19:01:59Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "UBS raised price target by 9.3% and maintained Buy rating, signaling positive outlook."
-    },
-    {
-      "id": "124773617",
-      "headline": "Humana Shares Decline Following Proposed Medicare Advantage Audit Framework",
-      "summary": "Humana stock fell by more than 5% following a U.S. government proposal for a new Medicare Advantage audit framework that analysts consider unfavorable for the industry.",
-      "url": "https://www.barchart.com/story/news/8878165/stocks-pressured-by-weakness-in-software-and-health-insurance-stocks",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "HUM"
-      ],
-      "created_at": "2026-11-17T19:01:50Z",
-      "sentiment": "bear",
-      "confidence": 0.95,
-      "reason": "Proposed unfavorable Medicare Advantage audit framework triggered 5% stock decline"
-    },
-    {
-      "id": "124773547",
-      "headline": "Apple Reportedly Nearing Long-Term DRAM Supply Agreement With Samsung",
-      "summary": "Apple is reportedly in advanced talks to secure a four-to-five-year DRAM supply deal with Samsung starting in early 2027.",
-      "url": "https://appleosophy.com/wire/k4cb19g/",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "AAPL"
-      ],
-      "created_at": "2026-11-17T19:01:26Z",
-      "sentiment": "bull",
-      "confidence": 0.75,
-      "reason": "Long-term supply agreement provides stability and suggests confidence in future demand."
-    },
-    {
-      "id": "124509341",
-      "headline": "Humana Foundation Announces $13.93 Million in Fall 2026 Grants",
-      "summary": "The Humana Foundation, the philanthropic arm of Humana Inc., has awarded nearly $14 million in grants to support nutrition security, emotional health, and community initiatives.",
-      "url": "https://www.businesswire.com/newsroom/industry/health",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "HUM"
-      ],
-      "created_at": "2026-11-17T16:01:36Z",
-      "sentiment": "neutral",
-      "confidence": 0.95,
-      "reason": "Philanthropic grants are charitable activities unrelated to core business operations or financial performance."
-    },
-    {
-      "id": "124389566",
-      "headline": "MetLife Investment Management Closes $370 Million Opportunistic Real Estate Debt Fund",
-      "summary": "MetLife Investment Management, the institutional asset management business of MetLife, Inc., has closed $370 million in equity commitments for its new opportunistic real estate debt fund.",
-      "url": "https://www.businesswire.com/newsroom/industry/professional-services/insurance",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "MET"
-      ],
-      "created_at": "2026-11-17T14:31:31Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Successful fund closure demonstrates strong investor confidence and expands MetLife's asset management capabilities."
     }
   ]
 }
