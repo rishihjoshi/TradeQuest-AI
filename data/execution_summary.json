@@ -1,35 +1,13 @@
 {
-  "timestamp": "2026-11-21T02:41:16Z",
-  "mode": "post_close",
-  "orders_placed": [
-    {
-      "action": "SELL",
-      "symbol": "ABBV",
-      "qty": 0.100618,
-      "status": "submitted"
-    }
-  ],
-  "orders_skipped": [
-    {
-      "symbol": "HUM",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "MET",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "WAB",
-      "reason": "blocked by agent approval or risk gate"
-    }
-  ],
+  "timestamp": "2026-11-24T01:10:08Z",
+  "mode": "market_open",
+  "orders_placed": [],
+  "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": -3.2,
+  "cash_pct_after": 7.32,
   "long_only_breach": false,
-  "invariant_breaches": [
-    "sector Healthcare at 30.3% exceeds the 30% cap"
-  ],
-  "breach_streak": 2,
+  "invariant_breaches": [],
+  "breach_streak": 0,
   "trading_halted": false,
   "dry_run": false
 }
