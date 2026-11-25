@@ -1,11 +1,17 @@
 {
-  "timestamp": "2026-11-25T02:42:41Z",
+  "timestamp": "2026-11-25T04:28:16Z",
   "mode": "post_close",
   "orders_placed": [
     {
       "action": "SELL",
-      "symbol": "IEX",
-      "qty": 5.0,
+      "symbol": "CPAY",
+      "qty": 0.838739,
+      "status": "submitted"
+    },
+    {
+      "action": "SELL",
+      "symbol": "ABBV",
+      "qty": 0.21384,
       "status": "submitted"
     }
   ],
@@ -13,8 +19,11 @@
   "errors": [],
   "cash_pct_after": 7.24,
   "long_only_breach": false,
-  "invariant_breaches": [],
-  "breach_streak": 0,
+  "invariant_breaches": [
+    "sector Unknown at 34.1% exceeds the 30% cap",
+    "sector Healthcare at 30.7% exceeds the 30% cap"
+  ],
+  "breach_streak": 1,
   "trading_halted": false,
   "dry_run": false
 }
