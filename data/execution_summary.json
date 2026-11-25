@@ -1,23 +1,11 @@
 {
-  "timestamp": "2026-11-24T23:13:58Z",
-  "mode": "market_open",
+  "timestamp": "2026-11-25T02:42:41Z",
+  "mode": "post_close",
   "orders_placed": [
     {
       "action": "SELL",
-      "symbol": "AAPL",
-      "qty": 0.016749,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "CPAY",
-      "qty": 0.831122,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "ABBV",
-      "qty": 0.209324,
+      "symbol": "IEX",
+      "qty": 5.0,
       "status": "submitted"
     }
   ],
@@ -25,11 +13,8 @@
   "errors": [],
   "cash_pct_after": 7.24,
   "long_only_breach": false,
-  "invariant_breaches": [
-    "sector Unknown at 34.1% exceeds the 30% cap",
-    "sector Healthcare at 30.7% exceeds the 30% cap"
-  ],
-  "breach_streak": 1,
+  "invariant_breaches": [],
+  "breach_streak": 0,
   "trading_halted": false,
   "dry_run": false
 }

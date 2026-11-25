@@ -1,5 +1,12 @@
 {
-  "timestamp": "2026-11-24T04:00:58Z",
-  "sells": [],
-  "count": 0
+  "timestamp": "2026-11-25T02:42:39Z",
+  "sells": [
+    {
+      "symbol": "IEX",
+      "shares": 5,
+      "rule": "persistent_flag",
+      "reason": "Symbol flagged SELL/WATCH in 6 consecutive agent runs without execution (\u2265 5 threshold). Position is at a loss \u2014 Tier 1 forced exit. Sentinel Rule 3."
+    }
+  ],
+  "count": 1
 }
