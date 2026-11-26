@@ -1,46 +1,42 @@
 {
-  "timestamp": "2026-11-25T22:41:47Z",
-  "mode": "market_open",
+  "timestamp": "2026-11-26T03:42:14Z",
+  "mode": "post_close",
   "orders_placed": [
-    {
-      "action": "SELL",
-      "symbol": "CPAY",
-      "qty": 0.328259,
-      "status": "submitted"
-    },
-    {
-      "action": "SELL",
-      "symbol": "IEX",
-      "qty": 0.573611,
-      "status": "submitted"
-    },
     {
       "action": "BUY",
       "symbol": "EXPD",
-      "qty": 4.414923,
+      "qty": 4.41802,
       "status": "submitted"
     },
     {
       "action": "BUY",
       "symbol": "LMT",
-      "qty": 1.460172,
+      "qty": 1.461196,
       "status": "submitted"
     },
     {
       "action": "BUY",
       "symbol": "ABNB",
-      "qty": 0.072529,
+      "qty": 0.071635,
       "status": "submitted"
     }
   ],
   "orders_skipped": [
+    {
+      "symbol": "CPAY",
+      "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "IEX",
+      "reason": "blocked by agent approval or risk gate"
+    },
     {
       "symbol": "WST",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 28.85,
+  "cash_pct_after": 28.82,
   "long_only_breach": false,
   "invariant_breaches": [],
   "breach_streak": 0,

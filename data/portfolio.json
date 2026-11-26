@@ -8,7 +8,7 @@
     "initial_capital": 10000.0,
     "mode": "alpaca",
     "universe": "S&P 500",
-    "last_rebalance": "2026-11-25",
+    "last_rebalance": "2026-11-26",
     "next_rebalance": "2027-01-01",
     "market_regime": "bear",
     "regime_confidence": 0.66,
@@ -23,30 +23,30 @@
   },
   "summary": {
     "initial_capital": 10000.0,
-    "portfolio_value": 9210.46,
+    "portfolio_value": 9216.93,
     "cash": 2656.76,
-    "cash_pct": 28.85,
+    "cash_pct": 28.82,
     "deployable_cash": 2656.76,
-    "deployable_cash_pct": 28.85,
+    "deployable_cash_pct": 28.82,
     "short_proceeds": 0,
-    "long_exposure_pct": 71.15,
-    "net_exposure_pct": 71.15,
+    "long_exposure_pct": 71.18,
+    "net_exposure_pct": 71.18,
     "long_only_breach": false,
-    "invested": 6553.7,
-    "total_pnl": -796.36,
-    "total_pnl_pct": -7.96,
+    "invested": 6560.17,
+    "total_pnl": -789.91,
+    "total_pnl_pct": -7.9,
     "realized_pnl": -654.79,
-    "unrealized_pnl": -141.57,
+    "unrealized_pnl": -135.12,
     "win_rate": 0.36,
-    "total_trades": 190,
+    "total_trades": 193,
     "attributed_trades": 86,
     "winning_trades": 31,
     "losing_trades": 51,
     "avg_win_pct": 5.6,
     "avg_loss_pct": -4.8,
-    "sharpe_ratio": -1.61,
+    "sharpe_ratio": -1.58,
     "max_drawdown_pct": 12.82,
-    "last_updated": "2026-11-25T22:41:47Z"
+    "last_updated": "2026-11-26T03:42:14Z"
   },
   "filter_status": {
     "momentum": {
@@ -394,6 +394,10 @@
     {
       "date": "Nov 25",
       "value": 9210
+    },
+    {
+      "date": "Nov 26",
+      "value": 9217
     }
   ],
   "spy_curve": [
@@ -692,6 +696,10 @@
     {
       "date": "Nov 25",
       "value": 9362
+    },
+    {
+      "date": "Nov 26",
+      "value": 8784
     }
   ],
   "benchmark": [
@@ -990,6 +998,10 @@
     {
       "date": "Nov 25",
       "value": 9362
+    },
+    {
+      "date": "Nov 26",
+      "value": 8784
     }
   ],
   "holdings": [
@@ -999,11 +1011,11 @@
       "sector": "Healthcare",
       "shares": 2.545317,
       "avg_cost": 299.5,
-      "current_price": 293.8,
-      "market_value": 747.81,
-      "weight": 0.0812,
-      "pnl": -14.51,
-      "pnl_pct": -1.9,
+      "current_price": 294.48,
+      "market_value": 749.54,
+      "weight": 0.0813,
+      "pnl": -12.78,
+      "pnl_pct": -1.68,
       "eps_growth": 2282.1,
       "revenue_growth": 10.3,
       "forward_pe": 18.2,
@@ -1021,11 +1033,11 @@
       "sector": "Consumer Cyclical",
       "shares": 5.282352,
       "avg_cost": 189.24,
-      "current_price": 172.0,
-      "market_value": 908.56,
-      "weight": 0.0986,
-      "pnl": -91.07,
-      "pnl_pct": -9.11,
+      "current_price": 172.15,
+      "market_value": 909.36,
+      "weight": 0.0987,
+      "pnl": -90.28,
+      "pnl_pct": -9.03,
       "eps_growth": 42.7,
       "revenue_growth": 18.9,
       "forward_pe": 27.1,
@@ -1043,11 +1055,11 @@
       "sector": "Healthcare",
       "shares": 3.926075,
       "avg_cost": 466.07,
-      "current_price": 468.2,
-      "market_value": 1838.19,
-      "weight": 0.1996,
-      "pnl": 8.37,
-      "pnl_pct": 0.46,
+      "current_price": 469.24,
+      "market_value": 1842.27,
+      "weight": 0.1999,
+      "pnl": 12.45,
+      "pnl_pct": 0.68,
       "eps_growth": 19.4,
       "revenue_growth": 8.5,
       "forward_pe": 18.7,
@@ -1089,7 +1101,7 @@
       "avg_cost": 118.04,
       "current_price": 110.58,
       "market_value": 1661.38,
-      "weight": 0.1804,
+      "weight": 0.1803,
       "pnl": -112.13,
       "pnl_pct": -6.32,
       "eps_growth": 68.9,
@@ -1133,7 +1145,7 @@
       "avg_cost": 42.1,
       "current_price": 45.95,
       "market_value": 1018.68,
-      "weight": 0.1106,
+      "weight": 0.1105,
       "pnl": 85.35,
       "pnl_pct": 9.14,
       "eps_growth": null,
@@ -1153,11 +1165,11 @@
       "sector": "Healthcare",
       "shares": 0.269709,
       "avg_cost": 412.81,
-      "current_price": 373.49,
-      "market_value": 100.73,
+      "current_price": 372.94,
+      "market_value": 100.59,
       "weight": 0.0109,
-      "pnl": -10.6,
-      "pnl_pct": -9.52,
+      "pnl": -10.75,
+      "pnl_pct": -9.66,
       "eps_growth": 57.3,
       "revenue_growth": 8.7,
       "forward_pe": 35.9,
