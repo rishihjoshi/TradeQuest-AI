@@ -1,21 +1,141 @@
 {
-  "generated_at": "2026-11-24T01:03:27Z",
+  "generated_at": "2026-11-26T22:31:27Z",
   "article_count": 30,
   "articles": [
     {
-      "id": "129445799",
-      "headline": "Apple Plans Return of (PRODUCT)RED Lineup",
-      "summary": "Apple is reportedly preparing to reintroduce (PRODUCT)RED versions of several existing hardware products and accessories, including the HomePod mini 2.",
-      "url": "https://appleosophy.com/2026/11/23/apple-to-bring-back-several-productred-products-including-a-red-homepod-mini-2/",
+      "id": "131336860",
+      "headline": "West Pharmaceutical Services Updates Full-Year 2026 Guidance and Increases Dividend",
+      "summary": "West Pharmaceutical Services raised its full-year 2026 organic sales and adjusted diluted EPS guidance while announcing an 18% increase in its quarterly dividend.",
+      "url": "https://www.barchart.com/story/news/9018550/west-pharmaceutical-services-stock-outlook-is-wall-street-bullish-or-bearish",
       "author": "",
       "source": "fiscal.ai",
       "symbols": [
-        "AAPL"
+        "WST"
       ],
-      "created_at": "2026-11-24T01:01:29Z",
+      "created_at": "2026-11-26T14:32:22Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Raised 2026 guidance and increased dividend 18%, signaling management confidence in strong future performance."
+    },
+    {
+      "id": "131336291",
+      "headline": "Zurich City Council Prepares Counter-Proposal to Airbnb Regulation Initiative",
+      "summary": "The Zurich city council is developing a counter-proposal to a local initiative that seeks to cap short-term rental stays at 90 days per year.",
+      "url": "https://www.finanzen.ch/nachrichten/aktien/stadt-zuerich-zahlt-immer-mehr-business-apartments-1036802778",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "ABNB"
+      ],
+      "created_at": "2026-11-26T14:31:30Z",
       "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Counter-proposal suggests regulatory compromise, not direct impact on Airbnb operations yet."
+    },
+    {
+      "id": "131277704",
+      "headline": "Fresenius Kabi Launches Denosumab Biosimilars in Canada",
+      "summary": "Fresenius Kabi Canada has launched its denosumab biosimilars, Conexxence and Bomyntra, which serve as alternatives to Amgen's reference products Prolia and Xgeva.",
+      "url": "https://www.biosimilardevelopment.com/doc/fresenius-kabi-launches-its-denosumab-biosimilars-in-canada-including-the-first-and-only-ready-to-use-0001",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "AMGN"
+      ],
+      "created_at": "2026-11-26T11:31:42Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Fresenius Kabi expands market presence with new biosimilar launches in Canada, creating revenue opportunities."
+    },
+    {
+      "id": "130804442",
+      "headline": "Corpay Officer Ronald Clarke Files Intent to Sell Shares",
+      "summary": "Corpay officer Ronald Clarke has disclosed an intent to sell 193,460 shares of the company's common stock.",
+      "url": "https://www.moomoo.com/stock/CPAY-US?chain_id=Name1K9-3FXPhg.1lge1g0&global_content=%7B%22promote_id%22%3A13764%2C%22sub_promote_id%22%3A57%2C%22f%22%3A%22www.moomoo.com%2Fstock%2FCRL-US%22%7D",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "CPAY"
+      ],
+      "created_at": "2026-11-25T19:02:35Z",
+      "sentiment": "bear",
       "confidence": 0.75,
-      "reason": "Product color variant reintroduction is routine marketing, lacking material business impact."
+      "reason": "Officer share sales can signal lack of confidence in near-term stock performance."
+    },
+    {
+      "id": "130804439",
+      "headline": "Seaport Global Securities Adjusts Hasbro Price Target to $120",
+      "summary": "Seaport Global Securities has lowered its price target for Hasbro, Inc. from $130 to $120.",
+      "url": "https://www.marketscreener.com/news/seaport-global-securities-adjusts-hasbro-price-target-to-120-from-130-ce7851d8d880f022",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "HAS"
+      ],
+      "created_at": "2026-11-25T19:02:26Z",
+      "sentiment": "bear",
+      "confidence": 0.85,
+      "reason": "Price target lowered by $10, indicating reduced analyst confidence in stock performance."
+    },
+    {
+      "id": "130486651",
+      "headline": "Hasbro Insider Executes Stock Sale",
+      "summary": "A Hasbro insider sold company shares valued at $319,228, as disclosed in a recent SEC filing.",
+      "url": "https://www.marketscreener.com/news/hasbro-insider-sold-shares-worth-319-228-according-to-a-recent-sec-filing-ce7851d8d88bf522",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "HAS"
+      ],
+      "created_at": "2026-11-25T14:32:36Z",
+      "sentiment": "bear",
+      "confidence": 0.6,
+      "reason": "Insider selling can signal lack of confidence in near-term stock performance."
+    },
+    {
+      "id": "130187826",
+      "headline": "Corpay Strategist Comments on Bank of Canada Inflation Outlook",
+      "summary": "Corpay's chief market strategist provided commentary on the Bank of Canada's recent inflation remarks and the potential for future interest rate adjustments.",
+      "url": "https://www.morningstar.com/news/dow-jones/202611246240/bank-of-canada-gov-macklem-expects-inflation-to-remain-persistent-2nd-update",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "CPAY"
+      ],
+      "created_at": "2026-11-24T23:01:57Z",
+      "sentiment": "neutral",
+      "confidence": 0.95,
+      "reason": "Commentary on inflation outlook is factual analysis without clear positive or negative implications."
+    },
+    {
+      "id": "130145947",
+      "headline": "Amgen Reaches Patent Settlement with Bristol-Myers Squibb and Ono Pharmaceutical for ABP 206",
+      "summary": "Amgen has entered into a settlement agreement with Bristol-Myers Squibb and Ono Pharmaceutical to resolve patent litigation regarding its investigational biosimilar, ABP 206.",
+      "url": "https://www.prnewswire.com/news-releases/amgen-secures-pathway-for-us-launch-of-biosimilar-to-opdivo-following-settlement-agreement-302949586.html",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "AMGN"
+      ],
+      "created_at": "2026-11-24T22:31:28Z",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "reason": "Patent settlement resolves litigation but provides no financial impact or clinical outcome information."
+    },
+    {
+      "id": "129548563",
+      "headline": "CICC Research Initiates Coverage on Amgen With Outperform Rating",
+      "summary": "CICC Research has initiated coverage on Amgen Inc. with an 'Outperform' rating and a price target of $550.",
+      "url": "https://www.marketscreener.com/news/cicc-research-initiates-coverage-on-amgen-with-outperform-rating-550-price-target-ce7851dbd88ef623",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "AMGN"
+      ],
+      "created_at": "2026-11-24T13:02:23Z",
+      "sentiment": "bull",
+      "confidence": 0.95,
+      "reason": "Outperform rating with $550 price target indicates positive outlook for Amgen stock."
     },
     {
       "id": "129445134",
@@ -30,22 +150,7 @@
       "created_at": "2026-11-24T00:01:39Z",
       "sentiment": "neutral",
       "confidence": 0.95,
-      "reason": "Conference presentation announcement provides no material information about business performance or outlook."
-    },
-    {
-      "id": "129331972",
-      "headline": "Apple TV Withdraws from FIFA World Cup Bidding",
-      "summary": "Apple TV has reportedly decided not to pursue the broadcasting rights for the 2030 and 2034 FIFA World Cup tournaments.",
-      "url": "https://www.mactech.com/2026/11/23/news-items-you-should-check-out-out-november-23/amp/",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "AAPL"
-      ],
-      "created_at": "2026-11-23T22:31:39Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Apple TV withdrawal from FIFA bidding is a business decision with no direct impact on core operations or financials."
+      "reason": "Conference presentation announcement provides no material business or financial updates."
     },
     {
       "id": "129265584",
@@ -60,7 +165,7 @@
       "created_at": "2026-11-23T21:31:29Z",
       "sentiment": "neutral",
       "confidence": 0.95,
-      "reason": "Conference presentation announcement provides no new product, financial, or operational information."
+      "reason": "Announcement of conference presentation is routine corporate activity with no material news."
     },
     {
       "id": "129265582",
@@ -75,22 +180,7 @@
       "created_at": "2026-11-23T21:31:28Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "FDA approval of first-in-class systemic therapy expands RINVOQ's market addressable population and revenue potential."
-    },
-    {
-      "id": "128868472",
-      "headline": "Humana Shares Decline Following CMS Proposal to Modify Medicare Advantage Star Ratings",
-      "summary": "Humana shares fell following a proposal by the Centers for Medicare & Medicaid Services (CMS) to change the Medicare Advantage Star Ratings program, which could reduce industry payments by approximately $107 billion over a decade.",
-      "url": "https://investorshub.advfn.com/market-news/article/40536/unitedhealth-humana-and-cvs-shares-fall-as-medicare-advantage-rating-changes-threaten-107-billion-in-payments",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "HUM"
-      ],
-      "created_at": "2026-11-23T14:32:04Z",
-      "sentiment": "bear",
-      "confidence": 0.95,
-      "reason": "CMS proposal to modify Star Ratings could reduce industry payments by $107B over decade"
+      "reason": "FDA approval of first-in-class systemic therapy expands RINVOQ's market opportunity and revenue potential."
     },
     {
       "id": "128821740",
@@ -105,22 +195,7 @@
       "created_at": "2026-11-23T13:01:28Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Eligibility for China's national procurement program expands market access for AbbVie's key drug adalimumab."
-    },
-    {
-      "id": "128798148",
-      "headline": "Morgan Stanley Adjusts Price Target on MetLife to $120 From $111",
-      "summary": "Morgan Stanley has updated its price target for MetLife, Inc., raising it from $111 to $120.",
-      "url": "https://www.marketscreener.com/news/morgan-stanley-adjusts-price-target-on-metlife-to-120-from-111-ce7851dad881f422",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "MET"
-      ],
-      "created_at": "2026-11-23T11:32:14Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Price target raised by $9 (8.1%) signals positive outlook on MetLife's fundamentals"
+      "reason": "Eligibility for China's national procurement expands AbbVie's market access and revenue potential for adalimumab."
     },
     {
       "id": "128797901",
@@ -135,7 +210,7 @@
       "created_at": "2026-11-23T11:31:27Z",
       "sentiment": "neutral",
       "confidence": 0.95,
-      "reason": "Educational program announcement with no direct business or financial impact on any stock."
+      "reason": "Educational program announcement with no direct financial impact on any publicly traded company."
     },
     {
       "id": "128619504",
@@ -150,7 +225,7 @@
       "created_at": "2026-11-22T14:02:39Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Upgrade to Strong Buy with increased price target signals strong positive outlook for LUV."
+      "reason": "Upgrade to Strong Buy with raised price target signals analyst confidence in LUV's future performance."
     },
     {
       "id": "127951388",
@@ -168,51 +243,6 @@
       "reason": "Policy implementation is operational news with no clear positive or negative financial impact."
     },
     {
-      "id": "127882821",
-      "headline": "MetLife Insider Sells Shares Worth $652,288",
-      "summary": "A MetLife insider sold company shares valued at $652,288, according to a recent SEC filing.",
-      "url": "https://www.marketscreener.com/news/metlife-insider-sold-shares-worth-652-288-according-to-a-recent-sec-filing-ce785ed3dc89f026",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "MET"
-      ],
-      "created_at": "2026-11-20T21:33:18Z",
-      "sentiment": "bear",
-      "confidence": 0.75,
-      "reason": "Insider selling can signal lack of confidence in near-term stock performance."
-    },
-    {
-      "id": "127713002",
-      "headline": "Wabtec Corporation Appoints Rich J. Freeland to the Board of Directors",
-      "summary": "Wabtec Corporation has announced the appointment of former Cummins Inc. President and COO Rich J. Freeland to its Board of Directors, effective November 23, 2026.",
-      "url": "https://www.businesswire.com/newsroom/industry/transport/rail",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "WAB"
-      ],
-      "created_at": "2026-11-20T19:02:00Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Appointment of experienced executive from industry leader strengthens board governance and strategic oversight."
-    },
-    {
-      "id": "127711938",
-      "headline": "Humana to Present 2026 US Senior Pickleball National Championships",
-      "summary": "Humana is the presenting sponsor for the 2026 US Senior Pickleball National Championships, scheduled for late November and early December 2026.",
-      "url": "https://www.einnews.com/pr_news/957845341/us-senior-pickleball-announces-largest-national-championships-ever-for-players-50",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "HUM"
-      ],
-      "created_at": "2026-11-20T19:01:56Z",
-      "sentiment": "neutral",
-      "confidence": 0.95,
-      "reason": "Sponsorship announcement has no material impact on financial performance or stock valuation."
-    },
-    {
       "id": "127541275",
       "headline": "Mizuho Adjusts Amgen Price Target to $388",
       "summary": "Mizuho has updated its price target for Amgen Inc., raising it from $352 to $388 while maintaining a Neutral rating.",
@@ -225,7 +255,7 @@
       "created_at": "2026-11-20T16:03:08Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Price target raised 10.2% signals improved analyst outlook despite neutral rating."
+      "reason": "Price target raised 10.2% signals improved outlook despite neutral rating maintained."
     },
     {
       "id": "127464885",
@@ -240,7 +270,7 @@
       "created_at": "2026-11-20T14:32:36Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Price target raised by $17, indicating analyst confidence in Airbnb's growth prospects."
+      "reason": "Analyst raised price target by $17, indicating increased confidence in stock appreciation."
     },
     {
       "id": "127464844",
@@ -255,52 +285,7 @@
       "created_at": "2026-11-20T14:32:10Z",
       "sentiment": "neutral",
       "confidence": 0.95,
-      "reason": "Conference participation announcement is routine corporate activity without material news impact."
-    },
-    {
-      "id": "127411699",
-      "headline": "Apple Developer Academy Showcase in Pohang",
-      "summary": "Apple held its annual showcase for the Apple Developer Academy in Pohang, South Korea, featuring apps developed by students.",
-      "url": "https://www.koreaherald.com/article/10944423",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "AAPL"
-      ],
-      "created_at": "2026-11-20T13:01:25Z",
-      "sentiment": "neutral",
-      "confidence": 0.95,
-      "reason": "Educational event announcement with no direct impact on Apple's financial performance or business operations."
-    },
-    {
-      "id": "127399214",
-      "headline": "TD Cowen Upgrades Humana to Buy",
-      "summary": "TD Cowen has upgraded Humana Inc. to a 'Buy' rating with a price target of $485.",
-      "url": "https://www.marketscreener.com/news/td-cowen-upgrades-humana-to-buy-price-target-is-485-ce785ed3d889f622",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "HUM"
-      ],
-      "created_at": "2026-11-20T12:32:05Z",
-      "sentiment": "bull",
-      "confidence": 0.95,
-      "reason": "Upgrade to Buy rating with $485 price target signals positive outlook"
-    },
-    {
-      "id": "127398827",
-      "headline": "Apple Developing Autonomous AI Agent",
-      "summary": "Apple is reportedly developing an autonomous AI agent capable of performing multistep tasks, including writing code, browsing the web, and controlling applications.",
-      "url": "https://www.moomoo.com/stock/AAPL-US?chain_id=Name1K9-3FXPhg.1lg030g&global_content=%7B%22promote_id%22%3A13764%2C%22sub_promote_id%22%3A57%2C%22f%22%3A%22www.moomoo.com%2Fstock%2FPDD-US%22%7D",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "AAPL"
-      ],
-      "created_at": "2026-11-20T12:31:54Z",
-      "sentiment": "bull",
-      "confidence": 0.85,
-      "reason": "Development of autonomous AI agent represents significant innovation potential and competitive positioning in AI sector."
+      "reason": "Company conference participation is routine announcement with no material business impact."
     },
     {
       "id": "127398822",
@@ -315,7 +300,7 @@
       "created_at": "2026-11-20T12:31:46Z",
       "sentiment": "bull",
       "confidence": 0.95,
-      "reason": "Raised guidance across revenue, margins, and EBITDA with doubled buyback target signals strong business momentum."
+      "reason": "Raised guidance across revenue, margins, and EBITDA with doubled buyback signals confidence."
     },
     {
       "id": "127398819",
@@ -330,7 +315,7 @@
       "created_at": "2026-11-20T12:31:43Z",
       "sentiment": "bull",
       "confidence": 0.85,
-      "reason": "Take-private deal at significant valuation validates BILL's value and provides liquidity event."
+      "reason": "Take-private deal at $6B valuation with strategic investor backing signals confidence in BILL's value."
     },
     {
       "id": "127378521",
@@ -360,7 +345,7 @@
       "created_at": "2026-11-20T11:31:27Z",
       "sentiment": "neutral",
       "confidence": 0.85,
-      "reason": "Corporate sponsorship recognition has minimal direct impact on financial performance or stock valuation."
+      "reason": "Corporate sponsorship recognition is promotional activity with no material business impact."
     },
     {
       "id": "127303781",
@@ -375,37 +360,7 @@
       "created_at": "2026-11-20T03:01:43Z",
       "sentiment": "bull",
       "confidence": 0.92,
-      "reason": "Major capital investment signals confidence in business growth and expansion of manufacturing capacity."
-    },
-    {
-      "id": "127130373",
-      "headline": "U.K. Tribunal Orders Government to Confirm Secret Demand for Apple Customer Data",
-      "summary": "The U.K. Investigatory Powers Tribunal has ordered the government to confirm it issued a secret technical order requiring Apple to provide encrypted customer information.",
-      "url": "https://newsfilter.io/articles/u-k-government-forced-to-disclose-secret-apple-backdoor-order-89f07cb47e5859b18ddafa5e02d91f83",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "AAPL"
-      ],
-      "created_at": "2026-11-19T22:31:27Z",
-      "sentiment": "neutral",
-      "confidence": 0.85,
-      "reason": "Tribunal order doesn't directly impact Apple's business operations or financials."
-    },
-    {
-      "id": "126880356",
-      "headline": "Apple Camera and Photos Software Chief Jon McCormack Departs",
-      "summary": "Jon McCormack, the head of Apple's camera and photo software, has reportedly left the company.",
-      "url": "https://appleosophy.com/wire/pe7xh2x/",
-      "author": "",
-      "source": "fiscal.ai",
-      "symbols": [
-        "AAPL"
-      ],
-      "created_at": "2026-11-19T20:01:24Z",
-      "sentiment": "bear",
-      "confidence": 0.72,
-      "reason": "Departure of key software executive may impact camera/photo feature development quality."
+      "reason": "Major capital investment signals growth, operational expansion, and job creation at key facility."
     },
     {
       "id": "126781958",
@@ -420,7 +375,7 @@
       "created_at": "2026-11-19T19:01:56Z",
       "sentiment": "neutral",
       "confidence": 0.85,
-      "reason": "Call for FAA modernization is industry-wide advocacy, not company-specific positive or negative news."
+      "reason": "Call for FAA modernization is industry-wide issue, not company-specific positive or negative development."
     },
     {
       "id": "126781901",
@@ -434,23 +389,68 @@
       ],
       "created_at": "2026-11-19T19:01:28Z",
       "sentiment": "bear",
-      "confidence": 0.75,
-      "reason": "New competition identified for Amgen's Tepezza could pressure market share and revenue."
+      "confidence": 0.85,
+      "reason": "New credible competitor threatens Amgen's Tepezza market share and revenue potential."
     },
     {
-      "id": "126781894",
-      "headline": "Apple Announces 2026 Black Friday Shopping Event",
-      "summary": "Apple has announced its annual Black Friday shopping event, scheduled for November 27 through November 30, 2026, featuring Apple Gift Cards of up to $300 with the purchase of eligible products.",
-      "url": "https://appleosophy.com/wire/b3dp95q/",
+      "id": "126648042",
+      "headline": "Hays plc Annual General Meeting Results",
+      "summary": "Hays plc held its Annual General Meeting on November 18, 2026, where shareholders passed all 22 resolutions, though four resolutions regarding share allotments and plans received lower support levels.",
+      "url": "https://www.investegate.co.uk/announcement/rns/hays--has/result-of-agm/9882350",
       "author": "",
       "source": "fiscal.ai",
       "symbols": [
-        "AAPL"
+        "HAS"
       ],
-      "created_at": "2026-11-19T19:01:18Z",
+      "created_at": "2026-11-19T17:31:46Z",
       "sentiment": "neutral",
-      "confidence": 0.95,
-      "reason": "Routine promotional announcement with no material business impact on financials or operations."
+      "confidence": 0.85,
+      "reason": "All resolutions passed but lower support on share allotment votes suggests mixed shareholder confidence."
+    },
+    {
+      "id": "126408849",
+      "headline": "Corpay Signs Multi-Year FX Partnership with Hull City",
+      "summary": "Corpay's Cross-Border unit has entered into a multi-year agreement to serve as the official foreign exchange partner for the English Premier League soccer team Hull City.",
+      "url": "https://www.moomoo.com/hans/news/post/1005192169/corpay-signs-deal-to-provide-fx-management-for-hull-city",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "CPAY"
+      ],
+      "created_at": "2026-11-19T14:31:59Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Multi-year partnership expands Corpay's market reach and revenue streams in sports sponsorship."
+    },
+    {
+      "id": "126319920",
+      "headline": "Airbnb Announces 'At Home with the Raichands' Experience for K3G 25th Anniversary",
+      "summary": "Airbnb has launched a special promotional campaign featuring Bollywood stars Kareena Kapoor Khan and Hrithik Roshan to celebrate the 25th anniversary of the film 'Kabhi Khushi Kabhie Gham'.",
+      "url": "https://telugufeed.com/kareena-kapoor-hrithik-roshan-k3g-25-years-airbnb-raichands-campaign/",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "ABNB"
+      ],
+      "created_at": "2026-11-19T12:32:03Z",
+      "sentiment": "bull",
+      "confidence": 0.75,
+      "reason": "Strategic marketing campaign with Bollywood celebrities expands brand reach and engagement in high-growth Indian market."
+    },
+    {
+      "id": "126292747",
+      "headline": "AbbVie and DISCO Pharmaceuticals Announce Strategic Collaboration for Solid Tumor Therapeutics",
+      "summary": "AbbVie has entered into a strategic collaboration and option-to-license agreement with DISCO Pharmaceuticals to develop novel bispecific therapeutics for solid tumors.",
+      "url": "https://www.finanzen.ch/nachrichten/aktien/disco-pharmaceuticals-abbvie-announce-up-to-$2-5-bln-cancer-drug-collaboration-1036782736",
+      "author": "",
+      "source": "fiscal.ai",
+      "symbols": [
+        "ABBV"
+      ],
+      "created_at": "2026-11-19T11:31:18Z",
+      "sentiment": "bull",
+      "confidence": 0.85,
+      "reason": "Strategic collaboration expands AbbVie's oncology pipeline with innovative bispecific therapeutics for solid tumors."
     }
   ]
 }
