@@ -1,23 +1,11 @@
 {
-  "timestamp": "2026-11-26T03:42:14Z",
-  "mode": "post_close",
+  "timestamp": "2026-11-26T22:31:42Z",
+  "mode": "market_open",
   "orders_placed": [
     {
-      "action": "BUY",
-      "symbol": "EXPD",
-      "qty": 4.41802,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "LMT",
-      "qty": 1.461196,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "ABNB",
-      "qty": 0.071635,
+      "action": "SELL",
+      "symbol": "WST",
+      "qty": 0.269709,
       "status": "submitted"
     }
   ],
@@ -28,10 +16,6 @@
     },
     {
       "symbol": "IEX",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "WST",
       "reason": "blocked by agent approval or risk gate"
     }
   ],
