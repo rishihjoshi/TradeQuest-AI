@@ -1,47 +1,25 @@
 {
-  "timestamp": "2026-11-27T03:43:15Z",
-  "mode": "post_close",
+  "timestamp": "2026-11-27T22:15:47Z",
+  "mode": "market_open",
   "orders_placed": [
     {
-      "action": "BUY",
+      "action": "SELL",
       "symbol": "EXPD",
-      "qty": 4.424903,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "LMT",
-      "qty": 1.463473,
-      "status": "submitted"
-    },
-    {
-      "action": "BUY",
-      "symbol": "ABNB",
-      "qty": 0.079976,
+      "qty": 12.599885,
       "status": "submitted"
     }
   ],
-  "orders_skipped": [
-    {
-      "symbol": "WST",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "IEX",
-      "reason": "blocked by agent approval or risk gate"
-    },
-    {
-      "symbol": "CPAY",
-      "reason": "blocked by agent approval or risk gate"
-    }
-  ],
+  "orders_skipped": [],
   "errors": [],
-  "cash_pct_after": 28.78,
+  "cash_pct_after": -24.75,
   "long_only_breach": false,
   "invariant_breaches": [
-    "AMGN: position $1,849.18 exceeds 2x the 10% cap (20.0% of book)"
+    "AMGN: position $1,867.04 exceeds 2x the 10% cap (20.1% of book)",
+    "EXPD: position $2,655.02 exceeds 2x the 10% cap (28.6% of book)",
+    "LMT: position $2,656.69 exceeds 2x the 10% cap (28.6% of book)",
+    "sector Industrials at 57.1% exceeds the 30% cap"
   ],
-  "breach_streak": 1,
+  "breach_streak": 2,
   "trading_halted": false,
   "dry_run": false
 }
