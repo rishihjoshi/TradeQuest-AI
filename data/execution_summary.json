@@ -1,29 +1,47 @@
 {
-  "timestamp": "2026-11-26T22:31:42Z",
-  "mode": "market_open",
+  "timestamp": "2026-11-27T03:43:15Z",
+  "mode": "post_close",
   "orders_placed": [
     {
-      "action": "SELL",
-      "symbol": "WST",
-      "qty": 0.269709,
+      "action": "BUY",
+      "symbol": "EXPD",
+      "qty": 4.424903,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "LMT",
+      "qty": 1.463473,
+      "status": "submitted"
+    },
+    {
+      "action": "BUY",
+      "symbol": "ABNB",
+      "qty": 0.079976,
       "status": "submitted"
     }
   ],
   "orders_skipped": [
     {
-      "symbol": "CPAY",
+      "symbol": "WST",
       "reason": "blocked by agent approval or risk gate"
     },
     {
       "symbol": "IEX",
       "reason": "blocked by agent approval or risk gate"
+    },
+    {
+      "symbol": "CPAY",
+      "reason": "blocked by agent approval or risk gate"
     }
   ],
   "errors": [],
-  "cash_pct_after": 28.82,
+  "cash_pct_after": 28.78,
   "long_only_breach": false,
-  "invariant_breaches": [],
-  "breach_streak": 0,
+  "invariant_breaches": [
+    "AMGN: position $1,849.18 exceeds 2x the 10% cap (20.0% of book)"
+  ],
+  "breach_streak": 1,
   "trading_halted": false,
   "dry_run": false
 }
