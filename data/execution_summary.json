@@ -1,25 +1,30 @@
 {
-  "timestamp": "2026-11-27T22:15:47Z",
-  "mode": "market_open",
-  "orders_placed": [
+  "timestamp": "2026-11-28T01:33:50Z",
+  "mode": "post_close",
+  "orders_placed": [],
+  "orders_skipped": [
     {
-      "action": "SELL",
+      "symbol": "AMGN",
+      "reason": "sentinel rule triggered but order blocked by risk gate"
+    },
+    {
       "symbol": "EXPD",
-      "qty": 12.599885,
-      "status": "submitted"
+      "reason": "sentinel rule triggered but order blocked by risk gate"
+    },
+    {
+      "symbol": "LMT",
+      "reason": "sentinel rule triggered but order blocked by risk gate"
     }
   ],
-  "orders_skipped": [],
   "errors": [],
   "cash_pct_after": -24.75,
   "long_only_breach": false,
   "invariant_breaches": [
     "AMGN: position $1,867.04 exceeds 2x the 10% cap (20.1% of book)",
     "EXPD: position $2,655.02 exceeds 2x the 10% cap (28.6% of book)",
-    "LMT: position $2,656.69 exceeds 2x the 10% cap (28.6% of book)",
-    "sector Industrials at 57.1% exceeds the 30% cap"
+    "LMT: position $2,656.69 exceeds 2x the 10% cap (28.6% of book)"
   ],
-  "breach_streak": 2,
-  "trading_halted": false,
+  "breach_streak": 3,
+  "trading_halted": true,
   "dry_run": false
 }

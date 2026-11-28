@@ -1,5 +1,24 @@
 {
-  "timestamp": "2026-11-27T01:51:27Z",
-  "sells": [],
-  "count": 0
+  "timestamp": "2026-11-28T01:33:48Z",
+  "sells": [
+    {
+      "symbol": "AMGN",
+      "shares": 3,
+      "rule": "concentration",
+      "reason": "Position weight 20.1% exceeds 2\u00d7 MAX_POSITION_PCT (20%). Forced exit \u2014 sentinel Rule 1."
+    },
+    {
+      "symbol": "EXPD",
+      "shares": 13,
+      "rule": "concentration",
+      "reason": "Position weight 28.6% exceeds 2\u00d7 MAX_POSITION_PCT (20%). Forced exit \u2014 sentinel Rule 1."
+    },
+    {
+      "symbol": "LMT",
+      "shares": 4,
+      "rule": "concentration",
+      "reason": "Position weight 28.6% exceeds 2\u00d7 MAX_POSITION_PCT (20%). Forced exit \u2014 sentinel Rule 1."
+    }
+  ],
+  "count": 3
 }
