@@ -8,7 +8,7 @@
     "initial_capital": 10000.0,
     "mode": "alpaca",
     "universe": "S&P 500",
-    "last_rebalance": "2026-11-27",
+    "last_rebalance": "2026-11-28",
     "next_rebalance": "2027-01-01",
     "market_regime": "bear",
     "regime_confidence": 0.61,
@@ -23,20 +23,20 @@
   },
   "summary": {
     "initial_capital": 10000.0,
-    "portfolio_value": 9294.89,
+    "portfolio_value": 9277.2,
     "cash": -2300.24,
-    "cash_pct": -24.75,
+    "cash_pct": -24.79,
     "deployable_cash": 0.0,
     "deployable_cash_pct": 0.0,
     "short_proceeds": 0,
-    "long_exposure_pct": 124.75,
-    "net_exposure_pct": 124.75,
+    "long_exposure_pct": 124.79,
+    "net_exposure_pct": 124.79,
     "long_only_breach": false,
-    "invested": 11595.13,
-    "total_pnl": -709.43,
-    "total_pnl_pct": -7.09,
+    "invested": 11577.44,
+    "total_pnl": -727.1,
+    "total_pnl_pct": -7.27,
     "realized_pnl": -667.59,
-    "unrealized_pnl": -41.84,
+    "unrealized_pnl": -59.51,
     "win_rate": 0.348,
     "total_trades": 198,
     "attributed_trades": 89,
@@ -44,9 +44,9 @@
     "losing_trades": 54,
     "avg_win_pct": 5.6,
     "avg_loss_pct": -4.7,
-    "sharpe_ratio": -1.39,
+    "sharpe_ratio": -1.42,
     "max_drawdown_pct": 12.82,
-    "last_updated": "2026-11-27T22:15:47Z"
+    "last_updated": "2026-11-28T03:26:50Z"
   },
   "filter_status": {
     "momentum": {
@@ -402,6 +402,10 @@
     {
       "date": "Nov 27",
       "value": 9295
+    },
+    {
+      "date": "Nov 28",
+      "value": 9277
     }
   ],
   "spy_curve": [
@@ -708,6 +712,10 @@
     {
       "date": "Nov 27",
       "value": 9514
+    },
+    {
+      "date": "Nov 28",
+      "value": 8832
     }
   ],
   "benchmark": [
@@ -1014,6 +1022,10 @@
     {
       "date": "Nov 27",
       "value": 9514
+    },
+    {
+      "date": "Nov 28",
+      "value": 8832
     }
   ],
   "holdings": [
@@ -1023,11 +1035,11 @@
       "sector": "Healthcare",
       "shares": 2.545317,
       "avg_cost": 299.43,
-      "current_price": 292.74,
-      "market_value": 745.12,
-      "weight": 0.0802,
-      "pnl": -17.04,
-      "pnl_pct": -2.23,
+      "current_price": 291.88,
+      "market_value": 742.93,
+      "weight": 0.0801,
+      "pnl": -19.22,
+      "pnl_pct": -2.52,
       "eps_growth": 2282.1,
       "revenue_growth": 10.3,
       "forward_pe": 18.0,
@@ -1045,11 +1057,11 @@
       "sector": "Consumer Cyclical",
       "shares": 5.506492,
       "avg_cost": 188.61,
-      "current_price": 179.0,
-      "market_value": 985.66,
-      "weight": 0.106,
-      "pnl": -52.9,
-      "pnl_pct": -5.09,
+      "current_price": 179.16,
+      "market_value": 986.54,
+      "weight": 0.1063,
+      "pnl": -52.02,
+      "pnl_pct": -5.01,
       "eps_growth": 42.7,
       "revenue_growth": 18.9,
       "forward_pe": 28.2,
@@ -1067,11 +1079,11 @@
       "sector": "Healthcare",
       "shares": 3.926075,
       "avg_cost": 466.07,
-      "current_price": 475.55,
-      "market_value": 1867.04,
-      "weight": 0.2009,
-      "pnl": 37.23,
-      "pnl_pct": 2.04,
+      "current_price": 474.08,
+      "market_value": 1861.27,
+      "weight": 0.2006,
+      "pnl": 31.46,
+      "pnl_pct": 1.72,
       "eps_growth": 19.4,
       "revenue_growth": 8.5,
       "forward_pe": 18.9,
@@ -1089,14 +1101,14 @@
       "sector": "Industrials",
       "shares": 13.257846,
       "avg_cost": 199.74,
-      "current_price": 200.26,
-      "market_value": 2655.02,
-      "weight": 0.2856,
-      "pnl": 6.92,
-      "pnl_pct": 0.26,
+      "current_price": 199.46,
+      "market_value": 2644.41,
+      "weight": 0.285,
+      "pnl": -3.68,
+      "pnl_pct": -0.14,
       "eps_growth": 61.6,
       "revenue_growth": 41.9,
-      "forward_pe": 21.9,
+      "forward_pe": 21.7,
       "volatility_30d": 0.2632,
       "entry_date": "2026-11-27",
       "ma_50d": 193.42,
@@ -1113,7 +1125,7 @@
       "avg_cost": 118.04,
       "current_price": 109.09,
       "market_value": 1638.99,
-      "weight": 0.1763,
+      "weight": 0.1767,
       "pnl": -134.51,
       "pnl_pct": -7.58,
       "eps_growth": 68.9,
@@ -1135,7 +1147,7 @@
       "avg_cost": 604.7,
       "current_price": 605.88,
       "market_value": 2656.69,
-      "weight": 0.2858,
+      "weight": 0.2864,
       "pnl": 5.17,
       "pnl_pct": 0.19,
       "eps_growth": 14.7,
@@ -1157,7 +1169,7 @@
       "avg_cost": 42.1,
       "current_price": 47.21,
       "market_value": 1046.61,
-      "weight": 0.1126,
+      "weight": 0.1128,
       "pnl": 113.29,
       "pnl_pct": 12.14,
       "eps_growth": null,
